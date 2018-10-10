@@ -2030,7 +2030,7 @@ bool Bfd::Ipv6SingleHopCounters::has_leaf_or_child_of_name(const std::string & n
 
 Bfd::Ipv6SingleHopCounters::Ipv6SingleHopPacketCounters::Ipv6SingleHopPacketCounters()
     :
-    ipv6_single_hop_packet_counter(this, {"interface_name"})
+    ipv6_single_hop_packet_counter(this, {})
 {
 
     yang_name = "ipv6-single-hop-packet-counters"; yang_parent_name = "ipv6-single-hop-counters"; is_top_level_class = false; has_list_ancestor = false; 
@@ -2131,6 +2131,7 @@ bool Bfd::Ipv6SingleHopCounters::Ipv6SingleHopPacketCounters::has_leaf_or_child_
 Bfd::Ipv6SingleHopCounters::Ipv6SingleHopPacketCounters::Ipv6SingleHopPacketCounter::Ipv6SingleHopPacketCounter()
     :
     interface_name{YType::str, "interface-name"},
+    location{YType::str, "location"},
     hello_transmit_count{YType::uint32, "hello-transmit-count"},
     hello_receive_count{YType::uint32, "hello-receive-count"},
     echo_transmit_count{YType::uint32, "echo-transmit-count"},
@@ -2149,6 +2150,7 @@ bool Bfd::Ipv6SingleHopCounters::Ipv6SingleHopPacketCounters::Ipv6SingleHopPacke
 {
     if (is_presence_container) return true;
     return interface_name.is_set
+	|| location.is_set
 	|| hello_transmit_count.is_set
 	|| hello_receive_count.is_set
 	|| echo_transmit_count.is_set
@@ -2160,6 +2162,7 @@ bool Bfd::Ipv6SingleHopCounters::Ipv6SingleHopPacketCounters::Ipv6SingleHopPacke
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(location.yfilter)
 	|| ydk::is_set(hello_transmit_count.yfilter)
 	|| ydk::is_set(hello_receive_count.yfilter)
 	|| ydk::is_set(echo_transmit_count.yfilter)
@@ -2178,7 +2181,6 @@ std::string Bfd::Ipv6SingleHopCounters::Ipv6SingleHopPacketCounters::Ipv6SingleH
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-single-hop-packet-counter";
-    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2187,6 +2189,7 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv6SingleHopCounters::Ipv6S
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
     if (hello_transmit_count.is_set || is_set(hello_transmit_count.yfilter)) leaf_name_data.push_back(hello_transmit_count.get_name_leafdata());
     if (hello_receive_count.is_set || is_set(hello_receive_count.yfilter)) leaf_name_data.push_back(hello_receive_count.get_name_leafdata());
     if (echo_transmit_count.is_set || is_set(echo_transmit_count.yfilter)) leaf_name_data.push_back(echo_transmit_count.get_name_leafdata());
@@ -2216,6 +2219,12 @@ void Bfd::Ipv6SingleHopCounters::Ipv6SingleHopPacketCounters::Ipv6SingleHopPacke
         interface_name = value;
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-transmit-count")
     {
@@ -2255,6 +2264,10 @@ void Bfd::Ipv6SingleHopCounters::Ipv6SingleHopPacketCounters::Ipv6SingleHopPacke
     {
         interface_name.yfilter = yfilter;
     }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
     if(value_path == "hello-transmit-count")
     {
         hello_transmit_count.yfilter = yfilter;
@@ -2279,7 +2292,7 @@ void Bfd::Ipv6SingleHopCounters::Ipv6SingleHopPacketCounters::Ipv6SingleHopPacke
 
 bool Bfd::Ipv6SingleHopCounters::Ipv6SingleHopPacketCounters::Ipv6SingleHopPacketCounter::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-name" || name == "hello-transmit-count" || name == "hello-receive-count" || name == "echo-transmit-count" || name == "echo-receive-count" || name == "display-type")
+    if(name == "interface-name" || name == "location" || name == "hello-transmit-count" || name == "hello-receive-count" || name == "echo-transmit-count" || name == "echo-receive-count" || name == "display-type")
         return true;
     return false;
 }
@@ -2375,7 +2388,7 @@ bool Bfd::Counters::has_leaf_or_child_of_name(const std::string & name) const
 
 Bfd::Counters::PacketCounters::PacketCounters()
     :
-    packet_counter(this, {"interface_name"})
+    packet_counter(this, {})
 {
 
     yang_name = "packet-counters"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = false; 
@@ -2476,6 +2489,7 @@ bool Bfd::Counters::PacketCounters::has_leaf_or_child_of_name(const std::string 
 Bfd::Counters::PacketCounters::PacketCounter::PacketCounter()
     :
     interface_name{YType::str, "interface-name"},
+    location{YType::str, "location"},
     hello_transmit_count{YType::uint32, "hello-transmit-count"},
     hello_receive_count{YType::uint32, "hello-receive-count"},
     echo_transmit_count{YType::uint32, "echo-transmit-count"},
@@ -2494,6 +2508,7 @@ bool Bfd::Counters::PacketCounters::PacketCounter::has_data() const
 {
     if (is_presence_container) return true;
     return interface_name.is_set
+	|| location.is_set
 	|| hello_transmit_count.is_set
 	|| hello_receive_count.is_set
 	|| echo_transmit_count.is_set
@@ -2505,6 +2520,7 @@ bool Bfd::Counters::PacketCounters::PacketCounter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(location.yfilter)
 	|| ydk::is_set(hello_transmit_count.yfilter)
 	|| ydk::is_set(hello_receive_count.yfilter)
 	|| ydk::is_set(echo_transmit_count.yfilter)
@@ -2523,7 +2539,6 @@ std::string Bfd::Counters::PacketCounters::PacketCounter::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "packet-counter";
-    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2532,6 +2547,7 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Counters::PacketCounters::Pa
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
     if (hello_transmit_count.is_set || is_set(hello_transmit_count.yfilter)) leaf_name_data.push_back(hello_transmit_count.get_name_leafdata());
     if (hello_receive_count.is_set || is_set(hello_receive_count.yfilter)) leaf_name_data.push_back(hello_receive_count.get_name_leafdata());
     if (echo_transmit_count.is_set || is_set(echo_transmit_count.yfilter)) leaf_name_data.push_back(echo_transmit_count.get_name_leafdata());
@@ -2561,6 +2577,12 @@ void Bfd::Counters::PacketCounters::PacketCounter::set_value(const std::string &
         interface_name = value;
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-transmit-count")
     {
@@ -2600,6 +2622,10 @@ void Bfd::Counters::PacketCounters::PacketCounter::set_filter(const std::string 
     {
         interface_name.yfilter = yfilter;
     }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
     if(value_path == "hello-transmit-count")
     {
         hello_transmit_count.yfilter = yfilter;
@@ -2624,7 +2650,7 @@ void Bfd::Counters::PacketCounters::PacketCounter::set_filter(const std::string 
 
 bool Bfd::Counters::PacketCounters::PacketCounter::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-name" || name == "hello-transmit-count" || name == "hello-receive-count" || name == "echo-transmit-count" || name == "echo-receive-count" || name == "display-type")
+    if(name == "interface-name" || name == "location" || name == "hello-transmit-count" || name == "hello-receive-count" || name == "echo-transmit-count" || name == "echo-receive-count" || name == "display-type")
         return true;
     return false;
 }
@@ -19897,7 +19923,7 @@ bool Bfd::Ipv4SingleHopCounters::has_leaf_or_child_of_name(const std::string & n
 
 Bfd::Ipv4SingleHopCounters::Ipv4SingleHopPacketCounters::Ipv4SingleHopPacketCounters()
     :
-    ipv4_single_hop_packet_counter(this, {"interface_name"})
+    ipv4_single_hop_packet_counter(this, {})
 {
 
     yang_name = "ipv4-single-hop-packet-counters"; yang_parent_name = "ipv4-single-hop-counters"; is_top_level_class = false; has_list_ancestor = false; 
@@ -19998,6 +20024,7 @@ bool Bfd::Ipv4SingleHopCounters::Ipv4SingleHopPacketCounters::has_leaf_or_child_
 Bfd::Ipv4SingleHopCounters::Ipv4SingleHopPacketCounters::Ipv4SingleHopPacketCounter::Ipv4SingleHopPacketCounter()
     :
     interface_name{YType::str, "interface-name"},
+    location{YType::str, "location"},
     hello_transmit_count{YType::uint32, "hello-transmit-count"},
     hello_receive_count{YType::uint32, "hello-receive-count"},
     echo_transmit_count{YType::uint32, "echo-transmit-count"},
@@ -20016,6 +20043,7 @@ bool Bfd::Ipv4SingleHopCounters::Ipv4SingleHopPacketCounters::Ipv4SingleHopPacke
 {
     if (is_presence_container) return true;
     return interface_name.is_set
+	|| location.is_set
 	|| hello_transmit_count.is_set
 	|| hello_receive_count.is_set
 	|| echo_transmit_count.is_set
@@ -20027,6 +20055,7 @@ bool Bfd::Ipv4SingleHopCounters::Ipv4SingleHopPacketCounters::Ipv4SingleHopPacke
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(location.yfilter)
 	|| ydk::is_set(hello_transmit_count.yfilter)
 	|| ydk::is_set(hello_receive_count.yfilter)
 	|| ydk::is_set(echo_transmit_count.yfilter)
@@ -20045,7 +20074,6 @@ std::string Bfd::Ipv4SingleHopCounters::Ipv4SingleHopPacketCounters::Ipv4SingleH
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-single-hop-packet-counter";
-    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -20054,6 +20082,7 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4SingleHopCounters::Ipv4S
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
     if (hello_transmit_count.is_set || is_set(hello_transmit_count.yfilter)) leaf_name_data.push_back(hello_transmit_count.get_name_leafdata());
     if (hello_receive_count.is_set || is_set(hello_receive_count.yfilter)) leaf_name_data.push_back(hello_receive_count.get_name_leafdata());
     if (echo_transmit_count.is_set || is_set(echo_transmit_count.yfilter)) leaf_name_data.push_back(echo_transmit_count.get_name_leafdata());
@@ -20083,6 +20112,12 @@ void Bfd::Ipv4SingleHopCounters::Ipv4SingleHopPacketCounters::Ipv4SingleHopPacke
         interface_name = value;
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-transmit-count")
     {
@@ -20122,6 +20157,10 @@ void Bfd::Ipv4SingleHopCounters::Ipv4SingleHopPacketCounters::Ipv4SingleHopPacke
     {
         interface_name.yfilter = yfilter;
     }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
     if(value_path == "hello-transmit-count")
     {
         hello_transmit_count.yfilter = yfilter;
@@ -20146,7 +20185,7 @@ void Bfd::Ipv4SingleHopCounters::Ipv4SingleHopPacketCounters::Ipv4SingleHopPacke
 
 bool Bfd::Ipv4SingleHopCounters::Ipv4SingleHopPacketCounters::Ipv4SingleHopPacketCounter::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-name" || name == "hello-transmit-count" || name == "hello-receive-count" || name == "echo-transmit-count" || name == "echo-receive-count" || name == "display-type")
+    if(name == "interface-name" || name == "location" || name == "hello-transmit-count" || name == "hello-receive-count" || name == "echo-transmit-count" || name == "echo-receive-count" || name == "display-type")
         return true;
     return false;
 }

@@ -31,18 +31,18 @@ class InventoryConfigurations : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Entity_; //type: InventoryConfigurations::Entity
+        class Entity; //type: InventoryConfigurations::Entity
 
         ydk::YList entity_;
         
 }; // InventoryConfigurations
 
 
-class InventoryConfigurations::Entity_ : public ydk::Entity
+class InventoryConfigurations::Entity : public ydk::Entity
 {
     public:
-        Entity_();
-        ~Entity_();
+        Entity();
+        ~Entity();
 
         bool has_data() const override;
         bool has_operation() const override;

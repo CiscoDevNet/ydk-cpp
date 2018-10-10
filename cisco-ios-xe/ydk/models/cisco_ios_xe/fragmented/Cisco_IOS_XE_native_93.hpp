@@ -8,83 +8,14 @@
 #include <ydk/errors.hpp>
 
 #include "Cisco_IOS_XE_native_0.hpp"
-#include "Cisco_IOS_XE_native_18.hpp"
+#include "Cisco_IOS_XE_native_19.hpp"
 #include "Cisco_IOS_XE_native_92.hpp"
 
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Interface::Serial::Ip::Vrf : public ydk::Entity
-{
-    public:
-        Vrf();
-        ~Vrf();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf receive; //type: string
-        ydk::YLeaf sitemap; //type: string
-        class Forwarding; //type: Native::Interface::Serial::Ip::Vrf::Forwarding
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Vrf::Forwarding> forwarding;
-        
-}; // Native::Interface::Serial::Ip::Vrf
-
-
-class Native::Interface::Serial::Ip::Vrf::Forwarding : public ydk::Entity
-{
-    public:
-        Forwarding();
-        ~Forwarding();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf liin_vrf; //type: empty
-        ydk::YLeaf mgmtvrf; //type: empty
-        ydk::YLeaf word; //type: string
-
-}; // Native::Interface::Serial::Ip::Vrf::Forwarding
-
-
-class Native::Interface::Serial::Ip::NoAddress : public ydk::Entity
-{
-    public:
-        NoAddress();
-        ~NoAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address; //type: boolean
-
-}; // Native::Interface::Serial::Ip::NoAddress
-
-
-class Native::Interface::Serial::Ip::Address : public ydk::Entity
+class Native::Interface::SM::Ip::Address : public ydk::Entity
 {
     public:
         Address();
@@ -101,40 +32,18 @@ class Native::Interface::Serial::Ip::Address : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf negotiated; //type: empty
-        class Primary; //type: Native::Interface::Serial::Ip::Address::Primary
-        class Secondary; //type: Native::Interface::Serial::Ip::Address::Secondary
-        class Dhcp; //type: Native::Interface::Serial::Ip::Address::Dhcp
+        class Secondary; //type: Native::Interface::SM::Ip::Address::Secondary
+        class Primary; //type: Native::Interface::SM::Ip::Address::Primary
+        class Dhcp; //type: Native::Interface::SM::Ip::Address::Dhcp
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Address::Primary> primary;
         ydk::YList secondary;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Address::Dhcp> dhcp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Address::Primary> primary;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Address::Dhcp> dhcp; // presence node
         
-}; // Native::Interface::Serial::Ip::Address
+}; // Native::Interface::SM::Ip::Address
 
 
-class Native::Interface::Serial::Ip::Address::Primary : public ydk::Entity
-{
-    public:
-        Primary();
-        ~Primary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address; //type: string
-        ydk::YLeaf mask; //type: string
-
-}; // Native::Interface::Serial::Ip::Address::Primary
-
-
-class Native::Interface::Serial::Ip::Address::Secondary : public ydk::Entity
+class Native::Interface::SM::Ip::Address::Secondary : public ydk::Entity
 {
     public:
         Secondary();
@@ -154,10 +63,32 @@ class Native::Interface::Serial::Ip::Address::Secondary : public ydk::Entity
         ydk::YLeaf mask; //type: string
         ydk::YLeaf secondary; //type: empty
 
-}; // Native::Interface::Serial::Ip::Address::Secondary
+}; // Native::Interface::SM::Ip::Address::Secondary
 
 
-class Native::Interface::Serial::Ip::Address::Dhcp : public ydk::Entity
+class Native::Interface::SM::Ip::Address::Primary : public ydk::Entity
+{
+    public:
+        Primary();
+        ~Primary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf mask; //type: string
+
+}; // Native::Interface::SM::Ip::Address::Primary
+
+
+class Native::Interface::SM::Ip::Address::Dhcp : public ydk::Entity
 {
     public:
         Dhcp();
@@ -174,14 +105,14 @@ class Native::Interface::Serial::Ip::Address::Dhcp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf hostname; //type: string
-        class ClientId; //type: Native::Interface::Serial::Ip::Address::Dhcp::ClientId
+        class ClientId; //type: Native::Interface::SM::Ip::Address::Dhcp::ClientId
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Address::Dhcp::ClientId> client_id;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Address::Dhcp::ClientId> client_id;
         
-}; // Native::Interface::Serial::Ip::Address::Dhcp
+}; // Native::Interface::SM::Ip::Address::Dhcp
 
 
-class Native::Interface::Serial::Ip::Address::Dhcp::ClientId : public ydk::Entity
+class Native::Interface::SM::Ip::Address::Dhcp::ClientId : public ydk::Entity
 {
     public:
         ClientId();
@@ -197,6 +128,7 @@ class Native::Interface::Serial::Ip::Address::Dhcp::ClientId : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf ethernet; //type: string
         ydk::YLeaf fastethernet; //type: string
         ydk::YLeaf gigabitethernet; //type: string
         ydk::YLeaf fivegigabitethernet; //type: string
@@ -208,10 +140,31 @@ class Native::Interface::Serial::Ip::Address::Dhcp::ClientId : public ydk::Entit
         ydk::YLeaf hundredgige; //type: string
         ydk::YLeaf vlan; //type: uint16
 
-}; // Native::Interface::Serial::Ip::Address::Dhcp::ClientId
+}; // Native::Interface::SM::Ip::Address::Dhcp::ClientId
 
 
-class Native::Interface::Serial::Ip::HelloInterval : public ydk::Entity
+class Native::Interface::SM::Ip::DirectedBroadcast : public ydk::Entity
+{
+    public:
+        DirectedBroadcast();
+        ~DirectedBroadcast();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf direct_broadcast; //type: one of uint16, string
+
+}; // Native::Interface::SM::Ip::DirectedBroadcast
+
+
+class Native::Interface::SM::Ip::HelloInterval : public ydk::Entity
 {
     public:
         HelloInterval();
@@ -230,10 +183,10 @@ class Native::Interface::Serial::Ip::HelloInterval : public ydk::Entity
         ydk::YLeaf eigrp; //type: uint16
         ydk::YLeaf seconds; //type: uint16
 
-}; // Native::Interface::Serial::Ip::HelloInterval
+}; // Native::Interface::SM::Ip::HelloInterval
 
 
-class Native::Interface::Serial::Ip::Authentication : public ydk::Entity
+class Native::Interface::SM::Ip::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -249,16 +202,16 @@ class Native::Interface::Serial::Ip::Authentication : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class KeyChain; //type: Native::Interface::Serial::Ip::Authentication::KeyChain
-        class Mode; //type: Native::Interface::Serial::Ip::Authentication::Mode
+        class KeyChain; //type: Native::Interface::SM::Ip::Authentication::KeyChain
+        class Mode; //type: Native::Interface::SM::Ip::Authentication::Mode
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Authentication::KeyChain> key_chain;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Authentication::Mode> mode;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Authentication::KeyChain> key_chain;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Authentication::Mode> mode;
         
-}; // Native::Interface::Serial::Ip::Authentication
+}; // Native::Interface::SM::Ip::Authentication
 
 
-class Native::Interface::Serial::Ip::Authentication::KeyChain : public ydk::Entity
+class Native::Interface::SM::Ip::Authentication::KeyChain : public ydk::Entity
 {
     public:
         KeyChain();
@@ -277,10 +230,10 @@ class Native::Interface::Serial::Ip::Authentication::KeyChain : public ydk::Enti
         ydk::YLeaf eigrp; //type: uint16
         ydk::YLeaf name; //type: string
 
-}; // Native::Interface::Serial::Ip::Authentication::KeyChain
+}; // Native::Interface::SM::Ip::Authentication::KeyChain
 
 
-class Native::Interface::Serial::Ip::Authentication::Mode : public ydk::Entity
+class Native::Interface::SM::Ip::Authentication::Mode : public ydk::Entity
 {
     public:
         Mode();
@@ -299,10 +252,10 @@ class Native::Interface::Serial::Ip::Authentication::Mode : public ydk::Entity
         ydk::YLeaf eigrp; //type: uint16
         ydk::YLeaf md5; //type: empty
 
-}; // Native::Interface::Serial::Ip::Authentication::Mode
+}; // Native::Interface::SM::Ip::Authentication::Mode
 
 
-class Native::Interface::Serial::Ip::HoldTime : public ydk::Entity
+class Native::Interface::SM::Ip::HoldTime : public ydk::Entity
 {
     public:
         HoldTime();
@@ -321,10 +274,10 @@ class Native::Interface::Serial::Ip::HoldTime : public ydk::Entity
         ydk::YLeaf eigrp; //type: uint16
         ydk::YLeaf seconds; //type: uint16
 
-}; // Native::Interface::Serial::Ip::HoldTime
+}; // Native::Interface::SM::Ip::HoldTime
 
 
-class Native::Interface::Serial::Ip::HelperAddress : public ydk::Entity
+class Native::Interface::SM::Ip::HelperAddress : public ydk::Entity
 {
     public:
         HelperAddress();
@@ -344,10 +297,10 @@ class Native::Interface::Serial::Ip::HelperAddress : public ydk::Entity
         ydk::YLeaf global; //type: empty
         ydk::YLeaf vrf; //type: string
 
-}; // Native::Interface::Serial::Ip::HelperAddress
+}; // Native::Interface::SM::Ip::HelperAddress
 
 
-class Native::Interface::Serial::Ip::Pim : public ydk::Entity
+class Native::Interface::SM::Ip::Pim : public ydk::Entity
 {
     public:
         Pim();
@@ -364,10 +317,10 @@ class Native::Interface::Serial::Ip::Pim : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::Serial::Ip::Pim
+}; // Native::Interface::SM::Ip::Pim
 
 
-class Native::Interface::Serial::Ip::Policy : public ydk::Entity
+class Native::Interface::SM::Ip::Policy : public ydk::Entity
 {
     public:
         Policy();
@@ -385,10 +338,10 @@ class Native::Interface::Serial::Ip::Policy : public ydk::Entity
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Interface::Serial::Ip::Policy
+}; // Native::Interface::SM::Ip::Policy
 
 
-class Native::Interface::Serial::Ip::Rip : public ydk::Entity
+class Native::Interface::SM::Ip::Rip : public ydk::Entity
 {
     public:
         Rip();
@@ -404,14 +357,14 @@ class Native::Interface::Serial::Ip::Rip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Authentication; //type: Native::Interface::Serial::Ip::Rip::Authentication
+        class Authentication; //type: Native::Interface::SM::Ip::Rip::Authentication
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Rip::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Rip::Authentication> authentication;
         
-}; // Native::Interface::Serial::Ip::Rip
+}; // Native::Interface::SM::Ip::Rip
 
 
-class Native::Interface::Serial::Ip::Rip::Authentication : public ydk::Entity
+class Native::Interface::SM::Ip::Rip::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -428,14 +381,14 @@ class Native::Interface::Serial::Ip::Rip::Authentication : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf key_chain; //type: string
-        class Mode; //type: Native::Interface::Serial::Ip::Rip::Authentication::Mode
+        class Mode; //type: Native::Interface::SM::Ip::Rip::Authentication::Mode
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Rip::Authentication::Mode> mode;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Rip::Authentication::Mode> mode;
         
-}; // Native::Interface::Serial::Ip::Rip::Authentication
+}; // Native::Interface::SM::Ip::Rip::Authentication
 
 
-class Native::Interface::Serial::Ip::Rip::Authentication::Mode : public ydk::Entity
+class Native::Interface::SM::Ip::Rip::Authentication::Mode : public ydk::Entity
 {
     public:
         Mode();
@@ -454,10 +407,10 @@ class Native::Interface::Serial::Ip::Rip::Authentication::Mode : public ydk::Ent
         ydk::YLeaf md5; //type: empty
         ydk::YLeaf text; //type: empty
 
-}; // Native::Interface::Serial::Ip::Rip::Authentication::Mode
+}; // Native::Interface::SM::Ip::Rip::Authentication::Mode
 
 
-class Native::Interface::Serial::Ip::RouteCacheConf : public ydk::Entity
+class Native::Interface::SM::Ip::RouteCacheConf : public ydk::Entity
 {
     public:
         RouteCacheConf();
@@ -475,10 +428,10 @@ class Native::Interface::Serial::Ip::RouteCacheConf : public ydk::Entity
 
         ydk::YLeaf route_cache; //type: boolean
 
-}; // Native::Interface::Serial::Ip::RouteCacheConf
+}; // Native::Interface::SM::Ip::RouteCacheConf
 
 
-class Native::Interface::Serial::Ip::RouteCache : public ydk::Entity
+class Native::Interface::SM::Ip::RouteCache : public ydk::Entity
 {
     public:
         RouteCache();
@@ -499,10 +452,10 @@ class Native::Interface::Serial::Ip::RouteCache : public ydk::Entity
         ydk::YLeaf policy; //type: boolean
         ydk::YLeaf same_interface; //type: boolean
 
-}; // Native::Interface::Serial::Ip::RouteCache
+}; // Native::Interface::SM::Ip::RouteCache
 
 
-class Native::Interface::Serial::Ip::Router : public ydk::Entity
+class Native::Interface::SM::Ip::Router : public ydk::Entity
 {
     public:
         Router();
@@ -518,14 +471,14 @@ class Native::Interface::Serial::Ip::Router : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Isis; //type: Native::Interface::Serial::Ip::Router::Isis
+        class Isis; //type: Native::Interface::SM::Ip::Router::Isis
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Router::Isis> isis; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Router::Isis> isis; // presence node
         
-}; // Native::Interface::Serial::Ip::Router
+}; // Native::Interface::SM::Ip::Router
 
 
-class Native::Interface::Serial::Ip::Router::Isis : public ydk::Entity
+class Native::Interface::SM::Ip::Router::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -543,10 +496,10 @@ class Native::Interface::Serial::Ip::Router::Isis : public ydk::Entity
 
         ydk::YLeaf tag; //type: string
 
-}; // Native::Interface::Serial::Ip::Router::Isis
+}; // Native::Interface::SM::Ip::Router::Isis
 
 
-class Native::Interface::Serial::Ip::Tcp : public ydk::Entity
+class Native::Interface::SM::Ip::Tcp : public ydk::Entity
 {
     public:
         Tcp();
@@ -564,10 +517,10 @@ class Native::Interface::Serial::Ip::Tcp : public ydk::Entity
 
         ydk::YLeaf adjust_mss; //type: uint16
 
-}; // Native::Interface::Serial::Ip::Tcp
+}; // Native::Interface::SM::Ip::Tcp
 
 
-class Native::Interface::Serial::Ip::VirtualReassembly : public ydk::Entity
+class Native::Interface::SM::Ip::VirtualReassembly : public ydk::Entity
 {
     public:
         VirtualReassembly();
@@ -589,10 +542,10 @@ class Native::Interface::Serial::Ip::VirtualReassembly : public ydk::Entity
         ydk::YLeaf drop_fragments; //type: empty
         ydk::YLeaf in; //type: empty
 
-}; // Native::Interface::Serial::Ip::VirtualReassembly
+}; // Native::Interface::SM::Ip::VirtualReassembly
 
 
-class Native::Interface::Serial::Ip::Dhcp : public ydk::Entity
+class Native::Interface::SM::Ip::Dhcp : public ydk::Entity
 {
     public:
         Dhcp();
@@ -609,10 +562,10 @@ class Native::Interface::Serial::Ip::Dhcp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::Serial::Ip::Dhcp
+}; // Native::Interface::SM::Ip::Dhcp
 
 
-class Native::Interface::Serial::Ip::SummaryAddress : public ydk::Entity
+class Native::Interface::SM::Ip::SummaryAddress : public ydk::Entity
 {
     public:
         SummaryAddress();
@@ -628,14 +581,14 @@ class Native::Interface::Serial::Ip::SummaryAddress : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Eigrp; //type: Native::Interface::Serial::Ip::SummaryAddress::Eigrp
+        class Eigrp; //type: Native::Interface::SM::Ip::SummaryAddress::Eigrp
 
         ydk::YList eigrp;
         
-}; // Native::Interface::Serial::Ip::SummaryAddress
+}; // Native::Interface::SM::Ip::SummaryAddress
 
 
-class Native::Interface::Serial::Ip::SummaryAddress::Eigrp : public ydk::Entity
+class Native::Interface::SM::Ip::SummaryAddress::Eigrp : public ydk::Entity
 {
     public:
         Eigrp();
@@ -656,10 +609,10 @@ class Native::Interface::Serial::Ip::SummaryAddress::Eigrp : public ydk::Entity
         ydk::YLeaf mask; //type: string
         ydk::YLeaf metric; //type: uint32
 
-}; // Native::Interface::Serial::Ip::SummaryAddress::Eigrp
+}; // Native::Interface::SM::Ip::SummaryAddress::Eigrp
 
 
-class Native::Interface::Serial::Ip::Verify : public ydk::Entity
+class Native::Interface::SM::Ip::Verify : public ydk::Entity
 {
     public:
         Verify();
@@ -675,16 +628,16 @@ class Native::Interface::Serial::Ip::Verify : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Source; //type: Native::Interface::Serial::Ip::Verify::Source
-        class Unicast; //type: Native::Interface::Serial::Ip::Verify::Unicast
+        class Source; //type: Native::Interface::SM::Ip::Verify::Source
+        class Unicast; //type: Native::Interface::SM::Ip::Verify::Unicast
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Verify::Source> source; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Verify::Unicast> unicast;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Verify::Source> source; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Verify::Unicast> unicast;
         
-}; // Native::Interface::Serial::Ip::Verify
+}; // Native::Interface::SM::Ip::Verify
 
 
-class Native::Interface::Serial::Ip::Verify::Source : public ydk::Entity
+class Native::Interface::SM::Ip::Verify::Source : public ydk::Entity
 {
     public:
         Source();
@@ -700,14 +653,14 @@ class Native::Interface::Serial::Ip::Verify::Source : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Vlan; //type: Native::Interface::Serial::Ip::Verify::Source::Vlan
+        class Vlan; //type: Native::Interface::SM::Ip::Verify::Source::Vlan
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Verify::Source::Vlan> vlan;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Verify::Source::Vlan> vlan;
         
-}; // Native::Interface::Serial::Ip::Verify::Source
+}; // Native::Interface::SM::Ip::Verify::Source
 
 
-class Native::Interface::Serial::Ip::Verify::Source::Vlan : public ydk::Entity
+class Native::Interface::SM::Ip::Verify::Source::Vlan : public ydk::Entity
 {
     public:
         Vlan();
@@ -723,14 +676,14 @@ class Native::Interface::Serial::Ip::Verify::Source::Vlan : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class DhcpSnooping; //type: Native::Interface::Serial::Ip::Verify::Source::Vlan::DhcpSnooping
+        class DhcpSnooping; //type: Native::Interface::SM::Ip::Verify::Source::Vlan::DhcpSnooping
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Verify::Source::Vlan::DhcpSnooping> dhcp_snooping; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Verify::Source::Vlan::DhcpSnooping> dhcp_snooping; // presence node
         
-}; // Native::Interface::Serial::Ip::Verify::Source::Vlan
+}; // Native::Interface::SM::Ip::Verify::Source::Vlan
 
 
-class Native::Interface::Serial::Ip::Verify::Source::Vlan::DhcpSnooping : public ydk::Entity
+class Native::Interface::SM::Ip::Verify::Source::Vlan::DhcpSnooping : public ydk::Entity
 {
     public:
         DhcpSnooping();
@@ -748,10 +701,10 @@ class Native::Interface::Serial::Ip::Verify::Source::Vlan::DhcpSnooping : public
 
         ydk::YLeaf port_security; //type: empty
 
-}; // Native::Interface::Serial::Ip::Verify::Source::Vlan::DhcpSnooping
+}; // Native::Interface::SM::Ip::Verify::Source::Vlan::DhcpSnooping
 
 
-class Native::Interface::Serial::Ip::Verify::Unicast : public ydk::Entity
+class Native::Interface::SM::Ip::Verify::Unicast : public ydk::Entity
 {
     public:
         Unicast();
@@ -767,16 +720,16 @@ class Native::Interface::Serial::Ip::Verify::Unicast : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ReversePath; //type: Native::Interface::Serial::Ip::Verify::Unicast::ReversePath
-        class Source; //type: Native::Interface::Serial::Ip::Verify::Unicast::Source
+        class ReversePath; //type: Native::Interface::SM::Ip::Verify::Unicast::ReversePath
+        class Source; //type: Native::Interface::SM::Ip::Verify::Unicast::Source
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Verify::Unicast::ReversePath> reverse_path; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ip::Verify::Unicast::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Verify::Unicast::ReversePath> reverse_path; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Verify::Unicast::Source> source;
         
-}; // Native::Interface::Serial::Ip::Verify::Unicast
+}; // Native::Interface::SM::Ip::Verify::Unicast
 
 
-class Native::Interface::Serial::Ip::Verify::Unicast::ReversePath : public ydk::Entity
+class Native::Interface::SM::Ip::Verify::Unicast::ReversePath : public ydk::Entity
 {
     public:
         ReversePath();
@@ -793,10 +746,10 @@ class Native::Interface::Serial::Ip::Verify::Unicast::ReversePath : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::Serial::Ip::Verify::Unicast::ReversePath
+}; // Native::Interface::SM::Ip::Verify::Unicast::ReversePath
 
 
-class Native::Interface::Serial::Ip::Verify::Unicast::Source : public ydk::Entity
+class Native::Interface::SM::Ip::Verify::Unicast::Source : public ydk::Entity
 {
     public:
         Source();
@@ -817,10 +770,10 @@ class Native::Interface::Serial::Ip::Verify::Unicast::Source : public ydk::Entit
         ydk::YLeaf allow_default; //type: empty
         class ReachableVia;
 
-}; // Native::Interface::Serial::Ip::Verify::Unicast::Source
+}; // Native::Interface::SM::Ip::Verify::Unicast::Source
 
 
-class Native::Interface::Serial::Ipv6 : public ydk::Entity
+class Native::Interface::SM::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -840,26 +793,26 @@ class Native::Interface::Serial::Ipv6 : public ydk::Entity
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf mtu; //type: uint16
         ydk::YLeaf redirects; //type: boolean
-        class DestinationGuard; //type: Native::Interface::Serial::Ipv6::DestinationGuard
-        class SourceGuard; //type: Native::Interface::Serial::Ipv6::SourceGuard
-        class Dhcp; //type: Native::Interface::Serial::Ipv6::Dhcp
-        class Address; //type: Native::Interface::Serial::Ipv6::Address
-        class Nd; //type: Native::Interface::Serial::Ipv6::Nd
-        class Tcp; //type: Native::Interface::Serial::Ipv6::Tcp
-        class TrafficFilter; //type: Native::Interface::Serial::Ipv6::TrafficFilter
+        class DestinationGuard; //type: Native::Interface::SM::Ipv6::DestinationGuard
+        class SourceGuard; //type: Native::Interface::SM::Ipv6::SourceGuard
+        class Dhcp; //type: Native::Interface::SM::Ipv6::Dhcp
+        class Address; //type: Native::Interface::SM::Ipv6::Address
+        class Nd; //type: Native::Interface::SM::Ipv6::Nd
+        class Tcp; //type: Native::Interface::SM::Ipv6::Tcp
+        class TrafficFilter; //type: Native::Interface::SM::Ipv6::TrafficFilter
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ipv6::DestinationGuard> destination_guard; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ipv6::SourceGuard> source_guard; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ipv6::Dhcp> dhcp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ipv6::Address> address;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ipv6::Nd> nd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ipv6::Tcp> tcp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::DestinationGuard> destination_guard; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::SourceGuard> source_guard; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::Dhcp> dhcp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::Nd> nd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::Tcp> tcp;
         ydk::YList traffic_filter;
         
-}; // Native::Interface::Serial::Ipv6
+}; // Native::Interface::SM::Ipv6
 
 
-class Native::Interface::Serial::Ipv6::DestinationGuard : public ydk::Entity
+class Native::Interface::SM::Ipv6::DestinationGuard : public ydk::Entity
 {
     public:
         DestinationGuard();
@@ -877,10 +830,10 @@ class Native::Interface::Serial::Ipv6::DestinationGuard : public ydk::Entity
 
         ydk::YLeaf attach_policy; //type: string
 
-}; // Native::Interface::Serial::Ipv6::DestinationGuard
+}; // Native::Interface::SM::Ipv6::DestinationGuard
 
 
-class Native::Interface::Serial::Ipv6::SourceGuard : public ydk::Entity
+class Native::Interface::SM::Ipv6::SourceGuard : public ydk::Entity
 {
     public:
         SourceGuard();
@@ -898,10 +851,10 @@ class Native::Interface::Serial::Ipv6::SourceGuard : public ydk::Entity
 
         ydk::YLeaf attach_policy; //type: string
 
-}; // Native::Interface::Serial::Ipv6::SourceGuard
+}; // Native::Interface::SM::Ipv6::SourceGuard
 
 
-class Native::Interface::Serial::Ipv6::Dhcp : public ydk::Entity
+class Native::Interface::SM::Ipv6::Dhcp : public ydk::Entity
 {
     public:
         Dhcp();
@@ -918,10 +871,10 @@ class Native::Interface::Serial::Ipv6::Dhcp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::Serial::Ipv6::Dhcp
+}; // Native::Interface::SM::Ipv6::Dhcp
 
 
-class Native::Interface::Serial::Ipv6::Address : public ydk::Entity
+class Native::Interface::SM::Ipv6::Address : public ydk::Entity
 {
     public:
         Address();
@@ -937,20 +890,20 @@ class Native::Interface::Serial::Ipv6::Address : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Dhcp; //type: Native::Interface::Serial::Ipv6::Address::Dhcp
-        class Autoconfig; //type: Native::Interface::Serial::Ipv6::Address::Autoconfig
-        class PrefixList; //type: Native::Interface::Serial::Ipv6::Address::PrefixList
-        class LinkLocalAddress; //type: Native::Interface::Serial::Ipv6::Address::LinkLocalAddress
+        class Dhcp; //type: Native::Interface::SM::Ipv6::Address::Dhcp
+        class Autoconfig; //type: Native::Interface::SM::Ipv6::Address::Autoconfig
+        class PrefixList; //type: Native::Interface::SM::Ipv6::Address::PrefixList
+        class LinkLocalAddress; //type: Native::Interface::SM::Ipv6::Address::LinkLocalAddress
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ipv6::Address::Dhcp> dhcp; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ipv6::Address::Autoconfig> autoconfig; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::Address::Dhcp> dhcp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::Address::Autoconfig> autoconfig; // presence node
         ydk::YList prefix_list;
         ydk::YList link_local_address;
         
-}; // Native::Interface::Serial::Ipv6::Address
+}; // Native::Interface::SM::Ipv6::Address
 
 
-class Native::Interface::Serial::Ipv6::Address::Dhcp : public ydk::Entity
+class Native::Interface::SM::Ipv6::Address::Dhcp : public ydk::Entity
 {
     public:
         Dhcp();
@@ -968,10 +921,10 @@ class Native::Interface::Serial::Ipv6::Address::Dhcp : public ydk::Entity
 
         ydk::YLeaf rapid_commit; //type: empty
 
-}; // Native::Interface::Serial::Ipv6::Address::Dhcp
+}; // Native::Interface::SM::Ipv6::Address::Dhcp
 
 
-class Native::Interface::Serial::Ipv6::Address::Autoconfig : public ydk::Entity
+class Native::Interface::SM::Ipv6::Address::Autoconfig : public ydk::Entity
 {
     public:
         Autoconfig();
@@ -989,10 +942,10 @@ class Native::Interface::Serial::Ipv6::Address::Autoconfig : public ydk::Entity
 
         ydk::YLeaf default_; //type: empty
 
-}; // Native::Interface::Serial::Ipv6::Address::Autoconfig
+}; // Native::Interface::SM::Ipv6::Address::Autoconfig
 
 
-class Native::Interface::Serial::Ipv6::Address::PrefixList : public ydk::Entity
+class Native::Interface::SM::Ipv6::Address::PrefixList : public ydk::Entity
 {
     public:
         PrefixList();
@@ -1012,10 +965,10 @@ class Native::Interface::Serial::Ipv6::Address::PrefixList : public ydk::Entity
         ydk::YLeaf anycast; //type: empty
         ydk::YLeaf eui_64; //type: empty
 
-}; // Native::Interface::Serial::Ipv6::Address::PrefixList
+}; // Native::Interface::SM::Ipv6::Address::PrefixList
 
 
-class Native::Interface::Serial::Ipv6::Address::LinkLocalAddress : public ydk::Entity
+class Native::Interface::SM::Ipv6::Address::LinkLocalAddress : public ydk::Entity
 {
     public:
         LinkLocalAddress();
@@ -1034,10 +987,10 @@ class Native::Interface::Serial::Ipv6::Address::LinkLocalAddress : public ydk::E
         ydk::YLeaf address; //type: string
         ydk::YLeaf link_local; //type: empty
 
-}; // Native::Interface::Serial::Ipv6::Address::LinkLocalAddress
+}; // Native::Interface::SM::Ipv6::Address::LinkLocalAddress
 
 
-class Native::Interface::Serial::Ipv6::Nd : public ydk::Entity
+class Native::Interface::SM::Ipv6::Nd : public ydk::Entity
 {
     public:
         Nd();
@@ -1054,10 +1007,10 @@ class Native::Interface::Serial::Ipv6::Nd : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::Serial::Ipv6::Nd
+}; // Native::Interface::SM::Ipv6::Nd
 
 
-class Native::Interface::Serial::Ipv6::Tcp : public ydk::Entity
+class Native::Interface::SM::Ipv6::Tcp : public ydk::Entity
 {
     public:
         Tcp();
@@ -1075,10 +1028,10 @@ class Native::Interface::Serial::Ipv6::Tcp : public ydk::Entity
 
         ydk::YLeaf adjust_mss; //type: uint16
 
-}; // Native::Interface::Serial::Ipv6::Tcp
+}; // Native::Interface::SM::Ipv6::Tcp
 
 
-class Native::Interface::Serial::Ipv6::TrafficFilter : public ydk::Entity
+class Native::Interface::SM::Ipv6::TrafficFilter : public ydk::Entity
 {
     public:
         TrafficFilter();
@@ -1098,10 +1051,10 @@ class Native::Interface::Serial::Ipv6::TrafficFilter : public ydk::Entity
         ydk::YLeaf access_list; //type: string
         class Direction;
 
-}; // Native::Interface::Serial::Ipv6::TrafficFilter
+}; // Native::Interface::SM::Ipv6::TrafficFilter
 
 
-class Native::Interface::Serial::Logging : public ydk::Entity
+class Native::Interface::SM::Logging : public ydk::Entity
 {
     public:
         Logging();
@@ -1117,14 +1070,14 @@ class Native::Interface::Serial::Logging : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Event; //type: Native::Interface::Serial::Logging::Event
+        class Event; //type: Native::Interface::SM::Logging::Event
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Logging::Event> event;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Logging::Event> event;
         
-}; // Native::Interface::Serial::Logging
+}; // Native::Interface::SM::Logging
 
 
-class Native::Interface::Serial::Logging::Event : public ydk::Entity
+class Native::Interface::SM::Logging::Event : public ydk::Entity
 {
     public:
         Event();
@@ -1146,16 +1099,16 @@ class Native::Interface::Serial::Logging::Event : public ydk::Entity
         ydk::YLeaf nfas_status; //type: empty
         ydk::YLeaf power_inline_status; //type: empty
         ydk::YLeaf status; //type: empty
-        class SpanningTree; //type: Native::Interface::Serial::Logging::Event::SpanningTree
-        class SubifLinkStatus; //type: Native::Interface::Serial::Logging::Event::SubifLinkStatus
+        class SpanningTree; //type: Native::Interface::SM::Logging::Event::SpanningTree
+        class SubifLinkStatus; //type: Native::Interface::SM::Logging::Event::SubifLinkStatus
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Logging::Event::SpanningTree> spanning_tree; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Logging::Event::SubifLinkStatus> subif_link_status; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Logging::Event::SpanningTree> spanning_tree; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Logging::Event::SubifLinkStatus> subif_link_status; // presence node
         
-}; // Native::Interface::Serial::Logging::Event
+}; // Native::Interface::SM::Logging::Event
 
 
-class Native::Interface::Serial::Logging::Event::SpanningTree : public ydk::Entity
+class Native::Interface::SM::Logging::Event::SpanningTree : public ydk::Entity
 {
     public:
         SpanningTree();
@@ -1173,10 +1126,10 @@ class Native::Interface::Serial::Logging::Event::SpanningTree : public ydk::Enti
 
         ydk::YLeaf status; //type: empty
 
-}; // Native::Interface::Serial::Logging::Event::SpanningTree
+}; // Native::Interface::SM::Logging::Event::SpanningTree
 
 
-class Native::Interface::Serial::Logging::Event::SubifLinkStatus : public ydk::Entity
+class Native::Interface::SM::Logging::Event::SubifLinkStatus : public ydk::Entity
 {
     public:
         SubifLinkStatus();
@@ -1194,10 +1147,10 @@ class Native::Interface::Serial::Logging::Event::SubifLinkStatus : public ydk::E
 
         ydk::YLeaf ignore_bulk; //type: empty
 
-}; // Native::Interface::Serial::Logging::Event::SubifLinkStatus
+}; // Native::Interface::SM::Logging::Event::SubifLinkStatus
 
 
-class Native::Interface::Serial::Mdix : public ydk::Entity
+class Native::Interface::SM::Mdix : public ydk::Entity
 {
     public:
         Mdix();
@@ -1215,10 +1168,10 @@ class Native::Interface::Serial::Mdix : public ydk::Entity
 
         ydk::YLeaf auto_; //type: boolean
 
-}; // Native::Interface::Serial::Mdix
+}; // Native::Interface::SM::Mdix
 
 
-class Native::Interface::Serial::Mop : public ydk::Entity
+class Native::Interface::SM::Mop : public ydk::Entity
 {
     public:
         Mop();
@@ -1237,10 +1190,10 @@ class Native::Interface::Serial::Mop : public ydk::Entity
         ydk::YLeaf enabled; //type: boolean
         ydk::YLeaf sysid; //type: boolean
 
-}; // Native::Interface::Serial::Mop
+}; // Native::Interface::SM::Mop
 
 
-class Native::Interface::Serial::InterfaceQos : public ydk::Entity
+class Native::Interface::SM::InterfaceQos : public ydk::Entity
 {
     public:
         InterfaceQos();
@@ -1256,14 +1209,14 @@ class Native::Interface::Serial::InterfaceQos : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Trust; //type: Native::Interface::Serial::InterfaceQos::Trust
+        class Trust; //type: Native::Interface::SM::InterfaceQos::Trust
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::InterfaceQos::Trust> trust;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::InterfaceQos::Trust> trust;
         
-}; // Native::Interface::Serial::InterfaceQos
+}; // Native::Interface::SM::InterfaceQos
 
 
-class Native::Interface::Serial::InterfaceQos::Trust : public ydk::Entity
+class Native::Interface::SM::InterfaceQos::Trust : public ydk::Entity
 {
     public:
         Trust();
@@ -1282,10 +1235,78 @@ class Native::Interface::Serial::InterfaceQos::Trust : public ydk::Entity
         ydk::YLeaf device; //type: Device
         class Device;
 
-}; // Native::Interface::Serial::InterfaceQos::Trust
+}; // Native::Interface::SM::InterfaceQos::Trust
 
 
-class Native::Interface::Serial::Standby : public ydk::Entity
+class Native::Interface::SM::Source : public ydk::Entity
+{
+    public:
+        Source();
+        ~Source();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Template; //type: Native::Interface::SM::Source::Template
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Source::Template> template_;
+        
+}; // Native::Interface::SM::Source
+
+
+class Native::Interface::SM::Source::Template : public ydk::Entity
+{
+    public:
+        Template();
+        ~Template();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class TemplateName; //type: Native::Interface::SM::Source::Template::TemplateName
+
+        ydk::YList template_name;
+        
+}; // Native::Interface::SM::Source::Template
+
+
+class Native::Interface::SM::Source::Template::TemplateName : public ydk::Entity
+{
+    public:
+        TemplateName();
+        ~TemplateName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf template_name; //type: string
+        ydk::YLeaf merge; //type: empty
+
+}; // Native::Interface::SM::Source::Template::TemplateName
+
+
+class Native::Interface::SM::Standby : public ydk::Entity
 {
     public:
         Standby();
@@ -1304,19 +1325,19 @@ class Native::Interface::Serial::Standby : public ydk::Entity
         ydk::YLeaf version; //type: Version
         ydk::YLeaf bfd; //type: empty
         ydk::YLeaf mac_refresh; //type: uint8
-        class Delay; //type: Native::Interface::Serial::Standby::Delay
-        class UseBia; //type: Native::Interface::Serial::Standby::UseBia
-        class StandbyList; //type: Native::Interface::Serial::Standby::StandbyList
+        class Delay; //type: Native::Interface::SM::Standby::Delay
+        class UseBia; //type: Native::Interface::SM::Standby::UseBia
+        class StandbyList; //type: Native::Interface::SM::Standby::StandbyList
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::Delay> delay;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::UseBia> use_bia; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::Delay> delay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::UseBia> use_bia; // presence node
         ydk::YList standby_list;
                 class Version;
 
-}; // Native::Interface::Serial::Standby
+}; // Native::Interface::SM::Standby
 
 
-class Native::Interface::Serial::Standby::Delay : public ydk::Entity
+class Native::Interface::SM::Standby::Delay : public ydk::Entity
 {
     public:
         Delay();
@@ -1335,10 +1356,10 @@ class Native::Interface::Serial::Standby::Delay : public ydk::Entity
         ydk::YLeaf minimum; //type: uint16
         ydk::YLeaf reload; //type: uint16
 
-}; // Native::Interface::Serial::Standby::Delay
+}; // Native::Interface::SM::Standby::Delay
 
 
-class Native::Interface::Serial::Standby::UseBia : public ydk::Entity
+class Native::Interface::SM::Standby::UseBia : public ydk::Entity
 {
     public:
         UseBia();
@@ -1354,14 +1375,14 @@ class Native::Interface::Serial::Standby::UseBia : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Scope; //type: Native::Interface::Serial::Standby::UseBia::Scope
+        class Scope; //type: Native::Interface::SM::Standby::UseBia::Scope
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::UseBia::Scope> scope;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::UseBia::Scope> scope;
         
-}; // Native::Interface::Serial::Standby::UseBia
+}; // Native::Interface::SM::Standby::UseBia
 
 
-class Native::Interface::Serial::Standby::UseBia::Scope : public ydk::Entity
+class Native::Interface::SM::Standby::UseBia::Scope : public ydk::Entity
 {
     public:
         Scope();
@@ -1379,10 +1400,10 @@ class Native::Interface::Serial::Standby::UseBia::Scope : public ydk::Entity
 
         ydk::YLeaf interface; //type: empty
 
-}; // Native::Interface::Serial::Standby::UseBia::Scope
+}; // Native::Interface::SM::Standby::UseBia::Scope
 
 
-class Native::Interface::Serial::Standby::StandbyList : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList : public ydk::Entity
 {
     public:
         StandbyList();
@@ -1404,25 +1425,25 @@ class Native::Interface::Serial::Standby::StandbyList : public ydk::Entity
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
-        class Authentication; //type: Native::Interface::Serial::Standby::StandbyList::Authentication
-        class Ip; //type: Native::Interface::Serial::Standby::StandbyList::Ip
-        class Preempt; //type: Native::Interface::Serial::Standby::StandbyList::Preempt
-        class Redirect; //type: Native::Interface::Serial::Standby::StandbyList::Redirect
-        class Timers; //type: Native::Interface::Serial::Standby::StandbyList::Timers
-        class Track; //type: Native::Interface::Serial::Standby::StandbyList::Track
+        class Authentication; //type: Native::Interface::SM::Standby::StandbyList::Authentication
+        class Ip; //type: Native::Interface::SM::Standby::StandbyList::Ip
+        class Preempt; //type: Native::Interface::SM::Standby::StandbyList::Preempt
+        class Redirect; //type: Native::Interface::SM::Standby::StandbyList::Redirect
+        class Timers; //type: Native::Interface::SM::Standby::StandbyList::Timers
+        class Track; //type: Native::Interface::SM::Standby::StandbyList::Track
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Ip> ip; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Preempt> preempt; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Redirect> redirect;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Timers> timers;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Ip> ip; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Preempt> preempt; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Redirect> redirect;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Timers> timers;
         ydk::YList track;
                 class Ipv6;
 
-}; // Native::Interface::Serial::Standby::StandbyList
+}; // Native::Interface::SM::Standby::StandbyList
 
 
-class Native::Interface::Serial::Standby::StandbyList::Authentication : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -1440,14 +1461,14 @@ class Native::Interface::Serial::Standby::StandbyList::Authentication : public y
 
         ydk::YLeaf word; //type: string
         ydk::YLeaf text; //type: string
-        class Md5; //type: Native::Interface::Serial::Standby::StandbyList::Authentication::Md5
+        class Md5; //type: Native::Interface::SM::Standby::StandbyList::Authentication::Md5
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Authentication::Md5> md5;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Authentication::Md5> md5;
         
-}; // Native::Interface::Serial::Standby::StandbyList::Authentication
+}; // Native::Interface::SM::Standby::StandbyList::Authentication
 
 
-class Native::Interface::Serial::Standby::StandbyList::Authentication::Md5 : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Authentication::Md5 : public ydk::Entity
 {
     public:
         Md5();
@@ -1464,14 +1485,14 @@ class Native::Interface::Serial::Standby::StandbyList::Authentication::Md5 : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf key_chain; //type: string
-        class KeyString; //type: Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::KeyString
+        class KeyString; //type: Native::Interface::SM::Standby::StandbyList::Authentication::Md5::KeyString
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::KeyString> key_string;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Authentication::Md5::KeyString> key_string;
         
-}; // Native::Interface::Serial::Standby::StandbyList::Authentication::Md5
+}; // Native::Interface::SM::Standby::StandbyList::Authentication::Md5
 
 
-class Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::KeyString : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Authentication::Md5::KeyString : public ydk::Entity
 {
     public:
         KeyString();
@@ -1492,10 +1513,10 @@ class Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::KeyS
         ydk::YLeaf timeout; //type: uint16
         class Encrypt;
 
-}; // Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::KeyString
+}; // Native::Interface::SM::Standby::StandbyList::Authentication::Md5::KeyString
 
 
-class Native::Interface::Serial::Standby::StandbyList::Ip : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -1514,10 +1535,10 @@ class Native::Interface::Serial::Standby::StandbyList::Ip : public ydk::Entity
         ydk::YLeaf address; //type: string
         ydk::YLeaf secondary; //type: empty
 
-}; // Native::Interface::Serial::Standby::StandbyList::Ip
+}; // Native::Interface::SM::Standby::StandbyList::Ip
 
 
-class Native::Interface::Serial::Standby::StandbyList::Preempt : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Preempt : public ydk::Entity
 {
     public:
         Preempt();
@@ -1533,14 +1554,14 @@ class Native::Interface::Serial::Standby::StandbyList::Preempt : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Delay; //type: Native::Interface::Serial::Standby::StandbyList::Preempt::Delay
+        class Delay; //type: Native::Interface::SM::Standby::StandbyList::Preempt::Delay
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Preempt::Delay> delay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Preempt::Delay> delay;
         
-}; // Native::Interface::Serial::Standby::StandbyList::Preempt
+}; // Native::Interface::SM::Standby::StandbyList::Preempt
 
 
-class Native::Interface::Serial::Standby::StandbyList::Preempt::Delay : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Preempt::Delay : public ydk::Entity
 {
     public:
         Delay();
@@ -1560,10 +1581,10 @@ class Native::Interface::Serial::Standby::StandbyList::Preempt::Delay : public y
         ydk::YLeaf reload; //type: uint16
         ydk::YLeaf sync; //type: uint16
 
-}; // Native::Interface::Serial::Standby::StandbyList::Preempt::Delay
+}; // Native::Interface::SM::Standby::StandbyList::Preempt::Delay
 
 
-class Native::Interface::Serial::Standby::StandbyList::Redirect : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Redirect : public ydk::Entity
 {
     public:
         Redirect();
@@ -1580,16 +1601,16 @@ class Native::Interface::Serial::Standby::StandbyList::Redirect : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf unknown; //type: empty
-        class Advertisement; //type: Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement
-        class Timers; //type: Native::Interface::Serial::Standby::StandbyList::Redirect::Timers
+        class Advertisement; //type: Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement
+        class Timers; //type: Native::Interface::SM::Standby::StandbyList::Redirect::Timers
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement> advertisement;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Redirect::Timers> timers;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement> advertisement;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Redirect::Timers> timers;
         
-}; // Native::Interface::Serial::Standby::StandbyList::Redirect
+}; // Native::Interface::SM::Standby::StandbyList::Redirect
 
 
-class Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement : public ydk::Entity
 {
     public:
         Advertisement();
@@ -1605,14 +1626,14 @@ class Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Authentication; //type: Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication
+        class Authentication; //type: Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement::Authentication
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement::Authentication> authentication;
         
-}; // Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement
+}; // Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement
 
 
-class Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -1628,14 +1649,14 @@ class Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Md5; //type: Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5
+        class Md5; //type: Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5> md5;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5> md5;
         
-}; // Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication
+}; // Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement::Authentication
 
 
-class Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5 : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5 : public ydk::Entity
 {
     public:
         Md5();
@@ -1652,14 +1673,14 @@ class Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf key_chain; //type: string
-        class KeyString; //type: Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString
+        class KeyString; //type: Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString> key_string;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString> key_string;
         
-}; // Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5
+}; // Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5
 
 
-class Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString : public ydk::Entity
 {
     public:
         KeyString();
@@ -1680,10 +1701,10 @@ class Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::
         ydk::YLeaf timeout; //type: uint16
         class Encrypt;
 
-}; // Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString
+}; // Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString
 
 
-class Native::Interface::Serial::Standby::StandbyList::Redirect::Timers : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Redirect::Timers : public ydk::Entity
 {
     public:
         Timers();
@@ -1702,10 +1723,10 @@ class Native::Interface::Serial::Standby::StandbyList::Redirect::Timers : public
         ydk::YLeaf advertisement; //type: uint16
         ydk::YLeaf holddown; //type: uint16
 
-}; // Native::Interface::Serial::Standby::StandbyList::Redirect::Timers
+}; // Native::Interface::SM::Standby::StandbyList::Redirect::Timers
 
 
-class Native::Interface::Serial::Standby::StandbyList::Timers : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Timers : public ydk::Entity
 {
     public:
         Timers();
@@ -1721,16 +1742,16 @@ class Native::Interface::Serial::Standby::StandbyList::Timers : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HelloInterval; //type: Native::Interface::Serial::Standby::StandbyList::Timers::HelloInterval
-        class HoldTime; //type: Native::Interface::Serial::Standby::StandbyList::Timers::HoldTime
+        class HelloInterval; //type: Native::Interface::SM::Standby::StandbyList::Timers::HelloInterval
+        class HoldTime; //type: Native::Interface::SM::Standby::StandbyList::Timers::HoldTime
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Timers::HelloInterval> hello_interval;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Standby::StandbyList::Timers::HoldTime> hold_time;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Timers::HelloInterval> hello_interval;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Timers::HoldTime> hold_time;
         
-}; // Native::Interface::Serial::Standby::StandbyList::Timers
+}; // Native::Interface::SM::Standby::StandbyList::Timers
 
 
-class Native::Interface::Serial::Standby::StandbyList::Timers::HelloInterval : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Timers::HelloInterval : public ydk::Entity
 {
     public:
         HelloInterval();
@@ -1749,10 +1770,10 @@ class Native::Interface::Serial::Standby::StandbyList::Timers::HelloInterval : p
         ydk::YLeaf seconds; //type: uint8
         ydk::YLeaf msec; //type: uint16
 
-}; // Native::Interface::Serial::Standby::StandbyList::Timers::HelloInterval
+}; // Native::Interface::SM::Standby::StandbyList::Timers::HelloInterval
 
 
-class Native::Interface::Serial::Standby::StandbyList::Timers::HoldTime : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Timers::HoldTime : public ydk::Entity
 {
     public:
         HoldTime();
@@ -1771,10 +1792,10 @@ class Native::Interface::Serial::Standby::StandbyList::Timers::HoldTime : public
         ydk::YLeaf seconds; //type: uint8
         ydk::YLeaf msec; //type: uint16
 
-}; // Native::Interface::Serial::Standby::StandbyList::Timers::HoldTime
+}; // Native::Interface::SM::Standby::StandbyList::Timers::HoldTime
 
 
-class Native::Interface::Serial::Standby::StandbyList::Track : public ydk::Entity
+class Native::Interface::SM::Standby::StandbyList::Track : public ydk::Entity
 {
     public:
         Track();
@@ -1794,10 +1815,10 @@ class Native::Interface::Serial::Standby::StandbyList::Track : public ydk::Entit
         ydk::YLeaf decrement; //type: uint8
         ydk::YLeaf shutdown; //type: empty
 
-}; // Native::Interface::Serial::Standby::StandbyList::Track
+}; // Native::Interface::SM::Standby::StandbyList::Track
 
 
-class Native::Interface::Serial::AccessSession : public ydk::Entity
+class Native::Interface::SM::AccessSession : public ydk::Entity
 {
     public:
         AccessSession();
@@ -1815,15 +1836,17 @@ class Native::Interface::Serial::AccessSession : public ydk::Entity
 
         ydk::YLeaf closed; //type: empty
         ydk::YLeaf host_mode; //type: HostMode
-        class PortControl; //type: Native::Interface::Serial::AccessSession::PortControl
+        class PortControl; //type: Native::Interface::SM::AccessSession::PortControl
+        class ControlDirection; //type: Native::Interface::SM::AccessSession::ControlDirection
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::AccessSession::PortControl> port_control;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::AccessSession::PortControl> port_control;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::AccessSession::ControlDirection> control_direction;
                 class HostMode;
 
-}; // Native::Interface::Serial::AccessSession
+}; // Native::Interface::SM::AccessSession
 
 
-class Native::Interface::Serial::AccessSession::PortControl : public ydk::Entity
+class Native::Interface::SM::AccessSession::PortControl : public ydk::Entity
 {
     public:
         PortControl();
@@ -1841,10 +1864,31 @@ class Native::Interface::Serial::AccessSession::PortControl : public ydk::Entity
 
         ydk::YLeaf auto_; //type: empty
 
-}; // Native::Interface::Serial::AccessSession::PortControl
+}; // Native::Interface::SM::AccessSession::PortControl
 
 
-class Native::Interface::Serial::StormControl : public ydk::Entity
+class Native::Interface::SM::AccessSession::ControlDirection : public ydk::Entity
+{
+    public:
+        ControlDirection();
+        ~ControlDirection();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf in; //type: empty
+
+}; // Native::Interface::SM::AccessSession::ControlDirection
+
+
+class Native::Interface::SM::StormControl : public ydk::Entity
 {
     public:
         StormControl();
@@ -1860,20 +1904,20 @@ class Native::Interface::Serial::StormControl : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Action; //type: Native::Interface::Serial::StormControl::Action
-        class Broadcast; //type: Native::Interface::Serial::StormControl::Broadcast
-        class Multicast; //type: Native::Interface::Serial::StormControl::Multicast
-        class Unicast; //type: Native::Interface::Serial::StormControl::Unicast
+        class Action; //type: Native::Interface::SM::StormControl::Action
+        class Broadcast; //type: Native::Interface::SM::StormControl::Broadcast
+        class Multicast; //type: Native::Interface::SM::StormControl::Multicast
+        class Unicast; //type: Native::Interface::SM::StormControl::Unicast
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Action> action;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Broadcast> broadcast;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Multicast> multicast;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Unicast> unicast;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Action> action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Broadcast> broadcast;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Multicast> multicast;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Unicast> unicast;
         
-}; // Native::Interface::Serial::StormControl
+}; // Native::Interface::SM::StormControl
 
 
-class Native::Interface::Serial::StormControl::Action : public ydk::Entity
+class Native::Interface::SM::StormControl::Action : public ydk::Entity
 {
     public:
         Action();
@@ -1893,10 +1937,10 @@ class Native::Interface::Serial::StormControl::Action : public ydk::Entity
         ydk::YLeaf shutdown; //type: empty
         ydk::YLeaf trap; //type: empty
 
-}; // Native::Interface::Serial::StormControl::Action
+}; // Native::Interface::SM::StormControl::Action
 
 
-class Native::Interface::Serial::StormControl::Broadcast : public ydk::Entity
+class Native::Interface::SM::StormControl::Broadcast : public ydk::Entity
 {
     public:
         Broadcast();
@@ -1912,16 +1956,16 @@ class Native::Interface::Serial::StormControl::Broadcast : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Include; //type: Native::Interface::Serial::StormControl::Broadcast::Include
-        class Level; //type: Native::Interface::Serial::StormControl::Broadcast::Level
+        class Include; //type: Native::Interface::SM::StormControl::Broadcast::Include
+        class Level; //type: Native::Interface::SM::StormControl::Broadcast::Level
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Broadcast::Include> include;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Broadcast::Level> level;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Broadcast::Include> include;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Broadcast::Level> level;
         
-}; // Native::Interface::Serial::StormControl::Broadcast
+}; // Native::Interface::SM::StormControl::Broadcast
 
 
-class Native::Interface::Serial::StormControl::Broadcast::Include : public ydk::Entity
+class Native::Interface::SM::StormControl::Broadcast::Include : public ydk::Entity
 {
     public:
         Include();
@@ -1939,10 +1983,10 @@ class Native::Interface::Serial::StormControl::Broadcast::Include : public ydk::
 
         ydk::YLeaf multicast; //type: empty
 
-}; // Native::Interface::Serial::StormControl::Broadcast::Include
+}; // Native::Interface::SM::StormControl::Broadcast::Include
 
 
-class Native::Interface::Serial::StormControl::Broadcast::Level : public ydk::Entity
+class Native::Interface::SM::StormControl::Broadcast::Level : public ydk::Entity
 {
     public:
         Level();
@@ -1958,18 +2002,18 @@ class Native::Interface::Serial::StormControl::Broadcast::Level : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Threshold; //type: Native::Interface::Serial::StormControl::Broadcast::Level::Threshold
-        class Bps; //type: Native::Interface::Serial::StormControl::Broadcast::Level::Bps
-        class Pps; //type: Native::Interface::Serial::StormControl::Broadcast::Level::Pps
+        class Threshold; //type: Native::Interface::SM::StormControl::Broadcast::Level::Threshold
+        class Bps; //type: Native::Interface::SM::StormControl::Broadcast::Level::Bps
+        class Pps; //type: Native::Interface::SM::StormControl::Broadcast::Level::Pps
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Broadcast::Level::Threshold> threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Broadcast::Level::Bps> bps;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Broadcast::Level::Pps> pps;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Broadcast::Level::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Broadcast::Level::Bps> bps;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Broadcast::Level::Pps> pps;
         
-}; // Native::Interface::Serial::StormControl::Broadcast::Level
+}; // Native::Interface::SM::StormControl::Broadcast::Level
 
 
-class Native::Interface::Serial::StormControl::Broadcast::Level::Threshold : public ydk::Entity
+class Native::Interface::SM::StormControl::Broadcast::Level::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -1988,10 +2032,10 @@ class Native::Interface::Serial::StormControl::Broadcast::Level::Threshold : pub
         ydk::YLeaf rising_threshold; //type: decimal64
         ydk::YLeaf falling_threshold; //type: decimal64
 
-}; // Native::Interface::Serial::StormControl::Broadcast::Level::Threshold
+}; // Native::Interface::SM::StormControl::Broadcast::Level::Threshold
 
 
-class Native::Interface::Serial::StormControl::Broadcast::Level::Bps : public ydk::Entity
+class Native::Interface::SM::StormControl::Broadcast::Level::Bps : public ydk::Entity
 {
     public:
         Bps();
@@ -2010,10 +2054,10 @@ class Native::Interface::Serial::StormControl::Broadcast::Level::Bps : public yd
         ydk::YLeaf rising_threshold; //type: string
         ydk::YLeaf falling_threshold; //type: string
 
-}; // Native::Interface::Serial::StormControl::Broadcast::Level::Bps
+}; // Native::Interface::SM::StormControl::Broadcast::Level::Bps
 
 
-class Native::Interface::Serial::StormControl::Broadcast::Level::Pps : public ydk::Entity
+class Native::Interface::SM::StormControl::Broadcast::Level::Pps : public ydk::Entity
 {
     public:
         Pps();
@@ -2032,10 +2076,10 @@ class Native::Interface::Serial::StormControl::Broadcast::Level::Pps : public yd
         ydk::YLeaf rising_threshold; //type: string
         ydk::YLeaf falling_threshold; //type: string
 
-}; // Native::Interface::Serial::StormControl::Broadcast::Level::Pps
+}; // Native::Interface::SM::StormControl::Broadcast::Level::Pps
 
 
-class Native::Interface::Serial::StormControl::Multicast : public ydk::Entity
+class Native::Interface::SM::StormControl::Multicast : public ydk::Entity
 {
     public:
         Multicast();
@@ -2051,14 +2095,14 @@ class Native::Interface::Serial::StormControl::Multicast : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Level; //type: Native::Interface::Serial::StormControl::Multicast::Level
+        class Level; //type: Native::Interface::SM::StormControl::Multicast::Level
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Multicast::Level> level;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Multicast::Level> level;
         
-}; // Native::Interface::Serial::StormControl::Multicast
+}; // Native::Interface::SM::StormControl::Multicast
 
 
-class Native::Interface::Serial::StormControl::Multicast::Level : public ydk::Entity
+class Native::Interface::SM::StormControl::Multicast::Level : public ydk::Entity
 {
     public:
         Level();
@@ -2074,18 +2118,18 @@ class Native::Interface::Serial::StormControl::Multicast::Level : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Threshold; //type: Native::Interface::Serial::StormControl::Multicast::Level::Threshold
-        class Bps; //type: Native::Interface::Serial::StormControl::Multicast::Level::Bps
-        class Pps; //type: Native::Interface::Serial::StormControl::Multicast::Level::Pps
+        class Threshold; //type: Native::Interface::SM::StormControl::Multicast::Level::Threshold
+        class Bps; //type: Native::Interface::SM::StormControl::Multicast::Level::Bps
+        class Pps; //type: Native::Interface::SM::StormControl::Multicast::Level::Pps
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Multicast::Level::Threshold> threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Multicast::Level::Bps> bps;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Multicast::Level::Pps> pps;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Multicast::Level::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Multicast::Level::Bps> bps;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Multicast::Level::Pps> pps;
         
-}; // Native::Interface::Serial::StormControl::Multicast::Level
+}; // Native::Interface::SM::StormControl::Multicast::Level
 
 
-class Native::Interface::Serial::StormControl::Multicast::Level::Threshold : public ydk::Entity
+class Native::Interface::SM::StormControl::Multicast::Level::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -2104,10 +2148,10 @@ class Native::Interface::Serial::StormControl::Multicast::Level::Threshold : pub
         ydk::YLeaf rising_threshold; //type: decimal64
         ydk::YLeaf falling_threshold; //type: decimal64
 
-}; // Native::Interface::Serial::StormControl::Multicast::Level::Threshold
+}; // Native::Interface::SM::StormControl::Multicast::Level::Threshold
 
 
-class Native::Interface::Serial::StormControl::Multicast::Level::Bps : public ydk::Entity
+class Native::Interface::SM::StormControl::Multicast::Level::Bps : public ydk::Entity
 {
     public:
         Bps();
@@ -2126,10 +2170,10 @@ class Native::Interface::Serial::StormControl::Multicast::Level::Bps : public yd
         ydk::YLeaf rising_threshold; //type: string
         ydk::YLeaf falling_threshold; //type: string
 
-}; // Native::Interface::Serial::StormControl::Multicast::Level::Bps
+}; // Native::Interface::SM::StormControl::Multicast::Level::Bps
 
 
-class Native::Interface::Serial::StormControl::Multicast::Level::Pps : public ydk::Entity
+class Native::Interface::SM::StormControl::Multicast::Level::Pps : public ydk::Entity
 {
     public:
         Pps();
@@ -2148,10 +2192,10 @@ class Native::Interface::Serial::StormControl::Multicast::Level::Pps : public yd
         ydk::YLeaf rising_threshold; //type: string
         ydk::YLeaf falling_threshold; //type: string
 
-}; // Native::Interface::Serial::StormControl::Multicast::Level::Pps
+}; // Native::Interface::SM::StormControl::Multicast::Level::Pps
 
 
-class Native::Interface::Serial::StormControl::Unicast : public ydk::Entity
+class Native::Interface::SM::StormControl::Unicast : public ydk::Entity
 {
     public:
         Unicast();
@@ -2167,14 +2211,14 @@ class Native::Interface::Serial::StormControl::Unicast : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Level; //type: Native::Interface::Serial::StormControl::Unicast::Level
+        class Level; //type: Native::Interface::SM::StormControl::Unicast::Level
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Unicast::Level> level;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Unicast::Level> level;
         
-}; // Native::Interface::Serial::StormControl::Unicast
+}; // Native::Interface::SM::StormControl::Unicast
 
 
-class Native::Interface::Serial::StormControl::Unicast::Level : public ydk::Entity
+class Native::Interface::SM::StormControl::Unicast::Level : public ydk::Entity
 {
     public:
         Level();
@@ -2190,18 +2234,18 @@ class Native::Interface::Serial::StormControl::Unicast::Level : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Threshold; //type: Native::Interface::Serial::StormControl::Unicast::Level::Threshold
-        class Bps; //type: Native::Interface::Serial::StormControl::Unicast::Level::Bps
-        class Pps; //type: Native::Interface::Serial::StormControl::Unicast::Level::Pps
+        class Threshold; //type: Native::Interface::SM::StormControl::Unicast::Level::Threshold
+        class Bps; //type: Native::Interface::SM::StormControl::Unicast::Level::Bps
+        class Pps; //type: Native::Interface::SM::StormControl::Unicast::Level::Pps
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Unicast::Level::Threshold> threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Unicast::Level::Bps> bps;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::StormControl::Unicast::Level::Pps> pps;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Unicast::Level::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Unicast::Level::Bps> bps;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::StormControl::Unicast::Level::Pps> pps;
         
-}; // Native::Interface::Serial::StormControl::Unicast::Level
+}; // Native::Interface::SM::StormControl::Unicast::Level
 
 
-class Native::Interface::Serial::StormControl::Unicast::Level::Threshold : public ydk::Entity
+class Native::Interface::SM::StormControl::Unicast::Level::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -2220,10 +2264,10 @@ class Native::Interface::Serial::StormControl::Unicast::Level::Threshold : publi
         ydk::YLeaf rising_threshold; //type: decimal64
         ydk::YLeaf falling_threshold; //type: decimal64
 
-}; // Native::Interface::Serial::StormControl::Unicast::Level::Threshold
+}; // Native::Interface::SM::StormControl::Unicast::Level::Threshold
 
 
-class Native::Interface::Serial::StormControl::Unicast::Level::Bps : public ydk::Entity
+class Native::Interface::SM::StormControl::Unicast::Level::Bps : public ydk::Entity
 {
     public:
         Bps();
@@ -2242,10 +2286,10 @@ class Native::Interface::Serial::StormControl::Unicast::Level::Bps : public ydk:
         ydk::YLeaf rising_threshold; //type: string
         ydk::YLeaf falling_threshold; //type: string
 
-}; // Native::Interface::Serial::StormControl::Unicast::Level::Bps
+}; // Native::Interface::SM::StormControl::Unicast::Level::Bps
 
 
-class Native::Interface::Serial::StormControl::Unicast::Level::Pps : public ydk::Entity
+class Native::Interface::SM::StormControl::Unicast::Level::Pps : public ydk::Entity
 {
     public:
         Pps();
@@ -2264,10 +2308,10 @@ class Native::Interface::Serial::StormControl::Unicast::Level::Pps : public ydk:
         ydk::YLeaf rising_threshold; //type: string
         ydk::YLeaf falling_threshold; //type: string
 
-}; // Native::Interface::Serial::StormControl::Unicast::Level::Pps
+}; // Native::Interface::SM::StormControl::Unicast::Level::Pps
 
 
-class Native::Interface::Serial::Trust : public ydk::Entity
+class Native::Interface::SM::Trust : public ydk::Entity
 {
     public:
         Trust();
@@ -2286,10 +2330,10 @@ class Native::Interface::Serial::Trust : public ydk::Entity
         ydk::YLeaf device; //type: Device
         class Device;
 
-}; // Native::Interface::Serial::Trust
+}; // Native::Interface::SM::Trust
 
 
-class Native::Interface::Serial::PriorityQueue : public ydk::Entity
+class Native::Interface::SM::PriorityQueue : public ydk::Entity
 {
     public:
         PriorityQueue();
@@ -2306,14 +2350,14 @@ class Native::Interface::Serial::PriorityQueue : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf out; //type: empty
-        class CosMap; //type: Native::Interface::Serial::PriorityQueue::CosMap
+        class CosMap; //type: Native::Interface::SM::PriorityQueue::CosMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::PriorityQueue::CosMap> cos_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::PriorityQueue::CosMap> cos_map;
         
-}; // Native::Interface::Serial::PriorityQueue
+}; // Native::Interface::SM::PriorityQueue
 
 
-class Native::Interface::Serial::PriorityQueue::CosMap : public ydk::Entity
+class Native::Interface::SM::PriorityQueue::CosMap : public ydk::Entity
 {
     public:
         CosMap();
@@ -2332,10 +2376,10 @@ class Native::Interface::Serial::PriorityQueue::CosMap : public ydk::Entity
         ydk::YLeaf id; //type: uint8
         ydk::YLeafList cos_values; //type: list of  uint8
 
-}; // Native::Interface::Serial::PriorityQueue::CosMap
+}; // Native::Interface::SM::PriorityQueue::CosMap
 
 
-class Native::Interface::Serial::RcvQueue : public ydk::Entity
+class Native::Interface::SM::RcvQueue : public ydk::Entity
 {
     public:
         RcvQueue();
@@ -2351,14 +2395,14 @@ class Native::Interface::Serial::RcvQueue : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class CosMap; //type: Native::Interface::Serial::RcvQueue::CosMap
+        class CosMap; //type: Native::Interface::SM::RcvQueue::CosMap
 
         ydk::YList cos_map;
         
-}; // Native::Interface::Serial::RcvQueue
+}; // Native::Interface::SM::RcvQueue
 
 
-class Native::Interface::Serial::RcvQueue::CosMap : public ydk::Entity
+class Native::Interface::SM::RcvQueue::CosMap : public ydk::Entity
 {
     public:
         CosMap();
@@ -2378,10 +2422,10 @@ class Native::Interface::Serial::RcvQueue::CosMap : public ydk::Entity
         ydk::YLeaf threshold_id; //type: uint8
         ydk::YLeafList cos_values; //type: list of  uint8
 
-}; // Native::Interface::Serial::RcvQueue::CosMap
+}; // Native::Interface::SM::RcvQueue::CosMap
 
 
-class Native::Interface::Serial::Peer : public ydk::Entity
+class Native::Interface::SM::Peer : public ydk::Entity
 {
     public:
         Peer();
@@ -2397,14 +2441,14 @@ class Native::Interface::Serial::Peer : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Default; //type: Native::Interface::Serial::Peer::Default
+        class Default; //type: Native::Interface::SM::Peer::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Peer::Default> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Peer::Default> default_;
         
-}; // Native::Interface::Serial::Peer
+}; // Native::Interface::SM::Peer
 
 
-class Native::Interface::Serial::Peer::Default : public ydk::Entity
+class Native::Interface::SM::Peer::Default : public ydk::Entity
 {
     public:
         Default();
@@ -2420,14 +2464,14 @@ class Native::Interface::Serial::Peer::Default : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: Native::Interface::Serial::Peer::Default::Ip
+        class Ip; //type: Native::Interface::SM::Peer::Default::Ip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Peer::Default::Ip> ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Peer::Default::Ip> ip;
         
-}; // Native::Interface::Serial::Peer::Default
+}; // Native::Interface::SM::Peer::Default
 
 
-class Native::Interface::Serial::Peer::Default::Ip : public ydk::Entity
+class Native::Interface::SM::Peer::Default::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -2443,14 +2487,14 @@ class Native::Interface::Serial::Peer::Default::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Address; //type: Native::Interface::Serial::Peer::Default::Ip::Address
+        class Address; //type: Native::Interface::SM::Peer::Default::Ip::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Peer::Default::Ip::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Peer::Default::Ip::Address> address;
         
-}; // Native::Interface::Serial::Peer::Default::Ip
+}; // Native::Interface::SM::Peer::Default::Ip
 
 
-class Native::Interface::Serial::Peer::Default::Ip::Address : public ydk::Entity
+class Native::Interface::SM::Peer::Default::Ip::Address : public ydk::Entity
 {
     public:
         Address();
@@ -2467,16 +2511,16 @@ class Native::Interface::Serial::Peer::Default::Ip::Address : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dhcp; //type: empty
-        class DhcpPool; //type: Native::Interface::Serial::Peer::Default::Ip::Address::DhcpPool
-        class Pool; //type: Native::Interface::Serial::Peer::Default::Ip::Address::Pool
+        class DhcpPool; //type: Native::Interface::SM::Peer::Default::Ip::Address::DhcpPool
+        class Pool; //type: Native::Interface::SM::Peer::Default::Ip::Address::Pool
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Peer::Default::Ip::Address::DhcpPool> dhcp_pool; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Peer::Default::Ip::Address::Pool> pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Peer::Default::Ip::Address::DhcpPool> dhcp_pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Peer::Default::Ip::Address::Pool> pool; // presence node
         
-}; // Native::Interface::Serial::Peer::Default::Ip::Address
+}; // Native::Interface::SM::Peer::Default::Ip::Address
 
 
-class Native::Interface::Serial::Peer::Default::Ip::Address::DhcpPool : public ydk::Entity
+class Native::Interface::SM::Peer::Default::Ip::Address::DhcpPool : public ydk::Entity
 {
     public:
         DhcpPool();
@@ -2494,10 +2538,10 @@ class Native::Interface::Serial::Peer::Default::Ip::Address::DhcpPool : public y
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::Serial::Peer::Default::Ip::Address::DhcpPool
+}; // Native::Interface::SM::Peer::Default::Ip::Address::DhcpPool
 
 
-class Native::Interface::Serial::Peer::Default::Ip::Address::Pool : public ydk::Entity
+class Native::Interface::SM::Peer::Default::Ip::Address::Pool : public ydk::Entity
 {
     public:
         Pool();
@@ -2515,10 +2559,10 @@ class Native::Interface::Serial::Peer::Default::Ip::Address::Pool : public ydk::
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::Serial::Peer::Default::Ip::Address::Pool
+}; // Native::Interface::SM::Peer::Default::Ip::Address::Pool
 
 
-class Native::Interface::Serial::PmPath : public ydk::Entity
+class Native::Interface::SM::PmPath : public ydk::Entity
 {
     public:
         PmPath();
@@ -2537,287 +2581,14 @@ class Native::Interface::Serial::PmPath : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf interface_id; //type: uint8
 
-}; // Native::Interface::Serial::PmPath
+}; // Native::Interface::SM::PmPath
 
 
-class Native::Interface::Serial::Ppp : public ydk::Entity
+class Native::Interface::Cellular : public ydk::Entity
 {
     public:
-        Ppp();
-        ~Ppp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf accounting; //type: one of string, enumeration
-        ydk::YLeaf authorization; //type: one of string, enumeration
-        class Chap; //type: Native::Interface::Serial::Ppp::Chap
-        class Authentication; //type: Native::Interface::Serial::Ppp::Authentication
-        class Ipcp; //type: Native::Interface::Serial::Ppp::Ipcp
-        class Multilink; //type: Native::Interface::Serial::Ppp::Multilink
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ppp::Chap> chap;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ppp::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ppp::Ipcp> ipcp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ppp::Multilink> multilink; // presence node
-                class Accounting;
-        class Authorization;
-
-}; // Native::Interface::Serial::Ppp
-
-
-class Native::Interface::Serial::Ppp::Chap : public ydk::Entity
-{
-    public:
-        Chap();
-        ~Chap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf hostname; //type: string
-        ydk::YLeaf challenge_length; //type: uint8
-
-}; // Native::Interface::Serial::Ppp::Chap
-
-
-class Native::Interface::Serial::Ppp::Authentication : public ydk::Entity
-{
-    public:
-        Authentication();
-        ~Authentication();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf method; //type: Method
-        ydk::YLeaf list_name; //type: string
-        ydk::YLeaf chap; //type: empty
-        ydk::YLeaf callback; //type: empty
-        ydk::YLeaf callin; //type: empty
-        ydk::YLeaf callout; //type: empty
-        ydk::YLeaf default_; //type: empty
-        ydk::YLeaf eap; //type: empty
-        ydk::YLeaf ms_chap; //type: empty
-        ydk::YLeaf ms_chap_v2; //type: empty
-        ydk::YLeaf one_time; //type: empty
-        ydk::YLeaf optional; //type: empty
-        ydk::YLeaf pap; //type: empty
-        class Method;
-
-}; // Native::Interface::Serial::Ppp::Authentication
-
-
-class Native::Interface::Serial::Ppp::Ipcp : public ydk::Entity
-{
-    public:
-        Ipcp();
-        ~Ipcp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Dns; //type: Native::Interface::Serial::Ppp::Ipcp::Dns
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ppp::Ipcp::Dns> dns;
-        
-}; // Native::Interface::Serial::Ppp::Ipcp
-
-
-class Native::Interface::Serial::Ppp::Ipcp::Dns : public ydk::Entity
-{
-    public:
-        Dns();
-        ~Dns();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf primary; //type: string
-
-}; // Native::Interface::Serial::Ppp::Ipcp::Dns
-
-
-class Native::Interface::Serial::Ppp::Multilink : public ydk::Entity
-{
-    public:
-        Multilink();
-        ~Multilink();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf group; //type: uint32
-        class Links; //type: Native::Interface::Serial::Ppp::Multilink::Links
-        class Endpoint; //type: Native::Interface::Serial::Ppp::Multilink::Endpoint
-        class Fragment; //type: Native::Interface::Serial::Ppp::Multilink::Fragment
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ppp::Multilink::Links> links;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ppp::Multilink::Endpoint> endpoint;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ppp::Multilink::Fragment> fragment;
-        
-}; // Native::Interface::Serial::Ppp::Multilink
-
-
-class Native::Interface::Serial::Ppp::Multilink::Links : public ydk::Entity
-{
-    public:
-        Links();
-        ~Links();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Minimum; //type: Native::Interface::Serial::Ppp::Multilink::Links::Minimum
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ppp::Multilink::Links::Minimum> minimum;
-        
-}; // Native::Interface::Serial::Ppp::Multilink::Links
-
-
-class Native::Interface::Serial::Ppp::Multilink::Links::Minimum : public ydk::Entity
-{
-    public:
-        Minimum();
-        ~Minimum();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf minimum_value; //type: uint8
-        ydk::YLeaf mandatory; //type: empty
-
-}; // Native::Interface::Serial::Ppp::Multilink::Links::Minimum
-
-
-class Native::Interface::Serial::Ppp::Multilink::Endpoint : public ydk::Entity
-{
-    public:
-        Endpoint();
-        ~Endpoint();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf string; //type: string
-
-}; // Native::Interface::Serial::Ppp::Multilink::Endpoint
-
-
-class Native::Interface::Serial::Ppp::Multilink::Fragment : public ydk::Entity
-{
-    public:
-        Fragment();
-        ~Fragment();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf disable; //type: empty
-        class Delay; //type: Native::Interface::Serial::Ppp::Multilink::Fragment::Delay
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ppp::Multilink::Fragment::Delay> delay;
-        
-}; // Native::Interface::Serial::Ppp::Multilink::Fragment
-
-
-class Native::Interface::Serial::Ppp::Multilink::Fragment::Delay : public ydk::Entity
-{
-    public:
-        Delay();
-        ~Delay();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf delay_value; //type: uint16
-        ydk::YLeaf additional_delay_value; //type: uint16
-
-}; // Native::Interface::Serial::Ppp::Multilink::Fragment::Delay
-
-
-class Native::Interface::Tunnel : public ydk::Entity
-{
-    public:
-        Tunnel();
-        ~Tunnel();
+        Cellular();
+        ~Cellular();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2830,7 +2601,7 @@ class Native::Interface::Tunnel : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf name; //type: uint32
+        ydk::YLeaf name; //type: string
         ydk::YLeaf description; //type: string
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf shutdown; //type: empty
@@ -2841,122 +2612,96 @@ class Native::Interface::Tunnel : public ydk::Entity
         ydk::YLeaf max_reserved_bandwidth; //type: uint8
         ydk::YLeaf mtu; //type: uint16
         ydk::YLeaf service_insertion; //type: ServiceInsertion
-        ydk::YLeaf nat66; //type: Nat66
-        class SwitchportConf; //type: Native::Interface::Tunnel::SwitchportConf
-        class Switchport; //type: Native::Interface::Tunnel::Switchport
-        class StackwiseVirtual; //type: Native::Interface::Tunnel::StackwiseVirtual
-        class Arp; //type: Native::Interface::Tunnel::Arp
-        class Backup; //type: Native::Interface::Tunnel::Backup
-        class Cemoudp; //type: Native::Interface::Tunnel::Cemoudp
-        class CwsTunnel; //type: Native::Interface::Tunnel::CwsTunnel
-        class L2protocolTunnel; //type: Native::Interface::Tunnel::L2protocolTunnel
-        class Encapsulation; //type: Native::Interface::Tunnel::Encapsulation
-        class FairQueueConf; //type: Native::Interface::Tunnel::FairQueueConf
-        class FairQueue; //type: Native::Interface::Tunnel::FairQueue
-        class Flowcontrol; //type: Native::Interface::Tunnel::Flowcontrol
-        class Isis; //type: Native::Interface::Tunnel::Isis
-        class KeepaliveSettings; //type: Native::Interface::Tunnel::KeepaliveSettings
-        class Bfd; //type: Native::Interface::Tunnel::Bfd
-        class Bandwidth; //type: Native::Interface::Tunnel::Bandwidth
-        class Dampening; //type: Native::Interface::Tunnel::Dampening
-        class Domain; //type: Native::Interface::Tunnel::Domain
-        class HoldQueue; //type: Native::Interface::Tunnel::HoldQueue
-        class Mpls; //type: Native::Interface::Tunnel::Mpls
-        class IpVrf; //type: Native::Interface::Tunnel::IpVrf
-        class Vrf; //type: Native::Interface::Tunnel::Vrf
-        class Ip; //type: Native::Interface::Tunnel::Ip
-        class Ipv6; //type: Native::Interface::Tunnel::Ipv6
-        class Logging; //type: Native::Interface::Tunnel::Logging
-        class Mdix; //type: Native::Interface::Tunnel::Mdix
-        class Mop; //type: Native::Interface::Tunnel::Mop
-        class InterfaceQos; //type: Native::Interface::Tunnel::InterfaceQos
-        class Standby; //type: Native::Interface::Tunnel::Standby
-        class AccessSession; //type: Native::Interface::Tunnel::AccessSession
-        class StormControl; //type: Native::Interface::Tunnel::StormControl
-        class Trust; //type: Native::Interface::Tunnel::Trust
-        class PriorityQueue; //type: Native::Interface::Tunnel::PriorityQueue
-        class RcvQueue; //type: Native::Interface::Tunnel::RcvQueue
-        class Peer; //type: Native::Interface::Tunnel::Peer
-        class PmPath; //type: Native::Interface::Tunnel::PmPath
-        class Qos; //type: Native::Interface::Tunnel::Qos
-        class ServicePolicy; //type: Native::Interface::Tunnel::ServicePolicy
-        class Utd; //type: Native::Interface::Tunnel::Utd
-        class Cts; //type: Native::Interface::Tunnel::Cts
-        class Umbrella; //type: Native::Interface::Tunnel::Umbrella
-        class Snmp; //type: Native::Interface::Tunnel::Snmp
-        class Performance; //type: Native::Interface::Tunnel::Performance
-        class EtAnalytics; //type: Native::Interface::Tunnel::EtAnalytics
-        class Lisp; //type: Native::Interface::Tunnel::Lisp
-        class ZoneMember; //type: Native::Interface::Tunnel::ZoneMember
-        class Nhrp; //type: Native::Interface::Tunnel::Nhrp
-        class Tunnel_; //type: Native::Interface::Tunnel::Tunnel_
-        class Crypto; //type: Native::Interface::Tunnel::Crypto
-        class Udld; //type: Native::Interface::Tunnel::Udld
-        class Ospfv3; //type: Native::Interface::Tunnel::Ospfv3
-        class Ntp; //type: Native::Interface::Tunnel::Ntp
-        class Cdp; //type: Native::Interface::Tunnel::Cdp
+        ydk::YLeaf dialer_group; //type: uint8
+        ydk::YLeaf pulse_time; //type: uint8
+        class SwitchportConf; //type: Native::Interface::Cellular::SwitchportConf
+        class Switchport; //type: Native::Interface::Cellular::Switchport
+        class StackwiseVirtual; //type: Native::Interface::Cellular::StackwiseVirtual
+        class Arp; //type: Native::Interface::Cellular::Arp
+        class Backup; //type: Native::Interface::Cellular::Backup
+        class Cemoudp; //type: Native::Interface::Cellular::Cemoudp
+        class CwsTunnel; //type: Native::Interface::Cellular::CwsTunnel
+        class L2protocolTunnel; //type: Native::Interface::Cellular::L2protocolTunnel
+        class Encapsulation; //type: Native::Interface::Cellular::Encapsulation
+        class FairQueueConf; //type: Native::Interface::Cellular::FairQueueConf
+        class FairQueue; //type: Native::Interface::Cellular::FairQueue
+        class Flowcontrol; //type: Native::Interface::Cellular::Flowcontrol
+        class Isis; //type: Native::Interface::Cellular::Isis
+        class KeepaliveSettings; //type: Native::Interface::Cellular::KeepaliveSettings
+        class Bfd; //type: Native::Interface::Cellular::Bfd
+        class Bandwidth; //type: Native::Interface::Cellular::Bandwidth
+        class Dampening; //type: Native::Interface::Cellular::Dampening
+        class Domain; //type: Native::Interface::Cellular::Domain
+        class HoldQueue; //type: Native::Interface::Cellular::HoldQueue
+        class Mpls; //type: Native::Interface::Cellular::Mpls
+        class IpVrf; //type: Native::Interface::Cellular::IpVrf
+        class Vrf; //type: Native::Interface::Cellular::Vrf
+        class Ip; //type: Native::Interface::Cellular::Ip
+        class Ipv6; //type: Native::Interface::Cellular::Ipv6
+        class Logging; //type: Native::Interface::Cellular::Logging
+        class Mdix; //type: Native::Interface::Cellular::Mdix
+        class Mop; //type: Native::Interface::Cellular::Mop
+        class InterfaceQos; //type: Native::Interface::Cellular::InterfaceQos
+        class Source; //type: Native::Interface::Cellular::Source
+        class Standby; //type: Native::Interface::Cellular::Standby
+        class AccessSession; //type: Native::Interface::Cellular::AccessSession
+        class StormControl; //type: Native::Interface::Cellular::StormControl
+        class Trust; //type: Native::Interface::Cellular::Trust
+        class PriorityQueue; //type: Native::Interface::Cellular::PriorityQueue
+        class RcvQueue; //type: Native::Interface::Cellular::RcvQueue
+        class Peer; //type: Native::Interface::Cellular::Peer
+        class PmPath; //type: Native::Interface::Cellular::PmPath
+        class ServicePolicy; //type: Native::Interface::Cellular::ServicePolicy
+        class Dialer; //type: Native::Interface::Cellular::Dialer
+        class Async; //type: Native::Interface::Cellular::Async
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::SwitchportConf> switchport_conf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Switchport> switchport;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::StackwiseVirtual> stackwise_virtual;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Arp> arp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Backup> backup;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cemoudp> cemoudp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::CwsTunnel> cws_tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::L2protocolTunnel> l2protocol_tunnel; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Encapsulation> encapsulation;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::FairQueueConf> fair_queue_conf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::FairQueue> fair_queue;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Flowcontrol> flowcontrol;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis> isis;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::KeepaliveSettings> keepalive_settings;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Bfd> bfd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Bandwidth> bandwidth;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Dampening> dampening;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Domain> domain;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::SwitchportConf> switchport_conf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Switchport> switchport;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::StackwiseVirtual> stackwise_virtual;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Arp> arp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Backup> backup;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Cemoudp> cemoudp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::CwsTunnel> cws_tunnel;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::L2protocolTunnel> l2protocol_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Encapsulation> encapsulation;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::FairQueueConf> fair_queue_conf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::FairQueue> fair_queue;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Flowcontrol> flowcontrol;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Isis> isis;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::KeepaliveSettings> keepalive_settings;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Bfd> bfd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Bandwidth> bandwidth;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Dampening> dampening;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Domain> domain;
         ydk::YList hold_queue;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Mpls> mpls;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::IpVrf> ip_vrf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Vrf> vrf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ip> ip;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ipv6> ipv6;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Logging> logging;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Mdix> mdix;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Mop> mop;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::InterfaceQos> interface_qos;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Standby> standby;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::AccessSession> access_session;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::StormControl> storm_control;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Trust> trust;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::PriorityQueue> priority_queue;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::RcvQueue> rcv_queue;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Peer> peer;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::PmPath> pm_path;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Qos> qos;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::ServicePolicy> service_policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Utd> utd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts> cts;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Umbrella> umbrella;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Snmp> snmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Performance> performance;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::EtAnalytics> et_analytics;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::ZoneMember> zone_member;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Nhrp> nhrp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_> tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Crypto> crypto;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Udld> udld;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3> ospfv3;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ntp> ntp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cdp> cdp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Mpls> mpls;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::IpVrf> ip_vrf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Vrf> vrf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Ip> ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Logging> logging;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Mdix> mdix;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Mop> mop;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::InterfaceQos> interface_qos;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Standby> standby;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::AccessSession> access_session;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::StormControl> storm_control;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Trust> trust;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::PriorityQueue> priority_queue;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::RcvQueue> rcv_queue;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Peer> peer;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::PmPath> pm_path;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Dialer> dialer;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Async> async;
                 class IfState;
         class ServiceInsertion;
-        class Nat66;
 
-}; // Native::Interface::Tunnel
+}; // Native::Interface::Cellular
 
 
-class Native::Interface::Tunnel::SwitchportConf : public ydk::Entity
+class Native::Interface::Cellular::SwitchportConf : public ydk::Entity
 {
     public:
         SwitchportConf();
@@ -2974,10 +2719,10 @@ class Native::Interface::Tunnel::SwitchportConf : public ydk::Entity
 
         ydk::YLeaf switchport; //type: boolean
 
-}; // Native::Interface::Tunnel::SwitchportConf
+}; // Native::Interface::Cellular::SwitchportConf
 
 
-class Native::Interface::Tunnel::Switchport : public ydk::Entity
+class Native::Interface::Cellular::Switchport : public ydk::Entity
 {
     public:
         Switchport();
@@ -2994,10 +2739,10 @@ class Native::Interface::Tunnel::Switchport : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::Tunnel::Switchport
+}; // Native::Interface::Cellular::Switchport
 
 
-class Native::Interface::Tunnel::StackwiseVirtual : public ydk::Entity
+class Native::Interface::Cellular::StackwiseVirtual : public ydk::Entity
 {
     public:
         StackwiseVirtual();
@@ -3016,10 +2761,10 @@ class Native::Interface::Tunnel::StackwiseVirtual : public ydk::Entity
         ydk::YLeaf link; //type: uint8
         ydk::YLeaf dual_active_detection; //type: empty
 
-}; // Native::Interface::Tunnel::StackwiseVirtual
+}; // Native::Interface::Cellular::StackwiseVirtual
 
 
-class Native::Interface::Tunnel::Arp : public ydk::Entity
+class Native::Interface::Cellular::Arp : public ydk::Entity
 {
     public:
         Arp();
@@ -3037,10 +2782,10 @@ class Native::Interface::Tunnel::Arp : public ydk::Entity
 
         ydk::YLeaf timeout; //type: uint32
 
-}; // Native::Interface::Tunnel::Arp
+}; // Native::Interface::Cellular::Arp
 
 
-class Native::Interface::Tunnel::Backup : public ydk::Entity
+class Native::Interface::Cellular::Backup : public ydk::Entity
 {
     public:
         Backup();
@@ -3056,18 +2801,18 @@ class Native::Interface::Tunnel::Backup : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Delay; //type: Native::Interface::Tunnel::Backup::Delay
-        class Interface_; //type: Native::Interface::Tunnel::Backup::Interface_
-        class Load; //type: Native::Interface::Tunnel::Backup::Load
+        class Delay; //type: Native::Interface::Cellular::Backup::Delay
+        class Interface_; //type: Native::Interface::Cellular::Backup::Interface_
+        class Load; //type: Native::Interface::Cellular::Backup::Load
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Backup::Delay> delay;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Backup::Interface_> interface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Backup::Load> load;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Backup::Delay> delay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Backup::Interface_> interface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Backup::Load> load;
         
-}; // Native::Interface::Tunnel::Backup
+}; // Native::Interface::Cellular::Backup
 
 
-class Native::Interface::Tunnel::Backup::Delay : public ydk::Entity
+class Native::Interface::Cellular::Backup::Delay : public ydk::Entity
 {
     public:
         Delay();
@@ -3088,10 +2833,10 @@ class Native::Interface::Tunnel::Backup::Delay : public ydk::Entity
         class Failure;
         class SecondaryDisable;
 
-}; // Native::Interface::Tunnel::Backup::Delay
+}; // Native::Interface::Cellular::Backup::Delay
 
 
-class Native::Interface::Tunnel::Backup::Interface_ : public ydk::Entity
+class Native::Interface::Cellular::Backup::Interface_ : public ydk::Entity
 {
     public:
         Interface_();
@@ -3115,6 +2860,7 @@ class Native::Interface::Tunnel::Backup::Interface_ : public ydk::Entity
         ydk::YLeaf cem; //type: string
         ydk::YLeaf cem_acr; //type: uint8
         ydk::YLeaf embedded_service_engine; //type: string
+        ydk::YLeaf ethernet; //type: string
         ydk::YLeaf fastethernet; //type: string
         ydk::YLeaf gigabitethernet; //type: string
         ydk::YLeaf fivegigabitethernet; //type: string
@@ -3139,20 +2885,20 @@ class Native::Interface::Tunnel::Backup::Interface_ : public ydk::Entity
         ydk::YLeaf virtualportgroup; //type: uint16
         ydk::YLeaf vasileft; //type: uint16
         ydk::YLeaf vasiright; //type: uint16
-        class ATMSubinterface; //type: Native::Interface::Tunnel::Backup::Interface_::ATMSubinterface
-        class ATMACRsubinterface; //type: Native::Interface::Tunnel::Backup::Interface_::ATMACRsubinterface
-        class LISPSubinterface; //type: Native::Interface::Tunnel::Backup::Interface_::LISPSubinterface
-        class PortChannelSubinterface; //type: Native::Interface::Tunnel::Backup::Interface_::PortChannelSubinterface
+        class ATMSubinterface; //type: Native::Interface::Cellular::Backup::Interface_::ATMSubinterface
+        class ATMACRsubinterface; //type: Native::Interface::Cellular::Backup::Interface_::ATMACRsubinterface
+        class LISPSubinterface; //type: Native::Interface::Cellular::Backup::Interface_::LISPSubinterface
+        class PortChannelSubinterface; //type: Native::Interface::Cellular::Backup::Interface_::PortChannelSubinterface
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Backup::Interface_::ATMSubinterface> atm_subinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Backup::Interface_::ATMACRsubinterface> atm_acrsubinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Backup::Interface_::LISPSubinterface> lisp_subinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Backup::Interface_::PortChannelSubinterface> port_channel_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Backup::Interface_::ATMSubinterface> atm_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Backup::Interface_::ATMACRsubinterface> atm_acrsubinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Backup::Interface_::LISPSubinterface> lisp_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Backup::Interface_::PortChannelSubinterface> port_channel_subinterface;
         
-}; // Native::Interface::Tunnel::Backup::Interface_
+}; // Native::Interface::Cellular::Backup::Interface_
 
 
-class Native::Interface::Tunnel::Backup::Interface_::ATMSubinterface : public ydk::Entity
+class Native::Interface::Cellular::Backup::Interface_::ATMSubinterface : public ydk::Entity
 {
     public:
         ATMSubinterface();
@@ -3170,10 +2916,10 @@ class Native::Interface::Tunnel::Backup::Interface_::ATMSubinterface : public yd
 
         ydk::YLeaf atm; //type: string
 
-}; // Native::Interface::Tunnel::Backup::Interface_::ATMSubinterface
+}; // Native::Interface::Cellular::Backup::Interface_::ATMSubinterface
 
 
-class Native::Interface::Tunnel::Backup::Interface_::ATMACRsubinterface : public ydk::Entity
+class Native::Interface::Cellular::Backup::Interface_::ATMACRsubinterface : public ydk::Entity
 {
     public:
         ATMACRsubinterface();
@@ -3191,10 +2937,10 @@ class Native::Interface::Tunnel::Backup::Interface_::ATMACRsubinterface : public
 
         ydk::YLeaf atm_acr; //type: string
 
-}; // Native::Interface::Tunnel::Backup::Interface_::ATMACRsubinterface
+}; // Native::Interface::Cellular::Backup::Interface_::ATMACRsubinterface
 
 
-class Native::Interface::Tunnel::Backup::Interface_::LISPSubinterface : public ydk::Entity
+class Native::Interface::Cellular::Backup::Interface_::LISPSubinterface : public ydk::Entity
 {
     public:
         LISPSubinterface();
@@ -3212,10 +2958,10 @@ class Native::Interface::Tunnel::Backup::Interface_::LISPSubinterface : public y
 
         ydk::YLeaf lisp; //type: string
 
-}; // Native::Interface::Tunnel::Backup::Interface_::LISPSubinterface
+}; // Native::Interface::Cellular::Backup::Interface_::LISPSubinterface
 
 
-class Native::Interface::Tunnel::Backup::Interface_::PortChannelSubinterface : public ydk::Entity
+class Native::Interface::Cellular::Backup::Interface_::PortChannelSubinterface : public ydk::Entity
 {
     public:
         PortChannelSubinterface();
@@ -3233,10 +2979,10 @@ class Native::Interface::Tunnel::Backup::Interface_::PortChannelSubinterface : p
 
         ydk::YLeaf port_channel; //type: string
 
-}; // Native::Interface::Tunnel::Backup::Interface_::PortChannelSubinterface
+}; // Native::Interface::Cellular::Backup::Interface_::PortChannelSubinterface
 
 
-class Native::Interface::Tunnel::Backup::Load : public ydk::Entity
+class Native::Interface::Cellular::Backup::Load : public ydk::Entity
 {
     public:
         Load();
@@ -3257,10 +3003,10 @@ class Native::Interface::Tunnel::Backup::Load : public ydk::Entity
         class Kickin;
         class Kickout;
 
-}; // Native::Interface::Tunnel::Backup::Load
+}; // Native::Interface::Cellular::Backup::Load
 
 
-class Native::Interface::Tunnel::Cemoudp : public ydk::Entity
+class Native::Interface::Cellular::Cemoudp : public ydk::Entity
 {
     public:
         Cemoudp();
@@ -3276,14 +3022,14 @@ class Native::Interface::Tunnel::Cemoudp : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Reserve; //type: Native::Interface::Tunnel::Cemoudp::Reserve
+        class Reserve; //type: Native::Interface::Cellular::Cemoudp::Reserve
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cemoudp::Reserve> reserve;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Cemoudp::Reserve> reserve;
         
-}; // Native::Interface::Tunnel::Cemoudp
+}; // Native::Interface::Cellular::Cemoudp
 
 
-class Native::Interface::Tunnel::Cemoudp::Reserve : public ydk::Entity
+class Native::Interface::Cellular::Cemoudp::Reserve : public ydk::Entity
 {
     public:
         Reserve();
@@ -3301,10 +3047,10 @@ class Native::Interface::Tunnel::Cemoudp::Reserve : public ydk::Entity
 
         ydk::YLeaf acr; //type: uint8
 
-}; // Native::Interface::Tunnel::Cemoudp::Reserve
+}; // Native::Interface::Cellular::Cemoudp::Reserve
 
 
-class Native::Interface::Tunnel::CwsTunnel : public ydk::Entity
+class Native::Interface::Cellular::CwsTunnel : public ydk::Entity
 {
     public:
         CwsTunnel();
@@ -3321,14 +3067,14 @@ class Native::Interface::Tunnel::CwsTunnel : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf in; //type: empty
-        class Out; //type: Native::Interface::Tunnel::CwsTunnel::Out
+        class Out; //type: Native::Interface::Cellular::CwsTunnel::Out
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::CwsTunnel::Out> out;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::CwsTunnel::Out> out;
         
-}; // Native::Interface::Tunnel::CwsTunnel
+}; // Native::Interface::Cellular::CwsTunnel
 
 
-class Native::Interface::Tunnel::CwsTunnel::Out : public ydk::Entity
+class Native::Interface::Cellular::CwsTunnel::Out : public ydk::Entity
 {
     public:
         Out();
@@ -3346,10 +3092,10 @@ class Native::Interface::Tunnel::CwsTunnel::Out : public ydk::Entity
 
         ydk::YLeaf tunnel_number; //type: uint16
 
-}; // Native::Interface::Tunnel::CwsTunnel::Out
+}; // Native::Interface::Cellular::CwsTunnel::Out
 
 
-class Native::Interface::Tunnel::L2protocolTunnel : public ydk::Entity
+class Native::Interface::Cellular::L2protocolTunnel : public ydk::Entity
 {
     public:
         L2protocolTunnel();
@@ -3368,16 +3114,16 @@ class Native::Interface::Tunnel::L2protocolTunnel : public ydk::Entity
         ydk::YLeaf cdp; //type: empty
         ydk::YLeaf stp; //type: empty
         ydk::YLeaf vtp; //type: empty
-        class DropThreshold; //type: Native::Interface::Tunnel::L2protocolTunnel::DropThreshold
-        class ShutdownThreshold; //type: Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold
+        class DropThreshold; //type: Native::Interface::Cellular::L2protocolTunnel::DropThreshold
+        class ShutdownThreshold; //type: Native::Interface::Cellular::L2protocolTunnel::ShutdownThreshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::L2protocolTunnel::DropThreshold> drop_threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold> shutdown_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::L2protocolTunnel::DropThreshold> drop_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::L2protocolTunnel::ShutdownThreshold> shutdown_threshold;
         
-}; // Native::Interface::Tunnel::L2protocolTunnel
+}; // Native::Interface::Cellular::L2protocolTunnel
 
 
-class Native::Interface::Tunnel::L2protocolTunnel::DropThreshold : public ydk::Entity
+class Native::Interface::Cellular::L2protocolTunnel::DropThreshold : public ydk::Entity
 {
     public:
         DropThreshold();
@@ -3398,10 +3144,10 @@ class Native::Interface::Tunnel::L2protocolTunnel::DropThreshold : public ydk::E
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::Tunnel::L2protocolTunnel::DropThreshold
+}; // Native::Interface::Cellular::L2protocolTunnel::DropThreshold
 
 
-class Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold : public ydk::Entity
+class Native::Interface::Cellular::L2protocolTunnel::ShutdownThreshold : public ydk::Entity
 {
     public:
         ShutdownThreshold();
@@ -3422,10 +3168,10 @@ class Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold : public yd
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold
+}; // Native::Interface::Cellular::L2protocolTunnel::ShutdownThreshold
 
 
-class Native::Interface::Tunnel::Encapsulation : public ydk::Entity
+class Native::Interface::Cellular::Encapsulation : public ydk::Entity
 {
     public:
         Encapsulation();
@@ -3441,22 +3187,22 @@ class Native::Interface::Tunnel::Encapsulation : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Dot1Q; //type: Native::Interface::Tunnel::Encapsulation::Dot1Q
-        class Isl; //type: Native::Interface::Tunnel::Encapsulation::Isl
-        class Ppp; //type: Native::Interface::Tunnel::Encapsulation::Ppp
-        class Slip; //type: Native::Interface::Tunnel::Encapsulation::Slip
-        class FrameRelay; //type: Native::Interface::Tunnel::Encapsulation::FrameRelay
+        class Dot1Q; //type: Native::Interface::Cellular::Encapsulation::Dot1Q
+        class Isl; //type: Native::Interface::Cellular::Encapsulation::Isl
+        class Ppp; //type: Native::Interface::Cellular::Encapsulation::Ppp
+        class Slip; //type: Native::Interface::Cellular::Encapsulation::Slip
+        class FrameRelay; //type: Native::Interface::Cellular::Encapsulation::FrameRelay
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Encapsulation::Dot1Q> dot1q;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Encapsulation::Isl> isl;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Encapsulation::Ppp> ppp; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Encapsulation::Slip> slip; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Encapsulation::FrameRelay> frame_relay; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Encapsulation::Dot1Q> dot1q;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Encapsulation::Isl> isl;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Encapsulation::Ppp> ppp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Encapsulation::Slip> slip; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Encapsulation::FrameRelay> frame_relay; // presence node
         
-}; // Native::Interface::Tunnel::Encapsulation
+}; // Native::Interface::Cellular::Encapsulation
 
 
-class Native::Interface::Tunnel::Encapsulation::Dot1Q : public ydk::Entity
+class Native::Interface::Cellular::Encapsulation::Dot1Q : public ydk::Entity
 {
     public:
         Dot1Q();
@@ -3475,10 +3221,10 @@ class Native::Interface::Tunnel::Encapsulation::Dot1Q : public ydk::Entity
         ydk::YLeaf vlan_id; //type: uint16
         ydk::YLeaf native; //type: empty
 
-}; // Native::Interface::Tunnel::Encapsulation::Dot1Q
+}; // Native::Interface::Cellular::Encapsulation::Dot1Q
 
 
-class Native::Interface::Tunnel::Encapsulation::Isl : public ydk::Entity
+class Native::Interface::Cellular::Encapsulation::Isl : public ydk::Entity
 {
     public:
         Isl();
@@ -3496,10 +3242,10 @@ class Native::Interface::Tunnel::Encapsulation::Isl : public ydk::Entity
 
         ydk::YLeaf vlan_id; //type: uint16
 
-}; // Native::Interface::Tunnel::Encapsulation::Isl
+}; // Native::Interface::Cellular::Encapsulation::Isl
 
 
-class Native::Interface::Tunnel::Encapsulation::Ppp : public ydk::Entity
+class Native::Interface::Cellular::Encapsulation::Ppp : public ydk::Entity
 {
     public:
         Ppp();
@@ -3516,10 +3262,10 @@ class Native::Interface::Tunnel::Encapsulation::Ppp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::Tunnel::Encapsulation::Ppp
+}; // Native::Interface::Cellular::Encapsulation::Ppp
 
 
-class Native::Interface::Tunnel::Encapsulation::Slip : public ydk::Entity
+class Native::Interface::Cellular::Encapsulation::Slip : public ydk::Entity
 {
     public:
         Slip();
@@ -3536,10 +3282,10 @@ class Native::Interface::Tunnel::Encapsulation::Slip : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::Tunnel::Encapsulation::Slip
+}; // Native::Interface::Cellular::Encapsulation::Slip
 
 
-class Native::Interface::Tunnel::Encapsulation::FrameRelay : public ydk::Entity
+class Native::Interface::Cellular::Encapsulation::FrameRelay : public ydk::Entity
 {
     public:
         FrameRelay();
@@ -3557,10 +3303,10 @@ class Native::Interface::Tunnel::Encapsulation::FrameRelay : public ydk::Entity
 
         ydk::YLeaf ietf; //type: empty
 
-}; // Native::Interface::Tunnel::Encapsulation::FrameRelay
+}; // Native::Interface::Cellular::Encapsulation::FrameRelay
 
 
-class Native::Interface::Tunnel::FairQueueConf : public ydk::Entity
+class Native::Interface::Cellular::FairQueueConf : public ydk::Entity
 {
     public:
         FairQueueConf();
@@ -3578,10 +3324,10 @@ class Native::Interface::Tunnel::FairQueueConf : public ydk::Entity
 
         ydk::YLeaf fair_queue; //type: boolean
 
-}; // Native::Interface::Tunnel::FairQueueConf
+}; // Native::Interface::Cellular::FairQueueConf
 
 
-class Native::Interface::Tunnel::FairQueue : public ydk::Entity
+class Native::Interface::Cellular::FairQueue : public ydk::Entity
 {
     public:
         FairQueue();
@@ -3599,10 +3345,10 @@ class Native::Interface::Tunnel::FairQueue : public ydk::Entity
 
         ydk::YLeaf incomplete; //type: empty
 
-}; // Native::Interface::Tunnel::FairQueue
+}; // Native::Interface::Cellular::FairQueue
 
 
-class Native::Interface::Tunnel::Flowcontrol : public ydk::Entity
+class Native::Interface::Cellular::Flowcontrol : public ydk::Entity
 {
     public:
         Flowcontrol();
@@ -3623,10 +3369,10 @@ class Native::Interface::Tunnel::Flowcontrol : public ydk::Entity
         class Receive;
         class Send;
 
-}; // Native::Interface::Tunnel::Flowcontrol
+}; // Native::Interface::Cellular::Flowcontrol
 
 
-class Native::Interface::Tunnel::Isis : public ydk::Entity
+class Native::Interface::Cellular::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -3642,54 +3388,199 @@ class Native::Interface::Tunnel::Isis : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf lsp_interval; //type: uint32
-        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
-        ydk::YLeaf network; //type: Network
-        ydk::YLeaf protocol; //type: Protocol
-        ydk::YLeaf retransmit_interval; //type: uint16
-        ydk::YLeaf retransmit_throttle_interval; //type: uint16
-        ydk::YLeaf tag; //type: uint32
-        class AdjacencyFilter; //type: Native::Interface::Tunnel::Isis::AdjacencyFilter
-        class Advertise; //type: Native::Interface::Tunnel::Isis::Advertise
-        class Authentication; //type: Native::Interface::Tunnel::Isis::Authentication
-        class CircuitType; //type: Native::Interface::Tunnel::Isis::CircuitType
-        class CsnpInterval; //type: Native::Interface::Tunnel::Isis::CsnpInterval
-        class Hello; //type: Native::Interface::Tunnel::Isis::Hello
-        class HelloInterval; //type: Native::Interface::Tunnel::Isis::HelloInterval
-        class HelloMultiplier; //type: Native::Interface::Tunnel::Isis::HelloMultiplier
-        class Ipv6; //type: Native::Interface::Tunnel::Isis::Ipv6
-        class Metric; //type: Native::Interface::Tunnel::Isis::Metric
-        class Password; //type: Native::Interface::Tunnel::Isis::Password
-        class Priority; //type: Native::Interface::Tunnel::Isis::Priority
-        class Bfd; //type: Native::Interface::Tunnel::Isis::Bfd
-        class ThreeWayHandshake; //type: Native::Interface::Tunnel::Isis::ThreeWayHandshake
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::AdjacencyFilter> adjacency_filter;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::Advertise> advertise;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::CircuitType> circuit_type; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::CsnpInterval> csnp_interval;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::Hello> hello;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::HelloInterval> hello_interval;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::HelloMultiplier> hello_multiplier;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::Ipv6> ipv6;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::Metric> metric;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::Password> password;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::Priority> priority;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::Bfd> bfd; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::ThreeWayHandshake> three_way_handshake; // presence node
-                class MeshGroup;
-        class Network;
-        class Protocol;
-
-}; // Native::Interface::Tunnel::Isis
+}; // Native::Interface::Cellular::Isis
 
 
-class Native::Interface::Tunnel::Isis::AdjacencyFilter : public ydk::Entity
+class Native::Interface::Cellular::KeepaliveSettings : public ydk::Entity
 {
     public:
-        AdjacencyFilter();
-        ~AdjacencyFilter();
+        KeepaliveSettings();
+        ~KeepaliveSettings();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Keepalive; //type: Native::Interface::Cellular::KeepaliveSettings::Keepalive
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::KeepaliveSettings::Keepalive> keepalive; // presence node
+        
+}; // Native::Interface::Cellular::KeepaliveSettings
+
+
+class Native::Interface::Cellular::KeepaliveSettings::Keepalive : public ydk::Entity
+{
+    public:
+        Keepalive();
+        ~Keepalive();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf period; //type: uint16
+        ydk::YLeaf retries; //type: uint8
+
+}; // Native::Interface::Cellular::KeepaliveSettings::Keepalive
+
+
+class Native::Interface::Cellular::Bfd : public ydk::Entity
+{
+    public:
+        Bfd();
+        ~Bfd();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Native::Interface::Cellular::Bfd
+
+
+class Native::Interface::Cellular::Bandwidth : public ydk::Entity
+{
+    public:
+        Bandwidth();
+        ~Bandwidth();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf qos_reference; //type: uint32
+        ydk::YLeaf kilobits; //type: uint32
+        class Receive; //type: Native::Interface::Cellular::Bandwidth::Receive
+        class Inherit; //type: Native::Interface::Cellular::Bandwidth::Inherit
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Bandwidth::Receive> receive;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Bandwidth::Inherit> inherit; // presence node
+        
+}; // Native::Interface::Cellular::Bandwidth
+
+
+class Native::Interface::Cellular::Bandwidth::Receive : public ydk::Entity
+{
+    public:
+        Receive();
+        ~Receive();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf inherit; //type: empty
+        ydk::YLeaf kilobits; //type: uint32
+
+}; // Native::Interface::Cellular::Bandwidth::Receive
+
+
+class Native::Interface::Cellular::Bandwidth::Inherit : public ydk::Entity
+{
+    public:
+        Inherit();
+        ~Inherit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf kilobits; //type: uint32
+
+}; // Native::Interface::Cellular::Bandwidth::Inherit
+
+
+class Native::Interface::Cellular::Dampening : public ydk::Entity
+{
+    public:
+        Dampening();
+        ~Dampening();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf dampening_time; //type: uint16
+        ydk::YLeaf start_reusing_time; //type: uint16
+        ydk::YLeaf start_supressing_time; //type: uint16
+        ydk::YLeaf maximum_supressing_time; //type: uint16
+        class Restart; //type: Native::Interface::Cellular::Dampening::Restart
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Dampening::Restart> restart;
+        
+}; // Native::Interface::Cellular::Dampening
+
+
+class Native::Interface::Cellular::Dampening::Restart : public ydk::Entity
+{
+    public:
+        Restart();
+        ~Restart();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf restart; //type: empty
+        ydk::YLeaf restart_penalty; //type: uint16
+
+}; // Native::Interface::Cellular::Dampening::Restart
+
+
+class Native::Interface::Cellular::Domain : public ydk::Entity
+{
+    public:
+        Domain();
+        ~Domain();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3702,11 +3593,38 @@ class Native::Interface::Tunnel::Isis::AdjacencyFilter : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf match_all; //type: empty
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf internet_bound; //type: empty
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf path_last_resort; //type: empty
+        ydk::YLeaf zero_sla; //type: empty
 
-}; // Native::Interface::Tunnel::Isis::AdjacencyFilter
+}; // Native::Interface::Cellular::Domain
 
-class Native::Interface::Serial::Ip::Verify::Unicast::Source::ReachableVia : public ydk::Enum
+
+class Native::Interface::Cellular::HoldQueue : public ydk::Entity
+{
+    public:
+        HoldQueue();
+        ~HoldQueue();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf direction; //type: Direction
+        ydk::YLeaf queue_length; //type: uint16
+        class Direction;
+
+}; // Native::Interface::Cellular::HoldQueue
+
+class Native::Interface::SM::Ip::Verify::Unicast::Source::ReachableVia : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf any;
@@ -3714,7 +3632,7 @@ class Native::Interface::Serial::Ip::Verify::Unicast::Source::ReachableVia : pub
 
 };
 
-class Native::Interface::Serial::Ipv6::TrafficFilter::Direction : public ydk::Enum
+class Native::Interface::SM::Ipv6::TrafficFilter::Direction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf in;
@@ -3722,14 +3640,14 @@ class Native::Interface::Serial::Ipv6::TrafficFilter::Direction : public ydk::En
 
 };
 
-class Native::Interface::Serial::InterfaceQos::Trust::Device : public ydk::Enum
+class Native::Interface::SM::InterfaceQos::Trust::Device : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf cisco_phone;
 
 };
 
-class Native::Interface::Serial::Standby::Version : public ydk::Enum
+class Native::Interface::SM::Standby::Version : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_1;
@@ -3737,14 +3655,14 @@ class Native::Interface::Serial::Standby::Version : public ydk::Enum
 
 };
 
-class Native::Interface::Serial::Standby::StandbyList::Ipv6 : public ydk::Enum
+class Native::Interface::SM::Standby::StandbyList::Ipv6 : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf autoconfig;
 
 };
 
-class Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
+class Native::Interface::SM::Standby::StandbyList::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_0;
@@ -3752,7 +3670,7 @@ class Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::KeyS
 
 };
 
-class Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
+class Native::Interface::SM::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_0;
@@ -3760,7 +3678,7 @@ class Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::
 
 };
 
-class Native::Interface::Serial::AccessSession::HostMode : public ydk::Enum
+class Native::Interface::SM::AccessSession::HostMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf multi_auth;
@@ -3770,7 +3688,7 @@ class Native::Interface::Serial::AccessSession::HostMode : public ydk::Enum
 
 };
 
-class Native::Interface::Serial::Trust::Device : public ydk::Enum
+class Native::Interface::SM::Trust::Device : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf cisco_phone;
@@ -3780,82 +3698,49 @@ class Native::Interface::Serial::Trust::Device : public ydk::Enum
 
 };
 
-class Native::Interface::Serial::Ppp::Accounting : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-
-};
-
-class Native::Interface::Serial::Ppp::Authorization : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-
-};
-
-class Native::Interface::Serial::Ppp::Authentication::Method : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf chap;
-        static const ydk::Enum::YLeaf eap;
-        static const ydk::Enum::YLeaf ms_chap;
-        static const ydk::Enum::YLeaf ms_chap_v2;
-        static const ydk::Enum::YLeaf pap;
-
-};
-
-class Native::Interface::Tunnel::IfState : public ydk::Enum
+class Native::Interface::Cellular::IfState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf nhrp;
 
 };
 
-class Native::Interface::Tunnel::ServiceInsertion : public ydk::Enum
+class Native::Interface::Cellular::ServiceInsertion : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf waas;
 
 };
 
-class Native::Interface::Tunnel::Nat66 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inside;
-        static const ydk::Enum::YLeaf outside;
-
-};
-
-class Native::Interface::Tunnel::Backup::Delay::Failure : public ydk::Enum
+class Native::Interface::Cellular::Backup::Delay::Failure : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf never;
 
 };
 
-class Native::Interface::Tunnel::Backup::Delay::SecondaryDisable : public ydk::Enum
+class Native::Interface::Cellular::Backup::Delay::SecondaryDisable : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf never;
 
 };
 
-class Native::Interface::Tunnel::Backup::Load::Kickin : public ydk::Enum
+class Native::Interface::Cellular::Backup::Load::Kickin : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf never;
 
 };
 
-class Native::Interface::Tunnel::Backup::Load::Kickout : public ydk::Enum
+class Native::Interface::Cellular::Backup::Load::Kickout : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf never;
 
 };
 
-class Native::Interface::Tunnel::Flowcontrol::Receive : public ydk::Enum
+class Native::Interface::Cellular::Flowcontrol::Receive : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf desired;
@@ -3864,7 +3749,7 @@ class Native::Interface::Tunnel::Flowcontrol::Receive : public ydk::Enum
 
 };
 
-class Native::Interface::Tunnel::Flowcontrol::Send : public ydk::Enum
+class Native::Interface::Cellular::Flowcontrol::Send : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf desired;
@@ -3873,24 +3758,11 @@ class Native::Interface::Tunnel::Flowcontrol::Send : public ydk::Enum
 
 };
 
-class Native::Interface::Tunnel::Isis::MeshGroup : public ydk::Enum
+class Native::Interface::Cellular::HoldQueue::Direction : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf blocked;
-
-};
-
-class Native::Interface::Tunnel::Isis::Network : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf point_to_point;
-
-};
-
-class Native::Interface::Tunnel::Isis::Protocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf shutdown;
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
 
 };
 

@@ -13,6 +13,1216 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_te_oper {
 
 
+class MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo : public ydk::Entity
+{
+    public:
+        BandwidthInfo();
+        ~BandwidthInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf type; //type: TeOduCapability
+        class Fixed; //type: MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed
+        class Flex; //type: MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed> fixed;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex> flex;
+        
+}; // MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo
+
+
+class MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed : public ydk::Entity
+{
+    public:
+        Fixed();
+        ~Fixed();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf maximum_od_us; //type: uint8
+        ydk::YLeaf unreserved_od_us; //type: uint8
+
+}; // MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed
+
+
+class MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex : public ydk::Entity
+{
+    public:
+        Flex();
+        ~Flex();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf max_bandwidth; //type: uint32
+        ydk::YLeaf unreserved_bandwidth; //type: uint32
+        ydk::YLeaf max_lsp_bandwidth; //type: uint32
+
+}; // MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex
+
+
+class MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ExtendedAffinityAttributeFlag : public ydk::Entity
+{
+    public:
+        ExtendedAffinityAttributeFlag();
+        ~ExtendedAffinityAttributeFlag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ExtendedAffinityAttributeFlag
+
+
+class MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::SharedRiskLinkGroup : public ydk::Entity
+{
+    public:
+        SharedRiskLinkGroup();
+        ~SharedRiskLinkGroup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf shared_risk_group; //type: uint32
+        ydk::YLeaf srlg_name; //type: string
+
+}; // MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::SharedRiskLinkGroup
+
+
+class MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ReceivingReservableBandwidth : public ydk::Entity
+{
+    public:
+        ReceivingReservableBandwidth();
+        ~ReceivingReservableBandwidth();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf pool0_bandwidth; //type: uint32
+        ydk::YLeaf pool1_bandwidth; //type: uint32
+
+}; // MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ReceivingReservableBandwidth
+
+
+class MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBandwidth : public ydk::Entity
+{
+    public:
+        TransmittingReservableBandwidth();
+        ~TransmittingReservableBandwidth();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf pool0_bandwidth; //type: uint32
+        ydk::YLeaf pool1_bandwidth; //type: uint32
+
+}; // MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBandwidth
+
+
+class MplsLcac::Statistics : public ydk::Entity
+{
+    public:
+        Statistics();
+        ~Statistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Summary; //type: MplsLcac::Statistics::Summary
+        class StatsticsLinks; //type: MplsLcac::Statistics::StatsticsLinks
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::Summary> summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::StatsticsLinks> statstics_links;
+        
+}; // MplsLcac::Statistics
+
+
+class MplsLcac::Statistics::Summary : public ydk::Entity
+{
+    public:
+        Summary();
+        ~Summary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf is_role_standby; //type: boolean
+        class PathStatistics; //type: MplsLcac::Statistics::Summary::PathStatistics
+        class ReservationStatistics; //type: MplsLcac::Statistics::Summary::ReservationStatistics
+        class PathStatistics32Bit; //type: MplsLcac::Statistics::Summary::PathStatistics32Bit
+        class ReservationStatistics32Bit; //type: MplsLcac::Statistics::Summary::ReservationStatistics32Bit
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::Summary::PathStatistics> path_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::Summary::ReservationStatistics> reservation_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::Summary::PathStatistics32Bit> path_statistics32_bit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::Summary::ReservationStatistics32Bit> reservation_statistics32_bit;
+        
+}; // MplsLcac::Statistics::Summary
+
+
+class MplsLcac::Statistics::Summary::PathStatistics : public ydk::Entity
+{
+    public:
+        PathStatistics();
+        ~PathStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf setup_requests; //type: uint16
+        ydk::YLeaf setup_errors; //type: uint16
+        ydk::YLeaf setup_admits; //type: uint16
+        ydk::YLeaf setup_rejects; //type: uint16
+        ydk::YLeaf tear_requests; //type: uint16
+        ydk::YLeaf tear_errors; //type: uint16
+        ydk::YLeaf tear_preempts; //type: uint16
+
+}; // MplsLcac::Statistics::Summary::PathStatistics
+
+
+class MplsLcac::Statistics::Summary::ReservationStatistics : public ydk::Entity
+{
+    public:
+        ReservationStatistics();
+        ~ReservationStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf setup_requests; //type: uint16
+        ydk::YLeaf setup_errors; //type: uint16
+        ydk::YLeaf setup_admits; //type: uint16
+        ydk::YLeaf setup_rejects; //type: uint16
+        ydk::YLeaf tear_requests; //type: uint16
+        ydk::YLeaf tear_errors; //type: uint16
+        ydk::YLeaf tear_preempts; //type: uint16
+
+}; // MplsLcac::Statistics::Summary::ReservationStatistics
+
+
+class MplsLcac::Statistics::Summary::PathStatistics32Bit : public ydk::Entity
+{
+    public:
+        PathStatistics32Bit();
+        ~PathStatistics32Bit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf setup_requests; //type: uint32
+        ydk::YLeaf setup_errors; //type: uint32
+        ydk::YLeaf setup_admits; //type: uint32
+        ydk::YLeaf setup_rejects; //type: uint32
+        ydk::YLeaf tear_requests; //type: uint32
+        ydk::YLeaf tear_errors; //type: uint32
+        ydk::YLeaf tear_preempts; //type: uint32
+
+}; // MplsLcac::Statistics::Summary::PathStatistics32Bit
+
+
+class MplsLcac::Statistics::Summary::ReservationStatistics32Bit : public ydk::Entity
+{
+    public:
+        ReservationStatistics32Bit();
+        ~ReservationStatistics32Bit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf setup_requests; //type: uint32
+        ydk::YLeaf setup_errors; //type: uint32
+        ydk::YLeaf setup_admits; //type: uint32
+        ydk::YLeaf setup_rejects; //type: uint32
+        ydk::YLeaf tear_requests; //type: uint32
+        ydk::YLeaf tear_errors; //type: uint32
+        ydk::YLeaf tear_preempts; //type: uint32
+
+}; // MplsLcac::Statistics::Summary::ReservationStatistics32Bit
+
+
+class MplsLcac::Statistics::StatsticsLinks : public ydk::Entity
+{
+    public:
+        StatsticsLinks();
+        ~StatsticsLinks();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class StatsticsLink; //type: MplsLcac::Statistics::StatsticsLinks::StatsticsLink
+
+        ydk::YList statstics_link;
+        
+}; // MplsLcac::Statistics::StatsticsLinks
+
+
+class MplsLcac::Statistics::StatsticsLinks::StatsticsLink : public ydk::Entity
+{
+    public:
+        StatsticsLink();
+        ~StatsticsLink();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name_xr; //type: string
+        ydk::YLeaf link_address; //type: string
+        class IncomingPathStatistics; //type: MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics
+        class IncomingReservationStatistics; //type: MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics
+        class OutgoingPathStatistics; //type: MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics
+        class OutgoingReservationStatistics; //type: MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics
+        class IncomingPathStatistics32Bit; //type: MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit
+        class IncomingReservationStatistics32Bit; //type: MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit
+        class OutgoingPathStatistics32Bit; //type: MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit
+        class OutgoingReservationStatistics32Bit; //type: MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics> incoming_path_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics> incoming_reservation_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics> outgoing_path_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics> outgoing_reservation_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit> incoming_path_statistics32_bit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit> incoming_reservation_statistics32_bit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit> outgoing_path_statistics32_bit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit> outgoing_reservation_statistics32_bit;
+        
+}; // MplsLcac::Statistics::StatsticsLinks::StatsticsLink
+
+
+class MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics : public ydk::Entity
+{
+    public:
+        IncomingPathStatistics();
+        ~IncomingPathStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf setup_requests; //type: uint16
+        ydk::YLeaf setup_errors; //type: uint16
+        ydk::YLeaf setup_admits; //type: uint16
+        ydk::YLeaf setup_rejects; //type: uint16
+        ydk::YLeaf tear_requests; //type: uint16
+        ydk::YLeaf tear_errors; //type: uint16
+        ydk::YLeaf tear_preempts; //type: uint16
+
+}; // MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics
+
+
+class MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics : public ydk::Entity
+{
+    public:
+        IncomingReservationStatistics();
+        ~IncomingReservationStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf setup_requests; //type: uint16
+        ydk::YLeaf setup_errors; //type: uint16
+        ydk::YLeaf setup_admits; //type: uint16
+        ydk::YLeaf setup_rejects; //type: uint16
+        ydk::YLeaf tear_requests; //type: uint16
+        ydk::YLeaf tear_errors; //type: uint16
+        ydk::YLeaf tear_preempts; //type: uint16
+
+}; // MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics
+
+
+class MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics : public ydk::Entity
+{
+    public:
+        OutgoingPathStatistics();
+        ~OutgoingPathStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf setup_requests; //type: uint16
+        ydk::YLeaf setup_errors; //type: uint16
+        ydk::YLeaf setup_admits; //type: uint16
+        ydk::YLeaf setup_rejects; //type: uint16
+        ydk::YLeaf tear_requests; //type: uint16
+        ydk::YLeaf tear_errors; //type: uint16
+        ydk::YLeaf tear_preempts; //type: uint16
+
+}; // MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics
+
+
+class MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics : public ydk::Entity
+{
+    public:
+        OutgoingReservationStatistics();
+        ~OutgoingReservationStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf setup_requests; //type: uint16
+        ydk::YLeaf setup_errors; //type: uint16
+        ydk::YLeaf setup_admits; //type: uint16
+        ydk::YLeaf setup_rejects; //type: uint16
+        ydk::YLeaf tear_requests; //type: uint16
+        ydk::YLeaf tear_errors; //type: uint16
+        ydk::YLeaf tear_preempts; //type: uint16
+
+}; // MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics
+
+
+class MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit : public ydk::Entity
+{
+    public:
+        IncomingPathStatistics32Bit();
+        ~IncomingPathStatistics32Bit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf setup_requests; //type: uint32
+        ydk::YLeaf setup_errors; //type: uint32
+        ydk::YLeaf setup_admits; //type: uint32
+        ydk::YLeaf setup_rejects; //type: uint32
+        ydk::YLeaf tear_requests; //type: uint32
+        ydk::YLeaf tear_errors; //type: uint32
+        ydk::YLeaf tear_preempts; //type: uint32
+
+}; // MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit
+
+
+class MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit : public ydk::Entity
+{
+    public:
+        IncomingReservationStatistics32Bit();
+        ~IncomingReservationStatistics32Bit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf setup_requests; //type: uint32
+        ydk::YLeaf setup_errors; //type: uint32
+        ydk::YLeaf setup_admits; //type: uint32
+        ydk::YLeaf setup_rejects; //type: uint32
+        ydk::YLeaf tear_requests; //type: uint32
+        ydk::YLeaf tear_errors; //type: uint32
+        ydk::YLeaf tear_preempts; //type: uint32
+
+}; // MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit
+
+
+class MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit : public ydk::Entity
+{
+    public:
+        OutgoingPathStatistics32Bit();
+        ~OutgoingPathStatistics32Bit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf setup_requests; //type: uint32
+        ydk::YLeaf setup_errors; //type: uint32
+        ydk::YLeaf setup_admits; //type: uint32
+        ydk::YLeaf setup_rejects; //type: uint32
+        ydk::YLeaf tear_requests; //type: uint32
+        ydk::YLeaf tear_errors; //type: uint32
+        ydk::YLeaf tear_preempts; //type: uint32
+
+}; // MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit
+
+
+class MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit : public ydk::Entity
+{
+    public:
+        OutgoingReservationStatistics32Bit();
+        ~OutgoingReservationStatistics32Bit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf setup_requests; //type: uint32
+        ydk::YLeaf setup_errors; //type: uint32
+        ydk::YLeaf setup_admits; //type: uint32
+        ydk::YLeaf setup_rejects; //type: uint32
+        ydk::YLeaf tear_requests; //type: uint32
+        ydk::YLeaf tear_errors; //type: uint32
+        ydk::YLeaf tear_preempts; //type: uint32
+
+}; // MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit
+
+
+class MplsLcac::BandwidthAllocation : public ydk::Entity
+{
+    public:
+        BandwidthAllocation();
+        ~BandwidthAllocation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Global; //type: MplsLcac::BandwidthAllocation::Global
+        class BandwidthAllocationLinks; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::Global> global;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks> bandwidth_allocation_links;
+        
+}; // MplsLcac::BandwidthAllocation
+
+
+class MplsLcac::BandwidthAllocation::Global : public ydk::Entity
+{
+    public:
+        Global();
+        ~Global();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf is_role_standby; //type: boolean
+        ydk::YLeaf links; //type: uint16
+        ydk::YLeaf bandwidth_hold_time; //type: uint16
+
+}; // MplsLcac::BandwidthAllocation::Global
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks : public ydk::Entity
+{
+    public:
+        BandwidthAllocationLinks();
+        ~BandwidthAllocationLinks();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class BandwidthAllocationLink; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
+
+        ydk::YList bandwidth_allocation_link;
+        
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink : public ydk::Entity
+{
+    public:
+        BandwidthAllocationLink();
+        ~BandwidthAllocationLink();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf total_bandwidth_descriptors; //type: uint16
+        ydk::YLeaf bandwidth_descriptors; //type: uint16
+        ydk::YLeaf bandwidth_pool; //type: BandwidthTypeEnum
+        ydk::YLeaf flooding_up_thresholds_are_default; //type: boolean
+        ydk::YLeaf flooding_down_thresholds_are_default; //type: boolean
+        ydk::YLeaf flooding_up_thresholds_are_global; //type: boolean
+        ydk::YLeaf flooding_down_thresholds_are_global; //type: boolean
+        class LinkCommon; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon
+        class UpstreamBandwidth; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth
+        class DownstreamBandwidth; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth
+        class FloodingUpThreshold; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold
+        class FloodingDownThreshold; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon> link_common;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth> upstream_bandwidth;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth> downstream_bandwidth;
+        ydk::YList flooding_up_threshold;
+        ydk::YList flooding_down_threshold;
+        
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon : public ydk::Entity
+{
+    public:
+        LinkCommon();
+        ~LinkCommon();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id; //type: string
+        ydk::YLeaf link_address; //type: string
+        ydk::YLeaf is_unnumbered; //type: boolean
+        ydk::YLeaf has_protection; //type: boolean
+        ydk::YLeaf capability; //type: uint32
+        ydk::YLeaf working_priority; //type: uint32
+        ydk::YLeaf resource_provider; //type: ResourceProvider
+        ydk::YLeaf is_resource_provider_installed; //type: boolean
+        ydk::YLeaf bandwidth_units; //type: BandwidthUnitEnum
+        ydk::YLeaf physical_bandwidth; //type: uint64
+        ydk::YLeaf bcm_id; //type: uint16
+        ydk::YLeaf maximum_reservable_bandwidth; //type: uint64
+        ydk::YLeaf last_flooded_effective_maximum_reservable_bandwidth; //type: uint64
+        ydk::YLeaf incoming_reservable_bandwidth_percentage; //type: uint8
+        ydk::YLeaf outgoing_reservable_bandwidth_percentage; //type: uint8
+        ydk::YLeaf maximum_reservable_pool0_bandwidth; //type: uint64
+        ydk::YLeaf incoming_reservable_pool0_bandwidth_percentage; //type: uint8
+        ydk::YLeaf outgoing_reservable_pool0_bandwidth_percentage; //type: uint8
+        ydk::YLeaf maximum_reservable_pool1_bandwidth; //type: uint64
+        ydk::YLeaf incoming_reservable_pool1_bandwidth_percentage; //type: uint8
+        ydk::YLeaf outgoing_reservable_pool1_bandwidth_percentage; //type: uint8
+        ydk::YLeaf inbound_admission_method; //type: AdmissionPolicy
+        ydk::YLeaf outbound_admission_method; //type: AdmissionPolicy
+        ydk::YLeaf igp_neighbors; //type: uint16
+        class LinkFlags; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags
+        class SharedRiskLinkGroup; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup
+        class InterfaceSwitchingCapabilityDescriptor; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor
+        class FloodedAreas; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags> link_flags;
+        ydk::YList shared_risk_link_group;
+        ydk::YList interface_switching_capability_descriptor;
+        ydk::YList flooded_areas;
+        
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags : public ydk::Entity
+{
+    public:
+        LinkFlags();
+        ~LinkFlags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_mpls_te_on; //type: boolean
+        ydk::YLeaf signaling_agent; //type: SignalingAgentEnum
+        ydk::YLeaf is_admin_up; //type: boolean
+
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup : public ydk::Entity
+{
+    public:
+        SharedRiskLinkGroup();
+        ~SharedRiskLinkGroup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf shared_risk_group; //type: uint32
+        ydk::YLeaf srlg_name; //type: string
+
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor : public ydk::Entity
+{
+    public:
+        InterfaceSwitchingCapabilityDescriptor();
+        ~InterfaceSwitchingCapabilityDescriptor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf key; //type: uint8
+        ydk::YLeaf switching_capability; //type: uint8
+        ydk::YLeaf encoding; //type: uint8
+
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas : public ydk::Entity
+{
+    public:
+        FloodedAreas();
+        ~FloodedAreas();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf flooded_area; //type: string
+
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth : public ydk::Entity
+{
+    public:
+        UpstreamBandwidth();
+        ~UpstreamBandwidth();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf bandwidth_direction; //type: LinkDirectionEnum
+        ydk::YLeaf is_admission_method_allocated_bandwidth; //type: boolean
+        ydk::YLeaf bandwidth_units; //type: BandwidthUnitEnum
+        class BandwidthPool0; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0
+        class BandwidthPool1; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1
+
+        ydk::YList bandwidth_pool0;
+        ydk::YList bandwidth_pool1;
+        
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0 : public ydk::Entity
+{
+    public:
+        BandwidthPool0();
+        ~BandwidthPool0();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf hold_priority; //type: uint8
+        ydk::YLeaf held_amount; //type: uint32
+        ydk::YLeaf total_held_amount; //type: uint32
+        ydk::YLeaf locked_amount; //type: uint32
+        ydk::YLeaf total_locked_amount; //type: uint32
+
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1 : public ydk::Entity
+{
+    public:
+        BandwidthPool1();
+        ~BandwidthPool1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf hold_priority; //type: uint8
+        ydk::YLeaf held_amount; //type: uint32
+        ydk::YLeaf total_held_amount; //type: uint32
+        ydk::YLeaf locked_amount; //type: uint32
+        ydk::YLeaf total_locked_amount; //type: uint32
+
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth : public ydk::Entity
+{
+    public:
+        DownstreamBandwidth();
+        ~DownstreamBandwidth();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf bandwidth_direction; //type: LinkDirectionEnum
+        ydk::YLeaf is_admission_method_allocated_bandwidth; //type: boolean
+        ydk::YLeaf bandwidth_units; //type: BandwidthUnitEnum
+        class BandwidthPool0; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0
+        class BandwidthPool1; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1
+
+        ydk::YList bandwidth_pool0;
+        ydk::YList bandwidth_pool1;
+        
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0 : public ydk::Entity
+{
+    public:
+        BandwidthPool0();
+        ~BandwidthPool0();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf hold_priority; //type: uint8
+        ydk::YLeaf held_amount; //type: uint32
+        ydk::YLeaf total_held_amount; //type: uint32
+        ydk::YLeaf locked_amount; //type: uint32
+        ydk::YLeaf total_locked_amount; //type: uint32
+
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1 : public ydk::Entity
+{
+    public:
+        BandwidthPool1();
+        ~BandwidthPool1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf hold_priority; //type: uint8
+        ydk::YLeaf held_amount; //type: uint32
+        ydk::YLeaf total_held_amount; //type: uint32
+        ydk::YLeaf locked_amount; //type: uint32
+        ydk::YLeaf total_locked_amount; //type: uint32
+
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold : public ydk::Entity
+{
+    public:
+        FloodingUpThreshold();
+        ~FloodingUpThreshold();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold
+
+
+class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold : public ydk::Entity
+{
+    public:
+        FloodingDownThreshold();
+        ~FloodingDownThreshold();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold
+
+
+class MplsLcac::Gmpls : public ydk::Entity
+{
+    public:
+        Gmpls();
+        ~Gmpls();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Nni; //type: MplsLcac::Gmpls::Nni
+        class Uni; //type: MplsLcac::Gmpls::Uni
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Gmpls::Nni> nni;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Gmpls::Uni> uni;
+        
+}; // MplsLcac::Gmpls
+
+
+class MplsLcac::Gmpls::Nni : public ydk::Entity
+{
+    public:
+        Nni();
+        ~Nni();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+
+}; // MplsLcac::Gmpls::Nni
+
+
+class MplsLcac::Gmpls::Uni : public ydk::Entity
+{
+    public:
+        Uni();
+        ~Uni();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+
+}; // MplsLcac::Gmpls::Uni
+
+
+class MplsLcac::BfdNeighbors : public ydk::Entity
+{
+    public:
+        BfdNeighbors();
+        ~BfdNeighbors();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class BfdNeighbor; //type: MplsLcac::BfdNeighbors::BfdNeighbor
+
+        ydk::YList bfd_neighbor;
+        
+}; // MplsLcac::BfdNeighbors
+
+
+class MplsLcac::BfdNeighbors::BfdNeighbor : public ydk::Entity
+{
+    public:
+        BfdNeighbor();
+        ~BfdNeighbor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf interface_name; //type: string
+        class Neighbor; //type: MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor
+
+        ydk::YList neighbor;
+        
+}; // MplsLcac::BfdNeighbors::BfdNeighbor
+
+
+class MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor : public ydk::Entity
+{
+    public:
+        Neighbor();
+        ~Neighbor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf is_bfd_up; //type: boolean
+
+}; // MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor
+
+
 class MplsLcac::BandwidthAccount : public ydk::Entity
 {
     public:
@@ -2960,1299 +4170,6 @@ class MplsPceStdby::Lsps::Lsp::Delegated : public ydk::Entity
         ydk::YLeaf address; //type: string
 
 }; // MplsPceStdby::Lsps::Lsp::Delegated
-
-
-class MplsPceStdby::Lsps::Lsp::Identifiers : public ydk::Entity
-{
-    public:
-        Identifiers();
-        ~Identifiers();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_used; //type: boolean
-        ydk::YLeaf sender; //type: string
-        ydk::YLeaf te_lsp_id; //type: uint16
-        ydk::YLeaf tunnel_id; //type: uint16
-        ydk::YLeaf ext_tunnel_id; //type: uint32
-
-}; // MplsPceStdby::Lsps::Lsp::Identifiers
-
-
-class MplsPceStdby::Lsps::Lsp::Autoroute : public ydk::Entity
-{
-    public:
-        Autoroute();
-        ~Autoroute();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_used; //type: boolean
-        ydk::YLeaf announced; //type: boolean
-        ydk::YLeaf metric_type; //type: PceLspAutorouteMetric
-        ydk::YLeaf metric; //type: uint32
-        class Destination; //type: MplsPceStdby::Lsps::Lsp::Autoroute::Destination
-
-        ydk::YList destination;
-        
-}; // MplsPceStdby::Lsps::Lsp::Autoroute
-
-
-class MplsPceStdby::Lsps::Lsp::Autoroute::Destination : public ydk::Entity
-{
-    public:
-        Destination();
-        ~Destination();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: string
-
-}; // MplsPceStdby::Lsps::Lsp::Autoroute::Destination
-
-
-class MplsPceStdby::Lsps::Lsp::BackupPath : public ydk::Entity
-{
-    public:
-        BackupPath();
-        ~BackupPath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: string
-
-}; // MplsPceStdby::Lsps::Lsp::BackupPath
-
-
-class MplsPceStdby::Lsps::Lsp::Paths : public ydk::Entity
-{
-    public:
-        Paths();
-        ~Paths();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf bw; //type: uint32
-        ydk::YLeaf is_bw_used; //type: boolean
-        ydk::YLeaf reopt_bw; //type: uint32
-        ydk::YLeaf is_reopt_bw_used; //type: boolean
-        ydk::YLeaf applied_bw; //type: uint32
-        ydk::YLeaf is_applied_bw_used; //type: boolean
-        class Ero; //type: MplsPceStdby::Lsps::Lsp::Paths::Ero
-        class Lspa; //type: MplsPceStdby::Lsps::Lsp::Paths::Lspa
-        class Rro; //type: MplsPceStdby::Lsps::Lsp::Paths::Rro
-        class Metric; //type: MplsPceStdby::Lsps::Lsp::Paths::Metric
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsPceStdby::Lsps::Lsp::Paths::Ero> ero;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsPceStdby::Lsps::Lsp::Paths::Lspa> lspa;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsPceStdby::Lsps::Lsp::Paths::Rro> rro;
-        ydk::YList metric;
-        
-}; // MplsPceStdby::Lsps::Lsp::Paths
-
-
-class MplsPceStdby::Lsps::Lsp::Paths::Ero : public ydk::Entity
-{
-    public:
-        Ero();
-        ~Ero();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_used; //type: boolean
-        ydk::YLeaf cost; //type: uint32
-        class Address; //type: MplsPceStdby::Lsps::Lsp::Paths::Ero::Address
-        class Subobject; //type: MplsPceStdby::Lsps::Lsp::Paths::Ero::Subobject
-
-        ydk::YList address;
-        ydk::YList subobject;
-        
-}; // MplsPceStdby::Lsps::Lsp::Paths::Ero
-
-
-class MplsPceStdby::Lsps::Lsp::Paths::Ero::Address : public ydk::Entity
-{
-    public:
-        Address();
-        ~Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: string
-
-}; // MplsPceStdby::Lsps::Lsp::Paths::Ero::Address
-
-
-class MplsPceStdby::Lsps::Lsp::Paths::Ero::Subobject : public ydk::Entity
-{
-    public:
-        Subobject();
-        ~Subobject();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf subobj_type; //type: uint8
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv4_prefix_len; //type: uint32
-        ydk::YLeaf strict; //type: boolean
-        ydk::YLeaf global; //type: boolean
-        ydk::YLeaf mpls_label; //type: uint32
-        ydk::YLeaf segment_id_type; //type: PceSrSid
-        ydk::YLeaf only_valid_mpls_label; //type: boolean
-        ydk::YLeaf complete_mpls_label_entry; //type: boolean
-        ydk::YLeaf missing_segment_id; //type: boolean
-        ydk::YLeaf missing_node_adjcency_id; //type: boolean
-        ydk::YLeaf segment_id_exists; //type: boolean
-        ydk::YLeaf segment_id_value; //type: uint32
-        ydk::YLeaf node_adjacency_id_exists; //type: boolean
-        ydk::YLeaf node_id; //type: string
-        ydk::YLeaf local_address; //type: string
-        ydk::YLeaf remote_address; //type: string
-
-}; // MplsPceStdby::Lsps::Lsp::Paths::Ero::Subobject
-
-
-class MplsPceStdby::Lsps::Lsp::Paths::Lspa : public ydk::Entity
-{
-    public:
-        Lspa();
-        ~Lspa();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_used; //type: boolean
-        ydk::YLeaf exlude_any; //type: uint32
-        ydk::YLeaf include_any; //type: uint32
-        ydk::YLeaf include_all; //type: uint32
-        ydk::YLeaf setup; //type: uint8
-        ydk::YLeaf hold; //type: uint8
-        ydk::YLeaf lbit; //type: boolean
-
-}; // MplsPceStdby::Lsps::Lsp::Paths::Lspa
-
-
-class MplsPceStdby::Lsps::Lsp::Paths::Rro : public ydk::Entity
-{
-    public:
-        Rro();
-        ~Rro();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_used; //type: boolean
-        ydk::YLeaf cost; //type: uint32
-        class Address; //type: MplsPceStdby::Lsps::Lsp::Paths::Rro::Address
-        class Subobject; //type: MplsPceStdby::Lsps::Lsp::Paths::Rro::Subobject
-
-        ydk::YList address;
-        ydk::YList subobject;
-        
-}; // MplsPceStdby::Lsps::Lsp::Paths::Rro
-
-
-class MplsPceStdby::Lsps::Lsp::Paths::Rro::Address : public ydk::Entity
-{
-    public:
-        Address();
-        ~Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: string
-
-}; // MplsPceStdby::Lsps::Lsp::Paths::Rro::Address
-
-
-class MplsPceStdby::Lsps::Lsp::Paths::Rro::Subobject : public ydk::Entity
-{
-    public:
-        Subobject();
-        ~Subobject();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf subobj_type; //type: uint8
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv4_prefix_len; //type: uint32
-        ydk::YLeaf strict; //type: boolean
-        ydk::YLeaf global; //type: boolean
-        ydk::YLeaf mpls_label; //type: uint32
-        ydk::YLeaf segment_id_type; //type: PceSrSid
-        ydk::YLeaf only_valid_mpls_label; //type: boolean
-        ydk::YLeaf complete_mpls_label_entry; //type: boolean
-        ydk::YLeaf missing_segment_id; //type: boolean
-        ydk::YLeaf missing_node_adjcency_id; //type: boolean
-        ydk::YLeaf segment_id_exists; //type: boolean
-        ydk::YLeaf segment_id_value; //type: uint32
-        ydk::YLeaf node_adjacency_id_exists; //type: boolean
-        ydk::YLeaf node_id; //type: string
-        ydk::YLeaf local_address; //type: string
-        ydk::YLeaf remote_address; //type: string
-
-}; // MplsPceStdby::Lsps::Lsp::Paths::Rro::Subobject
-
-
-class MplsPceStdby::Lsps::Lsp::Paths::Metric : public ydk::Entity
-{
-    public:
-        Metric();
-        ~Metric();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf type; //type: uint8
-        ydk::YLeaf cost; //type: uint32
-
-}; // MplsPceStdby::Lsps::Lsp::Paths::Metric
-
-
-class MplsPceStdby::Lsps::Creator : public ydk::Entity
-{
-    public:
-        Creator();
-        ~Creator();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf node_identifier; //type: string
-        ydk::YLeaf address; //type: string
-
-}; // MplsPceStdby::Lsps::Creator
-
-
-class MplsPceStdby::Lsps::Delegated : public ydk::Entity
-{
-    public:
-        Delegated();
-        ~Delegated();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf node_identifier; //type: string
-        ydk::YLeaf address; //type: string
-
-}; // MplsPceStdby::Lsps::Delegated
-
-
-class MplsPceStdby::Lsps::Identifiers : public ydk::Entity
-{
-    public:
-        Identifiers();
-        ~Identifiers();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf is_used; //type: boolean
-        ydk::YLeaf sender; //type: string
-        ydk::YLeaf te_lsp_id; //type: uint16
-        ydk::YLeaf tunnel_id; //type: uint16
-        ydk::YLeaf ext_tunnel_id; //type: uint32
-
-}; // MplsPceStdby::Lsps::Identifiers
-
-
-class MplsPceStdby::Lsps::Autoroute : public ydk::Entity
-{
-    public:
-        Autoroute();
-        ~Autoroute();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf is_used; //type: boolean
-        ydk::YLeaf announced; //type: boolean
-        ydk::YLeaf metric_type; //type: PceLspAutorouteMetric
-        ydk::YLeaf metric; //type: uint32
-        class Destination; //type: MplsPceStdby::Lsps::Autoroute::Destination
-
-        ydk::YList destination;
-        
-}; // MplsPceStdby::Lsps::Autoroute
-
-
-class MplsPceStdby::Lsps::Autoroute::Destination : public ydk::Entity
-{
-    public:
-        Destination();
-        ~Destination();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf entry; //type: string
-
-}; // MplsPceStdby::Lsps::Autoroute::Destination
-
-
-class MplsPceStdby::Lsps::BackupPath : public ydk::Entity
-{
-    public:
-        BackupPath();
-        ~BackupPath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf entry; //type: string
-
-}; // MplsPceStdby::Lsps::BackupPath
-
-
-class MplsPceStdby::Lsps::Paths : public ydk::Entity
-{
-    public:
-        Paths();
-        ~Paths();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf bw; //type: uint32
-        ydk::YLeaf is_bw_used; //type: boolean
-        ydk::YLeaf reopt_bw; //type: uint32
-        ydk::YLeaf is_reopt_bw_used; //type: boolean
-        ydk::YLeaf applied_bw; //type: uint32
-        ydk::YLeaf is_applied_bw_used; //type: boolean
-        class Ero; //type: MplsPceStdby::Lsps::Paths::Ero
-        class Lspa; //type: MplsPceStdby::Lsps::Paths::Lspa
-        class Rro; //type: MplsPceStdby::Lsps::Paths::Rro
-        class Metric; //type: MplsPceStdby::Lsps::Paths::Metric
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsPceStdby::Lsps::Paths::Ero> ero;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsPceStdby::Lsps::Paths::Lspa> lspa;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsPceStdby::Lsps::Paths::Rro> rro;
-        ydk::YList metric;
-        
-}; // MplsPceStdby::Lsps::Paths
-
-
-class MplsPceStdby::Lsps::Paths::Ero : public ydk::Entity
-{
-    public:
-        Ero();
-        ~Ero();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf is_used; //type: boolean
-        ydk::YLeaf cost; //type: uint32
-        class Address; //type: MplsPceStdby::Lsps::Paths::Ero::Address
-        class Subobject; //type: MplsPceStdby::Lsps::Paths::Ero::Subobject
-
-        ydk::YList address;
-        ydk::YList subobject;
-        
-}; // MplsPceStdby::Lsps::Paths::Ero
-
-
-class MplsPceStdby::Lsps::Paths::Ero::Address : public ydk::Entity
-{
-    public:
-        Address();
-        ~Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf entry; //type: string
-
-}; // MplsPceStdby::Lsps::Paths::Ero::Address
-
-
-class MplsPceStdby::Lsps::Paths::Ero::Subobject : public ydk::Entity
-{
-    public:
-        Subobject();
-        ~Subobject();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf subobj_type; //type: uint8
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv4_prefix_len; //type: uint32
-        ydk::YLeaf strict; //type: boolean
-        ydk::YLeaf global; //type: boolean
-        ydk::YLeaf mpls_label; //type: uint32
-        ydk::YLeaf segment_id_type; //type: PceSrSid
-        ydk::YLeaf only_valid_mpls_label; //type: boolean
-        ydk::YLeaf complete_mpls_label_entry; //type: boolean
-        ydk::YLeaf missing_segment_id; //type: boolean
-        ydk::YLeaf missing_node_adjcency_id; //type: boolean
-        ydk::YLeaf segment_id_exists; //type: boolean
-        ydk::YLeaf segment_id_value; //type: uint32
-        ydk::YLeaf node_adjacency_id_exists; //type: boolean
-        ydk::YLeaf node_id; //type: string
-        ydk::YLeaf local_address; //type: string
-        ydk::YLeaf remote_address; //type: string
-
-}; // MplsPceStdby::Lsps::Paths::Ero::Subobject
-
-
-class MplsPceStdby::Lsps::Paths::Lspa : public ydk::Entity
-{
-    public:
-        Lspa();
-        ~Lspa();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf is_used; //type: boolean
-        ydk::YLeaf exlude_any; //type: uint32
-        ydk::YLeaf include_any; //type: uint32
-        ydk::YLeaf include_all; //type: uint32
-        ydk::YLeaf setup; //type: uint8
-        ydk::YLeaf hold; //type: uint8
-        ydk::YLeaf lbit; //type: boolean
-
-}; // MplsPceStdby::Lsps::Paths::Lspa
-
-
-class MplsPceStdby::Lsps::Paths::Rro : public ydk::Entity
-{
-    public:
-        Rro();
-        ~Rro();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf is_used; //type: boolean
-        ydk::YLeaf cost; //type: uint32
-        class Address; //type: MplsPceStdby::Lsps::Paths::Rro::Address
-        class Subobject; //type: MplsPceStdby::Lsps::Paths::Rro::Subobject
-
-        ydk::YList address;
-        ydk::YList subobject;
-        
-}; // MplsPceStdby::Lsps::Paths::Rro
-
-
-class MplsPceStdby::Lsps::Paths::Rro::Address : public ydk::Entity
-{
-    public:
-        Address();
-        ~Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf entry; //type: string
-
-}; // MplsPceStdby::Lsps::Paths::Rro::Address
-
-
-class MplsPceStdby::Lsps::Paths::Rro::Subobject : public ydk::Entity
-{
-    public:
-        Subobject();
-        ~Subobject();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf subobj_type; //type: uint8
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv4_prefix_len; //type: uint32
-        ydk::YLeaf strict; //type: boolean
-        ydk::YLeaf global; //type: boolean
-        ydk::YLeaf mpls_label; //type: uint32
-        ydk::YLeaf segment_id_type; //type: PceSrSid
-        ydk::YLeaf only_valid_mpls_label; //type: boolean
-        ydk::YLeaf complete_mpls_label_entry; //type: boolean
-        ydk::YLeaf missing_segment_id; //type: boolean
-        ydk::YLeaf missing_node_adjcency_id; //type: boolean
-        ydk::YLeaf segment_id_exists; //type: boolean
-        ydk::YLeaf segment_id_value; //type: uint32
-        ydk::YLeaf node_adjacency_id_exists; //type: boolean
-        ydk::YLeaf node_id; //type: string
-        ydk::YLeaf local_address; //type: string
-        ydk::YLeaf remote_address; //type: string
-
-}; // MplsPceStdby::Lsps::Paths::Rro::Subobject
-
-
-class MplsPceStdby::Lsps::Paths::Metric : public ydk::Entity
-{
-    public:
-        Metric();
-        ~Metric();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf type; //type: uint8
-        ydk::YLeaf cost; //type: uint32
-
-}; // MplsPceStdby::Lsps::Paths::Metric
-
-
-class MplsPceStdby::Statistics : public ydk::Entity
-{
-    public:
-        Statistics();
-        ~Statistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf neighbors; //type: uint32
-        ydk::YLeaf tunnels; //type: uint32
-        ydk::YLeaf pce_req_total; //type: uint32
-        ydk::YLeaf pce_req_pending; //type: uint32
-        ydk::YLeaf pce_req_timed_out; //type: uint32
-        ydk::YLeaf max_file_descriptors; //type: uint32
-        ydk::YLeaf current_file_descriptors; //type: uint32
-        ydk::YLeaf current_pceq_length; //type: uint32
-        ydk::YLeaf current_teq_length; //type: uint32
-        ydk::YLeaf max_pceq_length; //type: uint32
-        ydk::YLeaf max_teq_length; //type: uint32
-        class IgpStatistics; //type: MplsPceStdby::Statistics::IgpStatistics
-        class MaximumInQueueDepth; //type: MplsPceStdby::Statistics::MaximumInQueueDepth
-        class AverageInQueueDepth; //type: MplsPceStdby::Statistics::AverageInQueueDepth
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsPceStdby::Statistics::IgpStatistics> igp_statistics;
-        ydk::YList maximum_in_queue_depth;
-        ydk::YList average_in_queue_depth;
-        
-}; // MplsPceStdby::Statistics
-
-
-class MplsPceStdby::Statistics::IgpStatistics : public ydk::Entity
-{
-    public:
-        IgpStatistics();
-        ~IgpStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf abr_lookup_min; //type: uint64
-        ydk::YLeaf abr_lookup_max; //type: uint64
-        ydk::YLeaf abr_lookup_avg; //type: uint64
-        ydk::YLeaf abr_lookup_timeout; //type: uint64
-        ydk::YLeaf abr_lookup_complete; //type: uint64
-
-}; // MplsPceStdby::Statistics::IgpStatistics
-
-
-class MplsPceStdby::Statistics::MaximumInQueueDepth : public ydk::Entity
-{
-    public:
-        MaximumInQueueDepth();
-        ~MaximumInQueueDepth();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // MplsPceStdby::Statistics::MaximumInQueueDepth
-
-
-class MplsPceStdby::Statistics::AverageInQueueDepth : public ydk::Entity
-{
-    public:
-        AverageInQueueDepth();
-        ~AverageInQueueDepth();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // MplsPceStdby::Statistics::AverageInQueueDepth
-
-
-class MplsPceStdby::Peers : public ydk::Entity
-{
-    public:
-        Peers();
-        ~Peers();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Peer; //type: MplsPceStdby::Peers::Peer
-
-        ydk::YList peer;
-        
-}; // MplsPceStdby::Peers
-
-
-class MplsPceStdby::Peers::Peer : public ydk::Entity
-{
-    public:
-        Peer();
-        ~Peer();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf peer_address; //type: string
-        ydk::YLeaf error; //type: string
-        ydk::YLeaf pce_state; //type: PceState
-        ydk::YLeaf precedence; //type: uint32
-        ydk::YLeaf stateful; //type: boolean
-        ydk::YLeaf capability_update; //type: boolean
-        ydk::YLeaf capability_instantiate; //type: boolean
-        ydk::YLeaf capability_segment_routing; //type: boolean
-        ydk::YLeaf triggered_sync_capability; //type: boolean
-        ydk::YLeaf capability_db_version; //type: boolean
-        ydk::YLeaf delta_sync_capability; //type: boolean
-        ydk::YLeaf pcep_up_time; //type: uint32
-        ydk::YLeaf keepalives; //type: uint32
-        ydk::YLeaf candidate; //type: boolean
-        ydk::YLeaf statically_configured; //type: boolean
-        ydk::YLeaf md5_enabled; //type: boolean
-        ydk::YLeaf keychain_enabled; //type: boolean
-        ydk::YLeaf negotiated_keepalive; //type: uint32
-        ydk::YLeaf negotated_dead_time; //type: uint32
-        ydk::YLeaf pce_req_rx; //type: uint32
-        ydk::YLeaf pce_req_tx; //type: uint32
-        ydk::YLeaf pce_rep_rx; //type: uint32
-        ydk::YLeaf pce_rep_tx; //type: uint32
-        ydk::YLeaf pce_err_rx; //type: uint32
-        ydk::YLeaf pce_err_tx; //type: uint32
-        ydk::YLeaf pce_open_tx; //type: uint32
-        ydk::YLeaf pce_open_rx; //type: uint32
-        ydk::YLeaf pce_rpt_rx; //type: uint32
-        ydk::YLeaf pce_rpt_tx; //type: uint32
-        ydk::YLeaf pce_upd_rx; //type: uint32
-        ydk::YLeaf pce_upd_tx; //type: uint32
-        ydk::YLeaf pce_init_rx; //type: uint32
-        ydk::YLeaf pce_init_tx; //type: uint32
-        ydk::YLeaf pce_keepalive_tx; //type: uint64
-        ydk::YLeaf pce_keepalive_rx; //type: uint64
-        ydk::YLeaf req_reply_min; //type: uint64
-        ydk::YLeaf req_reply_max; //type: uint64
-        ydk::YLeaf req_reply_avg; //type: uint64
-        ydk::YLeaf request_timeouts; //type: uint64
-        ydk::YLeaf local_sid; //type: uint8
-        ydk::YLeaf remote_sid; //type: uint8
-        ydk::YLeaf min_keepalive_interval; //type: uint8
-        ydk::YLeaf max_dead_interval; //type: uint8
-        class LastTxPceErr; //type: MplsPceStdby::Peers::Peer::LastTxPceErr
-        class LastRxPceErr; //type: MplsPceStdby::Peers::Peer::LastRxPceErr
-        class IgPs; //type: MplsPceStdby::Peers::Peer::IgPs
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsPceStdby::Peers::Peer::LastTxPceErr> last_tx_pce_err;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsPceStdby::Peers::Peer::LastRxPceErr> last_rx_pce_err;
-        ydk::YList ig_ps;
-        
-}; // MplsPceStdby::Peers::Peer
-
-
-class MplsPceStdby::Peers::Peer::LastTxPceErr : public ydk::Entity
-{
-    public:
-        LastTxPceErr();
-        ~LastTxPceErr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pce_err_type; //type: uint32
-        ydk::YLeaf pce_err_value; //type: uint32
-        ydk::YLeaf has_open_object; //type: boolean
-        ydk::YLeaf openversion; //type: uint32
-        ydk::YLeaf open_keepalive; //type: uint32
-        ydk::YLeaf open_dead_time; //type: uint32
-        ydk::YLeaf has_rp_object; //type: boolean
-        ydk::YLeaf rp_request_id; //type: uint32
-
-}; // MplsPceStdby::Peers::Peer::LastTxPceErr
-
-
-class MplsPceStdby::Peers::Peer::LastRxPceErr : public ydk::Entity
-{
-    public:
-        LastRxPceErr();
-        ~LastRxPceErr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pce_err_type; //type: uint32
-        ydk::YLeaf pce_err_value; //type: uint32
-        ydk::YLeaf has_open_object; //type: boolean
-        ydk::YLeaf openversion; //type: uint32
-        ydk::YLeaf open_keepalive; //type: uint32
-        ydk::YLeaf open_dead_time; //type: uint32
-        ydk::YLeaf has_rp_object; //type: boolean
-        ydk::YLeaf rp_request_id; //type: uint32
-
-}; // MplsPceStdby::Peers::Peer::LastRxPceErr
-
-
-class MplsPceStdby::Peers::Peer::IgPs : public ydk::Entity
-{
-    public:
-        IgPs();
-        ~IgPs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf igp_type; //type: IgpProtocol
-        ydk::YLeaf igp_instance_id; //type: string
-
-}; // MplsPceStdby::Peers::Peer::IgPs
-
-
-class MplsPceStdby::Topology : public ydk::Entity
-{
-    public:
-        Topology();
-        ~Topology();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Global; //type: MplsPceStdby::Topology::Global
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsPceStdby::Topology::Global> global;
-        
-}; // MplsPceStdby::Topology
-
-
-class MplsPceStdby::Topology::Global : public ydk::Entity
-{
-    public:
-        Global();
-        ~Global();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Nodes; //type: MplsPceStdby::Topology::Global::Nodes
-
-        ydk::YList nodes;
-        
-}; // MplsPceStdby::Topology::Global
-
-
-class MplsPceStdby::Topology::Global::Nodes : public ydk::Entity
-{
-    public:
-        Nodes();
-        ~Nodes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf router_id; //type: string
-        ydk::YLeaf igp_area_id; //type: uint32
-        ydk::YLeaf igp_area_format; //type: IgpOspfAreaFormat
-        ydk::YLeaf pce_cost; //type: uint32
-        ydk::YLeaf node_id; //type: string
-        ydk::YLeaf is_pce_border_node; //type: boolean
-
-}; // MplsPceStdby::Topology::Global::Nodes
-
-
-class MplsPceStdby::Tunnels : public ydk::Entity
-{
-    public:
-        Tunnels();
-        ~Tunnels();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf source_address; //type: string
-        ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf is_curr_path_option_pce; //type: boolean
-        ydk::YLeaf curr_path_option_index; //type: uint32
-        ydk::YLeaf configured_pce_address; //type: string
-        ydk::YLeaf sender_pce_address; //type: string
-        ydk::YLeaf path_state; //type: PceTunPathState
-        ydk::YLeaf tunnel_state; //type: PceTunnelState
-        ydk::YLeaf admin_weight; //type: uint32
-        ydk::YLeaf hop_count; //type: uint32
-        class Tunnel; //type: MplsPceStdby::Tunnels::Tunnel
-
-        ydk::YList tunnel;
-        
-}; // MplsPceStdby::Tunnels
-
-
-class MplsPceStdby::Tunnels::Tunnel : public ydk::Entity
-{
-    public:
-        Tunnel();
-        ~Tunnel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf tunnel_name; //type: string
-        ydk::YLeaf source_address; //type: string
-        ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf is_curr_path_option_pce; //type: boolean
-        ydk::YLeaf curr_path_option_index; //type: uint32
-        ydk::YLeaf configured_pce_address; //type: string
-        ydk::YLeaf sender_pce_address; //type: string
-        ydk::YLeaf path_state; //type: PceTunPathState
-        ydk::YLeaf tunnel_state; //type: PceTunnelState
-        ydk::YLeaf admin_weight; //type: uint32
-        ydk::YLeaf hop_count; //type: uint32
-
-}; // MplsPceStdby::Tunnels::Tunnel
-
-class MplsTp : public ydk::Entity
-{
-    public:
-        MplsTp();
-        ~MplsTp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::shared_ptr<ydk::Entity> clone_ptr() const override;
-        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
-        std::string get_bundle_yang_models_location() const override;
-        std::string get_bundle_name() const override;
-        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
-
-        class TpLinks; //type: MplsTp::TpLinks
-        class TpTunnels; //type: MplsTp::TpTunnels
-        class TpMidpoints; //type: MplsTp::TpMidpoints
-        class TpGlobalParameters; //type: MplsTp::TpGlobalParameters
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTp::TpLinks> tp_links;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTp::TpTunnels> tp_tunnels;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTp::TpMidpoints> tp_midpoints;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTp::TpGlobalParameters> tp_global_parameters;
-        
-}; // MplsTp
-
-
-class MplsTp::TpLinks : public ydk::Entity
-{
-    public:
-        TpLinks();
-        ~TpLinks();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class TpDetailLinks; //type: MplsTp::TpLinks::TpDetailLinks
-        class TpLinkSummary; //type: MplsTp::TpLinks::TpLinkSummary
-        class TpLinks_; //type: MplsTp::TpLinks::TpLinks_
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTp::TpLinks::TpDetailLinks> tp_detail_links;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTp::TpLinks::TpLinkSummary> tp_link_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTp::TpLinks::TpLinks_> tp_links;
-        
-}; // MplsTp::TpLinks
-
-
-class MplsTp::TpLinks::TpDetailLinks : public ydk::Entity
-{
-    public:
-        TpDetailLinks();
-        ~TpDetailLinks();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class TpDetailLink; //type: MplsTp::TpLinks::TpDetailLinks::TpDetailLink
-
-        ydk::YList tp_detail_link;
-        
-}; // MplsTp::TpLinks::TpDetailLinks
-
-
-class MplsTp::TpLinks::TpDetailLinks::TpDetailLink : public ydk::Entity
-{
-    public:
-        TpDetailLink();
-        ~TpDetailLink();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf tp_link_id; //type: uint32
-        ydk::YLeaf link_id; //type: uint32
-        ydk::YLeaf interface; //type: string
-        ydk::YLeaf next_hop_address; //type: string
-        ydk::YLeaf link_state; //type: TpLinkState
-        ydk::YLeaf ls_ps; //type: uint32
-        ydk::YLeaf reserved_bandwidth; //type: uint64
-        ydk::YLeaf available_bandwidth; //type: uint64
-        ydk::YLeaf unsupported_linecard; //type: boolean
-
-}; // MplsTp::TpLinks::TpDetailLinks::TpDetailLink
 
 
 }

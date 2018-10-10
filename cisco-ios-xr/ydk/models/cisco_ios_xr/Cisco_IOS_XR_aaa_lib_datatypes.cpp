@@ -40,6 +40,24 @@ const Enum::YLeaf AaaMethod::last {16, "last"};
 const Enum::YLeaf AaaAccountingBroadcast::disable {0, "disable"};
 const Enum::YLeaf AaaAccountingBroadcast::enable {1, "enable"};
 
+const Enum::YLeaf AaaMethodAccounting::not_set {0, "not-set"};
+const Enum::YLeaf AaaMethodAccounting::none {1, "none"};
+const Enum::YLeaf AaaMethodAccounting::radius {3, "radius"};
+const Enum::YLeaf AaaMethodAccounting::tacacs_plus {4, "tacacs-plus"};
+const Enum::YLeaf AaaMethodAccounting::dsmd {5, "dsmd"};
+const Enum::YLeaf AaaMethodAccounting::sgbp {6, "sgbp"};
+const Enum::YLeaf AaaMethodAccounting::acct_d {7, "acct-d"};
+const Enum::YLeaf AaaMethodAccounting::error {8, "error"};
+const Enum::YLeaf AaaMethodAccounting::if_authenticated {9, "if-authenticated"};
+const Enum::YLeaf AaaMethodAccounting::server_group {10, "server-group"};
+const Enum::YLeaf AaaMethodAccounting::server_group_not_defined {11, "server-group-not-defined"};
+const Enum::YLeaf AaaMethodAccounting::line {12, "line"};
+const Enum::YLeaf AaaMethodAccounting::enable {13, "enable"};
+const Enum::YLeaf AaaMethodAccounting::kerberos {14, "kerberos"};
+const Enum::YLeaf AaaMethodAccounting::diameter {15, "diameter"};
+const Enum::YLeaf AaaMethodAccounting::last {16, "last"};
+const Enum::YLeaf AaaMethodAccounting::local {17, "local"};
+
 const Enum::YLeaf AaaAccountingRpFailover::disable {0, "disable"};
 const Enum::YLeaf AaaAccountingRpFailover::enable {1, "enable"};
 

@@ -127,7 +127,7 @@ class Netconf::Agent::Tty::Sessions::Session : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf session_id; //type: int32
+        ydk::YLeaf session_id; //type: uint32
         ydk::YLeaf username; //type: string
         ydk::YLeaf state; //type: XrXmlSessionState
         ydk::YLeaf client_address; //type: string
@@ -263,7 +263,7 @@ class XrXml::Agent::Tty::Sessions::Session : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf session_id; //type: int32
+        ydk::YLeaf session_id; //type: uint32
         ydk::YLeaf username; //type: string
         ydk::YLeaf state; //type: XrXmlSessionState
         ydk::YLeaf client_address; //type: string
@@ -344,7 +344,7 @@ class XrXml::Agent::Default::Sessions::Session : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf session_id; //type: int32
+        ydk::YLeaf session_id; //type: uint32
         ydk::YLeaf username; //type: string
         ydk::YLeaf state; //type: XrXmlSessionState
         ydk::YLeaf client_address; //type: string
@@ -425,7 +425,7 @@ class XrXml::Agent::Ssl::Sessions::Session : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf session_id; //type: int32
+        ydk::YLeaf session_id; //type: uint32
         ydk::YLeaf username; //type: string
         ydk::YLeaf state; //type: XrXmlSessionState
         ydk::YLeaf client_address; //type: string

@@ -61,6 +61,9 @@ class GnssConstellation : public ydk::Enum
         static const ydk::Enum::YLeaf galileo;
         static const ydk::Enum::YLeaf bei_dou;
         static const ydk::Enum::YLeaf qzss;
+        static const ydk::Enum::YLeaf glonass;
+        static const ydk::Enum::YLeaf sbas;
+        static const ydk::Enum::YLeaf irnss;
 
 };
 

@@ -2259,11 +2259,11 @@ Ntp::Authentication::Authentication()
     :
     enable{YType::empty, "enable"}
         ,
-    keies(std::make_shared<Ntp::Authentication::Keies>())
-    , trusted_keies(std::make_shared<Ntp::Authentication::TrustedKeies>())
+    keys(std::make_shared<Ntp::Authentication::Keys>())
+    , trusted_keys(std::make_shared<Ntp::Authentication::TrustedKeys>())
 {
-    keies->parent = this;
-    trusted_keies->parent = this;
+    keys->parent = this;
+    trusted_keys->parent = this;
 
     yang_name = "authentication"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -2276,16 +2276,16 @@ bool Ntp::Authentication::has_data() const
 {
     if (is_presence_container) return true;
     return enable.is_set
-	|| (keies !=  nullptr && keies->has_data())
-	|| (trusted_keies !=  nullptr && trusted_keies->has_data());
+	|| (keys !=  nullptr && keys->has_data())
+	|| (trusted_keys !=  nullptr && trusted_keys->has_data());
 }
 
 bool Ntp::Authentication::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| (keies !=  nullptr && keies->has_operation())
-	|| (trusted_keies !=  nullptr && trusted_keies->has_operation());
+	|| (keys !=  nullptr && keys->has_operation())
+	|| (trusted_keys !=  nullptr && trusted_keys->has_operation());
 }
 
 std::string Ntp::Authentication::get_absolute_path() const
@@ -2314,22 +2314,22 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::get_name_lea
 
 std::shared_ptr<Entity> Ntp::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "keies")
+    if(child_yang_name == "keys")
     {
-        if(keies == nullptr)
+        if(keys == nullptr)
         {
-            keies = std::make_shared<Ntp::Authentication::Keies>();
+            keys = std::make_shared<Ntp::Authentication::Keys>();
         }
-        return keies;
+        return keys;
     }
 
-    if(child_yang_name == "trusted-keies")
+    if(child_yang_name == "trusted-keys")
     {
-        if(trusted_keies == nullptr)
+        if(trusted_keys == nullptr)
         {
-            trusted_keies = std::make_shared<Ntp::Authentication::TrustedKeies>();
+            trusted_keys = std::make_shared<Ntp::Authentication::TrustedKeys>();
         }
-        return trusted_keies;
+        return trusted_keys;
     }
 
     return nullptr;
@@ -2339,14 +2339,14 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::get_children
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(keies != nullptr)
+    if(keys != nullptr)
     {
-        children["keies"] = keies;
+        children["keys"] = keys;
     }
 
-    if(trusted_keies != nullptr)
+    if(trusted_keys != nullptr)
     {
-        children["trusted-keies"] = trusted_keies;
+        children["trusted-keys"] = trusted_keys;
     }
 
     return children;
@@ -2372,24 +2372,24 @@ void Ntp::Authentication::set_filter(const std::string & value_path, YFilter yfi
 
 bool Ntp::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "keies" || name == "trusted-keies" || name == "enable")
+    if(name == "keys" || name == "trusted-keys" || name == "enable")
         return true;
     return false;
 }
 
-Ntp::Authentication::Keies::Keies()
+Ntp::Authentication::Keys::Keys()
     :
     key(this, {"key_number"})
 {
 
-    yang_name = "keies"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "keys"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Ntp::Authentication::Keies::~Keies()
+Ntp::Authentication::Keys::~Keys()
 {
 }
 
-bool Ntp::Authentication::Keies::has_data() const
+bool Ntp::Authentication::Keys::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<key.len(); index++)
@@ -2400,7 +2400,7 @@ bool Ntp::Authentication::Keies::has_data() const
     return false;
 }
 
-bool Ntp::Authentication::Keies::has_operation() const
+bool Ntp::Authentication::Keys::has_operation() const
 {
     for (std::size_t index=0; index<key.len(); index++)
     {
@@ -2410,21 +2410,21 @@ bool Ntp::Authentication::Keies::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Ntp::Authentication::Keies::get_absolute_path() const
+std::string Ntp::Authentication::Keys::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ntp::Authentication::Keies::get_segment_path() const
+std::string Ntp::Authentication::Keys::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "keies";
+    path_buffer << "keys";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::Keies::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::Keys::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2433,11 +2433,11 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::Keies::get_n
 
 }
 
-std::shared_ptr<Entity> Ntp::Authentication::Keies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ntp::Authentication::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key")
     {
-        auto c = std::make_shared<Ntp::Authentication::Keies::Key>();
+        auto c = std::make_shared<Ntp::Authentication::Keys::Key>();
         c->parent = this;
         key.append(c);
         return c;
@@ -2446,7 +2446,7 @@ std::shared_ptr<Entity> Ntp::Authentication::Keies::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keies::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keys::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2462,56 +2462,56 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keies::get_c
     return children;
 }
 
-void Ntp::Authentication::Keies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ntp::Authentication::Keys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ntp::Authentication::Keies::set_filter(const std::string & value_path, YFilter yfilter)
+void Ntp::Authentication::Keys::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ntp::Authentication::Keies::has_leaf_or_child_of_name(const std::string & name) const
+bool Ntp::Authentication::Keys::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key")
         return true;
     return false;
 }
 
-Ntp::Authentication::Keies::Key::Key()
+Ntp::Authentication::Keys::Key::Key()
     :
     key_number{YType::uint32, "key-number"},
     authentication_key{YType::str, "authentication-key"}
 {
 
-    yang_name = "key"; yang_parent_name = "keies"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "key"; yang_parent_name = "keys"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Ntp::Authentication::Keies::Key::~Key()
+Ntp::Authentication::Keys::Key::~Key()
 {
 }
 
-bool Ntp::Authentication::Keies::Key::has_data() const
+bool Ntp::Authentication::Keys::Key::has_data() const
 {
     if (is_presence_container) return true;
     return key_number.is_set
 	|| authentication_key.is_set;
 }
 
-bool Ntp::Authentication::Keies::Key::has_operation() const
+bool Ntp::Authentication::Keys::Key::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(key_number.yfilter)
 	|| ydk::is_set(authentication_key.yfilter);
 }
 
-std::string Ntp::Authentication::Keies::Key::get_absolute_path() const
+std::string Ntp::Authentication::Keys::Key::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/keies/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/keys/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ntp::Authentication::Keies::Key::get_segment_path() const
+std::string Ntp::Authentication::Keys::Key::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key";
@@ -2519,7 +2519,7 @@ std::string Ntp::Authentication::Keies::Key::get_segment_path() const
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::Keies::Key::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::Keys::Key::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2530,19 +2530,19 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::Keies::Key::
 
 }
 
-std::shared_ptr<Entity> Ntp::Authentication::Keies::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ntp::Authentication::Keys::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keies::Key::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keys::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ntp::Authentication::Keies::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ntp::Authentication::Keys::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-number")
     {
@@ -2558,7 +2558,7 @@ void Ntp::Authentication::Keies::Key::set_value(const std::string & value_path, 
     }
 }
 
-void Ntp::Authentication::Keies::Key::set_filter(const std::string & value_path, YFilter yfilter)
+void Ntp::Authentication::Keys::Key::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "key-number")
     {
@@ -2570,26 +2570,26 @@ void Ntp::Authentication::Keies::Key::set_filter(const std::string & value_path,
     }
 }
 
-bool Ntp::Authentication::Keies::Key::has_leaf_or_child_of_name(const std::string & name) const
+bool Ntp::Authentication::Keys::Key::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-number" || name == "authentication-key")
         return true;
     return false;
 }
 
-Ntp::Authentication::TrustedKeies::TrustedKeies()
+Ntp::Authentication::TrustedKeys::TrustedKeys()
     :
     trusted_key(this, {"key_number"})
 {
 
-    yang_name = "trusted-keies"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "trusted-keys"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Ntp::Authentication::TrustedKeies::~TrustedKeies()
+Ntp::Authentication::TrustedKeys::~TrustedKeys()
 {
 }
 
-bool Ntp::Authentication::TrustedKeies::has_data() const
+bool Ntp::Authentication::TrustedKeys::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<trusted_key.len(); index++)
@@ -2600,7 +2600,7 @@ bool Ntp::Authentication::TrustedKeies::has_data() const
     return false;
 }
 
-bool Ntp::Authentication::TrustedKeies::has_operation() const
+bool Ntp::Authentication::TrustedKeys::has_operation() const
 {
     for (std::size_t index=0; index<trusted_key.len(); index++)
     {
@@ -2610,21 +2610,21 @@ bool Ntp::Authentication::TrustedKeies::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Ntp::Authentication::TrustedKeies::get_absolute_path() const
+std::string Ntp::Authentication::TrustedKeys::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ntp::Authentication::TrustedKeies::get_segment_path() const
+std::string Ntp::Authentication::TrustedKeys::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trusted-keies";
+    path_buffer << "trusted-keys";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::TrustedKeies::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::TrustedKeys::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2633,11 +2633,11 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::TrustedKeies
 
 }
 
-std::shared_ptr<Entity> Ntp::Authentication::TrustedKeies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ntp::Authentication::TrustedKeys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trusted-key")
     {
-        auto c = std::make_shared<Ntp::Authentication::TrustedKeies::TrustedKey>();
+        auto c = std::make_shared<Ntp::Authentication::TrustedKeys::TrustedKey>();
         c->parent = this;
         trusted_key.append(c);
         return c;
@@ -2646,7 +2646,7 @@ std::shared_ptr<Entity> Ntp::Authentication::TrustedKeies::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeies::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeys::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2662,53 +2662,53 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeies
     return children;
 }
 
-void Ntp::Authentication::TrustedKeies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ntp::Authentication::TrustedKeys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ntp::Authentication::TrustedKeies::set_filter(const std::string & value_path, YFilter yfilter)
+void Ntp::Authentication::TrustedKeys::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ntp::Authentication::TrustedKeies::has_leaf_or_child_of_name(const std::string & name) const
+bool Ntp::Authentication::TrustedKeys::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "trusted-key")
         return true;
     return false;
 }
 
-Ntp::Authentication::TrustedKeies::TrustedKey::TrustedKey()
+Ntp::Authentication::TrustedKeys::TrustedKey::TrustedKey()
     :
     key_number{YType::uint32, "key-number"}
 {
 
-    yang_name = "trusted-key"; yang_parent_name = "trusted-keies"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "trusted-key"; yang_parent_name = "trusted-keys"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Ntp::Authentication::TrustedKeies::TrustedKey::~TrustedKey()
+Ntp::Authentication::TrustedKeys::TrustedKey::~TrustedKey()
 {
 }
 
-bool Ntp::Authentication::TrustedKeies::TrustedKey::has_data() const
+bool Ntp::Authentication::TrustedKeys::TrustedKey::has_data() const
 {
     if (is_presence_container) return true;
     return key_number.is_set;
 }
 
-bool Ntp::Authentication::TrustedKeies::TrustedKey::has_operation() const
+bool Ntp::Authentication::TrustedKeys::TrustedKey::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(key_number.yfilter);
 }
 
-std::string Ntp::Authentication::TrustedKeies::TrustedKey::get_absolute_path() const
+std::string Ntp::Authentication::TrustedKeys::TrustedKey::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/trusted-keies/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/trusted-keys/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ntp::Authentication::TrustedKeies::TrustedKey::get_segment_path() const
+std::string Ntp::Authentication::TrustedKeys::TrustedKey::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "trusted-key";
@@ -2716,7 +2716,7 @@ std::string Ntp::Authentication::TrustedKeies::TrustedKey::get_segment_path() co
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::TrustedKeies::TrustedKey::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::TrustedKeys::TrustedKey::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2726,19 +2726,19 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::TrustedKeies
 
 }
 
-std::shared_ptr<Entity> Ntp::Authentication::TrustedKeies::TrustedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ntp::Authentication::TrustedKeys::TrustedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeies::TrustedKey::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeys::TrustedKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ntp::Authentication::TrustedKeies::TrustedKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ntp::Authentication::TrustedKeys::TrustedKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-number")
     {
@@ -2748,7 +2748,7 @@ void Ntp::Authentication::TrustedKeies::TrustedKey::set_value(const std::string 
     }
 }
 
-void Ntp::Authentication::TrustedKeies::TrustedKey::set_filter(const std::string & value_path, YFilter yfilter)
+void Ntp::Authentication::TrustedKeys::TrustedKey::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "key-number")
     {
@@ -2756,7 +2756,7 @@ void Ntp::Authentication::TrustedKeies::TrustedKey::set_filter(const std::string
     }
 }
 
-bool Ntp::Authentication::TrustedKeies::TrustedKey::has_leaf_or_child_of_name(const std::string & name) const
+bool Ntp::Authentication::TrustedKeys::TrustedKey::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-number")
         return true;

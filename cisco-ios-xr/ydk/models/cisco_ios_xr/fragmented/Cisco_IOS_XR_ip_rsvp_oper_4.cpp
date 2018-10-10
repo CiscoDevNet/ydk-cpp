@@ -12,635 +12,6 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_rsvp_oper {
 
-Rsvp::AuthenticationDetails::AuthenticationDetails()
-    :
-    authentication_detail(this, {"source_address", "destination_address", "mode_id", "interface_name"})
-{
-
-    yang_name = "authentication-details"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Rsvp::AuthenticationDetails::~AuthenticationDetails()
-{
-}
-
-bool Rsvp::AuthenticationDetails::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<authentication_detail.len(); index++)
-    {
-        if(authentication_detail[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Rsvp::AuthenticationDetails::has_operation() const
-{
-    for (std::size_t index=0; index<authentication_detail.len(); index++)
-    {
-        if(authentication_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Rsvp::AuthenticationDetails::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rsvp::AuthenticationDetails::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "authentication-details";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rsvp::AuthenticationDetails::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rsvp::AuthenticationDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "authentication-detail")
-    {
-        auto c = std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail>();
-        c->parent = this;
-        authentication_detail.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::AuthenticationDetails::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : authentication_detail.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Rsvp::AuthenticationDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Rsvp::AuthenticationDetails::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Rsvp::AuthenticationDetails::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "authentication-detail")
-        return true;
-    return false;
-}
-
-Rsvp::AuthenticationDetails::AuthenticationDetail::AuthenticationDetail()
-    :
-    source_address{YType::str, "source-address"},
-    destination_address{YType::str, "destination-address"},
-    mode_id{YType::enumeration, "mode-id"},
-    interface_name{YType::str, "interface-name"},
-    key_status{YType::uint32, "key-status"},
-    key_digest_info{YType::uint32, "key-digest-info"},
-    lifetime{YType::uint32, "lifetime"},
-    lifetime_left{YType::uint32, "lifetime-left"},
-    challenge_status{YType::enumeration, "challenge-status"}
-        ,
-    auth_compact(std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact>())
-    , direction_info(std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo>())
-{
-    auth_compact->parent = this;
-    direction_info->parent = this;
-
-    yang_name = "authentication-detail"; yang_parent_name = "authentication-details"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Rsvp::AuthenticationDetails::AuthenticationDetail::~AuthenticationDetail()
-{
-}
-
-bool Rsvp::AuthenticationDetails::AuthenticationDetail::has_data() const
-{
-    if (is_presence_container) return true;
-    return source_address.is_set
-	|| destination_address.is_set
-	|| mode_id.is_set
-	|| interface_name.is_set
-	|| key_status.is_set
-	|| key_digest_info.is_set
-	|| lifetime.is_set
-	|| lifetime_left.is_set
-	|| challenge_status.is_set
-	|| (auth_compact !=  nullptr && auth_compact->has_data())
-	|| (direction_info !=  nullptr && direction_info->has_data());
-}
-
-bool Rsvp::AuthenticationDetails::AuthenticationDetail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(source_address.yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(mode_id.yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(key_status.yfilter)
-	|| ydk::is_set(key_digest_info.yfilter)
-	|| ydk::is_set(lifetime.yfilter)
-	|| ydk::is_set(lifetime_left.yfilter)
-	|| ydk::is_set(challenge_status.yfilter)
-	|| (auth_compact !=  nullptr && auth_compact->has_operation())
-	|| (direction_info !=  nullptr && direction_info->has_operation());
-}
-
-std::string Rsvp::AuthenticationDetails::AuthenticationDetail::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/authentication-details/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rsvp::AuthenticationDetails::AuthenticationDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "authentication-detail";
-    ADD_KEY_TOKEN(source_address, "source-address");
-    ADD_KEY_TOKEN(destination_address, "destination-address");
-    ADD_KEY_TOKEN(mode_id, "mode-id");
-    ADD_KEY_TOKEN(interface_name, "interface-name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rsvp::AuthenticationDetails::AuthenticationDetail::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (mode_id.is_set || is_set(mode_id.yfilter)) leaf_name_data.push_back(mode_id.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (key_status.is_set || is_set(key_status.yfilter)) leaf_name_data.push_back(key_status.get_name_leafdata());
-    if (key_digest_info.is_set || is_set(key_digest_info.yfilter)) leaf_name_data.push_back(key_digest_info.get_name_leafdata());
-    if (lifetime.is_set || is_set(lifetime.yfilter)) leaf_name_data.push_back(lifetime.get_name_leafdata());
-    if (lifetime_left.is_set || is_set(lifetime_left.yfilter)) leaf_name_data.push_back(lifetime_left.get_name_leafdata());
-    if (challenge_status.is_set || is_set(challenge_status.yfilter)) leaf_name_data.push_back(challenge_status.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "auth-compact")
-    {
-        if(auth_compact == nullptr)
-        {
-            auth_compact = std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact>();
-        }
-        return auth_compact;
-    }
-
-    if(child_yang_name == "direction-info")
-    {
-        if(direction_info == nullptr)
-        {
-            direction_info = std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo>();
-        }
-        return direction_info;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(auth_compact != nullptr)
-    {
-        children["auth-compact"] = auth_compact;
-    }
-
-    if(direction_info != nullptr)
-    {
-        children["direction-info"] = direction_info;
-    }
-
-    return children;
-}
-
-void Rsvp::AuthenticationDetails::AuthenticationDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "source-address")
-    {
-        source_address = value;
-        source_address.value_namespace = name_space;
-        source_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mode-id")
-    {
-        mode_id = value;
-        mode_id.value_namespace = name_space;
-        mode_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "key-status")
-    {
-        key_status = value;
-        key_status.value_namespace = name_space;
-        key_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "key-digest-info")
-    {
-        key_digest_info = value;
-        key_digest_info.value_namespace = name_space;
-        key_digest_info.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lifetime")
-    {
-        lifetime = value;
-        lifetime.value_namespace = name_space;
-        lifetime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lifetime-left")
-    {
-        lifetime_left = value;
-        lifetime_left.value_namespace = name_space;
-        lifetime_left.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "challenge-status")
-    {
-        challenge_status = value;
-        challenge_status.value_namespace = name_space;
-        challenge_status.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::AuthenticationDetails::AuthenticationDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "source-address")
-    {
-        source_address.yfilter = yfilter;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "mode-id")
-    {
-        mode_id.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "key-status")
-    {
-        key_status.yfilter = yfilter;
-    }
-    if(value_path == "key-digest-info")
-    {
-        key_digest_info.yfilter = yfilter;
-    }
-    if(value_path == "lifetime")
-    {
-        lifetime.yfilter = yfilter;
-    }
-    if(value_path == "lifetime-left")
-    {
-        lifetime_left.yfilter = yfilter;
-    }
-    if(value_path == "challenge-status")
-    {
-        challenge_status.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::AuthenticationDetails::AuthenticationDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "auth-compact" || name == "direction-info" || name == "source-address" || name == "destination-address" || name == "mode-id" || name == "interface-name" || name == "key-status" || name == "key-digest-info" || name == "lifetime" || name == "lifetime-left" || name == "challenge-status")
-        return true;
-    return false;
-}
-
-Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::AuthCompact()
-    :
-    source_address_xr{YType::str, "source-address-xr"},
-    destination_address_xr{YType::str, "destination-address-xr"},
-    neighbor_address{YType::str, "neighbor-address"},
-    direction{YType::enumeration, "direction"},
-    key_type{YType::enumeration, "key-type"},
-    key_source{YType::str, "key-source"},
-    key_id{YType::uint64, "key-id"},
-    key_id_valid{YType::uint32, "key-id-valid"}
-{
-
-    yang_name = "auth-compact"; yang_parent_name = "authentication-detail"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::~AuthCompact()
-{
-}
-
-bool Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::has_data() const
-{
-    if (is_presence_container) return true;
-    return source_address_xr.is_set
-	|| destination_address_xr.is_set
-	|| neighbor_address.is_set
-	|| direction.is_set
-	|| key_type.is_set
-	|| key_source.is_set
-	|| key_id.is_set
-	|| key_id_valid.is_set;
-}
-
-bool Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(source_address_xr.yfilter)
-	|| ydk::is_set(destination_address_xr.yfilter)
-	|| ydk::is_set(neighbor_address.yfilter)
-	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(key_type.yfilter)
-	|| ydk::is_set(key_source.yfilter)
-	|| ydk::is_set(key_id.yfilter)
-	|| ydk::is_set(key_id_valid.yfilter);
-}
-
-std::string Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "auth-compact";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (source_address_xr.is_set || is_set(source_address_xr.yfilter)) leaf_name_data.push_back(source_address_xr.get_name_leafdata());
-    if (destination_address_xr.is_set || is_set(destination_address_xr.yfilter)) leaf_name_data.push_back(destination_address_xr.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (key_type.is_set || is_set(key_type.yfilter)) leaf_name_data.push_back(key_type.get_name_leafdata());
-    if (key_source.is_set || is_set(key_source.yfilter)) leaf_name_data.push_back(key_source.get_name_leafdata());
-    if (key_id.is_set || is_set(key_id.yfilter)) leaf_name_data.push_back(key_id.get_name_leafdata());
-    if (key_id_valid.is_set || is_set(key_id_valid.yfilter)) leaf_name_data.push_back(key_id_valid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "source-address-xr")
-    {
-        source_address_xr = value;
-        source_address_xr.value_namespace = name_space;
-        source_address_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-address-xr")
-    {
-        destination_address_xr = value;
-        destination_address_xr.value_namespace = name_space;
-        destination_address_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "neighbor-address")
-    {
-        neighbor_address = value;
-        neighbor_address.value_namespace = name_space;
-        neighbor_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "key-type")
-    {
-        key_type = value;
-        key_type.value_namespace = name_space;
-        key_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "key-source")
-    {
-        key_source = value;
-        key_source.value_namespace = name_space;
-        key_source.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "key-id")
-    {
-        key_id = value;
-        key_id.value_namespace = name_space;
-        key_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "key-id-valid")
-    {
-        key_id_valid = value;
-        key_id_valid.value_namespace = name_space;
-        key_id_valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "source-address-xr")
-    {
-        source_address_xr.yfilter = yfilter;
-    }
-    if(value_path == "destination-address-xr")
-    {
-        destination_address_xr.yfilter = yfilter;
-    }
-    if(value_path == "neighbor-address")
-    {
-        neighbor_address.yfilter = yfilter;
-    }
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-    if(value_path == "key-type")
-    {
-        key_type.yfilter = yfilter;
-    }
-    if(value_path == "key-source")
-    {
-        key_source.yfilter = yfilter;
-    }
-    if(value_path == "key-id")
-    {
-        key_id.yfilter = yfilter;
-    }
-    if(value_path == "key-id-valid")
-    {
-        key_id_valid.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "source-address-xr" || name == "destination-address-xr" || name == "neighbor-address" || name == "direction" || name == "key-type" || name == "key-source" || name == "key-id" || name == "key-id-valid")
-        return true;
-    return false;
-}
-
-Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::DirectionInfo()
-    :
-    auth_direction{YType::enumeration, "auth-direction"}
-        ,
-    send_info(std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo>())
-    , receive_info(std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo>())
-{
-    send_info->parent = this;
-    receive_info->parent = this;
-
-    yang_name = "direction-info"; yang_parent_name = "authentication-detail"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::~DirectionInfo()
-{
-}
-
-bool Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::has_data() const
-{
-    if (is_presence_container) return true;
-    return auth_direction.is_set
-	|| (send_info !=  nullptr && send_info->has_data())
-	|| (receive_info !=  nullptr && receive_info->has_data());
-}
-
-bool Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(auth_direction.yfilter)
-	|| (send_info !=  nullptr && send_info->has_operation())
-	|| (receive_info !=  nullptr && receive_info->has_operation());
-}
-
-std::string Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "direction-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (auth_direction.is_set || is_set(auth_direction.yfilter)) leaf_name_data.push_back(auth_direction.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "send-info")
-    {
-        if(send_info == nullptr)
-        {
-            send_info = std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo>();
-        }
-        return send_info;
-    }
-
-    if(child_yang_name == "receive-info")
-    {
-        if(receive_info == nullptr)
-        {
-            receive_info = std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo>();
-        }
-        return receive_info;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(send_info != nullptr)
-    {
-        children["send-info"] = send_info;
-    }
-
-    if(receive_info != nullptr)
-    {
-        children["receive-info"] = receive_info;
-    }
-
-    return children;
-}
-
-void Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "auth-direction")
-    {
-        auth_direction = value;
-        auth_direction.value_namespace = name_space;
-        auth_direction.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "auth-direction")
-    {
-        auth_direction.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "send-info" || name == "receive-info" || name == "auth-direction")
-        return true;
-    return false;
-}
-
 Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::SendInfo()
     :
     sequence{YType::uint64, "sequence"}
@@ -3541,930 +2912,6 @@ void Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2mpIpv4Session::set_filter(
 bool Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2mpIpv4Session::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source-address" || name == "source-port" || name == "p2mp-sub-group-origin" || name == "sub-group-id")
-        return true;
-    return false;
-}
-
-Rsvp::OpenConfig::OpenConfig()
-    :
-    global_counters(std::make_shared<Rsvp::OpenConfig::GlobalCounters>())
-    , interface_counters(std::make_shared<Rsvp::OpenConfig::InterfaceCounters>())
-{
-    global_counters->parent = this;
-    interface_counters->parent = this;
-
-    yang_name = "open-config"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Rsvp::OpenConfig::~OpenConfig()
-{
-}
-
-bool Rsvp::OpenConfig::has_data() const
-{
-    if (is_presence_container) return true;
-    return (global_counters !=  nullptr && global_counters->has_data())
-	|| (interface_counters !=  nullptr && interface_counters->has_data());
-}
-
-bool Rsvp::OpenConfig::has_operation() const
-{
-    return is_set(yfilter)
-	|| (global_counters !=  nullptr && global_counters->has_operation())
-	|| (interface_counters !=  nullptr && interface_counters->has_operation());
-}
-
-std::string Rsvp::OpenConfig::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rsvp::OpenConfig::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "open-config";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rsvp::OpenConfig::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rsvp::OpenConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "global-counters")
-    {
-        if(global_counters == nullptr)
-        {
-            global_counters = std::make_shared<Rsvp::OpenConfig::GlobalCounters>();
-        }
-        return global_counters;
-    }
-
-    if(child_yang_name == "interface-counters")
-    {
-        if(interface_counters == nullptr)
-        {
-            interface_counters = std::make_shared<Rsvp::OpenConfig::InterfaceCounters>();
-        }
-        return interface_counters;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::OpenConfig::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(global_counters != nullptr)
-    {
-        children["global-counters"] = global_counters;
-    }
-
-    if(interface_counters != nullptr)
-    {
-        children["interface-counters"] = interface_counters;
-    }
-
-    return children;
-}
-
-void Rsvp::OpenConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Rsvp::OpenConfig::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Rsvp::OpenConfig::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "global-counters" || name == "interface-counters")
-        return true;
-    return false;
-}
-
-Rsvp::OpenConfig::GlobalCounters::GlobalCounters()
-    :
-    path_timeouts{YType::uint64, "path-timeouts"},
-    reservation_timeouts{YType::uint64, "reservation-timeouts"},
-    rate_limited_messages{YType::uint64, "rate-limited-messages"},
-    in_path_messages{YType::uint64, "in-path-messages"},
-    in_path_error_messages{YType::uint64, "in-path-error-messages"},
-    in_path_tear_messages{YType::uint64, "in-path-tear-messages"},
-    in_reservation_messages{YType::uint64, "in-reservation-messages"},
-    in_reservation_error_messages{YType::uint64, "in-reservation-error-messages"},
-    in_reservation_tear_messages{YType::uint64, "in-reservation-tear-messages"},
-    in_hello_messages{YType::uint64, "in-hello-messages"},
-    in_srefresh_messages{YType::uint64, "in-srefresh-messages"},
-    in_ack_messages{YType::uint64, "in-ack-messages"},
-    out_path_messages{YType::uint64, "out-path-messages"},
-    out_path_error_messages{YType::uint64, "out-path-error-messages"},
-    out_path_tear_messages{YType::uint64, "out-path-tear-messages"},
-    out_reservation_messages{YType::uint64, "out-reservation-messages"},
-    out_reservation_error_messages{YType::uint64, "out-reservation-error-messages"},
-    out_reservation_tear_messages{YType::uint64, "out-reservation-tear-messages"},
-    out_hello_messages{YType::uint64, "out-hello-messages"},
-    out_srefresh_messages{YType::uint64, "out-srefresh-messages"},
-    out_ack_messages{YType::uint64, "out-ack-messages"}
-{
-
-    yang_name = "global-counters"; yang_parent_name = "open-config"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Rsvp::OpenConfig::GlobalCounters::~GlobalCounters()
-{
-}
-
-bool Rsvp::OpenConfig::GlobalCounters::has_data() const
-{
-    if (is_presence_container) return true;
-    return path_timeouts.is_set
-	|| reservation_timeouts.is_set
-	|| rate_limited_messages.is_set
-	|| in_path_messages.is_set
-	|| in_path_error_messages.is_set
-	|| in_path_tear_messages.is_set
-	|| in_reservation_messages.is_set
-	|| in_reservation_error_messages.is_set
-	|| in_reservation_tear_messages.is_set
-	|| in_hello_messages.is_set
-	|| in_srefresh_messages.is_set
-	|| in_ack_messages.is_set
-	|| out_path_messages.is_set
-	|| out_path_error_messages.is_set
-	|| out_path_tear_messages.is_set
-	|| out_reservation_messages.is_set
-	|| out_reservation_error_messages.is_set
-	|| out_reservation_tear_messages.is_set
-	|| out_hello_messages.is_set
-	|| out_srefresh_messages.is_set
-	|| out_ack_messages.is_set;
-}
-
-bool Rsvp::OpenConfig::GlobalCounters::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(path_timeouts.yfilter)
-	|| ydk::is_set(reservation_timeouts.yfilter)
-	|| ydk::is_set(rate_limited_messages.yfilter)
-	|| ydk::is_set(in_path_messages.yfilter)
-	|| ydk::is_set(in_path_error_messages.yfilter)
-	|| ydk::is_set(in_path_tear_messages.yfilter)
-	|| ydk::is_set(in_reservation_messages.yfilter)
-	|| ydk::is_set(in_reservation_error_messages.yfilter)
-	|| ydk::is_set(in_reservation_tear_messages.yfilter)
-	|| ydk::is_set(in_hello_messages.yfilter)
-	|| ydk::is_set(in_srefresh_messages.yfilter)
-	|| ydk::is_set(in_ack_messages.yfilter)
-	|| ydk::is_set(out_path_messages.yfilter)
-	|| ydk::is_set(out_path_error_messages.yfilter)
-	|| ydk::is_set(out_path_tear_messages.yfilter)
-	|| ydk::is_set(out_reservation_messages.yfilter)
-	|| ydk::is_set(out_reservation_error_messages.yfilter)
-	|| ydk::is_set(out_reservation_tear_messages.yfilter)
-	|| ydk::is_set(out_hello_messages.yfilter)
-	|| ydk::is_set(out_srefresh_messages.yfilter)
-	|| ydk::is_set(out_ack_messages.yfilter);
-}
-
-std::string Rsvp::OpenConfig::GlobalCounters::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/open-config/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rsvp::OpenConfig::GlobalCounters::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global-counters";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rsvp::OpenConfig::GlobalCounters::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (path_timeouts.is_set || is_set(path_timeouts.yfilter)) leaf_name_data.push_back(path_timeouts.get_name_leafdata());
-    if (reservation_timeouts.is_set || is_set(reservation_timeouts.yfilter)) leaf_name_data.push_back(reservation_timeouts.get_name_leafdata());
-    if (rate_limited_messages.is_set || is_set(rate_limited_messages.yfilter)) leaf_name_data.push_back(rate_limited_messages.get_name_leafdata());
-    if (in_path_messages.is_set || is_set(in_path_messages.yfilter)) leaf_name_data.push_back(in_path_messages.get_name_leafdata());
-    if (in_path_error_messages.is_set || is_set(in_path_error_messages.yfilter)) leaf_name_data.push_back(in_path_error_messages.get_name_leafdata());
-    if (in_path_tear_messages.is_set || is_set(in_path_tear_messages.yfilter)) leaf_name_data.push_back(in_path_tear_messages.get_name_leafdata());
-    if (in_reservation_messages.is_set || is_set(in_reservation_messages.yfilter)) leaf_name_data.push_back(in_reservation_messages.get_name_leafdata());
-    if (in_reservation_error_messages.is_set || is_set(in_reservation_error_messages.yfilter)) leaf_name_data.push_back(in_reservation_error_messages.get_name_leafdata());
-    if (in_reservation_tear_messages.is_set || is_set(in_reservation_tear_messages.yfilter)) leaf_name_data.push_back(in_reservation_tear_messages.get_name_leafdata());
-    if (in_hello_messages.is_set || is_set(in_hello_messages.yfilter)) leaf_name_data.push_back(in_hello_messages.get_name_leafdata());
-    if (in_srefresh_messages.is_set || is_set(in_srefresh_messages.yfilter)) leaf_name_data.push_back(in_srefresh_messages.get_name_leafdata());
-    if (in_ack_messages.is_set || is_set(in_ack_messages.yfilter)) leaf_name_data.push_back(in_ack_messages.get_name_leafdata());
-    if (out_path_messages.is_set || is_set(out_path_messages.yfilter)) leaf_name_data.push_back(out_path_messages.get_name_leafdata());
-    if (out_path_error_messages.is_set || is_set(out_path_error_messages.yfilter)) leaf_name_data.push_back(out_path_error_messages.get_name_leafdata());
-    if (out_path_tear_messages.is_set || is_set(out_path_tear_messages.yfilter)) leaf_name_data.push_back(out_path_tear_messages.get_name_leafdata());
-    if (out_reservation_messages.is_set || is_set(out_reservation_messages.yfilter)) leaf_name_data.push_back(out_reservation_messages.get_name_leafdata());
-    if (out_reservation_error_messages.is_set || is_set(out_reservation_error_messages.yfilter)) leaf_name_data.push_back(out_reservation_error_messages.get_name_leafdata());
-    if (out_reservation_tear_messages.is_set || is_set(out_reservation_tear_messages.yfilter)) leaf_name_data.push_back(out_reservation_tear_messages.get_name_leafdata());
-    if (out_hello_messages.is_set || is_set(out_hello_messages.yfilter)) leaf_name_data.push_back(out_hello_messages.get_name_leafdata());
-    if (out_srefresh_messages.is_set || is_set(out_srefresh_messages.yfilter)) leaf_name_data.push_back(out_srefresh_messages.get_name_leafdata());
-    if (out_ack_messages.is_set || is_set(out_ack_messages.yfilter)) leaf_name_data.push_back(out_ack_messages.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rsvp::OpenConfig::GlobalCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::OpenConfig::GlobalCounters::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Rsvp::OpenConfig::GlobalCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "path-timeouts")
-    {
-        path_timeouts = value;
-        path_timeouts.value_namespace = name_space;
-        path_timeouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reservation-timeouts")
-    {
-        reservation_timeouts = value;
-        reservation_timeouts.value_namespace = name_space;
-        reservation_timeouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rate-limited-messages")
-    {
-        rate_limited_messages = value;
-        rate_limited_messages.value_namespace = name_space;
-        rate_limited_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-path-messages")
-    {
-        in_path_messages = value;
-        in_path_messages.value_namespace = name_space;
-        in_path_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-path-error-messages")
-    {
-        in_path_error_messages = value;
-        in_path_error_messages.value_namespace = name_space;
-        in_path_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-path-tear-messages")
-    {
-        in_path_tear_messages = value;
-        in_path_tear_messages.value_namespace = name_space;
-        in_path_tear_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-reservation-messages")
-    {
-        in_reservation_messages = value;
-        in_reservation_messages.value_namespace = name_space;
-        in_reservation_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-reservation-error-messages")
-    {
-        in_reservation_error_messages = value;
-        in_reservation_error_messages.value_namespace = name_space;
-        in_reservation_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-reservation-tear-messages")
-    {
-        in_reservation_tear_messages = value;
-        in_reservation_tear_messages.value_namespace = name_space;
-        in_reservation_tear_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-hello-messages")
-    {
-        in_hello_messages = value;
-        in_hello_messages.value_namespace = name_space;
-        in_hello_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-srefresh-messages")
-    {
-        in_srefresh_messages = value;
-        in_srefresh_messages.value_namespace = name_space;
-        in_srefresh_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-ack-messages")
-    {
-        in_ack_messages = value;
-        in_ack_messages.value_namespace = name_space;
-        in_ack_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-path-messages")
-    {
-        out_path_messages = value;
-        out_path_messages.value_namespace = name_space;
-        out_path_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-path-error-messages")
-    {
-        out_path_error_messages = value;
-        out_path_error_messages.value_namespace = name_space;
-        out_path_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-path-tear-messages")
-    {
-        out_path_tear_messages = value;
-        out_path_tear_messages.value_namespace = name_space;
-        out_path_tear_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-reservation-messages")
-    {
-        out_reservation_messages = value;
-        out_reservation_messages.value_namespace = name_space;
-        out_reservation_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-reservation-error-messages")
-    {
-        out_reservation_error_messages = value;
-        out_reservation_error_messages.value_namespace = name_space;
-        out_reservation_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-reservation-tear-messages")
-    {
-        out_reservation_tear_messages = value;
-        out_reservation_tear_messages.value_namespace = name_space;
-        out_reservation_tear_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-hello-messages")
-    {
-        out_hello_messages = value;
-        out_hello_messages.value_namespace = name_space;
-        out_hello_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-srefresh-messages")
-    {
-        out_srefresh_messages = value;
-        out_srefresh_messages.value_namespace = name_space;
-        out_srefresh_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-ack-messages")
-    {
-        out_ack_messages = value;
-        out_ack_messages.value_namespace = name_space;
-        out_ack_messages.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::OpenConfig::GlobalCounters::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "path-timeouts")
-    {
-        path_timeouts.yfilter = yfilter;
-    }
-    if(value_path == "reservation-timeouts")
-    {
-        reservation_timeouts.yfilter = yfilter;
-    }
-    if(value_path == "rate-limited-messages")
-    {
-        rate_limited_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-path-messages")
-    {
-        in_path_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-path-error-messages")
-    {
-        in_path_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-path-tear-messages")
-    {
-        in_path_tear_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-reservation-messages")
-    {
-        in_reservation_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-reservation-error-messages")
-    {
-        in_reservation_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-reservation-tear-messages")
-    {
-        in_reservation_tear_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-hello-messages")
-    {
-        in_hello_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-srefresh-messages")
-    {
-        in_srefresh_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-ack-messages")
-    {
-        in_ack_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-path-messages")
-    {
-        out_path_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-path-error-messages")
-    {
-        out_path_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-path-tear-messages")
-    {
-        out_path_tear_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-reservation-messages")
-    {
-        out_reservation_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-reservation-error-messages")
-    {
-        out_reservation_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-reservation-tear-messages")
-    {
-        out_reservation_tear_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-hello-messages")
-    {
-        out_hello_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-srefresh-messages")
-    {
-        out_srefresh_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-ack-messages")
-    {
-        out_ack_messages.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::OpenConfig::GlobalCounters::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "path-timeouts" || name == "reservation-timeouts" || name == "rate-limited-messages" || name == "in-path-messages" || name == "in-path-error-messages" || name == "in-path-tear-messages" || name == "in-reservation-messages" || name == "in-reservation-error-messages" || name == "in-reservation-tear-messages" || name == "in-hello-messages" || name == "in-srefresh-messages" || name == "in-ack-messages" || name == "out-path-messages" || name == "out-path-error-messages" || name == "out-path-tear-messages" || name == "out-reservation-messages" || name == "out-reservation-error-messages" || name == "out-reservation-tear-messages" || name == "out-hello-messages" || name == "out-srefresh-messages" || name == "out-ack-messages")
-        return true;
-    return false;
-}
-
-Rsvp::OpenConfig::InterfaceCounters::InterfaceCounters()
-    :
-    interface_counter(this, {"interface_name"})
-{
-
-    yang_name = "interface-counters"; yang_parent_name = "open-config"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Rsvp::OpenConfig::InterfaceCounters::~InterfaceCounters()
-{
-}
-
-bool Rsvp::OpenConfig::InterfaceCounters::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<interface_counter.len(); index++)
-    {
-        if(interface_counter[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Rsvp::OpenConfig::InterfaceCounters::has_operation() const
-{
-    for (std::size_t index=0; index<interface_counter.len(); index++)
-    {
-        if(interface_counter[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Rsvp::OpenConfig::InterfaceCounters::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/open-config/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rsvp::OpenConfig::InterfaceCounters::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-counters";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rsvp::OpenConfig::InterfaceCounters::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rsvp::OpenConfig::InterfaceCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface-counter")
-    {
-        auto c = std::make_shared<Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter>();
-        c->parent = this;
-        interface_counter.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::OpenConfig::InterfaceCounters::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_counter.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Rsvp::OpenConfig::InterfaceCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Rsvp::OpenConfig::InterfaceCounters::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Rsvp::OpenConfig::InterfaceCounters::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-counter")
-        return true;
-    return false;
-}
-
-Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter::InterfaceCounter()
-    :
-    interface_name{YType::str, "interface-name"},
-    interface_name_xr{YType::str, "interface-name-xr"},
-    in_path_messages{YType::uint64, "in-path-messages"},
-    in_path_error_messages{YType::uint64, "in-path-error-messages"},
-    in_path_tear_messages{YType::uint64, "in-path-tear-messages"},
-    in_reservation_messages{YType::uint64, "in-reservation-messages"},
-    in_reservation_error_messages{YType::uint64, "in-reservation-error-messages"},
-    in_reservation_tear_messages{YType::uint64, "in-reservation-tear-messages"},
-    in_hello_messages{YType::uint64, "in-hello-messages"},
-    in_srefresh_messages{YType::uint64, "in-srefresh-messages"},
-    in_ack_messages{YType::uint64, "in-ack-messages"},
-    out_path_messages{YType::uint64, "out-path-messages"},
-    out_path_error_messages{YType::uint64, "out-path-error-messages"},
-    out_path_tear_messages{YType::uint64, "out-path-tear-messages"},
-    out_reservation_messages{YType::uint64, "out-reservation-messages"},
-    out_reservation_error_messages{YType::uint64, "out-reservation-error-messages"},
-    out_reservation_tear_messages{YType::uint64, "out-reservation-tear-messages"},
-    out_hello_messages{YType::uint64, "out-hello-messages"},
-    out_srefresh_messages{YType::uint64, "out-srefresh-messages"},
-    out_ack_messages{YType::uint64, "out-ack-messages"}
-{
-
-    yang_name = "interface-counter"; yang_parent_name = "interface-counters"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter::~InterfaceCounter()
-{
-}
-
-bool Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter::has_data() const
-{
-    if (is_presence_container) return true;
-    return interface_name.is_set
-	|| interface_name_xr.is_set
-	|| in_path_messages.is_set
-	|| in_path_error_messages.is_set
-	|| in_path_tear_messages.is_set
-	|| in_reservation_messages.is_set
-	|| in_reservation_error_messages.is_set
-	|| in_reservation_tear_messages.is_set
-	|| in_hello_messages.is_set
-	|| in_srefresh_messages.is_set
-	|| in_ack_messages.is_set
-	|| out_path_messages.is_set
-	|| out_path_error_messages.is_set
-	|| out_path_tear_messages.is_set
-	|| out_reservation_messages.is_set
-	|| out_reservation_error_messages.is_set
-	|| out_reservation_tear_messages.is_set
-	|| out_hello_messages.is_set
-	|| out_srefresh_messages.is_set
-	|| out_ack_messages.is_set;
-}
-
-bool Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(interface_name_xr.yfilter)
-	|| ydk::is_set(in_path_messages.yfilter)
-	|| ydk::is_set(in_path_error_messages.yfilter)
-	|| ydk::is_set(in_path_tear_messages.yfilter)
-	|| ydk::is_set(in_reservation_messages.yfilter)
-	|| ydk::is_set(in_reservation_error_messages.yfilter)
-	|| ydk::is_set(in_reservation_tear_messages.yfilter)
-	|| ydk::is_set(in_hello_messages.yfilter)
-	|| ydk::is_set(in_srefresh_messages.yfilter)
-	|| ydk::is_set(in_ack_messages.yfilter)
-	|| ydk::is_set(out_path_messages.yfilter)
-	|| ydk::is_set(out_path_error_messages.yfilter)
-	|| ydk::is_set(out_path_tear_messages.yfilter)
-	|| ydk::is_set(out_reservation_messages.yfilter)
-	|| ydk::is_set(out_reservation_error_messages.yfilter)
-	|| ydk::is_set(out_reservation_tear_messages.yfilter)
-	|| ydk::is_set(out_hello_messages.yfilter)
-	|| ydk::is_set(out_srefresh_messages.yfilter)
-	|| ydk::is_set(out_ack_messages.yfilter);
-}
-
-std::string Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/open-config/interface-counters/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-counter";
-    ADD_KEY_TOKEN(interface_name, "interface-name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (in_path_messages.is_set || is_set(in_path_messages.yfilter)) leaf_name_data.push_back(in_path_messages.get_name_leafdata());
-    if (in_path_error_messages.is_set || is_set(in_path_error_messages.yfilter)) leaf_name_data.push_back(in_path_error_messages.get_name_leafdata());
-    if (in_path_tear_messages.is_set || is_set(in_path_tear_messages.yfilter)) leaf_name_data.push_back(in_path_tear_messages.get_name_leafdata());
-    if (in_reservation_messages.is_set || is_set(in_reservation_messages.yfilter)) leaf_name_data.push_back(in_reservation_messages.get_name_leafdata());
-    if (in_reservation_error_messages.is_set || is_set(in_reservation_error_messages.yfilter)) leaf_name_data.push_back(in_reservation_error_messages.get_name_leafdata());
-    if (in_reservation_tear_messages.is_set || is_set(in_reservation_tear_messages.yfilter)) leaf_name_data.push_back(in_reservation_tear_messages.get_name_leafdata());
-    if (in_hello_messages.is_set || is_set(in_hello_messages.yfilter)) leaf_name_data.push_back(in_hello_messages.get_name_leafdata());
-    if (in_srefresh_messages.is_set || is_set(in_srefresh_messages.yfilter)) leaf_name_data.push_back(in_srefresh_messages.get_name_leafdata());
-    if (in_ack_messages.is_set || is_set(in_ack_messages.yfilter)) leaf_name_data.push_back(in_ack_messages.get_name_leafdata());
-    if (out_path_messages.is_set || is_set(out_path_messages.yfilter)) leaf_name_data.push_back(out_path_messages.get_name_leafdata());
-    if (out_path_error_messages.is_set || is_set(out_path_error_messages.yfilter)) leaf_name_data.push_back(out_path_error_messages.get_name_leafdata());
-    if (out_path_tear_messages.is_set || is_set(out_path_tear_messages.yfilter)) leaf_name_data.push_back(out_path_tear_messages.get_name_leafdata());
-    if (out_reservation_messages.is_set || is_set(out_reservation_messages.yfilter)) leaf_name_data.push_back(out_reservation_messages.get_name_leafdata());
-    if (out_reservation_error_messages.is_set || is_set(out_reservation_error_messages.yfilter)) leaf_name_data.push_back(out_reservation_error_messages.get_name_leafdata());
-    if (out_reservation_tear_messages.is_set || is_set(out_reservation_tear_messages.yfilter)) leaf_name_data.push_back(out_reservation_tear_messages.get_name_leafdata());
-    if (out_hello_messages.is_set || is_set(out_hello_messages.yfilter)) leaf_name_data.push_back(out_hello_messages.get_name_leafdata());
-    if (out_srefresh_messages.is_set || is_set(out_srefresh_messages.yfilter)) leaf_name_data.push_back(out_srefresh_messages.get_name_leafdata());
-    if (out_ack_messages.is_set || is_set(out_ack_messages.yfilter)) leaf_name_data.push_back(out_ack_messages.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name-xr")
-    {
-        interface_name_xr = value;
-        interface_name_xr.value_namespace = name_space;
-        interface_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-path-messages")
-    {
-        in_path_messages = value;
-        in_path_messages.value_namespace = name_space;
-        in_path_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-path-error-messages")
-    {
-        in_path_error_messages = value;
-        in_path_error_messages.value_namespace = name_space;
-        in_path_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-path-tear-messages")
-    {
-        in_path_tear_messages = value;
-        in_path_tear_messages.value_namespace = name_space;
-        in_path_tear_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-reservation-messages")
-    {
-        in_reservation_messages = value;
-        in_reservation_messages.value_namespace = name_space;
-        in_reservation_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-reservation-error-messages")
-    {
-        in_reservation_error_messages = value;
-        in_reservation_error_messages.value_namespace = name_space;
-        in_reservation_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-reservation-tear-messages")
-    {
-        in_reservation_tear_messages = value;
-        in_reservation_tear_messages.value_namespace = name_space;
-        in_reservation_tear_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-hello-messages")
-    {
-        in_hello_messages = value;
-        in_hello_messages.value_namespace = name_space;
-        in_hello_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-srefresh-messages")
-    {
-        in_srefresh_messages = value;
-        in_srefresh_messages.value_namespace = name_space;
-        in_srefresh_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-ack-messages")
-    {
-        in_ack_messages = value;
-        in_ack_messages.value_namespace = name_space;
-        in_ack_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-path-messages")
-    {
-        out_path_messages = value;
-        out_path_messages.value_namespace = name_space;
-        out_path_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-path-error-messages")
-    {
-        out_path_error_messages = value;
-        out_path_error_messages.value_namespace = name_space;
-        out_path_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-path-tear-messages")
-    {
-        out_path_tear_messages = value;
-        out_path_tear_messages.value_namespace = name_space;
-        out_path_tear_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-reservation-messages")
-    {
-        out_reservation_messages = value;
-        out_reservation_messages.value_namespace = name_space;
-        out_reservation_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-reservation-error-messages")
-    {
-        out_reservation_error_messages = value;
-        out_reservation_error_messages.value_namespace = name_space;
-        out_reservation_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-reservation-tear-messages")
-    {
-        out_reservation_tear_messages = value;
-        out_reservation_tear_messages.value_namespace = name_space;
-        out_reservation_tear_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-hello-messages")
-    {
-        out_hello_messages = value;
-        out_hello_messages.value_namespace = name_space;
-        out_hello_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-srefresh-messages")
-    {
-        out_srefresh_messages = value;
-        out_srefresh_messages.value_namespace = name_space;
-        out_srefresh_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-ack-messages")
-    {
-        out_ack_messages = value;
-        out_ack_messages.value_namespace = name_space;
-        out_ack_messages.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "interface-name-xr")
-    {
-        interface_name_xr.yfilter = yfilter;
-    }
-    if(value_path == "in-path-messages")
-    {
-        in_path_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-path-error-messages")
-    {
-        in_path_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-path-tear-messages")
-    {
-        in_path_tear_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-reservation-messages")
-    {
-        in_reservation_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-reservation-error-messages")
-    {
-        in_reservation_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-reservation-tear-messages")
-    {
-        in_reservation_tear_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-hello-messages")
-    {
-        in_hello_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-srefresh-messages")
-    {
-        in_srefresh_messages.yfilter = yfilter;
-    }
-    if(value_path == "in-ack-messages")
-    {
-        in_ack_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-path-messages")
-    {
-        out_path_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-path-error-messages")
-    {
-        out_path_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-path-tear-messages")
-    {
-        out_path_tear_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-reservation-messages")
-    {
-        out_reservation_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-reservation-error-messages")
-    {
-        out_reservation_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-reservation-tear-messages")
-    {
-        out_reservation_tear_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-hello-messages")
-    {
-        out_hello_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-srefresh-messages")
-    {
-        out_srefresh_messages.yfilter = yfilter;
-    }
-    if(value_path == "out-ack-messages")
-    {
-        out_ack_messages.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name" || name == "interface-name-xr" || name == "in-path-messages" || name == "in-path-error-messages" || name == "in-path-tear-messages" || name == "in-reservation-messages" || name == "in-reservation-error-messages" || name == "in-reservation-tear-messages" || name == "in-hello-messages" || name == "in-srefresh-messages" || name == "in-ack-messages" || name == "out-path-messages" || name == "out-path-error-messages" || name == "out-path-tear-messages" || name == "out-reservation-messages" || name == "out-reservation-error-messages" || name == "out-reservation-tear-messages" || name == "out-hello-messages" || name == "out-srefresh-messages" || name == "out-ack-messages")
         return true;
     return false;
 }
@@ -21808,6 +20255,942 @@ void Rsvp::RequestDetails::RequestDetail::S2lSubLsp::set_filter(const std::strin
 bool Rsvp::RequestDetails::RequestDetail::S2lSubLsp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "s2l-destination-address")
+        return true;
+    return false;
+}
+
+Rsvp::RequestDetails::RequestDetail::FlowSpec::FlowSpec()
+    :
+    flow_average_rate{YType::uint64, "flow-average-rate"},
+    flow_max_burst{YType::uint64, "flow-max-burst"},
+    flow_peak_rate{YType::uint64, "flow-peak-rate"},
+    flow_min_unit{YType::uint32, "flow-min-unit"},
+    flow_max_unit{YType::uint32, "flow-max-unit"},
+    flow_requested_rate{YType::uint64, "flow-requested-rate"},
+    flow_slack{YType::uint32, "flow-slack"},
+    flow_qos{YType::enumeration, "flow-qos"}
+{
+
+    yang_name = "flow-spec"; yang_parent_name = "request-detail"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Rsvp::RequestDetails::RequestDetail::FlowSpec::~FlowSpec()
+{
+}
+
+bool Rsvp::RequestDetails::RequestDetail::FlowSpec::has_data() const
+{
+    if (is_presence_container) return true;
+    return flow_average_rate.is_set
+	|| flow_max_burst.is_set
+	|| flow_peak_rate.is_set
+	|| flow_min_unit.is_set
+	|| flow_max_unit.is_set
+	|| flow_requested_rate.is_set
+	|| flow_slack.is_set
+	|| flow_qos.is_set;
+}
+
+bool Rsvp::RequestDetails::RequestDetail::FlowSpec::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(flow_average_rate.yfilter)
+	|| ydk::is_set(flow_max_burst.yfilter)
+	|| ydk::is_set(flow_peak_rate.yfilter)
+	|| ydk::is_set(flow_min_unit.yfilter)
+	|| ydk::is_set(flow_max_unit.yfilter)
+	|| ydk::is_set(flow_requested_rate.yfilter)
+	|| ydk::is_set(flow_slack.yfilter)
+	|| ydk::is_set(flow_qos.yfilter);
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::FlowSpec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/request-details/request-detail/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::FlowSpec::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flow-spec";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDetail::FlowSpec::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (flow_average_rate.is_set || is_set(flow_average_rate.yfilter)) leaf_name_data.push_back(flow_average_rate.get_name_leafdata());
+    if (flow_max_burst.is_set || is_set(flow_max_burst.yfilter)) leaf_name_data.push_back(flow_max_burst.get_name_leafdata());
+    if (flow_peak_rate.is_set || is_set(flow_peak_rate.yfilter)) leaf_name_data.push_back(flow_peak_rate.get_name_leafdata());
+    if (flow_min_unit.is_set || is_set(flow_min_unit.yfilter)) leaf_name_data.push_back(flow_min_unit.get_name_leafdata());
+    if (flow_max_unit.is_set || is_set(flow_max_unit.yfilter)) leaf_name_data.push_back(flow_max_unit.get_name_leafdata());
+    if (flow_requested_rate.is_set || is_set(flow_requested_rate.yfilter)) leaf_name_data.push_back(flow_requested_rate.get_name_leafdata());
+    if (flow_slack.is_set || is_set(flow_slack.yfilter)) leaf_name_data.push_back(flow_slack.get_name_leafdata());
+    if (flow_qos.is_set || is_set(flow_qos.yfilter)) leaf_name_data.push_back(flow_qos.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::FlowSpec::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Rsvp::RequestDetails::RequestDetail::FlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "flow-average-rate")
+    {
+        flow_average_rate = value;
+        flow_average_rate.value_namespace = name_space;
+        flow_average_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flow-max-burst")
+    {
+        flow_max_burst = value;
+        flow_max_burst.value_namespace = name_space;
+        flow_max_burst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flow-peak-rate")
+    {
+        flow_peak_rate = value;
+        flow_peak_rate.value_namespace = name_space;
+        flow_peak_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flow-min-unit")
+    {
+        flow_min_unit = value;
+        flow_min_unit.value_namespace = name_space;
+        flow_min_unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flow-max-unit")
+    {
+        flow_max_unit = value;
+        flow_max_unit.value_namespace = name_space;
+        flow_max_unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flow-requested-rate")
+    {
+        flow_requested_rate = value;
+        flow_requested_rate.value_namespace = name_space;
+        flow_requested_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flow-slack")
+    {
+        flow_slack = value;
+        flow_slack.value_namespace = name_space;
+        flow_slack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flow-qos")
+    {
+        flow_qos = value;
+        flow_qos.value_namespace = name_space;
+        flow_qos.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rsvp::RequestDetails::RequestDetail::FlowSpec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flow-average-rate")
+    {
+        flow_average_rate.yfilter = yfilter;
+    }
+    if(value_path == "flow-max-burst")
+    {
+        flow_max_burst.yfilter = yfilter;
+    }
+    if(value_path == "flow-peak-rate")
+    {
+        flow_peak_rate.yfilter = yfilter;
+    }
+    if(value_path == "flow-min-unit")
+    {
+        flow_min_unit.yfilter = yfilter;
+    }
+    if(value_path == "flow-max-unit")
+    {
+        flow_max_unit.yfilter = yfilter;
+    }
+    if(value_path == "flow-requested-rate")
+    {
+        flow_requested_rate.yfilter = yfilter;
+    }
+    if(value_path == "flow-slack")
+    {
+        flow_slack.yfilter = yfilter;
+    }
+    if(value_path == "flow-qos")
+    {
+        flow_qos.yfilter = yfilter;
+    }
+}
+
+bool Rsvp::RequestDetails::RequestDetail::FlowSpec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-average-rate" || name == "flow-max-burst" || name == "flow-peak-rate" || name == "flow-min-unit" || name == "flow-max-unit" || name == "flow-requested-rate" || name == "flow-slack" || name == "flow-qos")
+        return true;
+    return false;
+}
+
+Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::GenericFlowSpec()
+    :
+    flow_spec_type{YType::enumeration, "flow-spec-type"}
+        ,
+    g709otn_flow_spec(std::make_shared<Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec>())
+{
+    g709otn_flow_spec->parent = this;
+
+    yang_name = "generic-flow-spec"; yang_parent_name = "request-detail"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::~GenericFlowSpec()
+{
+}
+
+bool Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::has_data() const
+{
+    if (is_presence_container) return true;
+    return flow_spec_type.is_set
+	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_data());
+}
+
+bool Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(flow_spec_type.yfilter)
+	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_operation());
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/request-details/request-detail/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "generic-flow-spec";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (flow_spec_type.is_set || is_set(flow_spec_type.yfilter)) leaf_name_data.push_back(flow_spec_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "g709otn-flow-spec")
+    {
+        if(g709otn_flow_spec == nullptr)
+        {
+            g709otn_flow_spec = std::make_shared<Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec>();
+        }
+        return g709otn_flow_spec;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(g709otn_flow_spec != nullptr)
+    {
+        children["g709otn-flow-spec"] = g709otn_flow_spec;
+    }
+
+    return children;
+}
+
+void Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "flow-spec-type")
+    {
+        flow_spec_type = value;
+        flow_spec_type.value_namespace = name_space;
+        flow_spec_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flow-spec-type")
+    {
+        flow_spec_type.yfilter = yfilter;
+    }
+}
+
+bool Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "g709otn-flow-spec" || name == "flow-spec-type")
+        return true;
+    return false;
+}
+
+Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::G709otnFlowSpec()
+    :
+    flow_signal_type{YType::uint8, "flow-signal-type"},
+    flow_nvc{YType::uint16, "flow-nvc"},
+    flow_multiplier{YType::uint16, "flow-multiplier"},
+    flow_bit_rate{YType::uint64, "flow-bit-rate"}
+{
+
+    yang_name = "g709otn-flow-spec"; yang_parent_name = "generic-flow-spec"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::~G709otnFlowSpec()
+{
+}
+
+bool Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::has_data() const
+{
+    if (is_presence_container) return true;
+    return flow_signal_type.is_set
+	|| flow_nvc.is_set
+	|| flow_multiplier.is_set
+	|| flow_bit_rate.is_set;
+}
+
+bool Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(flow_signal_type.yfilter)
+	|| ydk::is_set(flow_nvc.yfilter)
+	|| ydk::is_set(flow_multiplier.yfilter)
+	|| ydk::is_set(flow_bit_rate.yfilter);
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/request-details/request-detail/generic-flow-spec/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "g709otn-flow-spec";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (flow_signal_type.is_set || is_set(flow_signal_type.yfilter)) leaf_name_data.push_back(flow_signal_type.get_name_leafdata());
+    if (flow_nvc.is_set || is_set(flow_nvc.yfilter)) leaf_name_data.push_back(flow_nvc.get_name_leafdata());
+    if (flow_multiplier.is_set || is_set(flow_multiplier.yfilter)) leaf_name_data.push_back(flow_multiplier.get_name_leafdata());
+    if (flow_bit_rate.is_set || is_set(flow_bit_rate.yfilter)) leaf_name_data.push_back(flow_bit_rate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "flow-signal-type")
+    {
+        flow_signal_type = value;
+        flow_signal_type.value_namespace = name_space;
+        flow_signal_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flow-nvc")
+    {
+        flow_nvc = value;
+        flow_nvc.value_namespace = name_space;
+        flow_nvc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flow-multiplier")
+    {
+        flow_multiplier = value;
+        flow_multiplier.value_namespace = name_space;
+        flow_multiplier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flow-bit-rate")
+    {
+        flow_bit_rate = value;
+        flow_bit_rate.value_namespace = name_space;
+        flow_bit_rate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flow-signal-type")
+    {
+        flow_signal_type.yfilter = yfilter;
+    }
+    if(value_path == "flow-nvc")
+    {
+        flow_nvc.yfilter = yfilter;
+    }
+    if(value_path == "flow-multiplier")
+    {
+        flow_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "flow-bit-rate")
+    {
+        flow_bit_rate.yfilter = yfilter;
+    }
+}
+
+bool Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-signal-type" || name == "flow-nvc" || name == "flow-multiplier" || name == "flow-bit-rate")
+        return true;
+    return false;
+}
+
+Rsvp::RequestDetails::RequestDetail::Filter::Filter()
+    :
+    rsvp_filter(std::make_shared<Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter>())
+{
+    rsvp_filter->parent = this;
+
+    yang_name = "filter"; yang_parent_name = "request-detail"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Rsvp::RequestDetails::RequestDetail::Filter::~Filter()
+{
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Filter::has_data() const
+{
+    if (is_presence_container) return true;
+    return (rsvp_filter !=  nullptr && rsvp_filter->has_data());
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Filter::has_operation() const
+{
+    return is_set(yfilter)
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::Filter::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/request-details/request-detail/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::Filter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "filter";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDetail::Filter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rsvp-filter")
+    {
+        if(rsvp_filter == nullptr)
+        {
+            rsvp_filter = std::make_shared<Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter>();
+        }
+        return rsvp_filter;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Filter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(rsvp_filter != nullptr)
+    {
+        children["rsvp-filter"] = rsvp_filter;
+    }
+
+    return children;
+}
+
+void Rsvp::RequestDetails::RequestDetail::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Rsvp::RequestDetails::RequestDetail::Filter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Filter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rsvp-filter")
+        return true;
+    return false;
+}
+
+Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::RsvpFilter()
+    :
+    filter_type{YType::enumeration, "filter-type"}
+        ,
+    udp_ipv4_session(std::make_shared<Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session>())
+    , p2mp_ipv4_session(std::make_shared<Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session>())
+{
+    udp_ipv4_session->parent = this;
+    p2mp_ipv4_session->parent = this;
+
+    yang_name = "rsvp-filter"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::~RsvpFilter()
+{
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::has_data() const
+{
+    if (is_presence_container) return true;
+    return filter_type.is_set
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_data())
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_data());
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(filter_type.yfilter)
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation())
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation());
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/request-details/request-detail/filter/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rsvp-filter";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (filter_type.is_set || is_set(filter_type.yfilter)) leaf_name_data.push_back(filter_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "udp-ipv4-session")
+    {
+        if(udp_ipv4_session == nullptr)
+        {
+            udp_ipv4_session = std::make_shared<Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session>();
+        }
+        return udp_ipv4_session;
+    }
+
+    if(child_yang_name == "p2mp-ipv4-session")
+    {
+        if(p2mp_ipv4_session == nullptr)
+        {
+            p2mp_ipv4_session = std::make_shared<Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session>();
+        }
+        return p2mp_ipv4_session;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(udp_ipv4_session != nullptr)
+    {
+        children["udp-ipv4-session"] = udp_ipv4_session;
+    }
+
+    if(p2mp_ipv4_session != nullptr)
+    {
+        children["p2mp-ipv4-session"] = p2mp_ipv4_session;
+    }
+
+    return children;
+}
+
+void Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "filter-type")
+    {
+        filter_type = value;
+        filter_type.value_namespace = name_space;
+        filter_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "filter-type")
+    {
+        filter_type.yfilter = yfilter;
+    }
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "udp-ipv4-session" || name == "p2mp-ipv4-session" || name == "filter-type")
+        return true;
+    return false;
+}
+
+Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::UdpIpv4Session()
+    :
+    source_address{YType::str, "source-address"},
+    source_port{YType::uint16, "source-port"}
+{
+
+    yang_name = "udp-ipv4-session"; yang_parent_name = "rsvp-filter"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::~UdpIpv4Session()
+{
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::has_data() const
+{
+    if (is_presence_container) return true;
+    return source_address.is_set
+	|| source_port.is_set;
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(source_port.yfilter);
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/request-details/request-detail/filter/rsvp-filter/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "udp-ipv4-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (source_port.is_set || is_set(source_port.yfilter)) leaf_name_data.push_back(source_port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-address")
+    {
+        source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-port")
+    {
+        source_port = value;
+        source_port.value_namespace = name_space;
+        source_port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "source-port")
+    {
+        source_port.yfilter = yfilter;
+    }
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address" || name == "source-port")
+        return true;
+    return false;
+}
+
+Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::P2mpIpv4Session()
+    :
+    source_address{YType::str, "source-address"},
+    source_port{YType::uint16, "source-port"},
+    p2mp_sub_group_origin{YType::str, "p2mp-sub-group-origin"},
+    sub_group_id{YType::uint16, "sub-group-id"}
+{
+
+    yang_name = "p2mp-ipv4-session"; yang_parent_name = "rsvp-filter"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::~P2mpIpv4Session()
+{
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::has_data() const
+{
+    if (is_presence_container) return true;
+    return source_address.is_set
+	|| source_port.is_set
+	|| p2mp_sub_group_origin.is_set
+	|| sub_group_id.is_set;
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(source_port.yfilter)
+	|| ydk::is_set(p2mp_sub_group_origin.yfilter)
+	|| ydk::is_set(sub_group_id.yfilter);
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/request-details/request-detail/filter/rsvp-filter/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "p2mp-ipv4-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (source_port.is_set || is_set(source_port.yfilter)) leaf_name_data.push_back(source_port.get_name_leafdata());
+    if (p2mp_sub_group_origin.is_set || is_set(p2mp_sub_group_origin.yfilter)) leaf_name_data.push_back(p2mp_sub_group_origin.get_name_leafdata());
+    if (sub_group_id.is_set || is_set(sub_group_id.yfilter)) leaf_name_data.push_back(sub_group_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-address")
+    {
+        source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-port")
+    {
+        source_port = value;
+        source_port.value_namespace = name_space;
+        source_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "p2mp-sub-group-origin")
+    {
+        p2mp_sub_group_origin = value;
+        p2mp_sub_group_origin.value_namespace = name_space;
+        p2mp_sub_group_origin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sub-group-id")
+    {
+        sub_group_id = value;
+        sub_group_id.value_namespace = name_space;
+        sub_group_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "source-port")
+    {
+        source_port.yfilter = yfilter;
+    }
+    if(value_path == "p2mp-sub-group-origin")
+    {
+        p2mp_sub_group_origin.yfilter = yfilter;
+    }
+    if(value_path == "sub-group-id")
+    {
+        sub_group_id.yfilter = yfilter;
+    }
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address" || name == "source-port" || name == "p2mp-sub-group-origin" || name == "sub-group-id")
+        return true;
+    return false;
+}
+
+Rsvp::RequestDetails::RequestDetail::Style::Style()
+    :
+    reservation_type{YType::enumeration, "reservation-type"}
+{
+
+    yang_name = "style"; yang_parent_name = "request-detail"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Rsvp::RequestDetails::RequestDetail::Style::~Style()
+{
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Style::has_data() const
+{
+    if (is_presence_container) return true;
+    return reservation_type.is_set;
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Style::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(reservation_type.yfilter);
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::Style::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/request-details/request-detail/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rsvp::RequestDetails::RequestDetail::Style::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "style";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDetail::Style::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (reservation_type.is_set || is_set(reservation_type.yfilter)) leaf_name_data.push_back(reservation_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Style::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Style::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Rsvp::RequestDetails::RequestDetail::Style::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "reservation-type")
+    {
+        reservation_type = value;
+        reservation_type.value_namespace = name_space;
+        reservation_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rsvp::RequestDetails::RequestDetail::Style::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "reservation-type")
+    {
+        reservation_type.yfilter = yfilter;
+    }
+}
+
+bool Rsvp::RequestDetails::RequestDetail::Style::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reservation-type")
         return true;
     return false;
 }

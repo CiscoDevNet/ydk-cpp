@@ -136,6 +136,7 @@ Vlans::Vlan::Vlan()
     status{YType::enumeration, "status"}
         ,
     ports(this, {})
+    , vlan_interfaces(this, {"interface"})
 {
 
     yang_name = "vlan"; yang_parent_name = "vlans"; is_top_level_class = false; has_list_ancestor = false; 
@@ -153,6 +154,11 @@ bool Vlans::Vlan::has_data() const
         if(ports[index]->has_data())
             return true;
     }
+    for (std::size_t index=0; index<vlan_interfaces.len(); index++)
+    {
+        if(vlan_interfaces[index]->has_data())
+            return true;
+    }
     return id.is_set
 	|| name.is_set
 	|| status.is_set;
@@ -163,6 +169,11 @@ bool Vlans::Vlan::has_operation() const
     for (std::size_t index=0; index<ports.len(); index++)
     {
         if(ports[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<vlan_interfaces.len(); index++)
+    {
+        if(vlan_interfaces[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -208,6 +219,14 @@ std::shared_ptr<Entity> Vlans::Vlan::get_child_by_name(const std::string & child
         return c;
     }
 
+    if(child_yang_name == "vlan-interfaces")
+    {
+        auto c = std::make_shared<Vlans::Vlan::VlanInterfaces>();
+        c->parent = this;
+        vlan_interfaces.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -217,6 +236,15 @@ std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::get_children() const
     char count=0;
     count = 0;
     for (auto c : ports.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : vlan_interfaces.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -267,7 +295,7 @@ void Vlans::Vlan::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Vlans::Vlan::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ports" || name == "id" || name == "name" || name == "status")
+    if(name == "ports" || name == "vlan-interfaces" || name == "id" || name == "name" || name == "status")
         return true;
     return false;
 }
@@ -358,6 +386,99 @@ void Vlans::Vlan::Ports::set_filter(const std::string & value_path, YFilter yfil
 }
 
 bool Vlans::Vlan::Ports::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "subinterface")
+        return true;
+    return false;
+}
+
+Vlans::Vlan::VlanInterfaces::VlanInterfaces()
+    :
+    interface{YType::str, "interface"},
+    subinterface{YType::uint32, "subinterface"}
+{
+
+    yang_name = "vlan-interfaces"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Vlans::Vlan::VlanInterfaces::~VlanInterfaces()
+{
+}
+
+bool Vlans::Vlan::VlanInterfaces::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface.is_set
+	|| subinterface.is_set;
+}
+
+bool Vlans::Vlan::VlanInterfaces::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(subinterface.yfilter);
+}
+
+std::string Vlans::Vlan::VlanInterfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan-interfaces";
+    ADD_KEY_TOKEN(interface, "interface");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::VlanInterfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (subinterface.is_set || is_set(subinterface.yfilter)) leaf_name_data.push_back(subinterface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vlans::Vlan::VlanInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::VlanInterfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Vlans::Vlan::VlanInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subinterface")
+    {
+        subinterface = value;
+        subinterface.value_namespace = name_space;
+        subinterface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vlans::Vlan::VlanInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "subinterface")
+    {
+        subinterface.yfilter = yfilter;
+    }
+}
+
+bool Vlans::Vlan::VlanInterfaces::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "subinterface")
         return true;

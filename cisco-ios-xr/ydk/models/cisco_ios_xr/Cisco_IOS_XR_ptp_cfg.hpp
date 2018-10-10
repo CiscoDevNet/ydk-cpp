@@ -32,24 +32,29 @@ class Ptp : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
+        ydk::YLeaf uncalibrated_clock_class; //type: uint32
         ydk::YLeaf time_of_day_priority; //type: uint32
         ydk::YLeaf frequency_priority; //type: uint32
         ydk::YLeaf startup_clock_class; //type: uint32
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf min_clock_class; //type: uint32
-        ydk::YLeaf uncalibrated_clock_class; //type: uint32
+        ydk::YLeaf physical_layer_frequency; //type: empty
         ydk::YLeaf freerun_clock_class; //type: uint32
         class Clock; //type: Ptp::Clock
         class Profiles; //type: Ptp::Profiles
         class UtcOffset; //type: Ptp::UtcOffset
         class Logging; //type: Ptp::Logging
+        class UncalibratedClockClass2; //type: Ptp::UncalibratedClockClass2
         class TransparentClock; //type: Ptp::TransparentClock
+        class VirtualPort; //type: Ptp::VirtualPort
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Clock> clock_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles> profiles;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::UtcOffset> utc_offset;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Logging> logging;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::UncalibratedClockClass2> uncalibrated_clock_class2; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::TransparentClock> transparent_clock;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::VirtualPort> virtual_port;
         
 }; // Ptp
 
@@ -181,17 +186,20 @@ class Ptp::Profiles::Profile : public ydk::Entity
         ydk::YLeaf transport; //type: PtpEncap
         ydk::YLeaf announce_timeout; //type: uint32
         ydk::YLeaf cos; //type: uint32
+        ydk::YLeaf ipv4ttl; //type: uint32
         ydk::YLeaf port_state; //type: PtpPortState
         ydk::YLeaf delay_response_timeout; //type: uint32
         ydk::YLeaf delay_response_grant_duration; //type: uint32
         ydk::YLeaf event_cos; //type: uint32
         ydk::YLeaf dscp; //type: uint32
+        ydk::YLeaf ipv6_hop_limit; //type: uint32
         ydk::YLeaf general_dscp; //type: uint32
         ydk::YLeaf clock_operation; //type: PtpClockOperation
         ydk::YLeaf announce_grant_duration; //type: uint32
         ydk::YLeaf unicast_grant_invalid_request; //type: PtpInvalidUnicastGrantRequestResponse
         ydk::YLeaf event_dscp; //type: uint32
         class AnnounceInterval; //type: Ptp::Profiles::Profile::AnnounceInterval
+        class Interop; //type: Ptp::Profiles::Profile::Interop
         class SourceIpv4Address; //type: Ptp::Profiles::Profile::SourceIpv4Address
         class Slaves; //type: Ptp::Profiles::Profile::Slaves
         class SyncInterval; //type: Ptp::Profiles::Profile::SyncInterval
@@ -201,6 +209,7 @@ class Ptp::Profiles::Profile : public ydk::Entity
         class SourceIpv6Address; //type: Ptp::Profiles::Profile::SourceIpv6Address
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::AnnounceInterval> announce_interval;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Interop> interop;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::SourceIpv4Address> source_ipv4_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Slaves> slaves;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::SyncInterval> sync_interval;
@@ -232,6 +241,179 @@ class Ptp::Profiles::Profile::AnnounceInterval : public ydk::Entity
         ydk::YLeaf time_period; //type: PtpTimePeriod
 
 }; // Ptp::Profiles::Profile::AnnounceInterval
+
+
+class Ptp::Profiles::Profile::Interop : public ydk::Entity
+{
+    public:
+        Interop();
+        ~Interop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile; //type: PtpClockProfile
+        ydk::YLeaf domain; //type: uint32
+        class EgressConversion; //type: Ptp::Profiles::Profile::Interop::EgressConversion
+        class IngressConversion; //type: Ptp::Profiles::Profile::Interop::IngressConversion
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Interop::EgressConversion> egress_conversion;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Interop::IngressConversion> ingress_conversion;
+        
+}; // Ptp::Profiles::Profile::Interop
+
+
+class Ptp::Profiles::Profile::Interop::EgressConversion : public ydk::Entity
+{
+    public:
+        EgressConversion();
+        ~EgressConversion();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf clock_accuracy; //type: uint32
+        ydk::YLeaf priority2; //type: uint32
+        ydk::YLeaf clock_class_default; //type: uint32
+        ydk::YLeaf offset_scaled_log_variance; //type: uint32
+        ydk::YLeaf priority1; //type: uint32
+        class ClockClassMappings; //type: Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings> clock_class_mappings;
+        
+}; // Ptp::Profiles::Profile::Interop::EgressConversion
+
+
+class Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings : public ydk::Entity
+{
+    public:
+        ClockClassMappings();
+        ~ClockClassMappings();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ClockClassMapping; //type: Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping
+
+        ydk::YList clock_class_mapping;
+        
+}; // Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings
+
+
+class Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping : public ydk::Entity
+{
+    public:
+        ClockClassMapping();
+        ~ClockClassMapping();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf clock_class_from; //type: uint32
+        ydk::YLeaf clock_class_to; //type: uint32
+
+}; // Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping
+
+
+class Ptp::Profiles::Profile::Interop::IngressConversion : public ydk::Entity
+{
+    public:
+        IngressConversion();
+        ~IngressConversion();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf clock_accuracy; //type: uint32
+        ydk::YLeaf priority2; //type: uint32
+        ydk::YLeaf clock_class_default; //type: uint32
+        ydk::YLeaf offset_scaled_log_variance; //type: uint32
+        ydk::YLeaf priority1; //type: uint32
+        class ClockClassMappings; //type: Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings> clock_class_mappings;
+        
+}; // Ptp::Profiles::Profile::Interop::IngressConversion
+
+
+class Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings : public ydk::Entity
+{
+    public:
+        ClockClassMappings();
+        ~ClockClassMappings();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ClockClassMapping; //type: Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping
+
+        ydk::YList clock_class_mapping;
+        
+}; // Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings
+
+
+class Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping : public ydk::Entity
+{
+    public:
+        ClockClassMapping();
+        ~ClockClassMapping();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf clock_class_from; //type: uint32
+        ydk::YLeaf clock_class_to; //type: uint32
+
+}; // Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping
 
 
 class Ptp::Profiles::Profile::SourceIpv4Address : public ydk::Entity
@@ -702,10 +884,8 @@ class Ptp::Logging : public ydk::Entity
         std::string get_absolute_path() const override;
 
         class BestMasterClock; //type: Ptp::Logging::BestMasterClock
-        class Servo; //type: Ptp::Logging::Servo
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Logging::BestMasterClock> best_master_clock;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Logging::Servo> servo;
         
 }; // Ptp::Logging
 
@@ -732,11 +912,11 @@ class Ptp::Logging::BestMasterClock : public ydk::Entity
 }; // Ptp::Logging::BestMasterClock
 
 
-class Ptp::Logging::Servo : public ydk::Entity
+class Ptp::UncalibratedClockClass2 : public ydk::Entity
 {
     public:
-        Servo();
-        ~Servo();
+        UncalibratedClockClass2();
+        ~UncalibratedClockClass2();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -749,9 +929,10 @@ class Ptp::Logging::Servo : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf events; //type: empty
+        ydk::YLeaf clock_class; //type: uint32
+        ydk::YLeaf unless_from_holdover; //type: boolean
 
-}; // Ptp::Logging::Servo
+}; // Ptp::UncalibratedClockClass2
 
 
 class Ptp::TransparentClock : public ydk::Entity
@@ -822,6 +1003,34 @@ class Ptp::TransparentClock::Domains::Domain : public ydk::Entity
         ydk::YLeaf domain; //type: string
 
 }; // Ptp::TransparentClock::Domains::Domain
+
+
+class Ptp::VirtualPort : public ydk::Entity
+{
+    public:
+        VirtualPort();
+        ~VirtualPort();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf clock_accuracy; //type: uint32
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf priority2; //type: uint32
+        ydk::YLeaf local_priority; //type: uint32
+        ydk::YLeaf offset_scaled_log_variance; //type: uint32
+        ydk::YLeaf priority1; //type: uint32
+        ydk::YLeaf clock_class; //type: uint32
+
+}; // Ptp::VirtualPort
 
 
 }

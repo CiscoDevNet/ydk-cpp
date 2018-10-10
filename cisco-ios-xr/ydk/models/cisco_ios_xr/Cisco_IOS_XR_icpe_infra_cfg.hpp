@@ -149,6 +149,7 @@ class NvSatellites::NvSatellite::UpgradeOnConnect : public ydk::Entity
 
         ydk::YLeaf connect_type; //type: ConnectType
         ydk::YLeaf reference; //type: string
+        ydk::YLeaf image_reference; //type: string
         class ConnectType;
 
 }; // NvSatellites::NvSatellite::UpgradeOnConnect

@@ -1501,12 +1501,16 @@ Pppoe::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
         ,
-    statistics(std::make_shared<Pppoe::Nodes::Node::Statistics>())
+    disconnect_history(std::make_shared<Pppoe::Nodes::Node::DisconnectHistory>())
+    , disconnect_history_unique(std::make_shared<Pppoe::Nodes::Node::DisconnectHistoryUnique>())
+    , statistics(std::make_shared<Pppoe::Nodes::Node::Statistics>())
     , access_interface(std::make_shared<Pppoe::Nodes::Node::AccessInterface>())
     , interfaces(std::make_shared<Pppoe::Nodes::Node::Interfaces>())
     , bba_groups(std::make_shared<Pppoe::Nodes::Node::BbaGroups>())
     , summary_total(std::make_shared<Pppoe::Nodes::Node::SummaryTotal>())
 {
+    disconnect_history->parent = this;
+    disconnect_history_unique->parent = this;
     statistics->parent = this;
     access_interface->parent = this;
     interfaces->parent = this;
@@ -1524,6 +1528,8 @@ bool Pppoe::Nodes::Node::has_data() const
 {
     if (is_presence_container) return true;
     return node_name.is_set
+	|| (disconnect_history !=  nullptr && disconnect_history->has_data())
+	|| (disconnect_history_unique !=  nullptr && disconnect_history_unique->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
 	|| (access_interface !=  nullptr && access_interface->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data())
@@ -1535,6 +1541,8 @@ bool Pppoe::Nodes::Node::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node_name.yfilter)
+	|| (disconnect_history !=  nullptr && disconnect_history->has_operation())
+	|| (disconnect_history_unique !=  nullptr && disconnect_history_unique->has_operation())
 	|| (statistics !=  nullptr && statistics->has_operation())
 	|| (access_interface !=  nullptr && access_interface->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
@@ -1569,6 +1577,24 @@ std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::get_name_leaf
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "disconnect-history")
+    {
+        if(disconnect_history == nullptr)
+        {
+            disconnect_history = std::make_shared<Pppoe::Nodes::Node::DisconnectHistory>();
+        }
+        return disconnect_history;
+    }
+
+    if(child_yang_name == "disconnect-history-unique")
+    {
+        if(disconnect_history_unique == nullptr)
+        {
+            disconnect_history_unique = std::make_shared<Pppoe::Nodes::Node::DisconnectHistoryUnique>();
+        }
+        return disconnect_history_unique;
+    }
+
     if(child_yang_name == "statistics")
     {
         if(statistics == nullptr)
@@ -1621,6 +1647,16 @@ std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::get_children(
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(disconnect_history != nullptr)
+    {
+        children["disconnect-history"] = disconnect_history;
+    }
+
+    if(disconnect_history_unique != nullptr)
+    {
+        children["disconnect-history-unique"] = disconnect_history_unique;
+    }
+
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -1669,7 +1705,3872 @@ void Pppoe::Nodes::Node::set_filter(const std::string & value_path, YFilter yfil
 
 bool Pppoe::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "statistics" || name == "access-interface" || name == "interfaces" || name == "bba-groups" || name == "summary-total" || name == "node-name")
+    if(name == "disconnect-history" || name == "disconnect-history-unique" || name == "statistics" || name == "access-interface" || name == "interfaces" || name == "bba-groups" || name == "summary-total" || name == "node-name")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::DisconnectHistory()
+    :
+    current_idx{YType::uint32, "current-idx"}
+        ,
+    entry(this, {})
+{
+
+    yang_name = "disconnect-history"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::~DisconnectHistory()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<entry.len(); index++)
+    {
+        if(entry[index]->has_data())
+            return true;
+    }
+    return current_idx.is_set;
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::has_operation() const
+{
+    for (std::size_t index=0; index<entry.len(); index++)
+    {
+        if(entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(current_idx.yfilter);
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistory::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disconnect-history";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistory::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (current_idx.is_set || is_set(current_idx.yfilter)) leaf_name_data.push_back(current_idx.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "entry")
+    {
+        auto c = std::make_shared<Pppoe::Nodes::Node::DisconnectHistory::Entry>();
+        c->parent = this;
+        entry.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistory::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : entry.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "current-idx")
+    {
+        current_idx = value;
+        current_idx.value_namespace = name_space;
+        current_idx.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "current-idx")
+    {
+        current_idx.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry" || name == "current-idx")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::Entry::Entry()
+    :
+    timestamp{YType::uint64, "timestamp"},
+    ifname{YType::str, "ifname"},
+    trigger{YType::enumeration, "trigger"}
+        ,
+    session_idb(std::make_shared<Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb>())
+{
+    session_idb->parent = this;
+
+    yang_name = "entry"; yang_parent_name = "disconnect-history"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::Entry::~Entry()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::has_data() const
+{
+    if (is_presence_container) return true;
+    return timestamp.is_set
+	|| ifname.is_set
+	|| trigger.is_set
+	|| (session_idb !=  nullptr && session_idb->has_data());
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(ifname.yfilter)
+	|| ydk::is_set(trigger.yfilter)
+	|| (session_idb !=  nullptr && session_idb->has_operation());
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistory::Entry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "entry";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistory::Entry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (ifname.is_set || is_set(ifname.yfilter)) leaf_name_data.push_back(ifname.get_name_leafdata());
+    if (trigger.is_set || is_set(trigger.yfilter)) leaf_name_data.push_back(trigger.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistory::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "session-idb")
+    {
+        if(session_idb == nullptr)
+        {
+            session_idb = std::make_shared<Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb>();
+        }
+        return session_idb;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistory::Entry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(session_idb != nullptr)
+    {
+        children["session-idb"] = session_idb;
+    }
+
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "timestamp")
+    {
+        timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ifname")
+    {
+        ifname = value;
+        ifname.value_namespace = name_space;
+        ifname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trigger")
+    {
+        trigger = value;
+        trigger.value_namespace = name_space;
+        trigger.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::Entry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "ifname")
+    {
+        ifname.yfilter = yfilter;
+    }
+    if(value_path == "trigger")
+    {
+        trigger.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-idb" || name == "timestamp" || name == "ifname" || name == "trigger")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::SessionIdb()
+    :
+    interface{YType::str, "interface"},
+    access_interface{YType::str, "access-interface"},
+    session_id{YType::uint16, "session-id"},
+    sub_label{YType::uint32, "sub-label"},
+    peer_mac_address{YType::str, "peer-mac-address"},
+    state{YType::enumeration, "state"},
+    cdm_object_handle{YType::uint32, "cdm-object-handle"},
+    chkpt_id{YType::uint32, "chkpt-id"},
+    punted_count{YType::uint32, "punted-count"},
+    port_limit{YType::uint32, "port-limit"},
+    is_counted{YType::int32, "is-counted"},
+    is_vlan_outer_tag{YType::int32, "is-vlan-outer-tag"},
+    is_vlan_inner_tag{YType::int32, "is-vlan-inner-tag"},
+    is_cleanup_pending{YType::int32, "is-cleanup-pending"},
+    is_disconnect_done_pending{YType::int32, "is-disconnect-done-pending"},
+    is_delete_done_pending{YType::int32, "is-delete-done-pending"},
+    is_intf_create_callback_pending{YType::int32, "is-intf-create-callback-pending"},
+    is_publish_encaps_attr_pending{YType::int32, "is-publish-encaps-attr-pending"},
+    is_publish_encaps_attr_cb_pending{YType::int32, "is-publish-encaps-attr-cb-pending"},
+    is_intf_delete_callback_pending{YType::int32, "is-intf-delete-callback-pending"},
+    is_intf_delete_pending{YType::int32, "is-intf-delete-pending"},
+    is_im_owned_resource{YType::int32, "is-im-owned-resource"},
+    is_im_final_received{YType::int32, "is-im-final-received"},
+    is_im_owned_resource_missing{YType::int32, "is-im-owned-resource-missing"},
+    is_aaa_start_request_callback_pending{YType::int32, "is-aaa-start-request-callback-pending"},
+    is_aaa_owned_resource{YType::int32, "is-aaa-owned-resource"},
+    is_aaa_disconnect_requested{YType::int32, "is-aaa-disconnect-requested"},
+    is_aaa_disconnect_received{YType::int32, "is-aaa-disconnect-received"},
+    is_sub_db_activate_callback_pending{YType::int32, "is-sub-db-activate-callback-pending"},
+    is_pads_sent{YType::int32, "is-pads-sent"},
+    is_padt_received{YType::int32, "is-padt-received"},
+    is_in_flight{YType::int32, "is-in-flight"},
+    is_radius_override{YType::int32, "is-radius-override"},
+    expected_notifications{YType::uint8, "expected-notifications"},
+    received_notifications{YType::uint8, "received-notifications"},
+    srg_state{YType::enumeration, "srg-state"},
+    is_srg_data_received{YType::int32, "is-srg-data-received"},
+    is_iedge_data_received{YType::int32, "is-iedge-data-received"}
+        ,
+    tags(std::make_shared<Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags>())
+    , vlan_outer_tag(std::make_shared<Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag>())
+    , vlan_inner_tag(std::make_shared<Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag>())
+{
+    tags->parent = this;
+    vlan_outer_tag->parent = this;
+    vlan_inner_tag->parent = this;
+
+    yang_name = "session-idb"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::~SessionIdb()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface.is_set
+	|| access_interface.is_set
+	|| session_id.is_set
+	|| sub_label.is_set
+	|| peer_mac_address.is_set
+	|| state.is_set
+	|| cdm_object_handle.is_set
+	|| chkpt_id.is_set
+	|| punted_count.is_set
+	|| port_limit.is_set
+	|| is_counted.is_set
+	|| is_vlan_outer_tag.is_set
+	|| is_vlan_inner_tag.is_set
+	|| is_cleanup_pending.is_set
+	|| is_disconnect_done_pending.is_set
+	|| is_delete_done_pending.is_set
+	|| is_intf_create_callback_pending.is_set
+	|| is_publish_encaps_attr_pending.is_set
+	|| is_publish_encaps_attr_cb_pending.is_set
+	|| is_intf_delete_callback_pending.is_set
+	|| is_intf_delete_pending.is_set
+	|| is_im_owned_resource.is_set
+	|| is_im_final_received.is_set
+	|| is_im_owned_resource_missing.is_set
+	|| is_aaa_start_request_callback_pending.is_set
+	|| is_aaa_owned_resource.is_set
+	|| is_aaa_disconnect_requested.is_set
+	|| is_aaa_disconnect_received.is_set
+	|| is_sub_db_activate_callback_pending.is_set
+	|| is_pads_sent.is_set
+	|| is_padt_received.is_set
+	|| is_in_flight.is_set
+	|| is_radius_override.is_set
+	|| expected_notifications.is_set
+	|| received_notifications.is_set
+	|| srg_state.is_set
+	|| is_srg_data_received.is_set
+	|| is_iedge_data_received.is_set
+	|| (tags !=  nullptr && tags->has_data())
+	|| (vlan_outer_tag !=  nullptr && vlan_outer_tag->has_data())
+	|| (vlan_inner_tag !=  nullptr && vlan_inner_tag->has_data());
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(access_interface.yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(sub_label.yfilter)
+	|| ydk::is_set(peer_mac_address.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(cdm_object_handle.yfilter)
+	|| ydk::is_set(chkpt_id.yfilter)
+	|| ydk::is_set(punted_count.yfilter)
+	|| ydk::is_set(port_limit.yfilter)
+	|| ydk::is_set(is_counted.yfilter)
+	|| ydk::is_set(is_vlan_outer_tag.yfilter)
+	|| ydk::is_set(is_vlan_inner_tag.yfilter)
+	|| ydk::is_set(is_cleanup_pending.yfilter)
+	|| ydk::is_set(is_disconnect_done_pending.yfilter)
+	|| ydk::is_set(is_delete_done_pending.yfilter)
+	|| ydk::is_set(is_intf_create_callback_pending.yfilter)
+	|| ydk::is_set(is_publish_encaps_attr_pending.yfilter)
+	|| ydk::is_set(is_publish_encaps_attr_cb_pending.yfilter)
+	|| ydk::is_set(is_intf_delete_callback_pending.yfilter)
+	|| ydk::is_set(is_intf_delete_pending.yfilter)
+	|| ydk::is_set(is_im_owned_resource.yfilter)
+	|| ydk::is_set(is_im_final_received.yfilter)
+	|| ydk::is_set(is_im_owned_resource_missing.yfilter)
+	|| ydk::is_set(is_aaa_start_request_callback_pending.yfilter)
+	|| ydk::is_set(is_aaa_owned_resource.yfilter)
+	|| ydk::is_set(is_aaa_disconnect_requested.yfilter)
+	|| ydk::is_set(is_aaa_disconnect_received.yfilter)
+	|| ydk::is_set(is_sub_db_activate_callback_pending.yfilter)
+	|| ydk::is_set(is_pads_sent.yfilter)
+	|| ydk::is_set(is_padt_received.yfilter)
+	|| ydk::is_set(is_in_flight.yfilter)
+	|| ydk::is_set(is_radius_override.yfilter)
+	|| ydk::is_set(expected_notifications.yfilter)
+	|| ydk::is_set(received_notifications.yfilter)
+	|| ydk::is_set(srg_state.yfilter)
+	|| ydk::is_set(is_srg_data_received.yfilter)
+	|| ydk::is_set(is_iedge_data_received.yfilter)
+	|| (tags !=  nullptr && tags->has_operation())
+	|| (vlan_outer_tag !=  nullptr && vlan_outer_tag->has_operation())
+	|| (vlan_inner_tag !=  nullptr && vlan_inner_tag->has_operation());
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-idb";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (access_interface.is_set || is_set(access_interface.yfilter)) leaf_name_data.push_back(access_interface.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (sub_label.is_set || is_set(sub_label.yfilter)) leaf_name_data.push_back(sub_label.get_name_leafdata());
+    if (peer_mac_address.is_set || is_set(peer_mac_address.yfilter)) leaf_name_data.push_back(peer_mac_address.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (cdm_object_handle.is_set || is_set(cdm_object_handle.yfilter)) leaf_name_data.push_back(cdm_object_handle.get_name_leafdata());
+    if (chkpt_id.is_set || is_set(chkpt_id.yfilter)) leaf_name_data.push_back(chkpt_id.get_name_leafdata());
+    if (punted_count.is_set || is_set(punted_count.yfilter)) leaf_name_data.push_back(punted_count.get_name_leafdata());
+    if (port_limit.is_set || is_set(port_limit.yfilter)) leaf_name_data.push_back(port_limit.get_name_leafdata());
+    if (is_counted.is_set || is_set(is_counted.yfilter)) leaf_name_data.push_back(is_counted.get_name_leafdata());
+    if (is_vlan_outer_tag.is_set || is_set(is_vlan_outer_tag.yfilter)) leaf_name_data.push_back(is_vlan_outer_tag.get_name_leafdata());
+    if (is_vlan_inner_tag.is_set || is_set(is_vlan_inner_tag.yfilter)) leaf_name_data.push_back(is_vlan_inner_tag.get_name_leafdata());
+    if (is_cleanup_pending.is_set || is_set(is_cleanup_pending.yfilter)) leaf_name_data.push_back(is_cleanup_pending.get_name_leafdata());
+    if (is_disconnect_done_pending.is_set || is_set(is_disconnect_done_pending.yfilter)) leaf_name_data.push_back(is_disconnect_done_pending.get_name_leafdata());
+    if (is_delete_done_pending.is_set || is_set(is_delete_done_pending.yfilter)) leaf_name_data.push_back(is_delete_done_pending.get_name_leafdata());
+    if (is_intf_create_callback_pending.is_set || is_set(is_intf_create_callback_pending.yfilter)) leaf_name_data.push_back(is_intf_create_callback_pending.get_name_leafdata());
+    if (is_publish_encaps_attr_pending.is_set || is_set(is_publish_encaps_attr_pending.yfilter)) leaf_name_data.push_back(is_publish_encaps_attr_pending.get_name_leafdata());
+    if (is_publish_encaps_attr_cb_pending.is_set || is_set(is_publish_encaps_attr_cb_pending.yfilter)) leaf_name_data.push_back(is_publish_encaps_attr_cb_pending.get_name_leafdata());
+    if (is_intf_delete_callback_pending.is_set || is_set(is_intf_delete_callback_pending.yfilter)) leaf_name_data.push_back(is_intf_delete_callback_pending.get_name_leafdata());
+    if (is_intf_delete_pending.is_set || is_set(is_intf_delete_pending.yfilter)) leaf_name_data.push_back(is_intf_delete_pending.get_name_leafdata());
+    if (is_im_owned_resource.is_set || is_set(is_im_owned_resource.yfilter)) leaf_name_data.push_back(is_im_owned_resource.get_name_leafdata());
+    if (is_im_final_received.is_set || is_set(is_im_final_received.yfilter)) leaf_name_data.push_back(is_im_final_received.get_name_leafdata());
+    if (is_im_owned_resource_missing.is_set || is_set(is_im_owned_resource_missing.yfilter)) leaf_name_data.push_back(is_im_owned_resource_missing.get_name_leafdata());
+    if (is_aaa_start_request_callback_pending.is_set || is_set(is_aaa_start_request_callback_pending.yfilter)) leaf_name_data.push_back(is_aaa_start_request_callback_pending.get_name_leafdata());
+    if (is_aaa_owned_resource.is_set || is_set(is_aaa_owned_resource.yfilter)) leaf_name_data.push_back(is_aaa_owned_resource.get_name_leafdata());
+    if (is_aaa_disconnect_requested.is_set || is_set(is_aaa_disconnect_requested.yfilter)) leaf_name_data.push_back(is_aaa_disconnect_requested.get_name_leafdata());
+    if (is_aaa_disconnect_received.is_set || is_set(is_aaa_disconnect_received.yfilter)) leaf_name_data.push_back(is_aaa_disconnect_received.get_name_leafdata());
+    if (is_sub_db_activate_callback_pending.is_set || is_set(is_sub_db_activate_callback_pending.yfilter)) leaf_name_data.push_back(is_sub_db_activate_callback_pending.get_name_leafdata());
+    if (is_pads_sent.is_set || is_set(is_pads_sent.yfilter)) leaf_name_data.push_back(is_pads_sent.get_name_leafdata());
+    if (is_padt_received.is_set || is_set(is_padt_received.yfilter)) leaf_name_data.push_back(is_padt_received.get_name_leafdata());
+    if (is_in_flight.is_set || is_set(is_in_flight.yfilter)) leaf_name_data.push_back(is_in_flight.get_name_leafdata());
+    if (is_radius_override.is_set || is_set(is_radius_override.yfilter)) leaf_name_data.push_back(is_radius_override.get_name_leafdata());
+    if (expected_notifications.is_set || is_set(expected_notifications.yfilter)) leaf_name_data.push_back(expected_notifications.get_name_leafdata());
+    if (received_notifications.is_set || is_set(received_notifications.yfilter)) leaf_name_data.push_back(received_notifications.get_name_leafdata());
+    if (srg_state.is_set || is_set(srg_state.yfilter)) leaf_name_data.push_back(srg_state.get_name_leafdata());
+    if (is_srg_data_received.is_set || is_set(is_srg_data_received.yfilter)) leaf_name_data.push_back(is_srg_data_received.get_name_leafdata());
+    if (is_iedge_data_received.is_set || is_set(is_iedge_data_received.yfilter)) leaf_name_data.push_back(is_iedge_data_received.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tags")
+    {
+        if(tags == nullptr)
+        {
+            tags = std::make_shared<Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags>();
+        }
+        return tags;
+    }
+
+    if(child_yang_name == "vlan-outer-tag")
+    {
+        if(vlan_outer_tag == nullptr)
+        {
+            vlan_outer_tag = std::make_shared<Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag>();
+        }
+        return vlan_outer_tag;
+    }
+
+    if(child_yang_name == "vlan-inner-tag")
+    {
+        if(vlan_inner_tag == nullptr)
+        {
+            vlan_inner_tag = std::make_shared<Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag>();
+        }
+        return vlan_inner_tag;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(tags != nullptr)
+    {
+        children["tags"] = tags;
+    }
+
+    if(vlan_outer_tag != nullptr)
+    {
+        children["vlan-outer-tag"] = vlan_outer_tag;
+    }
+
+    if(vlan_inner_tag != nullptr)
+    {
+        children["vlan-inner-tag"] = vlan_inner_tag;
+    }
+
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-interface")
+    {
+        access_interface = value;
+        access_interface.value_namespace = name_space;
+        access_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-id")
+    {
+        session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sub-label")
+    {
+        sub_label = value;
+        sub_label.value_namespace = name_space;
+        sub_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peer-mac-address")
+    {
+        peer_mac_address = value;
+        peer_mac_address.value_namespace = name_space;
+        peer_mac_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdm-object-handle")
+    {
+        cdm_object_handle = value;
+        cdm_object_handle.value_namespace = name_space;
+        cdm_object_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chkpt-id")
+    {
+        chkpt_id = value;
+        chkpt_id.value_namespace = name_space;
+        chkpt_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "punted-count")
+    {
+        punted_count = value;
+        punted_count.value_namespace = name_space;
+        punted_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port-limit")
+    {
+        port_limit = value;
+        port_limit.value_namespace = name_space;
+        port_limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-counted")
+    {
+        is_counted = value;
+        is_counted.value_namespace = name_space;
+        is_counted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-vlan-outer-tag")
+    {
+        is_vlan_outer_tag = value;
+        is_vlan_outer_tag.value_namespace = name_space;
+        is_vlan_outer_tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-vlan-inner-tag")
+    {
+        is_vlan_inner_tag = value;
+        is_vlan_inner_tag.value_namespace = name_space;
+        is_vlan_inner_tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-cleanup-pending")
+    {
+        is_cleanup_pending = value;
+        is_cleanup_pending.value_namespace = name_space;
+        is_cleanup_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-disconnect-done-pending")
+    {
+        is_disconnect_done_pending = value;
+        is_disconnect_done_pending.value_namespace = name_space;
+        is_disconnect_done_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-delete-done-pending")
+    {
+        is_delete_done_pending = value;
+        is_delete_done_pending.value_namespace = name_space;
+        is_delete_done_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-intf-create-callback-pending")
+    {
+        is_intf_create_callback_pending = value;
+        is_intf_create_callback_pending.value_namespace = name_space;
+        is_intf_create_callback_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-publish-encaps-attr-pending")
+    {
+        is_publish_encaps_attr_pending = value;
+        is_publish_encaps_attr_pending.value_namespace = name_space;
+        is_publish_encaps_attr_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-publish-encaps-attr-cb-pending")
+    {
+        is_publish_encaps_attr_cb_pending = value;
+        is_publish_encaps_attr_cb_pending.value_namespace = name_space;
+        is_publish_encaps_attr_cb_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-intf-delete-callback-pending")
+    {
+        is_intf_delete_callback_pending = value;
+        is_intf_delete_callback_pending.value_namespace = name_space;
+        is_intf_delete_callback_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-intf-delete-pending")
+    {
+        is_intf_delete_pending = value;
+        is_intf_delete_pending.value_namespace = name_space;
+        is_intf_delete_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-im-owned-resource")
+    {
+        is_im_owned_resource = value;
+        is_im_owned_resource.value_namespace = name_space;
+        is_im_owned_resource.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-im-final-received")
+    {
+        is_im_final_received = value;
+        is_im_final_received.value_namespace = name_space;
+        is_im_final_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-im-owned-resource-missing")
+    {
+        is_im_owned_resource_missing = value;
+        is_im_owned_resource_missing.value_namespace = name_space;
+        is_im_owned_resource_missing.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-aaa-start-request-callback-pending")
+    {
+        is_aaa_start_request_callback_pending = value;
+        is_aaa_start_request_callback_pending.value_namespace = name_space;
+        is_aaa_start_request_callback_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-aaa-owned-resource")
+    {
+        is_aaa_owned_resource = value;
+        is_aaa_owned_resource.value_namespace = name_space;
+        is_aaa_owned_resource.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-aaa-disconnect-requested")
+    {
+        is_aaa_disconnect_requested = value;
+        is_aaa_disconnect_requested.value_namespace = name_space;
+        is_aaa_disconnect_requested.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-aaa-disconnect-received")
+    {
+        is_aaa_disconnect_received = value;
+        is_aaa_disconnect_received.value_namespace = name_space;
+        is_aaa_disconnect_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-sub-db-activate-callback-pending")
+    {
+        is_sub_db_activate_callback_pending = value;
+        is_sub_db_activate_callback_pending.value_namespace = name_space;
+        is_sub_db_activate_callback_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-pads-sent")
+    {
+        is_pads_sent = value;
+        is_pads_sent.value_namespace = name_space;
+        is_pads_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-padt-received")
+    {
+        is_padt_received = value;
+        is_padt_received.value_namespace = name_space;
+        is_padt_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-in-flight")
+    {
+        is_in_flight = value;
+        is_in_flight.value_namespace = name_space;
+        is_in_flight.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-radius-override")
+    {
+        is_radius_override = value;
+        is_radius_override.value_namespace = name_space;
+        is_radius_override.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expected-notifications")
+    {
+        expected_notifications = value;
+        expected_notifications.value_namespace = name_space;
+        expected_notifications.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "received-notifications")
+    {
+        received_notifications = value;
+        received_notifications.value_namespace = name_space;
+        received_notifications.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srg-state")
+    {
+        srg_state = value;
+        srg_state.value_namespace = name_space;
+        srg_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-srg-data-received")
+    {
+        is_srg_data_received = value;
+        is_srg_data_received.value_namespace = name_space;
+        is_srg_data_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-iedge-data-received")
+    {
+        is_iedge_data_received = value;
+        is_iedge_data_received.value_namespace = name_space;
+        is_iedge_data_received.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "access-interface")
+    {
+        access_interface.yfilter = yfilter;
+    }
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "sub-label")
+    {
+        sub_label.yfilter = yfilter;
+    }
+    if(value_path == "peer-mac-address")
+    {
+        peer_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "cdm-object-handle")
+    {
+        cdm_object_handle.yfilter = yfilter;
+    }
+    if(value_path == "chkpt-id")
+    {
+        chkpt_id.yfilter = yfilter;
+    }
+    if(value_path == "punted-count")
+    {
+        punted_count.yfilter = yfilter;
+    }
+    if(value_path == "port-limit")
+    {
+        port_limit.yfilter = yfilter;
+    }
+    if(value_path == "is-counted")
+    {
+        is_counted.yfilter = yfilter;
+    }
+    if(value_path == "is-vlan-outer-tag")
+    {
+        is_vlan_outer_tag.yfilter = yfilter;
+    }
+    if(value_path == "is-vlan-inner-tag")
+    {
+        is_vlan_inner_tag.yfilter = yfilter;
+    }
+    if(value_path == "is-cleanup-pending")
+    {
+        is_cleanup_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-disconnect-done-pending")
+    {
+        is_disconnect_done_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-delete-done-pending")
+    {
+        is_delete_done_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-intf-create-callback-pending")
+    {
+        is_intf_create_callback_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-publish-encaps-attr-pending")
+    {
+        is_publish_encaps_attr_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-publish-encaps-attr-cb-pending")
+    {
+        is_publish_encaps_attr_cb_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-intf-delete-callback-pending")
+    {
+        is_intf_delete_callback_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-intf-delete-pending")
+    {
+        is_intf_delete_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-im-owned-resource")
+    {
+        is_im_owned_resource.yfilter = yfilter;
+    }
+    if(value_path == "is-im-final-received")
+    {
+        is_im_final_received.yfilter = yfilter;
+    }
+    if(value_path == "is-im-owned-resource-missing")
+    {
+        is_im_owned_resource_missing.yfilter = yfilter;
+    }
+    if(value_path == "is-aaa-start-request-callback-pending")
+    {
+        is_aaa_start_request_callback_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-aaa-owned-resource")
+    {
+        is_aaa_owned_resource.yfilter = yfilter;
+    }
+    if(value_path == "is-aaa-disconnect-requested")
+    {
+        is_aaa_disconnect_requested.yfilter = yfilter;
+    }
+    if(value_path == "is-aaa-disconnect-received")
+    {
+        is_aaa_disconnect_received.yfilter = yfilter;
+    }
+    if(value_path == "is-sub-db-activate-callback-pending")
+    {
+        is_sub_db_activate_callback_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-pads-sent")
+    {
+        is_pads_sent.yfilter = yfilter;
+    }
+    if(value_path == "is-padt-received")
+    {
+        is_padt_received.yfilter = yfilter;
+    }
+    if(value_path == "is-in-flight")
+    {
+        is_in_flight.yfilter = yfilter;
+    }
+    if(value_path == "is-radius-override")
+    {
+        is_radius_override.yfilter = yfilter;
+    }
+    if(value_path == "expected-notifications")
+    {
+        expected_notifications.yfilter = yfilter;
+    }
+    if(value_path == "received-notifications")
+    {
+        received_notifications.yfilter = yfilter;
+    }
+    if(value_path == "srg-state")
+    {
+        srg_state.yfilter = yfilter;
+    }
+    if(value_path == "is-srg-data-received")
+    {
+        is_srg_data_received.yfilter = yfilter;
+    }
+    if(value_path == "is-iedge-data-received")
+    {
+        is_iedge_data_received.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tags" || name == "vlan-outer-tag" || name == "vlan-inner-tag" || name == "interface" || name == "access-interface" || name == "session-id" || name == "sub-label" || name == "peer-mac-address" || name == "state" || name == "cdm-object-handle" || name == "chkpt-id" || name == "punted-count" || name == "port-limit" || name == "is-counted" || name == "is-vlan-outer-tag" || name == "is-vlan-inner-tag" || name == "is-cleanup-pending" || name == "is-disconnect-done-pending" || name == "is-delete-done-pending" || name == "is-intf-create-callback-pending" || name == "is-publish-encaps-attr-pending" || name == "is-publish-encaps-attr-cb-pending" || name == "is-intf-delete-callback-pending" || name == "is-intf-delete-pending" || name == "is-im-owned-resource" || name == "is-im-final-received" || name == "is-im-owned-resource-missing" || name == "is-aaa-start-request-callback-pending" || name == "is-aaa-owned-resource" || name == "is-aaa-disconnect-requested" || name == "is-aaa-disconnect-received" || name == "is-sub-db-activate-callback-pending" || name == "is-pads-sent" || name == "is-padt-received" || name == "is-in-flight" || name == "is-radius-override" || name == "expected-notifications" || name == "received-notifications" || name == "srg-state" || name == "is-srg-data-received" || name == "is-iedge-data-received")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::Tags()
+    :
+    is_service_name{YType::int32, "is-service-name"},
+    is_max_payload{YType::int32, "is-max-payload"},
+    is_host_uniq{YType::int32, "is-host-uniq"},
+    is_relay_session_id{YType::int32, "is-relay-session-id"},
+    is_vendor_specific{YType::int32, "is-vendor-specific"},
+    is_iwf{YType::int32, "is-iwf"},
+    is_remote_id{YType::int32, "is-remote-id"},
+    is_circuit_id{YType::int32, "is-circuit-id"},
+    is_dsl_tag{YType::int32, "is-dsl-tag"},
+    service_name{YType::str, "service-name"},
+    max_payload{YType::uint32, "max-payload"},
+    host_uniq{YType::str, "host-uniq"},
+    relay_session_id{YType::str, "relay-session-id"},
+    remote_id{YType::str, "remote-id"},
+    circuit_id{YType::str, "circuit-id"},
+    is_dsl_actual_up{YType::int32, "is-dsl-actual-up"},
+    is_dsl_actual_down{YType::int32, "is-dsl-actual-down"},
+    is_dsl_min_up{YType::int32, "is-dsl-min-up"},
+    is_dsl_min_down{YType::int32, "is-dsl-min-down"},
+    is_dsl_attain_up{YType::int32, "is-dsl-attain-up"},
+    is_dsl_attain_down{YType::int32, "is-dsl-attain-down"},
+    is_dsl_max_up{YType::int32, "is-dsl-max-up"},
+    is_dsl_max_down{YType::int32, "is-dsl-max-down"},
+    is_dsl_min_up_low{YType::int32, "is-dsl-min-up-low"},
+    is_dsl_min_down_low{YType::int32, "is-dsl-min-down-low"},
+    is_dsl_max_delay_up{YType::int32, "is-dsl-max-delay-up"},
+    is_dsl_actual_delay_up{YType::int32, "is-dsl-actual-delay-up"},
+    is_dsl_max_delay_down{YType::int32, "is-dsl-max-delay-down"},
+    is_dsl_actual_delay_down{YType::int32, "is-dsl-actual-delay-down"},
+    is_access_loop_encapsulation{YType::int32, "is-access-loop-encapsulation"},
+    dsl_actual_up{YType::uint32, "dsl-actual-up"},
+    dsl_actual_down{YType::uint32, "dsl-actual-down"},
+    dsl_min_up{YType::uint32, "dsl-min-up"},
+    dsl_min_down{YType::uint32, "dsl-min-down"},
+    dsl_attain_up{YType::uint32, "dsl-attain-up"},
+    dsl_attain_down{YType::uint32, "dsl-attain-down"},
+    dsl_max_up{YType::uint32, "dsl-max-up"},
+    dsl_max_down{YType::uint32, "dsl-max-down"},
+    dsl_min_up_low{YType::uint32, "dsl-min-up-low"},
+    dsl_min_down_low{YType::uint32, "dsl-min-down-low"},
+    dsl_max_delay_up{YType::uint32, "dsl-max-delay-up"},
+    dsl_actual_delay_up{YType::uint32, "dsl-actual-delay-up"},
+    dsl_max_delay_down{YType::uint32, "dsl-max-delay-down"},
+    dsl_actual_delay_down{YType::uint32, "dsl-actual-delay-down"}
+        ,
+    access_loop_encapsulation(std::make_shared<Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation>())
+{
+    access_loop_encapsulation->parent = this;
+
+    yang_name = "tags"; yang_parent_name = "session-idb"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::~Tags()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::has_data() const
+{
+    if (is_presence_container) return true;
+    return is_service_name.is_set
+	|| is_max_payload.is_set
+	|| is_host_uniq.is_set
+	|| is_relay_session_id.is_set
+	|| is_vendor_specific.is_set
+	|| is_iwf.is_set
+	|| is_remote_id.is_set
+	|| is_circuit_id.is_set
+	|| is_dsl_tag.is_set
+	|| service_name.is_set
+	|| max_payload.is_set
+	|| host_uniq.is_set
+	|| relay_session_id.is_set
+	|| remote_id.is_set
+	|| circuit_id.is_set
+	|| is_dsl_actual_up.is_set
+	|| is_dsl_actual_down.is_set
+	|| is_dsl_min_up.is_set
+	|| is_dsl_min_down.is_set
+	|| is_dsl_attain_up.is_set
+	|| is_dsl_attain_down.is_set
+	|| is_dsl_max_up.is_set
+	|| is_dsl_max_down.is_set
+	|| is_dsl_min_up_low.is_set
+	|| is_dsl_min_down_low.is_set
+	|| is_dsl_max_delay_up.is_set
+	|| is_dsl_actual_delay_up.is_set
+	|| is_dsl_max_delay_down.is_set
+	|| is_dsl_actual_delay_down.is_set
+	|| is_access_loop_encapsulation.is_set
+	|| dsl_actual_up.is_set
+	|| dsl_actual_down.is_set
+	|| dsl_min_up.is_set
+	|| dsl_min_down.is_set
+	|| dsl_attain_up.is_set
+	|| dsl_attain_down.is_set
+	|| dsl_max_up.is_set
+	|| dsl_max_down.is_set
+	|| dsl_min_up_low.is_set
+	|| dsl_min_down_low.is_set
+	|| dsl_max_delay_up.is_set
+	|| dsl_actual_delay_up.is_set
+	|| dsl_max_delay_down.is_set
+	|| dsl_actual_delay_down.is_set
+	|| (access_loop_encapsulation !=  nullptr && access_loop_encapsulation->has_data());
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_service_name.yfilter)
+	|| ydk::is_set(is_max_payload.yfilter)
+	|| ydk::is_set(is_host_uniq.yfilter)
+	|| ydk::is_set(is_relay_session_id.yfilter)
+	|| ydk::is_set(is_vendor_specific.yfilter)
+	|| ydk::is_set(is_iwf.yfilter)
+	|| ydk::is_set(is_remote_id.yfilter)
+	|| ydk::is_set(is_circuit_id.yfilter)
+	|| ydk::is_set(is_dsl_tag.yfilter)
+	|| ydk::is_set(service_name.yfilter)
+	|| ydk::is_set(max_payload.yfilter)
+	|| ydk::is_set(host_uniq.yfilter)
+	|| ydk::is_set(relay_session_id.yfilter)
+	|| ydk::is_set(remote_id.yfilter)
+	|| ydk::is_set(circuit_id.yfilter)
+	|| ydk::is_set(is_dsl_actual_up.yfilter)
+	|| ydk::is_set(is_dsl_actual_down.yfilter)
+	|| ydk::is_set(is_dsl_min_up.yfilter)
+	|| ydk::is_set(is_dsl_min_down.yfilter)
+	|| ydk::is_set(is_dsl_attain_up.yfilter)
+	|| ydk::is_set(is_dsl_attain_down.yfilter)
+	|| ydk::is_set(is_dsl_max_up.yfilter)
+	|| ydk::is_set(is_dsl_max_down.yfilter)
+	|| ydk::is_set(is_dsl_min_up_low.yfilter)
+	|| ydk::is_set(is_dsl_min_down_low.yfilter)
+	|| ydk::is_set(is_dsl_max_delay_up.yfilter)
+	|| ydk::is_set(is_dsl_actual_delay_up.yfilter)
+	|| ydk::is_set(is_dsl_max_delay_down.yfilter)
+	|| ydk::is_set(is_dsl_actual_delay_down.yfilter)
+	|| ydk::is_set(is_access_loop_encapsulation.yfilter)
+	|| ydk::is_set(dsl_actual_up.yfilter)
+	|| ydk::is_set(dsl_actual_down.yfilter)
+	|| ydk::is_set(dsl_min_up.yfilter)
+	|| ydk::is_set(dsl_min_down.yfilter)
+	|| ydk::is_set(dsl_attain_up.yfilter)
+	|| ydk::is_set(dsl_attain_down.yfilter)
+	|| ydk::is_set(dsl_max_up.yfilter)
+	|| ydk::is_set(dsl_max_down.yfilter)
+	|| ydk::is_set(dsl_min_up_low.yfilter)
+	|| ydk::is_set(dsl_min_down_low.yfilter)
+	|| ydk::is_set(dsl_max_delay_up.yfilter)
+	|| ydk::is_set(dsl_actual_delay_up.yfilter)
+	|| ydk::is_set(dsl_max_delay_down.yfilter)
+	|| ydk::is_set(dsl_actual_delay_down.yfilter)
+	|| (access_loop_encapsulation !=  nullptr && access_loop_encapsulation->has_operation());
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tags";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_service_name.is_set || is_set(is_service_name.yfilter)) leaf_name_data.push_back(is_service_name.get_name_leafdata());
+    if (is_max_payload.is_set || is_set(is_max_payload.yfilter)) leaf_name_data.push_back(is_max_payload.get_name_leafdata());
+    if (is_host_uniq.is_set || is_set(is_host_uniq.yfilter)) leaf_name_data.push_back(is_host_uniq.get_name_leafdata());
+    if (is_relay_session_id.is_set || is_set(is_relay_session_id.yfilter)) leaf_name_data.push_back(is_relay_session_id.get_name_leafdata());
+    if (is_vendor_specific.is_set || is_set(is_vendor_specific.yfilter)) leaf_name_data.push_back(is_vendor_specific.get_name_leafdata());
+    if (is_iwf.is_set || is_set(is_iwf.yfilter)) leaf_name_data.push_back(is_iwf.get_name_leafdata());
+    if (is_remote_id.is_set || is_set(is_remote_id.yfilter)) leaf_name_data.push_back(is_remote_id.get_name_leafdata());
+    if (is_circuit_id.is_set || is_set(is_circuit_id.yfilter)) leaf_name_data.push_back(is_circuit_id.get_name_leafdata());
+    if (is_dsl_tag.is_set || is_set(is_dsl_tag.yfilter)) leaf_name_data.push_back(is_dsl_tag.get_name_leafdata());
+    if (service_name.is_set || is_set(service_name.yfilter)) leaf_name_data.push_back(service_name.get_name_leafdata());
+    if (max_payload.is_set || is_set(max_payload.yfilter)) leaf_name_data.push_back(max_payload.get_name_leafdata());
+    if (host_uniq.is_set || is_set(host_uniq.yfilter)) leaf_name_data.push_back(host_uniq.get_name_leafdata());
+    if (relay_session_id.is_set || is_set(relay_session_id.yfilter)) leaf_name_data.push_back(relay_session_id.get_name_leafdata());
+    if (remote_id.is_set || is_set(remote_id.yfilter)) leaf_name_data.push_back(remote_id.get_name_leafdata());
+    if (circuit_id.is_set || is_set(circuit_id.yfilter)) leaf_name_data.push_back(circuit_id.get_name_leafdata());
+    if (is_dsl_actual_up.is_set || is_set(is_dsl_actual_up.yfilter)) leaf_name_data.push_back(is_dsl_actual_up.get_name_leafdata());
+    if (is_dsl_actual_down.is_set || is_set(is_dsl_actual_down.yfilter)) leaf_name_data.push_back(is_dsl_actual_down.get_name_leafdata());
+    if (is_dsl_min_up.is_set || is_set(is_dsl_min_up.yfilter)) leaf_name_data.push_back(is_dsl_min_up.get_name_leafdata());
+    if (is_dsl_min_down.is_set || is_set(is_dsl_min_down.yfilter)) leaf_name_data.push_back(is_dsl_min_down.get_name_leafdata());
+    if (is_dsl_attain_up.is_set || is_set(is_dsl_attain_up.yfilter)) leaf_name_data.push_back(is_dsl_attain_up.get_name_leafdata());
+    if (is_dsl_attain_down.is_set || is_set(is_dsl_attain_down.yfilter)) leaf_name_data.push_back(is_dsl_attain_down.get_name_leafdata());
+    if (is_dsl_max_up.is_set || is_set(is_dsl_max_up.yfilter)) leaf_name_data.push_back(is_dsl_max_up.get_name_leafdata());
+    if (is_dsl_max_down.is_set || is_set(is_dsl_max_down.yfilter)) leaf_name_data.push_back(is_dsl_max_down.get_name_leafdata());
+    if (is_dsl_min_up_low.is_set || is_set(is_dsl_min_up_low.yfilter)) leaf_name_data.push_back(is_dsl_min_up_low.get_name_leafdata());
+    if (is_dsl_min_down_low.is_set || is_set(is_dsl_min_down_low.yfilter)) leaf_name_data.push_back(is_dsl_min_down_low.get_name_leafdata());
+    if (is_dsl_max_delay_up.is_set || is_set(is_dsl_max_delay_up.yfilter)) leaf_name_data.push_back(is_dsl_max_delay_up.get_name_leafdata());
+    if (is_dsl_actual_delay_up.is_set || is_set(is_dsl_actual_delay_up.yfilter)) leaf_name_data.push_back(is_dsl_actual_delay_up.get_name_leafdata());
+    if (is_dsl_max_delay_down.is_set || is_set(is_dsl_max_delay_down.yfilter)) leaf_name_data.push_back(is_dsl_max_delay_down.get_name_leafdata());
+    if (is_dsl_actual_delay_down.is_set || is_set(is_dsl_actual_delay_down.yfilter)) leaf_name_data.push_back(is_dsl_actual_delay_down.get_name_leafdata());
+    if (is_access_loop_encapsulation.is_set || is_set(is_access_loop_encapsulation.yfilter)) leaf_name_data.push_back(is_access_loop_encapsulation.get_name_leafdata());
+    if (dsl_actual_up.is_set || is_set(dsl_actual_up.yfilter)) leaf_name_data.push_back(dsl_actual_up.get_name_leafdata());
+    if (dsl_actual_down.is_set || is_set(dsl_actual_down.yfilter)) leaf_name_data.push_back(dsl_actual_down.get_name_leafdata());
+    if (dsl_min_up.is_set || is_set(dsl_min_up.yfilter)) leaf_name_data.push_back(dsl_min_up.get_name_leafdata());
+    if (dsl_min_down.is_set || is_set(dsl_min_down.yfilter)) leaf_name_data.push_back(dsl_min_down.get_name_leafdata());
+    if (dsl_attain_up.is_set || is_set(dsl_attain_up.yfilter)) leaf_name_data.push_back(dsl_attain_up.get_name_leafdata());
+    if (dsl_attain_down.is_set || is_set(dsl_attain_down.yfilter)) leaf_name_data.push_back(dsl_attain_down.get_name_leafdata());
+    if (dsl_max_up.is_set || is_set(dsl_max_up.yfilter)) leaf_name_data.push_back(dsl_max_up.get_name_leafdata());
+    if (dsl_max_down.is_set || is_set(dsl_max_down.yfilter)) leaf_name_data.push_back(dsl_max_down.get_name_leafdata());
+    if (dsl_min_up_low.is_set || is_set(dsl_min_up_low.yfilter)) leaf_name_data.push_back(dsl_min_up_low.get_name_leafdata());
+    if (dsl_min_down_low.is_set || is_set(dsl_min_down_low.yfilter)) leaf_name_data.push_back(dsl_min_down_low.get_name_leafdata());
+    if (dsl_max_delay_up.is_set || is_set(dsl_max_delay_up.yfilter)) leaf_name_data.push_back(dsl_max_delay_up.get_name_leafdata());
+    if (dsl_actual_delay_up.is_set || is_set(dsl_actual_delay_up.yfilter)) leaf_name_data.push_back(dsl_actual_delay_up.get_name_leafdata());
+    if (dsl_max_delay_down.is_set || is_set(dsl_max_delay_down.yfilter)) leaf_name_data.push_back(dsl_max_delay_down.get_name_leafdata());
+    if (dsl_actual_delay_down.is_set || is_set(dsl_actual_delay_down.yfilter)) leaf_name_data.push_back(dsl_actual_delay_down.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "access-loop-encapsulation")
+    {
+        if(access_loop_encapsulation == nullptr)
+        {
+            access_loop_encapsulation = std::make_shared<Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation>();
+        }
+        return access_loop_encapsulation;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(access_loop_encapsulation != nullptr)
+    {
+        children["access-loop-encapsulation"] = access_loop_encapsulation;
+    }
+
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-service-name")
+    {
+        is_service_name = value;
+        is_service_name.value_namespace = name_space;
+        is_service_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-max-payload")
+    {
+        is_max_payload = value;
+        is_max_payload.value_namespace = name_space;
+        is_max_payload.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-host-uniq")
+    {
+        is_host_uniq = value;
+        is_host_uniq.value_namespace = name_space;
+        is_host_uniq.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-relay-session-id")
+    {
+        is_relay_session_id = value;
+        is_relay_session_id.value_namespace = name_space;
+        is_relay_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-vendor-specific")
+    {
+        is_vendor_specific = value;
+        is_vendor_specific.value_namespace = name_space;
+        is_vendor_specific.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-iwf")
+    {
+        is_iwf = value;
+        is_iwf.value_namespace = name_space;
+        is_iwf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-remote-id")
+    {
+        is_remote_id = value;
+        is_remote_id.value_namespace = name_space;
+        is_remote_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-circuit-id")
+    {
+        is_circuit_id = value;
+        is_circuit_id.value_namespace = name_space;
+        is_circuit_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-tag")
+    {
+        is_dsl_tag = value;
+        is_dsl_tag.value_namespace = name_space;
+        is_dsl_tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "service-name")
+    {
+        service_name = value;
+        service_name.value_namespace = name_space;
+        service_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-payload")
+    {
+        max_payload = value;
+        max_payload.value_namespace = name_space;
+        max_payload.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "host-uniq")
+    {
+        host_uniq = value;
+        host_uniq.value_namespace = name_space;
+        host_uniq.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "relay-session-id")
+    {
+        relay_session_id = value;
+        relay_session_id.value_namespace = name_space;
+        relay_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-id")
+    {
+        remote_id = value;
+        remote_id.value_namespace = name_space;
+        remote_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "circuit-id")
+    {
+        circuit_id = value;
+        circuit_id.value_namespace = name_space;
+        circuit_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-actual-up")
+    {
+        is_dsl_actual_up = value;
+        is_dsl_actual_up.value_namespace = name_space;
+        is_dsl_actual_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-actual-down")
+    {
+        is_dsl_actual_down = value;
+        is_dsl_actual_down.value_namespace = name_space;
+        is_dsl_actual_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-min-up")
+    {
+        is_dsl_min_up = value;
+        is_dsl_min_up.value_namespace = name_space;
+        is_dsl_min_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-min-down")
+    {
+        is_dsl_min_down = value;
+        is_dsl_min_down.value_namespace = name_space;
+        is_dsl_min_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-attain-up")
+    {
+        is_dsl_attain_up = value;
+        is_dsl_attain_up.value_namespace = name_space;
+        is_dsl_attain_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-attain-down")
+    {
+        is_dsl_attain_down = value;
+        is_dsl_attain_down.value_namespace = name_space;
+        is_dsl_attain_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-max-up")
+    {
+        is_dsl_max_up = value;
+        is_dsl_max_up.value_namespace = name_space;
+        is_dsl_max_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-max-down")
+    {
+        is_dsl_max_down = value;
+        is_dsl_max_down.value_namespace = name_space;
+        is_dsl_max_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-min-up-low")
+    {
+        is_dsl_min_up_low = value;
+        is_dsl_min_up_low.value_namespace = name_space;
+        is_dsl_min_up_low.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-min-down-low")
+    {
+        is_dsl_min_down_low = value;
+        is_dsl_min_down_low.value_namespace = name_space;
+        is_dsl_min_down_low.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-max-delay-up")
+    {
+        is_dsl_max_delay_up = value;
+        is_dsl_max_delay_up.value_namespace = name_space;
+        is_dsl_max_delay_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-actual-delay-up")
+    {
+        is_dsl_actual_delay_up = value;
+        is_dsl_actual_delay_up.value_namespace = name_space;
+        is_dsl_actual_delay_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-max-delay-down")
+    {
+        is_dsl_max_delay_down = value;
+        is_dsl_max_delay_down.value_namespace = name_space;
+        is_dsl_max_delay_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-actual-delay-down")
+    {
+        is_dsl_actual_delay_down = value;
+        is_dsl_actual_delay_down.value_namespace = name_space;
+        is_dsl_actual_delay_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-access-loop-encapsulation")
+    {
+        is_access_loop_encapsulation = value;
+        is_access_loop_encapsulation.value_namespace = name_space;
+        is_access_loop_encapsulation.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-actual-up")
+    {
+        dsl_actual_up = value;
+        dsl_actual_up.value_namespace = name_space;
+        dsl_actual_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-actual-down")
+    {
+        dsl_actual_down = value;
+        dsl_actual_down.value_namespace = name_space;
+        dsl_actual_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-min-up")
+    {
+        dsl_min_up = value;
+        dsl_min_up.value_namespace = name_space;
+        dsl_min_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-min-down")
+    {
+        dsl_min_down = value;
+        dsl_min_down.value_namespace = name_space;
+        dsl_min_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-attain-up")
+    {
+        dsl_attain_up = value;
+        dsl_attain_up.value_namespace = name_space;
+        dsl_attain_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-attain-down")
+    {
+        dsl_attain_down = value;
+        dsl_attain_down.value_namespace = name_space;
+        dsl_attain_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-max-up")
+    {
+        dsl_max_up = value;
+        dsl_max_up.value_namespace = name_space;
+        dsl_max_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-max-down")
+    {
+        dsl_max_down = value;
+        dsl_max_down.value_namespace = name_space;
+        dsl_max_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-min-up-low")
+    {
+        dsl_min_up_low = value;
+        dsl_min_up_low.value_namespace = name_space;
+        dsl_min_up_low.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-min-down-low")
+    {
+        dsl_min_down_low = value;
+        dsl_min_down_low.value_namespace = name_space;
+        dsl_min_down_low.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-max-delay-up")
+    {
+        dsl_max_delay_up = value;
+        dsl_max_delay_up.value_namespace = name_space;
+        dsl_max_delay_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-actual-delay-up")
+    {
+        dsl_actual_delay_up = value;
+        dsl_actual_delay_up.value_namespace = name_space;
+        dsl_actual_delay_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-max-delay-down")
+    {
+        dsl_max_delay_down = value;
+        dsl_max_delay_down.value_namespace = name_space;
+        dsl_max_delay_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-actual-delay-down")
+    {
+        dsl_actual_delay_down = value;
+        dsl_actual_delay_down.value_namespace = name_space;
+        dsl_actual_delay_down.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-service-name")
+    {
+        is_service_name.yfilter = yfilter;
+    }
+    if(value_path == "is-max-payload")
+    {
+        is_max_payload.yfilter = yfilter;
+    }
+    if(value_path == "is-host-uniq")
+    {
+        is_host_uniq.yfilter = yfilter;
+    }
+    if(value_path == "is-relay-session-id")
+    {
+        is_relay_session_id.yfilter = yfilter;
+    }
+    if(value_path == "is-vendor-specific")
+    {
+        is_vendor_specific.yfilter = yfilter;
+    }
+    if(value_path == "is-iwf")
+    {
+        is_iwf.yfilter = yfilter;
+    }
+    if(value_path == "is-remote-id")
+    {
+        is_remote_id.yfilter = yfilter;
+    }
+    if(value_path == "is-circuit-id")
+    {
+        is_circuit_id.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-tag")
+    {
+        is_dsl_tag.yfilter = yfilter;
+    }
+    if(value_path == "service-name")
+    {
+        service_name.yfilter = yfilter;
+    }
+    if(value_path == "max-payload")
+    {
+        max_payload.yfilter = yfilter;
+    }
+    if(value_path == "host-uniq")
+    {
+        host_uniq.yfilter = yfilter;
+    }
+    if(value_path == "relay-session-id")
+    {
+        relay_session_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-id")
+    {
+        remote_id.yfilter = yfilter;
+    }
+    if(value_path == "circuit-id")
+    {
+        circuit_id.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-actual-up")
+    {
+        is_dsl_actual_up.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-actual-down")
+    {
+        is_dsl_actual_down.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-min-up")
+    {
+        is_dsl_min_up.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-min-down")
+    {
+        is_dsl_min_down.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-attain-up")
+    {
+        is_dsl_attain_up.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-attain-down")
+    {
+        is_dsl_attain_down.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-max-up")
+    {
+        is_dsl_max_up.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-max-down")
+    {
+        is_dsl_max_down.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-min-up-low")
+    {
+        is_dsl_min_up_low.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-min-down-low")
+    {
+        is_dsl_min_down_low.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-max-delay-up")
+    {
+        is_dsl_max_delay_up.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-actual-delay-up")
+    {
+        is_dsl_actual_delay_up.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-max-delay-down")
+    {
+        is_dsl_max_delay_down.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-actual-delay-down")
+    {
+        is_dsl_actual_delay_down.yfilter = yfilter;
+    }
+    if(value_path == "is-access-loop-encapsulation")
+    {
+        is_access_loop_encapsulation.yfilter = yfilter;
+    }
+    if(value_path == "dsl-actual-up")
+    {
+        dsl_actual_up.yfilter = yfilter;
+    }
+    if(value_path == "dsl-actual-down")
+    {
+        dsl_actual_down.yfilter = yfilter;
+    }
+    if(value_path == "dsl-min-up")
+    {
+        dsl_min_up.yfilter = yfilter;
+    }
+    if(value_path == "dsl-min-down")
+    {
+        dsl_min_down.yfilter = yfilter;
+    }
+    if(value_path == "dsl-attain-up")
+    {
+        dsl_attain_up.yfilter = yfilter;
+    }
+    if(value_path == "dsl-attain-down")
+    {
+        dsl_attain_down.yfilter = yfilter;
+    }
+    if(value_path == "dsl-max-up")
+    {
+        dsl_max_up.yfilter = yfilter;
+    }
+    if(value_path == "dsl-max-down")
+    {
+        dsl_max_down.yfilter = yfilter;
+    }
+    if(value_path == "dsl-min-up-low")
+    {
+        dsl_min_up_low.yfilter = yfilter;
+    }
+    if(value_path == "dsl-min-down-low")
+    {
+        dsl_min_down_low.yfilter = yfilter;
+    }
+    if(value_path == "dsl-max-delay-up")
+    {
+        dsl_max_delay_up.yfilter = yfilter;
+    }
+    if(value_path == "dsl-actual-delay-up")
+    {
+        dsl_actual_delay_up.yfilter = yfilter;
+    }
+    if(value_path == "dsl-max-delay-down")
+    {
+        dsl_max_delay_down.yfilter = yfilter;
+    }
+    if(value_path == "dsl-actual-delay-down")
+    {
+        dsl_actual_delay_down.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-loop-encapsulation" || name == "is-service-name" || name == "is-max-payload" || name == "is-host-uniq" || name == "is-relay-session-id" || name == "is-vendor-specific" || name == "is-iwf" || name == "is-remote-id" || name == "is-circuit-id" || name == "is-dsl-tag" || name == "service-name" || name == "max-payload" || name == "host-uniq" || name == "relay-session-id" || name == "remote-id" || name == "circuit-id" || name == "is-dsl-actual-up" || name == "is-dsl-actual-down" || name == "is-dsl-min-up" || name == "is-dsl-min-down" || name == "is-dsl-attain-up" || name == "is-dsl-attain-down" || name == "is-dsl-max-up" || name == "is-dsl-max-down" || name == "is-dsl-min-up-low" || name == "is-dsl-min-down-low" || name == "is-dsl-max-delay-up" || name == "is-dsl-actual-delay-up" || name == "is-dsl-max-delay-down" || name == "is-dsl-actual-delay-down" || name == "is-access-loop-encapsulation" || name == "dsl-actual-up" || name == "dsl-actual-down" || name == "dsl-min-up" || name == "dsl-min-down" || name == "dsl-attain-up" || name == "dsl-attain-down" || name == "dsl-max-up" || name == "dsl-max-down" || name == "dsl-min-up-low" || name == "dsl-min-down-low" || name == "dsl-max-delay-up" || name == "dsl-actual-delay-up" || name == "dsl-max-delay-down" || name == "dsl-actual-delay-down")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation::AccessLoopEncapsulation()
+    :
+    data_link{YType::uint8, "data-link"},
+    encaps1{YType::uint8, "encaps1"},
+    encaps2{YType::uint8, "encaps2"}
+{
+
+    yang_name = "access-loop-encapsulation"; yang_parent_name = "tags"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation::~AccessLoopEncapsulation()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation::has_data() const
+{
+    if (is_presence_container) return true;
+    return data_link.is_set
+	|| encaps1.is_set
+	|| encaps2.is_set;
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data_link.yfilter)
+	|| ydk::is_set(encaps1.yfilter)
+	|| ydk::is_set(encaps2.yfilter);
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-loop-encapsulation";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data_link.is_set || is_set(data_link.yfilter)) leaf_name_data.push_back(data_link.get_name_leafdata());
+    if (encaps1.is_set || is_set(encaps1.yfilter)) leaf_name_data.push_back(encaps1.get_name_leafdata());
+    if (encaps2.is_set || is_set(encaps2.yfilter)) leaf_name_data.push_back(encaps2.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data-link")
+    {
+        data_link = value;
+        data_link.value_namespace = name_space;
+        data_link.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encaps1")
+    {
+        encaps1 = value;
+        encaps1.value_namespace = name_space;
+        encaps1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encaps2")
+    {
+        encaps2 = value;
+        encaps2.value_namespace = name_space;
+        encaps2.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-link")
+    {
+        data_link.yfilter = yfilter;
+    }
+    if(value_path == "encaps1")
+    {
+        encaps1.yfilter = yfilter;
+    }
+    if(value_path == "encaps2")
+    {
+        encaps2.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-link" || name == "encaps1" || name == "encaps2")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag::VlanOuterTag()
+    :
+    ether_type{YType::uint16, "ether-type"},
+    user_priority{YType::uint8, "user-priority"},
+    cfi{YType::uint8, "cfi"},
+    vlan_id{YType::uint16, "vlan-id"}
+{
+
+    yang_name = "vlan-outer-tag"; yang_parent_name = "session-idb"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag::~VlanOuterTag()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag::has_data() const
+{
+    if (is_presence_container) return true;
+    return ether_type.is_set
+	|| user_priority.is_set
+	|| cfi.is_set
+	|| vlan_id.is_set;
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ether_type.yfilter)
+	|| ydk::is_set(user_priority.yfilter)
+	|| ydk::is_set(cfi.yfilter)
+	|| ydk::is_set(vlan_id.yfilter);
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan-outer-tag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ether_type.is_set || is_set(ether_type.yfilter)) leaf_name_data.push_back(ether_type.get_name_leafdata());
+    if (user_priority.is_set || is_set(user_priority.yfilter)) leaf_name_data.push_back(user_priority.get_name_leafdata());
+    if (cfi.is_set || is_set(cfi.yfilter)) leaf_name_data.push_back(cfi.get_name_leafdata());
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ether-type")
+    {
+        ether_type = value;
+        ether_type.value_namespace = name_space;
+        ether_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "user-priority")
+    {
+        user_priority = value;
+        user_priority.value_namespace = name_space;
+        user_priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfi")
+    {
+        cfi = value;
+        cfi.value_namespace = name_space;
+        cfi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ether-type")
+    {
+        ether_type.yfilter = yfilter;
+    }
+    if(value_path == "user-priority")
+    {
+        user_priority.yfilter = yfilter;
+    }
+    if(value_path == "cfi")
+    {
+        cfi.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ether-type" || name == "user-priority" || name == "cfi" || name == "vlan-id")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag::VlanInnerTag()
+    :
+    ether_type{YType::uint16, "ether-type"},
+    user_priority{YType::uint8, "user-priority"},
+    cfi{YType::uint8, "cfi"},
+    vlan_id{YType::uint16, "vlan-id"}
+{
+
+    yang_name = "vlan-inner-tag"; yang_parent_name = "session-idb"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag::~VlanInnerTag()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag::has_data() const
+{
+    if (is_presence_container) return true;
+    return ether_type.is_set
+	|| user_priority.is_set
+	|| cfi.is_set
+	|| vlan_id.is_set;
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ether_type.yfilter)
+	|| ydk::is_set(user_priority.yfilter)
+	|| ydk::is_set(cfi.yfilter)
+	|| ydk::is_set(vlan_id.yfilter);
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan-inner-tag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ether_type.is_set || is_set(ether_type.yfilter)) leaf_name_data.push_back(ether_type.get_name_leafdata());
+    if (user_priority.is_set || is_set(user_priority.yfilter)) leaf_name_data.push_back(user_priority.get_name_leafdata());
+    if (cfi.is_set || is_set(cfi.yfilter)) leaf_name_data.push_back(cfi.get_name_leafdata());
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ether-type")
+    {
+        ether_type = value;
+        ether_type.value_namespace = name_space;
+        ether_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "user-priority")
+    {
+        user_priority = value;
+        user_priority.value_namespace = name_space;
+        user_priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfi")
+    {
+        cfi = value;
+        cfi.value_namespace = name_space;
+        cfi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ether-type")
+    {
+        ether_type.yfilter = yfilter;
+    }
+    if(value_path == "user-priority")
+    {
+        user_priority.yfilter = yfilter;
+    }
+    if(value_path == "cfi")
+    {
+        cfi.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ether-type" || name == "user-priority" || name == "cfi" || name == "vlan-id")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::DisconnectHistoryUnique()
+    :
+    disconnect_count{YType::uint32, "disconnect-count"}
+        ,
+    entry(this, {})
+{
+
+    yang_name = "disconnect-history-unique"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::~DisconnectHistoryUnique()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<entry.len(); index++)
+    {
+        if(entry[index]->has_data())
+            return true;
+    }
+    for (auto const & leaf : disconnect_count.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::has_operation() const
+{
+    for (std::size_t index=0; index<entry.len(); index++)
+    {
+        if(entry[index]->has_operation())
+            return true;
+    }
+    for (auto const & leaf : disconnect_count.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(disconnect_count.yfilter);
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistoryUnique::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disconnect-history-unique";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistoryUnique::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto disconnect_count_name_datas = disconnect_count.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), disconnect_count_name_datas.begin(), disconnect_count_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistoryUnique::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "entry")
+    {
+        auto c = std::make_shared<Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry>();
+        c->parent = this;
+        entry.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistoryUnique::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : entry.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disconnect-count")
+    {
+        disconnect_count.append(value);
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disconnect-count")
+    {
+        disconnect_count.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry" || name == "disconnect-count")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::Entry()
+    :
+    timestamp{YType::uint64, "timestamp"},
+    ifname{YType::str, "ifname"},
+    trigger{YType::enumeration, "trigger"}
+        ,
+    session_idb(std::make_shared<Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb>())
+{
+    session_idb->parent = this;
+
+    yang_name = "entry"; yang_parent_name = "disconnect-history-unique"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::~Entry()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::has_data() const
+{
+    if (is_presence_container) return true;
+    return timestamp.is_set
+	|| ifname.is_set
+	|| trigger.is_set
+	|| (session_idb !=  nullptr && session_idb->has_data());
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(ifname.yfilter)
+	|| ydk::is_set(trigger.yfilter)
+	|| (session_idb !=  nullptr && session_idb->has_operation());
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "entry";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (ifname.is_set || is_set(ifname.yfilter)) leaf_name_data.push_back(ifname.get_name_leafdata());
+    if (trigger.is_set || is_set(trigger.yfilter)) leaf_name_data.push_back(trigger.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "session-idb")
+    {
+        if(session_idb == nullptr)
+        {
+            session_idb = std::make_shared<Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb>();
+        }
+        return session_idb;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(session_idb != nullptr)
+    {
+        children["session-idb"] = session_idb;
+    }
+
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "timestamp")
+    {
+        timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ifname")
+    {
+        ifname = value;
+        ifname.value_namespace = name_space;
+        ifname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trigger")
+    {
+        trigger = value;
+        trigger.value_namespace = name_space;
+        trigger.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "ifname")
+    {
+        ifname.yfilter = yfilter;
+    }
+    if(value_path == "trigger")
+    {
+        trigger.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-idb" || name == "timestamp" || name == "ifname" || name == "trigger")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::SessionIdb()
+    :
+    interface{YType::str, "interface"},
+    access_interface{YType::str, "access-interface"},
+    session_id{YType::uint16, "session-id"},
+    sub_label{YType::uint32, "sub-label"},
+    peer_mac_address{YType::str, "peer-mac-address"},
+    state{YType::enumeration, "state"},
+    cdm_object_handle{YType::uint32, "cdm-object-handle"},
+    chkpt_id{YType::uint32, "chkpt-id"},
+    punted_count{YType::uint32, "punted-count"},
+    port_limit{YType::uint32, "port-limit"},
+    is_counted{YType::int32, "is-counted"},
+    is_vlan_outer_tag{YType::int32, "is-vlan-outer-tag"},
+    is_vlan_inner_tag{YType::int32, "is-vlan-inner-tag"},
+    is_cleanup_pending{YType::int32, "is-cleanup-pending"},
+    is_disconnect_done_pending{YType::int32, "is-disconnect-done-pending"},
+    is_delete_done_pending{YType::int32, "is-delete-done-pending"},
+    is_intf_create_callback_pending{YType::int32, "is-intf-create-callback-pending"},
+    is_publish_encaps_attr_pending{YType::int32, "is-publish-encaps-attr-pending"},
+    is_publish_encaps_attr_cb_pending{YType::int32, "is-publish-encaps-attr-cb-pending"},
+    is_intf_delete_callback_pending{YType::int32, "is-intf-delete-callback-pending"},
+    is_intf_delete_pending{YType::int32, "is-intf-delete-pending"},
+    is_im_owned_resource{YType::int32, "is-im-owned-resource"},
+    is_im_final_received{YType::int32, "is-im-final-received"},
+    is_im_owned_resource_missing{YType::int32, "is-im-owned-resource-missing"},
+    is_aaa_start_request_callback_pending{YType::int32, "is-aaa-start-request-callback-pending"},
+    is_aaa_owned_resource{YType::int32, "is-aaa-owned-resource"},
+    is_aaa_disconnect_requested{YType::int32, "is-aaa-disconnect-requested"},
+    is_aaa_disconnect_received{YType::int32, "is-aaa-disconnect-received"},
+    is_sub_db_activate_callback_pending{YType::int32, "is-sub-db-activate-callback-pending"},
+    is_pads_sent{YType::int32, "is-pads-sent"},
+    is_padt_received{YType::int32, "is-padt-received"},
+    is_in_flight{YType::int32, "is-in-flight"},
+    is_radius_override{YType::int32, "is-radius-override"},
+    expected_notifications{YType::uint8, "expected-notifications"},
+    received_notifications{YType::uint8, "received-notifications"},
+    srg_state{YType::enumeration, "srg-state"},
+    is_srg_data_received{YType::int32, "is-srg-data-received"},
+    is_iedge_data_received{YType::int32, "is-iedge-data-received"}
+        ,
+    tags(std::make_shared<Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags>())
+    , vlan_outer_tag(std::make_shared<Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag>())
+    , vlan_inner_tag(std::make_shared<Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag>())
+{
+    tags->parent = this;
+    vlan_outer_tag->parent = this;
+    vlan_inner_tag->parent = this;
+
+    yang_name = "session-idb"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::~SessionIdb()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface.is_set
+	|| access_interface.is_set
+	|| session_id.is_set
+	|| sub_label.is_set
+	|| peer_mac_address.is_set
+	|| state.is_set
+	|| cdm_object_handle.is_set
+	|| chkpt_id.is_set
+	|| punted_count.is_set
+	|| port_limit.is_set
+	|| is_counted.is_set
+	|| is_vlan_outer_tag.is_set
+	|| is_vlan_inner_tag.is_set
+	|| is_cleanup_pending.is_set
+	|| is_disconnect_done_pending.is_set
+	|| is_delete_done_pending.is_set
+	|| is_intf_create_callback_pending.is_set
+	|| is_publish_encaps_attr_pending.is_set
+	|| is_publish_encaps_attr_cb_pending.is_set
+	|| is_intf_delete_callback_pending.is_set
+	|| is_intf_delete_pending.is_set
+	|| is_im_owned_resource.is_set
+	|| is_im_final_received.is_set
+	|| is_im_owned_resource_missing.is_set
+	|| is_aaa_start_request_callback_pending.is_set
+	|| is_aaa_owned_resource.is_set
+	|| is_aaa_disconnect_requested.is_set
+	|| is_aaa_disconnect_received.is_set
+	|| is_sub_db_activate_callback_pending.is_set
+	|| is_pads_sent.is_set
+	|| is_padt_received.is_set
+	|| is_in_flight.is_set
+	|| is_radius_override.is_set
+	|| expected_notifications.is_set
+	|| received_notifications.is_set
+	|| srg_state.is_set
+	|| is_srg_data_received.is_set
+	|| is_iedge_data_received.is_set
+	|| (tags !=  nullptr && tags->has_data())
+	|| (vlan_outer_tag !=  nullptr && vlan_outer_tag->has_data())
+	|| (vlan_inner_tag !=  nullptr && vlan_inner_tag->has_data());
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(access_interface.yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(sub_label.yfilter)
+	|| ydk::is_set(peer_mac_address.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(cdm_object_handle.yfilter)
+	|| ydk::is_set(chkpt_id.yfilter)
+	|| ydk::is_set(punted_count.yfilter)
+	|| ydk::is_set(port_limit.yfilter)
+	|| ydk::is_set(is_counted.yfilter)
+	|| ydk::is_set(is_vlan_outer_tag.yfilter)
+	|| ydk::is_set(is_vlan_inner_tag.yfilter)
+	|| ydk::is_set(is_cleanup_pending.yfilter)
+	|| ydk::is_set(is_disconnect_done_pending.yfilter)
+	|| ydk::is_set(is_delete_done_pending.yfilter)
+	|| ydk::is_set(is_intf_create_callback_pending.yfilter)
+	|| ydk::is_set(is_publish_encaps_attr_pending.yfilter)
+	|| ydk::is_set(is_publish_encaps_attr_cb_pending.yfilter)
+	|| ydk::is_set(is_intf_delete_callback_pending.yfilter)
+	|| ydk::is_set(is_intf_delete_pending.yfilter)
+	|| ydk::is_set(is_im_owned_resource.yfilter)
+	|| ydk::is_set(is_im_final_received.yfilter)
+	|| ydk::is_set(is_im_owned_resource_missing.yfilter)
+	|| ydk::is_set(is_aaa_start_request_callback_pending.yfilter)
+	|| ydk::is_set(is_aaa_owned_resource.yfilter)
+	|| ydk::is_set(is_aaa_disconnect_requested.yfilter)
+	|| ydk::is_set(is_aaa_disconnect_received.yfilter)
+	|| ydk::is_set(is_sub_db_activate_callback_pending.yfilter)
+	|| ydk::is_set(is_pads_sent.yfilter)
+	|| ydk::is_set(is_padt_received.yfilter)
+	|| ydk::is_set(is_in_flight.yfilter)
+	|| ydk::is_set(is_radius_override.yfilter)
+	|| ydk::is_set(expected_notifications.yfilter)
+	|| ydk::is_set(received_notifications.yfilter)
+	|| ydk::is_set(srg_state.yfilter)
+	|| ydk::is_set(is_srg_data_received.yfilter)
+	|| ydk::is_set(is_iedge_data_received.yfilter)
+	|| (tags !=  nullptr && tags->has_operation())
+	|| (vlan_outer_tag !=  nullptr && vlan_outer_tag->has_operation())
+	|| (vlan_inner_tag !=  nullptr && vlan_inner_tag->has_operation());
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-idb";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (access_interface.is_set || is_set(access_interface.yfilter)) leaf_name_data.push_back(access_interface.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (sub_label.is_set || is_set(sub_label.yfilter)) leaf_name_data.push_back(sub_label.get_name_leafdata());
+    if (peer_mac_address.is_set || is_set(peer_mac_address.yfilter)) leaf_name_data.push_back(peer_mac_address.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (cdm_object_handle.is_set || is_set(cdm_object_handle.yfilter)) leaf_name_data.push_back(cdm_object_handle.get_name_leafdata());
+    if (chkpt_id.is_set || is_set(chkpt_id.yfilter)) leaf_name_data.push_back(chkpt_id.get_name_leafdata());
+    if (punted_count.is_set || is_set(punted_count.yfilter)) leaf_name_data.push_back(punted_count.get_name_leafdata());
+    if (port_limit.is_set || is_set(port_limit.yfilter)) leaf_name_data.push_back(port_limit.get_name_leafdata());
+    if (is_counted.is_set || is_set(is_counted.yfilter)) leaf_name_data.push_back(is_counted.get_name_leafdata());
+    if (is_vlan_outer_tag.is_set || is_set(is_vlan_outer_tag.yfilter)) leaf_name_data.push_back(is_vlan_outer_tag.get_name_leafdata());
+    if (is_vlan_inner_tag.is_set || is_set(is_vlan_inner_tag.yfilter)) leaf_name_data.push_back(is_vlan_inner_tag.get_name_leafdata());
+    if (is_cleanup_pending.is_set || is_set(is_cleanup_pending.yfilter)) leaf_name_data.push_back(is_cleanup_pending.get_name_leafdata());
+    if (is_disconnect_done_pending.is_set || is_set(is_disconnect_done_pending.yfilter)) leaf_name_data.push_back(is_disconnect_done_pending.get_name_leafdata());
+    if (is_delete_done_pending.is_set || is_set(is_delete_done_pending.yfilter)) leaf_name_data.push_back(is_delete_done_pending.get_name_leafdata());
+    if (is_intf_create_callback_pending.is_set || is_set(is_intf_create_callback_pending.yfilter)) leaf_name_data.push_back(is_intf_create_callback_pending.get_name_leafdata());
+    if (is_publish_encaps_attr_pending.is_set || is_set(is_publish_encaps_attr_pending.yfilter)) leaf_name_data.push_back(is_publish_encaps_attr_pending.get_name_leafdata());
+    if (is_publish_encaps_attr_cb_pending.is_set || is_set(is_publish_encaps_attr_cb_pending.yfilter)) leaf_name_data.push_back(is_publish_encaps_attr_cb_pending.get_name_leafdata());
+    if (is_intf_delete_callback_pending.is_set || is_set(is_intf_delete_callback_pending.yfilter)) leaf_name_data.push_back(is_intf_delete_callback_pending.get_name_leafdata());
+    if (is_intf_delete_pending.is_set || is_set(is_intf_delete_pending.yfilter)) leaf_name_data.push_back(is_intf_delete_pending.get_name_leafdata());
+    if (is_im_owned_resource.is_set || is_set(is_im_owned_resource.yfilter)) leaf_name_data.push_back(is_im_owned_resource.get_name_leafdata());
+    if (is_im_final_received.is_set || is_set(is_im_final_received.yfilter)) leaf_name_data.push_back(is_im_final_received.get_name_leafdata());
+    if (is_im_owned_resource_missing.is_set || is_set(is_im_owned_resource_missing.yfilter)) leaf_name_data.push_back(is_im_owned_resource_missing.get_name_leafdata());
+    if (is_aaa_start_request_callback_pending.is_set || is_set(is_aaa_start_request_callback_pending.yfilter)) leaf_name_data.push_back(is_aaa_start_request_callback_pending.get_name_leafdata());
+    if (is_aaa_owned_resource.is_set || is_set(is_aaa_owned_resource.yfilter)) leaf_name_data.push_back(is_aaa_owned_resource.get_name_leafdata());
+    if (is_aaa_disconnect_requested.is_set || is_set(is_aaa_disconnect_requested.yfilter)) leaf_name_data.push_back(is_aaa_disconnect_requested.get_name_leafdata());
+    if (is_aaa_disconnect_received.is_set || is_set(is_aaa_disconnect_received.yfilter)) leaf_name_data.push_back(is_aaa_disconnect_received.get_name_leafdata());
+    if (is_sub_db_activate_callback_pending.is_set || is_set(is_sub_db_activate_callback_pending.yfilter)) leaf_name_data.push_back(is_sub_db_activate_callback_pending.get_name_leafdata());
+    if (is_pads_sent.is_set || is_set(is_pads_sent.yfilter)) leaf_name_data.push_back(is_pads_sent.get_name_leafdata());
+    if (is_padt_received.is_set || is_set(is_padt_received.yfilter)) leaf_name_data.push_back(is_padt_received.get_name_leafdata());
+    if (is_in_flight.is_set || is_set(is_in_flight.yfilter)) leaf_name_data.push_back(is_in_flight.get_name_leafdata());
+    if (is_radius_override.is_set || is_set(is_radius_override.yfilter)) leaf_name_data.push_back(is_radius_override.get_name_leafdata());
+    if (expected_notifications.is_set || is_set(expected_notifications.yfilter)) leaf_name_data.push_back(expected_notifications.get_name_leafdata());
+    if (received_notifications.is_set || is_set(received_notifications.yfilter)) leaf_name_data.push_back(received_notifications.get_name_leafdata());
+    if (srg_state.is_set || is_set(srg_state.yfilter)) leaf_name_data.push_back(srg_state.get_name_leafdata());
+    if (is_srg_data_received.is_set || is_set(is_srg_data_received.yfilter)) leaf_name_data.push_back(is_srg_data_received.get_name_leafdata());
+    if (is_iedge_data_received.is_set || is_set(is_iedge_data_received.yfilter)) leaf_name_data.push_back(is_iedge_data_received.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tags")
+    {
+        if(tags == nullptr)
+        {
+            tags = std::make_shared<Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags>();
+        }
+        return tags;
+    }
+
+    if(child_yang_name == "vlan-outer-tag")
+    {
+        if(vlan_outer_tag == nullptr)
+        {
+            vlan_outer_tag = std::make_shared<Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag>();
+        }
+        return vlan_outer_tag;
+    }
+
+    if(child_yang_name == "vlan-inner-tag")
+    {
+        if(vlan_inner_tag == nullptr)
+        {
+            vlan_inner_tag = std::make_shared<Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag>();
+        }
+        return vlan_inner_tag;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(tags != nullptr)
+    {
+        children["tags"] = tags;
+    }
+
+    if(vlan_outer_tag != nullptr)
+    {
+        children["vlan-outer-tag"] = vlan_outer_tag;
+    }
+
+    if(vlan_inner_tag != nullptr)
+    {
+        children["vlan-inner-tag"] = vlan_inner_tag;
+    }
+
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-interface")
+    {
+        access_interface = value;
+        access_interface.value_namespace = name_space;
+        access_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-id")
+    {
+        session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sub-label")
+    {
+        sub_label = value;
+        sub_label.value_namespace = name_space;
+        sub_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peer-mac-address")
+    {
+        peer_mac_address = value;
+        peer_mac_address.value_namespace = name_space;
+        peer_mac_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdm-object-handle")
+    {
+        cdm_object_handle = value;
+        cdm_object_handle.value_namespace = name_space;
+        cdm_object_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chkpt-id")
+    {
+        chkpt_id = value;
+        chkpt_id.value_namespace = name_space;
+        chkpt_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "punted-count")
+    {
+        punted_count = value;
+        punted_count.value_namespace = name_space;
+        punted_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port-limit")
+    {
+        port_limit = value;
+        port_limit.value_namespace = name_space;
+        port_limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-counted")
+    {
+        is_counted = value;
+        is_counted.value_namespace = name_space;
+        is_counted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-vlan-outer-tag")
+    {
+        is_vlan_outer_tag = value;
+        is_vlan_outer_tag.value_namespace = name_space;
+        is_vlan_outer_tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-vlan-inner-tag")
+    {
+        is_vlan_inner_tag = value;
+        is_vlan_inner_tag.value_namespace = name_space;
+        is_vlan_inner_tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-cleanup-pending")
+    {
+        is_cleanup_pending = value;
+        is_cleanup_pending.value_namespace = name_space;
+        is_cleanup_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-disconnect-done-pending")
+    {
+        is_disconnect_done_pending = value;
+        is_disconnect_done_pending.value_namespace = name_space;
+        is_disconnect_done_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-delete-done-pending")
+    {
+        is_delete_done_pending = value;
+        is_delete_done_pending.value_namespace = name_space;
+        is_delete_done_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-intf-create-callback-pending")
+    {
+        is_intf_create_callback_pending = value;
+        is_intf_create_callback_pending.value_namespace = name_space;
+        is_intf_create_callback_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-publish-encaps-attr-pending")
+    {
+        is_publish_encaps_attr_pending = value;
+        is_publish_encaps_attr_pending.value_namespace = name_space;
+        is_publish_encaps_attr_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-publish-encaps-attr-cb-pending")
+    {
+        is_publish_encaps_attr_cb_pending = value;
+        is_publish_encaps_attr_cb_pending.value_namespace = name_space;
+        is_publish_encaps_attr_cb_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-intf-delete-callback-pending")
+    {
+        is_intf_delete_callback_pending = value;
+        is_intf_delete_callback_pending.value_namespace = name_space;
+        is_intf_delete_callback_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-intf-delete-pending")
+    {
+        is_intf_delete_pending = value;
+        is_intf_delete_pending.value_namespace = name_space;
+        is_intf_delete_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-im-owned-resource")
+    {
+        is_im_owned_resource = value;
+        is_im_owned_resource.value_namespace = name_space;
+        is_im_owned_resource.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-im-final-received")
+    {
+        is_im_final_received = value;
+        is_im_final_received.value_namespace = name_space;
+        is_im_final_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-im-owned-resource-missing")
+    {
+        is_im_owned_resource_missing = value;
+        is_im_owned_resource_missing.value_namespace = name_space;
+        is_im_owned_resource_missing.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-aaa-start-request-callback-pending")
+    {
+        is_aaa_start_request_callback_pending = value;
+        is_aaa_start_request_callback_pending.value_namespace = name_space;
+        is_aaa_start_request_callback_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-aaa-owned-resource")
+    {
+        is_aaa_owned_resource = value;
+        is_aaa_owned_resource.value_namespace = name_space;
+        is_aaa_owned_resource.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-aaa-disconnect-requested")
+    {
+        is_aaa_disconnect_requested = value;
+        is_aaa_disconnect_requested.value_namespace = name_space;
+        is_aaa_disconnect_requested.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-aaa-disconnect-received")
+    {
+        is_aaa_disconnect_received = value;
+        is_aaa_disconnect_received.value_namespace = name_space;
+        is_aaa_disconnect_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-sub-db-activate-callback-pending")
+    {
+        is_sub_db_activate_callback_pending = value;
+        is_sub_db_activate_callback_pending.value_namespace = name_space;
+        is_sub_db_activate_callback_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-pads-sent")
+    {
+        is_pads_sent = value;
+        is_pads_sent.value_namespace = name_space;
+        is_pads_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-padt-received")
+    {
+        is_padt_received = value;
+        is_padt_received.value_namespace = name_space;
+        is_padt_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-in-flight")
+    {
+        is_in_flight = value;
+        is_in_flight.value_namespace = name_space;
+        is_in_flight.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-radius-override")
+    {
+        is_radius_override = value;
+        is_radius_override.value_namespace = name_space;
+        is_radius_override.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expected-notifications")
+    {
+        expected_notifications = value;
+        expected_notifications.value_namespace = name_space;
+        expected_notifications.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "received-notifications")
+    {
+        received_notifications = value;
+        received_notifications.value_namespace = name_space;
+        received_notifications.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srg-state")
+    {
+        srg_state = value;
+        srg_state.value_namespace = name_space;
+        srg_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-srg-data-received")
+    {
+        is_srg_data_received = value;
+        is_srg_data_received.value_namespace = name_space;
+        is_srg_data_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-iedge-data-received")
+    {
+        is_iedge_data_received = value;
+        is_iedge_data_received.value_namespace = name_space;
+        is_iedge_data_received.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "access-interface")
+    {
+        access_interface.yfilter = yfilter;
+    }
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "sub-label")
+    {
+        sub_label.yfilter = yfilter;
+    }
+    if(value_path == "peer-mac-address")
+    {
+        peer_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "cdm-object-handle")
+    {
+        cdm_object_handle.yfilter = yfilter;
+    }
+    if(value_path == "chkpt-id")
+    {
+        chkpt_id.yfilter = yfilter;
+    }
+    if(value_path == "punted-count")
+    {
+        punted_count.yfilter = yfilter;
+    }
+    if(value_path == "port-limit")
+    {
+        port_limit.yfilter = yfilter;
+    }
+    if(value_path == "is-counted")
+    {
+        is_counted.yfilter = yfilter;
+    }
+    if(value_path == "is-vlan-outer-tag")
+    {
+        is_vlan_outer_tag.yfilter = yfilter;
+    }
+    if(value_path == "is-vlan-inner-tag")
+    {
+        is_vlan_inner_tag.yfilter = yfilter;
+    }
+    if(value_path == "is-cleanup-pending")
+    {
+        is_cleanup_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-disconnect-done-pending")
+    {
+        is_disconnect_done_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-delete-done-pending")
+    {
+        is_delete_done_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-intf-create-callback-pending")
+    {
+        is_intf_create_callback_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-publish-encaps-attr-pending")
+    {
+        is_publish_encaps_attr_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-publish-encaps-attr-cb-pending")
+    {
+        is_publish_encaps_attr_cb_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-intf-delete-callback-pending")
+    {
+        is_intf_delete_callback_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-intf-delete-pending")
+    {
+        is_intf_delete_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-im-owned-resource")
+    {
+        is_im_owned_resource.yfilter = yfilter;
+    }
+    if(value_path == "is-im-final-received")
+    {
+        is_im_final_received.yfilter = yfilter;
+    }
+    if(value_path == "is-im-owned-resource-missing")
+    {
+        is_im_owned_resource_missing.yfilter = yfilter;
+    }
+    if(value_path == "is-aaa-start-request-callback-pending")
+    {
+        is_aaa_start_request_callback_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-aaa-owned-resource")
+    {
+        is_aaa_owned_resource.yfilter = yfilter;
+    }
+    if(value_path == "is-aaa-disconnect-requested")
+    {
+        is_aaa_disconnect_requested.yfilter = yfilter;
+    }
+    if(value_path == "is-aaa-disconnect-received")
+    {
+        is_aaa_disconnect_received.yfilter = yfilter;
+    }
+    if(value_path == "is-sub-db-activate-callback-pending")
+    {
+        is_sub_db_activate_callback_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-pads-sent")
+    {
+        is_pads_sent.yfilter = yfilter;
+    }
+    if(value_path == "is-padt-received")
+    {
+        is_padt_received.yfilter = yfilter;
+    }
+    if(value_path == "is-in-flight")
+    {
+        is_in_flight.yfilter = yfilter;
+    }
+    if(value_path == "is-radius-override")
+    {
+        is_radius_override.yfilter = yfilter;
+    }
+    if(value_path == "expected-notifications")
+    {
+        expected_notifications.yfilter = yfilter;
+    }
+    if(value_path == "received-notifications")
+    {
+        received_notifications.yfilter = yfilter;
+    }
+    if(value_path == "srg-state")
+    {
+        srg_state.yfilter = yfilter;
+    }
+    if(value_path == "is-srg-data-received")
+    {
+        is_srg_data_received.yfilter = yfilter;
+    }
+    if(value_path == "is-iedge-data-received")
+    {
+        is_iedge_data_received.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tags" || name == "vlan-outer-tag" || name == "vlan-inner-tag" || name == "interface" || name == "access-interface" || name == "session-id" || name == "sub-label" || name == "peer-mac-address" || name == "state" || name == "cdm-object-handle" || name == "chkpt-id" || name == "punted-count" || name == "port-limit" || name == "is-counted" || name == "is-vlan-outer-tag" || name == "is-vlan-inner-tag" || name == "is-cleanup-pending" || name == "is-disconnect-done-pending" || name == "is-delete-done-pending" || name == "is-intf-create-callback-pending" || name == "is-publish-encaps-attr-pending" || name == "is-publish-encaps-attr-cb-pending" || name == "is-intf-delete-callback-pending" || name == "is-intf-delete-pending" || name == "is-im-owned-resource" || name == "is-im-final-received" || name == "is-im-owned-resource-missing" || name == "is-aaa-start-request-callback-pending" || name == "is-aaa-owned-resource" || name == "is-aaa-disconnect-requested" || name == "is-aaa-disconnect-received" || name == "is-sub-db-activate-callback-pending" || name == "is-pads-sent" || name == "is-padt-received" || name == "is-in-flight" || name == "is-radius-override" || name == "expected-notifications" || name == "received-notifications" || name == "srg-state" || name == "is-srg-data-received" || name == "is-iedge-data-received")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::Tags()
+    :
+    is_service_name{YType::int32, "is-service-name"},
+    is_max_payload{YType::int32, "is-max-payload"},
+    is_host_uniq{YType::int32, "is-host-uniq"},
+    is_relay_session_id{YType::int32, "is-relay-session-id"},
+    is_vendor_specific{YType::int32, "is-vendor-specific"},
+    is_iwf{YType::int32, "is-iwf"},
+    is_remote_id{YType::int32, "is-remote-id"},
+    is_circuit_id{YType::int32, "is-circuit-id"},
+    is_dsl_tag{YType::int32, "is-dsl-tag"},
+    service_name{YType::str, "service-name"},
+    max_payload{YType::uint32, "max-payload"},
+    host_uniq{YType::str, "host-uniq"},
+    relay_session_id{YType::str, "relay-session-id"},
+    remote_id{YType::str, "remote-id"},
+    circuit_id{YType::str, "circuit-id"},
+    is_dsl_actual_up{YType::int32, "is-dsl-actual-up"},
+    is_dsl_actual_down{YType::int32, "is-dsl-actual-down"},
+    is_dsl_min_up{YType::int32, "is-dsl-min-up"},
+    is_dsl_min_down{YType::int32, "is-dsl-min-down"},
+    is_dsl_attain_up{YType::int32, "is-dsl-attain-up"},
+    is_dsl_attain_down{YType::int32, "is-dsl-attain-down"},
+    is_dsl_max_up{YType::int32, "is-dsl-max-up"},
+    is_dsl_max_down{YType::int32, "is-dsl-max-down"},
+    is_dsl_min_up_low{YType::int32, "is-dsl-min-up-low"},
+    is_dsl_min_down_low{YType::int32, "is-dsl-min-down-low"},
+    is_dsl_max_delay_up{YType::int32, "is-dsl-max-delay-up"},
+    is_dsl_actual_delay_up{YType::int32, "is-dsl-actual-delay-up"},
+    is_dsl_max_delay_down{YType::int32, "is-dsl-max-delay-down"},
+    is_dsl_actual_delay_down{YType::int32, "is-dsl-actual-delay-down"},
+    is_access_loop_encapsulation{YType::int32, "is-access-loop-encapsulation"},
+    dsl_actual_up{YType::uint32, "dsl-actual-up"},
+    dsl_actual_down{YType::uint32, "dsl-actual-down"},
+    dsl_min_up{YType::uint32, "dsl-min-up"},
+    dsl_min_down{YType::uint32, "dsl-min-down"},
+    dsl_attain_up{YType::uint32, "dsl-attain-up"},
+    dsl_attain_down{YType::uint32, "dsl-attain-down"},
+    dsl_max_up{YType::uint32, "dsl-max-up"},
+    dsl_max_down{YType::uint32, "dsl-max-down"},
+    dsl_min_up_low{YType::uint32, "dsl-min-up-low"},
+    dsl_min_down_low{YType::uint32, "dsl-min-down-low"},
+    dsl_max_delay_up{YType::uint32, "dsl-max-delay-up"},
+    dsl_actual_delay_up{YType::uint32, "dsl-actual-delay-up"},
+    dsl_max_delay_down{YType::uint32, "dsl-max-delay-down"},
+    dsl_actual_delay_down{YType::uint32, "dsl-actual-delay-down"}
+        ,
+    access_loop_encapsulation(std::make_shared<Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation>())
+{
+    access_loop_encapsulation->parent = this;
+
+    yang_name = "tags"; yang_parent_name = "session-idb"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::~Tags()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::has_data() const
+{
+    if (is_presence_container) return true;
+    return is_service_name.is_set
+	|| is_max_payload.is_set
+	|| is_host_uniq.is_set
+	|| is_relay_session_id.is_set
+	|| is_vendor_specific.is_set
+	|| is_iwf.is_set
+	|| is_remote_id.is_set
+	|| is_circuit_id.is_set
+	|| is_dsl_tag.is_set
+	|| service_name.is_set
+	|| max_payload.is_set
+	|| host_uniq.is_set
+	|| relay_session_id.is_set
+	|| remote_id.is_set
+	|| circuit_id.is_set
+	|| is_dsl_actual_up.is_set
+	|| is_dsl_actual_down.is_set
+	|| is_dsl_min_up.is_set
+	|| is_dsl_min_down.is_set
+	|| is_dsl_attain_up.is_set
+	|| is_dsl_attain_down.is_set
+	|| is_dsl_max_up.is_set
+	|| is_dsl_max_down.is_set
+	|| is_dsl_min_up_low.is_set
+	|| is_dsl_min_down_low.is_set
+	|| is_dsl_max_delay_up.is_set
+	|| is_dsl_actual_delay_up.is_set
+	|| is_dsl_max_delay_down.is_set
+	|| is_dsl_actual_delay_down.is_set
+	|| is_access_loop_encapsulation.is_set
+	|| dsl_actual_up.is_set
+	|| dsl_actual_down.is_set
+	|| dsl_min_up.is_set
+	|| dsl_min_down.is_set
+	|| dsl_attain_up.is_set
+	|| dsl_attain_down.is_set
+	|| dsl_max_up.is_set
+	|| dsl_max_down.is_set
+	|| dsl_min_up_low.is_set
+	|| dsl_min_down_low.is_set
+	|| dsl_max_delay_up.is_set
+	|| dsl_actual_delay_up.is_set
+	|| dsl_max_delay_down.is_set
+	|| dsl_actual_delay_down.is_set
+	|| (access_loop_encapsulation !=  nullptr && access_loop_encapsulation->has_data());
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_service_name.yfilter)
+	|| ydk::is_set(is_max_payload.yfilter)
+	|| ydk::is_set(is_host_uniq.yfilter)
+	|| ydk::is_set(is_relay_session_id.yfilter)
+	|| ydk::is_set(is_vendor_specific.yfilter)
+	|| ydk::is_set(is_iwf.yfilter)
+	|| ydk::is_set(is_remote_id.yfilter)
+	|| ydk::is_set(is_circuit_id.yfilter)
+	|| ydk::is_set(is_dsl_tag.yfilter)
+	|| ydk::is_set(service_name.yfilter)
+	|| ydk::is_set(max_payload.yfilter)
+	|| ydk::is_set(host_uniq.yfilter)
+	|| ydk::is_set(relay_session_id.yfilter)
+	|| ydk::is_set(remote_id.yfilter)
+	|| ydk::is_set(circuit_id.yfilter)
+	|| ydk::is_set(is_dsl_actual_up.yfilter)
+	|| ydk::is_set(is_dsl_actual_down.yfilter)
+	|| ydk::is_set(is_dsl_min_up.yfilter)
+	|| ydk::is_set(is_dsl_min_down.yfilter)
+	|| ydk::is_set(is_dsl_attain_up.yfilter)
+	|| ydk::is_set(is_dsl_attain_down.yfilter)
+	|| ydk::is_set(is_dsl_max_up.yfilter)
+	|| ydk::is_set(is_dsl_max_down.yfilter)
+	|| ydk::is_set(is_dsl_min_up_low.yfilter)
+	|| ydk::is_set(is_dsl_min_down_low.yfilter)
+	|| ydk::is_set(is_dsl_max_delay_up.yfilter)
+	|| ydk::is_set(is_dsl_actual_delay_up.yfilter)
+	|| ydk::is_set(is_dsl_max_delay_down.yfilter)
+	|| ydk::is_set(is_dsl_actual_delay_down.yfilter)
+	|| ydk::is_set(is_access_loop_encapsulation.yfilter)
+	|| ydk::is_set(dsl_actual_up.yfilter)
+	|| ydk::is_set(dsl_actual_down.yfilter)
+	|| ydk::is_set(dsl_min_up.yfilter)
+	|| ydk::is_set(dsl_min_down.yfilter)
+	|| ydk::is_set(dsl_attain_up.yfilter)
+	|| ydk::is_set(dsl_attain_down.yfilter)
+	|| ydk::is_set(dsl_max_up.yfilter)
+	|| ydk::is_set(dsl_max_down.yfilter)
+	|| ydk::is_set(dsl_min_up_low.yfilter)
+	|| ydk::is_set(dsl_min_down_low.yfilter)
+	|| ydk::is_set(dsl_max_delay_up.yfilter)
+	|| ydk::is_set(dsl_actual_delay_up.yfilter)
+	|| ydk::is_set(dsl_max_delay_down.yfilter)
+	|| ydk::is_set(dsl_actual_delay_down.yfilter)
+	|| (access_loop_encapsulation !=  nullptr && access_loop_encapsulation->has_operation());
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tags";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_service_name.is_set || is_set(is_service_name.yfilter)) leaf_name_data.push_back(is_service_name.get_name_leafdata());
+    if (is_max_payload.is_set || is_set(is_max_payload.yfilter)) leaf_name_data.push_back(is_max_payload.get_name_leafdata());
+    if (is_host_uniq.is_set || is_set(is_host_uniq.yfilter)) leaf_name_data.push_back(is_host_uniq.get_name_leafdata());
+    if (is_relay_session_id.is_set || is_set(is_relay_session_id.yfilter)) leaf_name_data.push_back(is_relay_session_id.get_name_leafdata());
+    if (is_vendor_specific.is_set || is_set(is_vendor_specific.yfilter)) leaf_name_data.push_back(is_vendor_specific.get_name_leafdata());
+    if (is_iwf.is_set || is_set(is_iwf.yfilter)) leaf_name_data.push_back(is_iwf.get_name_leafdata());
+    if (is_remote_id.is_set || is_set(is_remote_id.yfilter)) leaf_name_data.push_back(is_remote_id.get_name_leafdata());
+    if (is_circuit_id.is_set || is_set(is_circuit_id.yfilter)) leaf_name_data.push_back(is_circuit_id.get_name_leafdata());
+    if (is_dsl_tag.is_set || is_set(is_dsl_tag.yfilter)) leaf_name_data.push_back(is_dsl_tag.get_name_leafdata());
+    if (service_name.is_set || is_set(service_name.yfilter)) leaf_name_data.push_back(service_name.get_name_leafdata());
+    if (max_payload.is_set || is_set(max_payload.yfilter)) leaf_name_data.push_back(max_payload.get_name_leafdata());
+    if (host_uniq.is_set || is_set(host_uniq.yfilter)) leaf_name_data.push_back(host_uniq.get_name_leafdata());
+    if (relay_session_id.is_set || is_set(relay_session_id.yfilter)) leaf_name_data.push_back(relay_session_id.get_name_leafdata());
+    if (remote_id.is_set || is_set(remote_id.yfilter)) leaf_name_data.push_back(remote_id.get_name_leafdata());
+    if (circuit_id.is_set || is_set(circuit_id.yfilter)) leaf_name_data.push_back(circuit_id.get_name_leafdata());
+    if (is_dsl_actual_up.is_set || is_set(is_dsl_actual_up.yfilter)) leaf_name_data.push_back(is_dsl_actual_up.get_name_leafdata());
+    if (is_dsl_actual_down.is_set || is_set(is_dsl_actual_down.yfilter)) leaf_name_data.push_back(is_dsl_actual_down.get_name_leafdata());
+    if (is_dsl_min_up.is_set || is_set(is_dsl_min_up.yfilter)) leaf_name_data.push_back(is_dsl_min_up.get_name_leafdata());
+    if (is_dsl_min_down.is_set || is_set(is_dsl_min_down.yfilter)) leaf_name_data.push_back(is_dsl_min_down.get_name_leafdata());
+    if (is_dsl_attain_up.is_set || is_set(is_dsl_attain_up.yfilter)) leaf_name_data.push_back(is_dsl_attain_up.get_name_leafdata());
+    if (is_dsl_attain_down.is_set || is_set(is_dsl_attain_down.yfilter)) leaf_name_data.push_back(is_dsl_attain_down.get_name_leafdata());
+    if (is_dsl_max_up.is_set || is_set(is_dsl_max_up.yfilter)) leaf_name_data.push_back(is_dsl_max_up.get_name_leafdata());
+    if (is_dsl_max_down.is_set || is_set(is_dsl_max_down.yfilter)) leaf_name_data.push_back(is_dsl_max_down.get_name_leafdata());
+    if (is_dsl_min_up_low.is_set || is_set(is_dsl_min_up_low.yfilter)) leaf_name_data.push_back(is_dsl_min_up_low.get_name_leafdata());
+    if (is_dsl_min_down_low.is_set || is_set(is_dsl_min_down_low.yfilter)) leaf_name_data.push_back(is_dsl_min_down_low.get_name_leafdata());
+    if (is_dsl_max_delay_up.is_set || is_set(is_dsl_max_delay_up.yfilter)) leaf_name_data.push_back(is_dsl_max_delay_up.get_name_leafdata());
+    if (is_dsl_actual_delay_up.is_set || is_set(is_dsl_actual_delay_up.yfilter)) leaf_name_data.push_back(is_dsl_actual_delay_up.get_name_leafdata());
+    if (is_dsl_max_delay_down.is_set || is_set(is_dsl_max_delay_down.yfilter)) leaf_name_data.push_back(is_dsl_max_delay_down.get_name_leafdata());
+    if (is_dsl_actual_delay_down.is_set || is_set(is_dsl_actual_delay_down.yfilter)) leaf_name_data.push_back(is_dsl_actual_delay_down.get_name_leafdata());
+    if (is_access_loop_encapsulation.is_set || is_set(is_access_loop_encapsulation.yfilter)) leaf_name_data.push_back(is_access_loop_encapsulation.get_name_leafdata());
+    if (dsl_actual_up.is_set || is_set(dsl_actual_up.yfilter)) leaf_name_data.push_back(dsl_actual_up.get_name_leafdata());
+    if (dsl_actual_down.is_set || is_set(dsl_actual_down.yfilter)) leaf_name_data.push_back(dsl_actual_down.get_name_leafdata());
+    if (dsl_min_up.is_set || is_set(dsl_min_up.yfilter)) leaf_name_data.push_back(dsl_min_up.get_name_leafdata());
+    if (dsl_min_down.is_set || is_set(dsl_min_down.yfilter)) leaf_name_data.push_back(dsl_min_down.get_name_leafdata());
+    if (dsl_attain_up.is_set || is_set(dsl_attain_up.yfilter)) leaf_name_data.push_back(dsl_attain_up.get_name_leafdata());
+    if (dsl_attain_down.is_set || is_set(dsl_attain_down.yfilter)) leaf_name_data.push_back(dsl_attain_down.get_name_leafdata());
+    if (dsl_max_up.is_set || is_set(dsl_max_up.yfilter)) leaf_name_data.push_back(dsl_max_up.get_name_leafdata());
+    if (dsl_max_down.is_set || is_set(dsl_max_down.yfilter)) leaf_name_data.push_back(dsl_max_down.get_name_leafdata());
+    if (dsl_min_up_low.is_set || is_set(dsl_min_up_low.yfilter)) leaf_name_data.push_back(dsl_min_up_low.get_name_leafdata());
+    if (dsl_min_down_low.is_set || is_set(dsl_min_down_low.yfilter)) leaf_name_data.push_back(dsl_min_down_low.get_name_leafdata());
+    if (dsl_max_delay_up.is_set || is_set(dsl_max_delay_up.yfilter)) leaf_name_data.push_back(dsl_max_delay_up.get_name_leafdata());
+    if (dsl_actual_delay_up.is_set || is_set(dsl_actual_delay_up.yfilter)) leaf_name_data.push_back(dsl_actual_delay_up.get_name_leafdata());
+    if (dsl_max_delay_down.is_set || is_set(dsl_max_delay_down.yfilter)) leaf_name_data.push_back(dsl_max_delay_down.get_name_leafdata());
+    if (dsl_actual_delay_down.is_set || is_set(dsl_actual_delay_down.yfilter)) leaf_name_data.push_back(dsl_actual_delay_down.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "access-loop-encapsulation")
+    {
+        if(access_loop_encapsulation == nullptr)
+        {
+            access_loop_encapsulation = std::make_shared<Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation>();
+        }
+        return access_loop_encapsulation;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(access_loop_encapsulation != nullptr)
+    {
+        children["access-loop-encapsulation"] = access_loop_encapsulation;
+    }
+
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-service-name")
+    {
+        is_service_name = value;
+        is_service_name.value_namespace = name_space;
+        is_service_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-max-payload")
+    {
+        is_max_payload = value;
+        is_max_payload.value_namespace = name_space;
+        is_max_payload.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-host-uniq")
+    {
+        is_host_uniq = value;
+        is_host_uniq.value_namespace = name_space;
+        is_host_uniq.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-relay-session-id")
+    {
+        is_relay_session_id = value;
+        is_relay_session_id.value_namespace = name_space;
+        is_relay_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-vendor-specific")
+    {
+        is_vendor_specific = value;
+        is_vendor_specific.value_namespace = name_space;
+        is_vendor_specific.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-iwf")
+    {
+        is_iwf = value;
+        is_iwf.value_namespace = name_space;
+        is_iwf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-remote-id")
+    {
+        is_remote_id = value;
+        is_remote_id.value_namespace = name_space;
+        is_remote_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-circuit-id")
+    {
+        is_circuit_id = value;
+        is_circuit_id.value_namespace = name_space;
+        is_circuit_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-tag")
+    {
+        is_dsl_tag = value;
+        is_dsl_tag.value_namespace = name_space;
+        is_dsl_tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "service-name")
+    {
+        service_name = value;
+        service_name.value_namespace = name_space;
+        service_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-payload")
+    {
+        max_payload = value;
+        max_payload.value_namespace = name_space;
+        max_payload.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "host-uniq")
+    {
+        host_uniq = value;
+        host_uniq.value_namespace = name_space;
+        host_uniq.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "relay-session-id")
+    {
+        relay_session_id = value;
+        relay_session_id.value_namespace = name_space;
+        relay_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-id")
+    {
+        remote_id = value;
+        remote_id.value_namespace = name_space;
+        remote_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "circuit-id")
+    {
+        circuit_id = value;
+        circuit_id.value_namespace = name_space;
+        circuit_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-actual-up")
+    {
+        is_dsl_actual_up = value;
+        is_dsl_actual_up.value_namespace = name_space;
+        is_dsl_actual_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-actual-down")
+    {
+        is_dsl_actual_down = value;
+        is_dsl_actual_down.value_namespace = name_space;
+        is_dsl_actual_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-min-up")
+    {
+        is_dsl_min_up = value;
+        is_dsl_min_up.value_namespace = name_space;
+        is_dsl_min_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-min-down")
+    {
+        is_dsl_min_down = value;
+        is_dsl_min_down.value_namespace = name_space;
+        is_dsl_min_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-attain-up")
+    {
+        is_dsl_attain_up = value;
+        is_dsl_attain_up.value_namespace = name_space;
+        is_dsl_attain_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-attain-down")
+    {
+        is_dsl_attain_down = value;
+        is_dsl_attain_down.value_namespace = name_space;
+        is_dsl_attain_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-max-up")
+    {
+        is_dsl_max_up = value;
+        is_dsl_max_up.value_namespace = name_space;
+        is_dsl_max_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-max-down")
+    {
+        is_dsl_max_down = value;
+        is_dsl_max_down.value_namespace = name_space;
+        is_dsl_max_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-min-up-low")
+    {
+        is_dsl_min_up_low = value;
+        is_dsl_min_up_low.value_namespace = name_space;
+        is_dsl_min_up_low.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-min-down-low")
+    {
+        is_dsl_min_down_low = value;
+        is_dsl_min_down_low.value_namespace = name_space;
+        is_dsl_min_down_low.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-max-delay-up")
+    {
+        is_dsl_max_delay_up = value;
+        is_dsl_max_delay_up.value_namespace = name_space;
+        is_dsl_max_delay_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-actual-delay-up")
+    {
+        is_dsl_actual_delay_up = value;
+        is_dsl_actual_delay_up.value_namespace = name_space;
+        is_dsl_actual_delay_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-max-delay-down")
+    {
+        is_dsl_max_delay_down = value;
+        is_dsl_max_delay_down.value_namespace = name_space;
+        is_dsl_max_delay_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-dsl-actual-delay-down")
+    {
+        is_dsl_actual_delay_down = value;
+        is_dsl_actual_delay_down.value_namespace = name_space;
+        is_dsl_actual_delay_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-access-loop-encapsulation")
+    {
+        is_access_loop_encapsulation = value;
+        is_access_loop_encapsulation.value_namespace = name_space;
+        is_access_loop_encapsulation.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-actual-up")
+    {
+        dsl_actual_up = value;
+        dsl_actual_up.value_namespace = name_space;
+        dsl_actual_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-actual-down")
+    {
+        dsl_actual_down = value;
+        dsl_actual_down.value_namespace = name_space;
+        dsl_actual_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-min-up")
+    {
+        dsl_min_up = value;
+        dsl_min_up.value_namespace = name_space;
+        dsl_min_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-min-down")
+    {
+        dsl_min_down = value;
+        dsl_min_down.value_namespace = name_space;
+        dsl_min_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-attain-up")
+    {
+        dsl_attain_up = value;
+        dsl_attain_up.value_namespace = name_space;
+        dsl_attain_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-attain-down")
+    {
+        dsl_attain_down = value;
+        dsl_attain_down.value_namespace = name_space;
+        dsl_attain_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-max-up")
+    {
+        dsl_max_up = value;
+        dsl_max_up.value_namespace = name_space;
+        dsl_max_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-max-down")
+    {
+        dsl_max_down = value;
+        dsl_max_down.value_namespace = name_space;
+        dsl_max_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-min-up-low")
+    {
+        dsl_min_up_low = value;
+        dsl_min_up_low.value_namespace = name_space;
+        dsl_min_up_low.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-min-down-low")
+    {
+        dsl_min_down_low = value;
+        dsl_min_down_low.value_namespace = name_space;
+        dsl_min_down_low.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-max-delay-up")
+    {
+        dsl_max_delay_up = value;
+        dsl_max_delay_up.value_namespace = name_space;
+        dsl_max_delay_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-actual-delay-up")
+    {
+        dsl_actual_delay_up = value;
+        dsl_actual_delay_up.value_namespace = name_space;
+        dsl_actual_delay_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-max-delay-down")
+    {
+        dsl_max_delay_down = value;
+        dsl_max_delay_down.value_namespace = name_space;
+        dsl_max_delay_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dsl-actual-delay-down")
+    {
+        dsl_actual_delay_down = value;
+        dsl_actual_delay_down.value_namespace = name_space;
+        dsl_actual_delay_down.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-service-name")
+    {
+        is_service_name.yfilter = yfilter;
+    }
+    if(value_path == "is-max-payload")
+    {
+        is_max_payload.yfilter = yfilter;
+    }
+    if(value_path == "is-host-uniq")
+    {
+        is_host_uniq.yfilter = yfilter;
+    }
+    if(value_path == "is-relay-session-id")
+    {
+        is_relay_session_id.yfilter = yfilter;
+    }
+    if(value_path == "is-vendor-specific")
+    {
+        is_vendor_specific.yfilter = yfilter;
+    }
+    if(value_path == "is-iwf")
+    {
+        is_iwf.yfilter = yfilter;
+    }
+    if(value_path == "is-remote-id")
+    {
+        is_remote_id.yfilter = yfilter;
+    }
+    if(value_path == "is-circuit-id")
+    {
+        is_circuit_id.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-tag")
+    {
+        is_dsl_tag.yfilter = yfilter;
+    }
+    if(value_path == "service-name")
+    {
+        service_name.yfilter = yfilter;
+    }
+    if(value_path == "max-payload")
+    {
+        max_payload.yfilter = yfilter;
+    }
+    if(value_path == "host-uniq")
+    {
+        host_uniq.yfilter = yfilter;
+    }
+    if(value_path == "relay-session-id")
+    {
+        relay_session_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-id")
+    {
+        remote_id.yfilter = yfilter;
+    }
+    if(value_path == "circuit-id")
+    {
+        circuit_id.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-actual-up")
+    {
+        is_dsl_actual_up.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-actual-down")
+    {
+        is_dsl_actual_down.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-min-up")
+    {
+        is_dsl_min_up.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-min-down")
+    {
+        is_dsl_min_down.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-attain-up")
+    {
+        is_dsl_attain_up.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-attain-down")
+    {
+        is_dsl_attain_down.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-max-up")
+    {
+        is_dsl_max_up.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-max-down")
+    {
+        is_dsl_max_down.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-min-up-low")
+    {
+        is_dsl_min_up_low.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-min-down-low")
+    {
+        is_dsl_min_down_low.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-max-delay-up")
+    {
+        is_dsl_max_delay_up.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-actual-delay-up")
+    {
+        is_dsl_actual_delay_up.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-max-delay-down")
+    {
+        is_dsl_max_delay_down.yfilter = yfilter;
+    }
+    if(value_path == "is-dsl-actual-delay-down")
+    {
+        is_dsl_actual_delay_down.yfilter = yfilter;
+    }
+    if(value_path == "is-access-loop-encapsulation")
+    {
+        is_access_loop_encapsulation.yfilter = yfilter;
+    }
+    if(value_path == "dsl-actual-up")
+    {
+        dsl_actual_up.yfilter = yfilter;
+    }
+    if(value_path == "dsl-actual-down")
+    {
+        dsl_actual_down.yfilter = yfilter;
+    }
+    if(value_path == "dsl-min-up")
+    {
+        dsl_min_up.yfilter = yfilter;
+    }
+    if(value_path == "dsl-min-down")
+    {
+        dsl_min_down.yfilter = yfilter;
+    }
+    if(value_path == "dsl-attain-up")
+    {
+        dsl_attain_up.yfilter = yfilter;
+    }
+    if(value_path == "dsl-attain-down")
+    {
+        dsl_attain_down.yfilter = yfilter;
+    }
+    if(value_path == "dsl-max-up")
+    {
+        dsl_max_up.yfilter = yfilter;
+    }
+    if(value_path == "dsl-max-down")
+    {
+        dsl_max_down.yfilter = yfilter;
+    }
+    if(value_path == "dsl-min-up-low")
+    {
+        dsl_min_up_low.yfilter = yfilter;
+    }
+    if(value_path == "dsl-min-down-low")
+    {
+        dsl_min_down_low.yfilter = yfilter;
+    }
+    if(value_path == "dsl-max-delay-up")
+    {
+        dsl_max_delay_up.yfilter = yfilter;
+    }
+    if(value_path == "dsl-actual-delay-up")
+    {
+        dsl_actual_delay_up.yfilter = yfilter;
+    }
+    if(value_path == "dsl-max-delay-down")
+    {
+        dsl_max_delay_down.yfilter = yfilter;
+    }
+    if(value_path == "dsl-actual-delay-down")
+    {
+        dsl_actual_delay_down.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-loop-encapsulation" || name == "is-service-name" || name == "is-max-payload" || name == "is-host-uniq" || name == "is-relay-session-id" || name == "is-vendor-specific" || name == "is-iwf" || name == "is-remote-id" || name == "is-circuit-id" || name == "is-dsl-tag" || name == "service-name" || name == "max-payload" || name == "host-uniq" || name == "relay-session-id" || name == "remote-id" || name == "circuit-id" || name == "is-dsl-actual-up" || name == "is-dsl-actual-down" || name == "is-dsl-min-up" || name == "is-dsl-min-down" || name == "is-dsl-attain-up" || name == "is-dsl-attain-down" || name == "is-dsl-max-up" || name == "is-dsl-max-down" || name == "is-dsl-min-up-low" || name == "is-dsl-min-down-low" || name == "is-dsl-max-delay-up" || name == "is-dsl-actual-delay-up" || name == "is-dsl-max-delay-down" || name == "is-dsl-actual-delay-down" || name == "is-access-loop-encapsulation" || name == "dsl-actual-up" || name == "dsl-actual-down" || name == "dsl-min-up" || name == "dsl-min-down" || name == "dsl-attain-up" || name == "dsl-attain-down" || name == "dsl-max-up" || name == "dsl-max-down" || name == "dsl-min-up-low" || name == "dsl-min-down-low" || name == "dsl-max-delay-up" || name == "dsl-actual-delay-up" || name == "dsl-max-delay-down" || name == "dsl-actual-delay-down")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation::AccessLoopEncapsulation()
+    :
+    data_link{YType::uint8, "data-link"},
+    encaps1{YType::uint8, "encaps1"},
+    encaps2{YType::uint8, "encaps2"}
+{
+
+    yang_name = "access-loop-encapsulation"; yang_parent_name = "tags"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation::~AccessLoopEncapsulation()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation::has_data() const
+{
+    if (is_presence_container) return true;
+    return data_link.is_set
+	|| encaps1.is_set
+	|| encaps2.is_set;
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data_link.yfilter)
+	|| ydk::is_set(encaps1.yfilter)
+	|| ydk::is_set(encaps2.yfilter);
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-loop-encapsulation";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data_link.is_set || is_set(data_link.yfilter)) leaf_name_data.push_back(data_link.get_name_leafdata());
+    if (encaps1.is_set || is_set(encaps1.yfilter)) leaf_name_data.push_back(encaps1.get_name_leafdata());
+    if (encaps2.is_set || is_set(encaps2.yfilter)) leaf_name_data.push_back(encaps2.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data-link")
+    {
+        data_link = value;
+        data_link.value_namespace = name_space;
+        data_link.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encaps1")
+    {
+        encaps1 = value;
+        encaps1.value_namespace = name_space;
+        encaps1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encaps2")
+    {
+        encaps2 = value;
+        encaps2.value_namespace = name_space;
+        encaps2.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-link")
+    {
+        data_link.yfilter = yfilter;
+    }
+    if(value_path == "encaps1")
+    {
+        encaps1.yfilter = yfilter;
+    }
+    if(value_path == "encaps2")
+    {
+        encaps2.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-link" || name == "encaps1" || name == "encaps2")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag::VlanOuterTag()
+    :
+    ether_type{YType::uint16, "ether-type"},
+    user_priority{YType::uint8, "user-priority"},
+    cfi{YType::uint8, "cfi"},
+    vlan_id{YType::uint16, "vlan-id"}
+{
+
+    yang_name = "vlan-outer-tag"; yang_parent_name = "session-idb"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag::~VlanOuterTag()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag::has_data() const
+{
+    if (is_presence_container) return true;
+    return ether_type.is_set
+	|| user_priority.is_set
+	|| cfi.is_set
+	|| vlan_id.is_set;
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ether_type.yfilter)
+	|| ydk::is_set(user_priority.yfilter)
+	|| ydk::is_set(cfi.yfilter)
+	|| ydk::is_set(vlan_id.yfilter);
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan-outer-tag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ether_type.is_set || is_set(ether_type.yfilter)) leaf_name_data.push_back(ether_type.get_name_leafdata());
+    if (user_priority.is_set || is_set(user_priority.yfilter)) leaf_name_data.push_back(user_priority.get_name_leafdata());
+    if (cfi.is_set || is_set(cfi.yfilter)) leaf_name_data.push_back(cfi.get_name_leafdata());
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ether-type")
+    {
+        ether_type = value;
+        ether_type.value_namespace = name_space;
+        ether_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "user-priority")
+    {
+        user_priority = value;
+        user_priority.value_namespace = name_space;
+        user_priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfi")
+    {
+        cfi = value;
+        cfi.value_namespace = name_space;
+        cfi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ether-type")
+    {
+        ether_type.yfilter = yfilter;
+    }
+    if(value_path == "user-priority")
+    {
+        user_priority.yfilter = yfilter;
+    }
+    if(value_path == "cfi")
+    {
+        cfi.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ether-type" || name == "user-priority" || name == "cfi" || name == "vlan-id")
+        return true;
+    return false;
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag::VlanInnerTag()
+    :
+    ether_type{YType::uint16, "ether-type"},
+    user_priority{YType::uint8, "user-priority"},
+    cfi{YType::uint8, "cfi"},
+    vlan_id{YType::uint16, "vlan-id"}
+{
+
+    yang_name = "vlan-inner-tag"; yang_parent_name = "session-idb"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag::~VlanInnerTag()
+{
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag::has_data() const
+{
+    if (is_presence_container) return true;
+    return ether_type.is_set
+	|| user_priority.is_set
+	|| cfi.is_set
+	|| vlan_id.is_set;
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ether_type.yfilter)
+	|| ydk::is_set(user_priority.yfilter)
+	|| ydk::is_set(cfi.yfilter)
+	|| ydk::is_set(vlan_id.yfilter);
+}
+
+std::string Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan-inner-tag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ether_type.is_set || is_set(ether_type.yfilter)) leaf_name_data.push_back(ether_type.get_name_leafdata());
+    if (user_priority.is_set || is_set(user_priority.yfilter)) leaf_name_data.push_back(user_priority.get_name_leafdata());
+    if (cfi.is_set || is_set(cfi.yfilter)) leaf_name_data.push_back(cfi.get_name_leafdata());
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ether-type")
+    {
+        ether_type = value;
+        ether_type.value_namespace = name_space;
+        ether_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "user-priority")
+    {
+        user_priority = value;
+        user_priority.value_namespace = name_space;
+        user_priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfi")
+    {
+        cfi = value;
+        cfi.value_namespace = name_space;
+        cfi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ether-type")
+    {
+        ether_type.yfilter = yfilter;
+    }
+    if(value_path == "user-priority")
+    {
+        user_priority.yfilter = yfilter;
+    }
+    if(value_path == "cfi")
+    {
+        cfi.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
+}
+
+bool Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ether-type" || name == "user-priority" || name == "cfi" || name == "vlan-id")
         return true;
     return false;
 }
@@ -8605,17 +12506,48 @@ bool Pppoe::Nodes::Node::SummaryTotal::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
-const Enum::YLeaf PppoeMaThrottleState::idle {0, "idle"};
-const Enum::YLeaf PppoeMaThrottleState::monitor {1, "monitor"};
-const Enum::YLeaf PppoeMaThrottleState::block {2, "block"};
+const Enum::YLeaf PppoeMaSessionState::destroying {0, "destroying"};
+const Enum::YLeaf PppoeMaSessionState::deleting {1, "deleting"};
+const Enum::YLeaf PppoeMaSessionState::initializing {2, "initializing"};
+const Enum::YLeaf PppoeMaSessionState::created {3, "created"};
+const Enum::YLeaf PppoeMaSessionState::stopping {4, "stopping"};
+const Enum::YLeaf PppoeMaSessionState::started {5, "started"};
+const Enum::YLeaf PppoeMaSessionState::activated {6, "activated"};
+const Enum::YLeaf PppoeMaSessionState::complete {7, "complete"};
+
+const Enum::YLeaf PppoeMaSessionIdbSrgState::none {0, "none"};
+const Enum::YLeaf PppoeMaSessionIdbSrgState::active {1, "active"};
+const Enum::YLeaf PppoeMaSessionIdbSrgState::standby {2, "standby"};
+
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_error {0, "pppoe-ma-session-trig-error"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_publish_encaps_attr_fail {1, "pppoe-ma-session-trig-publish-encaps-attr-fail"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_if_create_fail {2, "pppoe-ma-session-trig-if-create-fail"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_iedge_session_start_fail {3, "pppoe-ma-session-trig-iedge-session-start-fail"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_iedge_session_update_fail {4, "pppoe-ma-session-trig-iedge-session-update-fail"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_sub_db_activate_fail {5, "pppoe-ma-session-trig-sub-db-activate-fail"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_in_flight_timeout {6, "pppoe-ma-session-trig-in-flight-timeout"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_down {7, "pppoe-ma-session-trig-down"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_parent {8, "pppoe-ma-session-trig-parent"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_padt {9, "pppoe-ma-session-trig-padt"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_session_pak {10, "pppoe-ma-session-trig-session-pak"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_final {11, "pppoe-ma-session-trig-final"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_no_im_or {12, "pppoe-ma-session-trig-no-im-or"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_restart {13, "pppoe-ma-session-trig-restart"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_admissions_config_change {14, "pppoe-ma-session-trig-admissions-config-change"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_iedge_disconnect {15, "pppoe-ma-session-trig-iedge-disconnect"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_invalid_vlan_tags {16, "pppoe-ma-session-trig-invalid-vlan-tags"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_port_limit_disconnect {17, "pppoe-ma-session-trig-port-limit-disconnect"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_srg_disconnect {18, "pppoe-ma-session-trig-srg-disconnect"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_srg_sweep {19, "pppoe-ma-session-trig-srg-sweep"};
+const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_count {20, "pppoe-ma-session-trig-count"};
 
 const Enum::YLeaf PppoeMaLimitState::ok {0, "ok"};
 const Enum::YLeaf PppoeMaLimitState::warning {1, "warning"};
 const Enum::YLeaf PppoeMaLimitState::block {2, "block"};
 
-const Enum::YLeaf PppoeMaSessionIdbSrgState::none {0, "none"};
-const Enum::YLeaf PppoeMaSessionIdbSrgState::active {1, "active"};
-const Enum::YLeaf PppoeMaSessionIdbSrgState::standby {2, "standby"};
+const Enum::YLeaf PppoeMaThrottleState::idle {0, "idle"};
+const Enum::YLeaf PppoeMaThrottleState::monitor {1, "monitor"};
+const Enum::YLeaf PppoeMaThrottleState::block {2, "block"};
 
 
 }

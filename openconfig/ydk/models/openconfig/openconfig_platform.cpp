@@ -137,17 +137,17 @@ Components::Component::Component()
     , state(std::make_shared<Components::Component::State>())
     , properties(std::make_shared<Components::Component::Properties>())
     , subcomponents(std::make_shared<Components::Component::Subcomponents>())
+    , optical_port(std::make_shared<Components::Component::OpticalPort>())
     , transceiver(std::make_shared<Components::Component::Transceiver>())
     , optical_channel(std::make_shared<Components::Component::OpticalChannel>())
-    , optical_port(std::make_shared<Components::Component::OpticalPort>())
 {
     config->parent = this;
     state->parent = this;
     properties->parent = this;
     subcomponents->parent = this;
+    optical_port->parent = this;
     transceiver->parent = this;
     optical_channel->parent = this;
-    optical_port->parent = this;
 
     yang_name = "component"; yang_parent_name = "components"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -164,9 +164,9 @@ bool Components::Component::has_data() const
 	|| (state !=  nullptr && state->has_data())
 	|| (properties !=  nullptr && properties->has_data())
 	|| (subcomponents !=  nullptr && subcomponents->has_data())
+	|| (optical_port !=  nullptr && optical_port->has_data())
 	|| (transceiver !=  nullptr && transceiver->has_data())
-	|| (optical_channel !=  nullptr && optical_channel->has_data())
-	|| (optical_port !=  nullptr && optical_port->has_data());
+	|| (optical_channel !=  nullptr && optical_channel->has_data());
 }
 
 bool Components::Component::has_operation() const
@@ -177,9 +177,9 @@ bool Components::Component::has_operation() const
 	|| (state !=  nullptr && state->has_operation())
 	|| (properties !=  nullptr && properties->has_operation())
 	|| (subcomponents !=  nullptr && subcomponents->has_operation())
+	|| (optical_port !=  nullptr && optical_port->has_operation())
 	|| (transceiver !=  nullptr && transceiver->has_operation())
-	|| (optical_channel !=  nullptr && optical_channel->has_operation())
-	|| (optical_port !=  nullptr && optical_port->has_operation());
+	|| (optical_channel !=  nullptr && optical_channel->has_operation());
 }
 
 std::string Components::Component::get_absolute_path() const
@@ -245,6 +245,15 @@ std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::stri
         return subcomponents;
     }
 
+    if(child_yang_name == "openconfig-transport-line-common:optical-port")
+    {
+        if(optical_port == nullptr)
+        {
+            optical_port = std::make_shared<Components::Component::OpticalPort>();
+        }
+        return optical_port;
+    }
+
     if(child_yang_name == "openconfig-platform-transceiver:transceiver")
     {
         if(transceiver == nullptr)
@@ -261,15 +270,6 @@ std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::stri
             optical_channel = std::make_shared<Components::Component::OpticalChannel>();
         }
         return optical_channel;
-    }
-
-    if(child_yang_name == "openconfig-transport-line-common:optical-port")
-    {
-        if(optical_port == nullptr)
-        {
-            optical_port = std::make_shared<Components::Component::OpticalPort>();
-        }
-        return optical_port;
     }
 
     return nullptr;
@@ -299,6 +299,11 @@ std::map<std::string, std::shared_ptr<Entity>> Components::Component::get_childr
         children["subcomponents"] = subcomponents;
     }
 
+    if(optical_port != nullptr)
+    {
+        children["openconfig-transport-line-common:optical-port"] = optical_port;
+    }
+
     if(transceiver != nullptr)
     {
         children["openconfig-platform-transceiver:transceiver"] = transceiver;
@@ -307,11 +312,6 @@ std::map<std::string, std::shared_ptr<Entity>> Components::Component::get_childr
     if(optical_channel != nullptr)
     {
         children["openconfig-terminal-device:optical-channel"] = optical_channel;
-    }
-
-    if(optical_port != nullptr)
-    {
-        children["openconfig-transport-line-common:optical-port"] = optical_port;
     }
 
     return children;
@@ -337,7 +337,7 @@ void Components::Component::set_filter(const std::string & value_path, YFilter y
 
 bool Components::Component::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "config" || name == "state" || name == "properties" || name == "subcomponents" || name == "transceiver" || name == "optical-channel" || name == "optical-port" || name == "name")
+    if(name == "config" || name == "state" || name == "properties" || name == "subcomponents" || name == "optical-port" || name == "transceiver" || name == "optical-channel" || name == "name")
         return true;
     return false;
 }
@@ -1364,6 +1364,553 @@ void Components::Component::Subcomponents::Subcomponent::State::set_filter(const
 bool Components::Component::Subcomponents::Subcomponent::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
+        return true;
+    return false;
+}
+
+Components::Component::OpticalPort::OpticalPort()
+    :
+    config(std::make_shared<Components::Component::OpticalPort::Config>())
+    , state(std::make_shared<Components::Component::OpticalPort::State>())
+{
+    config->parent = this;
+    state->parent = this;
+
+    yang_name = "optical-port"; yang_parent_name = "component"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Components::Component::OpticalPort::~OpticalPort()
+{
+}
+
+bool Components::Component::OpticalPort::has_data() const
+{
+    if (is_presence_container) return true;
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Components::Component::OpticalPort::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Components::Component::OpticalPort::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "openconfig-transport-line-common:optical-port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPort::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Components::Component::OpticalPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Components::Component::OpticalPort::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Components::Component::OpticalPort::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Components::Component::OpticalPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Components::Component::OpticalPort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Components::Component::OpticalPort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Components::Component::OpticalPort::Config::Config()
+    :
+    admin_state{YType::enumeration, "admin-state"}
+{
+
+    yang_name = "config"; yang_parent_name = "optical-port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Components::Component::OpticalPort::Config::~Config()
+{
+}
+
+bool Components::Component::OpticalPort::Config::has_data() const
+{
+    if (is_presence_container) return true;
+    return admin_state.is_set;
+}
+
+bool Components::Component::OpticalPort::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(admin_state.yfilter);
+}
+
+std::string Components::Component::OpticalPort::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPort::Config::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Components::Component::OpticalPort::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Components::Component::OpticalPort::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "admin-state")
+    {
+        admin_state = value;
+        admin_state.value_namespace = name_space;
+        admin_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Components::Component::OpticalPort::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-state")
+    {
+        admin_state.yfilter = yfilter;
+    }
+}
+
+bool Components::Component::OpticalPort::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-state")
+        return true;
+    return false;
+}
+
+Components::Component::OpticalPort::State::State()
+    :
+    admin_state{YType::enumeration, "admin-state"},
+    optical_port_type{YType::identityref, "optical-port-type"}
+        ,
+    input_power(std::make_shared<Components::Component::OpticalPort::State::InputPower>())
+    , output_power(std::make_shared<Components::Component::OpticalPort::State::OutputPower>())
+{
+    input_power->parent = this;
+    output_power->parent = this;
+
+    yang_name = "state"; yang_parent_name = "optical-port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Components::Component::OpticalPort::State::~State()
+{
+}
+
+bool Components::Component::OpticalPort::State::has_data() const
+{
+    if (is_presence_container) return true;
+    return admin_state.is_set
+	|| optical_port_type.is_set
+	|| (input_power !=  nullptr && input_power->has_data())
+	|| (output_power !=  nullptr && output_power->has_data());
+}
+
+bool Components::Component::OpticalPort::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(admin_state.yfilter)
+	|| ydk::is_set(optical_port_type.yfilter)
+	|| (input_power !=  nullptr && input_power->has_operation())
+	|| (output_power !=  nullptr && output_power->has_operation());
+}
+
+std::string Components::Component::OpticalPort::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPort::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
+    if (optical_port_type.is_set || is_set(optical_port_type.yfilter)) leaf_name_data.push_back(optical_port_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Components::Component::OpticalPort::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input-power")
+    {
+        if(input_power == nullptr)
+        {
+            input_power = std::make_shared<Components::Component::OpticalPort::State::InputPower>();
+        }
+        return input_power;
+    }
+
+    if(child_yang_name == "output-power")
+    {
+        if(output_power == nullptr)
+        {
+            output_power = std::make_shared<Components::Component::OpticalPort::State::OutputPower>();
+        }
+        return output_power;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input_power != nullptr)
+    {
+        children["input-power"] = input_power;
+    }
+
+    if(output_power != nullptr)
+    {
+        children["output-power"] = output_power;
+    }
+
+    return children;
+}
+
+void Components::Component::OpticalPort::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "admin-state")
+    {
+        admin_state = value;
+        admin_state.value_namespace = name_space;
+        admin_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optical-port-type")
+    {
+        optical_port_type = value;
+        optical_port_type.value_namespace = name_space;
+        optical_port_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Components::Component::OpticalPort::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-state")
+    {
+        admin_state.yfilter = yfilter;
+    }
+    if(value_path == "optical-port-type")
+    {
+        optical_port_type.yfilter = yfilter;
+    }
+}
+
+bool Components::Component::OpticalPort::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input-power" || name == "output-power" || name == "admin-state" || name == "optical-port-type")
+        return true;
+    return false;
+}
+
+Components::Component::OpticalPort::State::InputPower::InputPower()
+    :
+    instant{YType::str, "instant"},
+    avg{YType::str, "avg"},
+    min{YType::str, "min"},
+    max{YType::str, "max"}
+{
+
+    yang_name = "input-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Components::Component::OpticalPort::State::InputPower::~InputPower()
+{
+}
+
+bool Components::Component::OpticalPort::State::InputPower::has_data() const
+{
+    if (is_presence_container) return true;
+    return instant.is_set
+	|| avg.is_set
+	|| min.is_set
+	|| max.is_set;
+}
+
+bool Components::Component::OpticalPort::State::InputPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(instant.yfilter)
+	|| ydk::is_set(avg.yfilter)
+	|| ydk::is_set(min.yfilter)
+	|| ydk::is_set(max.yfilter);
+}
+
+std::string Components::Component::OpticalPort::State::InputPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPort::State::InputPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (instant.is_set || is_set(instant.yfilter)) leaf_name_data.push_back(instant.get_name_leafdata());
+    if (avg.is_set || is_set(avg.yfilter)) leaf_name_data.push_back(avg.get_name_leafdata());
+    if (min.is_set || is_set(min.yfilter)) leaf_name_data.push_back(min.get_name_leafdata());
+    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Components::Component::OpticalPort::State::InputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::State::InputPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Components::Component::OpticalPort::State::InputPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "instant")
+    {
+        instant = value;
+        instant.value_namespace = name_space;
+        instant.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "avg")
+    {
+        avg = value;
+        avg.value_namespace = name_space;
+        avg.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "min")
+    {
+        min = value;
+        min.value_namespace = name_space;
+        min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max")
+    {
+        max = value;
+        max.value_namespace = name_space;
+        max.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Components::Component::OpticalPort::State::InputPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "instant")
+    {
+        instant.yfilter = yfilter;
+    }
+    if(value_path == "avg")
+    {
+        avg.yfilter = yfilter;
+    }
+    if(value_path == "min")
+    {
+        min.yfilter = yfilter;
+    }
+    if(value_path == "max")
+    {
+        max.yfilter = yfilter;
+    }
+}
+
+bool Components::Component::OpticalPort::State::InputPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instant" || name == "avg" || name == "min" || name == "max")
+        return true;
+    return false;
+}
+
+Components::Component::OpticalPort::State::OutputPower::OutputPower()
+    :
+    instant{YType::str, "instant"},
+    avg{YType::str, "avg"},
+    min{YType::str, "min"},
+    max{YType::str, "max"}
+{
+
+    yang_name = "output-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Components::Component::OpticalPort::State::OutputPower::~OutputPower()
+{
+}
+
+bool Components::Component::OpticalPort::State::OutputPower::has_data() const
+{
+    if (is_presence_container) return true;
+    return instant.is_set
+	|| avg.is_set
+	|| min.is_set
+	|| max.is_set;
+}
+
+bool Components::Component::OpticalPort::State::OutputPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(instant.yfilter)
+	|| ydk::is_set(avg.yfilter)
+	|| ydk::is_set(min.yfilter)
+	|| ydk::is_set(max.yfilter);
+}
+
+std::string Components::Component::OpticalPort::State::OutputPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPort::State::OutputPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (instant.is_set || is_set(instant.yfilter)) leaf_name_data.push_back(instant.get_name_leafdata());
+    if (avg.is_set || is_set(avg.yfilter)) leaf_name_data.push_back(avg.get_name_leafdata());
+    if (min.is_set || is_set(min.yfilter)) leaf_name_data.push_back(min.get_name_leafdata());
+    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Components::Component::OpticalPort::State::OutputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::State::OutputPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Components::Component::OpticalPort::State::OutputPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "instant")
+    {
+        instant = value;
+        instant.value_namespace = name_space;
+        instant.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "avg")
+    {
+        avg = value;
+        avg.value_namespace = name_space;
+        avg.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "min")
+    {
+        min = value;
+        min.value_namespace = name_space;
+        min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max")
+    {
+        max = value;
+        max.value_namespace = name_space;
+        max.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Components::Component::OpticalPort::State::OutputPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "instant")
+    {
+        instant.yfilter = yfilter;
+    }
+    if(value_path == "avg")
+    {
+        avg.yfilter = yfilter;
+    }
+    if(value_path == "min")
+    {
+        min.yfilter = yfilter;
+    }
+    if(value_path == "max")
+    {
+        max.yfilter = yfilter;
+    }
+}
+
+bool Components::Component::OpticalPort::State::OutputPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instant" || name == "avg" || name == "min" || name == "max")
         return true;
     return false;
 }
@@ -4031,553 +4578,6 @@ void Components::Component::OpticalChannel::State::PolarizationDependentLoss::se
 }
 
 bool Components::Component::OpticalChannel::State::PolarizationDependentLoss::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "instant" || name == "avg" || name == "min" || name == "max")
-        return true;
-    return false;
-}
-
-Components::Component::OpticalPort::OpticalPort()
-    :
-    config(std::make_shared<Components::Component::OpticalPort::Config>())
-    , state(std::make_shared<Components::Component::OpticalPort::State>())
-{
-    config->parent = this;
-    state->parent = this;
-
-    yang_name = "optical-port"; yang_parent_name = "component"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Components::Component::OpticalPort::~OpticalPort()
-{
-}
-
-bool Components::Component::OpticalPort::has_data() const
-{
-    if (is_presence_container) return true;
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Components::Component::OpticalPort::has_operation() const
-{
-    return is_set(yfilter)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Components::Component::OpticalPort::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "openconfig-transport-line-common:optical-port";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPort::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Components::Component::OpticalPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Components::Component::OpticalPort::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Components::Component::OpticalPort::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Components::Component::OpticalPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Components::Component::OpticalPort::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Components::Component::OpticalPort::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "config" || name == "state")
-        return true;
-    return false;
-}
-
-Components::Component::OpticalPort::Config::Config()
-    :
-    admin_state{YType::enumeration, "admin-state"}
-{
-
-    yang_name = "config"; yang_parent_name = "optical-port"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Components::Component::OpticalPort::Config::~Config()
-{
-}
-
-bool Components::Component::OpticalPort::Config::has_data() const
-{
-    if (is_presence_container) return true;
-    return admin_state.is_set;
-}
-
-bool Components::Component::OpticalPort::Config::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(admin_state.yfilter);
-}
-
-std::string Components::Component::OpticalPort::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPort::Config::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Components::Component::OpticalPort::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Components::Component::OpticalPort::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "admin-state")
-    {
-        admin_state = value;
-        admin_state.value_namespace = name_space;
-        admin_state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Components::Component::OpticalPort::Config::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "admin-state")
-    {
-        admin_state.yfilter = yfilter;
-    }
-}
-
-bool Components::Component::OpticalPort::Config::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "admin-state")
-        return true;
-    return false;
-}
-
-Components::Component::OpticalPort::State::State()
-    :
-    admin_state{YType::enumeration, "admin-state"},
-    optical_port_type{YType::identityref, "optical-port-type"}
-        ,
-    input_power(std::make_shared<Components::Component::OpticalPort::State::InputPower>())
-    , output_power(std::make_shared<Components::Component::OpticalPort::State::OutputPower>())
-{
-    input_power->parent = this;
-    output_power->parent = this;
-
-    yang_name = "state"; yang_parent_name = "optical-port"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Components::Component::OpticalPort::State::~State()
-{
-}
-
-bool Components::Component::OpticalPort::State::has_data() const
-{
-    if (is_presence_container) return true;
-    return admin_state.is_set
-	|| optical_port_type.is_set
-	|| (input_power !=  nullptr && input_power->has_data())
-	|| (output_power !=  nullptr && output_power->has_data());
-}
-
-bool Components::Component::OpticalPort::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(admin_state.yfilter)
-	|| ydk::is_set(optical_port_type.yfilter)
-	|| (input_power !=  nullptr && input_power->has_operation())
-	|| (output_power !=  nullptr && output_power->has_operation());
-}
-
-std::string Components::Component::OpticalPort::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPort::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
-    if (optical_port_type.is_set || is_set(optical_port_type.yfilter)) leaf_name_data.push_back(optical_port_type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Components::Component::OpticalPort::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input-power")
-    {
-        if(input_power == nullptr)
-        {
-            input_power = std::make_shared<Components::Component::OpticalPort::State::InputPower>();
-        }
-        return input_power;
-    }
-
-    if(child_yang_name == "output-power")
-    {
-        if(output_power == nullptr)
-        {
-            output_power = std::make_shared<Components::Component::OpticalPort::State::OutputPower>();
-        }
-        return output_power;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(input_power != nullptr)
-    {
-        children["input-power"] = input_power;
-    }
-
-    if(output_power != nullptr)
-    {
-        children["output-power"] = output_power;
-    }
-
-    return children;
-}
-
-void Components::Component::OpticalPort::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "admin-state")
-    {
-        admin_state = value;
-        admin_state.value_namespace = name_space;
-        admin_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optical-port-type")
-    {
-        optical_port_type = value;
-        optical_port_type.value_namespace = name_space;
-        optical_port_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Components::Component::OpticalPort::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "admin-state")
-    {
-        admin_state.yfilter = yfilter;
-    }
-    if(value_path == "optical-port-type")
-    {
-        optical_port_type.yfilter = yfilter;
-    }
-}
-
-bool Components::Component::OpticalPort::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input-power" || name == "output-power" || name == "admin-state" || name == "optical-port-type")
-        return true;
-    return false;
-}
-
-Components::Component::OpticalPort::State::InputPower::InputPower()
-    :
-    instant{YType::str, "instant"},
-    avg{YType::str, "avg"},
-    min{YType::str, "min"},
-    max{YType::str, "max"}
-{
-
-    yang_name = "input-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Components::Component::OpticalPort::State::InputPower::~InputPower()
-{
-}
-
-bool Components::Component::OpticalPort::State::InputPower::has_data() const
-{
-    if (is_presence_container) return true;
-    return instant.is_set
-	|| avg.is_set
-	|| min.is_set
-	|| max.is_set;
-}
-
-bool Components::Component::OpticalPort::State::InputPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(instant.yfilter)
-	|| ydk::is_set(avg.yfilter)
-	|| ydk::is_set(min.yfilter)
-	|| ydk::is_set(max.yfilter);
-}
-
-std::string Components::Component::OpticalPort::State::InputPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input-power";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPort::State::InputPower::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (instant.is_set || is_set(instant.yfilter)) leaf_name_data.push_back(instant.get_name_leafdata());
-    if (avg.is_set || is_set(avg.yfilter)) leaf_name_data.push_back(avg.get_name_leafdata());
-    if (min.is_set || is_set(min.yfilter)) leaf_name_data.push_back(min.get_name_leafdata());
-    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Components::Component::OpticalPort::State::InputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::State::InputPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Components::Component::OpticalPort::State::InputPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "instant")
-    {
-        instant = value;
-        instant.value_namespace = name_space;
-        instant.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "avg")
-    {
-        avg = value;
-        avg.value_namespace = name_space;
-        avg.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "min")
-    {
-        min = value;
-        min.value_namespace = name_space;
-        min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max")
-    {
-        max = value;
-        max.value_namespace = name_space;
-        max.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Components::Component::OpticalPort::State::InputPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "instant")
-    {
-        instant.yfilter = yfilter;
-    }
-    if(value_path == "avg")
-    {
-        avg.yfilter = yfilter;
-    }
-    if(value_path == "min")
-    {
-        min.yfilter = yfilter;
-    }
-    if(value_path == "max")
-    {
-        max.yfilter = yfilter;
-    }
-}
-
-bool Components::Component::OpticalPort::State::InputPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "instant" || name == "avg" || name == "min" || name == "max")
-        return true;
-    return false;
-}
-
-Components::Component::OpticalPort::State::OutputPower::OutputPower()
-    :
-    instant{YType::str, "instant"},
-    avg{YType::str, "avg"},
-    min{YType::str, "min"},
-    max{YType::str, "max"}
-{
-
-    yang_name = "output-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Components::Component::OpticalPort::State::OutputPower::~OutputPower()
-{
-}
-
-bool Components::Component::OpticalPort::State::OutputPower::has_data() const
-{
-    if (is_presence_container) return true;
-    return instant.is_set
-	|| avg.is_set
-	|| min.is_set
-	|| max.is_set;
-}
-
-bool Components::Component::OpticalPort::State::OutputPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(instant.yfilter)
-	|| ydk::is_set(avg.yfilter)
-	|| ydk::is_set(min.yfilter)
-	|| ydk::is_set(max.yfilter);
-}
-
-std::string Components::Component::OpticalPort::State::OutputPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "output-power";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPort::State::OutputPower::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (instant.is_set || is_set(instant.yfilter)) leaf_name_data.push_back(instant.get_name_leafdata());
-    if (avg.is_set || is_set(avg.yfilter)) leaf_name_data.push_back(avg.get_name_leafdata());
-    if (min.is_set || is_set(min.yfilter)) leaf_name_data.push_back(min.get_name_leafdata());
-    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Components::Component::OpticalPort::State::OutputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::State::OutputPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Components::Component::OpticalPort::State::OutputPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "instant")
-    {
-        instant = value;
-        instant.value_namespace = name_space;
-        instant.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "avg")
-    {
-        avg = value;
-        avg.value_namespace = name_space;
-        avg.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "min")
-    {
-        min = value;
-        min.value_namespace = name_space;
-        min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max")
-    {
-        max = value;
-        max.value_namespace = name_space;
-        max.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Components::Component::OpticalPort::State::OutputPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "instant")
-    {
-        instant.yfilter = yfilter;
-    }
-    if(value_path == "avg")
-    {
-        avg.yfilter = yfilter;
-    }
-    if(value_path == "min")
-    {
-        min.yfilter = yfilter;
-    }
-    if(value_path == "max")
-    {
-        max.yfilter = yfilter;
-    }
-}
-
-bool Components::Component::OpticalPort::State::OutputPower::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "instant" || name == "avg" || name == "min" || name == "max")
         return true;

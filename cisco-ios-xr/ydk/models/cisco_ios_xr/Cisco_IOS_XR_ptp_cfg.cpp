@@ -13,25 +13,29 @@ namespace Cisco_IOS_XR_ptp_cfg {
 
 Ptp::Ptp()
     :
+    uncalibrated_clock_class{YType::uint32, "uncalibrated-clock-class"},
     time_of_day_priority{YType::uint32, "time-of-day-priority"},
     frequency_priority{YType::uint32, "frequency-priority"},
     startup_clock_class{YType::uint32, "startup-clock-class"},
     enable{YType::empty, "enable"},
     min_clock_class{YType::uint32, "min-clock-class"},
-    uncalibrated_clock_class{YType::uint32, "uncalibrated-clock-class"},
+    physical_layer_frequency{YType::empty, "physical-layer-frequency"},
     freerun_clock_class{YType::uint32, "freerun-clock-class"}
         ,
     clock_(std::make_shared<Ptp::Clock>())
     , profiles(std::make_shared<Ptp::Profiles>())
     , utc_offset(std::make_shared<Ptp::UtcOffset>())
     , logging(std::make_shared<Ptp::Logging>())
+    , uncalibrated_clock_class2(nullptr) // presence node
     , transparent_clock(std::make_shared<Ptp::TransparentClock>())
+    , virtual_port(std::make_shared<Ptp::VirtualPort>())
 {
     clock_->parent = this;
     profiles->parent = this;
     utc_offset->parent = this;
     logging->parent = this;
     transparent_clock->parent = this;
+    virtual_port->parent = this;
 
     yang_name = "ptp"; yang_parent_name = "Cisco-IOS-XR-ptp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -43,35 +47,41 @@ Ptp::~Ptp()
 bool Ptp::has_data() const
 {
     if (is_presence_container) return true;
-    return time_of_day_priority.is_set
+    return uncalibrated_clock_class.is_set
+	|| time_of_day_priority.is_set
 	|| frequency_priority.is_set
 	|| startup_clock_class.is_set
 	|| enable.is_set
 	|| min_clock_class.is_set
-	|| uncalibrated_clock_class.is_set
+	|| physical_layer_frequency.is_set
 	|| freerun_clock_class.is_set
 	|| (clock_ !=  nullptr && clock_->has_data())
 	|| (profiles !=  nullptr && profiles->has_data())
 	|| (utc_offset !=  nullptr && utc_offset->has_data())
 	|| (logging !=  nullptr && logging->has_data())
-	|| (transparent_clock !=  nullptr && transparent_clock->has_data());
+	|| (uncalibrated_clock_class2 !=  nullptr && uncalibrated_clock_class2->has_data())
+	|| (transparent_clock !=  nullptr && transparent_clock->has_data())
+	|| (virtual_port !=  nullptr && virtual_port->has_data());
 }
 
 bool Ptp::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(uncalibrated_clock_class.yfilter)
 	|| ydk::is_set(time_of_day_priority.yfilter)
 	|| ydk::is_set(frequency_priority.yfilter)
 	|| ydk::is_set(startup_clock_class.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(min_clock_class.yfilter)
-	|| ydk::is_set(uncalibrated_clock_class.yfilter)
+	|| ydk::is_set(physical_layer_frequency.yfilter)
 	|| ydk::is_set(freerun_clock_class.yfilter)
 	|| (clock_ !=  nullptr && clock_->has_operation())
 	|| (profiles !=  nullptr && profiles->has_operation())
 	|| (utc_offset !=  nullptr && utc_offset->has_operation())
 	|| (logging !=  nullptr && logging->has_operation())
-	|| (transparent_clock !=  nullptr && transparent_clock->has_operation());
+	|| (uncalibrated_clock_class2 !=  nullptr && uncalibrated_clock_class2->has_operation())
+	|| (transparent_clock !=  nullptr && transparent_clock->has_operation())
+	|| (virtual_port !=  nullptr && virtual_port->has_operation());
 }
 
 std::string Ptp::get_segment_path() const
@@ -85,12 +95,13 @@ std::vector<std::pair<std::string, LeafData> > Ptp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (uncalibrated_clock_class.is_set || is_set(uncalibrated_clock_class.yfilter)) leaf_name_data.push_back(uncalibrated_clock_class.get_name_leafdata());
     if (time_of_day_priority.is_set || is_set(time_of_day_priority.yfilter)) leaf_name_data.push_back(time_of_day_priority.get_name_leafdata());
     if (frequency_priority.is_set || is_set(frequency_priority.yfilter)) leaf_name_data.push_back(frequency_priority.get_name_leafdata());
     if (startup_clock_class.is_set || is_set(startup_clock_class.yfilter)) leaf_name_data.push_back(startup_clock_class.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (min_clock_class.is_set || is_set(min_clock_class.yfilter)) leaf_name_data.push_back(min_clock_class.get_name_leafdata());
-    if (uncalibrated_clock_class.is_set || is_set(uncalibrated_clock_class.yfilter)) leaf_name_data.push_back(uncalibrated_clock_class.get_name_leafdata());
+    if (physical_layer_frequency.is_set || is_set(physical_layer_frequency.yfilter)) leaf_name_data.push_back(physical_layer_frequency.get_name_leafdata());
     if (freerun_clock_class.is_set || is_set(freerun_clock_class.yfilter)) leaf_name_data.push_back(freerun_clock_class.get_name_leafdata());
 
     return leaf_name_data;
@@ -135,6 +146,15 @@ std::shared_ptr<Entity> Ptp::get_child_by_name(const std::string & child_yang_na
         return logging;
     }
 
+    if(child_yang_name == "uncalibrated-clock-class2")
+    {
+        if(uncalibrated_clock_class2 == nullptr)
+        {
+            uncalibrated_clock_class2 = std::make_shared<Ptp::UncalibratedClockClass2>();
+        }
+        return uncalibrated_clock_class2;
+    }
+
     if(child_yang_name == "transparent-clock")
     {
         if(transparent_clock == nullptr)
@@ -142,6 +162,15 @@ std::shared_ptr<Entity> Ptp::get_child_by_name(const std::string & child_yang_na
             transparent_clock = std::make_shared<Ptp::TransparentClock>();
         }
         return transparent_clock;
+    }
+
+    if(child_yang_name == "virtual-port")
+    {
+        if(virtual_port == nullptr)
+        {
+            virtual_port = std::make_shared<Ptp::VirtualPort>();
+        }
+        return virtual_port;
     }
 
     return nullptr;
@@ -171,9 +200,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::get_children() const
         children["logging"] = logging;
     }
 
+    if(uncalibrated_clock_class2 != nullptr)
+    {
+        children["uncalibrated-clock-class2"] = uncalibrated_clock_class2;
+    }
+
     if(transparent_clock != nullptr)
     {
         children["transparent-clock"] = transparent_clock;
+    }
+
+    if(virtual_port != nullptr)
+    {
+        children["virtual-port"] = virtual_port;
     }
 
     return children;
@@ -181,6 +220,12 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::get_children() const
 
 void Ptp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "uncalibrated-clock-class")
+    {
+        uncalibrated_clock_class = value;
+        uncalibrated_clock_class.value_namespace = name_space;
+        uncalibrated_clock_class.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "time-of-day-priority")
     {
         time_of_day_priority = value;
@@ -211,11 +256,11 @@ void Ptp::set_value(const std::string & value_path, const std::string & value, c
         min_clock_class.value_namespace = name_space;
         min_clock_class.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "uncalibrated-clock-class")
+    if(value_path == "physical-layer-frequency")
     {
-        uncalibrated_clock_class = value;
-        uncalibrated_clock_class.value_namespace = name_space;
-        uncalibrated_clock_class.value_namespace_prefix = name_space_prefix;
+        physical_layer_frequency = value;
+        physical_layer_frequency.value_namespace = name_space;
+        physical_layer_frequency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "freerun-clock-class")
     {
@@ -227,6 +272,10 @@ void Ptp::set_value(const std::string & value_path, const std::string & value, c
 
 void Ptp::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "uncalibrated-clock-class")
+    {
+        uncalibrated_clock_class.yfilter = yfilter;
+    }
     if(value_path == "time-of-day-priority")
     {
         time_of_day_priority.yfilter = yfilter;
@@ -247,9 +296,9 @@ void Ptp::set_filter(const std::string & value_path, YFilter yfilter)
     {
         min_clock_class.yfilter = yfilter;
     }
-    if(value_path == "uncalibrated-clock-class")
+    if(value_path == "physical-layer-frequency")
     {
-        uncalibrated_clock_class.yfilter = yfilter;
+        physical_layer_frequency.yfilter = yfilter;
     }
     if(value_path == "freerun-clock-class")
     {
@@ -284,7 +333,7 @@ std::map<std::pair<std::string, std::string>, std::string> Ptp::get_namespace_id
 
 bool Ptp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock" || name == "profiles" || name == "utc-offset" || name == "logging" || name == "transparent-clock" || name == "time-of-day-priority" || name == "frequency-priority" || name == "startup-clock-class" || name == "enable" || name == "min-clock-class" || name == "uncalibrated-clock-class" || name == "freerun-clock-class")
+    if(name == "clock" || name == "profiles" || name == "utc-offset" || name == "logging" || name == "uncalibrated-clock-class2" || name == "transparent-clock" || name == "virtual-port" || name == "uncalibrated-clock-class" || name == "time-of-day-priority" || name == "frequency-priority" || name == "startup-clock-class" || name == "enable" || name == "min-clock-class" || name == "physical-layer-frequency" || name == "freerun-clock-class")
         return true;
     return false;
 }
@@ -802,11 +851,13 @@ Ptp::Profiles::Profile::Profile()
     transport{YType::enumeration, "transport"},
     announce_timeout{YType::uint32, "announce-timeout"},
     cos{YType::uint32, "cos"},
+    ipv4ttl{YType::uint32, "ipv4ttl"},
     port_state{YType::enumeration, "port-state"},
     delay_response_timeout{YType::uint32, "delay-response-timeout"},
     delay_response_grant_duration{YType::uint32, "delay-response-grant-duration"},
     event_cos{YType::uint32, "event-cos"},
     dscp{YType::uint32, "dscp"},
+    ipv6_hop_limit{YType::uint32, "ipv6-hop-limit"},
     general_dscp{YType::uint32, "general-dscp"},
     clock_operation{YType::enumeration, "clock-operation"},
     announce_grant_duration{YType::uint32, "announce-grant-duration"},
@@ -814,6 +865,7 @@ Ptp::Profiles::Profile::Profile()
     event_dscp{YType::uint32, "event-dscp"}
         ,
     announce_interval(std::make_shared<Ptp::Profiles::Profile::AnnounceInterval>())
+    , interop(std::make_shared<Ptp::Profiles::Profile::Interop>())
     , source_ipv4_address(std::make_shared<Ptp::Profiles::Profile::SourceIpv4Address>())
     , slaves(std::make_shared<Ptp::Profiles::Profile::Slaves>())
     , sync_interval(std::make_shared<Ptp::Profiles::Profile::SyncInterval>())
@@ -823,6 +875,7 @@ Ptp::Profiles::Profile::Profile()
     , source_ipv6_address(std::make_shared<Ptp::Profiles::Profile::SourceIpv6Address>())
 {
     announce_interval->parent = this;
+    interop->parent = this;
     source_ipv4_address->parent = this;
     slaves->parent = this;
     sync_interval->parent = this;
@@ -848,17 +901,20 @@ bool Ptp::Profiles::Profile::has_data() const
 	|| transport.is_set
 	|| announce_timeout.is_set
 	|| cos.is_set
+	|| ipv4ttl.is_set
 	|| port_state.is_set
 	|| delay_response_timeout.is_set
 	|| delay_response_grant_duration.is_set
 	|| event_cos.is_set
 	|| dscp.is_set
+	|| ipv6_hop_limit.is_set
 	|| general_dscp.is_set
 	|| clock_operation.is_set
 	|| announce_grant_duration.is_set
 	|| unicast_grant_invalid_request.is_set
 	|| event_dscp.is_set
 	|| (announce_interval !=  nullptr && announce_interval->has_data())
+	|| (interop !=  nullptr && interop->has_data())
 	|| (source_ipv4_address !=  nullptr && source_ipv4_address->has_data())
 	|| (slaves !=  nullptr && slaves->has_data())
 	|| (sync_interval !=  nullptr && sync_interval->has_data())
@@ -878,17 +934,20 @@ bool Ptp::Profiles::Profile::has_operation() const
 	|| ydk::is_set(transport.yfilter)
 	|| ydk::is_set(announce_timeout.yfilter)
 	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(ipv4ttl.yfilter)
 	|| ydk::is_set(port_state.yfilter)
 	|| ydk::is_set(delay_response_timeout.yfilter)
 	|| ydk::is_set(delay_response_grant_duration.yfilter)
 	|| ydk::is_set(event_cos.yfilter)
 	|| ydk::is_set(dscp.yfilter)
+	|| ydk::is_set(ipv6_hop_limit.yfilter)
 	|| ydk::is_set(general_dscp.yfilter)
 	|| ydk::is_set(clock_operation.yfilter)
 	|| ydk::is_set(announce_grant_duration.yfilter)
 	|| ydk::is_set(unicast_grant_invalid_request.yfilter)
 	|| ydk::is_set(event_dscp.yfilter)
 	|| (announce_interval !=  nullptr && announce_interval->has_operation())
+	|| (interop !=  nullptr && interop->has_operation())
 	|| (source_ipv4_address !=  nullptr && source_ipv4_address->has_operation())
 	|| (slaves !=  nullptr && slaves->has_operation())
 	|| (sync_interval !=  nullptr && sync_interval->has_operation())
@@ -924,11 +983,13 @@ std::vector<std::pair<std::string, LeafData> > Ptp::Profiles::Profile::get_name_
     if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
     if (announce_timeout.is_set || is_set(announce_timeout.yfilter)) leaf_name_data.push_back(announce_timeout.get_name_leafdata());
     if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
+    if (ipv4ttl.is_set || is_set(ipv4ttl.yfilter)) leaf_name_data.push_back(ipv4ttl.get_name_leafdata());
     if (port_state.is_set || is_set(port_state.yfilter)) leaf_name_data.push_back(port_state.get_name_leafdata());
     if (delay_response_timeout.is_set || is_set(delay_response_timeout.yfilter)) leaf_name_data.push_back(delay_response_timeout.get_name_leafdata());
     if (delay_response_grant_duration.is_set || is_set(delay_response_grant_duration.yfilter)) leaf_name_data.push_back(delay_response_grant_duration.get_name_leafdata());
     if (event_cos.is_set || is_set(event_cos.yfilter)) leaf_name_data.push_back(event_cos.get_name_leafdata());
     if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
+    if (ipv6_hop_limit.is_set || is_set(ipv6_hop_limit.yfilter)) leaf_name_data.push_back(ipv6_hop_limit.get_name_leafdata());
     if (general_dscp.is_set || is_set(general_dscp.yfilter)) leaf_name_data.push_back(general_dscp.get_name_leafdata());
     if (clock_operation.is_set || is_set(clock_operation.yfilter)) leaf_name_data.push_back(clock_operation.get_name_leafdata());
     if (announce_grant_duration.is_set || is_set(announce_grant_duration.yfilter)) leaf_name_data.push_back(announce_grant_duration.get_name_leafdata());
@@ -948,6 +1009,15 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::get_child_by_name(const std::str
             announce_interval = std::make_shared<Ptp::Profiles::Profile::AnnounceInterval>();
         }
         return announce_interval;
+    }
+
+    if(child_yang_name == "interop")
+    {
+        if(interop == nullptr)
+        {
+            interop = std::make_shared<Ptp::Profiles::Profile::Interop>();
+        }
+        return interop;
     }
 
     if(child_yang_name == "source-ipv4-address")
@@ -1023,6 +1093,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::get_child
     if(announce_interval != nullptr)
     {
         children["announce-interval"] = announce_interval;
+    }
+
+    if(interop != nullptr)
+    {
+        children["interop"] = interop;
     }
 
     if(source_ipv4_address != nullptr)
@@ -1107,6 +1182,12 @@ void Ptp::Profiles::Profile::set_value(const std::string & value_path, const std
         cos.value_namespace = name_space;
         cos.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ipv4ttl")
+    {
+        ipv4ttl = value;
+        ipv4ttl.value_namespace = name_space;
+        ipv4ttl.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "port-state")
     {
         port_state = value;
@@ -1136,6 +1217,12 @@ void Ptp::Profiles::Profile::set_value(const std::string & value_path, const std
         dscp = value;
         dscp.value_namespace = name_space;
         dscp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-hop-limit")
+    {
+        ipv6_hop_limit = value;
+        ipv6_hop_limit.value_namespace = name_space;
+        ipv6_hop_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "general-dscp")
     {
@@ -1199,6 +1286,10 @@ void Ptp::Profiles::Profile::set_filter(const std::string & value_path, YFilter 
     {
         cos.yfilter = yfilter;
     }
+    if(value_path == "ipv4ttl")
+    {
+        ipv4ttl.yfilter = yfilter;
+    }
     if(value_path == "port-state")
     {
         port_state.yfilter = yfilter;
@@ -1218,6 +1309,10 @@ void Ptp::Profiles::Profile::set_filter(const std::string & value_path, YFilter 
     if(value_path == "dscp")
     {
         dscp.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-hop-limit")
+    {
+        ipv6_hop_limit.yfilter = yfilter;
     }
     if(value_path == "general-dscp")
     {
@@ -1243,7 +1338,7 @@ void Ptp::Profiles::Profile::set_filter(const std::string & value_path, YFilter 
 
 bool Ptp::Profiles::Profile::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "announce-interval" || name == "source-ipv4-address" || name == "slaves" || name == "sync-interval" || name == "masters" || name == "communication" || name == "delay-request-minimum-interval" || name == "source-ipv6-address" || name == "profile-name" || name == "sync-grant-duration" || name == "general-cos" || name == "sync-timeout" || name == "transport" || name == "announce-timeout" || name == "cos" || name == "port-state" || name == "delay-response-timeout" || name == "delay-response-grant-duration" || name == "event-cos" || name == "dscp" || name == "general-dscp" || name == "clock-operation" || name == "announce-grant-duration" || name == "unicast-grant-invalid-request" || name == "event-dscp")
+    if(name == "announce-interval" || name == "interop" || name == "source-ipv4-address" || name == "slaves" || name == "sync-interval" || name == "masters" || name == "communication" || name == "delay-request-minimum-interval" || name == "source-ipv6-address" || name == "profile-name" || name == "sync-grant-duration" || name == "general-cos" || name == "sync-timeout" || name == "transport" || name == "announce-timeout" || name == "cos" || name == "ipv4ttl" || name == "port-state" || name == "delay-response-timeout" || name == "delay-response-grant-duration" || name == "event-cos" || name == "dscp" || name == "ipv6-hop-limit" || name == "general-dscp" || name == "clock-operation" || name == "announce-grant-duration" || name == "unicast-grant-invalid-request" || name == "event-dscp")
         return true;
     return false;
 }
@@ -1336,6 +1431,813 @@ void Ptp::Profiles::Profile::AnnounceInterval::set_filter(const std::string & va
 bool Ptp::Profiles::Profile::AnnounceInterval::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "time-type" || name == "time-period")
+        return true;
+    return false;
+}
+
+Ptp::Profiles::Profile::Interop::Interop()
+    :
+    profile{YType::enumeration, "profile"},
+    domain{YType::uint32, "domain"}
+        ,
+    egress_conversion(std::make_shared<Ptp::Profiles::Profile::Interop::EgressConversion>())
+    , ingress_conversion(std::make_shared<Ptp::Profiles::Profile::Interop::IngressConversion>())
+{
+    egress_conversion->parent = this;
+    ingress_conversion->parent = this;
+
+    yang_name = "interop"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Profiles::Profile::Interop::~Interop()
+{
+}
+
+bool Ptp::Profiles::Profile::Interop::has_data() const
+{
+    if (is_presence_container) return true;
+    return profile.is_set
+	|| domain.is_set
+	|| (egress_conversion !=  nullptr && egress_conversion->has_data())
+	|| (ingress_conversion !=  nullptr && ingress_conversion->has_data());
+}
+
+bool Ptp::Profiles::Profile::Interop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(profile.yfilter)
+	|| ydk::is_set(domain.yfilter)
+	|| (egress_conversion !=  nullptr && egress_conversion->has_operation())
+	|| (ingress_conversion !=  nullptr && ingress_conversion->has_operation());
+}
+
+std::string Ptp::Profiles::Profile::Interop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Profiles::Profile::Interop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
+    if (domain.is_set || is_set(domain.yfilter)) leaf_name_data.push_back(domain.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Profiles::Profile::Interop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "egress-conversion")
+    {
+        if(egress_conversion == nullptr)
+        {
+            egress_conversion = std::make_shared<Ptp::Profiles::Profile::Interop::EgressConversion>();
+        }
+        return egress_conversion;
+    }
+
+    if(child_yang_name == "ingress-conversion")
+    {
+        if(ingress_conversion == nullptr)
+        {
+            ingress_conversion = std::make_shared<Ptp::Profiles::Profile::Interop::IngressConversion>();
+        }
+        return ingress_conversion;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Interop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(egress_conversion != nullptr)
+    {
+        children["egress-conversion"] = egress_conversion;
+    }
+
+    if(ingress_conversion != nullptr)
+    {
+        children["ingress-conversion"] = ingress_conversion;
+    }
+
+    return children;
+}
+
+void Ptp::Profiles::Profile::Interop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "profile")
+    {
+        profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "domain")
+    {
+        domain = value;
+        domain.value_namespace = name_space;
+        domain.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Profiles::Profile::Interop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
+    if(value_path == "domain")
+    {
+        domain.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Profiles::Profile::Interop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "egress-conversion" || name == "ingress-conversion" || name == "profile" || name == "domain")
+        return true;
+    return false;
+}
+
+Ptp::Profiles::Profile::Interop::EgressConversion::EgressConversion()
+    :
+    clock_accuracy{YType::uint32, "clock-accuracy"},
+    priority2{YType::uint32, "priority2"},
+    clock_class_default{YType::uint32, "clock-class-default"},
+    offset_scaled_log_variance{YType::uint32, "offset-scaled-log-variance"},
+    priority1{YType::uint32, "priority1"}
+        ,
+    clock_class_mappings(std::make_shared<Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings>())
+{
+    clock_class_mappings->parent = this;
+
+    yang_name = "egress-conversion"; yang_parent_name = "interop"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Profiles::Profile::Interop::EgressConversion::~EgressConversion()
+{
+}
+
+bool Ptp::Profiles::Profile::Interop::EgressConversion::has_data() const
+{
+    if (is_presence_container) return true;
+    return clock_accuracy.is_set
+	|| priority2.is_set
+	|| clock_class_default.is_set
+	|| offset_scaled_log_variance.is_set
+	|| priority1.is_set
+	|| (clock_class_mappings !=  nullptr && clock_class_mappings->has_data());
+}
+
+bool Ptp::Profiles::Profile::Interop::EgressConversion::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(clock_accuracy.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(clock_class_default.yfilter)
+	|| ydk::is_set(offset_scaled_log_variance.yfilter)
+	|| ydk::is_set(priority1.yfilter)
+	|| (clock_class_mappings !=  nullptr && clock_class_mappings->has_operation());
+}
+
+std::string Ptp::Profiles::Profile::Interop::EgressConversion::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "egress-conversion";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Profiles::Profile::Interop::EgressConversion::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (clock_accuracy.is_set || is_set(clock_accuracy.yfilter)) leaf_name_data.push_back(clock_accuracy.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (clock_class_default.is_set || is_set(clock_class_default.yfilter)) leaf_name_data.push_back(clock_class_default.get_name_leafdata());
+    if (offset_scaled_log_variance.is_set || is_set(offset_scaled_log_variance.yfilter)) leaf_name_data.push_back(offset_scaled_log_variance.get_name_leafdata());
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Profiles::Profile::Interop::EgressConversion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "clock-class-mappings")
+    {
+        if(clock_class_mappings == nullptr)
+        {
+            clock_class_mappings = std::make_shared<Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings>();
+        }
+        return clock_class_mappings;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Interop::EgressConversion::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(clock_class_mappings != nullptr)
+    {
+        children["clock-class-mappings"] = clock_class_mappings;
+    }
+
+    return children;
+}
+
+void Ptp::Profiles::Profile::Interop::EgressConversion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "clock-accuracy")
+    {
+        clock_accuracy = value;
+        clock_accuracy.value_namespace = name_space;
+        clock_accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority2")
+    {
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-class-default")
+    {
+        clock_class_default = value;
+        clock_class_default.value_namespace = name_space;
+        clock_class_default.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-scaled-log-variance")
+    {
+        offset_scaled_log_variance = value;
+        offset_scaled_log_variance.value_namespace = name_space;
+        offset_scaled_log_variance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority1")
+    {
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Profiles::Profile::Interop::EgressConversion::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "clock-accuracy")
+    {
+        clock_accuracy.yfilter = yfilter;
+    }
+    if(value_path == "priority2")
+    {
+        priority2.yfilter = yfilter;
+    }
+    if(value_path == "clock-class-default")
+    {
+        clock_class_default.yfilter = yfilter;
+    }
+    if(value_path == "offset-scaled-log-variance")
+    {
+        offset_scaled_log_variance.yfilter = yfilter;
+    }
+    if(value_path == "priority1")
+    {
+        priority1.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Profiles::Profile::Interop::EgressConversion::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "clock-class-mappings" || name == "clock-accuracy" || name == "priority2" || name == "clock-class-default" || name == "offset-scaled-log-variance" || name == "priority1")
+        return true;
+    return false;
+}
+
+Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMappings()
+    :
+    clock_class_mapping(this, {"clock_class_from"})
+{
+
+    yang_name = "clock-class-mappings"; yang_parent_name = "egress-conversion"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::~ClockClassMappings()
+{
+}
+
+bool Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clock_class_mapping.len(); index++)
+    {
+        if(clock_class_mapping[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::has_operation() const
+{
+    for (std::size_t index=0; index<clock_class_mapping.len(); index++)
+    {
+        if(clock_class_mapping[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "clock-class-mappings";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "clock-class-mapping")
+    {
+        auto c = std::make_shared<Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping>();
+        c->parent = this;
+        clock_class_mapping.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : clock_class_mapping.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "clock-class-mapping")
+        return true;
+    return false;
+}
+
+Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping::ClockClassMapping()
+    :
+    clock_class_from{YType::uint32, "clock-class-from"},
+    clock_class_to{YType::uint32, "clock-class-to"}
+{
+
+    yang_name = "clock-class-mapping"; yang_parent_name = "clock-class-mappings"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping::~ClockClassMapping()
+{
+}
+
+bool Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping::has_data() const
+{
+    if (is_presence_container) return true;
+    return clock_class_from.is_set
+	|| clock_class_to.is_set;
+}
+
+bool Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(clock_class_from.yfilter)
+	|| ydk::is_set(clock_class_to.yfilter);
+}
+
+std::string Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "clock-class-mapping";
+    ADD_KEY_TOKEN(clock_class_from, "clock-class-from");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (clock_class_from.is_set || is_set(clock_class_from.yfilter)) leaf_name_data.push_back(clock_class_from.get_name_leafdata());
+    if (clock_class_to.is_set || is_set(clock_class_to.yfilter)) leaf_name_data.push_back(clock_class_to.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "clock-class-from")
+    {
+        clock_class_from = value;
+        clock_class_from.value_namespace = name_space;
+        clock_class_from.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-class-to")
+    {
+        clock_class_to = value;
+        clock_class_to.value_namespace = name_space;
+        clock_class_to.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "clock-class-from")
+    {
+        clock_class_from.yfilter = yfilter;
+    }
+    if(value_path == "clock-class-to")
+    {
+        clock_class_to.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Profiles::Profile::Interop::EgressConversion::ClockClassMappings::ClockClassMapping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "clock-class-from" || name == "clock-class-to")
+        return true;
+    return false;
+}
+
+Ptp::Profiles::Profile::Interop::IngressConversion::IngressConversion()
+    :
+    clock_accuracy{YType::uint32, "clock-accuracy"},
+    priority2{YType::uint32, "priority2"},
+    clock_class_default{YType::uint32, "clock-class-default"},
+    offset_scaled_log_variance{YType::uint32, "offset-scaled-log-variance"},
+    priority1{YType::uint32, "priority1"}
+        ,
+    clock_class_mappings(std::make_shared<Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings>())
+{
+    clock_class_mappings->parent = this;
+
+    yang_name = "ingress-conversion"; yang_parent_name = "interop"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Profiles::Profile::Interop::IngressConversion::~IngressConversion()
+{
+}
+
+bool Ptp::Profiles::Profile::Interop::IngressConversion::has_data() const
+{
+    if (is_presence_container) return true;
+    return clock_accuracy.is_set
+	|| priority2.is_set
+	|| clock_class_default.is_set
+	|| offset_scaled_log_variance.is_set
+	|| priority1.is_set
+	|| (clock_class_mappings !=  nullptr && clock_class_mappings->has_data());
+}
+
+bool Ptp::Profiles::Profile::Interop::IngressConversion::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(clock_accuracy.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(clock_class_default.yfilter)
+	|| ydk::is_set(offset_scaled_log_variance.yfilter)
+	|| ydk::is_set(priority1.yfilter)
+	|| (clock_class_mappings !=  nullptr && clock_class_mappings->has_operation());
+}
+
+std::string Ptp::Profiles::Profile::Interop::IngressConversion::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ingress-conversion";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Profiles::Profile::Interop::IngressConversion::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (clock_accuracy.is_set || is_set(clock_accuracy.yfilter)) leaf_name_data.push_back(clock_accuracy.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (clock_class_default.is_set || is_set(clock_class_default.yfilter)) leaf_name_data.push_back(clock_class_default.get_name_leafdata());
+    if (offset_scaled_log_variance.is_set || is_set(offset_scaled_log_variance.yfilter)) leaf_name_data.push_back(offset_scaled_log_variance.get_name_leafdata());
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Profiles::Profile::Interop::IngressConversion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "clock-class-mappings")
+    {
+        if(clock_class_mappings == nullptr)
+        {
+            clock_class_mappings = std::make_shared<Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings>();
+        }
+        return clock_class_mappings;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Interop::IngressConversion::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(clock_class_mappings != nullptr)
+    {
+        children["clock-class-mappings"] = clock_class_mappings;
+    }
+
+    return children;
+}
+
+void Ptp::Profiles::Profile::Interop::IngressConversion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "clock-accuracy")
+    {
+        clock_accuracy = value;
+        clock_accuracy.value_namespace = name_space;
+        clock_accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority2")
+    {
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-class-default")
+    {
+        clock_class_default = value;
+        clock_class_default.value_namespace = name_space;
+        clock_class_default.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-scaled-log-variance")
+    {
+        offset_scaled_log_variance = value;
+        offset_scaled_log_variance.value_namespace = name_space;
+        offset_scaled_log_variance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority1")
+    {
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Profiles::Profile::Interop::IngressConversion::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "clock-accuracy")
+    {
+        clock_accuracy.yfilter = yfilter;
+    }
+    if(value_path == "priority2")
+    {
+        priority2.yfilter = yfilter;
+    }
+    if(value_path == "clock-class-default")
+    {
+        clock_class_default.yfilter = yfilter;
+    }
+    if(value_path == "offset-scaled-log-variance")
+    {
+        offset_scaled_log_variance.yfilter = yfilter;
+    }
+    if(value_path == "priority1")
+    {
+        priority1.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Profiles::Profile::Interop::IngressConversion::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "clock-class-mappings" || name == "clock-accuracy" || name == "priority2" || name == "clock-class-default" || name == "offset-scaled-log-variance" || name == "priority1")
+        return true;
+    return false;
+}
+
+Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMappings()
+    :
+    clock_class_mapping(this, {"clock_class_from"})
+{
+
+    yang_name = "clock-class-mappings"; yang_parent_name = "ingress-conversion"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::~ClockClassMappings()
+{
+}
+
+bool Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clock_class_mapping.len(); index++)
+    {
+        if(clock_class_mapping[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::has_operation() const
+{
+    for (std::size_t index=0; index<clock_class_mapping.len(); index++)
+    {
+        if(clock_class_mapping[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "clock-class-mappings";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "clock-class-mapping")
+    {
+        auto c = std::make_shared<Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping>();
+        c->parent = this;
+        clock_class_mapping.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : clock_class_mapping.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "clock-class-mapping")
+        return true;
+    return false;
+}
+
+Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping::ClockClassMapping()
+    :
+    clock_class_from{YType::uint32, "clock-class-from"},
+    clock_class_to{YType::uint32, "clock-class-to"}
+{
+
+    yang_name = "clock-class-mapping"; yang_parent_name = "clock-class-mappings"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping::~ClockClassMapping()
+{
+}
+
+bool Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping::has_data() const
+{
+    if (is_presence_container) return true;
+    return clock_class_from.is_set
+	|| clock_class_to.is_set;
+}
+
+bool Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(clock_class_from.yfilter)
+	|| ydk::is_set(clock_class_to.yfilter);
+}
+
+std::string Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "clock-class-mapping";
+    ADD_KEY_TOKEN(clock_class_from, "clock-class-from");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (clock_class_from.is_set || is_set(clock_class_from.yfilter)) leaf_name_data.push_back(clock_class_from.get_name_leafdata());
+    if (clock_class_to.is_set || is_set(clock_class_to.yfilter)) leaf_name_data.push_back(clock_class_to.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "clock-class-from")
+    {
+        clock_class_from = value;
+        clock_class_from.value_namespace = name_space;
+        clock_class_from.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-class-to")
+    {
+        clock_class_to = value;
+        clock_class_to.value_namespace = name_space;
+        clock_class_to.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "clock-class-from")
+    {
+        clock_class_from.yfilter = yfilter;
+    }
+    if(value_path == "clock-class-to")
+    {
+        clock_class_to.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Profiles::Profile::Interop::IngressConversion::ClockClassMappings::ClockClassMapping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "clock-class-from" || name == "clock-class-to")
         return true;
     return false;
 }
@@ -3371,10 +4273,8 @@ bool Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::has_leaf_or_child_of_nam
 Ptp::Logging::Logging()
     :
     best_master_clock(std::make_shared<Ptp::Logging::BestMasterClock>())
-    , servo(std::make_shared<Ptp::Logging::Servo>())
 {
     best_master_clock->parent = this;
-    servo->parent = this;
 
     yang_name = "logging"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -3386,15 +4286,13 @@ Ptp::Logging::~Logging()
 bool Ptp::Logging::has_data() const
 {
     if (is_presence_container) return true;
-    return (best_master_clock !=  nullptr && best_master_clock->has_data())
-	|| (servo !=  nullptr && servo->has_data());
+    return (best_master_clock !=  nullptr && best_master_clock->has_data());
 }
 
 bool Ptp::Logging::has_operation() const
 {
     return is_set(yfilter)
-	|| (best_master_clock !=  nullptr && best_master_clock->has_operation())
-	|| (servo !=  nullptr && servo->has_operation());
+	|| (best_master_clock !=  nullptr && best_master_clock->has_operation());
 }
 
 std::string Ptp::Logging::get_absolute_path() const
@@ -3431,15 +4329,6 @@ std::shared_ptr<Entity> Ptp::Logging::get_child_by_name(const std::string & chil
         return best_master_clock;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-asr9k-ptp-pd-cfg:servo")
-    {
-        if(servo == nullptr)
-        {
-            servo = std::make_shared<Ptp::Logging::Servo>();
-        }
-        return servo;
-    }
-
     return nullptr;
 }
 
@@ -3450,11 +4339,6 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::Logging::get_children() cons
     if(best_master_clock != nullptr)
     {
         children["best-master-clock"] = best_master_clock;
-    }
-
-    if(servo != nullptr)
-    {
-        children["Cisco-IOS-XR-asr9k-ptp-pd-cfg:servo"] = servo;
     }
 
     return children;
@@ -3470,7 +4354,7 @@ void Ptp::Logging::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Ptp::Logging::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "best-master-clock" || name == "servo")
+    if(name == "best-master-clock")
         return true;
     return false;
 }
@@ -3560,87 +4444,101 @@ bool Ptp::Logging::BestMasterClock::has_leaf_or_child_of_name(const std::string 
     return false;
 }
 
-Ptp::Logging::Servo::Servo()
+Ptp::UncalibratedClockClass2::UncalibratedClockClass2()
     :
-    events{YType::empty, "events"}
+    clock_class{YType::uint32, "clock-class"},
+    unless_from_holdover{YType::boolean, "unless-from-holdover"}
 {
 
-    yang_name = "servo"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "uncalibrated-clock-class2"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
-Ptp::Logging::Servo::~Servo()
+Ptp::UncalibratedClockClass2::~UncalibratedClockClass2()
 {
 }
 
-bool Ptp::Logging::Servo::has_data() const
+bool Ptp::UncalibratedClockClass2::has_data() const
 {
     if (is_presence_container) return true;
-    return events.is_set;
+    return clock_class.is_set
+	|| unless_from_holdover.is_set;
 }
 
-bool Ptp::Logging::Servo::has_operation() const
+bool Ptp::UncalibratedClockClass2::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(events.yfilter);
+	|| ydk::is_set(clock_class.yfilter)
+	|| ydk::is_set(unless_from_holdover.yfilter);
 }
 
-std::string Ptp::Logging::Servo::get_absolute_path() const
+std::string Ptp::UncalibratedClockClass2::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ptp-cfg:ptp/logging/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-ptp-cfg:ptp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ptp::Logging::Servo::get_segment_path() const
+std::string Ptp::UncalibratedClockClass2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-asr9k-ptp-pd-cfg:servo";
+    path_buffer << "uncalibrated-clock-class2";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ptp::Logging::Servo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ptp::UncalibratedClockClass2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (events.is_set || is_set(events.yfilter)) leaf_name_data.push_back(events.get_name_leafdata());
+    if (clock_class.is_set || is_set(clock_class.yfilter)) leaf_name_data.push_back(clock_class.get_name_leafdata());
+    if (unless_from_holdover.is_set || is_set(unless_from_holdover.yfilter)) leaf_name_data.push_back(unless_from_holdover.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Ptp::Logging::Servo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ptp::UncalibratedClockClass2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ptp::Logging::Servo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ptp::UncalibratedClockClass2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ptp::Logging::Servo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ptp::UncalibratedClockClass2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "events")
+    if(value_path == "clock-class")
     {
-        events = value;
-        events.value_namespace = name_space;
-        events.value_namespace_prefix = name_space_prefix;
+        clock_class = value;
+        clock_class.value_namespace = name_space;
+        clock_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unless-from-holdover")
+    {
+        unless_from_holdover = value;
+        unless_from_holdover.value_namespace = name_space;
+        unless_from_holdover.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Ptp::Logging::Servo::set_filter(const std::string & value_path, YFilter yfilter)
+void Ptp::UncalibratedClockClass2::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "events")
+    if(value_path == "clock-class")
     {
-        events.yfilter = yfilter;
+        clock_class.yfilter = yfilter;
+    }
+    if(value_path == "unless-from-holdover")
+    {
+        unless_from_holdover.yfilter = yfilter;
     }
 }
 
-bool Ptp::Logging::Servo::has_leaf_or_child_of_name(const std::string & name) const
+bool Ptp::UncalibratedClockClass2::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "events")
+    if(name == "clock-class" || name == "unless-from-holdover")
         return true;
     return false;
 }
@@ -3916,6 +4814,175 @@ void Ptp::TransparentClock::Domains::Domain::set_filter(const std::string & valu
 bool Ptp::TransparentClock::Domains::Domain::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "domain")
+        return true;
+    return false;
+}
+
+Ptp::VirtualPort::VirtualPort()
+    :
+    clock_accuracy{YType::uint32, "clock-accuracy"},
+    enable{YType::empty, "enable"},
+    priority2{YType::uint32, "priority2"},
+    local_priority{YType::uint32, "local-priority"},
+    offset_scaled_log_variance{YType::uint32, "offset-scaled-log-variance"},
+    priority1{YType::uint32, "priority1"},
+    clock_class{YType::uint32, "clock-class"}
+{
+
+    yang_name = "virtual-port"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::VirtualPort::~VirtualPort()
+{
+}
+
+bool Ptp::VirtualPort::has_data() const
+{
+    if (is_presence_container) return true;
+    return clock_accuracy.is_set
+	|| enable.is_set
+	|| priority2.is_set
+	|| local_priority.is_set
+	|| offset_scaled_log_variance.is_set
+	|| priority1.is_set
+	|| clock_class.is_set;
+}
+
+bool Ptp::VirtualPort::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(clock_accuracy.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(local_priority.yfilter)
+	|| ydk::is_set(offset_scaled_log_variance.yfilter)
+	|| ydk::is_set(priority1.yfilter)
+	|| ydk::is_set(clock_class.yfilter);
+}
+
+std::string Ptp::VirtualPort::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-cfg:ptp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::VirtualPort::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "virtual-port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::VirtualPort::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (clock_accuracy.is_set || is_set(clock_accuracy.yfilter)) leaf_name_data.push_back(clock_accuracy.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (local_priority.is_set || is_set(local_priority.yfilter)) leaf_name_data.push_back(local_priority.get_name_leafdata());
+    if (offset_scaled_log_variance.is_set || is_set(offset_scaled_log_variance.yfilter)) leaf_name_data.push_back(offset_scaled_log_variance.get_name_leafdata());
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+    if (clock_class.is_set || is_set(clock_class.yfilter)) leaf_name_data.push_back(clock_class.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::VirtualPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::VirtualPort::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::VirtualPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "clock-accuracy")
+    {
+        clock_accuracy = value;
+        clock_accuracy.value_namespace = name_space;
+        clock_accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority2")
+    {
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-priority")
+    {
+        local_priority = value;
+        local_priority.value_namespace = name_space;
+        local_priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-scaled-log-variance")
+    {
+        offset_scaled_log_variance = value;
+        offset_scaled_log_variance.value_namespace = name_space;
+        offset_scaled_log_variance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority1")
+    {
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-class")
+    {
+        clock_class = value;
+        clock_class.value_namespace = name_space;
+        clock_class.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::VirtualPort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "clock-accuracy")
+    {
+        clock_accuracy.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "priority2")
+    {
+        priority2.yfilter = yfilter;
+    }
+    if(value_path == "local-priority")
+    {
+        local_priority.yfilter = yfilter;
+    }
+    if(value_path == "offset-scaled-log-variance")
+    {
+        offset_scaled_log_variance.yfilter = yfilter;
+    }
+    if(value_path == "priority1")
+    {
+        priority1.yfilter = yfilter;
+    }
+    if(value_path == "clock-class")
+    {
+        clock_class.yfilter = yfilter;
+    }
+}
+
+bool Ptp::VirtualPort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "clock-accuracy" || name == "enable" || name == "priority2" || name == "local-priority" || name == "offset-scaled-log-variance" || name == "priority1" || name == "clock-class")
         return true;
     return false;
 }

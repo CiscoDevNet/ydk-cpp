@@ -135,11 +135,11 @@ Keychains::Keychain::Keychain()
         ,
     accept_tolerance(std::make_shared<Keychains::Keychain::AcceptTolerance>())
     , macsec_keychain(std::make_shared<Keychains::Keychain::MacsecKeychain>())
-    , keies(std::make_shared<Keychains::Keychain::Keies>())
+    , keys(std::make_shared<Keychains::Keychain::Keys>())
 {
     accept_tolerance->parent = this;
     macsec_keychain->parent = this;
-    keies->parent = this;
+    keys->parent = this;
 
     yang_name = "keychain"; yang_parent_name = "keychains"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -154,7 +154,7 @@ bool Keychains::Keychain::has_data() const
     return chain_name.is_set
 	|| (accept_tolerance !=  nullptr && accept_tolerance->has_data())
 	|| (macsec_keychain !=  nullptr && macsec_keychain->has_data())
-	|| (keies !=  nullptr && keies->has_data());
+	|| (keys !=  nullptr && keys->has_data());
 }
 
 bool Keychains::Keychain::has_operation() const
@@ -163,7 +163,7 @@ bool Keychains::Keychain::has_operation() const
 	|| ydk::is_set(chain_name.yfilter)
 	|| (accept_tolerance !=  nullptr && accept_tolerance->has_operation())
 	|| (macsec_keychain !=  nullptr && macsec_keychain->has_operation())
-	|| (keies !=  nullptr && keies->has_operation());
+	|| (keys !=  nullptr && keys->has_operation());
 }
 
 std::string Keychains::Keychain::get_absolute_path() const
@@ -211,13 +211,13 @@ std::shared_ptr<Entity> Keychains::Keychain::get_child_by_name(const std::string
         return macsec_keychain;
     }
 
-    if(child_yang_name == "keies")
+    if(child_yang_name == "keys")
     {
-        if(keies == nullptr)
+        if(keys == nullptr)
         {
-            keies = std::make_shared<Keychains::Keychain::Keies>();
+            keys = std::make_shared<Keychains::Keychain::Keys>();
         }
-        return keies;
+        return keys;
     }
 
     return nullptr;
@@ -237,9 +237,9 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::get_children
         children["macsec-keychain"] = macsec_keychain;
     }
 
-    if(keies != nullptr)
+    if(keys != nullptr)
     {
-        children["keies"] = keies;
+        children["keys"] = keys;
     }
 
     return children;
@@ -265,7 +265,7 @@ void Keychains::Keychain::set_filter(const std::string & value_path, YFilter yfi
 
 bool Keychains::Keychain::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "accept-tolerance" || name == "macsec-keychain" || name == "keies" || name == "chain-name")
+    if(name == "accept-tolerance" || name == "macsec-keychain" || name == "keys" || name == "chain-name")
         return true;
     return false;
 }
@@ -364,9 +364,9 @@ bool Keychains::Keychain::AcceptTolerance::has_leaf_or_child_of_name(const std::
 
 Keychains::Keychain::MacsecKeychain::MacsecKeychain()
     :
-    macsec_keies(std::make_shared<Keychains::Keychain::MacsecKeychain::MacsecKeies>())
+    macsec_keys(std::make_shared<Keychains::Keychain::MacsecKeychain::MacsecKeys>())
 {
-    macsec_keies->parent = this;
+    macsec_keys->parent = this;
 
     yang_name = "macsec-keychain"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -378,13 +378,13 @@ Keychains::Keychain::MacsecKeychain::~MacsecKeychain()
 bool Keychains::Keychain::MacsecKeychain::has_data() const
 {
     if (is_presence_container) return true;
-    return (macsec_keies !=  nullptr && macsec_keies->has_data());
+    return (macsec_keys !=  nullptr && macsec_keys->has_data());
 }
 
 bool Keychains::Keychain::MacsecKeychain::has_operation() const
 {
     return is_set(yfilter)
-	|| (macsec_keies !=  nullptr && macsec_keies->has_operation());
+	|| (macsec_keys !=  nullptr && macsec_keys->has_operation());
 }
 
 std::string Keychains::Keychain::MacsecKeychain::get_segment_path() const
@@ -405,13 +405,13 @@ std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::MacsecKeycha
 
 std::shared_ptr<Entity> Keychains::Keychain::MacsecKeychain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "macsec-keies")
+    if(child_yang_name == "macsec-keys")
     {
-        if(macsec_keies == nullptr)
+        if(macsec_keys == nullptr)
         {
-            macsec_keies = std::make_shared<Keychains::Keychain::MacsecKeychain::MacsecKeies>();
+            macsec_keys = std::make_shared<Keychains::Keychain::MacsecKeychain::MacsecKeys>();
         }
-        return macsec_keies;
+        return macsec_keys;
     }
 
     return nullptr;
@@ -421,9 +421,9 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::MacsecKeycha
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(macsec_keies != nullptr)
+    if(macsec_keys != nullptr)
     {
-        children["macsec-keies"] = macsec_keies;
+        children["macsec-keys"] = macsec_keys;
     }
 
     return children;
@@ -439,24 +439,24 @@ void Keychains::Keychain::MacsecKeychain::set_filter(const std::string & value_p
 
 bool Keychains::Keychain::MacsecKeychain::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "macsec-keies")
+    if(name == "macsec-keys")
         return true;
     return false;
 }
 
-Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKeies()
+Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKeys()
     :
     macsec_key(this, {"key_id"})
 {
 
-    yang_name = "macsec-keies"; yang_parent_name = "macsec-keychain"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "macsec-keys"; yang_parent_name = "macsec-keychain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Keychains::Keychain::MacsecKeychain::MacsecKeies::~MacsecKeies()
+Keychains::Keychain::MacsecKeychain::MacsecKeys::~MacsecKeys()
 {
 }
 
-bool Keychains::Keychain::MacsecKeychain::MacsecKeies::has_data() const
+bool Keychains::Keychain::MacsecKeychain::MacsecKeys::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<macsec_key.len(); index++)
@@ -467,7 +467,7 @@ bool Keychains::Keychain::MacsecKeychain::MacsecKeies::has_data() const
     return false;
 }
 
-bool Keychains::Keychain::MacsecKeychain::MacsecKeies::has_operation() const
+bool Keychains::Keychain::MacsecKeychain::MacsecKeys::has_operation() const
 {
     for (std::size_t index=0; index<macsec_key.len(); index++)
     {
@@ -477,14 +477,14 @@ bool Keychains::Keychain::MacsecKeychain::MacsecKeies::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Keychains::Keychain::MacsecKeychain::MacsecKeies::get_segment_path() const
+std::string Keychains::Keychain::MacsecKeychain::MacsecKeys::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec-keies";
+    path_buffer << "macsec-keys";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::MacsecKeychain::MacsecKeies::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::MacsecKeychain::MacsecKeys::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -493,11 +493,11 @@ std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::MacsecKeycha
 
 }
 
-std::shared_ptr<Entity> Keychains::Keychain::MacsecKeychain::MacsecKeies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Keychains::Keychain::MacsecKeychain::MacsecKeys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-key")
     {
-        auto c = std::make_shared<Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey>();
+        auto c = std::make_shared<Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey>();
         c->parent = this;
         macsec_key.append(c);
         return c;
@@ -506,7 +506,7 @@ std::shared_ptr<Entity> Keychains::Keychain::MacsecKeychain::MacsecKeies::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::MacsecKeychain::MacsecKeies::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::MacsecKeychain::MacsecKeys::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -522,38 +522,37 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::MacsecKeycha
     return children;
 }
 
-void Keychains::Keychain::MacsecKeychain::MacsecKeies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Keychains::Keychain::MacsecKeychain::MacsecKeys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Keychains::Keychain::MacsecKeychain::MacsecKeies::set_filter(const std::string & value_path, YFilter yfilter)
+void Keychains::Keychain::MacsecKeychain::MacsecKeys::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Keychains::Keychain::MacsecKeychain::MacsecKeies::has_leaf_or_child_of_name(const std::string & name) const
+bool Keychains::Keychain::MacsecKeychain::MacsecKeys::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macsec-key")
         return true;
     return false;
 }
 
-Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKey()
+Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKey()
     :
     key_id{YType::str, "key-id"}
         ,
-    macsec_lifetime(std::make_shared<Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime>())
+    macsec_lifetime(nullptr) // presence node
     , macsec_key_string(nullptr) // presence node
 {
-    macsec_lifetime->parent = this;
 
-    yang_name = "macsec-key"; yang_parent_name = "macsec-keies"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "macsec-key"; yang_parent_name = "macsec-keys"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::~MacsecKey()
+Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::~MacsecKey()
 {
 }
 
-bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::has_data() const
+bool Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::has_data() const
 {
     if (is_presence_container) return true;
     return key_id.is_set
@@ -561,7 +560,7 @@ bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::has_data() con
 	|| (macsec_key_string !=  nullptr && macsec_key_string->has_data());
 }
 
-bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::has_operation() const
+bool Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(key_id.yfilter)
@@ -569,7 +568,7 @@ bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::has_operation(
 	|| (macsec_key_string !=  nullptr && macsec_key_string->has_operation());
 }
 
-std::string Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::get_segment_path() const
+std::string Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-key";
@@ -577,7 +576,7 @@ std::string Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::get_seg
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -587,13 +586,13 @@ std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::MacsecKeycha
 
 }
 
-std::shared_ptr<Entity> Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-lifetime")
     {
         if(macsec_lifetime == nullptr)
         {
-            macsec_lifetime = std::make_shared<Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime>();
+            macsec_lifetime = std::make_shared<Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime>();
         }
         return macsec_lifetime;
     }
@@ -602,7 +601,7 @@ std::shared_ptr<Entity> Keychains::Keychain::MacsecKeychain::MacsecKeies::Macsec
     {
         if(macsec_key_string == nullptr)
         {
-            macsec_key_string = std::make_shared<Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString>();
+            macsec_key_string = std::make_shared<Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString>();
         }
         return macsec_key_string;
     }
@@ -610,7 +609,7 @@ std::shared_ptr<Entity> Keychains::Keychain::MacsecKeychain::MacsecKeies::Macsec
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -627,7 +626,7 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::MacsecKeycha
     return children;
 }
 
-void Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-id")
     {
@@ -637,7 +636,7 @@ void Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::set_value(cons
     }
 }
 
-void Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::set_filter(const std::string & value_path, YFilter yfilter)
+void Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "key-id")
     {
@@ -645,14 +644,14 @@ void Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::set_filter(con
     }
 }
 
-bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::has_leaf_or_child_of_name(const std::string & name) const
+bool Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macsec-lifetime" || name == "macsec-key-string" || name == "key-id")
         return true;
     return false;
 }
 
-Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::MacsecLifetime()
+Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime::MacsecLifetime()
     :
     start_hour{YType::uint32, "start-hour"},
     start_minutes{YType::uint32, "start-minutes"},
@@ -670,14 +669,14 @@ Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::Mac
     end_year{YType::uint32, "end-year"}
 {
 
-    yang_name = "macsec-lifetime"; yang_parent_name = "macsec-key"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "macsec-lifetime"; yang_parent_name = "macsec-key"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::~MacsecLifetime()
+Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime::~MacsecLifetime()
 {
 }
 
-bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::has_data() const
+bool Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime::has_data() const
 {
     if (is_presence_container) return true;
     return start_hour.is_set
@@ -696,7 +695,7 @@ bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime
 	|| end_year.is_set;
 }
 
-bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::has_operation() const
+bool Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(start_hour.yfilter)
@@ -715,14 +714,14 @@ bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime
 	|| ydk::is_set(end_year.yfilter);
 }
 
-std::string Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::get_segment_path() const
+std::string Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-lifetime";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -745,19 +744,19 @@ std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::MacsecKeycha
 
 }
 
-std::shared_ptr<Entity> Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "start-hour")
     {
@@ -845,7 +844,7 @@ void Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime
     }
 }
 
-void Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::set_filter(const std::string & value_path, YFilter yfilter)
+void Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "start-hour")
     {
@@ -905,14 +904,14 @@ void Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime
     }
 }
 
-bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::has_leaf_or_child_of_name(const std::string & name) const
+bool Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "start-hour" || name == "start-minutes" || name == "start-seconds" || name == "start-date" || name == "start-month" || name == "start-year" || name == "life-time" || name == "infinite-flag" || name == "end-hour" || name == "end-minutes" || name == "end-seconds" || name == "end-date" || name == "end-month" || name == "end-year")
         return true;
     return false;
 }
 
-Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::MacsecKeyString()
+Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString::MacsecKeyString()
     :
     string{YType::str, "string"},
     cryptographic_algorithm{YType::enumeration, "cryptographic-algorithm"},
@@ -922,11 +921,11 @@ Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::Ma
     yang_name = "macsec-key-string"; yang_parent_name = "macsec-key"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::~MacsecKeyString()
+Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString::~MacsecKeyString()
 {
 }
 
-bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::has_data() const
+bool Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString::has_data() const
 {
     if (is_presence_container) return true;
     return string.is_set
@@ -934,7 +933,7 @@ bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyStrin
 	|| encryption_type.is_set;
 }
 
-bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::has_operation() const
+bool Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(string.yfilter)
@@ -942,14 +941,14 @@ bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyStrin
 	|| ydk::is_set(encryption_type.yfilter);
 }
 
-std::string Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::get_segment_path() const
+std::string Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-key-string";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -961,19 +960,19 @@ std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::MacsecKeycha
 
 }
 
-std::shared_ptr<Entity> Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "string")
     {
@@ -995,7 +994,7 @@ void Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyStrin
     }
 }
 
-void Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::set_filter(const std::string & value_path, YFilter yfilter)
+void Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "string")
     {
@@ -1011,26 +1010,26 @@ void Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyStrin
     }
 }
 
-bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::has_leaf_or_child_of_name(const std::string & name) const
+bool Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "string" || name == "cryptographic-algorithm" || name == "encryption-type")
         return true;
     return false;
 }
 
-Keychains::Keychain::Keies::Keies()
+Keychains::Keychain::Keys::Keys()
     :
     key(this, {"key_id"})
 {
 
-    yang_name = "keies"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "keys"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Keychains::Keychain::Keies::~Keies()
+Keychains::Keychain::Keys::~Keys()
 {
 }
 
-bool Keychains::Keychain::Keies::has_data() const
+bool Keychains::Keychain::Keys::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<key.len(); index++)
@@ -1041,7 +1040,7 @@ bool Keychains::Keychain::Keies::has_data() const
     return false;
 }
 
-bool Keychains::Keychain::Keies::has_operation() const
+bool Keychains::Keychain::Keys::has_operation() const
 {
     for (std::size_t index=0; index<key.len(); index++)
     {
@@ -1051,14 +1050,14 @@ bool Keychains::Keychain::Keies::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Keychains::Keychain::Keies::get_segment_path() const
+std::string Keychains::Keychain::Keys::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "keies";
+    path_buffer << "keys";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keies::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keys::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1067,11 +1066,11 @@ std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keies::get_n
 
 }
 
-std::shared_ptr<Entity> Keychains::Keychain::Keies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Keychains::Keychain::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key")
     {
-        auto c = std::make_shared<Keychains::Keychain::Keies::Key>();
+        auto c = std::make_shared<Keychains::Keychain::Keys::Key>();
         c->parent = this;
         key.append(c);
         return c;
@@ -1080,7 +1079,7 @@ std::shared_ptr<Entity> Keychains::Keychain::Keies::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keys::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1096,41 +1095,39 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::get_c
     return children;
 }
 
-void Keychains::Keychain::Keies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Keychains::Keychain::Keys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Keychains::Keychain::Keies::set_filter(const std::string & value_path, YFilter yfilter)
+void Keychains::Keychain::Keys::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Keychains::Keychain::Keies::has_leaf_or_child_of_name(const std::string & name) const
+bool Keychains::Keychain::Keys::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key")
         return true;
     return false;
 }
 
-Keychains::Keychain::Keies::Key::Key()
+Keychains::Keychain::Keys::Key::Key()
     :
     key_id{YType::str, "key-id"},
     key_string{YType::str, "key-string"},
     cryptographic_algorithm{YType::enumeration, "cryptographic-algorithm"}
         ,
-    accept_lifetime(std::make_shared<Keychains::Keychain::Keies::Key::AcceptLifetime>())
-    , send_lifetime(std::make_shared<Keychains::Keychain::Keies::Key::SendLifetime>())
+    accept_lifetime(nullptr) // presence node
+    , send_lifetime(nullptr) // presence node
 {
-    accept_lifetime->parent = this;
-    send_lifetime->parent = this;
 
-    yang_name = "key"; yang_parent_name = "keies"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "key"; yang_parent_name = "keys"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Keychains::Keychain::Keies::Key::~Key()
+Keychains::Keychain::Keys::Key::~Key()
 {
 }
 
-bool Keychains::Keychain::Keies::Key::has_data() const
+bool Keychains::Keychain::Keys::Key::has_data() const
 {
     if (is_presence_container) return true;
     return key_id.is_set
@@ -1140,7 +1137,7 @@ bool Keychains::Keychain::Keies::Key::has_data() const
 	|| (send_lifetime !=  nullptr && send_lifetime->has_data());
 }
 
-bool Keychains::Keychain::Keies::Key::has_operation() const
+bool Keychains::Keychain::Keys::Key::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(key_id.yfilter)
@@ -1150,7 +1147,7 @@ bool Keychains::Keychain::Keies::Key::has_operation() const
 	|| (send_lifetime !=  nullptr && send_lifetime->has_operation());
 }
 
-std::string Keychains::Keychain::Keies::Key::get_segment_path() const
+std::string Keychains::Keychain::Keys::Key::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key";
@@ -1158,7 +1155,7 @@ std::string Keychains::Keychain::Keies::Key::get_segment_path() const
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keies::Key::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keys::Key::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1170,13 +1167,13 @@ std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keies::Key::
 
 }
 
-std::shared_ptr<Entity> Keychains::Keychain::Keies::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Keychains::Keychain::Keys::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accept-lifetime")
     {
         if(accept_lifetime == nullptr)
         {
-            accept_lifetime = std::make_shared<Keychains::Keychain::Keies::Key::AcceptLifetime>();
+            accept_lifetime = std::make_shared<Keychains::Keychain::Keys::Key::AcceptLifetime>();
         }
         return accept_lifetime;
     }
@@ -1185,7 +1182,7 @@ std::shared_ptr<Entity> Keychains::Keychain::Keies::Key::get_child_by_name(const
     {
         if(send_lifetime == nullptr)
         {
-            send_lifetime = std::make_shared<Keychains::Keychain::Keies::Key::SendLifetime>();
+            send_lifetime = std::make_shared<Keychains::Keychain::Keys::Key::SendLifetime>();
         }
         return send_lifetime;
     }
@@ -1193,7 +1190,7 @@ std::shared_ptr<Entity> Keychains::Keychain::Keies::Key::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::Key::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keys::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1210,7 +1207,7 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::Key::
     return children;
 }
 
-void Keychains::Keychain::Keies::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Keychains::Keychain::Keys::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-id")
     {
@@ -1232,7 +1229,7 @@ void Keychains::Keychain::Keies::Key::set_value(const std::string & value_path, 
     }
 }
 
-void Keychains::Keychain::Keies::Key::set_filter(const std::string & value_path, YFilter yfilter)
+void Keychains::Keychain::Keys::Key::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "key-id")
     {
@@ -1248,14 +1245,14 @@ void Keychains::Keychain::Keies::Key::set_filter(const std::string & value_path,
     }
 }
 
-bool Keychains::Keychain::Keies::Key::has_leaf_or_child_of_name(const std::string & name) const
+bool Keychains::Keychain::Keys::Key::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "accept-lifetime" || name == "send-lifetime" || name == "key-id" || name == "key-string" || name == "cryptographic-algorithm")
         return true;
     return false;
 }
 
-Keychains::Keychain::Keies::Key::AcceptLifetime::AcceptLifetime()
+Keychains::Keychain::Keys::Key::AcceptLifetime::AcceptLifetime()
     :
     start_hour{YType::uint32, "start-hour"},
     start_minutes{YType::uint32, "start-minutes"},
@@ -1273,14 +1270,14 @@ Keychains::Keychain::Keies::Key::AcceptLifetime::AcceptLifetime()
     end_year{YType::uint32, "end-year"}
 {
 
-    yang_name = "accept-lifetime"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "accept-lifetime"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Keychains::Keychain::Keies::Key::AcceptLifetime::~AcceptLifetime()
+Keychains::Keychain::Keys::Key::AcceptLifetime::~AcceptLifetime()
 {
 }
 
-bool Keychains::Keychain::Keies::Key::AcceptLifetime::has_data() const
+bool Keychains::Keychain::Keys::Key::AcceptLifetime::has_data() const
 {
     if (is_presence_container) return true;
     return start_hour.is_set
@@ -1299,7 +1296,7 @@ bool Keychains::Keychain::Keies::Key::AcceptLifetime::has_data() const
 	|| end_year.is_set;
 }
 
-bool Keychains::Keychain::Keies::Key::AcceptLifetime::has_operation() const
+bool Keychains::Keychain::Keys::Key::AcceptLifetime::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(start_hour.yfilter)
@@ -1318,14 +1315,14 @@ bool Keychains::Keychain::Keies::Key::AcceptLifetime::has_operation() const
 	|| ydk::is_set(end_year.yfilter);
 }
 
-std::string Keychains::Keychain::Keies::Key::AcceptLifetime::get_segment_path() const
+std::string Keychains::Keychain::Keys::Key::AcceptLifetime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "accept-lifetime";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keies::Key::AcceptLifetime::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keys::Key::AcceptLifetime::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1348,19 +1345,19 @@ std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keies::Key::
 
 }
 
-std::shared_ptr<Entity> Keychains::Keychain::Keies::Key::AcceptLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Keychains::Keychain::Keys::Key::AcceptLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::Key::AcceptLifetime::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keys::Key::AcceptLifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Keychains::Keychain::Keies::Key::AcceptLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Keychains::Keychain::Keys::Key::AcceptLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "start-hour")
     {
@@ -1448,7 +1445,7 @@ void Keychains::Keychain::Keies::Key::AcceptLifetime::set_value(const std::strin
     }
 }
 
-void Keychains::Keychain::Keies::Key::AcceptLifetime::set_filter(const std::string & value_path, YFilter yfilter)
+void Keychains::Keychain::Keys::Key::AcceptLifetime::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "start-hour")
     {
@@ -1508,14 +1505,14 @@ void Keychains::Keychain::Keies::Key::AcceptLifetime::set_filter(const std::stri
     }
 }
 
-bool Keychains::Keychain::Keies::Key::AcceptLifetime::has_leaf_or_child_of_name(const std::string & name) const
+bool Keychains::Keychain::Keys::Key::AcceptLifetime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "start-hour" || name == "start-minutes" || name == "start-seconds" || name == "start-date" || name == "start-month" || name == "start-year" || name == "life-time" || name == "infinite-flag" || name == "end-hour" || name == "end-minutes" || name == "end-seconds" || name == "end-date" || name == "end-month" || name == "end-year")
         return true;
     return false;
 }
 
-Keychains::Keychain::Keies::Key::SendLifetime::SendLifetime()
+Keychains::Keychain::Keys::Key::SendLifetime::SendLifetime()
     :
     start_hour{YType::uint32, "start-hour"},
     start_minutes{YType::uint32, "start-minutes"},
@@ -1533,14 +1530,14 @@ Keychains::Keychain::Keies::Key::SendLifetime::SendLifetime()
     end_year{YType::uint32, "end-year"}
 {
 
-    yang_name = "send-lifetime"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "send-lifetime"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Keychains::Keychain::Keies::Key::SendLifetime::~SendLifetime()
+Keychains::Keychain::Keys::Key::SendLifetime::~SendLifetime()
 {
 }
 
-bool Keychains::Keychain::Keies::Key::SendLifetime::has_data() const
+bool Keychains::Keychain::Keys::Key::SendLifetime::has_data() const
 {
     if (is_presence_container) return true;
     return start_hour.is_set
@@ -1559,7 +1556,7 @@ bool Keychains::Keychain::Keies::Key::SendLifetime::has_data() const
 	|| end_year.is_set;
 }
 
-bool Keychains::Keychain::Keies::Key::SendLifetime::has_operation() const
+bool Keychains::Keychain::Keys::Key::SendLifetime::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(start_hour.yfilter)
@@ -1578,14 +1575,14 @@ bool Keychains::Keychain::Keies::Key::SendLifetime::has_operation() const
 	|| ydk::is_set(end_year.yfilter);
 }
 
-std::string Keychains::Keychain::Keies::Key::SendLifetime::get_segment_path() const
+std::string Keychains::Keychain::Keys::Key::SendLifetime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "send-lifetime";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keies::Key::SendLifetime::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keys::Key::SendLifetime::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1608,19 +1605,19 @@ std::vector<std::pair<std::string, LeafData> > Keychains::Keychain::Keies::Key::
 
 }
 
-std::shared_ptr<Entity> Keychains::Keychain::Keies::Key::SendLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Keychains::Keychain::Keys::Key::SendLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::Key::SendLifetime::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keys::Key::SendLifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Keychains::Keychain::Keies::Key::SendLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Keychains::Keychain::Keys::Key::SendLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "start-hour")
     {
@@ -1708,7 +1705,7 @@ void Keychains::Keychain::Keies::Key::SendLifetime::set_value(const std::string 
     }
 }
 
-void Keychains::Keychain::Keies::Key::SendLifetime::set_filter(const std::string & value_path, YFilter yfilter)
+void Keychains::Keychain::Keys::Key::SendLifetime::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "start-hour")
     {
@@ -1768,7 +1765,7 @@ void Keychains::Keychain::Keies::Key::SendLifetime::set_filter(const std::string
     }
 }
 
-bool Keychains::Keychain::Keies::Key::SendLifetime::has_leaf_or_child_of_name(const std::string & name) const
+bool Keychains::Keychain::Keys::Key::SendLifetime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "start-hour" || name == "start-minutes" || name == "start-seconds" || name == "start-date" || name == "start-month" || name == "start-year" || name == "life-time" || name == "infinite-flag" || name == "end-hour" || name == "end-minutes" || name == "end-seconds" || name == "end-date" || name == "end-month" || name == "end-year")
         return true;

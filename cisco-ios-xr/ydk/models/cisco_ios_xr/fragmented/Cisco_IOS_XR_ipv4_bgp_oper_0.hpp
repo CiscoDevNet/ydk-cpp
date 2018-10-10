@@ -395,6 +395,9 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConf
         ydk::YLeaf neighbor_remote_as_list_group_name; //type: string
         ydk::YLeaf max_peers; //type: uint32
         ydk::YLeaf idle_watch_time; //type: uint32
+        ydk::YLeaf ao_keychain; //type: string
+        ydk::YLeaf ao_include_tcp_options; //type: uint32
+        ydk::YLeaf ao_accept_mismatch_connection; //type: uint32
         ydk::YLeaf local_as_replace_as; //type: boolean
         ydk::YLeaf local_as_dual_as; //type: boolean
         class LocalIpAddress; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalIpAddress
@@ -454,6 +457,7 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConf
         class NeighborRemoteAsListInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::NeighborRemoteAsListInfo
         class MaxPeersInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MaxPeersInfo
         class IdleWatchTimeInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::IdleWatchTimeInfo
+        class AoKeychainInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::AoKeychainInfo
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalIpAddress> local_ip_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::RemoteAsInfo> remote_as_info;
@@ -512,6 +516,7 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConf
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::NeighborRemoteAsListInfo> neighbor_remote_as_list_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MaxPeersInfo> max_peers_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::IdleWatchTimeInfo> idle_watch_time_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::AoKeychainInfo> ao_keychain_info;
         
 }; // Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig
 
@@ -4535,6 +4540,7 @@ class BgpPrefixSid : public ydk::Enum
         static const ydk::Enum::YLeaf prefix_sid_label_index;
         static const ydk::Enum::YLeaf prefix_sid_ipv6_sid;
         static const ydk::Enum::YLeaf prefix_sid_origin_at_or_srgb;
+        static const ydk::Enum::YLeaf prefix_sid_srv6;
 
 };
 
@@ -4634,6 +4640,7 @@ class BgpResetReasonIndex : public ydk::Enum
         static const ydk::Enum::YLeaf nbr_local_addr_changed;
         static const ydk::Enum::YLeaf internal_vpn_client_changed;
         static const ydk::Enum::YLeaf cap_suppress_all_changed;
+        static const ydk::Enum::YLeaf next_hop_changed;
 
 };
 

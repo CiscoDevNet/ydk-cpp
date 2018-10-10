@@ -6,13 +6,2341 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_clns_isis_oper_2.hpp"
 #include "Cisco_IOS_XR_clns_isis_oper_7.hpp"
-#include "Cisco_IOS_XR_clns_isis_oper_6.hpp"
+#include "Cisco_IOS_XR_clns_isis_oper_8.hpp"
 #include "Cisco_IOS_XR_clns_isis_oper_3.hpp"
 
 using namespace ydk;
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_clns_isis_oper {
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::State()
+    :
+    router_id{YType::str, "router-id"}
+{
+
+    yang_name = "state"; yang_parent_name = "ipv4-te-router-id"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::~State()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : router_id.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::has_operation() const
+{
+    for (auto const & leaf : router_id.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(router_id.yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto router_id_name_datas = router_id.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), router_id_name_datas.begin(), router_id_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "router-id")
+    {
+        router_id.append(value);
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "router-id")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::Nlpid()
+    :
+    state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State>())
+{
+    state->parent = this;
+
+    yang_name = "nlpid"; yang_parent_name = "tlvs"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::~Nlpid()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::has_data() const
+{
+    if (is_presence_container) return true;
+    return (state !=  nullptr && state->has_data());
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::has_operation() const
+{
+    return is_set(yfilter)
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nlpid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::State()
+    :
+    nlpid{YType::enumeration, "nlpid"}
+{
+
+    yang_name = "state"; yang_parent_name = "nlpid"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::~State()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : nlpid.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::has_operation() const
+{
+    for (auto const & leaf : nlpid.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(nlpid.yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto nlpid_name_datas = nlpid.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), nlpid_name_datas.begin(), nlpid_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nlpid")
+    {
+        nlpid.append(value);
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nlpid")
+    {
+        nlpid.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nlpid")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4Reachability()
+    :
+    extended_ipv4_reachability_prefixes(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes>())
+{
+    extended_ipv4_reachability_prefixes->parent = this;
+
+    yang_name = "extended-ipv4-reachability"; yang_parent_name = "tlvs"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::~ExtendedIpv4Reachability()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::has_data() const
+{
+    if (is_presence_container) return true;
+    return (extended_ipv4_reachability_prefixes !=  nullptr && extended_ipv4_reachability_prefixes->has_data());
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::has_operation() const
+{
+    return is_set(yfilter)
+	|| (extended_ipv4_reachability_prefixes !=  nullptr && extended_ipv4_reachability_prefixes->has_operation());
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "extended-ipv4-reachability";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "extended-ipv4-reachability-prefixes")
+    {
+        if(extended_ipv4_reachability_prefixes == nullptr)
+        {
+            extended_ipv4_reachability_prefixes = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes>();
+        }
+        return extended_ipv4_reachability_prefixes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(extended_ipv4_reachability_prefixes != nullptr)
+    {
+        children["extended-ipv4-reachability-prefixes"] = extended_ipv4_reachability_prefixes;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extended-ipv4-reachability-prefixes")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixes()
+    :
+    extended_ipv4_reachability_prefixe(this, {"prefix"})
+{
+
+    yang_name = "extended-ipv4-reachability-prefixes"; yang_parent_name = "extended-ipv4-reachability"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::~ExtendedIpv4ReachabilityPrefixes()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<extended_ipv4_reachability_prefixe.len(); index++)
+    {
+        if(extended_ipv4_reachability_prefixe[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::has_operation() const
+{
+    for (std::size_t index=0; index<extended_ipv4_reachability_prefixe.len(); index++)
+    {
+        if(extended_ipv4_reachability_prefixe[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "extended-ipv4-reachability-prefixes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "extended-ipv4-reachability-prefixe")
+    {
+        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe>();
+        c->parent = this;
+        extended_ipv4_reachability_prefixe.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : extended_ipv4_reachability_prefixe.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extended-ipv4-reachability-prefixe")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::ExtendedIpv4ReachabilityPrefixe()
+    :
+    prefix{YType::str, "prefix"}
+        ,
+    prefixes_state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState>())
+    , prefixes_subtlvs(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs>())
+    , prefixes_undefined_subtlvs(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs>())
+{
+    prefixes_state->parent = this;
+    prefixes_subtlvs->parent = this;
+    prefixes_undefined_subtlvs->parent = this;
+
+    yang_name = "extended-ipv4-reachability-prefixe"; yang_parent_name = "extended-ipv4-reachability-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::~ExtendedIpv4ReachabilityPrefixe()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix.is_set
+	|| (prefixes_state !=  nullptr && prefixes_state->has_data())
+	|| (prefixes_subtlvs !=  nullptr && prefixes_subtlvs->has_data())
+	|| (prefixes_undefined_subtlvs !=  nullptr && prefixes_undefined_subtlvs->has_data());
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| (prefixes_state !=  nullptr && prefixes_state->has_operation())
+	|| (prefixes_subtlvs !=  nullptr && prefixes_subtlvs->has_operation())
+	|| (prefixes_undefined_subtlvs !=  nullptr && prefixes_undefined_subtlvs->has_operation());
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "extended-ipv4-reachability-prefixe";
+    ADD_KEY_TOKEN(prefix, "prefix");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefixes-state")
+    {
+        if(prefixes_state == nullptr)
+        {
+            prefixes_state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState>();
+        }
+        return prefixes_state;
+    }
+
+    if(child_yang_name == "prefixes-subtlvs")
+    {
+        if(prefixes_subtlvs == nullptr)
+        {
+            prefixes_subtlvs = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs>();
+        }
+        return prefixes_subtlvs;
+    }
+
+    if(child_yang_name == "prefixes-undefined-subtlvs")
+    {
+        if(prefixes_undefined_subtlvs == nullptr)
+        {
+            prefixes_undefined_subtlvs = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs>();
+        }
+        return prefixes_undefined_subtlvs;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(prefixes_state != nullptr)
+    {
+        children["prefixes-state"] = prefixes_state;
+    }
+
+    if(prefixes_subtlvs != nullptr)
+    {
+        children["prefixes-subtlvs"] = prefixes_subtlvs;
+    }
+
+    if(prefixes_undefined_subtlvs != nullptr)
+    {
+        children["prefixes-undefined-subtlvs"] = prefixes_undefined_subtlvs;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefixes-state" || name == "prefixes-subtlvs" || name == "prefixes-undefined-subtlvs" || name == "prefix")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::PrefixesState()
+    :
+    up_down{YType::boolean, "up-down"},
+    sbit{YType::boolean, "sbit"},
+    prefix{YType::str, "prefix"},
+    metric{YType::uint32, "metric"}
+{
+
+    yang_name = "prefixes-state"; yang_parent_name = "extended-ipv4-reachability-prefixe"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::~PrefixesState()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::has_data() const
+{
+    if (is_presence_container) return true;
+    return up_down.is_set
+	|| sbit.is_set
+	|| prefix.is_set
+	|| metric.is_set;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(up_down.yfilter)
+	|| ydk::is_set(sbit.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(metric.yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefixes-state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (up_down.is_set || is_set(up_down.yfilter)) leaf_name_data.push_back(up_down.get_name_leafdata());
+    if (sbit.is_set || is_set(sbit.yfilter)) leaf_name_data.push_back(sbit.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "up-down")
+    {
+        up_down = value;
+        up_down.value_namespace = name_space;
+        up_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sbit")
+    {
+        sbit = value;
+        sbit.value_namespace = name_space;
+        sbit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric")
+    {
+        metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "up-down")
+    {
+        up_down.yfilter = yfilter;
+    }
+    if(value_path == "sbit")
+    {
+        sbit.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "up-down" || name == "sbit" || name == "prefix" || name == "metric")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlvs()
+    :
+    prefixes_subtlv(this, {"type"})
+{
+
+    yang_name = "prefixes-subtlvs"; yang_parent_name = "extended-ipv4-reachability-prefixe"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::~PrefixesSubtlvs()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefixes_subtlv.len(); index++)
+    {
+        if(prefixes_subtlv[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::has_operation() const
+{
+    for (std::size_t index=0; index<prefixes_subtlv.len(); index++)
+    {
+        if(prefixes_subtlv[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefixes-subtlvs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefixes-subtlv")
+    {
+        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv>();
+        c->parent = this;
+        prefixes_subtlv.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : prefixes_subtlv.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefixes-subtlv")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlv()
+    :
+    type{YType::str, "type"}
+        ,
+    tag(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag>())
+    , ipv4_source_router_id(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId>())
+    , ipv6_source_router_id(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId>())
+    , prefixes_subtlvs_state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState>())
+    , flags(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags>())
+    , tag64(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64>())
+    , prefix_sids(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids>())
+{
+    tag->parent = this;
+    ipv4_source_router_id->parent = this;
+    ipv6_source_router_id->parent = this;
+    prefixes_subtlvs_state->parent = this;
+    flags->parent = this;
+    tag64->parent = this;
+    prefix_sids->parent = this;
+
+    yang_name = "prefixes-subtlv"; yang_parent_name = "prefixes-subtlvs"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::~PrefixesSubtlv()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| (tag !=  nullptr && tag->has_data())
+	|| (ipv4_source_router_id !=  nullptr && ipv4_source_router_id->has_data())
+	|| (ipv6_source_router_id !=  nullptr && ipv6_source_router_id->has_data())
+	|| (prefixes_subtlvs_state !=  nullptr && prefixes_subtlvs_state->has_data())
+	|| (flags !=  nullptr && flags->has_data())
+	|| (tag64 !=  nullptr && tag64->has_data())
+	|| (prefix_sids !=  nullptr && prefix_sids->has_data());
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| (tag !=  nullptr && tag->has_operation())
+	|| (ipv4_source_router_id !=  nullptr && ipv4_source_router_id->has_operation())
+	|| (ipv6_source_router_id !=  nullptr && ipv6_source_router_id->has_operation())
+	|| (prefixes_subtlvs_state !=  nullptr && prefixes_subtlvs_state->has_operation())
+	|| (flags !=  nullptr && flags->has_operation())
+	|| (tag64 !=  nullptr && tag64->has_operation())
+	|| (prefix_sids !=  nullptr && prefix_sids->has_operation());
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefixes-subtlv";
+    ADD_KEY_TOKEN(type, "type");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tag")
+    {
+        if(tag == nullptr)
+        {
+            tag = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag>();
+        }
+        return tag;
+    }
+
+    if(child_yang_name == "ipv4-source-router-id")
+    {
+        if(ipv4_source_router_id == nullptr)
+        {
+            ipv4_source_router_id = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId>();
+        }
+        return ipv4_source_router_id;
+    }
+
+    if(child_yang_name == "ipv6-source-router-id")
+    {
+        if(ipv6_source_router_id == nullptr)
+        {
+            ipv6_source_router_id = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId>();
+        }
+        return ipv6_source_router_id;
+    }
+
+    if(child_yang_name == "prefixes-subtlvs-state")
+    {
+        if(prefixes_subtlvs_state == nullptr)
+        {
+            prefixes_subtlvs_state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState>();
+        }
+        return prefixes_subtlvs_state;
+    }
+
+    if(child_yang_name == "flags")
+    {
+        if(flags == nullptr)
+        {
+            flags = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags>();
+        }
+        return flags;
+    }
+
+    if(child_yang_name == "tag64")
+    {
+        if(tag64 == nullptr)
+        {
+            tag64 = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64>();
+        }
+        return tag64;
+    }
+
+    if(child_yang_name == "prefix-sids")
+    {
+        if(prefix_sids == nullptr)
+        {
+            prefix_sids = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids>();
+        }
+        return prefix_sids;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(tag != nullptr)
+    {
+        children["tag"] = tag;
+    }
+
+    if(ipv4_source_router_id != nullptr)
+    {
+        children["ipv4-source-router-id"] = ipv4_source_router_id;
+    }
+
+    if(ipv6_source_router_id != nullptr)
+    {
+        children["ipv6-source-router-id"] = ipv6_source_router_id;
+    }
+
+    if(prefixes_subtlvs_state != nullptr)
+    {
+        children["prefixes-subtlvs-state"] = prefixes_subtlvs_state;
+    }
+
+    if(flags != nullptr)
+    {
+        children["flags"] = flags;
+    }
+
+    if(tag64 != nullptr)
+    {
+        children["tag64"] = tag64;
+    }
+
+    if(prefix_sids != nullptr)
+    {
+        children["prefix-sids"] = prefix_sids;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tag" || name == "ipv4-source-router-id" || name == "ipv6-source-router-id" || name == "prefixes-subtlvs-state" || name == "flags" || name == "tag64" || name == "prefix-sids" || name == "type")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::Tag()
+    :
+    state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State>())
+{
+    state->parent = this;
+
+    yang_name = "tag"; yang_parent_name = "prefixes-subtlv"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::~Tag()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::has_data() const
+{
+    if (is_presence_container) return true;
+    return (state !=  nullptr && state->has_data());
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::has_operation() const
+{
+    return is_set(yfilter)
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::State()
+    :
+    tag32{YType::uint32, "tag32"}
+{
+
+    yang_name = "state"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::~State()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : tag32.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::has_operation() const
+{
+    for (auto const & leaf : tag32.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(tag32.yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto tag32_name_datas = tag32.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), tag32_name_datas.begin(), tag32_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tag32")
+    {
+        tag32.append(value);
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tag32")
+    {
+        tag32.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tag32")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::Ipv4SourceRouterId()
+    :
+    state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State>())
+{
+    state->parent = this;
+
+    yang_name = "ipv4-source-router-id"; yang_parent_name = "prefixes-subtlv"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::~Ipv4SourceRouterId()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::has_data() const
+{
+    if (is_presence_container) return true;
+    return (state !=  nullptr && state->has_data());
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::has_operation() const
+{
+    return is_set(yfilter)
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-source-router-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::State()
+    :
+    type{YType::str, "type"},
+    ipv4_source_router_id{YType::str, "ipv4-source-router-id"}
+{
+
+    yang_name = "state"; yang_parent_name = "ipv4-source-router-id"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::~State()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| ipv4_source_router_id.is_set;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(ipv4_source_router_id.yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (ipv4_source_router_id.is_set || is_set(ipv4_source_router_id.yfilter)) leaf_name_data.push_back(ipv4_source_router_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-source-router-id")
+    {
+        ipv4_source_router_id = value;
+        ipv4_source_router_id.value_namespace = name_space;
+        ipv4_source_router_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-source-router-id")
+    {
+        ipv4_source_router_id.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "ipv4-source-router-id")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::Ipv6SourceRouterId()
+    :
+    state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State>())
+{
+    state->parent = this;
+
+    yang_name = "ipv6-source-router-id"; yang_parent_name = "prefixes-subtlv"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::~Ipv6SourceRouterId()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::has_data() const
+{
+    if (is_presence_container) return true;
+    return (state !=  nullptr && state->has_data());
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::has_operation() const
+{
+    return is_set(yfilter)
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-source-router-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::State()
+    :
+    type{YType::str, "type"},
+    ipv6_source_router_id{YType::str, "ipv6-source-router-id"}
+{
+
+    yang_name = "state"; yang_parent_name = "ipv6-source-router-id"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::~State()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| ipv6_source_router_id.is_set;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(ipv6_source_router_id.yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (ipv6_source_router_id.is_set || is_set(ipv6_source_router_id.yfilter)) leaf_name_data.push_back(ipv6_source_router_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-source-router-id")
+    {
+        ipv6_source_router_id = value;
+        ipv6_source_router_id.value_namespace = name_space;
+        ipv6_source_router_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-source-router-id")
+    {
+        ipv6_source_router_id.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "ipv6-source-router-id")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::PrefixesSubtlvsState()
+    :
+    type{YType::str, "type"}
+{
+
+    yang_name = "prefixes-subtlvs-state"; yang_parent_name = "prefixes-subtlv"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::~PrefixesSubtlvsState()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefixes-subtlvs-state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::Flags()
+    :
+    state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State>())
+{
+    state->parent = this;
+
+    yang_name = "flags"; yang_parent_name = "prefixes-subtlv"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::~Flags()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::has_data() const
+{
+    if (is_presence_container) return true;
+    return (state !=  nullptr && state->has_data());
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::has_operation() const
+{
+    return is_set(yfilter)
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flags";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::State()
+    :
+    type{YType::str, "type"},
+    flags{YType::enumeration, "flags"}
+{
+
+    yang_name = "state"; yang_parent_name = "flags"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::~State()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : flags.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return type.is_set;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::has_operation() const
+{
+    for (auto const & leaf : flags.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(flags.yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    auto flags_name_datas = flags.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), flags_name_datas.begin(), flags_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flags")
+    {
+        flags.append(value);
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "flags")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::Tag64()
+    :
+    state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State>())
+{
+    state->parent = this;
+
+    yang_name = "tag64"; yang_parent_name = "prefixes-subtlv"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::~Tag64()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::has_data() const
+{
+    if (is_presence_container) return true;
+    return (state !=  nullptr && state->has_data());
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::has_operation() const
+{
+    return is_set(yfilter)
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tag64";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::State()
+    :
+    tag64{YType::uint64, "tag64"}
+{
+
+    yang_name = "state"; yang_parent_name = "tag64"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::~State()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : tag64.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::has_operation() const
+{
+    for (auto const & leaf : tag64.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(tag64.yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto tag64_name_datas = tag64.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), tag64_name_datas.begin(), tag64_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tag64")
+    {
+        tag64.append(value);
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tag64")
+    {
+        tag64.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tag64")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSids()
+    :
+    prefix_sid(this, {"value_"})
+{
+
+    yang_name = "prefix-sids"; yang_parent_name = "prefixes-subtlv"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::~PrefixSids()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_sid.len(); index++)
+    {
+        if(prefix_sid[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::has_operation() const
+{
+    for (std::size_t index=0; index<prefix_sid.len(); index++)
+    {
+        if(prefix_sid[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-sids";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-sid")
+    {
+        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid>();
+        c->parent = this;
+        prefix_sid.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : prefix_sid.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-sid")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::PrefixSid()
+    :
+    value_{YType::uint32, "value"}
+        ,
+    state(std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State>())
+{
+    state->parent = this;
+
+    yang_name = "prefix-sid"; yang_parent_name = "prefix-sids"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::~PrefixSid()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter)
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-sid";
+    ADD_KEY_TOKEN(value_, "value");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state" || name == "value")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::State()
+    :
+    value_{YType::uint32, "value"},
+    algorithm{YType::uint8, "algorithm"},
+    flags{YType::enumeration, "flags"}
+{
+
+    yang_name = "state"; yang_parent_name = "prefix-sid"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::~State()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : flags.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return value_.is_set
+	|| algorithm.is_set;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::has_operation() const
+{
+    for (auto const & leaf : flags.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter)
+	|| ydk::is_set(algorithm.yfilter)
+	|| ydk::is_set(flags.yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (algorithm.is_set || is_set(algorithm.yfilter)) leaf_name_data.push_back(algorithm.get_name_leafdata());
+
+    auto flags_name_datas = flags.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), flags_name_datas.begin(), flags_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "algorithm")
+    {
+        algorithm = value;
+        algorithm.value_namespace = name_space;
+        algorithm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flags")
+    {
+        flags.append(value);
+    }
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+    if(value_path == "algorithm")
+    {
+        algorithm.yfilter = yfilter;
+    }
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value" || name == "algorithm" || name == "flags")
+        return true;
+    return false;
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlvs()
+    :
+    prefixes_undefined_subtlv(this, {"type"})
+{
+
+    yang_name = "prefixes-undefined-subtlvs"; yang_parent_name = "extended-ipv4-reachability-prefixe"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::~PrefixesUndefinedSubtlvs()
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefixes_undefined_subtlv.len(); index++)
+    {
+        if(prefixes_undefined_subtlv[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::has_operation() const
+{
+    for (std::size_t index=0; index<prefixes_undefined_subtlv.len(); index++)
+    {
+        if(prefixes_undefined_subtlv[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefixes-undefined-subtlvs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefixes-undefined-subtlv")
+    {
+        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv>();
+        c->parent = this;
+        prefixes_undefined_subtlv.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : prefixes_undefined_subtlv.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefixes-undefined-subtlv")
+        return true;
+    return false;
+}
 
 OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv::PrefixesUndefinedSubtlv()
     :
@@ -4396,6 +6724,7 @@ Isis::Instances::Instance::Instance()
     , nsr_status(std::make_shared<Isis::Instances::Instance::NsrStatus>())
     , interfaces(std::make_shared<Isis::Instances::Instance::Interfaces>())
     , checkpoint_adjacencies(std::make_shared<Isis::Instances::Instance::CheckpointAdjacencies>())
+    , flex_algos(std::make_shared<Isis::Instances::Instance::FlexAlgos>())
     , srms(std::make_shared<Isis::Instances::Instance::Srms>())
     , error_log(std::make_shared<Isis::Instances::Instance::ErrorLog>())
     , checkpoint_interfaces(std::make_shared<Isis::Instances::Instance::CheckpointInterfaces>())
@@ -4415,6 +6744,7 @@ Isis::Instances::Instance::Instance()
     nsr_status->parent = this;
     interfaces->parent = this;
     checkpoint_adjacencies->parent = this;
+    flex_algos->parent = this;
     srms->parent = this;
     error_log->parent = this;
     checkpoint_interfaces->parent = this;
@@ -4445,6 +6775,7 @@ bool Isis::Instances::Instance::has_data() const
 	|| (nsr_status !=  nullptr && nsr_status->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data())
 	|| (checkpoint_adjacencies !=  nullptr && checkpoint_adjacencies->has_data())
+	|| (flex_algos !=  nullptr && flex_algos->has_data())
 	|| (srms !=  nullptr && srms->has_data())
 	|| (error_log !=  nullptr && error_log->has_data())
 	|| (checkpoint_interfaces !=  nullptr && checkpoint_interfaces->has_data())
@@ -4469,6 +6800,7 @@ bool Isis::Instances::Instance::has_operation() const
 	|| (nsr_status !=  nullptr && nsr_status->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (checkpoint_adjacencies !=  nullptr && checkpoint_adjacencies->has_operation())
+	|| (flex_algos !=  nullptr && flex_algos->has_operation())
 	|| (srms !=  nullptr && srms->has_operation())
 	|| (error_log !=  nullptr && error_log->has_operation())
 	|| (checkpoint_interfaces !=  nullptr && checkpoint_interfaces->has_operation())
@@ -4578,6 +6910,15 @@ std::shared_ptr<Entity> Isis::Instances::Instance::get_child_by_name(const std::
             checkpoint_adjacencies = std::make_shared<Isis::Instances::Instance::CheckpointAdjacencies>();
         }
         return checkpoint_adjacencies;
+    }
+
+    if(child_yang_name == "flex-algos")
+    {
+        if(flex_algos == nullptr)
+        {
+            flex_algos = std::make_shared<Isis::Instances::Instance::FlexAlgos>();
+        }
+        return flex_algos;
     }
 
     if(child_yang_name == "srms")
@@ -4717,6 +7058,11 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::get_ch
         children["checkpoint-adjacencies"] = checkpoint_adjacencies;
     }
 
+    if(flex_algos != nullptr)
+    {
+        children["flex-algos"] = flex_algos;
+    }
+
     if(srms != nullptr)
     {
         children["srms"] = srms;
@@ -4790,7 +7136,7 @@ void Isis::Instances::Instance::set_filter(const std::string & value_path, YFilt
 
 bool Isis::Instances::Instance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbors" || name == "host-names" || name == "statistics-global" || name == "levels" || name == "topologies" || name == "nsr-status" || name == "interfaces" || name == "checkpoint-adjacencies" || name == "srms" || name == "error-log" || name == "checkpoint-interfaces" || name == "interface-statistics" || name == "protocol" || name == "neighbor-summaries" || name == "checkpoint-lsps" || name == "mesh-groups" || name == "nsr-statistics" || name == "checkpoint-te-tunnels" || name == "instance-name")
+    if(name == "neighbors" || name == "host-names" || name == "statistics-global" || name == "levels" || name == "topologies" || name == "nsr-status" || name == "interfaces" || name == "checkpoint-adjacencies" || name == "flex-algos" || name == "srms" || name == "error-log" || name == "checkpoint-interfaces" || name == "interface-statistics" || name == "protocol" || name == "neighbor-summaries" || name == "checkpoint-lsps" || name == "mesh-groups" || name == "nsr-statistics" || name == "checkpoint-te-tunnels" || name == "instance-name")
         return true;
     return false;
 }
@@ -7123,12 +9469,16 @@ Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ip
         ,
     adjacency_sid(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid>())
     , non_frr_adjacency_sid(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid>())
+    , end_xsid(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid>())
+    , non_frr_end_xsid(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid>())
     , interface_address(this, {})
     , underlying_adjacency_sid(this, {})
     , underlying_interface(this, {})
 {
     adjacency_sid->parent = this;
     non_frr_adjacency_sid->parent = this;
+    end_xsid->parent = this;
+    non_frr_end_xsid->parent = this;
 
     yang_name = "ipv6"; yang_parent_name = "neighbor-per-address-family-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -7157,7 +9507,9 @@ bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyDat
     }
     return next_hop.is_set
 	|| (adjacency_sid !=  nullptr && adjacency_sid->has_data())
-	|| (non_frr_adjacency_sid !=  nullptr && non_frr_adjacency_sid->has_data());
+	|| (non_frr_adjacency_sid !=  nullptr && non_frr_adjacency_sid->has_data())
+	|| (end_xsid !=  nullptr && end_xsid->has_data())
+	|| (non_frr_end_xsid !=  nullptr && non_frr_end_xsid->has_data());
 }
 
 bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::has_operation() const
@@ -7180,7 +9532,9 @@ bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyDat
     return is_set(yfilter)
 	|| ydk::is_set(next_hop.yfilter)
 	|| (adjacency_sid !=  nullptr && adjacency_sid->has_operation())
-	|| (non_frr_adjacency_sid !=  nullptr && non_frr_adjacency_sid->has_operation());
+	|| (non_frr_adjacency_sid !=  nullptr && non_frr_adjacency_sid->has_operation())
+	|| (end_xsid !=  nullptr && end_xsid->has_operation())
+	|| (non_frr_end_xsid !=  nullptr && non_frr_end_xsid->has_operation());
 }
 
 std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::get_segment_path() const
@@ -7218,6 +9572,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::Neighbor
             non_frr_adjacency_sid = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid>();
         }
         return non_frr_adjacency_sid;
+    }
+
+    if(child_yang_name == "end-xsid")
+    {
+        if(end_xsid == nullptr)
+        {
+            end_xsid = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid>();
+        }
+        return end_xsid;
+    }
+
+    if(child_yang_name == "non-frr-end-xsid")
+    {
+        if(non_frr_end_xsid == nullptr)
+        {
+            non_frr_end_xsid = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid>();
+        }
+        return non_frr_end_xsid;
     }
 
     if(child_yang_name == "interface-address")
@@ -7259,6 +9631,16 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighb
     if(non_frr_adjacency_sid != nullptr)
     {
         children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
+    }
+
+    if(end_xsid != nullptr)
+    {
+        children["end-xsid"] = end_xsid;
+    }
+
+    if(non_frr_end_xsid != nullptr)
+    {
+        children["non-frr-end-xsid"] = non_frr_end_xsid;
     }
 
     count = 0;
@@ -7311,7 +9693,7 @@ void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyDat
 
 bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "adjacency-sid" || name == "non-frr-adjacency-sid" || name == "interface-address" || name == "underlying-adjacency-sid" || name == "underlying-interface" || name == "next-hop")
+    if(name == "adjacency-sid" || name == "non-frr-adjacency-sid" || name == "end-xsid" || name == "non-frr-end-xsid" || name == "interface-address" || name == "underlying-adjacency-sid" || name == "underlying-interface" || name == "next-hop")
         return true;
     return false;
 }
@@ -8450,6 +10832,902 @@ void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyDat
 bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid()
+    :
+    end_xsid_function{YType::uint16, "end-xsid-function"}
+        ,
+    end_xsid(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_>())
+    , end_xsid_backup(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup>())
+{
+    end_xsid->parent = this;
+    end_xsid_backup->parent = this;
+
+    yang_name = "end-xsid"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::~EndXsid()
+{
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::has_data() const
+{
+    if (is_presence_container) return true;
+    return end_xsid_function.is_set
+	|| (end_xsid !=  nullptr && end_xsid->has_data())
+	|| (end_xsid_backup !=  nullptr && end_xsid_backup->has_data());
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(end_xsid_function.yfilter)
+	|| (end_xsid !=  nullptr && end_xsid->has_operation())
+	|| (end_xsid_backup !=  nullptr && end_xsid_backup->has_operation());
+}
+
+std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "end-xsid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (end_xsid_function.is_set || is_set(end_xsid_function.yfilter)) leaf_name_data.push_back(end_xsid_function.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "end-xsid")
+    {
+        if(end_xsid == nullptr)
+        {
+            end_xsid = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_>();
+        }
+        return end_xsid;
+    }
+
+    if(child_yang_name == "end-xsid-backup")
+    {
+        if(end_xsid_backup == nullptr)
+        {
+            end_xsid_backup = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup>();
+        }
+        return end_xsid_backup;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(end_xsid != nullptr)
+    {
+        children["end-xsid"] = end_xsid;
+    }
+
+    if(end_xsid_backup != nullptr)
+    {
+        children["end-xsid-backup"] = end_xsid_backup;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "end-xsid-function")
+    {
+        end_xsid_function = value;
+        end_xsid_function.value_namespace = name_space;
+        end_xsid_function.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-xsid-function")
+    {
+        end_xsid_function.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-xsid" || name == "end-xsid-backup" || name == "end-xsid-function")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::EndXsid_()
+    :
+    prefix{YType::str, "prefix"},
+    prefix_length{YType::uint8, "prefix-length"}
+{
+
+    yang_name = "end-xsid"; yang_parent_name = "end-xsid"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::~EndXsid_()
+{
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix.is_set
+	|| prefix_length.is_set;
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
+}
+
+std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "end-xsid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::EndXsidBackup()
+    :
+    backup_stack_size{YType::uint8, "backup-stack-size"},
+    backup_node_address{YType::str, "backup-node-address"},
+    backup_nexthop{YType::str, "backup-nexthop"},
+    backup_interface{YType::str, "backup-interface"}
+        ,
+    backup_stack(this, {})
+{
+
+    yang_name = "end-xsid-backup"; yang_parent_name = "end-xsid"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::~EndXsidBackup()
+{
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<backup_stack.len(); index++)
+    {
+        if(backup_stack[index]->has_data())
+            return true;
+    }
+    return backup_stack_size.is_set
+	|| backup_node_address.is_set
+	|| backup_nexthop.is_set
+	|| backup_interface.is_set;
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::has_operation() const
+{
+    for (std::size_t index=0; index<backup_stack.len(); index++)
+    {
+        if(backup_stack[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(backup_stack_size.yfilter)
+	|| ydk::is_set(backup_node_address.yfilter)
+	|| ydk::is_set(backup_nexthop.yfilter)
+	|| ydk::is_set(backup_interface.yfilter);
+}
+
+std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "end-xsid-backup";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (backup_stack_size.is_set || is_set(backup_stack_size.yfilter)) leaf_name_data.push_back(backup_stack_size.get_name_leafdata());
+    if (backup_node_address.is_set || is_set(backup_node_address.yfilter)) leaf_name_data.push_back(backup_node_address.get_name_leafdata());
+    if (backup_nexthop.is_set || is_set(backup_nexthop.yfilter)) leaf_name_data.push_back(backup_nexthop.get_name_leafdata());
+    if (backup_interface.is_set || is_set(backup_interface.yfilter)) leaf_name_data.push_back(backup_interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "backup-stack")
+    {
+        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack>();
+        c->parent = this;
+        backup_stack.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : backup_stack.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "backup-stack-size")
+    {
+        backup_stack_size = value;
+        backup_stack_size.value_namespace = name_space;
+        backup_stack_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-node-address")
+    {
+        backup_node_address = value;
+        backup_node_address.value_namespace = name_space;
+        backup_node_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-nexthop")
+    {
+        backup_nexthop = value;
+        backup_nexthop.value_namespace = name_space;
+        backup_nexthop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-interface")
+    {
+        backup_interface = value;
+        backup_interface.value_namespace = name_space;
+        backup_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "backup-stack-size")
+    {
+        backup_stack_size.yfilter = yfilter;
+    }
+    if(value_path == "backup-node-address")
+    {
+        backup_node_address.yfilter = yfilter;
+    }
+    if(value_path == "backup-nexthop")
+    {
+        backup_nexthop.yfilter = yfilter;
+    }
+    if(value_path == "backup-interface")
+    {
+        backup_interface.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backup-stack" || name == "backup-stack-size" || name == "backup-node-address" || name == "backup-nexthop" || name == "backup-interface")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::BackupStack()
+    :
+    prefix{YType::str, "prefix"},
+    prefix_length{YType::uint8, "prefix-length"}
+{
+
+    yang_name = "backup-stack"; yang_parent_name = "end-xsid-backup"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::~BackupStack()
+{
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix.is_set
+	|| prefix_length.is_set;
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
+}
+
+std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "backup-stack";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::NonFrrEndXsid()
+    :
+    end_xsid_function{YType::uint16, "end-xsid-function"}
+        ,
+    end_xsid(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid>())
+    , end_xsid_backup(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup>())
+{
+    end_xsid->parent = this;
+    end_xsid_backup->parent = this;
+
+    yang_name = "non-frr-end-xsid"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::~NonFrrEndXsid()
+{
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::has_data() const
+{
+    if (is_presence_container) return true;
+    return end_xsid_function.is_set
+	|| (end_xsid !=  nullptr && end_xsid->has_data())
+	|| (end_xsid_backup !=  nullptr && end_xsid_backup->has_data());
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(end_xsid_function.yfilter)
+	|| (end_xsid !=  nullptr && end_xsid->has_operation())
+	|| (end_xsid_backup !=  nullptr && end_xsid_backup->has_operation());
+}
+
+std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "non-frr-end-xsid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (end_xsid_function.is_set || is_set(end_xsid_function.yfilter)) leaf_name_data.push_back(end_xsid_function.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "end-xsid")
+    {
+        if(end_xsid == nullptr)
+        {
+            end_xsid = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid>();
+        }
+        return end_xsid;
+    }
+
+    if(child_yang_name == "end-xsid-backup")
+    {
+        if(end_xsid_backup == nullptr)
+        {
+            end_xsid_backup = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup>();
+        }
+        return end_xsid_backup;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(end_xsid != nullptr)
+    {
+        children["end-xsid"] = end_xsid;
+    }
+
+    if(end_xsid_backup != nullptr)
+    {
+        children["end-xsid-backup"] = end_xsid_backup;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "end-xsid-function")
+    {
+        end_xsid_function = value;
+        end_xsid_function.value_namespace = name_space;
+        end_xsid_function.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-xsid-function")
+    {
+        end_xsid_function.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-xsid" || name == "end-xsid-backup" || name == "end-xsid-function")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::EndXsid()
+    :
+    prefix{YType::str, "prefix"},
+    prefix_length{YType::uint8, "prefix-length"}
+{
+
+    yang_name = "end-xsid"; yang_parent_name = "non-frr-end-xsid"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::~EndXsid()
+{
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix.is_set
+	|| prefix_length.is_set;
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
+}
+
+std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "end-xsid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::EndXsidBackup()
+    :
+    backup_stack_size{YType::uint8, "backup-stack-size"},
+    backup_node_address{YType::str, "backup-node-address"},
+    backup_nexthop{YType::str, "backup-nexthop"},
+    backup_interface{YType::str, "backup-interface"}
+        ,
+    backup_stack(this, {})
+{
+
+    yang_name = "end-xsid-backup"; yang_parent_name = "non-frr-end-xsid"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::~EndXsidBackup()
+{
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<backup_stack.len(); index++)
+    {
+        if(backup_stack[index]->has_data())
+            return true;
+    }
+    return backup_stack_size.is_set
+	|| backup_node_address.is_set
+	|| backup_nexthop.is_set
+	|| backup_interface.is_set;
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::has_operation() const
+{
+    for (std::size_t index=0; index<backup_stack.len(); index++)
+    {
+        if(backup_stack[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(backup_stack_size.yfilter)
+	|| ydk::is_set(backup_node_address.yfilter)
+	|| ydk::is_set(backup_nexthop.yfilter)
+	|| ydk::is_set(backup_interface.yfilter);
+}
+
+std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "end-xsid-backup";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (backup_stack_size.is_set || is_set(backup_stack_size.yfilter)) leaf_name_data.push_back(backup_stack_size.get_name_leafdata());
+    if (backup_node_address.is_set || is_set(backup_node_address.yfilter)) leaf_name_data.push_back(backup_node_address.get_name_leafdata());
+    if (backup_nexthop.is_set || is_set(backup_nexthop.yfilter)) leaf_name_data.push_back(backup_nexthop.get_name_leafdata());
+    if (backup_interface.is_set || is_set(backup_interface.yfilter)) leaf_name_data.push_back(backup_interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "backup-stack")
+    {
+        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack>();
+        c->parent = this;
+        backup_stack.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : backup_stack.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "backup-stack-size")
+    {
+        backup_stack_size = value;
+        backup_stack_size.value_namespace = name_space;
+        backup_stack_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-node-address")
+    {
+        backup_node_address = value;
+        backup_node_address.value_namespace = name_space;
+        backup_node_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-nexthop")
+    {
+        backup_nexthop = value;
+        backup_nexthop.value_namespace = name_space;
+        backup_nexthop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-interface")
+    {
+        backup_interface = value;
+        backup_interface.value_namespace = name_space;
+        backup_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "backup-stack-size")
+    {
+        backup_stack_size.yfilter = yfilter;
+    }
+    if(value_path == "backup-node-address")
+    {
+        backup_node_address.yfilter = yfilter;
+    }
+    if(value_path == "backup-nexthop")
+    {
+        backup_nexthop.yfilter = yfilter;
+    }
+    if(value_path == "backup-interface")
+    {
+        backup_interface.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backup-stack" || name == "backup-stack-size" || name == "backup-node-address" || name == "backup-nexthop" || name == "backup-interface")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::BackupStack()
+    :
+    prefix{YType::str, "prefix"},
+    prefix_length{YType::uint8, "prefix-length"}
+{
+
+    yang_name = "backup-stack"; yang_parent_name = "end-xsid-backup"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::~BackupStack()
+{
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix.is_set
+	|| prefix_length.is_set;
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
+}
+
+std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "backup-stack";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length")
         return true;
     return false;
 }
@@ -13684,3600 +16962,6 @@ void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::set_filte
 bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "adjacency-area-address" || name == "adjacency-topology" || name == "adjacency-per-address-family-data" || name == "system-id" || name == "interface-name" || name == "adjacency-system-id" || name == "adjacency-snpa" || name == "adjacency-interface" || name == "adjacency-media-type" || name == "adjacency-state" || name == "adjacency-bfd-state" || name == "adjacency-ipv6bfd-state" || name == "adj-ipv4bfd-retry-running" || name == "adj-ipv6bfd-retry-running" || name == "adj-ipv4bfd-retry-exp" || name == "adj-ipv6bfd-retry-exp" || name == "adj-ipv4bfd-retry-count" || name == "adj-ipv6bfd-retry-count" || name == "adjacency-uptime-valid-flag" || name == "adjacency-uptime" || name == "adjacency-holdtime" || name == "adjacency-checkpoint-object-id" || name == "adjacency-ietf-nsf-capable-flag" || name == "adjacency-dispriority" || name == "adjacency-neighbor-priority" || name == "adjacency-local-priority" || name == "local-dis-flag" || name == "neighbor-dis-flag" || name == "nsr-standby")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress::AdjacencyAreaAddress()
-    :
-    entry{YType::str, "entry"}
-{
-
-    yang_name = "adjacency-area-address"; yang_parent_name = "adjacency"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress::~AdjacencyAreaAddress()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-area-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::AdjacencyTopology()
-    :
-    topology_status{YType::enumeration, "topology-status"},
-    parallel_p2p_link_suppressed_flag{YType::boolean, "parallel-p2p-link-suppressed-flag"}
-        ,
-    id(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id>())
-{
-    id->parent = this;
-
-    yang_name = "adjacency-topology"; yang_parent_name = "adjacency"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::~AdjacencyTopology()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::has_data() const
-{
-    if (is_presence_container) return true;
-    return topology_status.is_set
-	|| parallel_p2p_link_suppressed_flag.is_set
-	|| (id !=  nullptr && id->has_data());
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(topology_status.yfilter)
-	|| ydk::is_set(parallel_p2p_link_suppressed_flag.yfilter)
-	|| (id !=  nullptr && id->has_operation());
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-topology";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (topology_status.is_set || is_set(topology_status.yfilter)) leaf_name_data.push_back(topology_status.get_name_leafdata());
-    if (parallel_p2p_link_suppressed_flag.is_set || is_set(parallel_p2p_link_suppressed_flag.yfilter)) leaf_name_data.push_back(parallel_p2p_link_suppressed_flag.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "id")
-    {
-        if(id == nullptr)
-        {
-            id = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id>();
-        }
-        return id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(id != nullptr)
-    {
-        children["id"] = id;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "topology-status")
-    {
-        topology_status = value;
-        topology_status.value_namespace = name_space;
-        topology_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "parallel-p2p-link-suppressed-flag")
-    {
-        parallel_p2p_link_suppressed_flag = value;
-        parallel_p2p_link_suppressed_flag.value_namespace = name_space;
-        parallel_p2p_link_suppressed_flag.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "topology-status")
-    {
-        topology_status.yfilter = yfilter;
-    }
-    if(value_path == "parallel-p2p-link-suppressed-flag")
-    {
-        parallel_p2p_link_suppressed_flag.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "id" || name == "topology-status" || name == "parallel-p2p-link-suppressed-flag")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::Id()
-    :
-    af_name{YType::enumeration, "af-name"},
-    saf_name{YType::enumeration, "saf-name"},
-    vrf_name{YType::str, "vrf-name"},
-    topology_name{YType::str, "topology-name"}
-{
-
-    yang_name = "id"; yang_parent_name = "adjacency-topology"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::~Id()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::has_data() const
-{
-    if (is_presence_container) return true;
-    return af_name.is_set
-	|| saf_name.is_set
-	|| vrf_name.is_set
-	|| topology_name.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af_name.yfilter)
-	|| ydk::is_set(saf_name.yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| ydk::is_set(topology_name.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "id";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (topology_name.is_set || is_set(topology_name.yfilter)) leaf_name_data.push_back(topology_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af-name")
-    {
-        af_name = value;
-        af_name.value_namespace = name_space;
-        af_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "saf-name")
-    {
-        saf_name = value;
-        saf_name.value_namespace = name_space;
-        saf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "topology-name")
-    {
-        topology_name = value;
-        topology_name.value_namespace = name_space;
-        topology_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af-name")
-    {
-        af_name.yfilter = yfilter;
-    }
-    if(value_path == "saf-name")
-    {
-        saf_name.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-    if(value_path == "topology-name")
-    {
-        topology_name.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "af-name" || name == "saf-name" || name == "vrf-name" || name == "topology-name")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::AdjacencyPerAddressFamilyData()
-    :
-    af_name{YType::enumeration, "af-name"}
-        ,
-    ipv4(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4>())
-    , ipv6(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6>())
-{
-    ipv4->parent = this;
-    ipv6->parent = this;
-
-    yang_name = "adjacency-per-address-family-data"; yang_parent_name = "adjacency"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::~AdjacencyPerAddressFamilyData()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::has_data() const
-{
-    if (is_presence_container) return true;
-    return af_name.is_set
-	|| (ipv4 !=  nullptr && ipv4->has_data())
-	|| (ipv6 !=  nullptr && ipv6->has_data());
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af_name.yfilter)
-	|| (ipv4 !=  nullptr && ipv4->has_operation())
-	|| (ipv6 !=  nullptr && ipv6->has_operation());
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-per-address-family-data";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipv4")
-    {
-        if(ipv4 == nullptr)
-        {
-            ipv4 = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4>();
-        }
-        return ipv4;
-    }
-
-    if(child_yang_name == "ipv6")
-    {
-        if(ipv6 == nullptr)
-        {
-            ipv6 = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6>();
-        }
-        return ipv6;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(ipv4 != nullptr)
-    {
-        children["ipv4"] = ipv4;
-    }
-
-    if(ipv6 != nullptr)
-    {
-        children["ipv6"] = ipv6;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af-name")
-    {
-        af_name = value;
-        af_name.value_namespace = name_space;
-        af_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af-name")
-    {
-        af_name.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4" || name == "ipv6" || name == "af-name")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::Ipv4()
-    :
-    next_hop{YType::str, "next-hop"}
-        ,
-    adjacency_sid(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid>())
-    , non_frr_adjacency_sid(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid>())
-    , interface_address(this, {})
-    , underlying_adjacency_sid(this, {})
-    , underlying_interface(this, {})
-{
-    adjacency_sid->parent = this;
-    non_frr_adjacency_sid->parent = this;
-
-    yang_name = "ipv4"; yang_parent_name = "adjacency-per-address-family-data"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::~Ipv4()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<interface_address.len(); index++)
-    {
-        if(interface_address[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<underlying_adjacency_sid.len(); index++)
-    {
-        if(underlying_adjacency_sid[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<underlying_interface.len(); index++)
-    {
-        if(underlying_interface[index]->has_data())
-            return true;
-    }
-    return next_hop.is_set
-	|| (adjacency_sid !=  nullptr && adjacency_sid->has_data())
-	|| (non_frr_adjacency_sid !=  nullptr && non_frr_adjacency_sid->has_data());
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::has_operation() const
-{
-    for (std::size_t index=0; index<interface_address.len(); index++)
-    {
-        if(interface_address[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<underlying_adjacency_sid.len(); index++)
-    {
-        if(underlying_adjacency_sid[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<underlying_interface.len(); index++)
-    {
-        if(underlying_interface[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(next_hop.yfilter)
-	|| (adjacency_sid !=  nullptr && adjacency_sid->has_operation())
-	|| (non_frr_adjacency_sid !=  nullptr && non_frr_adjacency_sid->has_operation());
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "adjacency-sid")
-    {
-        if(adjacency_sid == nullptr)
-        {
-            adjacency_sid = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid>();
-        }
-        return adjacency_sid;
-    }
-
-    if(child_yang_name == "non-frr-adjacency-sid")
-    {
-        if(non_frr_adjacency_sid == nullptr)
-        {
-            non_frr_adjacency_sid = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid>();
-        }
-        return non_frr_adjacency_sid;
-    }
-
-    if(child_yang_name == "interface-address")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::InterfaceAddress>();
-        c->parent = this;
-        interface_address.append(c);
-        return c;
-    }
-
-    if(child_yang_name == "underlying-adjacency-sid")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid>();
-        c->parent = this;
-        underlying_adjacency_sid.append(c);
-        return c;
-    }
-
-    if(child_yang_name == "underlying-interface")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingInterface>();
-        c->parent = this;
-        underlying_interface.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(adjacency_sid != nullptr)
-    {
-        children["adjacency-sid"] = adjacency_sid;
-    }
-
-    if(non_frr_adjacency_sid != nullptr)
-    {
-        children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
-    }
-
-    count = 0;
-    for (auto c : interface_address.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto c : underlying_adjacency_sid.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto c : underlying_interface.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop = value;
-        next_hop.value_namespace = name_space;
-        next_hop.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adjacency-sid" || name == "non-frr-adjacency-sid" || name == "interface-address" || name == "underlying-adjacency-sid" || name == "underlying-interface" || name == "next-hop")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySid()
-    :
-    adjacency_sid_value{YType::uint32, "adjacency-sid-value"}
-        ,
-    adjacency_sid_backup(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup>())
-    , adjacency_sid_backup_te(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe>())
-{
-    adjacency_sid_backup->parent = this;
-    adjacency_sid_backup_te->parent = this;
-
-    yang_name = "adjacency-sid"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::~AdjacencySid()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::has_data() const
-{
-    if (is_presence_container) return true;
-    return adjacency_sid_value.is_set
-	|| (adjacency_sid_backup !=  nullptr && adjacency_sid_backup->has_data())
-	|| (adjacency_sid_backup_te !=  nullptr && adjacency_sid_backup_te->has_data());
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(adjacency_sid_value.yfilter)
-	|| (adjacency_sid_backup !=  nullptr && adjacency_sid_backup->has_operation())
-	|| (adjacency_sid_backup_te !=  nullptr && adjacency_sid_backup_te->has_operation());
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-sid";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (adjacency_sid_value.is_set || is_set(adjacency_sid_value.yfilter)) leaf_name_data.push_back(adjacency_sid_value.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "adjacency-sid-backup")
-    {
-        if(adjacency_sid_backup == nullptr)
-        {
-            adjacency_sid_backup = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup>();
-        }
-        return adjacency_sid_backup;
-    }
-
-    if(child_yang_name == "adjacency-sid-backup-te")
-    {
-        if(adjacency_sid_backup_te == nullptr)
-        {
-            adjacency_sid_backup_te = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe>();
-        }
-        return adjacency_sid_backup_te;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(adjacency_sid_backup != nullptr)
-    {
-        children["adjacency-sid-backup"] = adjacency_sid_backup;
-    }
-
-    if(adjacency_sid_backup_te != nullptr)
-    {
-        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "adjacency-sid-value")
-    {
-        adjacency_sid_value = value;
-        adjacency_sid_value.value_namespace = name_space;
-        adjacency_sid_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "adjacency-sid-value")
-    {
-        adjacency_sid_value.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adjacency-sid-backup" || name == "adjacency-sid-backup-te" || name == "adjacency-sid-value")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::AdjacencySidBackup()
-    :
-    backup_label_stack_size{YType::uint8, "backup-label-stack-size"},
-    backup_node_address{YType::str, "backup-node-address"},
-    backup_nexthop{YType::str, "backup-nexthop"},
-    backup_interface{YType::str, "backup-interface"}
-        ,
-    backup_label_stack(this, {})
-{
-
-    yang_name = "adjacency-sid-backup"; yang_parent_name = "adjacency-sid"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::~AdjacencySidBackup()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_data())
-            return true;
-    }
-    return backup_label_stack_size.is_set
-	|| backup_node_address.is_set
-	|| backup_nexthop.is_set
-	|| backup_interface.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::has_operation() const
-{
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(backup_label_stack_size.yfilter)
-	|| ydk::is_set(backup_node_address.yfilter)
-	|| ydk::is_set(backup_nexthop.yfilter)
-	|| ydk::is_set(backup_interface.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-sid-backup";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (backup_label_stack_size.is_set || is_set(backup_label_stack_size.yfilter)) leaf_name_data.push_back(backup_label_stack_size.get_name_leafdata());
-    if (backup_node_address.is_set || is_set(backup_node_address.yfilter)) leaf_name_data.push_back(backup_node_address.get_name_leafdata());
-    if (backup_nexthop.is_set || is_set(backup_nexthop.yfilter)) leaf_name_data.push_back(backup_nexthop.get_name_leafdata());
-    if (backup_interface.is_set || is_set(backup_interface.yfilter)) leaf_name_data.push_back(backup_interface.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "backup-label-stack")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size = value;
-        backup_label_stack_size.value_namespace = name_space;
-        backup_label_stack_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address = value;
-        backup_node_address.value_namespace = name_space;
-        backup_node_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop = value;
-        backup_nexthop.value_namespace = name_space;
-        backup_nexthop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface = value;
-        backup_interface.value_namespace = name_space;
-        backup_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size.yfilter = yfilter;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address.yfilter = yfilter;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop.yfilter = yfilter;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "backup-label-stack" || name == "backup-label-stack-size" || name == "backup-node-address" || name == "backup-nexthop" || name == "backup-interface")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::BackupLabelStack()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "backup-label-stack"; yang_parent_name = "adjacency-sid-backup"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::~BackupLabelStack()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "backup-label-stack";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::AdjacencySidBackupTe()
-    :
-    backup_label_stack_size{YType::uint8, "backup-label-stack-size"},
-    backup_node_address{YType::str, "backup-node-address"},
-    backup_nexthop{YType::str, "backup-nexthop"},
-    backup_interface{YType::str, "backup-interface"}
-        ,
-    backup_label_stack(this, {})
-{
-
-    yang_name = "adjacency-sid-backup-te"; yang_parent_name = "adjacency-sid"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::~AdjacencySidBackupTe()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_data())
-            return true;
-    }
-    return backup_label_stack_size.is_set
-	|| backup_node_address.is_set
-	|| backup_nexthop.is_set
-	|| backup_interface.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::has_operation() const
-{
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(backup_label_stack_size.yfilter)
-	|| ydk::is_set(backup_node_address.yfilter)
-	|| ydk::is_set(backup_nexthop.yfilter)
-	|| ydk::is_set(backup_interface.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-sid-backup-te";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (backup_label_stack_size.is_set || is_set(backup_label_stack_size.yfilter)) leaf_name_data.push_back(backup_label_stack_size.get_name_leafdata());
-    if (backup_node_address.is_set || is_set(backup_node_address.yfilter)) leaf_name_data.push_back(backup_node_address.get_name_leafdata());
-    if (backup_nexthop.is_set || is_set(backup_nexthop.yfilter)) leaf_name_data.push_back(backup_nexthop.get_name_leafdata());
-    if (backup_interface.is_set || is_set(backup_interface.yfilter)) leaf_name_data.push_back(backup_interface.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "backup-label-stack")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size = value;
-        backup_label_stack_size.value_namespace = name_space;
-        backup_label_stack_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address = value;
-        backup_node_address.value_namespace = name_space;
-        backup_node_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop = value;
-        backup_nexthop.value_namespace = name_space;
-        backup_nexthop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface = value;
-        backup_interface.value_namespace = name_space;
-        backup_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size.yfilter = yfilter;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address.yfilter = yfilter;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop.yfilter = yfilter;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "backup-label-stack" || name == "backup-label-stack-size" || name == "backup-node-address" || name == "backup-nexthop" || name == "backup-interface")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::BackupLabelStack()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "backup-label-stack"; yang_parent_name = "adjacency-sid-backup-te"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::~BackupLabelStack()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "backup-label-stack";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::NonFrrAdjacencySid()
-    :
-    adjacency_sid_value{YType::uint32, "adjacency-sid-value"}
-        ,
-    adjacency_sid_backup(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup>())
-    , adjacency_sid_backup_te(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe>())
-{
-    adjacency_sid_backup->parent = this;
-    adjacency_sid_backup_te->parent = this;
-
-    yang_name = "non-frr-adjacency-sid"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::~NonFrrAdjacencySid()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::has_data() const
-{
-    if (is_presence_container) return true;
-    return adjacency_sid_value.is_set
-	|| (adjacency_sid_backup !=  nullptr && adjacency_sid_backup->has_data())
-	|| (adjacency_sid_backup_te !=  nullptr && adjacency_sid_backup_te->has_data());
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(adjacency_sid_value.yfilter)
-	|| (adjacency_sid_backup !=  nullptr && adjacency_sid_backup->has_operation())
-	|| (adjacency_sid_backup_te !=  nullptr && adjacency_sid_backup_te->has_operation());
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "non-frr-adjacency-sid";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (adjacency_sid_value.is_set || is_set(adjacency_sid_value.yfilter)) leaf_name_data.push_back(adjacency_sid_value.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "adjacency-sid-backup")
-    {
-        if(adjacency_sid_backup == nullptr)
-        {
-            adjacency_sid_backup = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup>();
-        }
-        return adjacency_sid_backup;
-    }
-
-    if(child_yang_name == "adjacency-sid-backup-te")
-    {
-        if(adjacency_sid_backup_te == nullptr)
-        {
-            adjacency_sid_backup_te = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe>();
-        }
-        return adjacency_sid_backup_te;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(adjacency_sid_backup != nullptr)
-    {
-        children["adjacency-sid-backup"] = adjacency_sid_backup;
-    }
-
-    if(adjacency_sid_backup_te != nullptr)
-    {
-        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "adjacency-sid-value")
-    {
-        adjacency_sid_value = value;
-        adjacency_sid_value.value_namespace = name_space;
-        adjacency_sid_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "adjacency-sid-value")
-    {
-        adjacency_sid_value.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adjacency-sid-backup" || name == "adjacency-sid-backup-te" || name == "adjacency-sid-value")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::AdjacencySidBackup()
-    :
-    backup_label_stack_size{YType::uint8, "backup-label-stack-size"},
-    backup_node_address{YType::str, "backup-node-address"},
-    backup_nexthop{YType::str, "backup-nexthop"},
-    backup_interface{YType::str, "backup-interface"}
-        ,
-    backup_label_stack(this, {})
-{
-
-    yang_name = "adjacency-sid-backup"; yang_parent_name = "non-frr-adjacency-sid"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::~AdjacencySidBackup()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_data())
-            return true;
-    }
-    return backup_label_stack_size.is_set
-	|| backup_node_address.is_set
-	|| backup_nexthop.is_set
-	|| backup_interface.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::has_operation() const
-{
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(backup_label_stack_size.yfilter)
-	|| ydk::is_set(backup_node_address.yfilter)
-	|| ydk::is_set(backup_nexthop.yfilter)
-	|| ydk::is_set(backup_interface.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-sid-backup";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (backup_label_stack_size.is_set || is_set(backup_label_stack_size.yfilter)) leaf_name_data.push_back(backup_label_stack_size.get_name_leafdata());
-    if (backup_node_address.is_set || is_set(backup_node_address.yfilter)) leaf_name_data.push_back(backup_node_address.get_name_leafdata());
-    if (backup_nexthop.is_set || is_set(backup_nexthop.yfilter)) leaf_name_data.push_back(backup_nexthop.get_name_leafdata());
-    if (backup_interface.is_set || is_set(backup_interface.yfilter)) leaf_name_data.push_back(backup_interface.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "backup-label-stack")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size = value;
-        backup_label_stack_size.value_namespace = name_space;
-        backup_label_stack_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address = value;
-        backup_node_address.value_namespace = name_space;
-        backup_node_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop = value;
-        backup_nexthop.value_namespace = name_space;
-        backup_nexthop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface = value;
-        backup_interface.value_namespace = name_space;
-        backup_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size.yfilter = yfilter;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address.yfilter = yfilter;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop.yfilter = yfilter;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "backup-label-stack" || name == "backup-label-stack-size" || name == "backup-node-address" || name == "backup-nexthop" || name == "backup-interface")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::BackupLabelStack()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "backup-label-stack"; yang_parent_name = "adjacency-sid-backup"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::~BackupLabelStack()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "backup-label-stack";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::AdjacencySidBackupTe()
-    :
-    backup_label_stack_size{YType::uint8, "backup-label-stack-size"},
-    backup_node_address{YType::str, "backup-node-address"},
-    backup_nexthop{YType::str, "backup-nexthop"},
-    backup_interface{YType::str, "backup-interface"}
-        ,
-    backup_label_stack(this, {})
-{
-
-    yang_name = "adjacency-sid-backup-te"; yang_parent_name = "non-frr-adjacency-sid"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::~AdjacencySidBackupTe()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_data())
-            return true;
-    }
-    return backup_label_stack_size.is_set
-	|| backup_node_address.is_set
-	|| backup_nexthop.is_set
-	|| backup_interface.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::has_operation() const
-{
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(backup_label_stack_size.yfilter)
-	|| ydk::is_set(backup_node_address.yfilter)
-	|| ydk::is_set(backup_nexthop.yfilter)
-	|| ydk::is_set(backup_interface.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-sid-backup-te";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (backup_label_stack_size.is_set || is_set(backup_label_stack_size.yfilter)) leaf_name_data.push_back(backup_label_stack_size.get_name_leafdata());
-    if (backup_node_address.is_set || is_set(backup_node_address.yfilter)) leaf_name_data.push_back(backup_node_address.get_name_leafdata());
-    if (backup_nexthop.is_set || is_set(backup_nexthop.yfilter)) leaf_name_data.push_back(backup_nexthop.get_name_leafdata());
-    if (backup_interface.is_set || is_set(backup_interface.yfilter)) leaf_name_data.push_back(backup_interface.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "backup-label-stack")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size = value;
-        backup_label_stack_size.value_namespace = name_space;
-        backup_label_stack_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address = value;
-        backup_node_address.value_namespace = name_space;
-        backup_node_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop = value;
-        backup_nexthop.value_namespace = name_space;
-        backup_nexthop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface = value;
-        backup_interface.value_namespace = name_space;
-        backup_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size.yfilter = yfilter;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address.yfilter = yfilter;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop.yfilter = yfilter;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "backup-label-stack" || name == "backup-label-stack-size" || name == "backup-node-address" || name == "backup-nexthop" || name == "backup-interface")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::BackupLabelStack()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "backup-label-stack"; yang_parent_name = "adjacency-sid-backup-te"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::~BackupLabelStack()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "backup-label-stack";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::InterfaceAddress::InterfaceAddress()
-    :
-    entry{YType::str, "entry"}
-{
-
-    yang_name = "interface-address"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::InterfaceAddress::~InterfaceAddress()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::InterfaceAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::InterfaceAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::InterfaceAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::InterfaceAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::InterfaceAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::InterfaceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::InterfaceAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::InterfaceAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::UnderlyingAdjacencySid()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "underlying-adjacency-sid"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::~UnderlyingAdjacencySid()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "underlying-adjacency-sid";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingInterface::UnderlyingInterface()
-    :
-    interface_index{YType::uint32, "interface-index"},
-    interface_name{YType::str, "interface-name"}
-{
-
-    yang_name = "underlying-interface"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingInterface::~UnderlyingInterface()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingInterface::has_data() const
-{
-    if (is_presence_container) return true;
-    return interface_index.is_set
-	|| interface_name.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingInterface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_index.yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "underlying-interface";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingInterface::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_index.is_set || is_set(interface_index.yfilter)) leaf_name_data.push_back(interface_index.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-index")
-    {
-        interface_index = value;
-        interface_index.value_namespace = name_space;
-        interface_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-index")
-    {
-        interface_index.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::UnderlyingInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-index" || name == "interface-name")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::Ipv6()
-    :
-    next_hop{YType::str, "next-hop"}
-        ,
-    adjacency_sid(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid>())
-    , non_frr_adjacency_sid(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid>())
-    , interface_address(this, {})
-    , underlying_adjacency_sid(this, {})
-    , underlying_interface(this, {})
-{
-    adjacency_sid->parent = this;
-    non_frr_adjacency_sid->parent = this;
-
-    yang_name = "ipv6"; yang_parent_name = "adjacency-per-address-family-data"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::~Ipv6()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<interface_address.len(); index++)
-    {
-        if(interface_address[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<underlying_adjacency_sid.len(); index++)
-    {
-        if(underlying_adjacency_sid[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<underlying_interface.len(); index++)
-    {
-        if(underlying_interface[index]->has_data())
-            return true;
-    }
-    return next_hop.is_set
-	|| (adjacency_sid !=  nullptr && adjacency_sid->has_data())
-	|| (non_frr_adjacency_sid !=  nullptr && non_frr_adjacency_sid->has_data());
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::has_operation() const
-{
-    for (std::size_t index=0; index<interface_address.len(); index++)
-    {
-        if(interface_address[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<underlying_adjacency_sid.len(); index++)
-    {
-        if(underlying_adjacency_sid[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<underlying_interface.len(); index++)
-    {
-        if(underlying_interface[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(next_hop.yfilter)
-	|| (adjacency_sid !=  nullptr && adjacency_sid->has_operation())
-	|| (non_frr_adjacency_sid !=  nullptr && non_frr_adjacency_sid->has_operation());
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "adjacency-sid")
-    {
-        if(adjacency_sid == nullptr)
-        {
-            adjacency_sid = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid>();
-        }
-        return adjacency_sid;
-    }
-
-    if(child_yang_name == "non-frr-adjacency-sid")
-    {
-        if(non_frr_adjacency_sid == nullptr)
-        {
-            non_frr_adjacency_sid = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid>();
-        }
-        return non_frr_adjacency_sid;
-    }
-
-    if(child_yang_name == "interface-address")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress>();
-        c->parent = this;
-        interface_address.append(c);
-        return c;
-    }
-
-    if(child_yang_name == "underlying-adjacency-sid")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid>();
-        c->parent = this;
-        underlying_adjacency_sid.append(c);
-        return c;
-    }
-
-    if(child_yang_name == "underlying-interface")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingInterface>();
-        c->parent = this;
-        underlying_interface.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(adjacency_sid != nullptr)
-    {
-        children["adjacency-sid"] = adjacency_sid;
-    }
-
-    if(non_frr_adjacency_sid != nullptr)
-    {
-        children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
-    }
-
-    count = 0;
-    for (auto c : interface_address.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto c : underlying_adjacency_sid.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto c : underlying_interface.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop = value;
-        next_hop.value_namespace = name_space;
-        next_hop.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adjacency-sid" || name == "non-frr-adjacency-sid" || name == "interface-address" || name == "underlying-adjacency-sid" || name == "underlying-interface" || name == "next-hop")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySid()
-    :
-    adjacency_sid_value{YType::uint32, "adjacency-sid-value"}
-        ,
-    adjacency_sid_backup(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup>())
-    , adjacency_sid_backup_te(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe>())
-{
-    adjacency_sid_backup->parent = this;
-    adjacency_sid_backup_te->parent = this;
-
-    yang_name = "adjacency-sid"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::~AdjacencySid()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::has_data() const
-{
-    if (is_presence_container) return true;
-    return adjacency_sid_value.is_set
-	|| (adjacency_sid_backup !=  nullptr && adjacency_sid_backup->has_data())
-	|| (adjacency_sid_backup_te !=  nullptr && adjacency_sid_backup_te->has_data());
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(adjacency_sid_value.yfilter)
-	|| (adjacency_sid_backup !=  nullptr && adjacency_sid_backup->has_operation())
-	|| (adjacency_sid_backup_te !=  nullptr && adjacency_sid_backup_te->has_operation());
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-sid";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (adjacency_sid_value.is_set || is_set(adjacency_sid_value.yfilter)) leaf_name_data.push_back(adjacency_sid_value.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "adjacency-sid-backup")
-    {
-        if(adjacency_sid_backup == nullptr)
-        {
-            adjacency_sid_backup = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup>();
-        }
-        return adjacency_sid_backup;
-    }
-
-    if(child_yang_name == "adjacency-sid-backup-te")
-    {
-        if(adjacency_sid_backup_te == nullptr)
-        {
-            adjacency_sid_backup_te = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe>();
-        }
-        return adjacency_sid_backup_te;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(adjacency_sid_backup != nullptr)
-    {
-        children["adjacency-sid-backup"] = adjacency_sid_backup;
-    }
-
-    if(adjacency_sid_backup_te != nullptr)
-    {
-        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "adjacency-sid-value")
-    {
-        adjacency_sid_value = value;
-        adjacency_sid_value.value_namespace = name_space;
-        adjacency_sid_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "adjacency-sid-value")
-    {
-        adjacency_sid_value.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adjacency-sid-backup" || name == "adjacency-sid-backup-te" || name == "adjacency-sid-value")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::AdjacencySidBackup()
-    :
-    backup_label_stack_size{YType::uint8, "backup-label-stack-size"},
-    backup_node_address{YType::str, "backup-node-address"},
-    backup_nexthop{YType::str, "backup-nexthop"},
-    backup_interface{YType::str, "backup-interface"}
-        ,
-    backup_label_stack(this, {})
-{
-
-    yang_name = "adjacency-sid-backup"; yang_parent_name = "adjacency-sid"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::~AdjacencySidBackup()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_data())
-            return true;
-    }
-    return backup_label_stack_size.is_set
-	|| backup_node_address.is_set
-	|| backup_nexthop.is_set
-	|| backup_interface.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::has_operation() const
-{
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(backup_label_stack_size.yfilter)
-	|| ydk::is_set(backup_node_address.yfilter)
-	|| ydk::is_set(backup_nexthop.yfilter)
-	|| ydk::is_set(backup_interface.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-sid-backup";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (backup_label_stack_size.is_set || is_set(backup_label_stack_size.yfilter)) leaf_name_data.push_back(backup_label_stack_size.get_name_leafdata());
-    if (backup_node_address.is_set || is_set(backup_node_address.yfilter)) leaf_name_data.push_back(backup_node_address.get_name_leafdata());
-    if (backup_nexthop.is_set || is_set(backup_nexthop.yfilter)) leaf_name_data.push_back(backup_nexthop.get_name_leafdata());
-    if (backup_interface.is_set || is_set(backup_interface.yfilter)) leaf_name_data.push_back(backup_interface.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "backup-label-stack")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size = value;
-        backup_label_stack_size.value_namespace = name_space;
-        backup_label_stack_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address = value;
-        backup_node_address.value_namespace = name_space;
-        backup_node_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop = value;
-        backup_nexthop.value_namespace = name_space;
-        backup_nexthop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface = value;
-        backup_interface.value_namespace = name_space;
-        backup_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size.yfilter = yfilter;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address.yfilter = yfilter;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop.yfilter = yfilter;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "backup-label-stack" || name == "backup-label-stack-size" || name == "backup-node-address" || name == "backup-nexthop" || name == "backup-interface")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::BackupLabelStack()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "backup-label-stack"; yang_parent_name = "adjacency-sid-backup"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::~BackupLabelStack()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "backup-label-stack";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::AdjacencySidBackupTe()
-    :
-    backup_label_stack_size{YType::uint8, "backup-label-stack-size"},
-    backup_node_address{YType::str, "backup-node-address"},
-    backup_nexthop{YType::str, "backup-nexthop"},
-    backup_interface{YType::str, "backup-interface"}
-        ,
-    backup_label_stack(this, {})
-{
-
-    yang_name = "adjacency-sid-backup-te"; yang_parent_name = "adjacency-sid"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::~AdjacencySidBackupTe()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_data())
-            return true;
-    }
-    return backup_label_stack_size.is_set
-	|| backup_node_address.is_set
-	|| backup_nexthop.is_set
-	|| backup_interface.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::has_operation() const
-{
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(backup_label_stack_size.yfilter)
-	|| ydk::is_set(backup_node_address.yfilter)
-	|| ydk::is_set(backup_nexthop.yfilter)
-	|| ydk::is_set(backup_interface.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-sid-backup-te";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (backup_label_stack_size.is_set || is_set(backup_label_stack_size.yfilter)) leaf_name_data.push_back(backup_label_stack_size.get_name_leafdata());
-    if (backup_node_address.is_set || is_set(backup_node_address.yfilter)) leaf_name_data.push_back(backup_node_address.get_name_leafdata());
-    if (backup_nexthop.is_set || is_set(backup_nexthop.yfilter)) leaf_name_data.push_back(backup_nexthop.get_name_leafdata());
-    if (backup_interface.is_set || is_set(backup_interface.yfilter)) leaf_name_data.push_back(backup_interface.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "backup-label-stack")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size = value;
-        backup_label_stack_size.value_namespace = name_space;
-        backup_label_stack_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address = value;
-        backup_node_address.value_namespace = name_space;
-        backup_node_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop = value;
-        backup_nexthop.value_namespace = name_space;
-        backup_nexthop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface = value;
-        backup_interface.value_namespace = name_space;
-        backup_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size.yfilter = yfilter;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address.yfilter = yfilter;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop.yfilter = yfilter;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "backup-label-stack" || name == "backup-label-stack-size" || name == "backup-node-address" || name == "backup-nexthop" || name == "backup-interface")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::BackupLabelStack()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "backup-label-stack"; yang_parent_name = "adjacency-sid-backup-te"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::~BackupLabelStack()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "backup-label-stack";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::NonFrrAdjacencySid()
-    :
-    adjacency_sid_value{YType::uint32, "adjacency-sid-value"}
-        ,
-    adjacency_sid_backup(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup>())
-    , adjacency_sid_backup_te(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe>())
-{
-    adjacency_sid_backup->parent = this;
-    adjacency_sid_backup_te->parent = this;
-
-    yang_name = "non-frr-adjacency-sid"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::~NonFrrAdjacencySid()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::has_data() const
-{
-    if (is_presence_container) return true;
-    return adjacency_sid_value.is_set
-	|| (adjacency_sid_backup !=  nullptr && adjacency_sid_backup->has_data())
-	|| (adjacency_sid_backup_te !=  nullptr && adjacency_sid_backup_te->has_data());
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(adjacency_sid_value.yfilter)
-	|| (adjacency_sid_backup !=  nullptr && adjacency_sid_backup->has_operation())
-	|| (adjacency_sid_backup_te !=  nullptr && adjacency_sid_backup_te->has_operation());
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "non-frr-adjacency-sid";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (adjacency_sid_value.is_set || is_set(adjacency_sid_value.yfilter)) leaf_name_data.push_back(adjacency_sid_value.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "adjacency-sid-backup")
-    {
-        if(adjacency_sid_backup == nullptr)
-        {
-            adjacency_sid_backup = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup>();
-        }
-        return adjacency_sid_backup;
-    }
-
-    if(child_yang_name == "adjacency-sid-backup-te")
-    {
-        if(adjacency_sid_backup_te == nullptr)
-        {
-            adjacency_sid_backup_te = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe>();
-        }
-        return adjacency_sid_backup_te;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(adjacency_sid_backup != nullptr)
-    {
-        children["adjacency-sid-backup"] = adjacency_sid_backup;
-    }
-
-    if(adjacency_sid_backup_te != nullptr)
-    {
-        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "adjacency-sid-value")
-    {
-        adjacency_sid_value = value;
-        adjacency_sid_value.value_namespace = name_space;
-        adjacency_sid_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "adjacency-sid-value")
-    {
-        adjacency_sid_value.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adjacency-sid-backup" || name == "adjacency-sid-backup-te" || name == "adjacency-sid-value")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::AdjacencySidBackup()
-    :
-    backup_label_stack_size{YType::uint8, "backup-label-stack-size"},
-    backup_node_address{YType::str, "backup-node-address"},
-    backup_nexthop{YType::str, "backup-nexthop"},
-    backup_interface{YType::str, "backup-interface"}
-        ,
-    backup_label_stack(this, {})
-{
-
-    yang_name = "adjacency-sid-backup"; yang_parent_name = "non-frr-adjacency-sid"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::~AdjacencySidBackup()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_data())
-            return true;
-    }
-    return backup_label_stack_size.is_set
-	|| backup_node_address.is_set
-	|| backup_nexthop.is_set
-	|| backup_interface.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::has_operation() const
-{
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(backup_label_stack_size.yfilter)
-	|| ydk::is_set(backup_node_address.yfilter)
-	|| ydk::is_set(backup_nexthop.yfilter)
-	|| ydk::is_set(backup_interface.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-sid-backup";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (backup_label_stack_size.is_set || is_set(backup_label_stack_size.yfilter)) leaf_name_data.push_back(backup_label_stack_size.get_name_leafdata());
-    if (backup_node_address.is_set || is_set(backup_node_address.yfilter)) leaf_name_data.push_back(backup_node_address.get_name_leafdata());
-    if (backup_nexthop.is_set || is_set(backup_nexthop.yfilter)) leaf_name_data.push_back(backup_nexthop.get_name_leafdata());
-    if (backup_interface.is_set || is_set(backup_interface.yfilter)) leaf_name_data.push_back(backup_interface.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "backup-label-stack")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size = value;
-        backup_label_stack_size.value_namespace = name_space;
-        backup_label_stack_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address = value;
-        backup_node_address.value_namespace = name_space;
-        backup_node_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop = value;
-        backup_nexthop.value_namespace = name_space;
-        backup_nexthop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface = value;
-        backup_interface.value_namespace = name_space;
-        backup_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size.yfilter = yfilter;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address.yfilter = yfilter;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop.yfilter = yfilter;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "backup-label-stack" || name == "backup-label-stack-size" || name == "backup-node-address" || name == "backup-nexthop" || name == "backup-interface")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::BackupLabelStack()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "backup-label-stack"; yang_parent_name = "adjacency-sid-backup"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::~BackupLabelStack()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "backup-label-stack";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::AdjacencySidBackupTe()
-    :
-    backup_label_stack_size{YType::uint8, "backup-label-stack-size"},
-    backup_node_address{YType::str, "backup-node-address"},
-    backup_nexthop{YType::str, "backup-nexthop"},
-    backup_interface{YType::str, "backup-interface"}
-        ,
-    backup_label_stack(this, {})
-{
-
-    yang_name = "adjacency-sid-backup-te"; yang_parent_name = "non-frr-adjacency-sid"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::~AdjacencySidBackupTe()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_data())
-            return true;
-    }
-    return backup_label_stack_size.is_set
-	|| backup_node_address.is_set
-	|| backup_nexthop.is_set
-	|| backup_interface.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::has_operation() const
-{
-    for (std::size_t index=0; index<backup_label_stack.len(); index++)
-    {
-        if(backup_label_stack[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(backup_label_stack_size.yfilter)
-	|| ydk::is_set(backup_node_address.yfilter)
-	|| ydk::is_set(backup_nexthop.yfilter)
-	|| ydk::is_set(backup_interface.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "adjacency-sid-backup-te";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (backup_label_stack_size.is_set || is_set(backup_label_stack_size.yfilter)) leaf_name_data.push_back(backup_label_stack_size.get_name_leafdata());
-    if (backup_node_address.is_set || is_set(backup_node_address.yfilter)) leaf_name_data.push_back(backup_node_address.get_name_leafdata());
-    if (backup_nexthop.is_set || is_set(backup_nexthop.yfilter)) leaf_name_data.push_back(backup_nexthop.get_name_leafdata());
-    if (backup_interface.is_set || is_set(backup_interface.yfilter)) leaf_name_data.push_back(backup_interface.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "backup-label-stack")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size = value;
-        backup_label_stack_size.value_namespace = name_space;
-        backup_label_stack_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address = value;
-        backup_node_address.value_namespace = name_space;
-        backup_node_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop = value;
-        backup_nexthop.value_namespace = name_space;
-        backup_nexthop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface = value;
-        backup_interface.value_namespace = name_space;
-        backup_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "backup-label-stack-size")
-    {
-        backup_label_stack_size.yfilter = yfilter;
-    }
-    if(value_path == "backup-node-address")
-    {
-        backup_node_address.yfilter = yfilter;
-    }
-    if(value_path == "backup-nexthop")
-    {
-        backup_nexthop.yfilter = yfilter;
-    }
-    if(value_path == "backup-interface")
-    {
-        backup_interface.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "backup-label-stack" || name == "backup-label-stack-size" || name == "backup-node-address" || name == "backup-nexthop" || name == "backup-interface")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::BackupLabelStack()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "backup-label-stack"; yang_parent_name = "adjacency-sid-backup-te"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::~BackupLabelStack()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "backup-label-stack";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress::InterfaceAddress()
-    :
-    entry{YType::str, "entry"}
-{
-
-    yang_name = "interface-address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress::~InterfaceAddress()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::UnderlyingAdjacencySid()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "underlying-adjacency-sid"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::~UnderlyingAdjacencySid()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "underlying-adjacency-sid";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingInterface::UnderlyingInterface()
-    :
-    interface_index{YType::uint32, "interface-index"},
-    interface_name{YType::str, "interface-name"}
-{
-
-    yang_name = "underlying-interface"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingInterface::~UnderlyingInterface()
-{
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingInterface::has_data() const
-{
-    if (is_presence_container) return true;
-    return interface_index.is_set
-	|| interface_name.is_set;
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingInterface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_index.yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "underlying-interface";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingInterface::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_index.is_set || is_set(interface_index.yfilter)) leaf_name_data.push_back(interface_index.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-index")
-    {
-        interface_index = value;
-        interface_index.value_namespace = name_space;
-        interface_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-index")
-    {
-        interface_index.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-index" || name == "interface-name")
         return true;
     return false;
 }

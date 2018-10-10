@@ -14,11 +14,15 @@ namespace Cisco_IOS_XR_spirit_install_instmgr_oper {
 SoftwareInstall::SoftwareInstall()
     :
     superseded(std::make_shared<SoftwareInstall::Superseded>())
+    , committed_summary(std::make_shared<SoftwareInstall::CommittedSummary>())
+    , active_summary(std::make_shared<SoftwareInstall::ActiveSummary>())
+    , inactive_summary(std::make_shared<SoftwareInstall::InactiveSummary>())
     , prepare(std::make_shared<SoftwareInstall::Prepare>())
     , active(std::make_shared<SoftwareInstall::Active>())
     , version(std::make_shared<SoftwareInstall::Version>())
     , inactive(std::make_shared<SoftwareInstall::Inactive>())
     , request(std::make_shared<SoftwareInstall::Request>())
+    , superseded_summary(std::make_shared<SoftwareInstall::SupersededSummary>())
     , issu(std::make_shared<SoftwareInstall::Issu>())
     , committed(std::make_shared<SoftwareInstall::Committed>())
     , all_operations_log(std::make_shared<SoftwareInstall::AllOperationsLog>())
@@ -27,11 +31,15 @@ SoftwareInstall::SoftwareInstall()
     , repository(std::make_shared<SoftwareInstall::Repository>())
 {
     superseded->parent = this;
+    committed_summary->parent = this;
+    active_summary->parent = this;
+    inactive_summary->parent = this;
     prepare->parent = this;
     active->parent = this;
     version->parent = this;
     inactive->parent = this;
     request->parent = this;
+    superseded_summary->parent = this;
     issu->parent = this;
     committed->parent = this;
     all_operations_log->parent = this;
@@ -50,11 +58,15 @@ bool SoftwareInstall::has_data() const
 {
     if (is_presence_container) return true;
     return (superseded !=  nullptr && superseded->has_data())
+	|| (committed_summary !=  nullptr && committed_summary->has_data())
+	|| (active_summary !=  nullptr && active_summary->has_data())
+	|| (inactive_summary !=  nullptr && inactive_summary->has_data())
 	|| (prepare !=  nullptr && prepare->has_data())
 	|| (active !=  nullptr && active->has_data())
 	|| (version !=  nullptr && version->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
 	|| (request !=  nullptr && request->has_data())
+	|| (superseded_summary !=  nullptr && superseded_summary->has_data())
 	|| (issu !=  nullptr && issu->has_data())
 	|| (committed !=  nullptr && committed->has_data())
 	|| (all_operations_log !=  nullptr && all_operations_log->has_data())
@@ -67,11 +79,15 @@ bool SoftwareInstall::has_operation() const
 {
     return is_set(yfilter)
 	|| (superseded !=  nullptr && superseded->has_operation())
+	|| (committed_summary !=  nullptr && committed_summary->has_operation())
+	|| (active_summary !=  nullptr && active_summary->has_operation())
+	|| (inactive_summary !=  nullptr && inactive_summary->has_operation())
 	|| (prepare !=  nullptr && prepare->has_operation())
 	|| (active !=  nullptr && active->has_operation())
 	|| (version !=  nullptr && version->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (request !=  nullptr && request->has_operation())
+	|| (superseded_summary !=  nullptr && superseded_summary->has_operation())
 	|| (issu !=  nullptr && issu->has_operation())
 	|| (committed !=  nullptr && committed->has_operation())
 	|| (all_operations_log !=  nullptr && all_operations_log->has_operation())
@@ -105,6 +121,33 @@ std::shared_ptr<Entity> SoftwareInstall::get_child_by_name(const std::string & c
             superseded = std::make_shared<SoftwareInstall::Superseded>();
         }
         return superseded;
+    }
+
+    if(child_yang_name == "committed-summary")
+    {
+        if(committed_summary == nullptr)
+        {
+            committed_summary = std::make_shared<SoftwareInstall::CommittedSummary>();
+        }
+        return committed_summary;
+    }
+
+    if(child_yang_name == "active-summary")
+    {
+        if(active_summary == nullptr)
+        {
+            active_summary = std::make_shared<SoftwareInstall::ActiveSummary>();
+        }
+        return active_summary;
+    }
+
+    if(child_yang_name == "inactive-summary")
+    {
+        if(inactive_summary == nullptr)
+        {
+            inactive_summary = std::make_shared<SoftwareInstall::InactiveSummary>();
+        }
+        return inactive_summary;
     }
 
     if(child_yang_name == "prepare")
@@ -150,6 +193,15 @@ std::shared_ptr<Entity> SoftwareInstall::get_child_by_name(const std::string & c
             request = std::make_shared<SoftwareInstall::Request>();
         }
         return request;
+    }
+
+    if(child_yang_name == "superseded-summary")
+    {
+        if(superseded_summary == nullptr)
+        {
+            superseded_summary = std::make_shared<SoftwareInstall::SupersededSummary>();
+        }
+        return superseded_summary;
     }
 
     if(child_yang_name == "issu")
@@ -218,6 +270,21 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::get_children() c
         children["superseded"] = superseded;
     }
 
+    if(committed_summary != nullptr)
+    {
+        children["committed-summary"] = committed_summary;
+    }
+
+    if(active_summary != nullptr)
+    {
+        children["active-summary"] = active_summary;
+    }
+
+    if(inactive_summary != nullptr)
+    {
+        children["inactive-summary"] = inactive_summary;
+    }
+
     if(prepare != nullptr)
     {
         children["prepare"] = prepare;
@@ -241,6 +308,11 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::get_children() c
     if(request != nullptr)
     {
         children["request"] = request;
+    }
+
+    if(superseded_summary != nullptr)
+    {
+        children["superseded-summary"] = superseded_summary;
     }
 
     if(issu != nullptr)
@@ -311,7 +383,7 @@ std::map<std::pair<std::string, std::string>, std::string> SoftwareInstall::get_
 
 bool SoftwareInstall::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "superseded" || name == "prepare" || name == "active" || name == "version" || name == "inactive" || name == "request" || name == "issu" || name == "committed" || name == "all-operations-log" || name == "packages" || name == "operation-logs" || name == "repository")
+    if(name == "superseded" || name == "committed-summary" || name == "active-summary" || name == "inactive-summary" || name == "prepare" || name == "active" || name == "version" || name == "inactive" || name == "request" || name == "superseded-summary" || name == "issu" || name == "committed" || name == "all-operations-log" || name == "packages" || name == "operation-logs" || name == "repository")
         return true;
     return false;
 }
@@ -553,6 +625,601 @@ void SoftwareInstall::Superseded::SupersededPackageInfo::set_filter(const std::s
 bool SoftwareInstall::Superseded::SupersededPackageInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error-message" || name == "location" || name == "node-type" || name == "boot-partition-name" || name == "superseded-packages")
+        return true;
+    return false;
+}
+
+SoftwareInstall::CommittedSummary::CommittedSummary()
+    :
+    committed_package_info(this, {})
+{
+
+    yang_name = "committed-summary"; yang_parent_name = "software-install"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+SoftwareInstall::CommittedSummary::~CommittedSummary()
+{
+}
+
+bool SoftwareInstall::CommittedSummary::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<committed_package_info.len(); index++)
+    {
+        if(committed_package_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool SoftwareInstall::CommittedSummary::has_operation() const
+{
+    for (std::size_t index=0; index<committed_package_info.len(); index++)
+    {
+        if(committed_package_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string SoftwareInstall::CommittedSummary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-instmgr-oper:software-install/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SoftwareInstall::CommittedSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "committed-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SoftwareInstall::CommittedSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SoftwareInstall::CommittedSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "committed-package-info")
+    {
+        auto c = std::make_shared<SoftwareInstall::CommittedSummary::CommittedPackageInfo>();
+        c->parent = this;
+        committed_package_info.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::CommittedSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : committed_package_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void SoftwareInstall::CommittedSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SoftwareInstall::CommittedSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SoftwareInstall::CommittedSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "committed-package-info")
+        return true;
+    return false;
+}
+
+SoftwareInstall::CommittedSummary::CommittedPackageInfo::CommittedPackageInfo()
+    :
+    error_message{YType::str, "error-message"},
+    location{YType::str, "location"},
+    node_type{YType::str, "node-type"},
+    boot_partition_name{YType::str, "boot-partition-name"},
+    number_of_committed_packages{YType::uint32, "number-of-committed-packages"},
+    committed_packages{YType::str, "committed-packages"}
+{
+
+    yang_name = "committed-package-info"; yang_parent_name = "committed-summary"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+SoftwareInstall::CommittedSummary::CommittedPackageInfo::~CommittedPackageInfo()
+{
+}
+
+bool SoftwareInstall::CommittedSummary::CommittedPackageInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return error_message.is_set
+	|| location.is_set
+	|| node_type.is_set
+	|| boot_partition_name.is_set
+	|| number_of_committed_packages.is_set
+	|| committed_packages.is_set;
+}
+
+bool SoftwareInstall::CommittedSummary::CommittedPackageInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error_message.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(node_type.yfilter)
+	|| ydk::is_set(boot_partition_name.yfilter)
+	|| ydk::is_set(number_of_committed_packages.yfilter)
+	|| ydk::is_set(committed_packages.yfilter);
+}
+
+std::string SoftwareInstall::CommittedSummary::CommittedPackageInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-instmgr-oper:software-install/committed-summary/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SoftwareInstall::CommittedSummary::CommittedPackageInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "committed-package-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SoftwareInstall::CommittedSummary::CommittedPackageInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error_message.is_set || is_set(error_message.yfilter)) leaf_name_data.push_back(error_message.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (node_type.is_set || is_set(node_type.yfilter)) leaf_name_data.push_back(node_type.get_name_leafdata());
+    if (boot_partition_name.is_set || is_set(boot_partition_name.yfilter)) leaf_name_data.push_back(boot_partition_name.get_name_leafdata());
+    if (number_of_committed_packages.is_set || is_set(number_of_committed_packages.yfilter)) leaf_name_data.push_back(number_of_committed_packages.get_name_leafdata());
+    if (committed_packages.is_set || is_set(committed_packages.yfilter)) leaf_name_data.push_back(committed_packages.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SoftwareInstall::CommittedSummary::CommittedPackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::CommittedSummary::CommittedPackageInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void SoftwareInstall::CommittedSummary::CommittedPackageInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error-message")
+    {
+        error_message = value;
+        error_message.value_namespace = name_space;
+        error_message.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node-type")
+    {
+        node_type = value;
+        node_type.value_namespace = name_space;
+        node_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "boot-partition-name")
+    {
+        boot_partition_name = value;
+        boot_partition_name.value_namespace = name_space;
+        boot_partition_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "number-of-committed-packages")
+    {
+        number_of_committed_packages = value;
+        number_of_committed_packages.value_namespace = name_space;
+        number_of_committed_packages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "committed-packages")
+    {
+        committed_packages = value;
+        committed_packages.value_namespace = name_space;
+        committed_packages.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SoftwareInstall::CommittedSummary::CommittedPackageInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error-message")
+    {
+        error_message.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "node-type")
+    {
+        node_type.yfilter = yfilter;
+    }
+    if(value_path == "boot-partition-name")
+    {
+        boot_partition_name.yfilter = yfilter;
+    }
+    if(value_path == "number-of-committed-packages")
+    {
+        number_of_committed_packages.yfilter = yfilter;
+    }
+    if(value_path == "committed-packages")
+    {
+        committed_packages.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::CommittedSummary::CommittedPackageInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error-message" || name == "location" || name == "node-type" || name == "boot-partition-name" || name == "number-of-committed-packages" || name == "committed-packages")
+        return true;
+    return false;
+}
+
+SoftwareInstall::ActiveSummary::ActiveSummary()
+    :
+    active_package_info(this, {})
+{
+
+    yang_name = "active-summary"; yang_parent_name = "software-install"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+SoftwareInstall::ActiveSummary::~ActiveSummary()
+{
+}
+
+bool SoftwareInstall::ActiveSummary::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<active_package_info.len(); index++)
+    {
+        if(active_package_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool SoftwareInstall::ActiveSummary::has_operation() const
+{
+    for (std::size_t index=0; index<active_package_info.len(); index++)
+    {
+        if(active_package_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string SoftwareInstall::ActiveSummary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-instmgr-oper:software-install/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SoftwareInstall::ActiveSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "active-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SoftwareInstall::ActiveSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SoftwareInstall::ActiveSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "active-package-info")
+    {
+        auto c = std::make_shared<SoftwareInstall::ActiveSummary::ActivePackageInfo>();
+        c->parent = this;
+        active_package_info.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::ActiveSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : active_package_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void SoftwareInstall::ActiveSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SoftwareInstall::ActiveSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SoftwareInstall::ActiveSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active-package-info")
+        return true;
+    return false;
+}
+
+SoftwareInstall::ActiveSummary::ActivePackageInfo::ActivePackageInfo()
+    :
+    error_message{YType::str, "error-message"},
+    location{YType::str, "location"},
+    node_type{YType::str, "node-type"},
+    boot_partition_name{YType::str, "boot-partition-name"},
+    number_of_active_packages{YType::uint32, "number-of-active-packages"},
+    active_packages{YType::str, "active-packages"}
+{
+
+    yang_name = "active-package-info"; yang_parent_name = "active-summary"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+SoftwareInstall::ActiveSummary::ActivePackageInfo::~ActivePackageInfo()
+{
+}
+
+bool SoftwareInstall::ActiveSummary::ActivePackageInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return error_message.is_set
+	|| location.is_set
+	|| node_type.is_set
+	|| boot_partition_name.is_set
+	|| number_of_active_packages.is_set
+	|| active_packages.is_set;
+}
+
+bool SoftwareInstall::ActiveSummary::ActivePackageInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error_message.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(node_type.yfilter)
+	|| ydk::is_set(boot_partition_name.yfilter)
+	|| ydk::is_set(number_of_active_packages.yfilter)
+	|| ydk::is_set(active_packages.yfilter);
+}
+
+std::string SoftwareInstall::ActiveSummary::ActivePackageInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-instmgr-oper:software-install/active-summary/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SoftwareInstall::ActiveSummary::ActivePackageInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "active-package-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SoftwareInstall::ActiveSummary::ActivePackageInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error_message.is_set || is_set(error_message.yfilter)) leaf_name_data.push_back(error_message.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (node_type.is_set || is_set(node_type.yfilter)) leaf_name_data.push_back(node_type.get_name_leafdata());
+    if (boot_partition_name.is_set || is_set(boot_partition_name.yfilter)) leaf_name_data.push_back(boot_partition_name.get_name_leafdata());
+    if (number_of_active_packages.is_set || is_set(number_of_active_packages.yfilter)) leaf_name_data.push_back(number_of_active_packages.get_name_leafdata());
+    if (active_packages.is_set || is_set(active_packages.yfilter)) leaf_name_data.push_back(active_packages.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SoftwareInstall::ActiveSummary::ActivePackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::ActiveSummary::ActivePackageInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void SoftwareInstall::ActiveSummary::ActivePackageInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error-message")
+    {
+        error_message = value;
+        error_message.value_namespace = name_space;
+        error_message.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node-type")
+    {
+        node_type = value;
+        node_type.value_namespace = name_space;
+        node_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "boot-partition-name")
+    {
+        boot_partition_name = value;
+        boot_partition_name.value_namespace = name_space;
+        boot_partition_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "number-of-active-packages")
+    {
+        number_of_active_packages = value;
+        number_of_active_packages.value_namespace = name_space;
+        number_of_active_packages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "active-packages")
+    {
+        active_packages = value;
+        active_packages.value_namespace = name_space;
+        active_packages.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SoftwareInstall::ActiveSummary::ActivePackageInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error-message")
+    {
+        error_message.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "node-type")
+    {
+        node_type.yfilter = yfilter;
+    }
+    if(value_path == "boot-partition-name")
+    {
+        boot_partition_name.yfilter = yfilter;
+    }
+    if(value_path == "number-of-active-packages")
+    {
+        number_of_active_packages.yfilter = yfilter;
+    }
+    if(value_path == "active-packages")
+    {
+        active_packages.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::ActiveSummary::ActivePackageInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error-message" || name == "location" || name == "node-type" || name == "boot-partition-name" || name == "number-of-active-packages" || name == "active-packages")
+        return true;
+    return false;
+}
+
+SoftwareInstall::InactiveSummary::InactiveSummary()
+    :
+    log{YType::str, "log"}
+{
+
+    yang_name = "inactive-summary"; yang_parent_name = "software-install"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+SoftwareInstall::InactiveSummary::~InactiveSummary()
+{
+}
+
+bool SoftwareInstall::InactiveSummary::has_data() const
+{
+    if (is_presence_container) return true;
+    return log.is_set;
+}
+
+bool SoftwareInstall::InactiveSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
+}
+
+std::string SoftwareInstall::InactiveSummary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-instmgr-oper:software-install/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SoftwareInstall::InactiveSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inactive-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SoftwareInstall::InactiveSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SoftwareInstall::InactiveSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::InactiveSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void SoftwareInstall::InactiveSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "log")
+    {
+        log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SoftwareInstall::InactiveSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::InactiveSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
         return true;
     return false;
 }
@@ -1196,7 +1863,13 @@ bool SoftwareInstall::Active::ActivePackageInfo::has_leaf_or_child_of_name(const
 
 SoftwareInstall::Version::Version()
     :
-    img_info{YType::str, "img-info"}
+    location{YType::str, "location"},
+    label{YType::str, "label"},
+    copyright_info{YType::str, "copyright-info"},
+    hardware_info{YType::str, "hardware-info"},
+    system_uptime{YType::str, "system-uptime"}
+        ,
+    package(this, {})
 {
 
     yang_name = "version"; yang_parent_name = "software-install"; is_top_level_class = false; has_list_ancestor = false; 
@@ -1209,13 +1882,31 @@ SoftwareInstall::Version::~Version()
 bool SoftwareInstall::Version::has_data() const
 {
     if (is_presence_container) return true;
-    return img_info.is_set;
+    for (std::size_t index=0; index<package.len(); index++)
+    {
+        if(package[index]->has_data())
+            return true;
+    }
+    return location.is_set
+	|| label.is_set
+	|| copyright_info.is_set
+	|| hardware_info.is_set
+	|| system_uptime.is_set;
 }
 
 bool SoftwareInstall::Version::has_operation() const
 {
+    for (std::size_t index=0; index<package.len(); index++)
+    {
+        if(package[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(img_info.yfilter);
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(copyright_info.yfilter)
+	|| ydk::is_set(hardware_info.yfilter)
+	|| ydk::is_set(system_uptime.yfilter);
 }
 
 std::string SoftwareInstall::Version::get_absolute_path() const
@@ -1236,7 +1927,11 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Version::get_nam
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (img_info.is_set || is_set(img_info.yfilter)) leaf_name_data.push_back(img_info.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (copyright_info.is_set || is_set(copyright_info.yfilter)) leaf_name_data.push_back(copyright_info.get_name_leafdata());
+    if (hardware_info.is_set || is_set(hardware_info.yfilter)) leaf_name_data.push_back(hardware_info.get_name_leafdata());
+    if (system_uptime.is_set || is_set(system_uptime.yfilter)) leaf_name_data.push_back(system_uptime.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1244,6 +1939,14 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Version::get_nam
 
 std::shared_ptr<Entity> SoftwareInstall::Version::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "package")
+    {
+        auto c = std::make_shared<SoftwareInstall::Version::Package>();
+        c->parent = this;
+        package.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -1251,30 +1954,234 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Version::get_chi
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : package.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
 void SoftwareInstall::Version::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "img-info")
+    if(value_path == "location")
     {
-        img_info = value;
-        img_info.value_namespace = name_space;
-        img_info.value_namespace_prefix = name_space_prefix;
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "copyright-info")
+    {
+        copyright_info = value;
+        copyright_info.value_namespace = name_space;
+        copyright_info.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hardware-info")
+    {
+        hardware_info = value;
+        hardware_info.value_namespace = name_space;
+        hardware_info.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "system-uptime")
+    {
+        system_uptime = value;
+        system_uptime.value_namespace = name_space;
+        system_uptime.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void SoftwareInstall::Version::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "img-info")
+    if(value_path == "location")
     {
-        img_info.yfilter = yfilter;
+        location.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "copyright-info")
+    {
+        copyright_info.yfilter = yfilter;
+    }
+    if(value_path == "hardware-info")
+    {
+        hardware_info.yfilter = yfilter;
+    }
+    if(value_path == "system-uptime")
+    {
+        system_uptime.yfilter = yfilter;
     }
 }
 
 bool SoftwareInstall::Version::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "img-info")
+    if(name == "package" || name == "location" || name == "label" || name == "copyright-info" || name == "hardware-info" || name == "system-uptime")
+        return true;
+    return false;
+}
+
+SoftwareInstall::Version::Package::Package()
+    :
+    name{YType::str, "name"},
+    version{YType::str, "version"},
+    built_by{YType::str, "built-by"},
+    built_on{YType::str, "built-on"},
+    build_host{YType::str, "build-host"},
+    workspace{YType::str, "workspace"}
+{
+
+    yang_name = "package"; yang_parent_name = "version"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+SoftwareInstall::Version::Package::~Package()
+{
+}
+
+bool SoftwareInstall::Version::Package::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| version.is_set
+	|| built_by.is_set
+	|| built_on.is_set
+	|| build_host.is_set
+	|| workspace.is_set;
+}
+
+bool SoftwareInstall::Version::Package::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(built_by.yfilter)
+	|| ydk::is_set(built_on.yfilter)
+	|| ydk::is_set(build_host.yfilter)
+	|| ydk::is_set(workspace.yfilter);
+}
+
+std::string SoftwareInstall::Version::Package::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-instmgr-oper:software-install/version/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SoftwareInstall::Version::Package::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "package";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Version::Package::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (built_by.is_set || is_set(built_by.yfilter)) leaf_name_data.push_back(built_by.get_name_leafdata());
+    if (built_on.is_set || is_set(built_on.yfilter)) leaf_name_data.push_back(built_on.get_name_leafdata());
+    if (build_host.is_set || is_set(build_host.yfilter)) leaf_name_data.push_back(build_host.get_name_leafdata());
+    if (workspace.is_set || is_set(workspace.yfilter)) leaf_name_data.push_back(workspace.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SoftwareInstall::Version::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Version::Package::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void SoftwareInstall::Version::Package::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "built-by")
+    {
+        built_by = value;
+        built_by.value_namespace = name_space;
+        built_by.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "built-on")
+    {
+        built_on = value;
+        built_on.value_namespace = name_space;
+        built_on.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "build-host")
+    {
+        build_host = value;
+        build_host.value_namespace = name_space;
+        build_host.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "workspace")
+    {
+        workspace = value;
+        workspace.value_namespace = name_space;
+        workspace.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SoftwareInstall::Version::Package::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "built-by")
+    {
+        built_by.yfilter = yfilter;
+    }
+    if(value_path == "built-on")
+    {
+        built_on.yfilter = yfilter;
+    }
+    if(value_path == "build-host")
+    {
+        build_host.yfilter = yfilter;
+    }
+    if(value_path == "workspace")
+    {
+        workspace.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Version::Package::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "version" || name == "built-by" || name == "built-on" || name == "build-host" || name == "workspace")
         return true;
     return false;
 }
@@ -1445,6 +2352,91 @@ void SoftwareInstall::Request::set_filter(const std::string & value_path, YFilte
 bool SoftwareInstall::Request::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "curr-inst-oper")
+        return true;
+    return false;
+}
+
+SoftwareInstall::SupersededSummary::SupersededSummary()
+    :
+    log{YType::str, "log"}
+{
+
+    yang_name = "superseded-summary"; yang_parent_name = "software-install"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+SoftwareInstall::SupersededSummary::~SupersededSummary()
+{
+}
+
+bool SoftwareInstall::SupersededSummary::has_data() const
+{
+    if (is_presence_container) return true;
+    return log.is_set;
+}
+
+bool SoftwareInstall::SupersededSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
+}
+
+std::string SoftwareInstall::SupersededSummary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-instmgr-oper:software-install/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SoftwareInstall::SupersededSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "superseded-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SoftwareInstall::SupersededSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SoftwareInstall::SupersededSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::SupersededSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void SoftwareInstall::SupersededSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "log")
+    {
+        log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SoftwareInstall::SupersededSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::SupersededSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
         return true;
     return false;
 }
@@ -2209,9 +3201,13 @@ bool SoftwareInstall::Committed::CommittedPackageInfo::has_leaf_or_child_of_name
 
 SoftwareInstall::AllOperationsLog::AllOperationsLog()
     :
-    summary(std::make_shared<SoftwareInstall::AllOperationsLog::Summary>())
+    reverse_detail(std::make_shared<SoftwareInstall::AllOperationsLog::ReverseDetail>())
+    , reverse(std::make_shared<SoftwareInstall::AllOperationsLog::Reverse>())
+    , summary(std::make_shared<SoftwareInstall::AllOperationsLog::Summary>())
     , detail(std::make_shared<SoftwareInstall::AllOperationsLog::Detail>())
 {
+    reverse_detail->parent = this;
+    reverse->parent = this;
     summary->parent = this;
     detail->parent = this;
 
@@ -2225,13 +3221,17 @@ SoftwareInstall::AllOperationsLog::~AllOperationsLog()
 bool SoftwareInstall::AllOperationsLog::has_data() const
 {
     if (is_presence_container) return true;
-    return (summary !=  nullptr && summary->has_data())
+    return (reverse_detail !=  nullptr && reverse_detail->has_data())
+	|| (reverse !=  nullptr && reverse->has_data())
+	|| (summary !=  nullptr && summary->has_data())
 	|| (detail !=  nullptr && detail->has_data());
 }
 
 bool SoftwareInstall::AllOperationsLog::has_operation() const
 {
     return is_set(yfilter)
+	|| (reverse_detail !=  nullptr && reverse_detail->has_operation())
+	|| (reverse !=  nullptr && reverse->has_operation())
 	|| (summary !=  nullptr && summary->has_operation())
 	|| (detail !=  nullptr && detail->has_operation());
 }
@@ -2261,6 +3261,24 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::AllOperationsLog
 
 std::shared_ptr<Entity> SoftwareInstall::AllOperationsLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "reverse-detail")
+    {
+        if(reverse_detail == nullptr)
+        {
+            reverse_detail = std::make_shared<SoftwareInstall::AllOperationsLog::ReverseDetail>();
+        }
+        return reverse_detail;
+    }
+
+    if(child_yang_name == "reverse")
+    {
+        if(reverse == nullptr)
+        {
+            reverse = std::make_shared<SoftwareInstall::AllOperationsLog::Reverse>();
+        }
+        return reverse;
+    }
+
     if(child_yang_name == "summary")
     {
         if(summary == nullptr)
@@ -2286,6 +3304,16 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(reverse_detail != nullptr)
+    {
+        children["reverse-detail"] = reverse_detail;
+    }
+
+    if(reverse != nullptr)
+    {
+        children["reverse"] = reverse;
+    }
+
     if(summary != nullptr)
     {
         children["summary"] = summary;
@@ -2309,7 +3337,177 @@ void SoftwareInstall::AllOperationsLog::set_filter(const std::string & value_pat
 
 bool SoftwareInstall::AllOperationsLog::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "summary" || name == "detail")
+    if(name == "reverse-detail" || name == "reverse" || name == "summary" || name == "detail")
+        return true;
+    return false;
+}
+
+SoftwareInstall::AllOperationsLog::ReverseDetail::ReverseDetail()
+    :
+    log{YType::str, "log"}
+{
+
+    yang_name = "reverse-detail"; yang_parent_name = "all-operations-log"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+SoftwareInstall::AllOperationsLog::ReverseDetail::~ReverseDetail()
+{
+}
+
+bool SoftwareInstall::AllOperationsLog::ReverseDetail::has_data() const
+{
+    if (is_presence_container) return true;
+    return log.is_set;
+}
+
+bool SoftwareInstall::AllOperationsLog::ReverseDetail::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
+}
+
+std::string SoftwareInstall::AllOperationsLog::ReverseDetail::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-instmgr-oper:software-install/all-operations-log/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SoftwareInstall::AllOperationsLog::ReverseDetail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "reverse-detail";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SoftwareInstall::AllOperationsLog::ReverseDetail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SoftwareInstall::AllOperationsLog::ReverseDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog::ReverseDetail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void SoftwareInstall::AllOperationsLog::ReverseDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "log")
+    {
+        log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SoftwareInstall::AllOperationsLog::ReverseDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::AllOperationsLog::ReverseDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
+}
+
+SoftwareInstall::AllOperationsLog::Reverse::Reverse()
+    :
+    log{YType::str, "log"}
+{
+
+    yang_name = "reverse"; yang_parent_name = "all-operations-log"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+SoftwareInstall::AllOperationsLog::Reverse::~Reverse()
+{
+}
+
+bool SoftwareInstall::AllOperationsLog::Reverse::has_data() const
+{
+    if (is_presence_container) return true;
+    return log.is_set;
+}
+
+bool SoftwareInstall::AllOperationsLog::Reverse::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
+}
+
+std::string SoftwareInstall::AllOperationsLog::Reverse::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-instmgr-oper:software-install/all-operations-log/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SoftwareInstall::AllOperationsLog::Reverse::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "reverse";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SoftwareInstall::AllOperationsLog::Reverse::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SoftwareInstall::AllOperationsLog::Reverse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog::Reverse::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void SoftwareInstall::AllOperationsLog::Reverse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "log")
+    {
+        log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SoftwareInstall::AllOperationsLog::Reverse::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::AllOperationsLog::Reverse::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
         return true;
     return false;
 }
@@ -3651,15 +4849,16 @@ const Enum::YLeaf IsdStateEt::load_prep {4, "load-prep"};
 const Enum::YLeaf IsdStateEt::load_exec {5, "load-exec"};
 const Enum::YLeaf IsdStateEt::load_issu_go {6, "load-issu-go"};
 const Enum::YLeaf IsdStateEt::load_done {7, "load-done"};
-const Enum::YLeaf IsdStateEt::run_prep {8, "run-prep"};
-const Enum::YLeaf IsdStateEt::big_bang {9, "big-bang"};
-const Enum::YLeaf IsdStateEt::run_done {10, "run-done"};
-const Enum::YLeaf IsdStateEt::cleanup {11, "cleanup"};
-const Enum::YLeaf IsdStateEt::cleanup_done {12, "cleanup-done"};
-const Enum::YLeaf IsdStateEt::abort {13, "abort"};
-const Enum::YLeaf IsdStateEt::abort_done {14, "abort-done"};
-const Enum::YLeaf IsdStateEt::abort_cleanup {15, "abort-cleanup"};
-const Enum::YLeaf IsdStateEt::unknown_state {16, "unknown-state"};
+const Enum::YLeaf IsdStateEt::run_prep_isd {8, "run-prep-isd"};
+const Enum::YLeaf IsdStateEt::run_prep_ism {9, "run-prep-ism"};
+const Enum::YLeaf IsdStateEt::big_bang {10, "big-bang"};
+const Enum::YLeaf IsdStateEt::run_done {11, "run-done"};
+const Enum::YLeaf IsdStateEt::cleanup {12, "cleanup"};
+const Enum::YLeaf IsdStateEt::cleanup_done {13, "cleanup-done"};
+const Enum::YLeaf IsdStateEt::abort {14, "abort"};
+const Enum::YLeaf IsdStateEt::abort_done {15, "abort-done"};
+const Enum::YLeaf IsdStateEt::abort_cleanup {16, "abort-cleanup"};
+const Enum::YLeaf IsdStateEt::unknown_state {17, "unknown-state"};
 
 const Enum::YLeaf IsdIssuStatusEt::ok {0, "ok"};
 const Enum::YLeaf IsdIssuStatusEt::prep_done {1, "prep-done"};

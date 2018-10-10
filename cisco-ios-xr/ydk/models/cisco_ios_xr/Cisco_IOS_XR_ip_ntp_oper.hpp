@@ -143,6 +143,7 @@ class Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo : public ydk::Entity
         ydk::YLeaf precision; //type: int8
         ydk::YLeaf version; //type: uint8
         ydk::YLeaf filter_index; //type: uint32
+        ydk::YLeaf cast_flags; //type: uint8
         class PeerInfoCommon; //type: Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon
         class RefTime; //type: Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime
         class OriginateTime; //type: Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime

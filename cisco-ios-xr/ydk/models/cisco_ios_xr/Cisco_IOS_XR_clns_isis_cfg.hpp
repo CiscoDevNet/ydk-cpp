@@ -100,8 +100,11 @@ class Isis::Instances::Instance : public ydk::Entity
         class Afs; //type: Isis::Instances::Instance::Afs
         class LspRefreshIntervals; //type: Isis::Instances::Instance::LspRefreshIntervals
         class Distribute; //type: Isis::Instances::Instance::Distribute
+        class FlexAlgos; //type: Isis::Instances::Instance::FlexAlgos
+        class AffinityMappings; //type: Isis::Instances::Instance::AffinityMappings
         class LspAcceptPasswords; //type: Isis::Instances::Instance::LspAcceptPasswords
         class LspMtus; //type: Isis::Instances::Instance::LspMtus
+        class SrlgTable; //type: Isis::Instances::Instance::SrlgTable
         class Nsf; //type: Isis::Instances::Instance::Nsf
         class LinkGroups; //type: Isis::Instances::Instance::LinkGroups
         class LspCheckIntervals; //type: Isis::Instances::Instance::LspCheckIntervals
@@ -120,8 +123,11 @@ class Isis::Instances::Instance : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs> afs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::LspRefreshIntervals> lsp_refresh_intervals;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Distribute> distribute; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::FlexAlgos> flex_algos;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::AffinityMappings> affinity_mappings;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::LspAcceptPasswords> lsp_accept_passwords;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::LspMtus> lsp_mtus;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::SrlgTable> srlg_table;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Nsf> nsf;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::LinkGroups> link_groups;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::LspCheckIntervals> lsp_check_intervals;
@@ -384,7 +390,7 @@ class Isis::Instances::Instance::Afs::Af : public ydk::Entity
         class AfData; //type: Isis::Instances::Instance::Afs::Af::AfData
         class TopologyName; //type: Isis::Instances::Instance::Afs::Af::TopologyName
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData> af_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData> af_data; // presence node
         ydk::YList topology_name;
         
 }; // Isis::Instances::Instance::Afs::Af
@@ -428,6 +434,7 @@ class Isis::Instances::Instance::Afs::Af::AfData : public ydk::Entity
         class MaxRedistPrefixes; //type: Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes
         class Propagations; //type: Isis::Instances::Instance::Afs::Af::AfData::Propagations
         class Redistributions; //type: Isis::Instances::Instance::Afs::Af::AfData::Redistributions
+        class ApplicationTables; //type: Isis::Instances::Instance::Afs::Af::AfData::ApplicationTables
         class SpfPeriodicIntervals; //type: Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals
         class DistributeListIn; //type: Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn
         class SpfIntervals; //type: Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals
@@ -452,6 +459,7 @@ class Isis::Instances::Instance::Afs::Af::AfData : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes> max_redist_prefixes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::Propagations> propagations;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::Redistributions> redistributions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::ApplicationTables> application_tables;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals> spf_periodic_intervals;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn> distribute_list_in;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals> spf_intervals;
@@ -486,6 +494,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting : public ydk::E
 
         ydk::YLeaf bundle_member_adj_sid; //type: empty
         ydk::YLeaf mpls; //type: IsisLabelPreference
+        ydk::YLeaf srv6; //type: empty
         class PrefixSidMap; //type: Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap> prefix_sid_map;
@@ -576,13 +585,16 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf frr_initial_delay; //type: uint32
         class FrrLoadSharings; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings
+        class FrrsrlgProtectionTypes; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrsrlgProtectionTypes
         class PriorityLimits; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits
         class FrrRemoteLfaPrefixes; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes
         class FrrTiebreakers; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers
         class FrrUseCandOnlies; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings> frr_load_sharings;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrsrlgProtectionTypes> frrsrlg_protection_types;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits> priority_limits;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes> frr_remote_lfa_prefixes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers> frr_tiebreakers;
@@ -636,6 +648,51 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::Frr
 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharing
 
 
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrsrlgProtectionTypes : public ydk::Entity
+{
+    public:
+        FrrsrlgProtectionTypes();
+        ~FrrsrlgProtectionTypes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FrrsrlgProtectionType; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrsrlgProtectionTypes::FrrsrlgProtectionType
+
+        ydk::YList frrsrlg_protection_type;
+        
+}; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrsrlgProtectionTypes
+
+
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrsrlgProtectionTypes::FrrsrlgProtectionType : public ydk::Entity
+{
+    public:
+        FrrsrlgProtectionType();
+        ~FrrsrlgProtectionType();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf protection_type; //type: IsisfrrSrlgProtection
+
+}; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrsrlgProtectionTypes::FrrsrlgProtectionType
+
+
 class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits : public ydk::Entity
 {
     public:
@@ -676,10 +733,56 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::Prio
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf level; //type: IsisInternalLevel
+        class PriorityLimitData; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData
+        class FrrType; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData> priority_limit_data;
+        ydk::YList frr_type;
+        
+}; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit
+
+
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData : public ydk::Entity
+{
+    public:
+        PriorityLimitData();
+        ~PriorityLimitData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf priority; //type: IsisPrefixPriority
+
+}; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData
+
+
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType : public ydk::Entity
+{
+    public:
+        FrrType();
+        ~FrrType();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
         ydk::YLeaf frr_type; //type: Isisfrr
         ydk::YLeaf priority; //type: IsisPrefixPriority
 
-}; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit
+}; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType
 
 
 class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes : public ydk::Entity
@@ -1295,6 +1398,75 @@ class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistributio
 }; // Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp
 
 
+class Isis::Instances::Instance::Afs::Af::AfData::ApplicationTables : public ydk::Entity
+{
+    public:
+        ApplicationTables();
+        ~ApplicationTables();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ApplicationTable; //type: Isis::Instances::Instance::Afs::Af::AfData::ApplicationTables::ApplicationTable
+
+        ydk::YList application_table;
+        
+}; // Isis::Instances::Instance::Afs::Af::AfData::ApplicationTables
+
+
+class Isis::Instances::Instance::Afs::Af::AfData::ApplicationTables::ApplicationTable : public ydk::Entity
+{
+    public:
+        ApplicationTable();
+        ~ApplicationTable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf app_type; //type: IsisApplication
+        class AttributeTable; //type: Isis::Instances::Instance::Afs::Af::AfData::ApplicationTables::ApplicationTable::AttributeTable
+
+        ydk::YList attribute_table;
+        
+}; // Isis::Instances::Instance::Afs::Af::AfData::ApplicationTables::ApplicationTable
+
+
+class Isis::Instances::Instance::Afs::Af::AfData::ApplicationTables::ApplicationTable::AttributeTable : public ydk::Entity
+{
+    public:
+        AttributeTable();
+        ~AttributeTable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf app_type; //type: IsisApplicationAttribute
+        ydk::YLeaf enable; //type: boolean
+
+}; // Isis::Instances::Instance::Afs::Af::AfData::ApplicationTables::ApplicationTable::AttributeTable
+
+
 class Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals : public ydk::Entity
 {
     public:
@@ -1838,6 +2010,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName : public ydk::Entity
         class MaxRedistPrefixes; //type: Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes
         class Propagations; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Propagations
         class Redistributions; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions
+        class ApplicationTables; //type: Isis::Instances::Instance::Afs::Af::TopologyName::ApplicationTables
         class SpfPeriodicIntervals; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals
         class DistributeListIn; //type: Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn
         class SpfIntervals; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals
@@ -1862,6 +2035,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes> max_redist_prefixes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::Propagations> propagations;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions> redistributions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::ApplicationTables> application_tables;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals> spf_periodic_intervals;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn> distribute_list_in;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals> spf_intervals;
@@ -1896,6 +2070,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting : public 
 
         ydk::YLeaf bundle_member_adj_sid; //type: empty
         ydk::YLeaf mpls; //type: IsisLabelPreference
+        ydk::YLeaf srv6; //type: empty
         class PrefixSidMap; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap> prefix_sid_map;
@@ -1986,13 +2161,16 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf frr_initial_delay; //type: uint32
         class FrrLoadSharings; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings
+        class FrrsrlgProtectionTypes; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrsrlgProtectionTypes
         class PriorityLimits; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits
         class FrrRemoteLfaPrefixes; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes
         class FrrTiebreakers; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers
         class FrrUseCandOnlies; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings> frr_load_sharings;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrsrlgProtectionTypes> frrsrlg_protection_types;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits> priority_limits;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes> frr_remote_lfa_prefixes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers> frr_tiebreakers;
@@ -2046,6 +2224,51 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharing
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharing
 
 
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrsrlgProtectionTypes : public ydk::Entity
+{
+    public:
+        FrrsrlgProtectionTypes();
+        ~FrrsrlgProtectionTypes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FrrsrlgProtectionType; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrsrlgProtectionTypes::FrrsrlgProtectionType
+
+        ydk::YList frrsrlg_protection_type;
+        
+}; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrsrlgProtectionTypes
+
+
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrsrlgProtectionTypes::FrrsrlgProtectionType : public ydk::Entity
+{
+    public:
+        FrrsrlgProtectionType();
+        ~FrrsrlgProtectionType();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf protection_type; //type: IsisfrrSrlgProtection
+
+}; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrsrlgProtectionTypes::FrrsrlgProtectionType
+
+
 class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits : public ydk::Entity
 {
     public:
@@ -2086,10 +2309,56 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf level; //type: IsisInternalLevel
+        class PriorityLimitData; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData
+        class FrrType; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData> priority_limit_data;
+        ydk::YList frr_type;
+        
+}; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit
+
+
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData : public ydk::Entity
+{
+    public:
+        PriorityLimitData();
+        ~PriorityLimitData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf priority; //type: IsisPrefixPriority
+
+}; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData
+
+
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType : public ydk::Entity
+{
+    public:
+        FrrType();
+        ~FrrType();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
         ydk::YLeaf frr_type; //type: Isisfrr
         ydk::YLeaf priority; //type: IsisPrefixPriority
 
-}; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit
+}; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType
 
 
 class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes : public ydk::Entity
@@ -2705,6 +2974,75 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistr
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp
 
 
+class Isis::Instances::Instance::Afs::Af::TopologyName::ApplicationTables : public ydk::Entity
+{
+    public:
+        ApplicationTables();
+        ~ApplicationTables();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ApplicationTable; //type: Isis::Instances::Instance::Afs::Af::TopologyName::ApplicationTables::ApplicationTable
+
+        ydk::YList application_table;
+        
+}; // Isis::Instances::Instance::Afs::Af::TopologyName::ApplicationTables
+
+
+class Isis::Instances::Instance::Afs::Af::TopologyName::ApplicationTables::ApplicationTable : public ydk::Entity
+{
+    public:
+        ApplicationTable();
+        ~ApplicationTable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf app_type; //type: IsisApplication
+        class AttributeTable; //type: Isis::Instances::Instance::Afs::Af::TopologyName::ApplicationTables::ApplicationTable::AttributeTable
+
+        ydk::YList attribute_table;
+        
+}; // Isis::Instances::Instance::Afs::Af::TopologyName::ApplicationTables::ApplicationTable
+
+
+class Isis::Instances::Instance::Afs::Af::TopologyName::ApplicationTables::ApplicationTable::AttributeTable : public ydk::Entity
+{
+    public:
+        AttributeTable();
+        ~AttributeTable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf app_type; //type: IsisApplicationAttribute
+        ydk::YLeaf enable; //type: boolean
+
+}; // Isis::Instances::Instance::Afs::Af::TopologyName::ApplicationTables::ApplicationTable::AttributeTable
+
+
 class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals : public ydk::Entity
 {
     public:
@@ -3277,6 +3615,122 @@ class Isis::Instances::Instance::Distribute : public ydk::Entity
 }; // Isis::Instances::Instance::Distribute
 
 
+class Isis::Instances::Instance::FlexAlgos : public ydk::Entity
+{
+    public:
+        FlexAlgos();
+        ~FlexAlgos();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FlexAlgo; //type: Isis::Instances::Instance::FlexAlgos::FlexAlgo
+
+        ydk::YList flex_algo;
+        
+}; // Isis::Instances::Instance::FlexAlgos
+
+
+class Isis::Instances::Instance::FlexAlgos::FlexAlgo : public ydk::Entity
+{
+    public:
+        FlexAlgo();
+        ~FlexAlgo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf flex_algo; //type: uint32
+        ydk::YLeaf running; //type: empty
+        ydk::YLeaf metric_type; //type: uint32
+        ydk::YLeaf priority; //type: uint32
+        class AffinityExcludeAnies; //type: Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies> affinity_exclude_anies;
+        
+}; // Isis::Instances::Instance::FlexAlgos::FlexAlgo
+
+
+class Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies : public ydk::Entity
+{
+    public:
+        AffinityExcludeAnies();
+        ~AffinityExcludeAnies();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList affinity_exclude_any; //type: list of  string
+
+}; // Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies
+
+
+class Isis::Instances::Instance::AffinityMappings : public ydk::Entity
+{
+    public:
+        AffinityMappings();
+        ~AffinityMappings();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AffinityMapping; //type: Isis::Instances::Instance::AffinityMappings::AffinityMapping
+
+        ydk::YList affinity_mapping;
+        
+}; // Isis::Instances::Instance::AffinityMappings
+
+
+class Isis::Instances::Instance::AffinityMappings::AffinityMapping : public ydk::Entity
+{
+    public:
+        AffinityMapping();
+        ~AffinityMapping();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf affinity_name; //type: string
+        ydk::YLeaf value_; //type: uint32
+
+}; // Isis::Instances::Instance::AffinityMappings::AffinityMapping
+
+
 class Isis::Instances::Instance::LspAcceptPasswords : public ydk::Entity
 {
     public:
@@ -3365,6 +3819,123 @@ class Isis::Instances::Instance::LspMtus::LspMtu : public ydk::Entity
         ydk::YLeaf mtu; //type: uint32
 
 }; // Isis::Instances::Instance::LspMtus::LspMtu
+
+
+class Isis::Instances::Instance::SrlgTable : public ydk::Entity
+{
+    public:
+        SrlgTable();
+        ~SrlgTable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf srlg_admin_weight_default; //type: uint32
+        class SrlgNames; //type: Isis::Instances::Instance::SrlgTable::SrlgNames
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::SrlgTable::SrlgNames> srlg_names;
+        
+}; // Isis::Instances::Instance::SrlgTable
+
+
+class Isis::Instances::Instance::SrlgTable::SrlgNames : public ydk::Entity
+{
+    public:
+        SrlgNames();
+        ~SrlgNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SrlgName; //type: Isis::Instances::Instance::SrlgTable::SrlgNames::SrlgName
+
+        ydk::YList srlg_name;
+        
+}; // Isis::Instances::Instance::SrlgTable::SrlgNames
+
+
+class Isis::Instances::Instance::SrlgTable::SrlgNames::SrlgName : public ydk::Entity
+{
+    public:
+        SrlgName();
+        ~SrlgName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf srlg_name; //type: string
+        ydk::YLeaf admin_weight; //type: uint32
+        class FromTos; //type: Isis::Instances::Instance::SrlgTable::SrlgNames::SrlgName::FromTos
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::SrlgTable::SrlgNames::SrlgName::FromTos> from_tos;
+        
+}; // Isis::Instances::Instance::SrlgTable::SrlgNames::SrlgName
+
+
+class Isis::Instances::Instance::SrlgTable::SrlgNames::SrlgName::FromTos : public ydk::Entity
+{
+    public:
+        FromTos();
+        ~FromTos();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FromTo; //type: Isis::Instances::Instance::SrlgTable::SrlgNames::SrlgName::FromTos::FromTo
+
+        ydk::YList from_to;
+        
+}; // Isis::Instances::Instance::SrlgTable::SrlgNames::SrlgName::FromTos
+
+
+class Isis::Instances::Instance::SrlgTable::SrlgNames::SrlgName::FromTos::FromTo : public ydk::Entity
+{
+    public:
+        FromTo();
+        ~FromTo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_ipv4_address; //type: string
+        ydk::YLeaf remote_ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::SrlgTable::SrlgNames::SrlgName::FromTos::FromTo
 
 
 class Isis::Instances::Instance::Nsf : public ydk::Entity
@@ -3527,6 +4098,7 @@ class Isis::Instances::Instance::LspPasswords::LspPassword : public ydk::Entity
         ydk::YLeaf failure_mode; //type: IsisAuthenticationFailureMode
         ydk::YLeaf authentication_type; //type: IsisSnpAuth
         ydk::YLeaf password; //type: string
+        ydk::YLeaf enable_poi; //type: IsisEnablePoi
 
 }; // Isis::Instances::Instance::LspPasswords::LspPassword
 
@@ -3714,6 +4286,7 @@ class Isis::Instances::Instance::Interfaces::Interface : public ydk::Entity
         ydk::YLeaf state; //type: IsisInterfaceState
         ydk::YLeaf mesh_group; //type: one of uint32, enumeration
         ydk::YLeaf link_down_fast_detect; //type: empty
+        class IntAffinityTable; //type: Isis::Instances::Instance::Interfaces::Interface::IntAffinityTable
         class LspRetransmitThrottleIntervals; //type: Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals
         class LspRetransmitIntervals; //type: Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals
         class Bfd; //type: Isis::Instances::Instance::Interfaces::Interface::Bfd
@@ -3729,6 +4302,7 @@ class Isis::Instances::Instance::Interfaces::Interface : public ydk::Entity
         class CsnpIntervals; //type: Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals
         class LspIntervals; //type: Isis::Instances::Instance::Interfaces::Interface::LspIntervals
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::IntAffinityTable> int_affinity_table;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals> lsp_retransmit_throttle_intervals;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals> lsp_retransmit_intervals;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::Bfd> bfd;
@@ -3746,6 +4320,50 @@ class Isis::Instances::Instance::Interfaces::Interface : public ydk::Entity
                 class MeshGroup;
 
 }; // Isis::Instances::Instance::Interfaces::Interface
+
+
+class Isis::Instances::Instance::Interfaces::Interface::IntAffinityTable : public ydk::Entity
+{
+    public:
+        IntAffinityTable();
+        ~IntAffinityTable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FlexAlgos; //type: Isis::Instances::Instance::Interfaces::Interface::IntAffinityTable::FlexAlgos
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::IntAffinityTable::FlexAlgos> flex_algos;
+        
+}; // Isis::Instances::Instance::Interfaces::Interface::IntAffinityTable
+
+
+class Isis::Instances::Instance::Interfaces::Interface::IntAffinityTable::FlexAlgos : public ydk::Entity
+{
+    public:
+        FlexAlgos();
+        ~FlexAlgos();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList flex_algo; //type: list of  string
+
+}; // Isis::Instances::Instance::Interfaces::Interface::IntAffinityTable::FlexAlgos
 
 
 class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals : public ydk::Entity
@@ -4295,6 +4913,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
         class InterfaceFrrTable; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable
         class MplsLdp; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::MplsLdp
         class PrefixSspfsid; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::PrefixSspfsid
+        class AlgorithmPrefixSids; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AlgorithmPrefixSids
         class AutoMetrics; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics
         class AdminTags; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags
         class InterfaceLinkGroup; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceLinkGroup
@@ -4306,6 +4925,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable> interface_frr_table;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::MplsLdp> mpls_ldp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::PrefixSspfsid> prefix_sspfsid; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AlgorithmPrefixSids> algorithm_prefix_sids;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics> auto_metrics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags> admin_tags;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceLinkGroup> interface_link_group; // presence node
@@ -4785,6 +5405,55 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::PrefixSspfsid
 
 
+class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AlgorithmPrefixSids : public ydk::Entity
+{
+    public:
+        AlgorithmPrefixSids();
+        ~AlgorithmPrefixSids();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AlgorithmPrefixSid; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AlgorithmPrefixSids::AlgorithmPrefixSid
+
+        ydk::YList algorithm_prefix_sid;
+        
+}; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AlgorithmPrefixSids
+
+
+class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AlgorithmPrefixSids::AlgorithmPrefixSid : public ydk::Entity
+{
+    public:
+        AlgorithmPrefixSid();
+        ~AlgorithmPrefixSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf algo; //type: uint32
+        ydk::YLeaf type; //type: Isissid1
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf php; //type: IsisphpFlag
+        ydk::YLeaf explicit_null; //type: IsisexplicitNullFlag
+        ydk::YLeaf nflag_clear; //type: NflagClear
+
+}; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AlgorithmPrefixSids::AlgorithmPrefixSid
+
+
 class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics : public ydk::Entity
 {
     public:
@@ -5058,6 +5727,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
         class InterfaceFrrTable; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable
         class MplsLdp; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::MplsLdp
         class PrefixSspfsid; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::PrefixSspfsid
+        class AlgorithmPrefixSids; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AlgorithmPrefixSids
         class AutoMetrics; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics
         class AdminTags; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags
         class InterfaceLinkGroup; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceLinkGroup
@@ -5069,6 +5739,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable> interface_frr_table;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::MplsLdp> mpls_ldp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::PrefixSspfsid> prefix_sspfsid; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AlgorithmPrefixSids> algorithm_prefix_sids;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics> auto_metrics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags> admin_tags;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceLinkGroup> interface_link_group; // presence node
@@ -5548,6 +6219,55 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::PrefixSspfsid
 
 
+class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AlgorithmPrefixSids : public ydk::Entity
+{
+    public:
+        AlgorithmPrefixSids();
+        ~AlgorithmPrefixSids();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AlgorithmPrefixSid; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AlgorithmPrefixSids::AlgorithmPrefixSid
+
+        ydk::YList algorithm_prefix_sid;
+        
+}; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AlgorithmPrefixSids
+
+
+class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AlgorithmPrefixSids::AlgorithmPrefixSid : public ydk::Entity
+{
+    public:
+        AlgorithmPrefixSid();
+        ~AlgorithmPrefixSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf algo; //type: uint32
+        ydk::YLeaf type; //type: Isissid1
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf php; //type: IsisphpFlag
+        ydk::YLeaf explicit_null; //type: IsisexplicitNullFlag
+        ydk::YLeaf nflag_clear; //type: NflagClear
+
+}; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AlgorithmPrefixSids::AlgorithmPrefixSid
+
+
 class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics : public ydk::Entity
 {
     public:
@@ -5936,12 +6656,10 @@ class IsisAuthenticationAlgorithm : public ydk::Enum
 
 };
 
-class IsisOverloadBitMode : public ydk::Enum
+class IsisAdvTypeExternal : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf permanently_set;
-        static const ydk::Enum::YLeaf startup_period;
-        static const ydk::Enum::YLeaf wait_for_bgp;
+        static const ydk::Enum::YLeaf external;
 
 };
 
@@ -6009,14 +6727,10 @@ class IsisTracingMode : public ydk::Enum
 
 };
 
-class IsisMetricStyle : public ydk::Enum
+class IsisAdvTypeInterLevel : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf old_metric_style;
-        static const ydk::Enum::YLeaf new_metric_style;
-        static const ydk::Enum::YLeaf both_metric_style;
-        static const ydk::Enum::YLeaf old_metric_style_transition;
-        static const ydk::Enum::YLeaf new_metric_style_transition;
+        static const ydk::Enum::YLeaf inter_level;
 
 };
 
@@ -6043,6 +6757,17 @@ class IsissidProtected : public ydk::Enum
 
 };
 
+class IsisMetricStyle : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf old_metric_style;
+        static const ydk::Enum::YLeaf new_metric_style;
+        static const ydk::Enum::YLeaf both_metric_style;
+        static const ydk::Enum::YLeaf old_metric_style_transition;
+        static const ydk::Enum::YLeaf new_metric_style_transition;
+
+};
+
 class IsisApplyWeight : public ydk::Enum
 {
     public:
@@ -6052,12 +6777,20 @@ class IsisApplyWeight : public ydk::Enum
 
 };
 
-class IsisPrefixPriority : public ydk::Enum
+class IsisfrrSrlgProtection : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf critical_priority;
-        static const ydk::Enum::YLeaf high_priority;
-        static const ydk::Enum::YLeaf medium_priority;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf weighted_global;
+
+};
+
+class IsisOverloadBitMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf permanently_set;
+        static const ydk::Enum::YLeaf startup_period;
+        static const ydk::Enum::YLeaf wait_for_bgp;
 
 };
 
@@ -6079,10 +6812,10 @@ class IsisMicroLoopAvoidance : public ydk::Enum
 
 };
 
-class IsisAdvTypeExternal : public ydk::Enum
+class IsisApplication : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf external;
+        static const ydk::Enum::YLeaf lfa;
 
 };
 
@@ -6107,6 +6840,15 @@ class IsisMibAttemptToExceedMaxSequenceBoolean : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
+
+};
+
+class IsisPrefixPriority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf critical_priority;
+        static const ydk::Enum::YLeaf high_priority;
+        static const ydk::Enum::YLeaf medium_priority;
 
 };
 
@@ -6148,6 +6890,14 @@ class IsisexplicitNullFlag : public ydk::Enum
 
 };
 
+class IsisEnablePoi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable_poi_off;
+        static const ydk::Enum::YLeaf enable_poi_on;
+
+};
+
 class IsisMetric : public ydk::Enum
 {
     public:
@@ -6174,10 +6924,10 @@ class IsisMibDatabaseOverFlowBoolean : public ydk::Enum
 
 };
 
-class IsisAdvTypeInterLevel : public ydk::Enum
+class IsisApplicationAttribute : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf inter_level;
+        static const ydk::Enum::YLeaf srlg;
 
 };
 

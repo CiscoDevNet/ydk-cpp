@@ -138,6 +138,7 @@ LispState::LispRouters::LispRouters()
     instances(this, {"iid"})
     , sessions(this, {"local_address", "peer_address", "local_port", "peer_port"})
     , local_rlocs(this, {"afi", "address"})
+    , prefix_lists(this, {"name"})
 {
 
     yang_name = "lisp-routers"; yang_parent_name = "lisp-state"; is_top_level_class = false; has_list_ancestor = false; 
@@ -165,6 +166,11 @@ bool LispState::LispRouters::has_data() const
         if(local_rlocs[index]->has_data())
             return true;
     }
+    for (std::size_t index=0; index<prefix_lists.len(); index++)
+    {
+        if(prefix_lists[index]->has_data())
+            return true;
+    }
     for (auto const & leaf : xtr_id.getYLeafs())
     {
         if(leaf.is_set)
@@ -189,6 +195,11 @@ bool LispState::LispRouters::has_operation() const
     for (std::size_t index=0; index<local_rlocs.len(); index++)
     {
         if(local_rlocs[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<prefix_lists.len(); index++)
+    {
+        if(prefix_lists[index]->has_operation())
             return true;
     }
     for (auto const & leaf : xtr_id.getYLeafs())
@@ -256,6 +267,14 @@ std::shared_ptr<Entity> LispState::LispRouters::get_child_by_name(const std::str
         return c;
     }
 
+    if(child_yang_name == "prefix-lists")
+    {
+        auto c = std::make_shared<LispState::LispRouters::PrefixLists>();
+        c->parent = this;
+        prefix_lists.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -283,6 +302,15 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::get_child
 
     count = 0;
     for (auto c : local_rlocs.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : prefix_lists.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -331,7 +359,7 @@ void LispState::LispRouters::set_filter(const std::string & value_path, YFilter 
 
 bool LispState::LispRouters::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "instances" || name == "sessions" || name == "local-rlocs" || name == "top-id" || name == "site-id" || name == "xtr-id")
+    if(name == "instances" || name == "sessions" || name == "local-rlocs" || name == "prefix-lists" || name == "top-id" || name == "site-id" || name == "xtr-id")
         return true;
     return false;
 }
@@ -2619,7 +2647,8 @@ LispState::LispRouters::Instances::Af::LocalDbase::LocalDbase()
     afi{YType::enumeration, "afi"},
     prefix{YType::str, "prefix"},
     lsb{YType::uint32, "lsb"},
-    is_reachable{YType::boolean, "is-reachable"}
+    is_reachable{YType::boolean, "is-reachable"},
+    is_proxy{YType::boolean, "is-proxy"}
         ,
     local_dbase_rloc(this, {"afi", "address"})
 {
@@ -2642,7 +2671,8 @@ bool LispState::LispRouters::Instances::Af::LocalDbase::has_data() const
     return afi.is_set
 	|| prefix.is_set
 	|| lsb.is_set
-	|| is_reachable.is_set;
+	|| is_reachable.is_set
+	|| is_proxy.is_set;
 }
 
 bool LispState::LispRouters::Instances::Af::LocalDbase::has_operation() const
@@ -2656,7 +2686,8 @@ bool LispState::LispRouters::Instances::Af::LocalDbase::has_operation() const
 	|| ydk::is_set(afi.yfilter)
 	|| ydk::is_set(prefix.yfilter)
 	|| ydk::is_set(lsb.yfilter)
-	|| ydk::is_set(is_reachable.yfilter);
+	|| ydk::is_set(is_reachable.yfilter)
+	|| ydk::is_set(is_proxy.yfilter);
 }
 
 std::string LispState::LispRouters::Instances::Af::LocalDbase::get_segment_path() const
@@ -2676,6 +2707,7 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
     if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
     if (lsb.is_set || is_set(lsb.yfilter)) leaf_name_data.push_back(lsb.get_name_leafdata());
     if (is_reachable.is_set || is_set(is_reachable.yfilter)) leaf_name_data.push_back(is_reachable.get_name_leafdata());
+    if (is_proxy.is_set || is_set(is_proxy.yfilter)) leaf_name_data.push_back(is_proxy.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2736,6 +2768,12 @@ void LispState::LispRouters::Instances::Af::LocalDbase::set_value(const std::str
         is_reachable.value_namespace = name_space;
         is_reachable.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "is-proxy")
+    {
+        is_proxy = value;
+        is_proxy.value_namespace = name_space;
+        is_proxy.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void LispState::LispRouters::Instances::Af::LocalDbase::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2756,11 +2794,15 @@ void LispState::LispRouters::Instances::Af::LocalDbase::set_filter(const std::st
     {
         is_reachable.yfilter = yfilter;
     }
+    if(value_path == "is-proxy")
+    {
+        is_proxy.yfilter = yfilter;
+    }
 }
 
 bool LispState::LispRouters::Instances::Af::LocalDbase::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local-dbase-rloc" || name == "afi" || name == "prefix" || name == "lsb" || name == "is-reachable")
+    if(name == "local-dbase-rloc" || name == "afi" || name == "prefix" || name == "lsb" || name == "is-reachable" || name == "is-proxy")
         return true;
     return false;
 }
@@ -4870,6 +4912,264 @@ void LispState::LispRouters::LocalRlocs::set_filter(const std::string & value_pa
 bool LispState::LispRouters::LocalRlocs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "afi" || name == "address" || name == "state" || name == "is-local")
+        return true;
+    return false;
+}
+
+LispState::LispRouters::PrefixLists::PrefixLists()
+    :
+    name{YType::str, "name"},
+    count{YType::uint64, "count"}
+        ,
+    prefix_list_entry(this, {"afi", "prefix"})
+{
+
+    yang_name = "prefix-lists"; yang_parent_name = "lisp-routers"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+LispState::LispRouters::PrefixLists::~PrefixLists()
+{
+}
+
+bool LispState::LispRouters::PrefixLists::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list_entry.len(); index++)
+    {
+        if(prefix_list_entry[index]->has_data())
+            return true;
+    }
+    return name.is_set
+	|| count.is_set;
+}
+
+bool LispState::LispRouters::PrefixLists::has_operation() const
+{
+    for (std::size_t index=0; index<prefix_list_entry.len(); index++)
+    {
+        if(prefix_list_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(count.yfilter);
+}
+
+std::string LispState::LispRouters::PrefixLists::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-lists";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::PrefixLists::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> LispState::LispRouters::PrefixLists::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-list-entry")
+    {
+        auto c = std::make_shared<LispState::LispRouters::PrefixLists::PrefixListEntry>();
+        c->parent = this;
+        prefix_list_entry.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::PrefixLists::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : prefix_list_entry.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void LispState::LispRouters::PrefixLists::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "count")
+    {
+        count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void LispState::LispRouters::PrefixLists::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+}
+
+bool LispState::LispRouters::PrefixLists::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-list-entry" || name == "name" || name == "count")
+        return true;
+    return false;
+}
+
+LispState::LispRouters::PrefixLists::PrefixListEntry::PrefixListEntry()
+    :
+    afi{YType::enumeration, "afi"},
+    prefix{YType::str, "prefix"},
+    source_has_static{YType::boolean, "source-has-static"},
+    source_has_rib{YType::boolean, "source-has-rib"},
+    source_has_site_reg{YType::boolean, "source-has-site-reg"}
+{
+
+    yang_name = "prefix-list-entry"; yang_parent_name = "prefix-lists"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+LispState::LispRouters::PrefixLists::PrefixListEntry::~PrefixListEntry()
+{
+}
+
+bool LispState::LispRouters::PrefixLists::PrefixListEntry::has_data() const
+{
+    if (is_presence_container) return true;
+    return afi.is_set
+	|| prefix.is_set
+	|| source_has_static.is_set
+	|| source_has_rib.is_set
+	|| source_has_site_reg.is_set;
+}
+
+bool LispState::LispRouters::PrefixLists::PrefixListEntry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(source_has_static.yfilter)
+	|| ydk::is_set(source_has_rib.yfilter)
+	|| ydk::is_set(source_has_site_reg.yfilter);
+}
+
+std::string LispState::LispRouters::PrefixLists::PrefixListEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-list-entry";
+    ADD_KEY_TOKEN(afi, "afi");
+    ADD_KEY_TOKEN(prefix, "prefix");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::PrefixLists::PrefixListEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (source_has_static.is_set || is_set(source_has_static.yfilter)) leaf_name_data.push_back(source_has_static.get_name_leafdata());
+    if (source_has_rib.is_set || is_set(source_has_rib.yfilter)) leaf_name_data.push_back(source_has_rib.get_name_leafdata());
+    if (source_has_site_reg.is_set || is_set(source_has_site_reg.yfilter)) leaf_name_data.push_back(source_has_site_reg.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> LispState::LispRouters::PrefixLists::PrefixListEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::PrefixLists::PrefixListEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void LispState::LispRouters::PrefixLists::PrefixListEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi")
+    {
+        afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-has-static")
+    {
+        source_has_static = value;
+        source_has_static.value_namespace = name_space;
+        source_has_static.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-has-rib")
+    {
+        source_has_rib = value;
+        source_has_rib.value_namespace = name_space;
+        source_has_rib.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-has-site-reg")
+    {
+        source_has_site_reg = value;
+        source_has_site_reg.value_namespace = name_space;
+        source_has_site_reg.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void LispState::LispRouters::PrefixLists::PrefixListEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "source-has-static")
+    {
+        source_has_static.yfilter = yfilter;
+    }
+    if(value_path == "source-has-rib")
+    {
+        source_has_rib.yfilter = yfilter;
+    }
+    if(value_path == "source-has-site-reg")
+    {
+        source_has_site_reg.yfilter = yfilter;
+    }
+}
+
+bool LispState::LispRouters::PrefixLists::PrefixListEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "prefix" || name == "source-has-static" || name == "source-has-rib" || name == "source-has-site-reg")
         return true;
     return false;
 }

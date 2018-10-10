@@ -562,7 +562,8 @@ MemorySummary::Nodes::Node::Detail::Detail()
     allocated_memory{YType::uint64, "allocated-memory"},
     program_text{YType::uint64, "program-text"},
     program_data{YType::uint64, "program-data"},
-    program_stack{YType::uint64, "program-stack"}
+    program_stack{YType::uint64, "program-stack"},
+    total_used{YType::uint64, "total-used"}
         ,
     shared_window(this, {})
 {
@@ -597,7 +598,8 @@ bool MemorySummary::Nodes::Node::Detail::has_data() const
 	|| allocated_memory.is_set
 	|| program_text.is_set
 	|| program_data.is_set
-	|| program_stack.is_set;
+	|| program_stack.is_set
+	|| total_used.is_set;
 }
 
 bool MemorySummary::Nodes::Node::Detail::has_operation() const
@@ -623,7 +625,8 @@ bool MemorySummary::Nodes::Node::Detail::has_operation() const
 	|| ydk::is_set(allocated_memory.yfilter)
 	|| ydk::is_set(program_text.yfilter)
 	|| ydk::is_set(program_data.yfilter)
-	|| ydk::is_set(program_stack.yfilter);
+	|| ydk::is_set(program_stack.yfilter)
+	|| ydk::is_set(total_used.yfilter);
 }
 
 std::string MemorySummary::Nodes::Node::Detail::get_segment_path() const
@@ -653,6 +656,7 @@ std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::Detai
     if (program_text.is_set || is_set(program_text.yfilter)) leaf_name_data.push_back(program_text.get_name_leafdata());
     if (program_data.is_set || is_set(program_data.yfilter)) leaf_name_data.push_back(program_data.get_name_leafdata());
     if (program_stack.is_set || is_set(program_stack.yfilter)) leaf_name_data.push_back(program_stack.get_name_leafdata());
+    if (total_used.is_set || is_set(total_used.yfilter)) leaf_name_data.push_back(total_used.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -785,6 +789,12 @@ void MemorySummary::Nodes::Node::Detail::set_value(const std::string & value_pat
         program_stack.value_namespace = name_space;
         program_stack.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "total-used")
+    {
+        total_used = value;
+        total_used.value_namespace = name_space;
+        total_used.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MemorySummary::Nodes::Node::Detail::set_filter(const std::string & value_path, YFilter yfilter)
@@ -853,11 +863,15 @@ void MemorySummary::Nodes::Node::Detail::set_filter(const std::string & value_pa
     {
         program_stack.yfilter = yfilter;
     }
+    if(value_path == "total-used")
+    {
+        total_used.yfilter = yfilter;
+    }
 }
 
 bool MemorySummary::Nodes::Node::Detail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "shared-window" || name == "page-size" || name == "ram-memory" || name == "free-physical-memory" || name == "private-physical-memory" || name == "system-ram-memory" || name == "free-application-memory" || name == "image-memory" || name == "boot-ram-size" || name == "reserved-memory" || name == "io-memory" || name == "flash-system" || name == "total-shared-window" || name == "allocated-memory" || name == "program-text" || name == "program-data" || name == "program-stack")
+    if(name == "shared-window" || name == "page-size" || name == "ram-memory" || name == "free-physical-memory" || name == "private-physical-memory" || name == "system-ram-memory" || name == "free-application-memory" || name == "image-memory" || name == "boot-ram-size" || name == "reserved-memory" || name == "io-memory" || name == "flash-system" || name == "total-shared-window" || name == "allocated-memory" || name == "program-text" || name == "program-data" || name == "program-stack" || name == "total-used")
         return true;
     return false;
 }

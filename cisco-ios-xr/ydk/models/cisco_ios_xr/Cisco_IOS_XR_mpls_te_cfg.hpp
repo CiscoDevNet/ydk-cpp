@@ -234,6 +234,7 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes : public ydk::Enti
         class AutoBandwidth; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth
         class Priority; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority
         class AffinityMask; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask
+        class ForwardingAdjacency; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency
         class Logging; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging
         class Bandwidth; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth
         class Autoroute; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute
@@ -245,6 +246,7 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes : public ydk::Enti
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth> auto_bandwidth;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority> priority; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask> affinity_mask; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency> forwarding_adjacency;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging> logging;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth> bandwidth; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute> autoroute;
@@ -344,6 +346,7 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelecti
 
         ydk::YLeaf tiebreaker; //type: MplsTePathSelectionTiebreaker
         ydk::YLeaf path_selection_hop_limit; //type: uint32
+        ydk::YLeaf path_selection_delay_limit; //type: uint32
         ydk::YLeaf path_selection_cost_limit; //type: uint32
         class Invalidation; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::Invalidation
 
@@ -391,6 +394,7 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf underflow_enable; //type: boolean
+        ydk::YLeaf resignal_last_bandwidth_time_out; //type: uint32
         ydk::YLeaf enabled; //type: boolean
         ydk::YLeaf application_frequency; //type: uint32
         ydk::YLeaf overflow_enable; //type: boolean
@@ -399,11 +403,13 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth : p
         class Overflow; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Overflow
         class BandwidthLimits; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::BandwidthLimits
         class AdjustmentThreshold; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AdjustmentThreshold
+        class AutoCapacity; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Underflow> underflow; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Overflow> overflow; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::BandwidthLimits> bandwidth_limits; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AdjustmentThreshold> adjustment_threshold; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity> auto_capacity;
         
 }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth
 
@@ -498,6 +504,32 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Ad
 }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AdjustmentThreshold
 
 
+class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity : public ydk::Entity
+{
+    public:
+        AutoCapacity();
+        ~AutoCapacity();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf nominal_bandwidth; //type: uint32
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf clones_minimum; //type: uint32
+        ydk::YLeaf split_bandwidth; //type: uint32
+        ydk::YLeaf merge_bandwidth; //type: uint32
+        ydk::YLeaf clones_maximum; //type: uint32
+
+}; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity
+
+
 class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority : public ydk::Entity
 {
     public:
@@ -540,6 +572,29 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask : pu
         ydk::YLeaf mask; //type: string
 
 }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask
+
+
+class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency : public ydk::Entity
+{
+    public:
+        ForwardingAdjacency();
+        ~ForwardingAdjacency();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf include_ipv6; //type: empty
+        ydk::YLeaf hold_time; //type: uint32
+
+}; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency
 
 
 class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging : public ydk::Entity
@@ -2428,6 +2483,7 @@ class MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAt
 
         ydk::YLeaf path_selection_exclude_list; //type: string
         ydk::YLeaf enable; //type: empty
+        ydk::YLeaf path_selection_delay_limit; //type: uint32
         ydk::YLeaf path_selection_cost_limit; //type: uint32
         class Invalidation; //type: MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::Invalidation
 
@@ -5799,6 +5855,7 @@ class MplsTe::GlobalAttributes::PceAttributes::PceStateful : public ydk::Entity
         ydk::YLeaf instantiation; //type: empty
         ydk::YLeaf cisco_extension; //type: empty
         ydk::YLeaf delegation; //type: empty
+        ydk::YLeaf autoroute_announce; //type: empty
         ydk::YLeaf report; //type: empty
         ydk::YLeaf enable; //type: empty
         class StatefulTimers; //type: MplsTe::GlobalAttributes::PceAttributes::PceStateful::StatefulTimers
@@ -6112,6 +6169,7 @@ class MplsTe::GlobalAttributes::PathSelection : public ydk::Entity
         ydk::YLeaf tiebreaker; //type: MplsTePathSelectionTiebreaker
         ydk::YLeaf metric; //type: MplsTePathSelectionMetric
         ydk::YLeaf loose_domain_match; //type: boolean
+        ydk::YLeaf delay_limit; //type: uint32
         class LooseMetrics; //type: MplsTe::GlobalAttributes::PathSelection::LooseMetrics
         class Invalidation; //type: MplsTe::GlobalAttributes::PathSelection::Invalidation
         class IgnoreOverloadRole; //type: MplsTe::GlobalAttributes::PathSelection::IgnoreOverloadRole
@@ -7694,6 +7752,7 @@ class MplsTe::GmplsNni::TunnelHeads::TunnelHead : public ydk::Entity
 
         ydk::YLeaf tunnel_id; //type: uint32
         ydk::YLeaf enable; //type: empty
+        ydk::YLeaf announce_srlg; //type: empty
         ydk::YLeaf restore_lsp_shutdown; //type: empty
         ydk::YLeaf current_lsp_shutdown; //type: empty
         ydk::YLeaf path_selection_metric; //type: MplsTePathSelectionMetric
@@ -8294,6 +8353,7 @@ class MplsTePathSelectionMetric : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf igp;
         static const ydk::Enum::YLeaf te;
+        static const ydk::Enum::YLeaf delay;
 
 };
 

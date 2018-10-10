@@ -959,6 +959,7 @@ class Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo : public ydk:
 class KexName : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf kex_not_applicable;
         static const ydk::Enum::YLeaf diffie_hellman_group1;
         static const ydk::Enum::YLeaf diffie_hellman_group14;
         static const ydk::Enum::YLeaf diffie_hellman_group15;
@@ -975,6 +976,7 @@ class KexName : public ydk::Enum
 class Hostkey : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf host_key_not_applicable;
         static const ydk::Enum::YLeaf ssh_dss;
         static const ydk::Enum::YLeaf ssh_rsa;
         static const ydk::Enum::YLeaf ecdsa_sha2_nistp521;
@@ -1027,6 +1029,7 @@ class States : public ydk::Enum
 class Mac : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf mac_not_applicable;
         static const ydk::Enum::YLeaf hmac_md5;
         static const ydk::Enum::YLeaf hmac_sha1;
         static const ydk::Enum::YLeaf hmac_sha2_256;
@@ -1038,6 +1041,7 @@ class Mac : public ydk::Enum
 class Cipher : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf cipher_not_applicable;
         static const ydk::Enum::YLeaf aes128_cbc;
         static const ydk::Enum::YLeaf aes192_cbc;
         static const ydk::Enum::YLeaf aes256_cbc;

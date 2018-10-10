@@ -1758,7 +1758,7 @@ bool UdpConnection::Nodes::Node::Statistics::PcbStatistics::has_leaf_or_child_of
 
 UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::PcbStatistic()
     :
-    pcb_address{YType::uint32, "pcb-address"},
+    pcb_address{YType::str, "pcb-address"},
     vrf_id{YType::uint32, "vrf-id"},
     is_paw_socket{YType::boolean, "is-paw-socket"}
         ,
@@ -4226,7 +4226,7 @@ bool UdpConnection::Nodes::Node::PcbDetails::has_leaf_or_child_of_name(const std
 
 UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbDetail()
     :
-    pcb_address{YType::uint32, "pcb-address"},
+    pcb_address{YType::str, "pcb-address"},
     af_name{YType::enumeration, "af-name"},
     local_process_id{YType::uint32, "local-process-id"},
     local_port{YType::uint16, "local-port"},
@@ -4745,7 +4745,7 @@ bool UdpConnection::Nodes::Node::PcbBriefs::has_leaf_or_child_of_name(const std:
 
 UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::PcbBrief()
     :
-    pcb_address{YType::uint32, "pcb-address"},
+    pcb_address{YType::str, "pcb-address"},
     af_name{YType::enumeration, "af-name"},
     local_port{YType::uint16, "local-port"},
     foreign_port{YType::uint16, "foreign-port"},

@@ -8,10 +8,187 @@
 #include <ydk/errors.hpp>
 
 #include "Cisco_IOS_XR_ipv4_bgp_cfg_0.hpp"
-#include "Cisco_IOS_XR_ipv4_bgp_cfg_1.hpp"
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_bgp_cfg {
+
+
+class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups : public ydk::Entity
+{
+    public:
+        SessionGroups();
+        ~SessionGroups();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SessionGroup; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup
+
+        ydk::YList session_group;
+        
+}; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups
+
+
+class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup : public ydk::Entity
+{
+    public:
+        SessionGroup();
+        ~SessionGroup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf session_group_name; //type: string
+        ydk::YLeaf session_group_add_member; //type: string
+        ydk::YLeaf internal_vpn_client_ibgp_ce; //type: boolean
+        ydk::YLeaf egress_peer_engineering; //type: boolean
+        ydk::YLeaf neighbor_graceful_restart_stalepath_time; //type: uint32
+        ydk::YLeaf shutdown; //type: boolean
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf ebgp_recv_dmz; //type: boolean
+        ydk::YLeaf neighbor_graceful_restart; //type: BgpNbrgr
+        ydk::YLeaf enforce_first_as; //type: boolean
+        ydk::YLeaf idle_watch_time; //type: uint32
+        ydk::YLeaf session_open_mode; //type: BgpTcpMode
+        ydk::YLeaf rpki_origin_as_validation_disable; //type: empty
+        ydk::YLeaf ebgp_send_dmz_enable_modes; //type: BgpEbgpSendDmzEnableMode
+        ydk::YLeaf suppress_all_capabilities; //type: boolean
+        ydk::YLeaf max_peers; //type: uint32
+        ydk::YLeaf rpki_bestpath_origin_as_allow_invalid; //type: empty
+        ydk::YLeaf additional_paths_send_capability; //type: BgpNbrCapAdditionalPathsCfg
+        ydk::YLeaf propagate_dmz_link_bandwidth; //type: boolean
+        ydk::YLeaf bfd_enable_modes; //type: BgpBfdEnableMode
+        ydk::YLeaf ttl_security; //type: boolean
+        ydk::YLeaf neighbor_graceful_restart_time; //type: uint32
+        ydk::YLeaf bfd_multiplier; //type: uint32
+        ydk::YLeaf bfd_minimum_interval; //type: uint32
+        ydk::YLeaf remote_as_list; //type: string
+        ydk::YLeaf additional_paths_receive_capability; //type: BgpNbrCapAdditionalPathsCfg
+        ydk::YLeaf ignore_connected_check_ebgp; //type: boolean
+        ydk::YLeaf suppress_four_byte_as_capability; //type: boolean
+        ydk::YLeaf update_source_interface; //type: string
+        ydk::YLeaf create; //type: empty
+        class LocalAddress; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress
+        class BmpActivates; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates
+        class EbgpMultihop; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop
+        class RemoteAs; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs
+        class LocalAs; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAs
+        class Password; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Password
+        class AdvertisementInterval; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AdvertisementInterval
+        class NeighborClusterId; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::NeighborClusterId
+        class Tcpmss; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tcpmss
+        class Tos; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tos
+        class UpdateInFiltering; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::UpdateInFiltering
+        class MsgLogOut; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::MsgLogOut
+        class AoKeychain; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain
+        class ReceiveBufferSize; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::ReceiveBufferSize
+        class MsgLogIn; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::MsgLogIn
+        class SendBufferSize; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::SendBufferSize
+        class Timers; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Timers
+        class Keychain; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Keychain
+        class GracefulMaintenance; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress> local_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates> bmp_activates;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop> ebgp_multihop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs> remote_as;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAs> local_as;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Password> password;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AdvertisementInterval> advertisement_interval; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::NeighborClusterId> neighbor_cluster_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tcpmss> tcpmss;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tos> tos;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::UpdateInFiltering> update_in_filtering;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::MsgLogOut> msg_log_out;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain> ao_keychain;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::ReceiveBufferSize> receive_buffer_size;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::MsgLogIn> msg_log_in;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::SendBufferSize> send_buffer_size;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Timers> timers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Keychain> keychain;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance> graceful_maintenance;
+        
+}; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup
+
+
+class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress : public ydk::Entity
+{
+    public:
+        LocalAddress();
+        ~LocalAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_address_disable; //type: boolean
+        ydk::YLeaf local_ip_address; //type: string
+
+}; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress
+
+
+class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates : public ydk::Entity
+{
+    public:
+        BmpActivates();
+        ~BmpActivates();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class BmpActivate; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate
+
+        ydk::YList bmp_activate;
+        
+}; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates
+
+
+class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate : public ydk::Entity
+{
+    public:
+        BmpActivate();
+        ~BmpActivate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf server_id; //type: uint32
+
+}; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate
 
 
 class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop : public ydk::Entity
@@ -265,6 +442,30 @@ class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroup
 }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::MsgLogOut
 
 
+class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain : public ydk::Entity
+{
+    public:
+        AoKeychain();
+        ~AoKeychain();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ao_keychain_disable; //type: boolean
+        ydk::YLeaf ao_keychain_name; //type: string
+        ydk::YLeaf ao_include_tcp_options; //type: boolean
+        ydk::YLeaf ao_accept_mismatch_connection; //type: boolean
+
+}; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain
+
+
 class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::ReceiveBufferSize : public ydk::Entity
 {
     public:
@@ -472,9 +673,7 @@ class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global : public ydk::En
         ydk::YLeaf neighbor_logging_detail; //type: empty
         ydk::YLeaf mvpn; //type: empty
         ydk::YLeaf rpki_origin_as_validation_disable; //type: empty
-        ydk::YLeaf rpki_origin_as_validity_signal_ibgp; //type: empty
         ydk::YLeaf global_scan_time; //type: uint32
-        ydk::YLeaf rpki_bestpath_use_origin_as_validity; //type: empty
         ydk::YLeaf rpki_origin_as_validation_time; //type: uint32
         ydk::YLeaf rpki_bestpath_origin_as_allow_invalid; //type: empty
         ydk::YLeaf graceful_restart_purge_time; //type: uint32
@@ -500,10 +699,14 @@ class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global : public ydk::En
         ydk::YLeaf unsafe_ebgp_policy; //type: empty
         ydk::YLeaf default_metric; //type: uint32
         ydk::YLeaf default_info_originate; //type: empty
+        ydk::YLeaf rpki_origin_as_validity_signal_ibgp; //type: empty
+        ydk::YLeaf rpki_bestpath_use_origin_as_validity; //type: empty
         ydk::YLeaf best_path_confederation_paths; //type: empty
         ydk::YLeaf best_path_as_multipath_relax; //type: empty
         ydk::YLeaf disable_auto_soft_reset; //type: empty
         ydk::YLeaf disable_msg_log; //type: empty
+        ydk::YLeaf best_path_igp_metric_ignore; //type: empty
+        ydk::YLeaf next_hop_res_allow_default; //type: empty
         ydk::YLeaf next_hop_mpls_fwd_ibgp; //type: empty
         ydk::YLeaf disable_neighbor_logging; //type: empty
         ydk::YLeaf best_path_med_always; //type: empty
@@ -1111,25 +1314,28 @@ class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Glob
         ydk::YLeaf use_igpsr_label; //type: empty
         ydk::YLeaf label_retain; //type: uint32
         ydk::YLeaf scan_time; //type: uint32
+        ydk::YLeaf source_route_target_policy; //type: string
         ydk::YLeaf rpki_origin_as_validation_disable; //type: empty
-        ydk::YLeaf rpki_origin_as_validity_signal_ibgp; //type: empty
         ydk::YLeaf update_limit_sub_group_ebgp; //type: uint32
         ydk::YLeaf update_limit_address_family; //type: uint32
-        ydk::YLeaf rpki_bestpath_use_origin_as_validity; //type: empty
         ydk::YLeaf update_limit_sub_group_ibgp; //type: uint32
-        ydk::YLeaf rpki_bestpath_origin_as_allow_invalid; //type: empty
         ydk::YLeaf disable_client_to_client_rr; //type: empty
         ydk::YLeaf next_hop_route_policy; //type: string
         ydk::YLeaf global_table_mcast; //type: empty
         ydk::YLeaf wait_rib_install; //type: empty
         ydk::YLeaf prefix_sid_map; //type: empty
+        ydk::YLeaf rpki_origin_as_validation_enable; //type: empty
         ydk::YLeaf dynamic_med_interval; //type: uint32
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf table_policy; //type: string
         ydk::YLeaf attribute_download; //type: empty
         ydk::YLeaf best_external; //type: boolean
+        ydk::YLeaf rpki_origin_as_validity_signal_ibgp; //type: empty
         ydk::YLeaf additional_paths_receive; //type: BgpAfAdditionalPathsCfg
         ydk::YLeaf permanent_network; //type: string
+        ydk::YLeaf rpki_bestpath_use_origin_as_validity; //type: empty
+        ydk::YLeaf srv6_label_allocation_mode; //type: string
+        ydk::YLeaf rpki_bestpath_origin_as_allow_invalid; //type: empty
         ydk::YLeaf next_hop_resolution_prefix_length_minimum; //type: uint32
         ydk::YLeaf reset_weight_on_import; //type: boolean
         ydk::YLeaf additional_paths_send; //type: BgpAfAdditionalPathsCfg
@@ -1283,6 +1489,7 @@ class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Glob
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf table_policy; //type: string
         ydk::YLeaf source_rt_import_policy; //type: empty
+        ydk::YLeaf srv6_label_allocation_mode; //type: string
         class LabelMode; //type: Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll::LabelMode
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll::LabelMode> label_mode;
@@ -1957,6 +2164,7 @@ class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Glob
 
         ydk::YLeaf all; //type: boolean
         ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf un_labeled_path; //type: boolean
 
 }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AllocateLabel
 

@@ -6423,6 +6423,7 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PolicyMapRule()
     , pbr_redirect(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect>())
     , pbr_forward(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward>())
     , service_function_path(nullptr) // presence node
+    , http_enrichment(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment>())
 {
     shape->parent = this;
     min_bandwidth->parent = this;
@@ -6438,6 +6439,7 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PolicyMapRule()
     react->parent = this;
     pbr_redirect->parent = this;
     pbr_forward->parent = this;
+    http_enrichment->parent = this;
 
     yang_name = "policy-map-rule"; yang_parent_name = "policy-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -6479,7 +6481,8 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::has_data() const
 	|| (react !=  nullptr && react->has_data())
 	|| (pbr_redirect !=  nullptr && pbr_redirect->has_data())
 	|| (pbr_forward !=  nullptr && pbr_forward->has_data())
-	|| (service_function_path !=  nullptr && service_function_path->has_data());
+	|| (service_function_path !=  nullptr && service_function_path->has_data())
+	|| (http_enrichment !=  nullptr && http_enrichment->has_data());
 }
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::has_operation() const
@@ -6515,7 +6518,8 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::has_operation() const
 	|| (react !=  nullptr && react->has_operation())
 	|| (pbr_redirect !=  nullptr && pbr_redirect->has_operation())
 	|| (pbr_forward !=  nullptr && pbr_forward->has_operation())
-	|| (service_function_path !=  nullptr && service_function_path->has_operation());
+	|| (service_function_path !=  nullptr && service_function_path->has_operation())
+	|| (http_enrichment !=  nullptr && http_enrichment->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get_segment_path() const
@@ -6692,6 +6696,15 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get
         return service_function_path;
     }
 
+    if(child_yang_name == "http-enrichment")
+    {
+        if(http_enrichment == nullptr)
+        {
+            http_enrichment = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment>();
+        }
+        return http_enrichment;
+    }
+
     return nullptr;
 }
 
@@ -6781,6 +6794,11 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     if(service_function_path != nullptr)
     {
         children["service-function-path"] = service_function_path;
+    }
+
+    if(http_enrichment != nullptr)
+    {
+        children["http-enrichment"] = http_enrichment;
     }
 
     return children;
@@ -6906,7 +6924,7 @@ void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::set_filter(const std::
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "shape" || name == "min-bandwidth" || name == "bandwidth-remaining" || name == "queue-limit" || name == "pfc" || name == "random-detect" || name == "set" || name == "police" || name == "service-policy" || name == "cac-local" || name == "flow-params" || name == "metrics-ipcbr" || name == "react" || name == "pbr-redirect" || name == "pbr-forward" || name == "service-function-path" || name == "class-name" || name == "class-type" || name == "priority-level" || name == "default-red" || name == "ecn-red" || name == "http-redirect" || name == "pbr-transmit" || name == "pbr-drop" || name == "decap-gre" || name == "service-fragment" || name == "fragment")
+    if(name == "shape" || name == "min-bandwidth" || name == "bandwidth-remaining" || name == "queue-limit" || name == "pfc" || name == "random-detect" || name == "set" || name == "police" || name == "service-policy" || name == "cac-local" || name == "flow-params" || name == "metrics-ipcbr" || name == "react" || name == "pbr-redirect" || name == "pbr-forward" || name == "service-function-path" || name == "http-enrichment" || name == "class-name" || name == "class-type" || name == "priority-level" || name == "default-red" || name == "ecn-red" || name == "http-redirect" || name == "pbr-transmit" || name == "pbr-drop" || name == "decap-gre" || name == "service-fragment" || name == "fragment")
         return true;
     return false;
 }
@@ -12822,6 +12840,126 @@ void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::s
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path-id" || name == "index" || name == "metadata")
+        return true;
+    return false;
+}
+
+PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment::HttpEnrichment()
+    :
+    subscribermac{YType::empty, "subscribermac"},
+    subscriberip{YType::empty, "subscriberip"},
+    hostname{YType::empty, "hostname"},
+    bngidentifierinterface{YType::empty, "bngidentifierinterface"}
+{
+
+    yang_name = "http-enrichment"; yang_parent_name = "policy-map-rule"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment::~HttpEnrichment()
+{
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment::has_data() const
+{
+    if (is_presence_container) return true;
+    return subscribermac.is_set
+	|| subscriberip.is_set
+	|| hostname.is_set
+	|| bngidentifierinterface.is_set;
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(subscribermac.yfilter)
+	|| ydk::is_set(subscriberip.yfilter)
+	|| ydk::is_set(hostname.yfilter)
+	|| ydk::is_set(bngidentifierinterface.yfilter);
+}
+
+std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "http-enrichment";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (subscribermac.is_set || is_set(subscribermac.yfilter)) leaf_name_data.push_back(subscribermac.get_name_leafdata());
+    if (subscriberip.is_set || is_set(subscriberip.yfilter)) leaf_name_data.push_back(subscriberip.get_name_leafdata());
+    if (hostname.is_set || is_set(hostname.yfilter)) leaf_name_data.push_back(hostname.get_name_leafdata());
+    if (bngidentifierinterface.is_set || is_set(bngidentifierinterface.yfilter)) leaf_name_data.push_back(bngidentifierinterface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "subscribermac")
+    {
+        subscribermac = value;
+        subscribermac.value_namespace = name_space;
+        subscribermac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriberip")
+    {
+        subscriberip = value;
+        subscriberip.value_namespace = name_space;
+        subscriberip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hostname")
+    {
+        hostname = value;
+        hostname.value_namespace = name_space;
+        hostname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bngidentifierinterface")
+    {
+        bngidentifierinterface = value;
+        bngidentifierinterface.value_namespace = name_space;
+        bngidentifierinterface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "subscribermac")
+    {
+        subscribermac.yfilter = yfilter;
+    }
+    if(value_path == "subscriberip")
+    {
+        subscriberip.yfilter = yfilter;
+    }
+    if(value_path == "hostname")
+    {
+        hostname.yfilter = yfilter;
+    }
+    if(value_path == "bngidentifierinterface")
+    {
+        bngidentifierinterface.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "subscribermac" || name == "subscriberip" || name == "hostname" || name == "bngidentifierinterface")
         return true;
     return false;
 }

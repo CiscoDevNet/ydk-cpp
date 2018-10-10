@@ -10,11 +10,11 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_mdt_cfg {
 
-class MdtSubscriptions : public ydk::Entity
+class MdtConfigData : public ydk::Entity
 {
     public:
-        MdtSubscriptions();
-        ~MdtSubscriptions();
+        MdtConfigData();
+        ~MdtConfigData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -31,16 +31,16 @@ class MdtSubscriptions : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class MdtSubscription; //type: MdtSubscriptions::MdtSubscription
-        class MdtXfrm; //type: MdtSubscriptions::MdtXfrm
+        class MdtSubscription; //type: MdtConfigData::MdtSubscription
+        class MdtXfrm; //type: MdtConfigData::MdtXfrm
 
         ydk::YList mdt_subscription;
         ydk::YList mdt_xfrm;
         
-}; // MdtSubscriptions
+}; // MdtConfigData
 
 
-class MdtSubscriptions::MdtSubscription : public ydk::Entity
+class MdtConfigData::MdtSubscription : public ydk::Entity
 {
     public:
         MdtSubscription();
@@ -58,16 +58,16 @@ class MdtSubscriptions::MdtSubscription : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf subscription_id; //type: uint32
-        class Base; //type: MdtSubscriptions::MdtSubscription::Base
-        class MdtReceivers; //type: MdtSubscriptions::MdtSubscription::MdtReceivers
+        class Base; //type: MdtConfigData::MdtSubscription::Base
+        class MdtReceivers; //type: MdtConfigData::MdtSubscription::MdtReceivers
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtSubscriptions::MdtSubscription::Base> base;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtConfigData::MdtSubscription::Base> base;
         ydk::YList mdt_receivers;
         
-}; // MdtSubscriptions::MdtSubscription
+}; // MdtConfigData::MdtSubscription
 
 
-class MdtSubscriptions::MdtSubscription::Base : public ydk::Entity
+class MdtConfigData::MdtSubscription::Base : public ydk::Entity
 {
     public:
         Base();
@@ -95,10 +95,10 @@ class MdtSubscriptions::MdtSubscription::Base : public ydk::Entity
         ydk::YLeaf tdl_uri; //type: string
         ydk::YLeaf transform_name; //type: string
 
-}; // MdtSubscriptions::MdtSubscription::Base
+}; // MdtConfigData::MdtSubscription::Base
 
 
-class MdtSubscriptions::MdtSubscription::MdtReceivers : public ydk::Entity
+class MdtConfigData::MdtSubscription::MdtReceivers : public ydk::Entity
 {
     public:
         MdtReceivers();
@@ -117,12 +117,12 @@ class MdtSubscriptions::MdtSubscription::MdtReceivers : public ydk::Entity
         ydk::YLeaf address; //type: string
         ydk::YLeaf port; //type: uint16
         ydk::YLeaf protocol; //type: string
-        ydk::YLeaf security_profile; //type: string
+        ydk::YLeaf profile; //type: string
 
-}; // MdtSubscriptions::MdtSubscription::MdtReceivers
+}; // MdtConfigData::MdtSubscription::MdtReceivers
 
 
-class MdtSubscriptions::MdtXfrm : public ydk::Entity
+class MdtConfigData::MdtXfrm : public ydk::Entity
 {
     public:
         MdtXfrm();
@@ -141,16 +141,16 @@ class MdtSubscriptions::MdtXfrm : public ydk::Entity
 
         ydk::YLeaf name; //type: string
         ydk::YLeaf fully_specify; //type: boolean
-        class MdtXfrmInput; //type: MdtSubscriptions::MdtXfrm::MdtXfrmInput
-        class MdtXfrmOp; //type: MdtSubscriptions::MdtXfrm::MdtXfrmOp
+        class MdtXfrmInput; //type: MdtConfigData::MdtXfrm::MdtXfrmInput
+        class MdtXfrmOp; //type: MdtConfigData::MdtXfrm::MdtXfrmOp
 
         ydk::YList mdt_xfrm_input;
         ydk::YList mdt_xfrm_op;
         
-}; // MdtSubscriptions::MdtXfrm
+}; // MdtConfigData::MdtXfrm
 
 
-class MdtSubscriptions::MdtXfrm::MdtXfrmInput : public ydk::Entity
+class MdtConfigData::MdtXfrm::MdtXfrmInput : public ydk::Entity
 {
     public:
         MdtXfrmInput();
@@ -171,14 +171,14 @@ class MdtSubscriptions::MdtXfrm::MdtXfrmInput : public ydk::Entity
         ydk::YLeaf join_key; //type: string
         ydk::YLeaf attr_type; //type: MdtXfrmAttrType
         ydk::YLeaf lop; //type: MdtXfrmLogicOp
-        class MdtXfrmInputField; //type: MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField
+        class MdtXfrmInputField; //type: MdtConfigData::MdtXfrm::MdtXfrmInput::MdtXfrmInputField
 
         ydk::YList mdt_xfrm_input_field;
         
-}; // MdtSubscriptions::MdtXfrm::MdtXfrmInput
+}; // MdtConfigData::MdtXfrm::MdtXfrmInput
 
 
-class MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField : public ydk::Entity
+class MdtConfigData::MdtXfrm::MdtXfrmInput::MdtXfrmInputField : public ydk::Entity
 {
     public:
         MdtXfrmInputField();
@@ -196,10 +196,10 @@ class MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField : public ydk::E
 
         ydk::YLeaf field; //type: string
 
-}; // MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField
+}; // MdtConfigData::MdtXfrm::MdtXfrmInput::MdtXfrmInputField
 
 
-class MdtSubscriptions::MdtXfrm::MdtXfrmOp : public ydk::Entity
+class MdtConfigData::MdtXfrm::MdtXfrmOp : public ydk::Entity
 {
     public:
         MdtXfrmOp();
@@ -216,16 +216,16 @@ class MdtSubscriptions::MdtXfrm::MdtXfrmOp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: uint32
-        class MdtXfrmOpFilters; //type: MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters
-        class MdtXfrmOpFields; //type: MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields
+        class MdtXfrmOpFilters; //type: MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters
+        class MdtXfrmOpFields; //type: MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields
 
         ydk::YList mdt_xfrm_op_filters;
         ydk::YList mdt_xfrm_op_fields;
         
-}; // MdtSubscriptions::MdtXfrm::MdtXfrmOp
+}; // MdtConfigData::MdtXfrm::MdtXfrmOp
 
 
-class MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters : public ydk::Entity
+class MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters : public ydk::Entity
 {
     public:
         MdtXfrmOpFilters();
@@ -245,16 +245,16 @@ class MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters : public ydk::Entit
         ydk::YLeaf field; //type: string
         ydk::YLeaf lop; //type: MdtXfrmLogicOp
         ydk::YLeaf next_lop; //type: MdtXfrmLogicOp
-        class OpEvent; //type: MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent
-        class Condition; //type: MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition
+        class OpEvent; //type: MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent
+        class Condition; //type: MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent> op_event;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition> condition;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent> op_event;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition> condition;
         
-}; // MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters
+}; // MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters
 
 
-class MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent : public ydk::Entity
+class MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent : public ydk::Entity
 {
     public:
         OpEvent();
@@ -272,10 +272,10 @@ class MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent : public y
 
         ydk::YLeaf onchange; //type: boolean
 
-}; // MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent
+}; // MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent
 
 
-class MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition : public ydk::Entity
+class MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition : public ydk::Entity
 {
     public:
         Condition();
@@ -294,10 +294,10 @@ class MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition : public
         ydk::YLeaf operator_; //type: MdtXfrmOperator
         ydk::YLeaf value_; //type: string
 
-}; // MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition
+}; // MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition
 
 
-class MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields : public ydk::Entity
+class MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields : public ydk::Entity
 {
     public:
         MdtXfrmOpFields();
@@ -317,7 +317,7 @@ class MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields : public ydk::Entity
         ydk::YLeaf field; //type: string
         ydk::YLeaf op_type; //type: MdtXfrmOpType
 
-}; // MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields
+}; // MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields
 
 class MdtXfrmOperator : public ydk::Enum
 {
@@ -354,6 +354,7 @@ class MdtXfrmAttrType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf mdt_xfrm_attr_none;
         static const ydk::Enum::YLeaf mandatory;
+        static const ydk::Enum::YLeaf primary;
 
 };
 

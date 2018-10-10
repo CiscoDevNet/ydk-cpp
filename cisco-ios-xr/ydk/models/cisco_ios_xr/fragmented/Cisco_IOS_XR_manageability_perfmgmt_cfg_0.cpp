@@ -515,8 +515,8 @@ bool PerfMgmt::Resources::DumpLocal::has_leaf_or_child_of_name(const std::string
 
 PerfMgmt::Resources::MemoryResources::MemoryResources()
     :
-    max_limit{YType::int32, "max-limit"},
-    min_reserved{YType::int32, "min-reserved"}
+    max_limit{YType::uint32, "max-limit"},
+    min_reserved{YType::uint32, "min-reserved"}
 {
 
     yang_name = "memory-resources"; yang_parent_name = "resources"; is_top_level_class = false; has_list_ancestor = false; 
@@ -16673,8 +16673,8 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::has_leaf_o
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::AddressWithdrawMsgsRcvd()
     :
     operator_{YType::enumeration, "operator"},
-    value_{YType::int32, "value"},
-    end_range_value{YType::int32, "end-range-value"},
+    value_{YType::uint32, "value"},
+    end_range_value{YType::uint32, "end-range-value"},
     percent{YType::boolean, "percent"},
     rearm_type{YType::enumeration, "rearm-type"},
     rearm_window{YType::uint32, "rearm-window"}
@@ -16821,8 +16821,8 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWit
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::LabelWithdrawMsgsRcvd()
     :
     operator_{YType::enumeration, "operator"},
-    value_{YType::int32, "value"},
-    end_range_value{YType::int32, "end-range-value"},
+    value_{YType::uint32, "value"},
+    end_range_value{YType::uint32, "end-range-value"},
     percent{YType::boolean, "percent"},
     rearm_type{YType::enumeration, "rearm-type"},
     rearm_window{YType::uint32, "rearm-window"}
@@ -16969,8 +16969,8 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithd
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::AddressWithdrawMsgsSent()
     :
     operator_{YType::enumeration, "operator"},
-    value_{YType::int32, "value"},
-    end_range_value{YType::int32, "end-range-value"},
+    value_{YType::uint32, "value"},
+    end_range_value{YType::uint32, "end-range-value"},
     percent{YType::boolean, "percent"},
     rearm_type{YType::enumeration, "rearm-type"},
     rearm_window{YType::uint32, "rearm-window"}
@@ -17117,8 +17117,8 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWit
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::LabelWithdrawMsgsSent()
     :
     operator_{YType::enumeration, "operator"},
-    value_{YType::int32, "value"},
-    end_range_value{YType::int32, "end-range-value"},
+    value_{YType::uint32, "value"},
+    end_range_value{YType::uint32, "end-range-value"},
     percent{YType::boolean, "percent"},
     rearm_type{YType::enumeration, "rearm-type"},
     rearm_window{YType::uint32, "rearm-window"}
@@ -17265,8 +17265,8 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithd
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::NotificationMsgsRcvd()
     :
     operator_{YType::enumeration, "operator"},
-    value_{YType::int32, "value"},
-    end_range_value{YType::int32, "end-range-value"},
+    value_{YType::uint32, "value"},
+    end_range_value{YType::uint32, "end-range-value"},
     percent{YType::boolean, "percent"},
     rearm_type{YType::enumeration, "rearm-type"},
     rearm_window{YType::uint32, "rearm-window"}
@@ -17561,8 +17561,8 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsR
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::NotificationMsgsSent()
     :
     operator_{YType::enumeration, "operator"},
-    value_{YType::int32, "value"},
-    end_range_value{YType::int32, "end-range-value"},
+    value_{YType::uint32, "value"},
+    end_range_value{YType::uint32, "end-range-value"},
     percent{YType::boolean, "percent"},
     rearm_type{YType::enumeration, "rearm-type"},
     rearm_window{YType::uint32, "rearm-window"}
@@ -17709,8 +17709,8 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Notificati
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::TotalMsgsSent()
     :
     operator_{YType::enumeration, "operator"},
-    value_{YType::int32, "value"},
-    end_range_value{YType::int32, "end-range-value"},
+    value_{YType::uint32, "value"},
+    end_range_value{YType::uint32, "end-range-value"},
     percent{YType::boolean, "percent"},
     rearm_type{YType::enumeration, "rearm-type"},
     rearm_window{YType::uint32, "rearm-window"}
@@ -17857,8 +17857,8 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsS
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::LabelReleaseMsgsRcvd()
     :
     operator_{YType::enumeration, "operator"},
-    value_{YType::int32, "value"},
-    end_range_value{YType::int32, "end-range-value"},
+    value_{YType::uint32, "value"},
+    end_range_value{YType::uint32, "end-range-value"},
     percent{YType::boolean, "percent"},
     rearm_type{YType::enumeration, "rearm-type"},
     rearm_window{YType::uint32, "rearm-window"}

@@ -15,6 +15,423 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_bgp_oper {
 
 
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity : public ydk::Entity
+{
+    public:
+        ExtendedCommunity();
+        ~ExtendedCommunity();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute : public ydk::Entity
+{
+    public:
+        UnknownAttribute();
+        ~UnknownAttribute();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::Cluster : public ydk::Entity
+{
+    public:
+        Cluster();
+        ~Cluster();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::Cluster
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie : public ydk::Entity
+{
+    public:
+        L2tpv3Cookie();
+        ~L2tpv3Cookie();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue : public ydk::Entity
+{
+    public:
+        ConnectorValue();
+        ~ConnectorValue();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::PmsiValue : public ydk::Entity
+{
+    public:
+        PmsiValue();
+        ~PmsiValue();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::PmsiValue
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::LsAttr : public ydk::Entity
+{
+    public:
+        LsAttr();
+        ~LsAttr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::LsAttr
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel : public ydk::Entity
+{
+    public:
+        PeDistinguisherLabel();
+        ~PeDistinguisherLabel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pe_address; //type: string
+        ydk::YLeaf label; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity : public ydk::Entity
+{
+    public:
+        LargeCommunity();
+        ~LargeCommunity();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf global_admin; //type: uint32
+        ydk::YLeaf local_data1; //type: uint32
+        ydk::YLeaf local_data2; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet : public ydk::Entity
+{
+    public:
+        AttrSet();
+        ~AttrSet();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_metric_present; //type: boolean
+        ydk::YLeaf is_local_pref_present; //type: boolean
+        ydk::YLeaf is_atomic_aggregate_present; //type: boolean
+        ydk::YLeaf is_aggregator_present; //type: boolean
+        ydk::YLeaf is_origin_present; //type: boolean
+        ydk::YLeaf is_as_path_present; //type: boolean
+        ydk::YLeaf is_community_present; //type: boolean
+        ydk::YLeaf is_extended_community_present; //type: boolean
+        ydk::YLeaf is_ssa_present; //type: boolean
+        ydk::YLeaf is_connector_present; //type: boolean
+        ydk::YLeaf is_pmsi_present; //type: boolean
+        ydk::YLeaf is_pppmp_present; //type: boolean
+        ydk::YLeaf is_aigp_present; //type: boolean
+        ydk::YLeaf is_pe_distinguisher_label_present; //type: boolean
+        ydk::YLeaf is_ls_attribute_present; //type: boolean
+        ydk::YLeaf is_label_index_present; //type: boolean
+        ydk::YLeaf neighbor_as; //type: uint32
+        ydk::YLeaf aggregator_as; //type: uint32
+        ydk::YLeaf aggregator_address; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf local_preference; //type: uint32
+        ydk::YLeaf origin; //type: uint16
+        ydk::YLeaf as_path; //type: string
+        ydk::YLeaf extended_community_flags; //type: uint8
+        ydk::YLeaf originator; //type: string
+        ydk::YLeaf l2tpv3_session_id; //type: uint32
+        ydk::YLeaf connector_type; //type: uint16
+        ydk::YLeaf aigp_metric_value; //type: uint64
+        ydk::YLeaf pmsi_type; //type: uint16
+        ydk::YLeaf pmsi_flags; //type: uint8
+        ydk::YLeaf pmsi_label; //type: uint32
+        ydk::YLeaf ppm_pvalue; //type: uint32
+        ydk::YLeaf is_large_community_present; //type: boolean
+        class PrefixSidAttr; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr
+        class TunnelEncap; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap
+        class Community; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::Community
+        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity
+        class UnknownAttribute; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::UnknownAttribute
+        class Cluster; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::Cluster
+        class L2tpv3Cookie; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie
+        class ConnectorValue; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::ConnectorValue
+        class PmsiValue; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::PmsiValue
+        class LsAttr; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::LsAttr
+        class PeDistinguisherLabel; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel
+        class LargeCommunity; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::LargeCommunity
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr> prefix_sid_attr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap> tunnel_encap;
+        ydk::YList community;
+        ydk::YList extended_community;
+        ydk::YList unknown_attribute;
+        ydk::YList cluster;
+        ydk::YList l2tpv3_cookie;
+        ydk::YList connector_value;
+        ydk::YList pmsi_value;
+        ydk::YList ls_attr;
+        ydk::YList pe_distinguisher_label;
+        ydk::YList large_community;
+        
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr : public ydk::Entity
+{
+    public:
+        PrefixSidAttr();
+        ~PrefixSidAttr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PrefixSidTlv; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv
+
+        ydk::YList prefix_sid_tlv;
+        
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv : public ydk::Entity
+{
+    public:
+        PrefixSidTlv();
+        ~PrefixSidTlv();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf type; //type: BgpPrefixSid
+        ydk::YLeaf len; //type: uint16
+        ydk::YLeaf val; //type: string
+
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap : public ydk::Entity
+{
+    public:
+        TunnelEncap();
+        ~TunnelEncap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SrPolicy; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy> sr_policy;
+        
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy : public ydk::Entity
+{
+    public:
+        SrPolicy();
+        ~SrPolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tunnel_encap_type; //type: uint16
+        ydk::YLeaf preference; //type: uint32
+        ydk::YLeaf state; //type: boolean
+        ydk::YLeaf request_state; //type: BgpSrpolicyReqState
+        ydk::YLeaf usable; //type: boolean
+        class BindingSid; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid
+        class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
+        class SegmentList; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid> binding_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid> allocated_binding_sid;
+        ydk::YList segment_list;
+        
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid : public ydk::Entity
+{
+    public:
+        BindingSid();
+        ~BindingSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf type; //type: BgpBindingSid
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid
+
+
+class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid : public ydk::Entity
+{
+    public:
+        AllocatedBindingSid();
+        ~AllocatedBindingSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf type; //type: BgpBindingSid
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
+
+
 class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::PathLabeledTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList : public ydk::Entity
 {
     public:
@@ -774,6 +1191,8 @@ class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPa
         ydk::YLeaf is_orig_src_rd_present; //type: boolean
         ydk::YLeaf af_name; //type: BgpAfi
         ydk::YLeaf route_distinguisher; //type: string
+        ydk::YLeaf mac_ip_present; //type: boolean
+        ydk::YLeaf mac_ip; //type: string
         class BgpPrefix; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::PathInformation::BgpPrefix
         class NeighborAddress; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::PathInformation::NeighborAddress
         class NextHop; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::PathInformation::NextHop
@@ -1269,9 +1688,14 @@ class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPa
         ydk::YLeaf is_tunnel_registered; //type: boolean
         ydk::YLeaf tunnel_v6_required; //type: boolean
         ydk::YLeaf tunnel_v6_enabled; //type: boolean
+        ydk::YLeaf tunnel_notif_first_rcvd; //type: boolean
+        ydk::YLeaf tunnel_state_skip_reg; //type: boolean
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf tunnel_if_handle; //type: uint32
         ydk::YLeaf last_tunnel_update; //type: uint32
+        ydk::YLeaf tunnel_color; //type: uint32
+        ydk::YLeaf is_tunnel_color_only; //type: boolean
+        ydk::YLeaf tunnel_endpoint_afi; //type: BgpAfi
 
 }; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::PathInformation::NhTunnel
 
@@ -2098,6 +2522,7 @@ class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf is_neighbor; //type: boolean
+        ydk::YLeaf update_group_afi; //type: uint8
         ydk::YLeaf update_group_number; //type: uint32
         class NeighborAddress; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::PathInformation::LocalPeersAdvertisedTo::NeighborAddress
 
@@ -2258,6 +2683,7 @@ class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf is_neighbor; //type: boolean
+        ydk::YLeaf update_group_afi; //type: uint8
         ydk::YLeaf update_group_number; //type: uint32
         class NeighborAddress; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::PathInformation::PePeersAdvertisedTo::NeighborAddress
 
@@ -2418,6 +2844,7 @@ class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf is_neighbor; //type: boolean
+        ydk::YLeaf update_group_afi; //type: uint8
         ydk::YLeaf update_group_number; //type: uint32
         class NeighborAddress; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::PathInformation::BestPathOrrBitfield::NeighborAddress
 
@@ -2578,6 +3005,7 @@ class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf is_neighbor; //type: boolean
+        ydk::YLeaf update_group_afi; //type: uint8
         ydk::YLeaf update_group_number; //type: uint32
         class NeighborAddress; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::PathInformation::AddPathOrrBitfield::NeighborAddress
 
@@ -2940,6 +3368,7 @@ class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPa
         ydk::YLeaf preference; //type: uint32
         ydk::YLeaf state; //type: boolean
         ydk::YLeaf request_state; //type: BgpSrpolicyReqState
+        ydk::YLeaf usable; //type: boolean
         class BindingSid; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid
         class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid
         class SegmentList; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList
@@ -3425,6 +3854,7 @@ class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPa
         ydk::YLeaf preference; //type: uint32
         ydk::YLeaf state; //type: boolean
         ydk::YLeaf request_state; //type: BgpSrpolicyReqState
+        ydk::YLeaf usable; //type: boolean
         class BindingSid; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid
         class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
         class SegmentList; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList
@@ -3654,423 +4084,6 @@ class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPa
         ydk::YLeaf entry; //type: uint8
 
 }; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::AttrSet::ConnectorValue
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::AttrSet::PmsiValue : public ydk::Entity
-{
-    public:
-        PmsiValue();
-        ~PmsiValue();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint8
-
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::AttrSet::PmsiValue
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::AttrSet::LsAttr : public ydk::Entity
-{
-    public:
-        LsAttr();
-        ~LsAttr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint8
-
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::AttrSet::LsAttr
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel : public ydk::Entity
-{
-    public:
-        PeDistinguisherLabel();
-        ~PeDistinguisherLabel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pe_address; //type: string
-        ydk::YLeaf label; //type: uint32
-
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::AttrSet::LargeCommunity : public ydk::Entity
-{
-    public:
-        LargeCommunity();
-        ~LargeCommunity();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf global_admin; //type: uint32
-        ydk::YLeaf local_data1; //type: uint32
-        ydk::YLeaf local_data2; //type: uint32
-
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::AttrSet::LargeCommunity
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RnhAddr : public ydk::Entity
-{
-    public:
-        RnhAddr();
-        ~RnhAddr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf len; //type: BgpRnhAddrLen
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-        ydk::YLeaf mac_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RnhAddr
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp : public ydk::Entity
-{
-    public:
-        RibrnhIp();
-        ~RibrnhIp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf afi; //type: BgpAfi
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv4_mcast_address; //type: string
-        ydk::YLeaf ipv4_label_address; //type: string
-        ydk::YLeaf ipv4_tunnel_address; //type: string
-        ydk::YLeaf ipv4_mdt_address; //type: string
-        ydk::YLeaf ipv4vpn_address; //type: string
-        ydk::YLeaf ipv4vpna_mcastddress; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-        ydk::YLeaf ipv6_mcast_address; //type: string
-        ydk::YLeaf ipv6_label_address; //type: string
-        ydk::YLeaf ipv6vpn_address; //type: string
-        ydk::YLeaf ipv6vpn_mcast_address; //type: string
-        ydk::YLeaf rt_constraint_address; //type: string
-        ydk::YLeaf ipv6mvpn_address; //type: string
-        ydk::YLeaf ipv4mvpn_address; //type: string
-        ydk::YLeaf l2vpn_evpn_address; //type: string
-        ydk::YLeaf ls_ls_address; //type: string
-        ydk::YLeaf ipv4_flowspec_address; //type: string
-        ydk::YLeaf ipv6_flowspec_address; //type: string
-        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
-        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
-        
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress : public ydk::Entity
-{
-    public:
-        L2vpnVplsAddress();
-        ~L2vpnVplsAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress : public ydk::Entity
-{
-    public:
-        L2vpnMspwAddress();
-        ~L2vpnMspwAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv4SrPolicyAddress();
-        ~Ipv4SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv4_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv6SrPolicyAddress();
-        ~Ipv6SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv6_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::Paths::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo : public ydk::Entity
-{
-    public:
-        AdvPathInfo();
-        ~AdvPathInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf no_path; //type: boolean
-        ydk::YLeaf af_name; //type: BgpAfi
-        ydk::YLeaf route_distinguisher; //type: string
-        ydk::YLeaf source_route_distinguisher; //type: string
-        ydk::YLeaf vrf_name; //type: string
-        class NeighborAddressXr; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr
-        class PathInfoAfterPolicyIn; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::PathInfoAfterPolicyIn
-        class PathInfoAfterPolicyOut; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::PathInfoAfterPolicyOut
-        class AttributesAfterPolicyIn; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::AttributesAfterPolicyIn
-        class AttributesAfterPolicyOut; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::AttributesAfterPolicyOut
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr> neighbor_address_xr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::PathInfoAfterPolicyIn> path_info_after_policy_in;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::PathInfoAfterPolicyOut> path_info_after_policy_out;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::AttributesAfterPolicyIn> attributes_after_policy_in;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::AttributesAfterPolicyOut> attributes_after_policy_out;
-        
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr : public ydk::Entity
-{
-    public:
-        NeighborAddressXr();
-        ~NeighborAddressXr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf afi; //type: BgpAfi
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv4_mcast_address; //type: string
-        ydk::YLeaf ipv4_label_address; //type: string
-        ydk::YLeaf ipv4_tunnel_address; //type: string
-        ydk::YLeaf ipv4_mdt_address; //type: string
-        ydk::YLeaf ipv4vpn_address; //type: string
-        ydk::YLeaf ipv4vpna_mcastddress; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-        ydk::YLeaf ipv6_mcast_address; //type: string
-        ydk::YLeaf ipv6_label_address; //type: string
-        ydk::YLeaf ipv6vpn_address; //type: string
-        ydk::YLeaf ipv6vpn_mcast_address; //type: string
-        ydk::YLeaf rt_constraint_address; //type: string
-        ydk::YLeaf ipv6mvpn_address; //type: string
-        ydk::YLeaf ipv4mvpn_address; //type: string
-        ydk::YLeaf l2vpn_evpn_address; //type: string
-        ydk::YLeaf ls_ls_address; //type: string
-        ydk::YLeaf ipv4_flowspec_address; //type: string
-        ydk::YLeaf ipv6_flowspec_address; //type: string
-        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
-        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::Ipv6SrPolicyAddress
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
-        
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::L2vpnVplsAddress : public ydk::Entity
-{
-    public:
-        L2vpnVplsAddress();
-        ~L2vpnVplsAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::L2vpnVplsAddress
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::L2vpnMspwAddress : public ydk::Entity
-{
-    public:
-        L2vpnMspwAddress();
-        ~L2vpnMspwAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::L2vpnMspwAddress
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::Ipv4SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv4SrPolicyAddress();
-        ~Ipv4SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv4_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::Ipv4SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::Ipv6SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv6SrPolicyAddress();
-        ~Ipv6SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv6_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::AdvertisedPaths::AdvertisedPath::AdvPathInfo::NeighborAddressXr::Ipv6SrPolicyAddress
 
 
 }

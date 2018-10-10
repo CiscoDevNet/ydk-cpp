@@ -4684,6 +4684,7 @@ bool Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::has_leaf_or_c
     return false;
 }
 
+const Enum::YLeaf KexName::kex_not_applicable {-1, "kex-not-applicable"};
 const Enum::YLeaf KexName::diffie_hellman_group1 {0, "diffie-hellman-group1"};
 const Enum::YLeaf KexName::diffie_hellman_group14 {1, "diffie-hellman-group14"};
 const Enum::YLeaf KexName::diffie_hellman_group15 {2, "diffie-hellman-group15"};
@@ -4695,6 +4696,7 @@ const Enum::YLeaf KexName::ecdh_nistp384 {7, "ecdh-nistp384"};
 const Enum::YLeaf KexName::ecdh_nistp521 {8, "ecdh-nistp521"};
 const Enum::YLeaf KexName::password_authenticated {9, "password-authenticated"};
 
+const Enum::YLeaf Hostkey::host_key_not_applicable {-1, "host-key-not-applicable"};
 const Enum::YLeaf Hostkey::ssh_dss {0, "ssh-dss"};
 const Enum::YLeaf Hostkey::ssh_rsa {1, "ssh-rsa"};
 const Enum::YLeaf Hostkey::ecdsa_sha2_nistp521 {2, "ecdsa-sha2-nistp521"};
@@ -4727,12 +4729,14 @@ const Enum::YLeaf States::rekey {11, "rekey"};
 const Enum::YLeaf States::suspended {12, "suspended"};
 const Enum::YLeaf States::session_closed {13, "session-closed"};
 
+const Enum::YLeaf Mac::mac_not_applicable {-1, "mac-not-applicable"};
 const Enum::YLeaf Mac::hmac_md5 {0, "hmac-md5"};
 const Enum::YLeaf Mac::hmac_sha1 {1, "hmac-sha1"};
 const Enum::YLeaf Mac::hmac_sha2_256 {2, "hmac-sha2-256"};
 const Enum::YLeaf Mac::hmac_sha2_512 {3, "hmac-sha2-512"};
 const Enum::YLeaf Mac::aes_gcm {4, "aes-gcm"};
 
+const Enum::YLeaf Cipher::cipher_not_applicable {-1, "cipher-not-applicable"};
 const Enum::YLeaf Cipher::aes128_cbc {0, "aes128-cbc"};
 const Enum::YLeaf Cipher::aes192_cbc {1, "aes192-cbc"};
 const Enum::YLeaf Cipher::aes256_cbc {2, "aes256-cbc"};

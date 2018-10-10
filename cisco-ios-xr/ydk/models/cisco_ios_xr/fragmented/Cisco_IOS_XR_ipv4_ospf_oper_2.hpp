@@ -75,6 +75,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -324,6 +325,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -635,6 +637,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -884,6 +887,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -1209,6 +1213,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -1458,6 +1463,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteTable::Route::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -1734,6 +1740,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ExternalRoutes::Ext
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -1969,7 +1976,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::VirtualLinks::V
         ydk::YLeaf virtual_link_youngest_md_key; //type: boolean
         ydk::YLeaf virtual_link_youngest_md_key_id; //type: uint16
         ydk::YLeaf virtual_link_old_md_key_count; //type: uint32
+        ydk::YLeaf keychain_name; //type: string
+        ydk::YLeaf virtual_link_keychain_key_conf; //type: boolean
         ydk::YLeaf virtual_link_keychain_id; //type: uint64
+        ydk::YLeaf virtual_link_keychain_alg; //type: OspfCrytographicAlgo
         ydk::YLeaf virtual_link_nsf_enabled; //type: boolean
         ydk::YLeaf virtual_link_nsf; //type: boolean
         ydk::YLeaf virtual_link_last_nsf; //type: uint32
@@ -2355,7 +2365,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Int
         ydk::YLeaf youngest_md_key; //type: boolean
         ydk::YLeaf old_md5_key_neighbor_count; //type: uint32
         ydk::YLeaf youngest_md_key_id; //type: uint16
+        ydk::YLeaf keychain_name; //type: string
+        ydk::YLeaf keychain_key_conf; //type: boolean
         ydk::YLeaf keychain_id; //type: uint64
+        ydk::YLeaf keychain_alg; //type: OspfCrytographicAlgo
         class MdKeys; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface::ActiveInterface::MdKeys
 
         ydk::YList md_keys;
@@ -3022,6 +3035,9 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary : 
         ydk::YLeaf srgb_end; //type: uint32
         ydk::YLeaf srgb_status; //type: OspfSrgbStatus
         ydk::YLeaf sr_strict_spf_cap; //type: boolean
+        ydk::YLeaf srlb_start; //type: uint32
+        ydk::YLeaf srlb_end; //type: uint32
+        ydk::YLeaf srlb_status; //type: OspfSrlbStatus
         class DomainId; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::DomainId
         class MaximumMetric; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::MaximumMetric
         class Redistribution; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::Redistribution
@@ -4240,7 +4256,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::A
         ydk::YLeaf youngest_md_key; //type: boolean
         ydk::YLeaf old_md5_key_neighbor_count; //type: uint32
         ydk::YLeaf youngest_md_key_id; //type: uint16
+        ydk::YLeaf keychain_name; //type: string
+        ydk::YLeaf keychain_key_conf; //type: boolean
         ydk::YLeaf keychain_id; //type: uint64
+        ydk::YLeaf keychain_alg; //type: OspfCrytographicAlgo
         class MdKeys; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::ActiveInterface::MdKeys
 
         ydk::YList md_keys;

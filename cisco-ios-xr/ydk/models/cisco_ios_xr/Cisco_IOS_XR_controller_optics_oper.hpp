@@ -80,28 +80,28 @@ class OpticsOper::OpticsPorts::OpticsPort : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        class OpticsDwdmCarrrierChannelMap; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap
+        class OpticsDwdmCarrierChannelMap; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap
         class OtsSpectrumInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo
+        class OpticsDwdmCarrierChannelMapFlexi; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi
         class OpticsInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo
         class OpticsLanes; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsLanes
-        class OpticsDwdmCarrrierChannelMapFlexi; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi
         class OpticsDbInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap> optics_dwdm_carrrier_channel_map;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap> optics_dwdm_carrier_channel_map;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo> ots_spectrum_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi> optics_dwdm_carrier_channel_map_flexi;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo> optics_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsLanes> optics_lanes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi> optics_dwdm_carrrier_channel_map_flexi;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo> optics_db_info;
         
 }; // OpticsOper::OpticsPorts::OpticsPort
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap : public ydk::Entity
 {
     public:
-        OpticsDwdmCarrrierChannelMap();
-        ~OpticsDwdmCarrrierChannelMap();
+        OpticsDwdmCarrierChannelMap();
+        ~OpticsDwdmCarrierChannelMap();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -116,14 +116,14 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap : public
         ydk::YLeaf dwdm_carrier_band; //type: OpticsWaveBand
         ydk::YLeaf dwdm_carrier_min; //type: uint32
         ydk::YLeaf dwdm_carrier_max; //type: uint32
-        class DwdmCarrierMapInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo
+        class DwdmCarrierMapInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo
 
         ydk::YList dwdm_carrier_map_info;
         
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo : public ydk::Entity
 {
     public:
         DwdmCarrierMapInfo();
@@ -144,7 +144,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCar
         ydk::YLeaf frequency; //type: string
         ydk::YLeaf wavelength; //type: string
 
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo
 
 
 class OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo : public ydk::Entity
@@ -223,6 +223,56 @@ class OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::Spectr
 }; // OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo
 
 
+class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi : public ydk::Entity
+{
+    public:
+        OpticsDwdmCarrierChannelMapFlexi();
+        ~OpticsDwdmCarrierChannelMapFlexi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf dwdm_carrier_band; //type: OpticsWaveBand
+        ydk::YLeaf dwdm_carrier_min; //type: uint32
+        ydk::YLeaf dwdm_carrier_max; //type: uint32
+        class DwdmCarrierMapInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo
+
+        ydk::YList dwdm_carrier_map_info;
+        
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo : public ydk::Entity
+{
+    public:
+        DwdmCarrierMapInfo();
+        ~DwdmCarrierMapInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf itu_chan_num; //type: uint32
+        ydk::YLeaf g694_chan_num; //type: int32
+        ydk::YLeaf frequency; //type: string
+        ydk::YLeaf wavelength; //type: string
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo
+
+
 class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
 {
     public:
@@ -276,6 +326,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         ydk::YLeaf phase_noise; //type: string
         ydk::YLeaf pm_enable; //type: uint32
         ydk::YLeaf laser_state; //type: OpticsLaserState
+        ydk::YLeaf modulation_type; //type: OpticsModulation
         ydk::YLeaf led_state; //type: OpticsLedState
         ydk::YLeaf controller_state; //type: OpticsControllerState
         ydk::YLeaf form_factor; //type: OpticsFormFactor
@@ -287,6 +338,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         ydk::YLeaf display_volt_temp; //type: boolean
         ydk::YLeaf cd_configurable; //type: boolean
         ydk::YLeaf optics_fec; //type: OpticsFec
+        ydk::YLeaf skip_snmp_pm_table; //type: int32
         ydk::YLeaf port_type; //type: OpticsPort
         ydk::YLeaf port_status; //type: OpticsPortStatus
         ydk::YLeaf rx_voa_attenuation; //type: int32
@@ -333,6 +385,10 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         ydk::YLeaf is_optics_type_string_valid; //type: boolean
         ydk::YLeaf optics_type_str; //type: string
         ydk::YLeaf rx_low_threshold_current; //type: int32
+        ydk::YLeaf rx_span_loss; //type: int32
+        ydk::YLeaf tx_span_loss; //type: int32
+        ydk::YLeaf baud_rate; //type: string
+        ydk::YLeaf bits_per_symbol; //type: string
         class NetworkSrlgInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo
         class OpticsAlarmInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo
         class OtsAlarmInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo
@@ -340,6 +396,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         class ExtParamVal; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal
         class ExtParamThresholdVal; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal
         class ExtendedAlarmAlarmInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo
+        class AinsInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::AinsInfo
         class LaneData; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo> network_srlg_info;
@@ -349,6 +406,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal> ext_param_val;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal> ext_param_threshold_val;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo> extended_alarm_alarm_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::AinsInfo> ains_info;
         ydk::YList lane_data;
         
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo
@@ -2784,6 +2842,29 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::H
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur
 
 
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::AinsInfo : public ydk::Entity
+{
+    public:
+        AinsInfo();
+        ~AinsInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ains_state; //type: OpticsAinsStateEt
+        ydk::YLeaf ains_timer_minutes; //type: uint32
+        ydk::YLeaf ains_remaining_secs; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::AinsInfo
+
+
 class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData : public ydk::Entity
 {
     public:
@@ -3154,56 +3235,6 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInf
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi : public ydk::Entity
-{
-    public:
-        OpticsDwdmCarrrierChannelMapFlexi();
-        ~OpticsDwdmCarrrierChannelMapFlexi();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf dwdm_carrier_band; //type: OpticsWaveBand
-        ydk::YLeaf dwdm_carrier_min; //type: uint32
-        ydk::YLeaf dwdm_carrier_max; //type: uint32
-        class DwdmCarrierMapInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo
-
-        ydk::YList dwdm_carrier_map_info;
-        
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi
-
-
-class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo : public ydk::Entity
-{
-    public:
-        DwdmCarrierMapInfo();
-        ~DwdmCarrierMapInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf itu_chan_num; //type: uint32
-        ydk::YLeaf g694_chan_num; //type: int32
-        ydk::YLeaf frequency; //type: string
-        ydk::YLeaf wavelength; //type: string
-
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo
-
-
 class OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo : public ydk::Entity
 {
     public:
@@ -3282,6 +3313,23 @@ class OpticsAmplifierGainRange : public ydk::Enum
 
 };
 
+class OpticsModulation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mod_bpsk;
+        static const ydk::Enum::YLeaf mod_qpsk;
+        static const ydk::Enum::YLeaf mod_8qam;
+        static const ydk::Enum::YLeaf mod_16qam;
+        static const ydk::Enum::YLeaf mod_32qam;
+        static const ydk::Enum::YLeaf mod_64qam;
+        static const ydk::Enum::YLeaf mod_bpsk_qpsk;
+        static const ydk::Enum::YLeaf mod_qpsk_8qam;
+        static const ydk::Enum::YLeaf mod_8qam_16qam;
+        static const ydk::Enum::YLeaf mode_16qam_32qam;
+        static const ydk::Enum::YLeaf mod_32qam_64qam;
+
+};
+
 class OpticsAmplifierControlMode : public ydk::Enum
 {
     public:
@@ -3337,6 +3385,15 @@ class OpticsWaveBand : public ydk::Enum
 
 };
 
+class OpticsAinsStateEt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf active_running;
+        static const ydk::Enum::YLeaf active_pending;
+
+};
+
 class FiberConnector : public ydk::Enum
 {
     public:
@@ -3362,6 +3419,8 @@ class OpticsFormFactor : public ydk::Enum
         static const ydk::Enum::YLeaf sfp;
         static const ydk::Enum::YLeaf cfp;
         static const ydk::Enum::YLeaf cfp2;
+        static const ydk::Enum::YLeaf cfp2_aco;
+        static const ydk::Enum::YLeaf cfp2_dco;
         static const ydk::Enum::YLeaf cfp4;
         static const ydk::Enum::YLeaf xfp;
         static const ydk::Enum::YLeaf x2;
@@ -3406,6 +3465,7 @@ class OpticsLaserState : public ydk::Enum
         static const ydk::Enum::YLeaf off;
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf apr;
+        static const ydk::Enum::YLeaf na;
 
 };
 
@@ -3500,6 +3560,7 @@ class OpticsPhy : public ydk::Enum
         static const ydk::Enum::YLeaf fx_one_lane;
         static const ydk::Enum::YLeaf ten_gig_emrdwdm;
         static const ydk::Enum::YLeaf ten_gig_e_edge_performance;
+        static const ydk::Enum::YLeaf one_gig_csfp;
 
 };
 

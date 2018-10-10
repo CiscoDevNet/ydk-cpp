@@ -267,9 +267,19 @@ class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail : publ
         ydk::YLeaf rg_id_exists; //type: boolean
         ydk::YLeaf mlacp_active; //type: boolean
         ydk::YLeaf unnumbered_interface_name; //type: string
+        ydk::YLeaf next_unnumbered_interface_name; //type: string
         ydk::YLeaf proxy_arp_disabled; //type: boolean
         ydk::YLeaf flow_tag_src; //type: boolean
         ydk::YLeaf flow_tag_dst; //type: boolean
+        ydk::YLeaf config_flags; //type: uint16
+        ydk::YLeaf oper_flags; //type: uint64
+        ydk::YLeaf arm_flags; //type: uint16
+        ydk::YLeaf state_recvd_frm_im; //type: Ipv4MaOperLineState
+        ydk::YLeaf cflct_address; //type: string
+        ydk::YLeaf client_type; //type: Ipv4MaOperConfig
+        ydk::YLeaf is_or_event; //type: boolean
+        ydk::YLeaf or_im_state; //type: Ipv4MaOperLineState
+        ydk::YLeaf idb_pointer; //type: uint64
         class Acl; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl
         class MultiAcl; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl
         class HelperAddress; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress
@@ -1115,9 +1125,19 @@ class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail : public ydk::Entity
         ydk::YLeaf rg_id_exists; //type: boolean
         ydk::YLeaf mlacp_active; //type: boolean
         ydk::YLeaf unnumbered_interface_name; //type: string
+        ydk::YLeaf next_unnumbered_interface_name; //type: string
         ydk::YLeaf proxy_arp_disabled; //type: boolean
         ydk::YLeaf flow_tag_src; //type: boolean
         ydk::YLeaf flow_tag_dst; //type: boolean
+        ydk::YLeaf config_flags; //type: uint16
+        ydk::YLeaf oper_flags; //type: uint64
+        ydk::YLeaf arm_flags; //type: uint16
+        ydk::YLeaf state_recvd_frm_im; //type: Ipv4MaOperLineState
+        ydk::YLeaf cflct_address; //type: string
+        ydk::YLeaf client_type; //type: Ipv4MaOperConfig
+        ydk::YLeaf is_or_event; //type: boolean
+        ydk::YLeaf or_im_state; //type: Ipv4MaOperLineState
+        ydk::YLeaf idb_pointer; //type: uint64
         class Acl; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl
         class MultiAcl; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl
         class HelperAddress; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress
@@ -1566,6 +1586,15 @@ class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief : public ydk::Entity
         ydk::YLeaf line_state; //type: Ipv4MaOperLineState
 
 }; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief
+
+class Ipv4MaOperConfig : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4_ma_oper_client_none;
+        static const ydk::Enum::YLeaf ipv4_ma_oper_non_oc_client;
+        static const ydk::Enum::YLeaf ipv4_ma_oper_oc_client;
+
+};
 
 class RpfMode : public ydk::Enum
 {

@@ -632,7 +632,6 @@ class Ipv4AclAndPrefixList::LogUpdate : public ydk::Entity
 class NextHopType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none_next_hop;
         static const ydk::Enum::YLeaf regular_next_hop;
         static const ydk::Enum::YLeaf default_next_hop;
 

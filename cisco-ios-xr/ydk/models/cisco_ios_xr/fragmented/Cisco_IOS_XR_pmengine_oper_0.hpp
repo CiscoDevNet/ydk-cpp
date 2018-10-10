@@ -226,7 +226,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -592,7 +592,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -932,7 +932,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -1116,7 +1116,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -3148,7 +3148,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -3514,7 +3514,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -3854,7 +3854,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string

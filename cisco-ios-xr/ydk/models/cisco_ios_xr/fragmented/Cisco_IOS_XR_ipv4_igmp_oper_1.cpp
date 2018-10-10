@@ -15279,14 +15279,14 @@ Mld::Active::Process::Process()
     :
     amt_summary(std::make_shared<Mld::Active::Process::AmtSummary>())
     , nsr(std::make_shared<Mld::Active::Process::Nsr>())
-    , amt_gatewaies(std::make_shared<Mld::Active::Process::AmtGatewaies>())
+    , amt_gateways(std::make_shared<Mld::Active::Process::AmtGateways>())
     , unicast_qos_adjust_stats(std::make_shared<Mld::Active::Process::UnicastQosAdjustStats>())
     , bvi_statistics(std::make_shared<Mld::Active::Process::BviStatistics>())
     , nsf(std::make_shared<Mld::Active::Process::Nsf>())
 {
     amt_summary->parent = this;
     nsr->parent = this;
-    amt_gatewaies->parent = this;
+    amt_gateways->parent = this;
     unicast_qos_adjust_stats->parent = this;
     bvi_statistics->parent = this;
     nsf->parent = this;
@@ -15303,7 +15303,7 @@ bool Mld::Active::Process::has_data() const
     if (is_presence_container) return true;
     return (amt_summary !=  nullptr && amt_summary->has_data())
 	|| (nsr !=  nullptr && nsr->has_data())
-	|| (amt_gatewaies !=  nullptr && amt_gatewaies->has_data())
+	|| (amt_gateways !=  nullptr && amt_gateways->has_data())
 	|| (unicast_qos_adjust_stats !=  nullptr && unicast_qos_adjust_stats->has_data())
 	|| (bvi_statistics !=  nullptr && bvi_statistics->has_data())
 	|| (nsf !=  nullptr && nsf->has_data());
@@ -15314,7 +15314,7 @@ bool Mld::Active::Process::has_operation() const
     return is_set(yfilter)
 	|| (amt_summary !=  nullptr && amt_summary->has_operation())
 	|| (nsr !=  nullptr && nsr->has_operation())
-	|| (amt_gatewaies !=  nullptr && amt_gatewaies->has_operation())
+	|| (amt_gateways !=  nullptr && amt_gateways->has_operation())
 	|| (unicast_qos_adjust_stats !=  nullptr && unicast_qos_adjust_stats->has_operation())
 	|| (bvi_statistics !=  nullptr && bvi_statistics->has_operation())
 	|| (nsf !=  nullptr && nsf->has_operation());
@@ -15363,13 +15363,13 @@ std::shared_ptr<Entity> Mld::Active::Process::get_child_by_name(const std::strin
         return nsr;
     }
 
-    if(child_yang_name == "amt-gatewaies")
+    if(child_yang_name == "amt-gateways")
     {
-        if(amt_gatewaies == nullptr)
+        if(amt_gateways == nullptr)
         {
-            amt_gatewaies = std::make_shared<Mld::Active::Process::AmtGatewaies>();
+            amt_gateways = std::make_shared<Mld::Active::Process::AmtGateways>();
         }
-        return amt_gatewaies;
+        return amt_gateways;
     }
 
     if(child_yang_name == "unicast-qos-adjust-stats")
@@ -15416,9 +15416,9 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Process::get_childre
         children["nsr"] = nsr;
     }
 
-    if(amt_gatewaies != nullptr)
+    if(amt_gateways != nullptr)
     {
-        children["amt-gatewaies"] = amt_gatewaies;
+        children["amt-gateways"] = amt_gateways;
     }
 
     if(unicast_qos_adjust_stats != nullptr)
@@ -15449,7 +15449,7 @@ void Mld::Active::Process::set_filter(const std::string & value_path, YFilter yf
 
 bool Mld::Active::Process::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "amt-summary" || name == "nsr" || name == "amt-gatewaies" || name == "unicast-qos-adjust-stats" || name == "bvi-statistics" || name == "nsf")
+    if(name == "amt-summary" || name == "nsr" || name == "amt-gateways" || name == "unicast-qos-adjust-stats" || name == "bvi-statistics" || name == "nsf")
         return true;
     return false;
 }
@@ -15974,19 +15974,19 @@ bool Mld::Active::Process::Nsr::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-Mld::Active::Process::AmtGatewaies::AmtGatewaies()
+Mld::Active::Process::AmtGateways::AmtGateways()
     :
     amt_gateway(this, {})
 {
 
-    yang_name = "amt-gatewaies"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "amt-gateways"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Mld::Active::Process::AmtGatewaies::~AmtGatewaies()
+Mld::Active::Process::AmtGateways::~AmtGateways()
 {
 }
 
-bool Mld::Active::Process::AmtGatewaies::has_data() const
+bool Mld::Active::Process::AmtGateways::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<amt_gateway.len(); index++)
@@ -15997,7 +15997,7 @@ bool Mld::Active::Process::AmtGatewaies::has_data() const
     return false;
 }
 
-bool Mld::Active::Process::AmtGatewaies::has_operation() const
+bool Mld::Active::Process::AmtGateways::has_operation() const
 {
     for (std::size_t index=0; index<amt_gateway.len(); index++)
     {
@@ -16007,21 +16007,21 @@ bool Mld::Active::Process::AmtGatewaies::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Mld::Active::Process::AmtGatewaies::get_absolute_path() const
+std::string Mld::Active::Process::AmtGateways::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv4-igmp-oper:mld/active/process/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Mld::Active::Process::AmtGatewaies::get_segment_path() const
+std::string Mld::Active::Process::AmtGateways::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "amt-gatewaies";
+    path_buffer << "amt-gateways";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Mld::Active::Process::AmtGatewaies::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Mld::Active::Process::AmtGateways::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16030,11 +16030,11 @@ std::vector<std::pair<std::string, LeafData> > Mld::Active::Process::AmtGatewaie
 
 }
 
-std::shared_ptr<Entity> Mld::Active::Process::AmtGatewaies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Mld::Active::Process::AmtGateways::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "amt-gateway")
     {
-        auto c = std::make_shared<Mld::Active::Process::AmtGatewaies::AmtGateway>();
+        auto c = std::make_shared<Mld::Active::Process::AmtGateways::AmtGateway>();
         c->parent = this;
         amt_gateway.append(c);
         return c;
@@ -16043,7 +16043,7 @@ std::shared_ptr<Entity> Mld::Active::Process::AmtGatewaies::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Process::AmtGatewaies::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Process::AmtGateways::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16059,22 +16059,22 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Process::AmtGatewaie
     return children;
 }
 
-void Mld::Active::Process::AmtGatewaies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Mld::Active::Process::AmtGateways::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Mld::Active::Process::AmtGatewaies::set_filter(const std::string & value_path, YFilter yfilter)
+void Mld::Active::Process::AmtGateways::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Mld::Active::Process::AmtGatewaies::has_leaf_or_child_of_name(const std::string & name) const
+bool Mld::Active::Process::AmtGateways::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "amt-gateway")
         return true;
     return false;
 }
 
-Mld::Active::Process::AmtGatewaies::AmtGateway::AmtGateway()
+Mld::Active::Process::AmtGateways::AmtGateway::AmtGateway()
     :
     gateway_address{YType::str, "gateway-address"},
     port{YType::uint32, "port"},
@@ -16088,14 +16088,14 @@ Mld::Active::Process::AmtGatewaies::AmtGateway::AmtGateway()
     mem_upd_out{YType::uint32, "mem-upd-out"}
 {
 
-    yang_name = "amt-gateway"; yang_parent_name = "amt-gatewaies"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "amt-gateway"; yang_parent_name = "amt-gateways"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Mld::Active::Process::AmtGatewaies::AmtGateway::~AmtGateway()
+Mld::Active::Process::AmtGateways::AmtGateway::~AmtGateway()
 {
 }
 
-bool Mld::Active::Process::AmtGatewaies::AmtGateway::has_data() const
+bool Mld::Active::Process::AmtGateways::AmtGateway::has_data() const
 {
     if (is_presence_container) return true;
     return gateway_address.is_set
@@ -16110,7 +16110,7 @@ bool Mld::Active::Process::AmtGatewaies::AmtGateway::has_data() const
 	|| mem_upd_out.is_set;
 }
 
-bool Mld::Active::Process::AmtGatewaies::AmtGateway::has_operation() const
+bool Mld::Active::Process::AmtGateways::AmtGateway::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(gateway_address.yfilter)
@@ -16125,21 +16125,21 @@ bool Mld::Active::Process::AmtGatewaies::AmtGateway::has_operation() const
 	|| ydk::is_set(mem_upd_out.yfilter);
 }
 
-std::string Mld::Active::Process::AmtGatewaies::AmtGateway::get_absolute_path() const
+std::string Mld::Active::Process::AmtGateways::AmtGateway::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-igmp-oper:mld/active/process/amt-gatewaies/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-ipv4-igmp-oper:mld/active/process/amt-gateways/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Mld::Active::Process::AmtGatewaies::AmtGateway::get_segment_path() const
+std::string Mld::Active::Process::AmtGateways::AmtGateway::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "amt-gateway";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Mld::Active::Process::AmtGatewaies::AmtGateway::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Mld::Active::Process::AmtGateways::AmtGateway::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16158,19 +16158,19 @@ std::vector<std::pair<std::string, LeafData> > Mld::Active::Process::AmtGatewaie
 
 }
 
-std::shared_ptr<Entity> Mld::Active::Process::AmtGatewaies::AmtGateway::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Mld::Active::Process::AmtGateways::AmtGateway::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Process::AmtGatewaies::AmtGateway::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Process::AmtGateways::AmtGateway::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Mld::Active::Process::AmtGatewaies::AmtGateway::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Mld::Active::Process::AmtGateways::AmtGateway::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "gateway-address")
     {
@@ -16234,7 +16234,7 @@ void Mld::Active::Process::AmtGatewaies::AmtGateway::set_value(const std::string
     }
 }
 
-void Mld::Active::Process::AmtGatewaies::AmtGateway::set_filter(const std::string & value_path, YFilter yfilter)
+void Mld::Active::Process::AmtGateways::AmtGateway::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "gateway-address")
     {
@@ -16278,7 +16278,7 @@ void Mld::Active::Process::AmtGatewaies::AmtGateway::set_filter(const std::strin
     }
 }
 
-bool Mld::Active::Process::AmtGatewaies::AmtGateway::has_leaf_or_child_of_name(const std::string & name) const
+bool Mld::Active::Process::AmtGateways::AmtGateway::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "gateway-address" || name == "port" || name == "amtgw" || name == "amt-port" || name == "key-len" || name == "amtnh" || name == "amt-nonce" || name == "idb" || name == "mem-upd-in" || name == "mem-upd-out")
         return true;

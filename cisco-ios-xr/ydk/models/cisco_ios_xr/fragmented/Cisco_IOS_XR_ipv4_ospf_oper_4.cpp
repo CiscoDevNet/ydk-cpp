@@ -12,6 +12,403 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_ospf_oper {
 
+Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::BwPerPriority()
+    :
+    entry{YType::uint64, "entry"}
+{
+
+    yang_name = "bw-per-priority"; yang_parent_name = "sub-pool-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::~BwPerPriority()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bw-per-priority";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::LinkProtocolPriorityCapability()
+    :
+    link_protocol_capability{YType::uint8, "link-protocol-capability"},
+    link_protocol_priority{YType::uint8, "link-protocol-priority"}
+{
+
+    yang_name = "link-protocol-priority-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::~LinkProtocolPriorityCapability()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::has_data() const
+{
+    if (is_presence_container) return true;
+    return link_protocol_capability.is_set
+	|| link_protocol_priority.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(link_protocol_capability.yfilter)
+	|| ydk::is_set(link_protocol_priority.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-protocol-priority-capability";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (link_protocol_capability.is_set || is_set(link_protocol_capability.yfilter)) leaf_name_data.push_back(link_protocol_capability.get_name_leafdata());
+    if (link_protocol_priority.is_set || is_set(link_protocol_priority.yfilter)) leaf_name_data.push_back(link_protocol_priority.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "link-protocol-capability")
+    {
+        link_protocol_capability = value;
+        link_protocol_capability.value_namespace = name_space;
+        link_protocol_capability.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-protocol-priority")
+    {
+        link_protocol_priority = value;
+        link_protocol_priority.value_namespace = name_space;
+        link_protocol_priority.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-protocol-capability")
+    {
+        link_protocol_capability.yfilter = yfilter;
+    }
+    if(value_path == "link-protocol-priority")
+    {
+        link_protocol_priority.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-protocol-capability" || name == "link-protocol-priority")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::LinkSwCapability()
+    :
+    link_switching_capability{YType::uint8, "link-switching-capability"},
+    link_encoding{YType::uint8, "link-encoding"},
+    minimum_lsp_bw{YType::uint64, "minimum-lsp-bw"},
+    link_mtu{YType::uint16, "link-mtu"}
+        ,
+    maximum_lsp_bw_per_priority(this, {})
+{
+
+    yang_name = "link-sw-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::~LinkSwCapability()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.len(); index++)
+    {
+        if(maximum_lsp_bw_per_priority[index]->has_data())
+            return true;
+    }
+    return link_switching_capability.is_set
+	|| link_encoding.is_set
+	|| minimum_lsp_bw.is_set
+	|| link_mtu.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::has_operation() const
+{
+    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.len(); index++)
+    {
+        if(maximum_lsp_bw_per_priority[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(link_switching_capability.yfilter)
+	|| ydk::is_set(link_encoding.yfilter)
+	|| ydk::is_set(minimum_lsp_bw.yfilter)
+	|| ydk::is_set(link_mtu.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-sw-capability";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (link_switching_capability.is_set || is_set(link_switching_capability.yfilter)) leaf_name_data.push_back(link_switching_capability.get_name_leafdata());
+    if (link_encoding.is_set || is_set(link_encoding.yfilter)) leaf_name_data.push_back(link_encoding.get_name_leafdata());
+    if (minimum_lsp_bw.is_set || is_set(minimum_lsp_bw.yfilter)) leaf_name_data.push_back(minimum_lsp_bw.get_name_leafdata());
+    if (link_mtu.is_set || is_set(link_mtu.yfilter)) leaf_name_data.push_back(link_mtu.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "maximum-lsp-bw-per-priority")
+    {
+        auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority>();
+        c->parent = this;
+        maximum_lsp_bw_per_priority.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : maximum_lsp_bw_per_priority.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "link-switching-capability")
+    {
+        link_switching_capability = value;
+        link_switching_capability.value_namespace = name_space;
+        link_switching_capability.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-encoding")
+    {
+        link_encoding = value;
+        link_encoding.value_namespace = name_space;
+        link_encoding.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-lsp-bw")
+    {
+        minimum_lsp_bw = value;
+        minimum_lsp_bw.value_namespace = name_space;
+        minimum_lsp_bw.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-mtu")
+    {
+        link_mtu = value;
+        link_mtu.value_namespace = name_space;
+        link_mtu.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-switching-capability")
+    {
+        link_switching_capability.yfilter = yfilter;
+    }
+    if(value_path == "link-encoding")
+    {
+        link_encoding.yfilter = yfilter;
+    }
+    if(value_path == "minimum-lsp-bw")
+    {
+        minimum_lsp_bw.yfilter = yfilter;
+    }
+    if(value_path == "link-mtu")
+    {
+        link_mtu.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-lsp-bw-per-priority" || name == "link-switching-capability" || name == "link-encoding" || name == "minimum-lsp-bw" || name == "link-mtu")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::MaximumLspBwPerPriority()
+    :
+    entry{YType::uint64, "entry"}
+{
+
+    yang_name = "maximum-lsp-bw-per-priority"; yang_parent_name = "link-sw-capability"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::~MaximumLspBwPerPriority()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "maximum-lsp-bw-per-priority";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
 Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::ExtendedAdminGroupList()
     :
     extended_admin_size{YType::uint32, "extended-admin-size"}
@@ -19041,375 +19438,6 @@ void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched
 bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nsr-sched-pri" || name == "nsr-sched-quant" || name == "nsr-sched-remain-quant" || name == "nsr-sched-evs-in-q" || name == "nsr-sched-max-evs" || name == "nsr-sched-peak-q-len" || name == "nsr-sched-evs-qd" || name == "nsr-sched-enq-fails" || name == "nsr-sched-evs-deqd")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag::NsrFsmFlag()
-    :
-    entry{YType::str, "entry"}
-{
-
-    yang_name = "nsr-fsm-flag"; yang_parent_name = "issu-stats"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag::~NsrFsmFlag()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nsr-fsm-flag";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmRunningTimer::NsrFsmRunningTimer()
-    :
-    entry{YType::str, "entry"}
-{
-
-    yang_name = "nsr-fsm-running-timer"; yang_parent_name = "issu-stats"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmRunningTimer::~NsrFsmRunningTimer()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmRunningTimer::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmRunningTimer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmRunningTimer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nsr-fsm-running-timer";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmRunningTimer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmRunningTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmRunningTimer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmRunningTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmRunningTimer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmRunningTimer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssuMilestone::NsrIssuMilestone()
-    :
-    milestone_name{YType::str, "milestone-name"},
-    milestone_status{YType::str, "milestone-status"}
-{
-
-    yang_name = "nsr-issu-milestone"; yang_parent_name = "issu-stats"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssuMilestone::~NsrIssuMilestone()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssuMilestone::has_data() const
-{
-    if (is_presence_container) return true;
-    return milestone_name.is_set
-	|| milestone_status.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssuMilestone::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(milestone_name.yfilter)
-	|| ydk::is_set(milestone_status.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssuMilestone::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nsr-issu-milestone";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssuMilestone::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (milestone_name.is_set || is_set(milestone_name.yfilter)) leaf_name_data.push_back(milestone_name.get_name_leafdata());
-    if (milestone_status.is_set || is_set(milestone_status.yfilter)) leaf_name_data.push_back(milestone_status.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssuMilestone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssuMilestone::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssuMilestone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "milestone-name")
-    {
-        milestone_name = value;
-        milestone_name.value_namespace = name_space;
-        milestone_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "milestone-status")
-    {
-        milestone_status = value;
-        milestone_status.value_namespace = name_space;
-        milestone_status.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssuMilestone::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "milestone-name")
-    {
-        milestone_name.yfilter = yfilter;
-    }
-    if(value_path == "milestone-status")
-    {
-        milestone_status.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssuMilestone::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "milestone-name" || name == "milestone-status")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory::NsrErrHistory()
-    :
-    nsr_revisionversion{YType::uint32, "nsr-revisionversion"},
-    total_errors{YType::int32, "total-errors"}
-        ,
-    nsr_error_info(this, {})
-{
-
-    yang_name = "nsr-err-history"; yang_parent_name = "issu-stats"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory::~NsrErrHistory()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<nsr_error_info.len(); index++)
-    {
-        if(nsr_error_info[index]->has_data())
-            return true;
-    }
-    return nsr_revisionversion.is_set
-	|| total_errors.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory::has_operation() const
-{
-    for (std::size_t index=0; index<nsr_error_info.len(); index++)
-    {
-        if(nsr_error_info[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(nsr_revisionversion.yfilter)
-	|| ydk::is_set(total_errors.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nsr-err-history";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nsr_revisionversion.is_set || is_set(nsr_revisionversion.yfilter)) leaf_name_data.push_back(nsr_revisionversion.get_name_leafdata());
-    if (total_errors.is_set || is_set(total_errors.yfilter)) leaf_name_data.push_back(total_errors.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nsr-error-info")
-    {
-        auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory::NsrErrorInfo>();
-        c->parent = this;
-        nsr_error_info.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nsr_error_info.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nsr-revisionversion")
-    {
-        nsr_revisionversion = value;
-        nsr_revisionversion.value_namespace = name_space;
-        nsr_revisionversion.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-errors")
-    {
-        total_errors = value;
-        total_errors.value_namespace = name_space;
-        total_errors.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nsr-revisionversion")
-    {
-        nsr_revisionversion.yfilter = yfilter;
-    }
-    if(value_path == "total-errors")
-    {
-        total_errors.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nsr-error-info" || name == "nsr-revisionversion" || name == "total-errors")
         return true;
     return false;
 }

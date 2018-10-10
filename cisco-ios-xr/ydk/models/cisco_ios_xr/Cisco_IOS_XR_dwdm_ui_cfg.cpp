@@ -29,6 +29,8 @@ const Enum::YLeaf Fec::high_gain_sd {5, "high-gain-sd"};
 const Enum::YLeaf Fec::long_haul_sd {6, "long-haul-sd"};
 const Enum::YLeaf Fec::ci_bch {7, "ci-bch"};
 const Enum::YLeaf Fec::high_gain_multivendor_hd {8, "high-gain-multivendor-hd"};
+const Enum::YLeaf Fec::sd_everest {9, "sd-everest"};
+const Enum::YLeaf Fec::sd_denali {10, "sd-denali"};
 
 const Enum::YLeaf OduAlarm::oci {14, "oci"};
 const Enum::YLeaf OduAlarm::odu_ais {15, "odu-ais"};

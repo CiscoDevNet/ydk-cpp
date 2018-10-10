@@ -169,9 +169,17 @@ class NtpOperData::NtpStatusInfo::NtpAssociations : public ydk::Entity
         ydk::YLeaf delay; //type: decimal64
         ydk::YLeaf offset; //type: decimal64
         ydk::YLeaf jitter; //type: decimal64
+        ydk::YLeaf num_events; //type: uint8
+        ydk::YLeaf last_peer_event; //type: PeerEvent
+        ydk::YLeaf peer_selection_status; //type: PeerSelectStatus
+        ydk::YLeaf peer_authentication_status; //type: PeerAuthStatus
+        ydk::YLeaf serv_type; //type: ServerType
+        ydk::YLeaf psw_crypto; //type: PeerStatusWord
         class Refid; //type: NtpOperData::NtpStatusInfo::NtpAssociations::Refid
+        class NtpAddress; //type: NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ntp_oper::NtpOperData::NtpStatusInfo::NtpAssociations::Refid> refid;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ntp_oper::NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress> ntp_address;
         
 }; // NtpOperData::NtpStatusInfo::NtpAssociations
 
@@ -244,6 +252,28 @@ class NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData : public
 
 }; // NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData
 
+
+class NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress : public ydk::Entity
+{
+    public:
+        NtpAddress();
+        ~NtpAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ip_addr; //type: string
+        ydk::YLeaf vrf_name; //type: string
+
+}; // NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress
+
 class KissCodeType : public ydk::Enum
 {
     public:
@@ -261,6 +291,74 @@ class KissCodeType : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_ref_rate;
         static const ydk::Enum::YLeaf ntp_ref_rmot;
         static const ydk::Enum::YLeaf ntp_ref_step;
+
+};
+
+class PeerEvent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_peer_event_mobilize;
+        static const ydk::Enum::YLeaf ntp_peer_event_demobilize;
+        static const ydk::Enum::YLeaf ntp_peer_event_unreachable;
+        static const ydk::Enum::YLeaf ntp_peer_event_reachable;
+        static const ydk::Enum::YLeaf ntp_peer_event_restart;
+        static const ydk::Enum::YLeaf ntp_peer_event_reply;
+        static const ydk::Enum::YLeaf ntp_peer_event_rate;
+        static const ydk::Enum::YLeaf ntp_peer_event_deny;
+        static const ydk::Enum::YLeaf ntp_peer_disarmed;
+        static const ydk::Enum::YLeaf ntp_peer_armed;
+        static const ydk::Enum::YLeaf ntp_peer_event_newpeer;
+        static const ydk::Enum::YLeaf ntp_peer_event_clock;
+        static const ydk::Enum::YLeaf ntp_peer_event_auth;
+        static const ydk::Enum::YLeaf ntp_peer_event_popcorn;
+        static const ydk::Enum::YLeaf ntp_peer_event_xleave;
+        static const ydk::Enum::YLeaf ntp_peer_event_xerr;
+        static const ydk::Enum::YLeaf ntp_peer_event_tai;
+
+};
+
+class ServerType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_peer;
+        static const ydk::Enum::YLeaf ntp_server;
+        static const ydk::Enum::YLeaf ntp_unknown_type;
+
+};
+
+class RefidPktTypeInfo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_ref_state_kod;
+        static const ydk::Enum::YLeaf ntp_ref_state_resolved_with_clk_source;
+        static const ydk::Enum::YLeaf ntp_ref_state_resolved_with_ip_addr;
+        static const ydk::Enum::YLeaf ntp_ref_state_bad_state;
+
+};
+
+class PeerStatusWord : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf crypto_flag_sig;
+        static const ydk::Enum::YLeaf crypto_flag_leap;
+        static const ydk::Enum::YLeaf crypto_flag_vrfy;
+        static const ydk::Enum::YLeaf crypto_flag_cook;
+        static const ydk::Enum::YLeaf crypto_flag_auto;
+        static const ydk::Enum::YLeaf crypto_flag_cert;
+
+};
+
+class PeerSelectStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_peer_as_backup;
+        static const ydk::Enum::YLeaf ntp_peer_rejected;
+        static const ydk::Enum::YLeaf ntp_peer_false_ticker;
+        static const ydk::Enum::YLeaf ntp_peer_excess;
+        static const ydk::Enum::YLeaf ntp_peer_outlier;
+        static const ydk::Enum::YLeaf ntp_peer_candidate;
+        static const ydk::Enum::YLeaf ntp_peer_sys_peer;
+        static const ydk::Enum::YLeaf ntp_peer_pps_peer;
 
 };
 
@@ -289,13 +387,15 @@ class RefClockSourceType : public ydk::Enum
 
 };
 
-class RefidPktTypeInfo : public ydk::Enum
+class PeerAuthStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ntp_ref_state_kod;
-        static const ydk::Enum::YLeaf ntp_ref_state_resolved_with_clk_source;
-        static const ydk::Enum::YLeaf ntp_ref_state_resolved_with_ip_addr;
-        static const ydk::Enum::YLeaf ntp_ref_state_bad_state;
+        static const ydk::Enum::YLeaf ntp_auth_ok;
+        static const ydk::Enum::YLeaf ntp_auth_bad_auth;
+        static const ydk::Enum::YLeaf ntp_auth_auth_not_configured;
+        static const ydk::Enum::YLeaf ntp_auth_status_not_available;
+        static const ydk::Enum::YLeaf ntp_auth_none;
+        static const ydk::Enum::YLeaf ntp_auth_crypto;
 
 };
 

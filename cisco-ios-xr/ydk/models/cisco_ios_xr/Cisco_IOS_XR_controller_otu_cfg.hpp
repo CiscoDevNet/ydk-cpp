@@ -112,6 +112,8 @@ class OtuForwardErrorCorrection : public ydk::Enum
         static const ydk::Enum::YLeaf enhanced_swizzle;
         static const ydk::Enum::YLeaf enhanced_hg20;
         static const ydk::Enum::YLeaf enhanced_hg7;
+        static const ydk::Enum::YLeaf enhanced_sd15;
+        static const ydk::Enum::YLeaf enhanced_sd27;
 
 };
 

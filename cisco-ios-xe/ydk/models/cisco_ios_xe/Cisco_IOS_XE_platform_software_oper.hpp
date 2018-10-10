@@ -31,13 +31,116 @@ class CiscoPlatformSoftware : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
+        class SystemUsages; //type: CiscoPlatformSoftware::SystemUsages
         class ControlProcesses; //type: CiscoPlatformSoftware::ControlProcesses
         class QFilesystem; //type: CiscoPlatformSoftware::QFilesystem
 
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::SystemUsages> system_usages;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses> control_processes;
         ydk::YList q_filesystem;
         
 }; // CiscoPlatformSoftware
+
+
+class CiscoPlatformSoftware::SystemUsages : public ydk::Entity
+{
+    public:
+        SystemUsages();
+        ~SystemUsages();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class SystemUsage; //type: CiscoPlatformSoftware::SystemUsages::SystemUsage
+
+        ydk::YList system_usage;
+        
+}; // CiscoPlatformSoftware::SystemUsages
+
+
+class CiscoPlatformSoftware::SystemUsages::SystemUsage : public ydk::Entity
+{
+    public:
+        SystemUsage();
+        ~SystemUsage();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf fru; //type: BFru
+        ydk::YLeaf slotnum; //type: int16
+        ydk::YLeaf baynum; //type: int16
+        ydk::YLeaf chassisnum; //type: int16
+        class ProcessSystemUsages; //type: CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages> process_system_usages;
+        
+}; // CiscoPlatformSoftware::SystemUsages::SystemUsage
+
+
+class CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages : public ydk::Entity
+{
+    public:
+        ProcessSystemUsages();
+        ~ProcessSystemUsages();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ProcessSystemUsage; //type: CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage
+
+        ydk::YList process_system_usage;
+        
+}; // CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages
+
+
+class CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage : public ydk::Entity
+{
+    public:
+        ProcessSystemUsage();
+        ~ProcessSystemUsage();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pid; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf total_run_time; //type: uint64
+        ydk::YLeaf five_seconds; //type: uint64
+        ydk::YLeaf allocated_memory; //type: uint64
+        ydk::YLeaf allocated_memory_percent; //type: uint32
+
+}; // CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage
 
 
 class CiscoPlatformSoftware::ControlProcesses : public ydk::Entity

@@ -245,12 +245,14 @@ bool Alarms::Detail::has_leaf_or_child_of_name(const std::string & name) const
 
 Alarms::Detail::DetailSystem::DetailSystem()
     :
-    active(std::make_shared<Alarms::Detail::DetailSystem::Active>())
+    conditions(std::make_shared<Alarms::Detail::DetailSystem::Conditions>())
+    , active(std::make_shared<Alarms::Detail::DetailSystem::Active>())
     , history(std::make_shared<Alarms::Detail::DetailSystem::History>())
     , suppressed(std::make_shared<Alarms::Detail::DetailSystem::Suppressed>())
     , stats(std::make_shared<Alarms::Detail::DetailSystem::Stats>())
     , clients(std::make_shared<Alarms::Detail::DetailSystem::Clients>())
 {
+    conditions->parent = this;
     active->parent = this;
     history->parent = this;
     suppressed->parent = this;
@@ -267,7 +269,8 @@ Alarms::Detail::DetailSystem::~DetailSystem()
 bool Alarms::Detail::DetailSystem::has_data() const
 {
     if (is_presence_container) return true;
-    return (active !=  nullptr && active->has_data())
+    return (conditions !=  nullptr && conditions->has_data())
+	|| (active !=  nullptr && active->has_data())
 	|| (history !=  nullptr && history->has_data())
 	|| (suppressed !=  nullptr && suppressed->has_data())
 	|| (stats !=  nullptr && stats->has_data())
@@ -277,6 +280,7 @@ bool Alarms::Detail::DetailSystem::has_data() const
 bool Alarms::Detail::DetailSystem::has_operation() const
 {
     return is_set(yfilter)
+	|| (conditions !=  nullptr && conditions->has_operation())
 	|| (active !=  nullptr && active->has_operation())
 	|| (history !=  nullptr && history->has_operation())
 	|| (suppressed !=  nullptr && suppressed->has_operation())
@@ -309,6 +313,15 @@ std::vector<std::pair<std::string, LeafData> > Alarms::Detail::DetailSystem::get
 
 std::shared_ptr<Entity> Alarms::Detail::DetailSystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "conditions")
+    {
+        if(conditions == nullptr)
+        {
+            conditions = std::make_shared<Alarms::Detail::DetailSystem::Conditions>();
+        }
+        return conditions;
+    }
+
     if(child_yang_name == "active")
     {
         if(active == nullptr)
@@ -361,6 +374,11 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::get
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(conditions != nullptr)
+    {
+        children["conditions"] = conditions;
+    }
+
     if(active != nullptr)
     {
         children["active"] = active;
@@ -399,7 +417,693 @@ void Alarms::Detail::DetailSystem::set_filter(const std::string & value_path, YF
 
 bool Alarms::Detail::DetailSystem::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "active" || name == "history" || name == "suppressed" || name == "stats" || name == "clients")
+    if(name == "conditions" || name == "active" || name == "history" || name == "suppressed" || name == "stats" || name == "clients")
+        return true;
+    return false;
+}
+
+Alarms::Detail::DetailSystem::Conditions::Conditions()
+    :
+    alarm_info(this, {})
+{
+
+    yang_name = "conditions"; yang_parent_name = "detail-system"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Alarms::Detail::DetailSystem::Conditions::~Conditions()
+{
+}
+
+bool Alarms::Detail::DetailSystem::Conditions::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_info.len(); index++)
+    {
+        if(alarm_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Alarms::Detail::DetailSystem::Conditions::has_operation() const
+{
+    for (std::size_t index=0; index<alarm_info.len(); index++)
+    {
+        if(alarm_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Alarms::Detail::DetailSystem::Conditions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-alarmgr-server-oper:alarms/detail/detail-system/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Alarms::Detail::DetailSystem::Conditions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "conditions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Alarms::Detail::DetailSystem::Conditions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Conditions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "alarm-info")
+    {
+        auto c = std::make_shared<Alarms::Detail::DetailSystem::Conditions::AlarmInfo>();
+        c->parent = this;
+        alarm_info.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Conditions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : alarm_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Alarms::Detail::DetailSystem::Conditions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Alarms::Detail::DetailSystem::Conditions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Alarms::Detail::DetailSystem::Conditions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alarm-info")
+        return true;
+    return false;
+}
+
+Alarms::Detail::DetailSystem::Conditions::AlarmInfo::AlarmInfo()
+    :
+    description{YType::str, "description"},
+    location{YType::str, "location"},
+    aid{YType::str, "aid"},
+    tag{YType::str, "tag"},
+    module{YType::str, "module"},
+    eid{YType::str, "eid"},
+    reporting_agent_id{YType::uint32, "reporting-agent-id"},
+    pending_sync{YType::boolean, "pending-sync"},
+    severity{YType::enumeration, "severity"},
+    status{YType::enumeration, "status"},
+    group{YType::enumeration, "group"},
+    set_time{YType::str, "set-time"},
+    set_timestamp{YType::uint64, "set-timestamp"},
+    clear_time{YType::str, "clear-time"},
+    clear_timestamp{YType::uint64, "clear-timestamp"},
+    service_affecting{YType::enumeration, "service-affecting"},
+    type{YType::enumeration, "type"},
+    interface{YType::str, "interface"},
+    alarm_name{YType::str, "alarm-name"}
+        ,
+    otn(std::make_shared<Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn>())
+    , tca(std::make_shared<Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca>())
+{
+    otn->parent = this;
+    tca->parent = this;
+
+    yang_name = "alarm-info"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Alarms::Detail::DetailSystem::Conditions::AlarmInfo::~AlarmInfo()
+{
+}
+
+bool Alarms::Detail::DetailSystem::Conditions::AlarmInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return description.is_set
+	|| location.is_set
+	|| aid.is_set
+	|| tag.is_set
+	|| module.is_set
+	|| eid.is_set
+	|| reporting_agent_id.is_set
+	|| pending_sync.is_set
+	|| severity.is_set
+	|| status.is_set
+	|| group.is_set
+	|| set_time.is_set
+	|| set_timestamp.is_set
+	|| clear_time.is_set
+	|| clear_timestamp.is_set
+	|| service_affecting.is_set
+	|| type.is_set
+	|| interface.is_set
+	|| alarm_name.is_set
+	|| (otn !=  nullptr && otn->has_data())
+	|| (tca !=  nullptr && tca->has_data());
+}
+
+bool Alarms::Detail::DetailSystem::Conditions::AlarmInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(aid.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(module.yfilter)
+	|| ydk::is_set(eid.yfilter)
+	|| ydk::is_set(reporting_agent_id.yfilter)
+	|| ydk::is_set(pending_sync.yfilter)
+	|| ydk::is_set(severity.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(set_time.yfilter)
+	|| ydk::is_set(set_timestamp.yfilter)
+	|| ydk::is_set(clear_time.yfilter)
+	|| ydk::is_set(clear_timestamp.yfilter)
+	|| ydk::is_set(service_affecting.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(alarm_name.yfilter)
+	|| (otn !=  nullptr && otn->has_operation())
+	|| (tca !=  nullptr && tca->has_operation());
+}
+
+std::string Alarms::Detail::DetailSystem::Conditions::AlarmInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-alarmgr-server-oper:alarms/detail/detail-system/conditions/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Alarms::Detail::DetailSystem::Conditions::AlarmInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "alarm-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Alarms::Detail::DetailSystem::Conditions::AlarmInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (aid.is_set || is_set(aid.yfilter)) leaf_name_data.push_back(aid.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (module.is_set || is_set(module.yfilter)) leaf_name_data.push_back(module.get_name_leafdata());
+    if (eid.is_set || is_set(eid.yfilter)) leaf_name_data.push_back(eid.get_name_leafdata());
+    if (reporting_agent_id.is_set || is_set(reporting_agent_id.yfilter)) leaf_name_data.push_back(reporting_agent_id.get_name_leafdata());
+    if (pending_sync.is_set || is_set(pending_sync.yfilter)) leaf_name_data.push_back(pending_sync.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (set_time.is_set || is_set(set_time.yfilter)) leaf_name_data.push_back(set_time.get_name_leafdata());
+    if (set_timestamp.is_set || is_set(set_timestamp.yfilter)) leaf_name_data.push_back(set_timestamp.get_name_leafdata());
+    if (clear_time.is_set || is_set(clear_time.yfilter)) leaf_name_data.push_back(clear_time.get_name_leafdata());
+    if (clear_timestamp.is_set || is_set(clear_timestamp.yfilter)) leaf_name_data.push_back(clear_timestamp.get_name_leafdata());
+    if (service_affecting.is_set || is_set(service_affecting.yfilter)) leaf_name_data.push_back(service_affecting.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (alarm_name.is_set || is_set(alarm_name.yfilter)) leaf_name_data.push_back(alarm_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Conditions::AlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "otn")
+    {
+        if(otn == nullptr)
+        {
+            otn = std::make_shared<Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn>();
+        }
+        return otn;
+    }
+
+    if(child_yang_name == "tca")
+    {
+        if(tca == nullptr)
+        {
+            tca = std::make_shared<Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca>();
+        }
+        return tca;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Conditions::AlarmInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(otn != nullptr)
+    {
+        children["otn"] = otn;
+    }
+
+    if(tca != nullptr)
+    {
+        children["tca"] = tca;
+    }
+
+    return children;
+}
+
+void Alarms::Detail::DetailSystem::Conditions::AlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aid")
+    {
+        aid = value;
+        aid.value_namespace = name_space;
+        aid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tag")
+    {
+        tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module")
+    {
+        module = value;
+        module.value_namespace = name_space;
+        module.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "eid")
+    {
+        eid = value;
+        eid.value_namespace = name_space;
+        eid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-agent-id")
+    {
+        reporting_agent_id = value;
+        reporting_agent_id.value_namespace = name_space;
+        reporting_agent_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pending-sync")
+    {
+        pending_sync = value;
+        pending_sync.value_namespace = name_space;
+        pending_sync.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity")
+    {
+        severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status")
+    {
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group")
+    {
+        group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-time")
+    {
+        set_time = value;
+        set_time.value_namespace = name_space;
+        set_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-timestamp")
+    {
+        set_timestamp = value;
+        set_timestamp.value_namespace = name_space;
+        set_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clear-time")
+    {
+        clear_time = value;
+        clear_time.value_namespace = name_space;
+        clear_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clear-timestamp")
+    {
+        clear_timestamp = value;
+        clear_timestamp.value_namespace = name_space;
+        clear_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "service-affecting")
+    {
+        service_affecting = value;
+        service_affecting.value_namespace = name_space;
+        service_affecting.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "alarm-name")
+    {
+        alarm_name = value;
+        alarm_name.value_namespace = name_space;
+        alarm_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Alarms::Detail::DetailSystem::Conditions::AlarmInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "aid")
+    {
+        aid.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "module")
+    {
+        module.yfilter = yfilter;
+    }
+    if(value_path == "eid")
+    {
+        eid.yfilter = yfilter;
+    }
+    if(value_path == "reporting-agent-id")
+    {
+        reporting_agent_id.yfilter = yfilter;
+    }
+    if(value_path == "pending-sync")
+    {
+        pending_sync.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "set-time")
+    {
+        set_time.yfilter = yfilter;
+    }
+    if(value_path == "set-timestamp")
+    {
+        set_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "clear-time")
+    {
+        clear_time.yfilter = yfilter;
+    }
+    if(value_path == "clear-timestamp")
+    {
+        clear_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "service-affecting")
+    {
+        service_affecting.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "alarm-name")
+    {
+        alarm_name.yfilter = yfilter;
+    }
+}
+
+bool Alarms::Detail::DetailSystem::Conditions::AlarmInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otn" || name == "tca" || name == "description" || name == "location" || name == "aid" || name == "tag" || name == "module" || name == "eid" || name == "reporting-agent-id" || name == "pending-sync" || name == "severity" || name == "status" || name == "group" || name == "set-time" || name == "set-timestamp" || name == "clear-time" || name == "clear-timestamp" || name == "service-affecting" || name == "type" || name == "interface" || name == "alarm-name")
+        return true;
+    return false;
+}
+
+Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn::Otn()
+    :
+    direction{YType::enumeration, "direction"},
+    notification_source{YType::enumeration, "notification-source"}
+{
+
+    yang_name = "otn"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn::~Otn()
+{
+}
+
+bool Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn::has_data() const
+{
+    if (is_presence_container) return true;
+    return direction.is_set
+	|| notification_source.is_set;
+}
+
+bool Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(notification_source.yfilter);
+}
+
+std::string Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-alarmgr-server-oper:alarms/detail/detail-system/conditions/alarm-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "otn";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (notification_source.is_set || is_set(notification_source.yfilter)) leaf_name_data.push_back(notification_source.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "direction")
+    {
+        direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "notification-source")
+    {
+        notification_source = value;
+        notification_source.value_namespace = name_space;
+        notification_source.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "notification-source")
+    {
+        notification_source.yfilter = yfilter;
+    }
+}
+
+bool Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Otn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "notification-source")
+        return true;
+    return false;
+}
+
+Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca::Tca()
+    :
+    threshold_value{YType::str, "threshold-value"},
+    current_value{YType::str, "current-value"},
+    bucket_type{YType::enumeration, "bucket-type"}
+{
+
+    yang_name = "tca"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca::~Tca()
+{
+}
+
+bool Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca::has_data() const
+{
+    if (is_presence_container) return true;
+    return threshold_value.is_set
+	|| current_value.is_set
+	|| bucket_type.is_set;
+}
+
+bool Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(threshold_value.yfilter)
+	|| ydk::is_set(current_value.yfilter)
+	|| ydk::is_set(bucket_type.yfilter);
+}
+
+std::string Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-alarmgr-server-oper:alarms/detail/detail-system/conditions/alarm-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tca";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold_value.is_set || is_set(threshold_value.yfilter)) leaf_name_data.push_back(threshold_value.get_name_leafdata());
+    if (current_value.is_set || is_set(current_value.yfilter)) leaf_name_data.push_back(current_value.get_name_leafdata());
+    if (bucket_type.is_set || is_set(bucket_type.yfilter)) leaf_name_data.push_back(bucket_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "threshold-value")
+    {
+        threshold_value = value;
+        threshold_value.value_namespace = name_space;
+        threshold_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "current-value")
+    {
+        current_value = value;
+        current_value.value_namespace = name_space;
+        current_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bucket-type")
+    {
+        bucket_type = value;
+        bucket_type.value_namespace = name_space;
+        bucket_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "threshold-value")
+    {
+        threshold_value.yfilter = yfilter;
+    }
+    if(value_path == "current-value")
+    {
+        current_value.yfilter = yfilter;
+    }
+    if(value_path == "bucket-type")
+    {
+        bucket_type.yfilter = yfilter;
+    }
+}
+
+bool Alarms::Detail::DetailSystem::Conditions::AlarmInfo::Tca::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-value" || name == "current-value" || name == "bucket-type")
         return true;
     return false;
 }
@@ -3186,12 +3890,14 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::DetailLocation()
     :
     node_id{YType::str, "node-id"}
         ,
-    active(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active>())
+    conditions(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions>())
+    , active(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active>())
     , history(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History>())
     , suppressed(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed>())
     , stats(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats>())
     , clients(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients>())
 {
+    conditions->parent = this;
     active->parent = this;
     history->parent = this;
     suppressed->parent = this;
@@ -3209,6 +3915,7 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::has_data() con
 {
     if (is_presence_container) return true;
     return node_id.is_set
+	|| (conditions !=  nullptr && conditions->has_data())
 	|| (active !=  nullptr && active->has_data())
 	|| (history !=  nullptr && history->has_data())
 	|| (suppressed !=  nullptr && suppressed->has_data())
@@ -3220,6 +3927,7 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::has_operation(
 {
     return is_set(yfilter)
 	|| ydk::is_set(node_id.yfilter)
+	|| (conditions !=  nullptr && conditions->has_operation())
 	|| (active !=  nullptr && active->has_operation())
 	|| (history !=  nullptr && history->has_operation())
 	|| (suppressed !=  nullptr && suppressed->has_operation())
@@ -3254,6 +3962,15 @@ std::vector<std::pair<std::string, LeafData> > Alarms::Detail::DetailCard::Detai
 
 std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "conditions")
+    {
+        if(conditions == nullptr)
+        {
+            conditions = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions>();
+        }
+        return conditions;
+    }
+
     if(child_yang_name == "active")
     {
         if(active == nullptr)
@@ -3306,6 +4023,11 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::Detai
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(conditions != nullptr)
+    {
+        children["conditions"] = conditions;
+    }
+
     if(active != nullptr)
     {
         children["active"] = active;
@@ -3354,7 +4076,665 @@ void Alarms::Detail::DetailCard::DetailLocations::DetailLocation::set_filter(con
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "active" || name == "history" || name == "suppressed" || name == "stats" || name == "clients" || name == "node-id")
+    if(name == "conditions" || name == "active" || name == "history" || name == "suppressed" || name == "stats" || name == "clients" || name == "node-id")
+        return true;
+    return false;
+}
+
+Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::Conditions()
+    :
+    alarm_info(this, {})
+{
+
+    yang_name = "conditions"; yang_parent_name = "detail-location"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::~Conditions()
+{
+}
+
+bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_info.len(); index++)
+    {
+        if(alarm_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::has_operation() const
+{
+    for (std::size_t index=0; index<alarm_info.len(); index++)
+    {
+        if(alarm_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "conditions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "alarm-info")
+    {
+        auto c = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo>();
+        c->parent = this;
+        alarm_info.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : alarm_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alarm-info")
+        return true;
+    return false;
+}
+
+Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::AlarmInfo()
+    :
+    description{YType::str, "description"},
+    location{YType::str, "location"},
+    aid{YType::str, "aid"},
+    tag{YType::str, "tag"},
+    module{YType::str, "module"},
+    eid{YType::str, "eid"},
+    reporting_agent_id{YType::uint32, "reporting-agent-id"},
+    pending_sync{YType::boolean, "pending-sync"},
+    severity{YType::enumeration, "severity"},
+    status{YType::enumeration, "status"},
+    group{YType::enumeration, "group"},
+    set_time{YType::str, "set-time"},
+    set_timestamp{YType::uint64, "set-timestamp"},
+    clear_time{YType::str, "clear-time"},
+    clear_timestamp{YType::uint64, "clear-timestamp"},
+    service_affecting{YType::enumeration, "service-affecting"},
+    type{YType::enumeration, "type"},
+    interface{YType::str, "interface"},
+    alarm_name{YType::str, "alarm-name"}
+        ,
+    otn(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Otn>())
+    , tca(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Tca>())
+{
+    otn->parent = this;
+    tca->parent = this;
+
+    yang_name = "alarm-info"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::~AlarmInfo()
+{
+}
+
+bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return description.is_set
+	|| location.is_set
+	|| aid.is_set
+	|| tag.is_set
+	|| module.is_set
+	|| eid.is_set
+	|| reporting_agent_id.is_set
+	|| pending_sync.is_set
+	|| severity.is_set
+	|| status.is_set
+	|| group.is_set
+	|| set_time.is_set
+	|| set_timestamp.is_set
+	|| clear_time.is_set
+	|| clear_timestamp.is_set
+	|| service_affecting.is_set
+	|| type.is_set
+	|| interface.is_set
+	|| alarm_name.is_set
+	|| (otn !=  nullptr && otn->has_data())
+	|| (tca !=  nullptr && tca->has_data());
+}
+
+bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(aid.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(module.yfilter)
+	|| ydk::is_set(eid.yfilter)
+	|| ydk::is_set(reporting_agent_id.yfilter)
+	|| ydk::is_set(pending_sync.yfilter)
+	|| ydk::is_set(severity.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(set_time.yfilter)
+	|| ydk::is_set(set_timestamp.yfilter)
+	|| ydk::is_set(clear_time.yfilter)
+	|| ydk::is_set(clear_timestamp.yfilter)
+	|| ydk::is_set(service_affecting.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(alarm_name.yfilter)
+	|| (otn !=  nullptr && otn->has_operation())
+	|| (tca !=  nullptr && tca->has_operation());
+}
+
+std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "alarm-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (aid.is_set || is_set(aid.yfilter)) leaf_name_data.push_back(aid.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (module.is_set || is_set(module.yfilter)) leaf_name_data.push_back(module.get_name_leafdata());
+    if (eid.is_set || is_set(eid.yfilter)) leaf_name_data.push_back(eid.get_name_leafdata());
+    if (reporting_agent_id.is_set || is_set(reporting_agent_id.yfilter)) leaf_name_data.push_back(reporting_agent_id.get_name_leafdata());
+    if (pending_sync.is_set || is_set(pending_sync.yfilter)) leaf_name_data.push_back(pending_sync.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (set_time.is_set || is_set(set_time.yfilter)) leaf_name_data.push_back(set_time.get_name_leafdata());
+    if (set_timestamp.is_set || is_set(set_timestamp.yfilter)) leaf_name_data.push_back(set_timestamp.get_name_leafdata());
+    if (clear_time.is_set || is_set(clear_time.yfilter)) leaf_name_data.push_back(clear_time.get_name_leafdata());
+    if (clear_timestamp.is_set || is_set(clear_timestamp.yfilter)) leaf_name_data.push_back(clear_timestamp.get_name_leafdata());
+    if (service_affecting.is_set || is_set(service_affecting.yfilter)) leaf_name_data.push_back(service_affecting.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (alarm_name.is_set || is_set(alarm_name.yfilter)) leaf_name_data.push_back(alarm_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "otn")
+    {
+        if(otn == nullptr)
+        {
+            otn = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Otn>();
+        }
+        return otn;
+    }
+
+    if(child_yang_name == "tca")
+    {
+        if(tca == nullptr)
+        {
+            tca = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Tca>();
+        }
+        return tca;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(otn != nullptr)
+    {
+        children["otn"] = otn;
+    }
+
+    if(tca != nullptr)
+    {
+        children["tca"] = tca;
+    }
+
+    return children;
+}
+
+void Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aid")
+    {
+        aid = value;
+        aid.value_namespace = name_space;
+        aid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tag")
+    {
+        tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module")
+    {
+        module = value;
+        module.value_namespace = name_space;
+        module.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "eid")
+    {
+        eid = value;
+        eid.value_namespace = name_space;
+        eid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-agent-id")
+    {
+        reporting_agent_id = value;
+        reporting_agent_id.value_namespace = name_space;
+        reporting_agent_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pending-sync")
+    {
+        pending_sync = value;
+        pending_sync.value_namespace = name_space;
+        pending_sync.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity")
+    {
+        severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status")
+    {
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group")
+    {
+        group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-time")
+    {
+        set_time = value;
+        set_time.value_namespace = name_space;
+        set_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-timestamp")
+    {
+        set_timestamp = value;
+        set_timestamp.value_namespace = name_space;
+        set_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clear-time")
+    {
+        clear_time = value;
+        clear_time.value_namespace = name_space;
+        clear_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clear-timestamp")
+    {
+        clear_timestamp = value;
+        clear_timestamp.value_namespace = name_space;
+        clear_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "service-affecting")
+    {
+        service_affecting = value;
+        service_affecting.value_namespace = name_space;
+        service_affecting.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "alarm-name")
+    {
+        alarm_name = value;
+        alarm_name.value_namespace = name_space;
+        alarm_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "aid")
+    {
+        aid.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "module")
+    {
+        module.yfilter = yfilter;
+    }
+    if(value_path == "eid")
+    {
+        eid.yfilter = yfilter;
+    }
+    if(value_path == "reporting-agent-id")
+    {
+        reporting_agent_id.yfilter = yfilter;
+    }
+    if(value_path == "pending-sync")
+    {
+        pending_sync.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "set-time")
+    {
+        set_time.yfilter = yfilter;
+    }
+    if(value_path == "set-timestamp")
+    {
+        set_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "clear-time")
+    {
+        clear_time.yfilter = yfilter;
+    }
+    if(value_path == "clear-timestamp")
+    {
+        clear_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "service-affecting")
+    {
+        service_affecting.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "alarm-name")
+    {
+        alarm_name.yfilter = yfilter;
+    }
+}
+
+bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otn" || name == "tca" || name == "description" || name == "location" || name == "aid" || name == "tag" || name == "module" || name == "eid" || name == "reporting-agent-id" || name == "pending-sync" || name == "severity" || name == "status" || name == "group" || name == "set-time" || name == "set-timestamp" || name == "clear-time" || name == "clear-timestamp" || name == "service-affecting" || name == "type" || name == "interface" || name == "alarm-name")
+        return true;
+    return false;
+}
+
+Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Otn::Otn()
+    :
+    direction{YType::enumeration, "direction"},
+    notification_source{YType::enumeration, "notification-source"}
+{
+
+    yang_name = "otn"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Otn::~Otn()
+{
+}
+
+bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Otn::has_data() const
+{
+    if (is_presence_container) return true;
+    return direction.is_set
+	|| notification_source.is_set;
+}
+
+bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Otn::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(notification_source.yfilter);
+}
+
+std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Otn::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "otn";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Otn::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (notification_source.is_set || is_set(notification_source.yfilter)) leaf_name_data.push_back(notification_source.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Otn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "direction")
+    {
+        direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "notification-source")
+    {
+        notification_source = value;
+        notification_source.value_namespace = name_space;
+        notification_source.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Otn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "notification-source")
+    {
+        notification_source.yfilter = yfilter;
+    }
+}
+
+bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Otn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "notification-source")
+        return true;
+    return false;
+}
+
+Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Tca::Tca()
+    :
+    threshold_value{YType::str, "threshold-value"},
+    current_value{YType::str, "current-value"},
+    bucket_type{YType::enumeration, "bucket-type"}
+{
+
+    yang_name = "tca"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Tca::~Tca()
+{
+}
+
+bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Tca::has_data() const
+{
+    if (is_presence_container) return true;
+    return threshold_value.is_set
+	|| current_value.is_set
+	|| bucket_type.is_set;
+}
+
+bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Tca::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(threshold_value.yfilter)
+	|| ydk::is_set(current_value.yfilter)
+	|| ydk::is_set(bucket_type.yfilter);
+}
+
+std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Tca::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tca";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Tca::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold_value.is_set || is_set(threshold_value.yfilter)) leaf_name_data.push_back(threshold_value.get_name_leafdata());
+    if (current_value.is_set || is_set(current_value.yfilter)) leaf_name_data.push_back(current_value.get_name_leafdata());
+    if (bucket_type.is_set || is_set(bucket_type.yfilter)) leaf_name_data.push_back(bucket_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Tca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Tca::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Tca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "threshold-value")
+    {
+        threshold_value = value;
+        threshold_value.value_namespace = name_space;
+        threshold_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "current-value")
+    {
+        current_value = value;
+        current_value.value_namespace = name_space;
+        current_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bucket-type")
+    {
+        bucket_type = value;
+        bucket_type.value_namespace = name_space;
+        bucket_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Tca::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "threshold-value")
+    {
+        threshold_value.yfilter = yfilter;
+    }
+    if(value_path == "current-value")
+    {
+        current_value.yfilter = yfilter;
+    }
+    if(value_path == "bucket-type")
+    {
+        bucket_type.yfilter = yfilter;
+    }
+}
+
+bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditions::AlarmInfo::Tca::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-value" || name == "current-value" || name == "bucket-type")
         return true;
     return false;
 }
@@ -6150,10 +7530,12 @@ Alarms::Brief::BriefCard::BriefLocations::BriefLocation::BriefLocation()
     :
     node_id{YType::str, "node-id"}
         ,
-    active(std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active>())
+    conditions(std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions>())
+    , active(std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active>())
     , history(std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History>())
     , suppressed(std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed>())
 {
+    conditions->parent = this;
     active->parent = this;
     history->parent = this;
     suppressed->parent = this;
@@ -6169,6 +7551,7 @@ bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::has_data() const
 {
     if (is_presence_container) return true;
     return node_id.is_set
+	|| (conditions !=  nullptr && conditions->has_data())
 	|| (active !=  nullptr && active->has_data())
 	|| (history !=  nullptr && history->has_data())
 	|| (suppressed !=  nullptr && suppressed->has_data());
@@ -6178,6 +7561,7 @@ bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::has_operation() co
 {
     return is_set(yfilter)
 	|| ydk::is_set(node_id.yfilter)
+	|| (conditions !=  nullptr && conditions->has_operation())
 	|| (active !=  nullptr && active->has_operation())
 	|| (history !=  nullptr && history->has_operation())
 	|| (suppressed !=  nullptr && suppressed->has_operation());
@@ -6210,6 +7594,15 @@ std::vector<std::pair<std::string, LeafData> > Alarms::Brief::BriefCard::BriefLo
 
 std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "conditions")
+    {
+        if(conditions == nullptr)
+        {
+            conditions = std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions>();
+        }
+        return conditions;
+    }
+
     if(child_yang_name == "active")
     {
         if(active == nullptr)
@@ -6244,6 +7637,11 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLo
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(conditions != nullptr)
+    {
+        children["conditions"] = conditions;
+    }
+
     if(active != nullptr)
     {
         children["active"] = active;
@@ -6282,7 +7680,276 @@ void Alarms::Brief::BriefCard::BriefLocations::BriefLocation::set_filter(const s
 
 bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "active" || name == "history" || name == "suppressed" || name == "node-id")
+    if(name == "conditions" || name == "active" || name == "history" || name == "suppressed" || name == "node-id")
+        return true;
+    return false;
+}
+
+Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::Conditions()
+    :
+    alarm_info(this, {})
+{
+
+    yang_name = "conditions"; yang_parent_name = "brief-location"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::~Conditions()
+{
+}
+
+bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_info.len(); index++)
+    {
+        if(alarm_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::has_operation() const
+{
+    for (std::size_t index=0; index<alarm_info.len(); index++)
+    {
+        if(alarm_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "conditions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "alarm-info")
+    {
+        auto c = std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::AlarmInfo>();
+        c->parent = this;
+        alarm_info.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : alarm_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alarm-info")
+        return true;
+    return false;
+}
+
+Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::AlarmInfo::AlarmInfo()
+    :
+    location{YType::str, "location"},
+    severity{YType::enumeration, "severity"},
+    group{YType::enumeration, "group"},
+    set_time{YType::str, "set-time"},
+    set_timestamp{YType::uint64, "set-timestamp"},
+    clear_time{YType::str, "clear-time"},
+    clear_timestamp{YType::uint64, "clear-timestamp"},
+    description{YType::str, "description"}
+{
+
+    yang_name = "alarm-info"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::AlarmInfo::~AlarmInfo()
+{
+}
+
+bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::AlarmInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return location.is_set
+	|| severity.is_set
+	|| group.is_set
+	|| set_time.is_set
+	|| set_timestamp.is_set
+	|| clear_time.is_set
+	|| clear_timestamp.is_set
+	|| description.is_set;
+}
+
+bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::AlarmInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(severity.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(set_time.yfilter)
+	|| ydk::is_set(set_timestamp.yfilter)
+	|| ydk::is_set(clear_time.yfilter)
+	|| ydk::is_set(clear_timestamp.yfilter)
+	|| ydk::is_set(description.yfilter);
+}
+
+std::string Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::AlarmInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "alarm-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::AlarmInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (set_time.is_set || is_set(set_time.yfilter)) leaf_name_data.push_back(set_time.get_name_leafdata());
+    if (set_timestamp.is_set || is_set(set_timestamp.yfilter)) leaf_name_data.push_back(set_timestamp.get_name_leafdata());
+    if (clear_time.is_set || is_set(clear_time.yfilter)) leaf_name_data.push_back(clear_time.get_name_leafdata());
+    if (clear_timestamp.is_set || is_set(clear_timestamp.yfilter)) leaf_name_data.push_back(clear_timestamp.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::AlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::AlarmInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::AlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity")
+    {
+        severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group")
+    {
+        group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-time")
+    {
+        set_time = value;
+        set_time.value_namespace = name_space;
+        set_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-timestamp")
+    {
+        set_timestamp = value;
+        set_timestamp.value_namespace = name_space;
+        set_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clear-time")
+    {
+        clear_time = value;
+        clear_time.value_namespace = name_space;
+        clear_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clear-timestamp")
+    {
+        clear_timestamp = value;
+        clear_timestamp.value_namespace = name_space;
+        clear_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::AlarmInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "set-time")
+    {
+        set_time.yfilter = yfilter;
+    }
+    if(value_path == "set-timestamp")
+    {
+        set_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "clear-time")
+    {
+        clear_time.yfilter = yfilter;
+    }
+    if(value_path == "clear-timestamp")
+    {
+        clear_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+}
+
+bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions::AlarmInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "location" || name == "severity" || name == "group" || name == "set-time" || name == "set-timestamp" || name == "clear-time" || name == "clear-timestamp" || name == "description")
         return true;
     return false;
 }
@@ -7096,10 +8763,12 @@ bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::Suppre
 
 Alarms::Brief::BriefSystem::BriefSystem()
     :
-    active(std::make_shared<Alarms::Brief::BriefSystem::Active>())
+    conditions(std::make_shared<Alarms::Brief::BriefSystem::Conditions>())
+    , active(std::make_shared<Alarms::Brief::BriefSystem::Active>())
     , history(std::make_shared<Alarms::Brief::BriefSystem::History>())
     , suppressed(std::make_shared<Alarms::Brief::BriefSystem::Suppressed>())
 {
+    conditions->parent = this;
     active->parent = this;
     history->parent = this;
     suppressed->parent = this;
@@ -7114,7 +8783,8 @@ Alarms::Brief::BriefSystem::~BriefSystem()
 bool Alarms::Brief::BriefSystem::has_data() const
 {
     if (is_presence_container) return true;
-    return (active !=  nullptr && active->has_data())
+    return (conditions !=  nullptr && conditions->has_data())
+	|| (active !=  nullptr && active->has_data())
 	|| (history !=  nullptr && history->has_data())
 	|| (suppressed !=  nullptr && suppressed->has_data());
 }
@@ -7122,6 +8792,7 @@ bool Alarms::Brief::BriefSystem::has_data() const
 bool Alarms::Brief::BriefSystem::has_operation() const
 {
     return is_set(yfilter)
+	|| (conditions !=  nullptr && conditions->has_operation())
 	|| (active !=  nullptr && active->has_operation())
 	|| (history !=  nullptr && history->has_operation())
 	|| (suppressed !=  nullptr && suppressed->has_operation());
@@ -7152,6 +8823,15 @@ std::vector<std::pair<std::string, LeafData> > Alarms::Brief::BriefSystem::get_n
 
 std::shared_ptr<Entity> Alarms::Brief::BriefSystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "conditions")
+    {
+        if(conditions == nullptr)
+        {
+            conditions = std::make_shared<Alarms::Brief::BriefSystem::Conditions>();
+        }
+        return conditions;
+    }
+
     if(child_yang_name == "active")
     {
         if(active == nullptr)
@@ -7186,6 +8866,11 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefSystem::get_c
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(conditions != nullptr)
+    {
+        children["conditions"] = conditions;
+    }
+
     if(active != nullptr)
     {
         children["active"] = active;
@@ -7214,7 +8899,290 @@ void Alarms::Brief::BriefSystem::set_filter(const std::string & value_path, YFil
 
 bool Alarms::Brief::BriefSystem::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "active" || name == "history" || name == "suppressed")
+    if(name == "conditions" || name == "active" || name == "history" || name == "suppressed")
+        return true;
+    return false;
+}
+
+Alarms::Brief::BriefSystem::Conditions::Conditions()
+    :
+    alarm_info(this, {})
+{
+
+    yang_name = "conditions"; yang_parent_name = "brief-system"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Alarms::Brief::BriefSystem::Conditions::~Conditions()
+{
+}
+
+bool Alarms::Brief::BriefSystem::Conditions::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_info.len(); index++)
+    {
+        if(alarm_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Alarms::Brief::BriefSystem::Conditions::has_operation() const
+{
+    for (std::size_t index=0; index<alarm_info.len(); index++)
+    {
+        if(alarm_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Alarms::Brief::BriefSystem::Conditions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-alarmgr-server-oper:alarms/brief/brief-system/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Alarms::Brief::BriefSystem::Conditions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "conditions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Alarms::Brief::BriefSystem::Conditions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Alarms::Brief::BriefSystem::Conditions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "alarm-info")
+    {
+        auto c = std::make_shared<Alarms::Brief::BriefSystem::Conditions::AlarmInfo>();
+        c->parent = this;
+        alarm_info.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefSystem::Conditions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : alarm_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Alarms::Brief::BriefSystem::Conditions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Alarms::Brief::BriefSystem::Conditions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Alarms::Brief::BriefSystem::Conditions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alarm-info")
+        return true;
+    return false;
+}
+
+Alarms::Brief::BriefSystem::Conditions::AlarmInfo::AlarmInfo()
+    :
+    location{YType::str, "location"},
+    severity{YType::enumeration, "severity"},
+    group{YType::enumeration, "group"},
+    set_time{YType::str, "set-time"},
+    set_timestamp{YType::uint64, "set-timestamp"},
+    clear_time{YType::str, "clear-time"},
+    clear_timestamp{YType::uint64, "clear-timestamp"},
+    description{YType::str, "description"}
+{
+
+    yang_name = "alarm-info"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Alarms::Brief::BriefSystem::Conditions::AlarmInfo::~AlarmInfo()
+{
+}
+
+bool Alarms::Brief::BriefSystem::Conditions::AlarmInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return location.is_set
+	|| severity.is_set
+	|| group.is_set
+	|| set_time.is_set
+	|| set_timestamp.is_set
+	|| clear_time.is_set
+	|| clear_timestamp.is_set
+	|| description.is_set;
+}
+
+bool Alarms::Brief::BriefSystem::Conditions::AlarmInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(severity.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(set_time.yfilter)
+	|| ydk::is_set(set_timestamp.yfilter)
+	|| ydk::is_set(clear_time.yfilter)
+	|| ydk::is_set(clear_timestamp.yfilter)
+	|| ydk::is_set(description.yfilter);
+}
+
+std::string Alarms::Brief::BriefSystem::Conditions::AlarmInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-alarmgr-server-oper:alarms/brief/brief-system/conditions/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Alarms::Brief::BriefSystem::Conditions::AlarmInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "alarm-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Alarms::Brief::BriefSystem::Conditions::AlarmInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (set_time.is_set || is_set(set_time.yfilter)) leaf_name_data.push_back(set_time.get_name_leafdata());
+    if (set_timestamp.is_set || is_set(set_timestamp.yfilter)) leaf_name_data.push_back(set_timestamp.get_name_leafdata());
+    if (clear_time.is_set || is_set(clear_time.yfilter)) leaf_name_data.push_back(clear_time.get_name_leafdata());
+    if (clear_timestamp.is_set || is_set(clear_timestamp.yfilter)) leaf_name_data.push_back(clear_timestamp.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Alarms::Brief::BriefSystem::Conditions::AlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefSystem::Conditions::AlarmInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Alarms::Brief::BriefSystem::Conditions::AlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity")
+    {
+        severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group")
+    {
+        group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-time")
+    {
+        set_time = value;
+        set_time.value_namespace = name_space;
+        set_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-timestamp")
+    {
+        set_timestamp = value;
+        set_timestamp.value_namespace = name_space;
+        set_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clear-time")
+    {
+        clear_time = value;
+        clear_time.value_namespace = name_space;
+        clear_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clear-timestamp")
+    {
+        clear_timestamp = value;
+        clear_timestamp.value_namespace = name_space;
+        clear_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Alarms::Brief::BriefSystem::Conditions::AlarmInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "set-time")
+    {
+        set_time.yfilter = yfilter;
+    }
+    if(value_path == "set-timestamp")
+    {
+        set_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "clear-time")
+    {
+        clear_time.yfilter = yfilter;
+    }
+    if(value_path == "clear-timestamp")
+    {
+        clear_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+}
+
+bool Alarms::Brief::BriefSystem::Conditions::AlarmInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "location" || name == "severity" || name == "group" || name == "set-time" || name == "set-timestamp" || name == "clear-time" || name == "clear-timestamp" || name == "description")
         return true;
     return false;
 }
@@ -8101,7 +10069,8 @@ const Enum::YLeaf AlarmNotificationSrc::far_end {2, "far-end"};
 
 const Enum::YLeaf AlarmEvent::default_ {0, "default"};
 const Enum::YLeaf AlarmEvent::notification {1, "notification"};
-const Enum::YLeaf AlarmEvent::last {2, "last"};
+const Enum::YLeaf AlarmEvent::condition {2, "condition"};
+const Enum::YLeaf AlarmEvent::last {3, "last"};
 
 const Enum::YLeaf AlarmClient::unknown {1, "unknown"};
 const Enum::YLeaf AlarmClient::producer {2, "producer"};

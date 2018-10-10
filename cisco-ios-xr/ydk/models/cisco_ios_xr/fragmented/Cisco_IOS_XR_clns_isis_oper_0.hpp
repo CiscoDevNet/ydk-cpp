@@ -303,12 +303,14 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         class InterfacesState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesState
         class InterfacesLevels; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels
         class CircuitCounters; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::CircuitCounters
+        class InterfacesAuthentication; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication
         class InterfacesTimers; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesTimers
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAfiSafis> interfaces_afi_safis;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesState> interfaces_state;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels> interfaces_levels;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::CircuitCounters> circuit_counters;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication> interfaces_authentication;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesTimers> interfaces_timers;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface
@@ -450,12 +452,14 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf level_number; //type: uint32
+        class HelloAuthentication; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication
         class InterfacesLevelsState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::InterfacesLevelsState
         class PacketCounters; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters
         class Adjacencies; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::Adjacencies
         class LevelsTimers; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsTimers
         class LevelsAfiSafis; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication> hello_authentication;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::InterfacesLevelsState> interfaces_levels_state;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters> packet_counters;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::Adjacencies> adjacencies;
@@ -463,6 +467,73 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis> levels_afi_safis;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication : public ydk::Entity
+{
+    public:
+        HelloAuthentication();
+        ~HelloAuthentication();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Key; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key> key;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key : public ydk::Entity
+{
+    public:
+        Key();
+        ~Key();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf auth_password; //type: string
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::InterfacesLevelsState : public ydk::Entity
@@ -872,18 +943,20 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
 
         ydk::YLeaf afi_name; //type: string
         ydk::YLeaf safi_name; //type: string
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::State
+        class AfiSafiState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiState
+        class AfiSafiSegmentRouting; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::State> state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiState> afi_safi_state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting> afi_safi_segment_routing;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi
 
 
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::State : public ydk::Entity
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiState : public ydk::Entity
 {
     public:
-        State();
-        ~State();
+        AfiSafiState();
+        ~AfiSafiState();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -899,7 +972,100 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         ydk::YLeaf safi_name; //type: string
         ydk::YLeaf metric; //type: uint32
 
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::State
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiState
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting : public ydk::Entity
+{
+    public:
+        AfiSafiSegmentRouting();
+        ~AfiSafiSegmentRouting();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SegmentRoutingPrefixSids; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids> segment_routing_prefix_sids;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids : public ydk::Entity
+{
+    public:
+        SegmentRoutingPrefixSids();
+        ~SegmentRoutingPrefixSids();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SegmentRoutingPrefixSid; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid
+
+        ydk::YList segment_routing_prefix_sid;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid : public ydk::Entity
+{
+    public:
+        SegmentRoutingPrefixSid();
+        ~SegmentRoutingPrefixSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf sid_id; //type: string
+        ydk::YLeaf label_options; //type: OpenconfigSegmentRoutingLabelOptionsEnum
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::CircuitCounters : public ydk::Entity
@@ -949,6 +1115,73 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         ydk::YLeaf lan_dis_changes; //type: uint32
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::CircuitCounters::State
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication : public ydk::Entity
+{
+    public:
+        InterfacesAuthentication();
+        ~InterfacesAuthentication();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Key; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key> key;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key : public ydk::Entity
+{
+    public:
+        Key();
+        ~Key();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf auth_password; //type: string
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesTimers : public ydk::Entity
@@ -1012,23 +1245,71 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Gl
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        class SegmentRouting; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting
         class LspBit; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit
         class Nsr; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Nsr
         class GracefulRestart; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::GracefulRestart
         class GlobalState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::GlobalState
+        class InterLevelPropagationPolicies; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies
         class AfiSafis; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::AfiSafis
         class Timers; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Timers
         class Transport; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Transport
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting> segment_routing;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit> lsp_bit;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Nsr> nsr;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::GracefulRestart> graceful_restart;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::GlobalState> global_state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies> inter_level_propagation_policies;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::AfiSafis> afi_safis;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Timers> timers;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Transport> transport;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting : public ydk::Entity
+{
+    public:
+        SegmentRouting();
+        ~SegmentRouting();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enabled; //type: boolean
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit : public ydk::Entity
@@ -1048,8 +1329,10 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Gl
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class OverloadBit; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::OverloadBit
+        class AttachedBit; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::OverloadBit> overload_bit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit> attached_bit;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit
 
@@ -1171,6 +1454,51 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Gl
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::OverloadBit::ResetTriggers::ResetTrigger::State
 
 
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit : public ydk::Entity
+{
+    public:
+        AttachedBit();
+        ~AttachedBit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ignore_bit; //type: boolean
+        ydk::YLeaf suppress_bit; //type: boolean
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit::State
+
+
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Nsr : public ydk::Entity
 {
     public:
@@ -1275,13 +1603,128 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Gl
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf authentication_check; //type: boolean
         ydk::YLeaf instance; //type: string
         ydk::YLeaf level_capability; //type: OpenconfigIsisTypesLevelTypeEnum
         ydk::YLeaf max_ecmp_paths; //type: uint8
+        ydk::YLeaf iid_tlv; //type: boolean
         ydk::YLeaf fast_flooding; //type: boolean
         ydk::YLeafList net; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::GlobalState
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies : public ydk::Entity
+{
+    public:
+        InterLevelPropagationPolicies();
+        ~InterLevelPropagationPolicies();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Level1ToLevel2; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2
+        class Level2ToLevel1; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2> level1_to_level2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1> level2_to_level1;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2 : public ydk::Entity
+{
+    public:
+        Level1ToLevel2();
+        ~Level1ToLevel2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList import_policy; //type: list of  string
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2::State
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1 : public ydk::Entity
+{
+    public:
+        Level2ToLevel1();
+        ~Level2ToLevel1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList import_policy; //type: list of  string
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::AfiSafis : public ydk::Entity
@@ -1353,6 +1796,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Gl
         ydk::YLeaf afi_name; //type: string
         ydk::YLeaf safi_name; //type: string
         ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf enabled; //type: boolean
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::AfiSafis::AfiSafi::State
 
@@ -1630,17 +2074,66 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf level_number; //type: uint32
+        class RoutePreference; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference
         class LevelsState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsState
         class TrafficEngineering; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::TrafficEngineering
+        class LevelsAuthentication; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication
         class SystemLevelCounters; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::SystemLevelCounters
         class LinkStateDatabases; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference> route_preference;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsState> levels_state;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::TrafficEngineering> traffic_engineering;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication> levels_authentication;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::SystemLevelCounters> system_level_counters;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases> link_state_databases;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference : public ydk::Entity
+{
+    public:
+        RoutePreference();
+        ~RoutePreference();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf external_route_preference; //type: uint8
+        ydk::YLeaf internal_route_preference; //type: uint8
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsState : public ydk::Entity
@@ -1661,6 +2154,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
 
         ydk::YLeaf level_number; //type: uint8
         ydk::YLeaf metric_style; //type: OpenconfigIsisTypesMetricStyleEnum
+        ydk::YLeaf authentication_check; //type: boolean
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsState
 
@@ -1709,6 +2203,73 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         ydk::YLeaf ipv6_router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::TrafficEngineering::State
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication : public ydk::Entity
+{
+    public:
+        LevelsAuthentication();
+        ~LevelsAuthentication();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Key; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key> key;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key : public ydk::Entity
+{
+    public:
+        Key();
+        ~Key();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf auth_password; //type: string
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::SystemLevelCounters : public ydk::Entity
@@ -3083,584 +3644,6 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsFlags::State
 
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn : public ydk::Entity
-{
-    public:
-        MtIsn();
-        ~MtIsn();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class MtIsnNeighbors; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors> mt_isn_neighbors;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors : public ydk::Entity
-{
-    public:
-        MtIsnNeighbors();
-        ~MtIsnNeighbors();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class MtIsnNeighbor; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor
-
-        ydk::YList mt_isn_neighbor;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor : public ydk::Entity
-{
-    public:
-        MtIsnNeighbor();
-        ~MtIsnNeighbor();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf mt_id; //type: uint32
-        ydk::YLeaf system_id; //type: string
-        class MtIsnNeighborsSubtlvs; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs
-        class MtIsnNeighborsState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsState
-        class MtIsnNeighborsUndefinedSubtlvs; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsUndefinedSubtlvs
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs> mt_isn_neighbors_subtlvs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsState> mt_isn_neighbors_state;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsUndefinedSubtlvs> mt_isn_neighbors_undefined_subtlvs;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs : public ydk::Entity
-{
-    public:
-        MtIsnNeighborsSubtlvs();
-        ~MtIsnNeighborsSubtlvs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class MtIsnNeighborsSubtlv; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv
-
-        ydk::YList mt_isn_neighbors_subtlv;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv : public ydk::Entity
-{
-    public:
-        MtIsnNeighborsSubtlv();
-        ~MtIsnNeighborsSubtlv();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf type; //type: string
-        class SubtlvsIpv6NeighborAddress; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6NeighborAddress
-        class SubtlvsIpv4InterfaceAddress; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv4InterfaceAddress
-        class SubtlvsMaxReservableLinkBandwidth; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxReservableLinkBandwidth
-        class SubtlvsMaxLinkBandwidth; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxLinkBandwidth
-        class SubtlvsAdjacencySids; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdjacencySids
-        class SubtlvsBandwidthConstraints; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints
-        class SubtlvsUnreservedBandwidths; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsUnreservedBandwidths
-        class SubtlvsIpv4NeighborAddress; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv4NeighborAddress
-        class SubtlvsTeDefaultMetric; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsTeDefaultMetric
-        class SubtlvsIpv6InterfaceAddress; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6InterfaceAddress
-        class SubtlvsAdminGroup; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdminGroup
-        class SubtlvsLanAdjacencySids; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsLanAdjacencySids
-        class SubtlvsExtendedAdminGroup; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsExtendedAdminGroup
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6NeighborAddress> subtlvs_ipv6_neighbor_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv4InterfaceAddress> subtlvs_ipv4_interface_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxReservableLinkBandwidth> subtlvs_max_reservable_link_bandwidth;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxLinkBandwidth> subtlvs_max_link_bandwidth;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdjacencySids> subtlvs_adjacency_sids;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints> subtlvs_bandwidth_constraints;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsUnreservedBandwidths> subtlvs_unreserved_bandwidths;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv4NeighborAddress> subtlvs_ipv4_neighbor_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsTeDefaultMetric> subtlvs_te_default_metric;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6InterfaceAddress> subtlvs_ipv6_interface_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdminGroup> subtlvs_admin_group;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsLanAdjacencySids> subtlvs_lan_adjacency_sids;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsExtendedAdminGroup> subtlvs_extended_admin_group;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6NeighborAddress : public ydk::Entity
-{
-    public:
-        SubtlvsIpv6NeighborAddress();
-        ~SubtlvsIpv6NeighborAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6NeighborAddress::State
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6NeighborAddress::State> state;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6NeighborAddress
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6NeighborAddress::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList ipv6_neighbor_address; //type: list of  string
-
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv6NeighborAddress::State
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv4InterfaceAddress : public ydk::Entity
-{
-    public:
-        SubtlvsIpv4InterfaceAddress();
-        ~SubtlvsIpv4InterfaceAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv4InterfaceAddress::State
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv4InterfaceAddress::State> state;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv4InterfaceAddress
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv4InterfaceAddress::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList ipv4_interface_address; //type: list of  string
-
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsIpv4InterfaceAddress::State
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxReservableLinkBandwidth : public ydk::Entity
-{
-    public:
-        SubtlvsMaxReservableLinkBandwidth();
-        ~SubtlvsMaxReservableLinkBandwidth();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxReservableLinkBandwidth::State
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxReservableLinkBandwidth::State> state;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxReservableLinkBandwidth
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxReservableLinkBandwidth::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf max_reservable_link_bandwidth; //type: string
-
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxReservableLinkBandwidth::State
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxLinkBandwidth : public ydk::Entity
-{
-    public:
-        SubtlvsMaxLinkBandwidth();
-        ~SubtlvsMaxLinkBandwidth();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxLinkBandwidth::State
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxLinkBandwidth::State> state;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxLinkBandwidth
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxLinkBandwidth::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf max_link_bandwidth; //type: string
-
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsMaxLinkBandwidth::State
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdjacencySids : public ydk::Entity
-{
-    public:
-        SubtlvsAdjacencySids();
-        ~SubtlvsAdjacencySids();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SubtlvsAdjacencySid; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdjacencySids::SubtlvsAdjacencySid
-
-        ydk::YList subtlvs_adjacency_sid;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdjacencySids
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdjacencySids::SubtlvsAdjacencySid : public ydk::Entity
-{
-    public:
-        SubtlvsAdjacencySid();
-        ~SubtlvsAdjacencySid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf value_; //type: uint32
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdjacencySids::SubtlvsAdjacencySid::State
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdjacencySids::SubtlvsAdjacencySid::State> state;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdjacencySids::SubtlvsAdjacencySid
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdjacencySids::SubtlvsAdjacencySid::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf value_; //type: uint32
-        ydk::YLeaf weight; //type: uint8
-        ydk::YLeafList flags; //type: list of  OpenconfigIsisLspAdjacencySidStateFlagsEnum
-
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsAdjacencySids::SubtlvsAdjacencySid::State
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints : public ydk::Entity
-{
-    public:
-        SubtlvsBandwidthConstraints();
-        ~SubtlvsBandwidthConstraints();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SubtlvsBandwidthConstraint; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint
-
-        ydk::YList subtlvs_bandwidth_constraint;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint : public ydk::Entity
-{
-    public:
-        SubtlvsBandwidthConstraint();
-        ~SubtlvsBandwidthConstraint();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf model_id; //type: uint32
-        class BandwidthConstraintsConstraints; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::BandwidthConstraintsConstraints
-        class SubtlvsBandwidthConstraintsState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::SubtlvsBandwidthConstraintsState
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::BandwidthConstraintsConstraints> bandwidth_constraints_constraints;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::SubtlvsBandwidthConstraintsState> subtlvs_bandwidth_constraints_state;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::BandwidthConstraintsConstraints : public ydk::Entity
-{
-    public:
-        BandwidthConstraintsConstraints();
-        ~BandwidthConstraintsConstraints();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class BandwidthConstraintsConstraint; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::BandwidthConstraintsConstraints::BandwidthConstraintsConstraint
-
-        ydk::YList bandwidth_constraints_constraint;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::BandwidthConstraintsConstraints
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::BandwidthConstraintsConstraints::BandwidthConstraintsConstraint : public ydk::Entity
-{
-    public:
-        BandwidthConstraintsConstraint();
-        ~BandwidthConstraintsConstraint();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf constraint_id; //type: uint32
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::BandwidthConstraintsConstraints::BandwidthConstraintsConstraint::State
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::BandwidthConstraintsConstraints::BandwidthConstraintsConstraint::State> state;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::BandwidthConstraintsConstraints::BandwidthConstraintsConstraint
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::BandwidthConstraintsConstraints::BandwidthConstraintsConstraint::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf constraint_id; //type: uint32
-        ydk::YLeaf bandwidth; //type: string
-
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::BandwidthConstraintsConstraints::BandwidthConstraintsConstraint::State
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::SubtlvsBandwidthConstraintsState : public ydk::Entity
-{
-    public:
-        SubtlvsBandwidthConstraintsState();
-        ~SubtlvsBandwidthConstraintsState();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf model_id; //type: uint8
-
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsBandwidthConstraints::SubtlvsBandwidthConstraint::SubtlvsBandwidthConstraintsState
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsUnreservedBandwidths : public ydk::Entity
-{
-    public:
-        SubtlvsUnreservedBandwidths();
-        ~SubtlvsUnreservedBandwidths();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SubtlvsUnreservedBandwidth; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsUnreservedBandwidths::SubtlvsUnreservedBandwidth
-
-        ydk::YList subtlvs_unreserved_bandwidth;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsUnreservedBandwidths
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsUnreservedBandwidths::SubtlvsUnreservedBandwidth : public ydk::Entity
-{
-    public:
-        SubtlvsUnreservedBandwidth();
-        ~SubtlvsUnreservedBandwidth();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf priority; //type: uint32
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsUnreservedBandwidths::SubtlvsUnreservedBandwidth::State
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsUnreservedBandwidths::SubtlvsUnreservedBandwidth::State> state;
-        
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors::MtIsnNeighbor::MtIsnNeighborsSubtlvs::MtIsnNeighborsSubtlv::SubtlvsUnreservedBandwidths::SubtlvsUnreservedBandwidth
-
 class IsisSubAfId : public ydk::Enum
 {
     public:
@@ -3993,9 +3976,11 @@ class IsisLspTrigger : public ydk::Enum
         static const ydk::Enum::YLeaf isis_lsp_trig_config_force_init;
         static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_add;
         static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_delete;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_change;
         static const ydk::Enum::YLeaf isis_lsp_trig_msd;
         static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_wait_timer;
         static const ydk::Enum::YLeaf isis_lsp_trig_direct_gen;
+        static const ydk::Enum::YLeaf isis_lsp_trig_flex_algo_enable_disable;
         static const ydk::Enum::YLeaf isis_lsp_trig_pm_delay_loss;
         static const ydk::Enum::YLeaf isis_lsp_trig_pm_bw_util;
 
@@ -4035,44 +4020,6 @@ class SrmsMiFlagEB : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
-
-};
-
-class IsisSpfTrigger : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_spf_trig_config;
-        static const ydk::Enum::YLeaf isis_spf_trig_nsr_fo;
-        static const ydk::Enum::YLeaf isis_spf_trig_periodic;
-        static const ydk::Enum::YLeaf isis_spf_trig_clear;
-        static const ydk::Enum::YLeaf isis_spf_trig_newadj;
-        static const ydk::Enum::YLeaf isis_spf_trig_deladj;
-        static const ydk::Enum::YLeaf isis_spf_trig_next_hop;
-        static const ydk::Enum::YLeaf isis_spf_trig_metric;
-        static const ydk::Enum::YLeaf isis_spf_trig_dis;
-        static const ydk::Enum::YLeaf isis_spf_trig_frr_per_link;
-        static const ydk::Enum::YLeaf isis_spf_trig_frr_per_prefix;
-        static const ydk::Enum::YLeaf isis_spf_trig_ucmp;
-        static const ydk::Enum::YLeaf isis_spf_trig_new_tunnel;
-        static const ydk::Enum::YLeaf isis_spf_trig_del_tunnel;
-        static const ydk::Enum::YLeaf isis_spf_trig_chg_tunnel;
-        static const ydk::Enum::YLeaf isis_spf_trig_new_node;
-        static const ydk::Enum::YLeaf isis_spf_trig_del_node;
-        static const ydk::Enum::YLeaf isis_spf_trig_newlsp;
-        static const ydk::Enum::YLeaf isis_spf_trig_lsp_expiry;
-        static const ydk::Enum::YLeaf isis_spf_trig_attach_set;
-        static const ydk::Enum::YLeaf isis_spf_trig_attach_clr;
-        static const ydk::Enum::YLeaf isis_spf_trig_overload_set;
-        static const ydk::Enum::YLeaf isis_spf_trig_overload_clr;
-        static const ydk::Enum::YLeaf isis_spf_trig_link_good;
-        static const ydk::Enum::YLeaf isis_spf_trig_link_bad;
-        static const ydk::Enum::YLeaf isis_spf_trig_prefix_good;
-        static const ydk::Enum::YLeaf isis_spf_trig_prefix_bad;
-        static const ydk::Enum::YLeaf isis_spf_trig_prefix;
-        static const ydk::Enum::YLeaf isis_spf_trig_area_addr;
-        static const ydk::Enum::YLeaf isis_spf_trig_ip_addr;
-        static const ydk::Enum::YLeaf isis_spf_trig_rtrid;
-        static const ydk::Enum::YLeaf isis_spf_trig_prefix_policy;
 
 };
 
@@ -4130,6 +4077,14 @@ class OpenconfigIsisLspIsisMetricFlagsEnum : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf internal;
         static const ydk::Enum::YLeaf unsupported;
+
+};
+
+class OpenconfigSegmentRoutingLabelOptionsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_php;
+        static const ydk::Enum::YLeaf explicit_null;
 
 };
 
@@ -4379,6 +4334,15 @@ class IsisIfAdvPrefixDisabledReason : public ydk::Enum
 
 };
 
+class OpenconfigIsisTypesLevelTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
+        static const ydk::Enum::YLeaf level12;
+
+};
+
 class IsisSpfClass : public ydk::Enum
 {
     public:
@@ -4387,9 +4351,49 @@ class IsisSpfClass : public ydk::Enum
         static const ydk::Enum::YLeaf isis_spf_partial;
         static const ydk::Enum::YLeaf isis_spf_frr_per_prefix;
         static const ydk::Enum::YLeaf isis_spf_ucmp_calc;
+        static const ydk::Enum::YLeaf isis_spf_flex;
         static const ydk::Enum::YLeaf isis_spf_next_hop;
         static const ydk::Enum::YLeaf isis_spf_incremental;
         static const ydk::Enum::YLeaf isis_spf_full;
+
+};
+
+class IsisSpfTrigger : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_spf_trig_config;
+        static const ydk::Enum::YLeaf isis_spf_trig_nsr_fo;
+        static const ydk::Enum::YLeaf isis_spf_trig_periodic;
+        static const ydk::Enum::YLeaf isis_spf_trig_clear;
+        static const ydk::Enum::YLeaf isis_spf_trig_newadj;
+        static const ydk::Enum::YLeaf isis_spf_trig_deladj;
+        static const ydk::Enum::YLeaf isis_spf_trig_next_hop;
+        static const ydk::Enum::YLeaf isis_spf_trig_metric;
+        static const ydk::Enum::YLeaf isis_spf_trig_dis;
+        static const ydk::Enum::YLeaf isis_spf_trig_frr_per_link;
+        static const ydk::Enum::YLeaf isis_spf_trig_frr_per_prefix;
+        static const ydk::Enum::YLeaf isis_spf_trig_ucmp;
+        static const ydk::Enum::YLeaf isis_spf_trig_new_tunnel;
+        static const ydk::Enum::YLeaf isis_spf_trig_del_tunnel;
+        static const ydk::Enum::YLeaf isis_spf_trig_chg_tunnel;
+        static const ydk::Enum::YLeaf isis_spf_trig_new_node;
+        static const ydk::Enum::YLeaf isis_spf_trig_del_node;
+        static const ydk::Enum::YLeaf isis_spf_trig_newlsp;
+        static const ydk::Enum::YLeaf isis_spf_trig_lsp_expiry;
+        static const ydk::Enum::YLeaf isis_spf_trig_attach_set;
+        static const ydk::Enum::YLeaf isis_spf_trig_attach_clr;
+        static const ydk::Enum::YLeaf isis_spf_trig_overload_set;
+        static const ydk::Enum::YLeaf isis_spf_trig_overload_clr;
+        static const ydk::Enum::YLeaf isis_spf_trig_link_good;
+        static const ydk::Enum::YLeaf isis_spf_trig_link_bad;
+        static const ydk::Enum::YLeaf isis_spf_trig_prefix_good;
+        static const ydk::Enum::YLeaf isis_spf_trig_prefix_bad;
+        static const ydk::Enum::YLeaf isis_spf_trig_prefix;
+        static const ydk::Enum::YLeaf isis_spf_trig_area_addr;
+        static const ydk::Enum::YLeaf isis_spf_trig_ip_addr;
+        static const ydk::Enum::YLeaf isis_spf_trig_rtrid;
+        static const ydk::Enum::YLeaf isis_spf_trig_flex_algo;
+        static const ydk::Enum::YLeaf isis_spf_trig_prefix_policy;
 
 };
 
@@ -4430,12 +4434,36 @@ class IsisUloopAvoidance : public ydk::Enum
 
 };
 
-class OpenconfigIsisTypesLevelTypeEnum : public ydk::Enum
+class Srv6EndFunction : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf level1;
-        static const ydk::Enum::YLeaf level2;
-        static const ydk::Enum::YLeaf level12;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf end;
+        static const ydk::Enum::YLeaf end_with_psp;
+        static const ydk::Enum::YLeaf end_with_usp;
+        static const ydk::Enum::YLeaf end_with_psp_usp;
+        static const ydk::Enum::YLeaf end_x;
+        static const ydk::Enum::YLeaf end_x_with_psp;
+        static const ydk::Enum::YLeaf end_x_with_usp;
+        static const ydk::Enum::YLeaf end_x_with_psp_usp;
+        static const ydk::Enum::YLeaf end_tn;
+        static const ydk::Enum::YLeaf end_t_with_psp;
+        static const ydk::Enum::YLeaf end_t_with_usp;
+        static const ydk::Enum::YLeaf end_t_with_psp_usp;
+        static const ydk::Enum::YLeaf end_b6;
+        static const ydk::Enum::YLeaf end_b6_encaps;
+        static const ydk::Enum::YLeaf end_bm;
+        static const ydk::Enum::YLeaf end_dx6;
+        static const ydk::Enum::YLeaf end_dx4;
+        static const ydk::Enum::YLeaf end_dt6;
+        static const ydk::Enum::YLeaf end_dt4;
+        static const ydk::Enum::YLeaf end_dt46;
+        static const ydk::Enum::YLeaf end_dx2;
+        static const ydk::Enum::YLeaf end_dx2v;
+        static const ydk::Enum::YLeaf end_dx2u;
+        static const ydk::Enum::YLeaf end_dx2m;
+        static const ydk::Enum::YLeaf end_otp;
+        static const ydk::Enum::YLeaf end_s;
 
 };
 

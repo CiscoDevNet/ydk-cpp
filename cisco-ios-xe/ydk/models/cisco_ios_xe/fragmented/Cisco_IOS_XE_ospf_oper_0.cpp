@@ -15,6 +15,7 @@ namespace Cisco_IOS_XE_ospf_oper {
 OspfOperData::OspfOperData()
     :
     ospf_state(nullptr) // presence node
+    , ospfv2_instance(this, {"instance_id"})
 {
 
     yang_name = "ospf-oper-data"; yang_parent_name = "Cisco-IOS-XE-ospf-oper"; is_top_level_class = true; has_list_ancestor = false; 
@@ -27,11 +28,21 @@ OspfOperData::~OspfOperData()
 bool OspfOperData::has_data() const
 {
     if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_instance.len(); index++)
+    {
+        if(ospfv2_instance[index]->has_data())
+            return true;
+    }
     return (ospf_state !=  nullptr && ospf_state->has_data());
 }
 
 bool OspfOperData::has_operation() const
 {
+    for (std::size_t index=0; index<ospfv2_instance.len(); index++)
+    {
+        if(ospfv2_instance[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
 	|| (ospf_state !=  nullptr && ospf_state->has_operation());
 }
@@ -63,6 +74,14 @@ std::shared_ptr<Entity> OspfOperData::get_child_by_name(const std::string & chil
         return ospf_state;
     }
 
+    if(child_yang_name == "ospfv2-instance")
+    {
+        auto c = std::make_shared<OspfOperData::Ospfv2Instance>();
+        c->parent = this;
+        ospfv2_instance.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -73,6 +92,15 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::get_children() cons
     if(ospf_state != nullptr)
     {
         children["ospf-state"] = ospf_state;
+    }
+
+    count = 0;
+    for (auto c : ospfv2_instance.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -113,7 +141,7 @@ std::map<std::pair<std::string, std::string>, std::string> OspfOperData::get_nam
 
 bool OspfOperData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ospf-state")
+    if(name == "ospf-state" || name == "ospfv2-instance")
         return true;
     return false;
 }
@@ -235,7 +263,8 @@ bool OspfOperData::OspfState::has_leaf_or_child_of_name(const std::string & name
 OspfOperData::OspfState::OspfInstance::OspfInstance()
     :
     af{YType::enumeration, "af"},
-    router_id{YType::uint32, "router-id"}
+    router_id{YType::uint32, "router-id"},
+    process_id{YType::uint16, "process-id"}
         ,
     ospf_area(this, {"area_id"})
     , link_scope_lsas(this, {"lsa_type"})
@@ -268,7 +297,8 @@ bool OspfOperData::OspfState::OspfInstance::has_data() const
             return true;
     }
     return af.is_set
-	|| router_id.is_set;
+	|| router_id.is_set
+	|| process_id.is_set;
 }
 
 bool OspfOperData::OspfState::OspfInstance::has_operation() const
@@ -290,7 +320,8 @@ bool OspfOperData::OspfState::OspfInstance::has_operation() const
     }
     return is_set(yfilter)
 	|| ydk::is_set(af.yfilter)
-	|| ydk::is_set(router_id.yfilter);
+	|| ydk::is_set(router_id.yfilter)
+	|| ydk::is_set(process_id.yfilter);
 }
 
 std::string OspfOperData::OspfState::OspfInstance::get_absolute_path() const
@@ -315,6 +346,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
     if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
     if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (process_id.is_set || is_set(process_id.yfilter)) leaf_name_data.push_back(process_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -397,6 +429,12 @@ void OspfOperData::OspfState::OspfInstance::set_value(const std::string & value_
         router_id.value_namespace = name_space;
         router_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "process-id")
+    {
+        process_id = value;
+        process_id.value_namespace = name_space;
+        process_id.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void OspfOperData::OspfState::OspfInstance::set_filter(const std::string & value_path, YFilter yfilter)
@@ -409,11 +447,15 @@ void OspfOperData::OspfState::OspfInstance::set_filter(const std::string & value
     {
         router_id.yfilter = yfilter;
     }
+    if(value_path == "process-id")
+    {
+        process_id.yfilter = yfilter;
+    }
 }
 
 bool OspfOperData::OspfState::OspfInstance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ospf-area" || name == "link-scope-lsas" || name == "multi-topology" || name == "af" || name == "router-id")
+    if(name == "ospf-area" || name == "link-scope-lsas" || name == "multi-topology" || name == "af" || name == "router-id" || name == "process-id")
         return true;
     return false;
 }
@@ -20048,20 +20090,50 @@ const Enum::YLeaf NbrStateType::ospf_nbr_exchange {6, "ospf-nbr-exchange"};
 const Enum::YLeaf NbrStateType::ospf_nbr_loading {7, "ospf-nbr-loading"};
 const Enum::YLeaf NbrStateType::ospf_nbr_full {8, "ospf-nbr-full"};
 
-const Enum::YLeaf OspfOperationMode::ospf_ships_in_the_night {0, "ospf-ships-in-the-night"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_down {0, "ospfv2-interface-state-down"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_loopback {1, "ospfv2-interface-state-loopback"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_waiting {2, "ospfv2-interface-state-waiting"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_point_to_mpoint {3, "ospfv2-interface-state-point-to-mpoint"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_point_to_point {4, "ospfv2-interface-state-point-to-point"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_dr {5, "ospfv2-interface-state-dr"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_backup {6, "ospfv2-interface-state-backup"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_other {7, "ospfv2-interface-state-other"};
+
+const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_unsupported_lsa_type {0, "ospfv2-lsa-type-unsupported-lsa-type"};
+const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_router {1, "ospfv2-lsa-type-router"};
+const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_network {2, "ospfv2-lsa-type-network"};
+const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_summary_net {3, "ospfv2-lsa-type-summary-net"};
+const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_summary_router {4, "ospfv2-lsa-type-summary-router"};
+const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_as_external {5, "ospfv2-lsa-type-as-external"};
+const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_nssa {6, "ospfv2-lsa-type-nssa"};
+const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_link_scope_opaque {7, "ospfv2-lsa-type-link-scope-opaque"};
+const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_area_scope_opaque {8, "ospfv2-lsa-type-area-scope-opaque"};
+const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_as_scope_opaque {9, "ospfv2-lsa-type-as-scope-opaque"};
 
 const Enum::YLeaf OspfNetworkType::ospf_broadcast {0, "ospf-broadcast"};
 const Enum::YLeaf OspfNetworkType::ospf_non_broadcast {1, "ospf-non-broadcast"};
 const Enum::YLeaf OspfNetworkType::ospf_point_to_multipoint {2, "ospf-point-to-multipoint"};
 const Enum::YLeaf OspfNetworkType::ospf_point_to_point {3, "ospf-point-to-point"};
 
+const Enum::YLeaf Ospfv2CryptoAlgorithm::ospfv2_crypto_cleartest {0, "ospfv2-crypto-cleartest"};
+const Enum::YLeaf Ospfv2CryptoAlgorithm::ospfv2_crypto_md5 {1, "ospfv2-crypto-md5"};
+
 const Enum::YLeaf OspfAuthType::ospf_auth_ipsec {0, "ospf-auth-ipsec"};
 const Enum::YLeaf OspfAuthType::ospf_auth_trailer_keychain {1, "ospf-auth-trailer-keychain"};
 const Enum::YLeaf OspfAuthType::ospf_auth_trailer_key {2, "ospf-auth-trailer-key"};
 const Enum::YLeaf OspfAuthType::ospf_auth_type_none {3, "ospf-auth-type-none"};
 
+const Enum::YLeaf OspfExternalMetricType::ospf_ext_metric_type_1 {0, "ospf-ext-metric-type-1"};
+const Enum::YLeaf OspfExternalMetricType::ospf_ext_metric_type_2 {1, "ospf-ext-metric-type-2"};
+
+const Enum::YLeaf OspfOperationMode::ospf_ships_in_the_night {0, "ospf-ships-in-the-night"};
+
 const Enum::YLeaf AddressFamily::address_family_ipv4 {0, "address-family-ipv4"};
 const Enum::YLeaf AddressFamily::address_family_ipv6 {1, "address-family-ipv6"};
+
+const Enum::YLeaf Ospfv2AuthTypeSelection::ospfv2_auth_none {0, "ospfv2-auth-none"};
+const Enum::YLeaf Ospfv2AuthTypeSelection::ospfv2_auth_trailer_key {1, "ospfv2-auth-trailer-key"};
+const Enum::YLeaf Ospfv2AuthTypeSelection::ospfv2_auth_trailer_key_chain {2, "ospfv2-auth-trailer-key-chain"};
 
 
 }

@@ -97,6 +97,7 @@ class EsdmaSwitchTypeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf EPC_SW;
         static const ydk::Enum::YLeaf CB_SW;
         static const ydk::Enum::YLeaf Unknown;
+        static const ydk::Enum::YLeaf RP_SW1;
 
 };
 

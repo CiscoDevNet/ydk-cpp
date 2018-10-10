@@ -34,10 +34,12 @@ class TelemetryModelDriven : public ydk::Entity
         class Destinations; //type: TelemetryModelDriven::Destinations
         class Subscriptions; //type: TelemetryModelDriven::Subscriptions
         class SensorGroups; //type: TelemetryModelDriven::SensorGroups
+        class Summary; //type: TelemetryModelDriven::Summary
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Destinations> destinations;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions> subscriptions;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::SensorGroups> sensor_groups;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Summary> summary;
         
 }; // TelemetryModelDriven
 
@@ -212,6 +214,7 @@ class TelemetryModelDriven::Destinations::Destination::Destination_::CollectionG
         ydk::YLeaf total_not_ready; //type: uint32
         ydk::YLeaf total_send_errors; //type: uint32
         ydk::YLeaf total_send_drops; //type: uint32
+        ydk::YLeaf strict_timer; //type: boolean
         class CollectionPath; //type: TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath
         class InternalCollectionGroup; //type: TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup
 
@@ -590,6 +593,7 @@ class TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup : publi
         ydk::YLeaf total_not_ready; //type: uint32
         ydk::YLeaf total_send_errors; //type: uint32
         ydk::YLeaf total_send_drops; //type: uint32
+        ydk::YLeaf strict_timer; //type: boolean
         class CollectionPath; //type: TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath
         class InternalCollectionGroup; //type: TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup
 
@@ -741,6 +745,47 @@ class TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath : public ydk::
         ydk::YLeaf status_str; //type: string
 
 }; // TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath
+
+
+class TelemetryModelDriven::Summary : public ydk::Entity
+{
+    public:
+        Summary();
+        ~Summary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf num_of_subscriptions; //type: uint32
+        ydk::YLeaf num_of_active_subscriptions; //type: uint32
+        ydk::YLeaf num_of_paused_subscriptions; //type: uint32
+        ydk::YLeaf num_of_destination_groups; //type: uint32
+        ydk::YLeaf num_of_destinations; //type: uint32
+        ydk::YLeaf num_of_tcp_dialouts; //type: uint32
+        ydk::YLeaf num_of_udp_dialouts; //type: uint32
+        ydk::YLeaf num_of_grpc_tls_dialouts; //type: uint32
+        ydk::YLeaf num_of_grpc_non_tls_dialouts; //type: uint32
+        ydk::YLeaf num_of_dialins; //type: uint32
+        ydk::YLeaf num_of_active_destinations; //type: uint32
+        ydk::YLeaf num_of_connected_sessions; //type: uint32
+        ydk::YLeaf num_of_connecting_sessions; //type: uint32
+        ydk::YLeaf num_of_sensor_groups; //type: uint32
+        ydk::YLeaf num_of_unique_sensor_paths; //type: uint32
+        ydk::YLeaf num_of_sensor_paths; //type: uint32
+        ydk::YLeaf num_of_not_resolved_sensor_paths; //type: uint32
+        ydk::YLeaf num_of_active_sensor_paths; //type: uint32
+        ydk::YLeaf max_sensor_paths; //type: uint32
+        ydk::YLeaf max_containers_per_path; //type: uint32
+
+}; // TelemetryModelDriven::Summary
 
 class MdtTransportEnum : public ydk::Enum
 {

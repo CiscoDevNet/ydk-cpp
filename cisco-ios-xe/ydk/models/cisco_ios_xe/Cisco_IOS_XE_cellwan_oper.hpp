@@ -35,11 +35,17 @@ class CellwanOperData : public ydk::Entity
         class CellwanRadio; //type: CellwanOperData::CellwanRadio
         class CellwanNetwork; //type: CellwanOperData::CellwanNetwork
         class CellwanConnection; //type: CellwanOperData::CellwanConnection
+        class CellwanSecurity; //type: CellwanOperData::CellwanSecurity
+        class CellwanSms; //type: CellwanOperData::CellwanSms
+        class CellwanGps; //type: CellwanOperData::CellwanGps
 
         ydk::YList cellwan_hardware;
         ydk::YList cellwan_radio;
         ydk::YList cellwan_network;
         ydk::YList cellwan_connection;
+        ydk::YList cellwan_security;
+        ydk::YList cellwan_sms;
+        ydk::YList cellwan_gps;
         
 }; // CellwanOperData
 
@@ -191,6 +197,98 @@ class CellwanOperData::CellwanConnection : public ydk::Entity
 
 }; // CellwanOperData::CellwanConnection
 
+
+class CellwanOperData::CellwanSecurity : public ydk::Entity
+{
+    public:
+        CellwanSecurity();
+        ~CellwanSecurity();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cellular_interface; //type: string
+        ydk::YLeaf active_sim; //type: int8
+        ydk::YLeaf sim_num_switchover; //type: uint32
+        ydk::YLeaf chv1_status; //type: CellwanChv1SimStatus
+        ydk::YLeaf sim_status; //type: CellwanSimStatus
+        ydk::YLeaf sim_oper; //type: CellwanSimUserOp
+        ydk::YLeaf num_retries; //type: int8
+
+}; // CellwanOperData::CellwanSecurity
+
+
+class CellwanOperData::CellwanSms : public ydk::Entity
+{
+    public:
+        CellwanSms();
+        ~CellwanSms();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cellular_interface; //type: string
+        ydk::YLeaf in_sms_count; //type: uint16
+        ydk::YLeaf in_sms_archived; //type: uint16
+        ydk::YLeaf in_sms_deleted; //type: uint16
+        ydk::YLeaf in_sms_max; //type: uint16
+        ydk::YLeaf in_sms_used; //type: uint16
+        ydk::YLeaf sms_callback_count; //type: uint16
+        ydk::YLeaf in_sms_arch_count; //type: uint16
+        ydk::YLeaf in_sms_arch_error_count; //type: uint16
+        ydk::YLeaf out_sms_count; //type: uint16
+        ydk::YLeaf out_sms_error_count; //type: uint16
+        ydk::YLeaf out_sms_pending; //type: uint16
+        ydk::YLeaf out_sms_arch_count; //type: uint16
+        ydk::YLeaf out_sms_arch_error_count; //type: uint16
+
+}; // CellwanOperData::CellwanSms
+
+
+class CellwanOperData::CellwanGps : public ydk::Entity
+{
+    public:
+        CellwanGps();
+        ~CellwanGps();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cellular_interface; //type: string
+        ydk::YLeaf gps_feature_state; //type: CwanGpsFeatureState
+        ydk::YLeaf port_selected; //type: CwanGpsPortSelected
+        ydk::YLeaf state; //type: CwanGpsState
+        ydk::YLeaf mode_selected; //type: CwanGpsModeSelected
+        ydk::YLeaf latitude; //type: string
+        ydk::YLeaf longitude; //type: string
+        ydk::YLeaf timestamp; //type: string
+
+}; // CellwanOperData::CellwanGps
+
 class ModemService : public ydk::Enum
 {
     public:
@@ -285,11 +383,39 @@ class RatPreference : public ydk::Enum
 
 };
 
+class CwanGpsModeSelected : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf gps_mode_disable;
+        static const ydk::Enum::YLeaf gps_mode_standalone;
+        static const ydk::Enum::YLeaf gps_mode_mbased;
+        static const ydk::Enum::YLeaf gps_mode_msassist;
+
+};
+
+class CwanGpsFeatureState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf gps_disabled;
+        static const ydk::Enum::YLeaf gps_enabled;
+
+};
+
 class PacketSessStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf packet_session_status_inactive;
         static const ydk::Enum::YLeaf packet_session_status_active;
+
+};
+
+class CwanGpsPortSelected : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf dedicated_gps_port;
+        static const ydk::Enum::YLeaf div_gps_port;
+        static const ydk::Enum::YLeaf voltage_no_bias_gps_port;
+        static const ydk::Enum::YLeaf gps_port_none;
 
 };
 
@@ -303,6 +429,19 @@ class CwRadioPowerStatus : public ydk::Enum
         static const ydk::Enum::YLeaf radio_power_mode_reset;
         static const ydk::Enum::YLeaf radio_power_mode_off;
         static const ydk::Enum::YLeaf radio_power_mode_persistent_low_power;
+
+};
+
+class CellwanSimUserOp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf sim_user_op_none;
+        static const ydk::Enum::YLeaf sim_user_op_chv1;
+        static const ydk::Enum::YLeaf sim_user_op_chv2;
+        static const ydk::Enum::YLeaf sim_user_op_unblock_chv1;
+        static const ydk::Enum::YLeaf sim_user_op_unblock_chv2;
+        static const ydk::Enum::YLeaf sim_user_op_mep;
+        static const ydk::Enum::YLeaf sim_user_op_unknown;
 
 };
 
@@ -345,6 +484,16 @@ class ModemStatus : public ydk::Enum
 
 };
 
+class CwanGpsState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf gps_state_disabled;
+        static const ydk::Enum::YLeaf gps_state_acquiring;
+        static const ydk::Enum::YLeaf gps_state_enabled;
+        static const ydk::Enum::YLeaf gps_loc_error;
+
+};
+
 class RegState : public ydk::Enum
 {
     public:
@@ -353,6 +502,34 @@ class RegState : public ydk::Enum
         static const ydk::Enum::YLeaf reg_status_searching;
         static const ydk::Enum::YLeaf reg_status_registration_denied;
         static const ydk::Enum::YLeaf reg_status_unsupported;
+
+};
+
+class CellwanSimStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf sim_status_ok;
+        static const ydk::Enum::YLeaf sim_status_not_inserted;
+        static const ydk::Enum::YLeaf sim_status_removed;
+        static const ydk::Enum::YLeaf sim_status_init_failure;
+        static const ydk::Enum::YLeaf sim_status_general_failure;
+        static const ydk::Enum::YLeaf sim_status_locked;
+        static const ydk::Enum::YLeaf sim_status_chv1_blocked;
+        static const ydk::Enum::YLeaf sim_status_chv2_blocked;
+        static const ydk::Enum::YLeaf sim_status_chv1_rejected;
+        static const ydk::Enum::YLeaf sim_status_chv2_rejected;
+        static const ydk::Enum::YLeaf sim_status_mep_locked;
+        static const ydk::Enum::YLeaf sim_status_network_reject;
+        static const ydk::Enum::YLeaf sim_status_unknown;
+
+};
+
+class CellwanChv1SimStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf chv1_verify_disabled;
+        static const ydk::Enum::YLeaf chv1_verify_enabled;
+        static const ydk::Enum::YLeaf chv1_verify_pending;
 
 };
 

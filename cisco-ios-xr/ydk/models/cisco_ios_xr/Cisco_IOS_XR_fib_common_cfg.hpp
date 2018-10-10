@@ -31,7 +31,10 @@ class Fib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
+        ydk::YLeaf auto_hash_recover; //type: boolean
         ydk::YLeaf prefer_aib_routes; //type: boolean
+        ydk::YLeaf encap_sharing_disable; //type: boolean
+        ydk::YLeaf frr_follow_bgp_pic; //type: boolean
         class PbtsForwardClassFallbacks; //type: Fib::PbtsForwardClassFallbacks
         class Platform; //type: Fib::Platform
 

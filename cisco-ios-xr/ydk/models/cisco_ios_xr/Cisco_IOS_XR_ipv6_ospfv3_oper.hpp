@@ -4051,6 +4051,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::Rout
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_index; //type: uint32
         ydk::YLeaf route_path_next_hop; //type: string
         ydk::YLeaf route_path_id; //type: uint16
         class RouteBackupPath; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath
@@ -8836,6 +8837,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::Rout
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_index; //type: uint32
         ydk::YLeaf route_path_next_hop; //type: string
         ydk::YLeaf route_path_id; //type: uint16
         class RouteBackupPath; //type: Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::RoutePath::RouteBackupPath
@@ -9059,6 +9061,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::Ro
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_index; //type: uint32
         ydk::YLeaf route_path_next_hop; //type: string
         ydk::YLeaf route_path_id; //type: uint16
         class RouteBackupPath; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::RoutePath::RouteBackupPath
@@ -15832,6 +15835,7 @@ class Ospfv3::Processes::Process::DefaultVrf::ExternalRoutes::ExternalRoute::Rou
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_index; //type: uint32
         ydk::YLeaf route_path_next_hop; //type: string
         ydk::YLeaf route_path_id; //type: uint16
         class RouteBackupPath; //type: Ospfv3::Processes::Process::DefaultVrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath
@@ -20617,6 +20621,7 @@ class Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::Rou
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_index; //type: uint32
         ydk::YLeaf route_path_next_hop; //type: string
         ydk::YLeaf route_path_id; //type: uint16
         class RouteBackupPath; //type: Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::RouteBackupPath
@@ -20840,6 +20845,7 @@ class Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::R
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_index; //type: uint32
         ydk::YLeaf route_path_next_hop; //type: string
         ydk::YLeaf route_path_id; //type: uint16
         class RouteBackupPath; //type: Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::RouteBackupPath

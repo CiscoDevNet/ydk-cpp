@@ -437,10 +437,14 @@ bool Cofo::Nodes::Node::ClientIds::has_leaf_or_child_of_name(const std::string &
 Cofo::Nodes::Node::ClientIds::ClientId::ClientId()
     :
     id{YType::uint32, "id"},
+    connection_handle{YType::uint32, "connection-handle"},
+    peer_handle{YType::uint32, "peer-handle"},
     client_id{YType::uint32, "client-id"},
     purge_timeout{YType::uint32, "purge-timeout"},
     host_client{YType::boolean, "host-client"},
-    connection_state{YType::uint32, "connection-state"}
+    connection_state{YType::uint32, "connection-state"},
+    topic_subscribed{YType::uint32, "topic-subscribed"},
+    topic_published{YType::uint32, "topic-published"}
 {
 
     yang_name = "client-id"; yang_parent_name = "client-ids"; is_top_level_class = false; has_list_ancestor = true; 
@@ -453,7 +457,19 @@ Cofo::Nodes::Node::ClientIds::ClientId::~ClientId()
 bool Cofo::Nodes::Node::ClientIds::ClientId::has_data() const
 {
     if (is_presence_container) return true;
+    for (auto const & leaf : topic_subscribed.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : topic_published.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
     return id.is_set
+	|| connection_handle.is_set
+	|| peer_handle.is_set
 	|| client_id.is_set
 	|| purge_timeout.is_set
 	|| host_client.is_set
@@ -462,12 +478,26 @@ bool Cofo::Nodes::Node::ClientIds::ClientId::has_data() const
 
 bool Cofo::Nodes::Node::ClientIds::ClientId::has_operation() const
 {
+    for (auto const & leaf : topic_subscribed.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : topic_published.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(connection_handle.yfilter)
+	|| ydk::is_set(peer_handle.yfilter)
 	|| ydk::is_set(client_id.yfilter)
 	|| ydk::is_set(purge_timeout.yfilter)
 	|| ydk::is_set(host_client.yfilter)
-	|| ydk::is_set(connection_state.yfilter);
+	|| ydk::is_set(connection_state.yfilter)
+	|| ydk::is_set(topic_subscribed.yfilter)
+	|| ydk::is_set(topic_published.yfilter);
 }
 
 std::string Cofo::Nodes::Node::ClientIds::ClientId::get_segment_path() const
@@ -483,11 +513,17 @@ std::vector<std::pair<std::string, LeafData> > Cofo::Nodes::Node::ClientIds::Cli
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (connection_handle.is_set || is_set(connection_handle.yfilter)) leaf_name_data.push_back(connection_handle.get_name_leafdata());
+    if (peer_handle.is_set || is_set(peer_handle.yfilter)) leaf_name_data.push_back(peer_handle.get_name_leafdata());
     if (client_id.is_set || is_set(client_id.yfilter)) leaf_name_data.push_back(client_id.get_name_leafdata());
     if (purge_timeout.is_set || is_set(purge_timeout.yfilter)) leaf_name_data.push_back(purge_timeout.get_name_leafdata());
     if (host_client.is_set || is_set(host_client.yfilter)) leaf_name_data.push_back(host_client.get_name_leafdata());
     if (connection_state.is_set || is_set(connection_state.yfilter)) leaf_name_data.push_back(connection_state.get_name_leafdata());
 
+    auto topic_subscribed_name_datas = topic_subscribed.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), topic_subscribed_name_datas.begin(), topic_subscribed_name_datas.end());
+    auto topic_published_name_datas = topic_published.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), topic_published_name_datas.begin(), topic_published_name_datas.end());
     return leaf_name_data;
 
 }
@@ -511,6 +547,18 @@ void Cofo::Nodes::Node::ClientIds::ClientId::set_value(const std::string & value
         id = value;
         id.value_namespace = name_space;
         id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-handle")
+    {
+        connection_handle = value;
+        connection_handle.value_namespace = name_space;
+        connection_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peer-handle")
+    {
+        peer_handle = value;
+        peer_handle.value_namespace = name_space;
+        peer_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "client-id")
     {
@@ -536,6 +584,14 @@ void Cofo::Nodes::Node::ClientIds::ClientId::set_value(const std::string & value
         connection_state.value_namespace = name_space;
         connection_state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "topic-subscribed")
+    {
+        topic_subscribed.append(value);
+    }
+    if(value_path == "topic-published")
+    {
+        topic_published.append(value);
+    }
 }
 
 void Cofo::Nodes::Node::ClientIds::ClientId::set_filter(const std::string & value_path, YFilter yfilter)
@@ -543,6 +599,14 @@ void Cofo::Nodes::Node::ClientIds::ClientId::set_filter(const std::string & valu
     if(value_path == "id")
     {
         id.yfilter = yfilter;
+    }
+    if(value_path == "connection-handle")
+    {
+        connection_handle.yfilter = yfilter;
+    }
+    if(value_path == "peer-handle")
+    {
+        peer_handle.yfilter = yfilter;
     }
     if(value_path == "client-id")
     {
@@ -560,11 +624,19 @@ void Cofo::Nodes::Node::ClientIds::ClientId::set_filter(const std::string & valu
     {
         connection_state.yfilter = yfilter;
     }
+    if(value_path == "topic-subscribed")
+    {
+        topic_subscribed.yfilter = yfilter;
+    }
+    if(value_path == "topic-published")
+    {
+        topic_published.yfilter = yfilter;
+    }
 }
 
 bool Cofo::Nodes::Node::ClientIds::ClientId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "id" || name == "client-id" || name == "purge-timeout" || name == "host-client" || name == "connection-state")
+    if(name == "id" || name == "connection-handle" || name == "peer-handle" || name == "client-id" || name == "purge-timeout" || name == "host-client" || name == "connection-state" || name == "topic-subscribed" || name == "topic-published")
         return true;
     return false;
 }
@@ -893,7 +965,7 @@ bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::has_leaf_or_child
 
 Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::ClientDbInfoStruct()
     :
-    total_objects_published{YType::uint32, "total-objects-published"},
+    total_objects{YType::uint32, "total-objects"},
     total_valid_items_in_db{YType::uint32, "total-valid-items-in-db"}
         ,
     cofo_object_published_array(this, {})
@@ -914,7 +986,7 @@ bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruc
         if(cofo_object_published_array[index]->has_data())
             return true;
     }
-    return total_objects_published.is_set
+    return total_objects.is_set
 	|| total_valid_items_in_db.is_set;
 }
 
@@ -926,7 +998,7 @@ bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruc
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(total_objects_published.yfilter)
+	|| ydk::is_set(total_objects.yfilter)
 	|| ydk::is_set(total_valid_items_in_db.yfilter);
 }
 
@@ -941,7 +1013,7 @@ std::vector<std::pair<std::string, LeafData> > Cofo::Nodes::Node::TopicIds::Topi
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (total_objects_published.is_set || is_set(total_objects_published.yfilter)) leaf_name_data.push_back(total_objects_published.get_name_leafdata());
+    if (total_objects.is_set || is_set(total_objects.yfilter)) leaf_name_data.push_back(total_objects.get_name_leafdata());
     if (total_valid_items_in_db.is_set || is_set(total_valid_items_in_db.yfilter)) leaf_name_data.push_back(total_valid_items_in_db.get_name_leafdata());
 
     return leaf_name_data;
@@ -979,11 +1051,11 @@ std::map<std::string, std::shared_ptr<Entity>> Cofo::Nodes::Node::TopicIds::Topi
 
 void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "total-objects-published")
+    if(value_path == "total-objects")
     {
-        total_objects_published = value;
-        total_objects_published.value_namespace = name_space;
-        total_objects_published.value_namespace_prefix = name_space_prefix;
+        total_objects = value;
+        total_objects.value_namespace = name_space;
+        total_objects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-valid-items-in-db")
     {
@@ -995,9 +1067,9 @@ void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruc
 
 void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "total-objects-published")
+    if(value_path == "total-objects")
     {
-        total_objects_published.yfilter = yfilter;
+        total_objects.yfilter = yfilter;
     }
     if(value_path == "total-valid-items-in-db")
     {
@@ -1007,16 +1079,29 @@ void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruc
 
 bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cofo-object-published-array" || name == "total-objects-published" || name == "total-valid-items-in-db")
+    if(name == "cofo-object-published-array" || name == "total-objects" || name == "total-valid-items-in-db")
         return true;
     return false;
 }
 
 Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::CofoObjectPublishedArray()
     :
+    client_id{YType::uint32, "client-id"},
+    object_id{YType::uint32, "object-id"},
+    insert_count{YType::uint32, "insert-count"},
+    item_state{YType::uint32, "item-state"},
     cofo_infra_object_key{YType::str, "cofo-infra-object-key"},
     cofo_infra_object_value{YType::str, "cofo-infra-object-value"}
+        ,
+    object_add_time(std::make_shared<Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectAddTime>())
+    , object_delete_time(std::make_shared<Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectDeleteTime>())
+    , object_txl_add_time(std::make_shared<Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlAddTime>())
+    , object_txl_encode_time(std::make_shared<Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlEncodeTime>())
 {
+    object_add_time->parent = this;
+    object_delete_time->parent = this;
+    object_txl_add_time->parent = this;
+    object_txl_encode_time->parent = this;
 
     yang_name = "cofo-object-published-array"; yang_parent_name = "client-db-info-struct"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1028,15 +1113,31 @@ Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::Co
 bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::has_data() const
 {
     if (is_presence_container) return true;
-    return cofo_infra_object_key.is_set
-	|| cofo_infra_object_value.is_set;
+    return client_id.is_set
+	|| object_id.is_set
+	|| insert_count.is_set
+	|| item_state.is_set
+	|| cofo_infra_object_key.is_set
+	|| cofo_infra_object_value.is_set
+	|| (object_add_time !=  nullptr && object_add_time->has_data())
+	|| (object_delete_time !=  nullptr && object_delete_time->has_data())
+	|| (object_txl_add_time !=  nullptr && object_txl_add_time->has_data())
+	|| (object_txl_encode_time !=  nullptr && object_txl_encode_time->has_data());
 }
 
 bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(client_id.yfilter)
+	|| ydk::is_set(object_id.yfilter)
+	|| ydk::is_set(insert_count.yfilter)
+	|| ydk::is_set(item_state.yfilter)
 	|| ydk::is_set(cofo_infra_object_key.yfilter)
-	|| ydk::is_set(cofo_infra_object_value.yfilter);
+	|| ydk::is_set(cofo_infra_object_value.yfilter)
+	|| (object_add_time !=  nullptr && object_add_time->has_operation())
+	|| (object_delete_time !=  nullptr && object_delete_time->has_operation())
+	|| (object_txl_add_time !=  nullptr && object_txl_add_time->has_operation())
+	|| (object_txl_encode_time !=  nullptr && object_txl_encode_time->has_operation());
 }
 
 std::string Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::get_segment_path() const
@@ -1050,6 +1151,10 @@ std::vector<std::pair<std::string, LeafData> > Cofo::Nodes::Node::TopicIds::Topi
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (client_id.is_set || is_set(client_id.yfilter)) leaf_name_data.push_back(client_id.get_name_leafdata());
+    if (object_id.is_set || is_set(object_id.yfilter)) leaf_name_data.push_back(object_id.get_name_leafdata());
+    if (insert_count.is_set || is_set(insert_count.yfilter)) leaf_name_data.push_back(insert_count.get_name_leafdata());
+    if (item_state.is_set || is_set(item_state.yfilter)) leaf_name_data.push_back(item_state.get_name_leafdata());
     if (cofo_infra_object_key.is_set || is_set(cofo_infra_object_key.yfilter)) leaf_name_data.push_back(cofo_infra_object_key.get_name_leafdata());
     if (cofo_infra_object_value.is_set || is_set(cofo_infra_object_value.yfilter)) leaf_name_data.push_back(cofo_infra_object_value.get_name_leafdata());
 
@@ -1059,6 +1164,42 @@ std::vector<std::pair<std::string, LeafData> > Cofo::Nodes::Node::TopicIds::Topi
 
 std::shared_ptr<Entity> Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "object-add-time")
+    {
+        if(object_add_time == nullptr)
+        {
+            object_add_time = std::make_shared<Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectAddTime>();
+        }
+        return object_add_time;
+    }
+
+    if(child_yang_name == "object-delete-time")
+    {
+        if(object_delete_time == nullptr)
+        {
+            object_delete_time = std::make_shared<Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectDeleteTime>();
+        }
+        return object_delete_time;
+    }
+
+    if(child_yang_name == "object-txl-add-time")
+    {
+        if(object_txl_add_time == nullptr)
+        {
+            object_txl_add_time = std::make_shared<Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlAddTime>();
+        }
+        return object_txl_add_time;
+    }
+
+    if(child_yang_name == "object-txl-encode-time")
+    {
+        if(object_txl_encode_time == nullptr)
+        {
+            object_txl_encode_time = std::make_shared<Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlEncodeTime>();
+        }
+        return object_txl_encode_time;
+    }
+
     return nullptr;
 }
 
@@ -1066,11 +1207,55 @@ std::map<std::string, std::shared_ptr<Entity>> Cofo::Nodes::Node::TopicIds::Topi
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(object_add_time != nullptr)
+    {
+        children["object-add-time"] = object_add_time;
+    }
+
+    if(object_delete_time != nullptr)
+    {
+        children["object-delete-time"] = object_delete_time;
+    }
+
+    if(object_txl_add_time != nullptr)
+    {
+        children["object-txl-add-time"] = object_txl_add_time;
+    }
+
+    if(object_txl_encode_time != nullptr)
+    {
+        children["object-txl-encode-time"] = object_txl_encode_time;
+    }
+
     return children;
 }
 
 void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "client-id")
+    {
+        client_id = value;
+        client_id.value_namespace = name_space;
+        client_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "object-id")
+    {
+        object_id = value;
+        object_id.value_namespace = name_space;
+        object_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "insert-count")
+    {
+        insert_count = value;
+        insert_count.value_namespace = name_space;
+        insert_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "item-state")
+    {
+        item_state = value;
+        item_state.value_namespace = name_space;
+        item_state.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "cofo-infra-object-key")
     {
         cofo_infra_object_key = value;
@@ -1087,6 +1272,22 @@ void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruc
 
 void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "client-id")
+    {
+        client_id.yfilter = yfilter;
+    }
+    if(value_path == "object-id")
+    {
+        object_id.yfilter = yfilter;
+    }
+    if(value_path == "insert-count")
+    {
+        insert_count.yfilter = yfilter;
+    }
+    if(value_path == "item-state")
+    {
+        item_state.yfilter = yfilter;
+    }
     if(value_path == "cofo-infra-object-key")
     {
         cofo_infra_object_key.yfilter = yfilter;
@@ -1099,7 +1300,375 @@ void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruc
 
 bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cofo-infra-object-key" || name == "cofo-infra-object-value")
+    if(name == "object-add-time" || name == "object-delete-time" || name == "object-txl-add-time" || name == "object-txl-encode-time" || name == "client-id" || name == "object-id" || name == "insert-count" || name == "item-state" || name == "cofo-infra-object-key" || name == "cofo-infra-object-value")
+        return true;
+    return false;
+}
+
+Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectAddTime::ObjectAddTime()
+    :
+    tv_sec{YType::uint32, "tv-sec"},
+    tv_nsec{YType::uint32, "tv-nsec"}
+{
+
+    yang_name = "object-add-time"; yang_parent_name = "cofo-object-published-array"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectAddTime::~ObjectAddTime()
+{
+}
+
+bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectAddTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return tv_sec.is_set
+	|| tv_nsec.is_set;
+}
+
+bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectAddTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tv_sec.yfilter)
+	|| ydk::is_set(tv_nsec.yfilter);
+}
+
+std::string Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectAddTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "object-add-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectAddTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tv_sec.is_set || is_set(tv_sec.yfilter)) leaf_name_data.push_back(tv_sec.get_name_leafdata());
+    if (tv_nsec.is_set || is_set(tv_nsec.yfilter)) leaf_name_data.push_back(tv_nsec.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectAddTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectAddTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectAddTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tv-sec")
+    {
+        tv_sec = value;
+        tv_sec.value_namespace = name_space;
+        tv_sec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tv-nsec")
+    {
+        tv_nsec = value;
+        tv_nsec.value_namespace = name_space;
+        tv_nsec.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectAddTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tv-sec")
+    {
+        tv_sec.yfilter = yfilter;
+    }
+    if(value_path == "tv-nsec")
+    {
+        tv_nsec.yfilter = yfilter;
+    }
+}
+
+bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectAddTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tv-sec" || name == "tv-nsec")
+        return true;
+    return false;
+}
+
+Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectDeleteTime::ObjectDeleteTime()
+    :
+    tv_sec{YType::uint32, "tv-sec"},
+    tv_nsec{YType::uint32, "tv-nsec"}
+{
+
+    yang_name = "object-delete-time"; yang_parent_name = "cofo-object-published-array"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectDeleteTime::~ObjectDeleteTime()
+{
+}
+
+bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectDeleteTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return tv_sec.is_set
+	|| tv_nsec.is_set;
+}
+
+bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectDeleteTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tv_sec.yfilter)
+	|| ydk::is_set(tv_nsec.yfilter);
+}
+
+std::string Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectDeleteTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "object-delete-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectDeleteTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tv_sec.is_set || is_set(tv_sec.yfilter)) leaf_name_data.push_back(tv_sec.get_name_leafdata());
+    if (tv_nsec.is_set || is_set(tv_nsec.yfilter)) leaf_name_data.push_back(tv_nsec.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectDeleteTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectDeleteTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectDeleteTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tv-sec")
+    {
+        tv_sec = value;
+        tv_sec.value_namespace = name_space;
+        tv_sec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tv-nsec")
+    {
+        tv_nsec = value;
+        tv_nsec.value_namespace = name_space;
+        tv_nsec.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectDeleteTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tv-sec")
+    {
+        tv_sec.yfilter = yfilter;
+    }
+    if(value_path == "tv-nsec")
+    {
+        tv_nsec.yfilter = yfilter;
+    }
+}
+
+bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectDeleteTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tv-sec" || name == "tv-nsec")
+        return true;
+    return false;
+}
+
+Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlAddTime::ObjectTxlAddTime()
+    :
+    tv_sec{YType::uint32, "tv-sec"},
+    tv_nsec{YType::uint32, "tv-nsec"}
+{
+
+    yang_name = "object-txl-add-time"; yang_parent_name = "cofo-object-published-array"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlAddTime::~ObjectTxlAddTime()
+{
+}
+
+bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlAddTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return tv_sec.is_set
+	|| tv_nsec.is_set;
+}
+
+bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlAddTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tv_sec.yfilter)
+	|| ydk::is_set(tv_nsec.yfilter);
+}
+
+std::string Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlAddTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "object-txl-add-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlAddTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tv_sec.is_set || is_set(tv_sec.yfilter)) leaf_name_data.push_back(tv_sec.get_name_leafdata());
+    if (tv_nsec.is_set || is_set(tv_nsec.yfilter)) leaf_name_data.push_back(tv_nsec.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlAddTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlAddTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlAddTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tv-sec")
+    {
+        tv_sec = value;
+        tv_sec.value_namespace = name_space;
+        tv_sec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tv-nsec")
+    {
+        tv_nsec = value;
+        tv_nsec.value_namespace = name_space;
+        tv_nsec.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlAddTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tv-sec")
+    {
+        tv_sec.yfilter = yfilter;
+    }
+    if(value_path == "tv-nsec")
+    {
+        tv_nsec.yfilter = yfilter;
+    }
+}
+
+bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlAddTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tv-sec" || name == "tv-nsec")
+        return true;
+    return false;
+}
+
+Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlEncodeTime::ObjectTxlEncodeTime()
+    :
+    tv_sec{YType::uint32, "tv-sec"},
+    tv_nsec{YType::uint32, "tv-nsec"}
+{
+
+    yang_name = "object-txl-encode-time"; yang_parent_name = "cofo-object-published-array"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlEncodeTime::~ObjectTxlEncodeTime()
+{
+}
+
+bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlEncodeTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return tv_sec.is_set
+	|| tv_nsec.is_set;
+}
+
+bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlEncodeTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tv_sec.yfilter)
+	|| ydk::is_set(tv_nsec.yfilter);
+}
+
+std::string Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlEncodeTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "object-txl-encode-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlEncodeTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tv_sec.is_set || is_set(tv_sec.yfilter)) leaf_name_data.push_back(tv_sec.get_name_leafdata());
+    if (tv_nsec.is_set || is_set(tv_nsec.yfilter)) leaf_name_data.push_back(tv_nsec.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlEncodeTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlEncodeTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlEncodeTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tv-sec")
+    {
+        tv_sec = value;
+        tv_sec.value_namespace = name_space;
+        tv_sec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tv-nsec")
+    {
+        tv_nsec = value;
+        tv_nsec.value_namespace = name_space;
+        tv_nsec.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlEncodeTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tv-sec")
+    {
+        tv_sec.yfilter = yfilter;
+    }
+    if(value_path == "tv-nsec")
+    {
+        tv_nsec.yfilter = yfilter;
+    }
+}
+
+bool Cofo::Nodes::Node::TopicIds::TopicId::DatabaseInfoStruct::ClientDbInfoStruct::CofoObjectPublishedArray::ObjectTxlEncodeTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tv-sec" || name == "tv-nsec")
         return true;
     return false;
 }

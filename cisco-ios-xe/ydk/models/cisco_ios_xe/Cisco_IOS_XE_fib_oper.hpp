@@ -121,6 +121,7 @@ class FibOperData::FibNiEntry::FibEntries::FibNexthopEntries : public ydk::Entit
         ydk::YLeaf weight; //type: uint8
         ydk::YLeaf encap; //type: EncapsulationHeaderType
         ydk::YLeaf decap; //type: EncapsulationHeaderType
+        ydk::YLeaf resolved_nh_addr; //type: string
 
 }; // FibOperData::FibNiEntry::FibEntries::FibNexthopEntries
 

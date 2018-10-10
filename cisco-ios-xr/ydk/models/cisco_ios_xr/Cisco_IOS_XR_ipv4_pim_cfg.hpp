@@ -457,6 +457,7 @@ class Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable : public ydk::Entity
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf allow_ebgp; //type: empty
         ydk::YLeaf disable_ibgp; //type: empty
+        ydk::YLeaf use_standard_encoding; //type: empty
 
 }; // Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable
 
@@ -1350,6 +1351,7 @@ class Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable : public ydk::Entity
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf allow_ebgp; //type: empty
         ydk::YLeaf disable_ibgp; //type: empty
+        ydk::YLeaf use_standard_encoding; //type: empty
 
 }; // Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable
 
@@ -2050,6 +2052,7 @@ class Pim::DefaultContext::Ipv6::RpfVectorEnable : public ydk::Entity
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf allow_ebgp; //type: empty
         ydk::YLeaf disable_ibgp; //type: empty
+        ydk::YLeaf use_standard_encoding; //type: empty
 
 }; // Pim::DefaultContext::Ipv6::RpfVectorEnable
 
@@ -3156,6 +3159,7 @@ class Pim::DefaultContext::Ipv4::RpfVectorEnable : public ydk::Entity
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf allow_ebgp; //type: empty
         ydk::YLeaf disable_ibgp; //type: empty
+        ydk::YLeaf use_standard_encoding; //type: empty
 
 }; // Pim::DefaultContext::Ipv4::RpfVectorEnable
 

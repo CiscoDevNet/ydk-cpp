@@ -159,7 +159,8 @@ VrrpOperData::VrrpOperState::VrrpOperState()
     discontinuity_time{YType::str, "discontinuity-time"},
     advertisement_sent{YType::uint32, "advertisement-sent"},
     advertisement_rcvd{YType::uint32, "advertisement-rcvd"},
-    omp_state{YType::enumeration, "omp-state"}
+    omp_state{YType::enumeration, "omp-state"},
+    secondary_vip_addresses{YType::str, "secondary-vip-addresses"}
         ,
     track_list(this, {})
 {
@@ -177,6 +178,11 @@ bool VrrpOperData::VrrpOperState::has_data() const
     for (std::size_t index=0; index<track_list.len(); index++)
     {
         if(track_list[index]->has_data())
+            return true;
+    }
+    for (auto const & leaf : secondary_vip_addresses.getYLeafs())
+    {
+        if(leaf.is_set)
             return true;
     }
     return if_number.is_set
@@ -217,6 +223,11 @@ bool VrrpOperData::VrrpOperState::has_operation() const
         if(track_list[index]->has_operation())
             return true;
     }
+    for (auto const & leaf : secondary_vip_addresses.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
     return is_set(yfilter)
 	|| ydk::is_set(if_number.yfilter)
 	|| ydk::is_set(group_id.yfilter)
@@ -246,7 +257,8 @@ bool VrrpOperData::VrrpOperState::has_operation() const
 	|| ydk::is_set(discontinuity_time.yfilter)
 	|| ydk::is_set(advertisement_sent.yfilter)
 	|| ydk::is_set(advertisement_rcvd.yfilter)
-	|| ydk::is_set(omp_state.yfilter);
+	|| ydk::is_set(omp_state.yfilter)
+	|| ydk::is_set(secondary_vip_addresses.yfilter);
 }
 
 std::string VrrpOperData::VrrpOperState::get_absolute_path() const
@@ -300,6 +312,8 @@ std::vector<std::pair<std::string, LeafData> > VrrpOperData::VrrpOperState::get_
     if (advertisement_rcvd.is_set || is_set(advertisement_rcvd.yfilter)) leaf_name_data.push_back(advertisement_rcvd.get_name_leafdata());
     if (omp_state.is_set || is_set(omp_state.yfilter)) leaf_name_data.push_back(omp_state.get_name_leafdata());
 
+    auto secondary_vip_addresses_name_datas = secondary_vip_addresses.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), secondary_vip_addresses_name_datas.begin(), secondary_vip_addresses_name_datas.end());
     return leaf_name_data;
 
 }
@@ -509,6 +523,10 @@ void VrrpOperData::VrrpOperState::set_value(const std::string & value_path, cons
         omp_state.value_namespace = name_space;
         omp_state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "secondary-vip-addresses")
+    {
+        secondary_vip_addresses.append(value);
+    }
 }
 
 void VrrpOperData::VrrpOperState::set_filter(const std::string & value_path, YFilter yfilter)
@@ -629,11 +647,15 @@ void VrrpOperData::VrrpOperState::set_filter(const std::string & value_path, YFi
     {
         omp_state.yfilter = yfilter;
     }
+    if(value_path == "secondary-vip-addresses")
+    {
+        secondary_vip_addresses.yfilter = yfilter;
+    }
 }
 
 bool VrrpOperData::VrrpOperState::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "track-list" || name == "if-number" || name == "group-id" || name == "addr-type" || name == "version" || name == "virtual-ip" || name == "if-name" || name == "vrrp-state" || name == "virtual-mac" || name == "master-ip" || name == "is-owner" || name == "priority" || name == "advertisement-timer" || name == "master-down-timer" || name == "skew-time" || name == "preempt" || name == "master-transitions" || name == "new-master-reason" || name == "last-state-change-time" || name == "adv-interval-errors" || name == "ip-ttl-errors" || name == "rcvd-pri-zero-pak" || name == "sent-pri-zero-pak" || name == "rcvd-invalid-type-pak" || name == "addr-list-errors" || name == "pak-len-errors" || name == "discontinuity-time" || name == "advertisement-sent" || name == "advertisement-rcvd" || name == "omp-state")
+    if(name == "track-list" || name == "if-number" || name == "group-id" || name == "addr-type" || name == "version" || name == "virtual-ip" || name == "if-name" || name == "vrrp-state" || name == "virtual-mac" || name == "master-ip" || name == "is-owner" || name == "priority" || name == "advertisement-timer" || name == "master-down-timer" || name == "skew-time" || name == "preempt" || name == "master-transitions" || name == "new-master-reason" || name == "last-state-change-time" || name == "adv-interval-errors" || name == "ip-ttl-errors" || name == "rcvd-pri-zero-pak" || name == "sent-pri-zero-pak" || name == "rcvd-invalid-type-pak" || name == "addr-list-errors" || name == "pak-len-errors" || name == "discontinuity-time" || name == "advertisement-sent" || name == "advertisement-rcvd" || name == "omp-state" || name == "secondary-vip-addresses")
         return true;
     return false;
 }

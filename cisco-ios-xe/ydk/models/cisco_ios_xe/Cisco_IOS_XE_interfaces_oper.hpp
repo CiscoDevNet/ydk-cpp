@@ -71,13 +71,17 @@ class Interfaces::Interface : public ydk::Entity
         ydk::YLeaf input_security_acl; //type: string
         ydk::YLeaf output_security_acl; //type: string
         ydk::YLeaf bia_address; //type: string
+        ydk::YLeaf ipv4_tcp_adjust_mss; //type: uint16
+        ydk::YLeaf ipv6_tcp_adjust_mss; //type: uint16
         ydk::YLeaf intf_class_unspecified; //type: boolean
         ydk::YLeafList higher_layer_if; //type: list of  string
         ydk::YLeafList lower_layer_if; //type: list of  string
+        ydk::YLeafList ipv6_addrs; //type: list of  string
         class Statistics; //type: Interfaces::Interface::Statistics
         class DiffservInfo; //type: Interfaces::Interface::DiffservInfo
         class V4ProtocolStats; //type: Interfaces::Interface::V4ProtocolStats
         class V6ProtocolStats; //type: Interfaces::Interface::V6ProtocolStats
+        class LagAggregateState; //type: Interfaces::Interface::LagAggregateState
         class EtherState; //type: Interfaces::Interface::EtherState
         class EtherStats; //type: Interfaces::Interface::EtherStats
         class SerialState; //type: Interfaces::Interface::SerialState
@@ -87,6 +91,7 @@ class Interfaces::Interface : public ydk::Entity
         ydk::YList diffserv_info;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::V4ProtocolStats> v4_protocol_stats;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::V6ProtocolStats> v6_protocol_stats;
+        ydk::YList lag_aggregate_state;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::EtherState> ether_state;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::EtherStats> ether_stats;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::SerialState> serial_state;
@@ -114,7 +119,7 @@ class Interfaces::Interface::Statistics : public ydk::Entity
         ydk::YLeaf discontinuity_time; //type: string
         ydk::YLeaf in_octets; //type: uint64
         ydk::YLeaf in_unicast_pkts; //type: uint64
-        ydk::YLeaf new_name; //type: uint64
+        ydk::YLeaf in_broadcast_pkts; //type: uint64
         ydk::YLeaf in_multicast_pkts; //type: uint64
         ydk::YLeaf in_discards; //type: uint32
         ydk::YLeaf in_errors; //type: uint32
@@ -1502,6 +1507,31 @@ class Interfaces::Interface::V6ProtocolStats : public ydk::Entity
 }; // Interfaces::Interface::V6ProtocolStats
 
 
+class Interfaces::Interface::LagAggregateState : public ydk::Entity
+{
+    public:
+        LagAggregateState();
+        ~LagAggregateState();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf aggregate_id; //type: string
+        ydk::YLeaf lag_type; //type: AggregationType
+        ydk::YLeaf min_links; //type: uint16
+        ydk::YLeaf lag_speed; //type: uint32
+        ydk::YLeafList members; //type: list of  string
+
+}; // Interfaces::Interface::LagAggregateState
+
+
 class Interfaces::Interface::EtherState : public ydk::Entity
 {
     public:
@@ -1622,6 +1652,26 @@ class EtherDuplex : public ydk::Enum
 
 };
 
+class SerialCrc : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf serial_crc32;
+        static const ydk::Enum::YLeaf serial_crc16;
+
+};
+
+class ThreshUnit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf thresh_units_default;
+        static const ydk::Enum::YLeaf thresh_units_bytes;
+        static const ydk::Enum::YLeaf thresh_units_sec;
+        static const ydk::Enum::YLeaf thresh_units_packets;
+        static const ydk::Enum::YLeaf thresh_units_cells;
+        static const ydk::Enum::YLeaf thresh_units_percent;
+
+};
+
 class T1e1LoopbackMode : public ydk::Enum
 {
     public:
@@ -1644,30 +1694,13 @@ class T1e1LoopbackMode : public ydk::Enum
 
 };
 
-class ThreshUnit : public ydk::Enum
+class IntfState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf thresh_units_default;
-        static const ydk::Enum::YLeaf thresh_units_bytes;
-        static const ydk::Enum::YLeaf thresh_units_sec;
-        static const ydk::Enum::YLeaf thresh_units_packets;
-        static const ydk::Enum::YLeaf thresh_units_cells;
-        static const ydk::Enum::YLeaf thresh_units_percent;
-
-};
-
-class EtherSpeed : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf speed_10mb;
-        static const ydk::Enum::YLeaf speed_100mb;
-        static const ydk::Enum::YLeaf speed_1gb;
-        static const ydk::Enum::YLeaf speed_10bg;
-        static const ydk::Enum::YLeaf speed_25gb;
-        static const ydk::Enum::YLeaf speed_40gb;
-        static const ydk::Enum::YLeaf speed_50gb;
-        static const ydk::Enum::YLeaf speed_100bg;
-        static const ydk::Enum::YLeaf speed_unknown;
+        static const ydk::Enum::YLeaf if_state_unknown;
+        static const ydk::Enum::YLeaf if_state_up;
+        static const ydk::Enum::YLeaf if_state_down;
+        static const ydk::Enum::YLeaf if_state_test;
 
 };
 
@@ -1685,11 +1718,13 @@ class OperState : public ydk::Enum
 
 };
 
-class SerialCrc : public ydk::Enum
+class AggregationType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf serial_crc32;
-        static const ydk::Enum::YLeaf serial_crc16;
+        static const ydk::Enum::YLeaf lag_off;
+        static const ydk::Enum::YLeaf lag_auto;
+        static const ydk::Enum::YLeaf lag_active;
+        static const ydk::Enum::YLeaf lag_passive;
 
 };
 
@@ -1993,13 +2028,18 @@ class QosDirection : public ydk::Enum
 
 };
 
-class IntfState : public ydk::Enum
+class EtherSpeed : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf if_state_unknown;
-        static const ydk::Enum::YLeaf if_state_up;
-        static const ydk::Enum::YLeaf if_state_down;
-        static const ydk::Enum::YLeaf if_state_test;
+        static const ydk::Enum::YLeaf speed_10mb;
+        static const ydk::Enum::YLeaf speed_100mb;
+        static const ydk::Enum::YLeaf speed_1gb;
+        static const ydk::Enum::YLeaf speed_10gb;
+        static const ydk::Enum::YLeaf speed_25gb;
+        static const ydk::Enum::YLeaf speed_40gb;
+        static const ydk::Enum::YLeaf speed_50gb;
+        static const ydk::Enum::YLeaf speed_100gb;
+        static const ydk::Enum::YLeaf speed_unknown;
 
 };
 

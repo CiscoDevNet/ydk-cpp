@@ -128,18 +128,18 @@ class EsAcl::Accesses::Access::AccessListEntries::AccessListEntry : public ydk::
 
         ydk::YLeaf sequence_number; //type: uint32
         ydk::YLeaf grant; //type: EsAclGrantEnum
-        ydk::YLeaf vlan1; //type: uint16
-        ydk::YLeaf vlan2; //type: uint16
-        ydk::YLeaf cos; //type: uint8
-        ydk::YLeaf dei; //type: uint8
-        ydk::YLeaf inner_vlan1; //type: uint16
-        ydk::YLeaf inner_vlan2; //type: uint16
-        ydk::YLeaf inner_cos; //type: uint8
-        ydk::YLeaf inner_dei; //type: uint8
+        ydk::YLeaf vlan1; //type: uint32
+        ydk::YLeaf vlan2; //type: uint32
+        ydk::YLeaf cos; //type: uint32
+        ydk::YLeaf dei; //type: uint32
+        ydk::YLeaf inner_vlan1; //type: uint32
+        ydk::YLeaf inner_vlan2; //type: uint32
+        ydk::YLeaf inner_cos; //type: uint32
+        ydk::YLeaf inner_dei; //type: uint32
         ydk::YLeaf remark; //type: string
-        ydk::YLeaf ether_type_number; //type: uint16
+        ydk::YLeaf ether_type_number; //type: string
         ydk::YLeaf capture; //type: boolean
-        ydk::YLeaf log_option; //type: uint8
+        ydk::YLeaf log_option; //type: uint32
         ydk::YLeaf sequence_str; //type: string
         class SourceNetwork; //type: EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork
         class DestinationNetwork; //type: EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork

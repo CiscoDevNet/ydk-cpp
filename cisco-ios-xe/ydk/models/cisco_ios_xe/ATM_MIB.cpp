@@ -511,6 +511,9 @@ ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::AtmInterfaceConfEntry()
     atminterfacecurrentmaxvpibits{YType::int32, "atmInterfaceCurrentMaxVpiBits"},
     atminterfacecurrentmaxvcibits{YType::int32, "atmInterfaceCurrentMaxVciBits"},
     atminterfacesubscraddress{YType::str, "atmInterfaceSubscrAddress"},
+    atmintfcurrentlydowntouppvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyDownToUpPVcls"},
+    atmintfoamfailedpvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfOAMFailedPVcls"},
+    atmintfcurrentlyoamfailingpvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyOAMFailingPVcls"},
     atmintfpvcfailures{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB:atmIntfPvcFailures"},
     atmintfcurrentlyfailingpvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB:atmIntfCurrentlyFailingPVcls"},
     atmintfpvcfailurestrapenable{YType::boolean, "CISCO-IETF-ATM2-PVCTRAP-MIB:atmIntfPvcFailuresTrapEnable"},
@@ -538,10 +541,7 @@ ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::AtmInterfaceConfEntry()
     catmintfcuraisrdioamrcovingpvcls{YType::uint32, "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurAISRDIOAMRcovingPVcls"},
     catmintfanyoamrcovedpvcls{YType::uint32, "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfAnyOAMRcovedPVcls"},
     catmintfcuranyoamrcovingpvcls{YType::uint32, "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurAnyOAMRcovingPVcls"},
-    catmintftypeofoamrecover{YType::enumeration, "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfTypeOfOAMRecover"},
-    atmintfcurrentlydowntouppvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyDownToUpPVcls"},
-    atmintfoamfailedpvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfOAMFailedPVcls"},
-    atmintfcurrentlyoamfailingpvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyOAMFailingPVcls"}
+    catmintftypeofoamrecover{YType::enumeration, "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfTypeOfOAMRecover"}
 {
 
     yang_name = "atmInterfaceConfEntry"; yang_parent_name = "atmInterfaceConfTable"; is_top_level_class = false; has_list_ancestor = false; 
@@ -570,6 +570,9 @@ bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_data() const
 	|| atminterfacecurrentmaxvpibits.is_set
 	|| atminterfacecurrentmaxvcibits.is_set
 	|| atminterfacesubscraddress.is_set
+	|| atmintfcurrentlydowntouppvcls.is_set
+	|| atmintfoamfailedpvcls.is_set
+	|| atmintfcurrentlyoamfailingpvcls.is_set
 	|| atmintfpvcfailures.is_set
 	|| atmintfcurrentlyfailingpvcls.is_set
 	|| atmintfpvcfailurestrapenable.is_set
@@ -597,10 +600,7 @@ bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_data() const
 	|| catmintfcuraisrdioamrcovingpvcls.is_set
 	|| catmintfanyoamrcovedpvcls.is_set
 	|| catmintfcuranyoamrcovingpvcls.is_set
-	|| catmintftypeofoamrecover.is_set
-	|| atmintfcurrentlydowntouppvcls.is_set
-	|| atmintfoamfailedpvcls.is_set
-	|| atmintfcurrentlyoamfailingpvcls.is_set;
+	|| catmintftypeofoamrecover.is_set;
 }
 
 bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_operation() const
@@ -622,6 +622,9 @@ bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_operation() const
 	|| ydk::is_set(atminterfacecurrentmaxvpibits.yfilter)
 	|| ydk::is_set(atminterfacecurrentmaxvcibits.yfilter)
 	|| ydk::is_set(atminterfacesubscraddress.yfilter)
+	|| ydk::is_set(atmintfcurrentlydowntouppvcls.yfilter)
+	|| ydk::is_set(atmintfoamfailedpvcls.yfilter)
+	|| ydk::is_set(atmintfcurrentlyoamfailingpvcls.yfilter)
 	|| ydk::is_set(atmintfpvcfailures.yfilter)
 	|| ydk::is_set(atmintfcurrentlyfailingpvcls.yfilter)
 	|| ydk::is_set(atmintfpvcfailurestrapenable.yfilter)
@@ -649,10 +652,7 @@ bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_operation() const
 	|| ydk::is_set(catmintfcuraisrdioamrcovingpvcls.yfilter)
 	|| ydk::is_set(catmintfanyoamrcovedpvcls.yfilter)
 	|| ydk::is_set(catmintfcuranyoamrcovingpvcls.yfilter)
-	|| ydk::is_set(catmintftypeofoamrecover.yfilter)
-	|| ydk::is_set(atmintfcurrentlydowntouppvcls.yfilter)
-	|| ydk::is_set(atmintfoamfailedpvcls.yfilter)
-	|| ydk::is_set(atmintfcurrentlyoamfailingpvcls.yfilter);
+	|| ydk::is_set(catmintftypeofoamrecover.yfilter);
 }
 
 std::string ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::get_absolute_path() const
@@ -690,6 +690,9 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceConfTable::At
     if (atminterfacecurrentmaxvpibits.is_set || is_set(atminterfacecurrentmaxvpibits.yfilter)) leaf_name_data.push_back(atminterfacecurrentmaxvpibits.get_name_leafdata());
     if (atminterfacecurrentmaxvcibits.is_set || is_set(atminterfacecurrentmaxvcibits.yfilter)) leaf_name_data.push_back(atminterfacecurrentmaxvcibits.get_name_leafdata());
     if (atminterfacesubscraddress.is_set || is_set(atminterfacesubscraddress.yfilter)) leaf_name_data.push_back(atminterfacesubscraddress.get_name_leafdata());
+    if (atmintfcurrentlydowntouppvcls.is_set || is_set(atmintfcurrentlydowntouppvcls.yfilter)) leaf_name_data.push_back(atmintfcurrentlydowntouppvcls.get_name_leafdata());
+    if (atmintfoamfailedpvcls.is_set || is_set(atmintfoamfailedpvcls.yfilter)) leaf_name_data.push_back(atmintfoamfailedpvcls.get_name_leafdata());
+    if (atmintfcurrentlyoamfailingpvcls.is_set || is_set(atmintfcurrentlyoamfailingpvcls.yfilter)) leaf_name_data.push_back(atmintfcurrentlyoamfailingpvcls.get_name_leafdata());
     if (atmintfpvcfailures.is_set || is_set(atmintfpvcfailures.yfilter)) leaf_name_data.push_back(atmintfpvcfailures.get_name_leafdata());
     if (atmintfcurrentlyfailingpvcls.is_set || is_set(atmintfcurrentlyfailingpvcls.yfilter)) leaf_name_data.push_back(atmintfcurrentlyfailingpvcls.get_name_leafdata());
     if (atmintfpvcfailurestrapenable.is_set || is_set(atmintfpvcfailurestrapenable.yfilter)) leaf_name_data.push_back(atmintfpvcfailurestrapenable.get_name_leafdata());
@@ -718,9 +721,6 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceConfTable::At
     if (catmintfanyoamrcovedpvcls.is_set || is_set(catmintfanyoamrcovedpvcls.yfilter)) leaf_name_data.push_back(catmintfanyoamrcovedpvcls.get_name_leafdata());
     if (catmintfcuranyoamrcovingpvcls.is_set || is_set(catmintfcuranyoamrcovingpvcls.yfilter)) leaf_name_data.push_back(catmintfcuranyoamrcovingpvcls.get_name_leafdata());
     if (catmintftypeofoamrecover.is_set || is_set(catmintftypeofoamrecover.yfilter)) leaf_name_data.push_back(catmintftypeofoamrecover.get_name_leafdata());
-    if (atmintfcurrentlydowntouppvcls.is_set || is_set(atmintfcurrentlydowntouppvcls.yfilter)) leaf_name_data.push_back(atmintfcurrentlydowntouppvcls.get_name_leafdata());
-    if (atmintfoamfailedpvcls.is_set || is_set(atmintfoamfailedpvcls.yfilter)) leaf_name_data.push_back(atmintfoamfailedpvcls.get_name_leafdata());
-    if (atmintfcurrentlyoamfailingpvcls.is_set || is_set(atmintfcurrentlyoamfailingpvcls.yfilter)) leaf_name_data.push_back(atmintfcurrentlyoamfailingpvcls.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -835,6 +835,24 @@ void ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::set_value(const std::
         atminterfacesubscraddress = value;
         atminterfacesubscraddress.value_namespace = name_space;
         atminterfacesubscraddress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyDownToUpPVcls")
+    {
+        atmintfcurrentlydowntouppvcls = value;
+        atmintfcurrentlydowntouppvcls.value_namespace = name_space;
+        atmintfcurrentlydowntouppvcls.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfOAMFailedPVcls")
+    {
+        atmintfoamfailedpvcls = value;
+        atmintfoamfailedpvcls.value_namespace = name_space;
+        atmintfoamfailedpvcls.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyOAMFailingPVcls")
+    {
+        atmintfcurrentlyoamfailingpvcls = value;
+        atmintfcurrentlyoamfailingpvcls.value_namespace = name_space;
+        atmintfcurrentlyoamfailingpvcls.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB:atmIntfPvcFailures")
     {
@@ -1004,24 +1022,6 @@ void ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::set_value(const std::
         catmintftypeofoamrecover.value_namespace = name_space;
         catmintftypeofoamrecover.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyDownToUpPVcls")
-    {
-        atmintfcurrentlydowntouppvcls = value;
-        atmintfcurrentlydowntouppvcls.value_namespace = name_space;
-        atmintfcurrentlydowntouppvcls.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfOAMFailedPVcls")
-    {
-        atmintfoamfailedpvcls = value;
-        atmintfoamfailedpvcls.value_namespace = name_space;
-        atmintfoamfailedpvcls.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyOAMFailingPVcls")
-    {
-        atmintfcurrentlyoamfailingpvcls = value;
-        atmintfcurrentlyoamfailingpvcls.value_namespace = name_space;
-        atmintfcurrentlyoamfailingpvcls.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1089,6 +1089,18 @@ void ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::set_filter(const std:
     if(value_path == "atmInterfaceSubscrAddress")
     {
         atminterfacesubscraddress.yfilter = yfilter;
+    }
+    if(value_path == "atmIntfCurrentlyDownToUpPVcls")
+    {
+        atmintfcurrentlydowntouppvcls.yfilter = yfilter;
+    }
+    if(value_path == "atmIntfOAMFailedPVcls")
+    {
+        atmintfoamfailedpvcls.yfilter = yfilter;
+    }
+    if(value_path == "atmIntfCurrentlyOAMFailingPVcls")
+    {
+        atmintfcurrentlyoamfailingpvcls.yfilter = yfilter;
     }
     if(value_path == "atmIntfPvcFailures")
     {
@@ -1202,23 +1214,11 @@ void ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::set_filter(const std:
     {
         catmintftypeofoamrecover.yfilter = yfilter;
     }
-    if(value_path == "atmIntfCurrentlyDownToUpPVcls")
-    {
-        atmintfcurrentlydowntouppvcls.yfilter = yfilter;
-    }
-    if(value_path == "atmIntfOAMFailedPVcls")
-    {
-        atmintfoamfailedpvcls.yfilter = yfilter;
-    }
-    if(value_path == "atmIntfCurrentlyOAMFailingPVcls")
-    {
-        atmintfcurrentlyoamfailingpvcls.yfilter = yfilter;
-    }
 }
 
 bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ifIndex" || name == "atmInterfaceMaxVpcs" || name == "atmInterfaceMaxVccs" || name == "atmInterfaceConfVpcs" || name == "atmInterfaceConfVccs" || name == "atmInterfaceMaxActiveVpiBits" || name == "atmInterfaceMaxActiveVciBits" || name == "atmInterfaceIlmiVpi" || name == "atmInterfaceIlmiVci" || name == "atmInterfaceAddressType" || name == "atmInterfaceAdminAddress" || name == "atmInterfaceMyNeighborIpAddress" || name == "atmInterfaceMyNeighborIfName" || name == "atmInterfaceCurrentMaxVpiBits" || name == "atmInterfaceCurrentMaxVciBits" || name == "atmInterfaceSubscrAddress" || name == "atmIntfPvcFailures" || name == "atmIntfCurrentlyFailingPVcls" || name == "atmIntfPvcFailuresTrapEnable" || name == "atmIntfPvcNotificationInterval" || name == "atmPreviouslyFailedPVclInterval" || name == "catmIntfCurrentlyDownToUpPVcls" || name == "catmIntfOAMFailedPVcls" || name == "catmIntfCurrentOAMFailingPVcls" || name == "catmIntfSegCCOAMFailedPVcls" || name == "catmIntfCurSegCCOAMFailingPVcls" || name == "catmIntfEndCCOAMFailedPVcls" || name == "catmIntfCurEndCCOAMFailingPVcls" || name == "catmIntfAISRDIOAMFailedPVcls" || name == "catmIntfCurAISRDIOAMFailingPVcls" || name == "catmIntfAnyOAMFailedPVcls" || name == "catmIntfCurAnyOAMFailingPVcls" || name == "catmIntfTypeOfOAMFailure" || name == "catmIntfOAMRcovedPVcls" || name == "catmIntfCurrentOAMRcovingPVcls" || name == "catmIntfSegCCOAMRcovedPVcls" || name == "catmIntfCurSegCCOAMRcovingPVcls" || name == "catmIntfEndCCOAMRcovedPVcls" || name == "catmIntfCurEndCCOAMRcovingPVcls" || name == "catmIntfAISRDIOAMRcovedPVcls" || name == "catmIntfCurAISRDIOAMRcovingPVcls" || name == "catmIntfAnyOAMRcovedPVcls" || name == "catmIntfCurAnyOAMRcovingPVcls" || name == "catmIntfTypeOfOAMRecover" || name == "atmIntfCurrentlyDownToUpPVcls" || name == "atmIntfOAMFailedPVcls" || name == "atmIntfCurrentlyOAMFailingPVcls")
+    if(name == "ifIndex" || name == "atmInterfaceMaxVpcs" || name == "atmInterfaceMaxVccs" || name == "atmInterfaceConfVpcs" || name == "atmInterfaceConfVccs" || name == "atmInterfaceMaxActiveVpiBits" || name == "atmInterfaceMaxActiveVciBits" || name == "atmInterfaceIlmiVpi" || name == "atmInterfaceIlmiVci" || name == "atmInterfaceAddressType" || name == "atmInterfaceAdminAddress" || name == "atmInterfaceMyNeighborIpAddress" || name == "atmInterfaceMyNeighborIfName" || name == "atmInterfaceCurrentMaxVpiBits" || name == "atmInterfaceCurrentMaxVciBits" || name == "atmInterfaceSubscrAddress" || name == "atmIntfCurrentlyDownToUpPVcls" || name == "atmIntfOAMFailedPVcls" || name == "atmIntfCurrentlyOAMFailingPVcls" || name == "atmIntfPvcFailures" || name == "atmIntfCurrentlyFailingPVcls" || name == "atmIntfPvcFailuresTrapEnable" || name == "atmIntfPvcNotificationInterval" || name == "atmPreviouslyFailedPVclInterval" || name == "catmIntfCurrentlyDownToUpPVcls" || name == "catmIntfOAMFailedPVcls" || name == "catmIntfCurrentOAMFailingPVcls" || name == "catmIntfSegCCOAMFailedPVcls" || name == "catmIntfCurSegCCOAMFailingPVcls" || name == "catmIntfEndCCOAMFailedPVcls" || name == "catmIntfCurEndCCOAMFailingPVcls" || name == "catmIntfAISRDIOAMFailedPVcls" || name == "catmIntfCurAISRDIOAMFailingPVcls" || name == "catmIntfAnyOAMFailedPVcls" || name == "catmIntfCurAnyOAMFailingPVcls" || name == "catmIntfTypeOfOAMFailure" || name == "catmIntfOAMRcovedPVcls" || name == "catmIntfCurrentOAMRcovingPVcls" || name == "catmIntfSegCCOAMRcovedPVcls" || name == "catmIntfCurSegCCOAMRcovingPVcls" || name == "catmIntfEndCCOAMRcovedPVcls" || name == "catmIntfCurEndCCOAMRcovingPVcls" || name == "catmIntfAISRDIOAMRcovedPVcls" || name == "catmIntfCurAISRDIOAMRcovingPVcls" || name == "catmIntfAnyOAMRcovedPVcls" || name == "catmIntfCurAnyOAMRcovingPVcls" || name == "catmIntfTypeOfOAMRecover")
         return true;
     return false;
 }
@@ -3850,10 +3850,6 @@ ATMMIB::Aal5VccTable::Aal5VccEntry::Aal5VccEntry()
     aal5vcccrcerrors{YType::uint32, "aal5VccCrcErrors"},
     aal5vccsartimeouts{YType::uint32, "aal5VccSarTimeOuts"},
     aal5vccoversizedsdus{YType::uint32, "aal5VccOverSizedSDUs"},
-    caal5vccextcompenabled{YType::boolean, "CISCO-ATM-EXT-MIB:cAal5VccExtCompEnabled"},
-    caal5vccextvoice{YType::boolean, "CISCO-ATM-EXT-MIB:cAal5VccExtVoice"},
-    caal5vccextinf5oamcells{YType::uint32, "CISCO-ATM-EXT-MIB:cAal5VccExtInF5OamCells"},
-    caal5vccextoutf5oamcells{YType::uint32, "CISCO-ATM-EXT-MIB:cAal5VccExtOutF5OamCells"},
     caal5vccinpkts{YType::uint32, "CISCO-AAL5-MIB:cAal5VccInPkts"},
     caal5vccoutpkts{YType::uint32, "CISCO-AAL5-MIB:cAal5VccOutPkts"},
     caal5vccinoctets{YType::uint32, "CISCO-AAL5-MIB:cAal5VccInOctets"},
@@ -3865,7 +3861,11 @@ ATMMIB::Aal5VccTable::Aal5VccEntry::Aal5VccEntry()
     caal5vcchcinpkts{YType::uint64, "CISCO-AAL5-MIB:cAal5VccHCInPkts"},
     caal5vcchcoutpkts{YType::uint64, "CISCO-AAL5-MIB:cAal5VccHCOutPkts"},
     caal5vcchcinoctets{YType::uint64, "CISCO-AAL5-MIB:cAal5VccHCInOctets"},
-    caal5vcchcoutoctets{YType::uint64, "CISCO-AAL5-MIB:cAal5VccHCOutOctets"}
+    caal5vcchcoutoctets{YType::uint64, "CISCO-AAL5-MIB:cAal5VccHCOutOctets"},
+    caal5vccextcompenabled{YType::boolean, "CISCO-ATM-EXT-MIB:cAal5VccExtCompEnabled"},
+    caal5vccextvoice{YType::boolean, "CISCO-ATM-EXT-MIB:cAal5VccExtVoice"},
+    caal5vccextinf5oamcells{YType::uint32, "CISCO-ATM-EXT-MIB:cAal5VccExtInF5OamCells"},
+    caal5vccextoutf5oamcells{YType::uint32, "CISCO-ATM-EXT-MIB:cAal5VccExtOutF5OamCells"}
 {
 
     yang_name = "aal5VccEntry"; yang_parent_name = "aal5VccTable"; is_top_level_class = false; has_list_ancestor = false; 
@@ -3884,10 +3884,6 @@ bool ATMMIB::Aal5VccTable::Aal5VccEntry::has_data() const
 	|| aal5vcccrcerrors.is_set
 	|| aal5vccsartimeouts.is_set
 	|| aal5vccoversizedsdus.is_set
-	|| caal5vccextcompenabled.is_set
-	|| caal5vccextvoice.is_set
-	|| caal5vccextinf5oamcells.is_set
-	|| caal5vccextoutf5oamcells.is_set
 	|| caal5vccinpkts.is_set
 	|| caal5vccoutpkts.is_set
 	|| caal5vccinoctets.is_set
@@ -3899,7 +3895,11 @@ bool ATMMIB::Aal5VccTable::Aal5VccEntry::has_data() const
 	|| caal5vcchcinpkts.is_set
 	|| caal5vcchcoutpkts.is_set
 	|| caal5vcchcinoctets.is_set
-	|| caal5vcchcoutoctets.is_set;
+	|| caal5vcchcoutoctets.is_set
+	|| caal5vccextcompenabled.is_set
+	|| caal5vccextvoice.is_set
+	|| caal5vccextinf5oamcells.is_set
+	|| caal5vccextoutf5oamcells.is_set;
 }
 
 bool ATMMIB::Aal5VccTable::Aal5VccEntry::has_operation() const
@@ -3911,10 +3911,6 @@ bool ATMMIB::Aal5VccTable::Aal5VccEntry::has_operation() const
 	|| ydk::is_set(aal5vcccrcerrors.yfilter)
 	|| ydk::is_set(aal5vccsartimeouts.yfilter)
 	|| ydk::is_set(aal5vccoversizedsdus.yfilter)
-	|| ydk::is_set(caal5vccextcompenabled.yfilter)
-	|| ydk::is_set(caal5vccextvoice.yfilter)
-	|| ydk::is_set(caal5vccextinf5oamcells.yfilter)
-	|| ydk::is_set(caal5vccextoutf5oamcells.yfilter)
 	|| ydk::is_set(caal5vccinpkts.yfilter)
 	|| ydk::is_set(caal5vccoutpkts.yfilter)
 	|| ydk::is_set(caal5vccinoctets.yfilter)
@@ -3926,7 +3922,11 @@ bool ATMMIB::Aal5VccTable::Aal5VccEntry::has_operation() const
 	|| ydk::is_set(caal5vcchcinpkts.yfilter)
 	|| ydk::is_set(caal5vcchcoutpkts.yfilter)
 	|| ydk::is_set(caal5vcchcinoctets.yfilter)
-	|| ydk::is_set(caal5vcchcoutoctets.yfilter);
+	|| ydk::is_set(caal5vcchcoutoctets.yfilter)
+	|| ydk::is_set(caal5vccextcompenabled.yfilter)
+	|| ydk::is_set(caal5vccextvoice.yfilter)
+	|| ydk::is_set(caal5vccextinf5oamcells.yfilter)
+	|| ydk::is_set(caal5vccextoutf5oamcells.yfilter);
 }
 
 std::string ATMMIB::Aal5VccTable::Aal5VccEntry::get_absolute_path() const
@@ -3956,10 +3956,6 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Aal5VccTable::Aal5VccEntr
     if (aal5vcccrcerrors.is_set || is_set(aal5vcccrcerrors.yfilter)) leaf_name_data.push_back(aal5vcccrcerrors.get_name_leafdata());
     if (aal5vccsartimeouts.is_set || is_set(aal5vccsartimeouts.yfilter)) leaf_name_data.push_back(aal5vccsartimeouts.get_name_leafdata());
     if (aal5vccoversizedsdus.is_set || is_set(aal5vccoversizedsdus.yfilter)) leaf_name_data.push_back(aal5vccoversizedsdus.get_name_leafdata());
-    if (caal5vccextcompenabled.is_set || is_set(caal5vccextcompenabled.yfilter)) leaf_name_data.push_back(caal5vccextcompenabled.get_name_leafdata());
-    if (caal5vccextvoice.is_set || is_set(caal5vccextvoice.yfilter)) leaf_name_data.push_back(caal5vccextvoice.get_name_leafdata());
-    if (caal5vccextinf5oamcells.is_set || is_set(caal5vccextinf5oamcells.yfilter)) leaf_name_data.push_back(caal5vccextinf5oamcells.get_name_leafdata());
-    if (caal5vccextoutf5oamcells.is_set || is_set(caal5vccextoutf5oamcells.yfilter)) leaf_name_data.push_back(caal5vccextoutf5oamcells.get_name_leafdata());
     if (caal5vccinpkts.is_set || is_set(caal5vccinpkts.yfilter)) leaf_name_data.push_back(caal5vccinpkts.get_name_leafdata());
     if (caal5vccoutpkts.is_set || is_set(caal5vccoutpkts.yfilter)) leaf_name_data.push_back(caal5vccoutpkts.get_name_leafdata());
     if (caal5vccinoctets.is_set || is_set(caal5vccinoctets.yfilter)) leaf_name_data.push_back(caal5vccinoctets.get_name_leafdata());
@@ -3972,6 +3968,10 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Aal5VccTable::Aal5VccEntr
     if (caal5vcchcoutpkts.is_set || is_set(caal5vcchcoutpkts.yfilter)) leaf_name_data.push_back(caal5vcchcoutpkts.get_name_leafdata());
     if (caal5vcchcinoctets.is_set || is_set(caal5vcchcinoctets.yfilter)) leaf_name_data.push_back(caal5vcchcinoctets.get_name_leafdata());
     if (caal5vcchcoutoctets.is_set || is_set(caal5vcchcoutoctets.yfilter)) leaf_name_data.push_back(caal5vcchcoutoctets.get_name_leafdata());
+    if (caal5vccextcompenabled.is_set || is_set(caal5vccextcompenabled.yfilter)) leaf_name_data.push_back(caal5vccextcompenabled.get_name_leafdata());
+    if (caal5vccextvoice.is_set || is_set(caal5vccextvoice.yfilter)) leaf_name_data.push_back(caal5vccextvoice.get_name_leafdata());
+    if (caal5vccextinf5oamcells.is_set || is_set(caal5vccextinf5oamcells.yfilter)) leaf_name_data.push_back(caal5vccextinf5oamcells.get_name_leafdata());
+    if (caal5vccextoutf5oamcells.is_set || is_set(caal5vccextoutf5oamcells.yfilter)) leaf_name_data.push_back(caal5vccextoutf5oamcells.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4026,30 +4026,6 @@ void ATMMIB::Aal5VccTable::Aal5VccEntry::set_value(const std::string & value_pat
         aal5vccoversizedsdus = value;
         aal5vccoversizedsdus.value_namespace = name_space;
         aal5vccoversizedsdus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtCompEnabled")
-    {
-        caal5vccextcompenabled = value;
-        caal5vccextcompenabled.value_namespace = name_space;
-        caal5vccextcompenabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtVoice")
-    {
-        caal5vccextvoice = value;
-        caal5vccextvoice.value_namespace = name_space;
-        caal5vccextvoice.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtInF5OamCells")
-    {
-        caal5vccextinf5oamcells = value;
-        caal5vccextinf5oamcells.value_namespace = name_space;
-        caal5vccextinf5oamcells.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtOutF5OamCells")
-    {
-        caal5vccextoutf5oamcells = value;
-        caal5vccextoutf5oamcells.value_namespace = name_space;
-        caal5vccextoutf5oamcells.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "CISCO-AAL5-MIB:cAal5VccInPkts")
     {
@@ -4123,6 +4099,30 @@ void ATMMIB::Aal5VccTable::Aal5VccEntry::set_value(const std::string & value_pat
         caal5vcchcoutoctets.value_namespace = name_space;
         caal5vcchcoutoctets.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtCompEnabled")
+    {
+        caal5vccextcompenabled = value;
+        caal5vccextcompenabled.value_namespace = name_space;
+        caal5vccextcompenabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtVoice")
+    {
+        caal5vccextvoice = value;
+        caal5vccextvoice.value_namespace = name_space;
+        caal5vccextvoice.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtInF5OamCells")
+    {
+        caal5vccextinf5oamcells = value;
+        caal5vccextinf5oamcells.value_namespace = name_space;
+        caal5vccextinf5oamcells.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtOutF5OamCells")
+    {
+        caal5vccextoutf5oamcells = value;
+        caal5vccextoutf5oamcells.value_namespace = name_space;
+        caal5vccextoutf5oamcells.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ATMMIB::Aal5VccTable::Aal5VccEntry::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4150,22 +4150,6 @@ void ATMMIB::Aal5VccTable::Aal5VccEntry::set_filter(const std::string & value_pa
     if(value_path == "aal5VccOverSizedSDUs")
     {
         aal5vccoversizedsdus.yfilter = yfilter;
-    }
-    if(value_path == "cAal5VccExtCompEnabled")
-    {
-        caal5vccextcompenabled.yfilter = yfilter;
-    }
-    if(value_path == "cAal5VccExtVoice")
-    {
-        caal5vccextvoice.yfilter = yfilter;
-    }
-    if(value_path == "cAal5VccExtInF5OamCells")
-    {
-        caal5vccextinf5oamcells.yfilter = yfilter;
-    }
-    if(value_path == "cAal5VccExtOutF5OamCells")
-    {
-        caal5vccextoutf5oamcells.yfilter = yfilter;
     }
     if(value_path == "cAal5VccInPkts")
     {
@@ -4215,11 +4199,27 @@ void ATMMIB::Aal5VccTable::Aal5VccEntry::set_filter(const std::string & value_pa
     {
         caal5vcchcoutoctets.yfilter = yfilter;
     }
+    if(value_path == "cAal5VccExtCompEnabled")
+    {
+        caal5vccextcompenabled.yfilter = yfilter;
+    }
+    if(value_path == "cAal5VccExtVoice")
+    {
+        caal5vccextvoice.yfilter = yfilter;
+    }
+    if(value_path == "cAal5VccExtInF5OamCells")
+    {
+        caal5vccextinf5oamcells.yfilter = yfilter;
+    }
+    if(value_path == "cAal5VccExtOutF5OamCells")
+    {
+        caal5vccextoutf5oamcells.yfilter = yfilter;
+    }
 }
 
 bool ATMMIB::Aal5VccTable::Aal5VccEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ifIndex" || name == "aal5VccVpi" || name == "aal5VccVci" || name == "aal5VccCrcErrors" || name == "aal5VccSarTimeOuts" || name == "aal5VccOverSizedSDUs" || name == "cAal5VccExtCompEnabled" || name == "cAal5VccExtVoice" || name == "cAal5VccExtInF5OamCells" || name == "cAal5VccExtOutF5OamCells" || name == "cAal5VccInPkts" || name == "cAal5VccOutPkts" || name == "cAal5VccInOctets" || name == "cAal5VccOutOctets" || name == "cAal5VccInDroppedPkts" || name == "cAal5VccOutDroppedPkts" || name == "cAal5VccInDroppedOctets" || name == "cAal5VccOutDroppedOctets" || name == "cAal5VccHCInPkts" || name == "cAal5VccHCOutPkts" || name == "cAal5VccHCInOctets" || name == "cAal5VccHCOutOctets")
+    if(name == "ifIndex" || name == "aal5VccVpi" || name == "aal5VccVci" || name == "aal5VccCrcErrors" || name == "aal5VccSarTimeOuts" || name == "aal5VccOverSizedSDUs" || name == "cAal5VccInPkts" || name == "cAal5VccOutPkts" || name == "cAal5VccInOctets" || name == "cAal5VccOutOctets" || name == "cAal5VccInDroppedPkts" || name == "cAal5VccOutDroppedPkts" || name == "cAal5VccInDroppedOctets" || name == "cAal5VccOutDroppedOctets" || name == "cAal5VccHCInPkts" || name == "cAal5VccHCOutPkts" || name == "cAal5VccHCInOctets" || name == "cAal5VccHCOutOctets" || name == "cAal5VccExtCompEnabled" || name == "cAal5VccExtVoice" || name == "cAal5VccExtInF5OamCells" || name == "cAal5VccExtOutF5OamCells")
         return true;
     return false;
 }

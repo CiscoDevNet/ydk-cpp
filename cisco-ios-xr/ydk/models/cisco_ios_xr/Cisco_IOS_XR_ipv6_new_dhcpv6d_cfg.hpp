@@ -146,6 +146,7 @@ class Dhcpv6::Profiles::Profile::Relay : public ydk::Entity
         ydk::YLeaf src_intf_name; //type: string
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf iana_route_add; //type: empty
+        ydk::YLeaf relay_route_add_disable; //type: empty
         class HelperAddresses; //type: Dhcpv6::Profiles::Profile::Relay::HelperAddresses
         class Option; //type: Dhcpv6::Profiles::Profile::Relay::Option
 
@@ -1544,6 +1545,7 @@ class Insert : public ydk::Enum
         static const ydk::Enum::YLeaf local;
         static const ydk::Enum::YLeaf received;
         static const ydk::Enum::YLeaf pppoe;
+        static const ydk::Enum::YLeaf received_nodefault;
 
 };
 

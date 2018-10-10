@@ -6800,8 +6800,9 @@ L2tp::CounterHistFail::CounterHistFail()
     :
     sess_down_tmout{YType::uint32, "sess-down-tmout"},
     tx_counters{YType::str, "tx-counters"},
-    rx_counters{YType::str, "rx-counters"},
-    pkt_timeout{YType::uint32, "pkt-timeout"}
+    rx_counters{YType::str, "rx-counters"}
+        ,
+    pkt_timeout(this, {})
 {
 
     yang_name = "counter-hist-fail"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false; 
@@ -6814,9 +6815,9 @@ L2tp::CounterHistFail::~CounterHistFail()
 bool L2tp::CounterHistFail::has_data() const
 {
     if (is_presence_container) return true;
-    for (auto const & leaf : pkt_timeout.getYLeafs())
+    for (std::size_t index=0; index<pkt_timeout.len(); index++)
     {
-        if(leaf.is_set)
+        if(pkt_timeout[index]->has_data())
             return true;
     }
     return sess_down_tmout.is_set
@@ -6826,16 +6827,15 @@ bool L2tp::CounterHistFail::has_data() const
 
 bool L2tp::CounterHistFail::has_operation() const
 {
-    for (auto const & leaf : pkt_timeout.getYLeafs())
+    for (std::size_t index=0; index<pkt_timeout.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(pkt_timeout[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
 	|| ydk::is_set(sess_down_tmout.yfilter)
 	|| ydk::is_set(tx_counters.yfilter)
-	|| ydk::is_set(rx_counters.yfilter)
-	|| ydk::is_set(pkt_timeout.yfilter);
+	|| ydk::is_set(rx_counters.yfilter);
 }
 
 std::string L2tp::CounterHistFail::get_absolute_path() const
@@ -6860,14 +6860,20 @@ std::vector<std::pair<std::string, LeafData> > L2tp::CounterHistFail::get_name_l
     if (tx_counters.is_set || is_set(tx_counters.yfilter)) leaf_name_data.push_back(tx_counters.get_name_leafdata());
     if (rx_counters.is_set || is_set(rx_counters.yfilter)) leaf_name_data.push_back(rx_counters.get_name_leafdata());
 
-    auto pkt_timeout_name_datas = pkt_timeout.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), pkt_timeout_name_datas.begin(), pkt_timeout_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> L2tp::CounterHistFail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "pkt-timeout")
+    {
+        auto c = std::make_shared<L2tp::CounterHistFail::PktTimeout>();
+        c->parent = this;
+        pkt_timeout.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -6875,6 +6881,15 @@ std::map<std::string, std::shared_ptr<Entity>> L2tp::CounterHistFail::get_childr
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : pkt_timeout.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -6898,10 +6913,6 @@ void L2tp::CounterHistFail::set_value(const std::string & value_path, const std:
         rx_counters.value_namespace = name_space;
         rx_counters.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "pkt-timeout")
-    {
-        pkt_timeout.append(value);
-    }
 }
 
 void L2tp::CounterHistFail::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6918,15 +6929,96 @@ void L2tp::CounterHistFail::set_filter(const std::string & value_path, YFilter y
     {
         rx_counters.yfilter = yfilter;
     }
-    if(value_path == "pkt-timeout")
-    {
-        pkt_timeout.yfilter = yfilter;
-    }
 }
 
 bool L2tp::CounterHistFail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sess-down-tmout" || name == "tx-counters" || name == "rx-counters" || name == "pkt-timeout")
+    if(name == "pkt-timeout" || name == "sess-down-tmout" || name == "tx-counters" || name == "rx-counters")
+        return true;
+    return false;
+}
+
+L2tp::CounterHistFail::PktTimeout::PktTimeout()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "pkt-timeout"; yang_parent_name = "counter-hist-fail"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2tp::CounterHistFail::PktTimeout::~PktTimeout()
+{
+}
+
+bool L2tp::CounterHistFail::PktTimeout::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool L2tp::CounterHistFail::PktTimeout::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string L2tp::CounterHistFail::PktTimeout::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counter-hist-fail/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2tp::CounterHistFail::PktTimeout::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pkt-timeout";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2tp::CounterHistFail::PktTimeout::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2tp::CounterHistFail::PktTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2tp::CounterHistFail::PktTimeout::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2tp::CounterHistFail::PktTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2tp::CounterHistFail::PktTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool L2tp::CounterHistFail::PktTimeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -7586,8 +7678,9 @@ L2tp::Tunnels::Tunnel::Tunnel()
     total_out_of_order_reorder_packets{YType::uint32, "total-out-of-order-reorder-packets"},
     total_peer_authentication_failures{YType::uint32, "total-peer-authentication-failures"},
     is_tunnel_up{YType::boolean, "is-tunnel-up"},
-    is_congestion_control_enabled{YType::boolean, "is-congestion-control-enabled"},
-    retransmit_time{YType::uint16, "retransmit-time"}
+    is_congestion_control_enabled{YType::boolean, "is-congestion-control-enabled"}
+        ,
+    retransmit_time(this, {})
 {
 
     yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false; 
@@ -7600,9 +7693,9 @@ L2tp::Tunnels::Tunnel::~Tunnel()
 bool L2tp::Tunnels::Tunnel::has_data() const
 {
     if (is_presence_container) return true;
-    for (auto const & leaf : retransmit_time.getYLeafs())
+    for (std::size_t index=0; index<retransmit_time.len(); index++)
     {
-        if(leaf.is_set)
+        if(retransmit_time[index]->has_data())
             return true;
     }
     return local_tunnel_id.is_set
@@ -7641,9 +7734,9 @@ bool L2tp::Tunnels::Tunnel::has_data() const
 
 bool L2tp::Tunnels::Tunnel::has_operation() const
 {
-    for (auto const & leaf : retransmit_time.getYLeafs())
+    for (std::size_t index=0; index<retransmit_time.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(retransmit_time[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -7678,8 +7771,7 @@ bool L2tp::Tunnels::Tunnel::has_operation() const
 	|| ydk::is_set(total_out_of_order_reorder_packets.yfilter)
 	|| ydk::is_set(total_peer_authentication_failures.yfilter)
 	|| ydk::is_set(is_tunnel_up.yfilter)
-	|| ydk::is_set(is_congestion_control_enabled.yfilter)
-	|| ydk::is_set(retransmit_time.yfilter);
+	|| ydk::is_set(is_congestion_control_enabled.yfilter);
 }
 
 std::string L2tp::Tunnels::Tunnel::get_absolute_path() const
@@ -7734,14 +7826,20 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Tunnels::Tunnel::get_name_l
     if (is_tunnel_up.is_set || is_set(is_tunnel_up.yfilter)) leaf_name_data.push_back(is_tunnel_up.get_name_leafdata());
     if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.yfilter)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
 
-    auto retransmit_time_name_datas = retransmit_time.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), retransmit_time_name_datas.begin(), retransmit_time_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> L2tp::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "retransmit-time")
+    {
+        auto c = std::make_shared<L2tp::Tunnels::Tunnel::RetransmitTime>();
+        c->parent = this;
+        retransmit_time.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -7749,6 +7847,15 @@ std::map<std::string, std::shared_ptr<Entity>> L2tp::Tunnels::Tunnel::get_childr
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : retransmit_time.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -7946,10 +8053,6 @@ void L2tp::Tunnels::Tunnel::set_value(const std::string & value_path, const std:
         is_congestion_control_enabled.value_namespace = name_space;
         is_congestion_control_enabled.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "retransmit-time")
-    {
-        retransmit_time.append(value);
-    }
 }
 
 void L2tp::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8082,15 +8185,89 @@ void L2tp::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter y
     {
         is_congestion_control_enabled.yfilter = yfilter;
     }
-    if(value_path == "retransmit-time")
-    {
-        retransmit_time.yfilter = yfilter;
-    }
 }
 
 bool L2tp::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local-tunnel-id" || name == "local-address" || name == "remote-address" || name == "local-port" || name == "remote-port" || name == "protocol" || name == "is-pmtu-enabled" || name == "remote-tunnel-id" || name == "local-tunnel-name" || name == "remote-tunnel-name" || name == "class-name" || name == "active-sessions" || name == "sequence-ns" || name == "sequence-nr" || name == "local-window-size" || name == "remote-window-size" || name == "retransmission-time" || name == "maximum-retransmission-time" || name == "unsent-queue-size" || name == "unsent-maximum-queue-size" || name == "resend-queue-size" || name == "resend-maximum-queue-size" || name == "order-queue-size" || name == "packet-queue-check" || name == "digest-secrets" || name == "resends" || name == "zero-length-body-acknowledgement-sent" || name == "total-out-of-order-drop-packets" || name == "total-out-of-order-reorder-packets" || name == "total-peer-authentication-failures" || name == "is-tunnel-up" || name == "is-congestion-control-enabled" || name == "retransmit-time")
+    if(name == "retransmit-time" || name == "local-tunnel-id" || name == "local-address" || name == "remote-address" || name == "local-port" || name == "remote-port" || name == "protocol" || name == "is-pmtu-enabled" || name == "remote-tunnel-id" || name == "local-tunnel-name" || name == "remote-tunnel-name" || name == "class-name" || name == "active-sessions" || name == "sequence-ns" || name == "sequence-nr" || name == "local-window-size" || name == "remote-window-size" || name == "retransmission-time" || name == "maximum-retransmission-time" || name == "unsent-queue-size" || name == "unsent-maximum-queue-size" || name == "resend-queue-size" || name == "resend-maximum-queue-size" || name == "order-queue-size" || name == "packet-queue-check" || name == "digest-secrets" || name == "resends" || name == "zero-length-body-acknowledgement-sent" || name == "total-out-of-order-drop-packets" || name == "total-out-of-order-reorder-packets" || name == "total-peer-authentication-failures" || name == "is-tunnel-up" || name == "is-congestion-control-enabled")
+        return true;
+    return false;
+}
+
+L2tp::Tunnels::Tunnel::RetransmitTime::RetransmitTime()
+    :
+    entry{YType::uint16, "entry"}
+{
+
+    yang_name = "retransmit-time"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2tp::Tunnels::Tunnel::RetransmitTime::~RetransmitTime()
+{
+}
+
+bool L2tp::Tunnels::Tunnel::RetransmitTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool L2tp::Tunnels::Tunnel::RetransmitTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string L2tp::Tunnels::Tunnel::RetransmitTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "retransmit-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2tp::Tunnels::Tunnel::RetransmitTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2tp::Tunnels::Tunnel::RetransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Tunnels::Tunnel::RetransmitTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2tp::Tunnels::Tunnel::RetransmitTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2tp::Tunnels::Tunnel::RetransmitTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool L2tp::Tunnels::Tunnel::RetransmitTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -17025,8 +17202,9 @@ L2tpv2::CounterHistFail::CounterHistFail()
     :
     sess_down_tmout{YType::uint32, "sess-down-tmout"},
     tx_counters{YType::str, "tx-counters"},
-    rx_counters{YType::str, "rx-counters"},
-    pkt_timeout{YType::uint32, "pkt-timeout"}
+    rx_counters{YType::str, "rx-counters"}
+        ,
+    pkt_timeout(this, {})
 {
 
     yang_name = "counter-hist-fail"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false; 
@@ -17039,9 +17217,9 @@ L2tpv2::CounterHistFail::~CounterHistFail()
 bool L2tpv2::CounterHistFail::has_data() const
 {
     if (is_presence_container) return true;
-    for (auto const & leaf : pkt_timeout.getYLeafs())
+    for (std::size_t index=0; index<pkt_timeout.len(); index++)
     {
-        if(leaf.is_set)
+        if(pkt_timeout[index]->has_data())
             return true;
     }
     return sess_down_tmout.is_set
@@ -17051,16 +17229,15 @@ bool L2tpv2::CounterHistFail::has_data() const
 
 bool L2tpv2::CounterHistFail::has_operation() const
 {
-    for (auto const & leaf : pkt_timeout.getYLeafs())
+    for (std::size_t index=0; index<pkt_timeout.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(pkt_timeout[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
 	|| ydk::is_set(sess_down_tmout.yfilter)
 	|| ydk::is_set(tx_counters.yfilter)
-	|| ydk::is_set(rx_counters.yfilter)
-	|| ydk::is_set(pkt_timeout.yfilter);
+	|| ydk::is_set(rx_counters.yfilter);
 }
 
 std::string L2tpv2::CounterHistFail::get_absolute_path() const
@@ -17085,14 +17262,20 @@ std::vector<std::pair<std::string, LeafData> > L2tpv2::CounterHistFail::get_name
     if (tx_counters.is_set || is_set(tx_counters.yfilter)) leaf_name_data.push_back(tx_counters.get_name_leafdata());
     if (rx_counters.is_set || is_set(rx_counters.yfilter)) leaf_name_data.push_back(rx_counters.get_name_leafdata());
 
-    auto pkt_timeout_name_datas = pkt_timeout.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), pkt_timeout_name_datas.begin(), pkt_timeout_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> L2tpv2::CounterHistFail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "pkt-timeout")
+    {
+        auto c = std::make_shared<L2tpv2::CounterHistFail::PktTimeout>();
+        c->parent = this;
+        pkt_timeout.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -17100,6 +17283,15 @@ std::map<std::string, std::shared_ptr<Entity>> L2tpv2::CounterHistFail::get_chil
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : pkt_timeout.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -17123,10 +17315,6 @@ void L2tpv2::CounterHistFail::set_value(const std::string & value_path, const st
         rx_counters.value_namespace = name_space;
         rx_counters.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "pkt-timeout")
-    {
-        pkt_timeout.append(value);
-    }
 }
 
 void L2tpv2::CounterHistFail::set_filter(const std::string & value_path, YFilter yfilter)
@@ -17143,15 +17331,96 @@ void L2tpv2::CounterHistFail::set_filter(const std::string & value_path, YFilter
     {
         rx_counters.yfilter = yfilter;
     }
-    if(value_path == "pkt-timeout")
-    {
-        pkt_timeout.yfilter = yfilter;
-    }
 }
 
 bool L2tpv2::CounterHistFail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sess-down-tmout" || name == "tx-counters" || name == "rx-counters" || name == "pkt-timeout")
+    if(name == "pkt-timeout" || name == "sess-down-tmout" || name == "tx-counters" || name == "rx-counters")
+        return true;
+    return false;
+}
+
+L2tpv2::CounterHistFail::PktTimeout::PktTimeout()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "pkt-timeout"; yang_parent_name = "counter-hist-fail"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2tpv2::CounterHistFail::PktTimeout::~PktTimeout()
+{
+}
+
+bool L2tpv2::CounterHistFail::PktTimeout::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool L2tpv2::CounterHistFail::PktTimeout::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string L2tpv2::CounterHistFail::PktTimeout::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counter-hist-fail/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2tpv2::CounterHistFail::PktTimeout::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pkt-timeout";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2tpv2::CounterHistFail::PktTimeout::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2tpv2::CounterHistFail::PktTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::CounterHistFail::PktTimeout::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2tpv2::CounterHistFail::PktTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2tpv2::CounterHistFail::PktTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool L2tpv2::CounterHistFail::PktTimeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -17811,8 +18080,9 @@ L2tpv2::Tunnels::Tunnel::Tunnel()
     total_out_of_order_reorder_packets{YType::uint32, "total-out-of-order-reorder-packets"},
     total_peer_authentication_failures{YType::uint32, "total-peer-authentication-failures"},
     is_tunnel_up{YType::boolean, "is-tunnel-up"},
-    is_congestion_control_enabled{YType::boolean, "is-congestion-control-enabled"},
-    retransmit_time{YType::uint16, "retransmit-time"}
+    is_congestion_control_enabled{YType::boolean, "is-congestion-control-enabled"}
+        ,
+    retransmit_time(this, {})
 {
 
     yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false; 
@@ -17825,9 +18095,9 @@ L2tpv2::Tunnels::Tunnel::~Tunnel()
 bool L2tpv2::Tunnels::Tunnel::has_data() const
 {
     if (is_presence_container) return true;
-    for (auto const & leaf : retransmit_time.getYLeafs())
+    for (std::size_t index=0; index<retransmit_time.len(); index++)
     {
-        if(leaf.is_set)
+        if(retransmit_time[index]->has_data())
             return true;
     }
     return local_tunnel_id.is_set
@@ -17866,9 +18136,9 @@ bool L2tpv2::Tunnels::Tunnel::has_data() const
 
 bool L2tpv2::Tunnels::Tunnel::has_operation() const
 {
-    for (auto const & leaf : retransmit_time.getYLeafs())
+    for (std::size_t index=0; index<retransmit_time.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(retransmit_time[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -17903,8 +18173,7 @@ bool L2tpv2::Tunnels::Tunnel::has_operation() const
 	|| ydk::is_set(total_out_of_order_reorder_packets.yfilter)
 	|| ydk::is_set(total_peer_authentication_failures.yfilter)
 	|| ydk::is_set(is_tunnel_up.yfilter)
-	|| ydk::is_set(is_congestion_control_enabled.yfilter)
-	|| ydk::is_set(retransmit_time.yfilter);
+	|| ydk::is_set(is_congestion_control_enabled.yfilter);
 }
 
 std::string L2tpv2::Tunnels::Tunnel::get_absolute_path() const
@@ -17959,14 +18228,20 @@ std::vector<std::pair<std::string, LeafData> > L2tpv2::Tunnels::Tunnel::get_name
     if (is_tunnel_up.is_set || is_set(is_tunnel_up.yfilter)) leaf_name_data.push_back(is_tunnel_up.get_name_leafdata());
     if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.yfilter)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
 
-    auto retransmit_time_name_datas = retransmit_time.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), retransmit_time_name_datas.begin(), retransmit_time_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> L2tpv2::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "retransmit-time")
+    {
+        auto c = std::make_shared<L2tpv2::Tunnels::Tunnel::RetransmitTime>();
+        c->parent = this;
+        retransmit_time.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -17974,6 +18249,15 @@ std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Tunnels::Tunnel::get_chil
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : retransmit_time.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -18171,10 +18455,6 @@ void L2tpv2::Tunnels::Tunnel::set_value(const std::string & value_path, const st
         is_congestion_control_enabled.value_namespace = name_space;
         is_congestion_control_enabled.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "retransmit-time")
-    {
-        retransmit_time.append(value);
-    }
 }
 
 void L2tpv2::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
@@ -18307,15 +18587,89 @@ void L2tpv2::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter
     {
         is_congestion_control_enabled.yfilter = yfilter;
     }
-    if(value_path == "retransmit-time")
-    {
-        retransmit_time.yfilter = yfilter;
-    }
 }
 
 bool L2tpv2::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local-tunnel-id" || name == "local-address" || name == "remote-address" || name == "local-port" || name == "remote-port" || name == "protocol" || name == "is-pmtu-enabled" || name == "remote-tunnel-id" || name == "local-tunnel-name" || name == "remote-tunnel-name" || name == "class-name" || name == "active-sessions" || name == "sequence-ns" || name == "sequence-nr" || name == "local-window-size" || name == "remote-window-size" || name == "retransmission-time" || name == "maximum-retransmission-time" || name == "unsent-queue-size" || name == "unsent-maximum-queue-size" || name == "resend-queue-size" || name == "resend-maximum-queue-size" || name == "order-queue-size" || name == "packet-queue-check" || name == "digest-secrets" || name == "resends" || name == "zero-length-body-acknowledgement-sent" || name == "total-out-of-order-drop-packets" || name == "total-out-of-order-reorder-packets" || name == "total-peer-authentication-failures" || name == "is-tunnel-up" || name == "is-congestion-control-enabled" || name == "retransmit-time")
+    if(name == "retransmit-time" || name == "local-tunnel-id" || name == "local-address" || name == "remote-address" || name == "local-port" || name == "remote-port" || name == "protocol" || name == "is-pmtu-enabled" || name == "remote-tunnel-id" || name == "local-tunnel-name" || name == "remote-tunnel-name" || name == "class-name" || name == "active-sessions" || name == "sequence-ns" || name == "sequence-nr" || name == "local-window-size" || name == "remote-window-size" || name == "retransmission-time" || name == "maximum-retransmission-time" || name == "unsent-queue-size" || name == "unsent-maximum-queue-size" || name == "resend-queue-size" || name == "resend-maximum-queue-size" || name == "order-queue-size" || name == "packet-queue-check" || name == "digest-secrets" || name == "resends" || name == "zero-length-body-acknowledgement-sent" || name == "total-out-of-order-drop-packets" || name == "total-out-of-order-reorder-packets" || name == "total-peer-authentication-failures" || name == "is-tunnel-up" || name == "is-congestion-control-enabled")
+        return true;
+    return false;
+}
+
+L2tpv2::Tunnels::Tunnel::RetransmitTime::RetransmitTime()
+    :
+    entry{YType::uint16, "entry"}
+{
+
+    yang_name = "retransmit-time"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2tpv2::Tunnels::Tunnel::RetransmitTime::~RetransmitTime()
+{
+}
+
+bool L2tpv2::Tunnels::Tunnel::RetransmitTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool L2tpv2::Tunnels::Tunnel::RetransmitTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string L2tpv2::Tunnels::Tunnel::RetransmitTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "retransmit-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Tunnels::Tunnel::RetransmitTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2tpv2::Tunnels::Tunnel::RetransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Tunnels::Tunnel::RetransmitTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2tpv2::Tunnels::Tunnel::RetransmitTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2tpv2::Tunnels::Tunnel::RetransmitTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool L2tpv2::Tunnels::Tunnel::RetransmitTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }

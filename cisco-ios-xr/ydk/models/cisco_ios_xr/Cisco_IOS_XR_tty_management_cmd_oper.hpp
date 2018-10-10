@@ -79,7 +79,7 @@ class ShowUsers::Sessions::Session : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf session_id; //type: int32
+        ydk::YLeaf session_id; //type: uint32
         ydk::YLeaf line; //type: string
         ydk::YLeaf user; //type: string
         ydk::YLeaf service; //type: string

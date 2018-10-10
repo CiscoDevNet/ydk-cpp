@@ -53,7 +53,7 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -531,7 +531,7 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -661,7 +661,7 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -886,7 +886,7 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -1391,7 +1391,7 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuH
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -1616,7 +1616,7 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuH
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -1721,7 +1721,7 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuH
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -2320,7 +2320,7 @@ class PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmH
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -3065,7 +3065,7 @@ class PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string

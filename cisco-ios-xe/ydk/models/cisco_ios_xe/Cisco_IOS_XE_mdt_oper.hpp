@@ -149,7 +149,7 @@ class MdtOperData::MdtSubscriptions::MdtReceivers : public ydk::Entity
         ydk::YLeaf protocol; //type: string
         ydk::YLeaf state; //type: MdtReceiverState
         ydk::YLeaf comments; //type: string
-        ydk::YLeaf security_profile; //type: string
+        ydk::YLeaf profile; //type: string
 
 }; // MdtOperData::MdtSubscriptions::MdtReceivers
 
@@ -178,7 +178,7 @@ class MdtOperData::MdtConnections : public ydk::Entity
         ydk::YLeaf transport; //type: string
         ydk::YLeaf peer_id; //type: string
         ydk::YLeaf state; //type: MdtConState
-        ydk::YLeaf security_profile; //type: string
+        ydk::YLeaf profile; //type: string
         class MdtSubConStats; //type: MdtOperData::MdtConnections::MdtSubConStats
 
         ydk::YList mdt_sub_con_stats;
@@ -233,6 +233,7 @@ class MdtSubType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf sub_type_dynamic;
         static const ydk::Enum::YLeaf sub_type_static;
+        static const ydk::Enum::YLeaf sub_type_permanent;
 
 };
 

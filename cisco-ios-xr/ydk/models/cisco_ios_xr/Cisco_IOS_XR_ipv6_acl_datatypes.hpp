@@ -242,19 +242,6 @@ class Ipv6AclStatusEnum : public ydk::Enum
 
 };
 
-class Ipv6AclTcpBitsNumber : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf established;
-        static const ydk::Enum::YLeaf ack;
-        static const ydk::Enum::YLeaf rst;
-        static const ydk::Enum::YLeaf fin;
-        static const ydk::Enum::YLeaf psh;
-        static const ydk::Enum::YLeaf syn;
-        static const ydk::Enum::YLeaf urg;
-
-};
-
 
 }
 }

@@ -3671,12 +3671,16 @@ L2rib::EviChildTables::EviChildTables()
     macip_details(std::make_shared<L2rib::EviChildTables::MacipDetails>())
     , mac_ips(std::make_shared<L2rib::EviChildTables::MacIps>())
     , macs(std::make_shared<L2rib::EviChildTables::Macs>())
+    , imets(std::make_shared<L2rib::EviChildTables::Imets>())
     , mac_details(std::make_shared<L2rib::EviChildTables::MacDetails>())
+    , imet_details(std::make_shared<L2rib::EviChildTables::ImetDetails>())
 {
     macip_details->parent = this;
     mac_ips->parent = this;
     macs->parent = this;
+    imets->parent = this;
     mac_details->parent = this;
+    imet_details->parent = this;
 
     yang_name = "evi-child-tables"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -3691,7 +3695,9 @@ bool L2rib::EviChildTables::has_data() const
     return (macip_details !=  nullptr && macip_details->has_data())
 	|| (mac_ips !=  nullptr && mac_ips->has_data())
 	|| (macs !=  nullptr && macs->has_data())
-	|| (mac_details !=  nullptr && mac_details->has_data());
+	|| (imets !=  nullptr && imets->has_data())
+	|| (mac_details !=  nullptr && mac_details->has_data())
+	|| (imet_details !=  nullptr && imet_details->has_data());
 }
 
 bool L2rib::EviChildTables::has_operation() const
@@ -3700,7 +3706,9 @@ bool L2rib::EviChildTables::has_operation() const
 	|| (macip_details !=  nullptr && macip_details->has_operation())
 	|| (mac_ips !=  nullptr && mac_ips->has_operation())
 	|| (macs !=  nullptr && macs->has_operation())
-	|| (mac_details !=  nullptr && mac_details->has_operation());
+	|| (imets !=  nullptr && imets->has_operation())
+	|| (mac_details !=  nullptr && mac_details->has_operation())
+	|| (imet_details !=  nullptr && imet_details->has_operation());
 }
 
 std::string L2rib::EviChildTables::get_absolute_path() const
@@ -3755,6 +3763,15 @@ std::shared_ptr<Entity> L2rib::EviChildTables::get_child_by_name(const std::stri
         return macs;
     }
 
+    if(child_yang_name == "imets")
+    {
+        if(imets == nullptr)
+        {
+            imets = std::make_shared<L2rib::EviChildTables::Imets>();
+        }
+        return imets;
+    }
+
     if(child_yang_name == "mac-details")
     {
         if(mac_details == nullptr)
@@ -3762,6 +3779,15 @@ std::shared_ptr<Entity> L2rib::EviChildTables::get_child_by_name(const std::stri
             mac_details = std::make_shared<L2rib::EviChildTables::MacDetails>();
         }
         return mac_details;
+    }
+
+    if(child_yang_name == "imet-details")
+    {
+        if(imet_details == nullptr)
+        {
+            imet_details = std::make_shared<L2rib::EviChildTables::ImetDetails>();
+        }
+        return imet_details;
     }
 
     return nullptr;
@@ -3786,9 +3812,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::get_childr
         children["macs"] = macs;
     }
 
+    if(imets != nullptr)
+    {
+        children["imets"] = imets;
+    }
+
     if(mac_details != nullptr)
     {
         children["mac-details"] = mac_details;
+    }
+
+    if(imet_details != nullptr)
+    {
+        children["imet-details"] = imet_details;
     }
 
     return children;
@@ -3804,7 +3840,7 @@ void L2rib::EviChildTables::set_filter(const std::string & value_path, YFilter y
 
 bool L2rib::EviChildTables::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "macip-details" || name == "mac-ips" || name == "macs" || name == "mac-details")
+    if(name == "macip-details" || name == "mac-ips" || name == "macs" || name == "imets" || name == "mac-details" || name == "imet-details")
         return true;
     return false;
 }
@@ -3918,7 +3954,7 @@ L2rib::EviChildTables::MacipDetails::MacipDetail::MacipDetail()
     admin_dist{YType::uint32, "admin-dist"},
     prod_id{YType::uint32, "prod-id"},
     sequence_number{YType::uint32, "sequence-number"},
-    flags{YType::uint32, "flags"},
+    flags{YType::str, "flags"},
     soo{YType::uint32, "soo"},
     last_update_timestamp{YType::uint64, "last-update-timestamp"}
         ,
@@ -10174,6 +10210,317 @@ bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::Next
     return false;
 }
 
+L2rib::EviChildTables::Imets::Imets()
+    :
+    imet(this, {})
+{
+
+    yang_name = "imets"; yang_parent_name = "evi-child-tables"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2rib::EviChildTables::Imets::~Imets()
+{
+}
+
+bool L2rib::EviChildTables::Imets::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<imet.len(); index++)
+    {
+        if(imet[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool L2rib::EviChildTables::Imets::has_operation() const
+{
+    for (std::size_t index=0; index<imet.len(); index++)
+    {
+        if(imet[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string L2rib::EviChildTables::Imets::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2rib::EviChildTables::Imets::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "imets";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Imets::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2rib::EviChildTables::Imets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "imet")
+    {
+        auto c = std::make_shared<L2rib::EviChildTables::Imets::Imet>();
+        c->parent = this;
+        imet.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Imets::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : imet.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void L2rib::EviChildTables::Imets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2rib::EviChildTables::Imets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2rib::EviChildTables::Imets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "imet")
+        return true;
+    return false;
+}
+
+L2rib::EviChildTables::Imets::Imet::Imet()
+    :
+    evi{YType::uint32, "evi"},
+    tag_id{YType::uint32, "tag-id"},
+    ip_addr{YType::str, "ip-addr"},
+    admin_dist{YType::uint32, "admin-dist"},
+    prod_id{YType::uint32, "prod-id"},
+    vtepi_paddr{YType::str, "vtepi-paddr"},
+    admin_distance{YType::uint8, "admin-distance"},
+    producer_id{YType::uint8, "producer-id"},
+    topo_id{YType::uint32, "topo-id"},
+    ethernet_tag_id{YType::uint32, "ethernet-tag-id"}
+{
+
+    yang_name = "imet"; yang_parent_name = "imets"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2rib::EviChildTables::Imets::Imet::~Imet()
+{
+}
+
+bool L2rib::EviChildTables::Imets::Imet::has_data() const
+{
+    if (is_presence_container) return true;
+    return evi.is_set
+	|| tag_id.is_set
+	|| ip_addr.is_set
+	|| admin_dist.is_set
+	|| prod_id.is_set
+	|| vtepi_paddr.is_set
+	|| admin_distance.is_set
+	|| producer_id.is_set
+	|| topo_id.is_set
+	|| ethernet_tag_id.is_set;
+}
+
+bool L2rib::EviChildTables::Imets::Imet::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(evi.yfilter)
+	|| ydk::is_set(tag_id.yfilter)
+	|| ydk::is_set(ip_addr.yfilter)
+	|| ydk::is_set(admin_dist.yfilter)
+	|| ydk::is_set(prod_id.yfilter)
+	|| ydk::is_set(vtepi_paddr.yfilter)
+	|| ydk::is_set(admin_distance.yfilter)
+	|| ydk::is_set(producer_id.yfilter)
+	|| ydk::is_set(topo_id.yfilter)
+	|| ydk::is_set(ethernet_tag_id.yfilter);
+}
+
+std::string L2rib::EviChildTables::Imets::Imet::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/imets/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2rib::EviChildTables::Imets::Imet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "imet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Imets::Imet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (evi.is_set || is_set(evi.yfilter)) leaf_name_data.push_back(evi.get_name_leafdata());
+    if (tag_id.is_set || is_set(tag_id.yfilter)) leaf_name_data.push_back(tag_id.get_name_leafdata());
+    if (ip_addr.is_set || is_set(ip_addr.yfilter)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+    if (admin_dist.is_set || is_set(admin_dist.yfilter)) leaf_name_data.push_back(admin_dist.get_name_leafdata());
+    if (prod_id.is_set || is_set(prod_id.yfilter)) leaf_name_data.push_back(prod_id.get_name_leafdata());
+    if (vtepi_paddr.is_set || is_set(vtepi_paddr.yfilter)) leaf_name_data.push_back(vtepi_paddr.get_name_leafdata());
+    if (admin_distance.is_set || is_set(admin_distance.yfilter)) leaf_name_data.push_back(admin_distance.get_name_leafdata());
+    if (producer_id.is_set || is_set(producer_id.yfilter)) leaf_name_data.push_back(producer_id.get_name_leafdata());
+    if (topo_id.is_set || is_set(topo_id.yfilter)) leaf_name_data.push_back(topo_id.get_name_leafdata());
+    if (ethernet_tag_id.is_set || is_set(ethernet_tag_id.yfilter)) leaf_name_data.push_back(ethernet_tag_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2rib::EviChildTables::Imets::Imet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Imets::Imet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2rib::EviChildTables::Imets::Imet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "evi")
+    {
+        evi = value;
+        evi.value_namespace = name_space;
+        evi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tag-id")
+    {
+        tag_id = value;
+        tag_id.value_namespace = name_space;
+        tag_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+        ip_addr.value_namespace = name_space;
+        ip_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-dist")
+    {
+        admin_dist = value;
+        admin_dist.value_namespace = name_space;
+        admin_dist.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prod-id")
+    {
+        prod_id = value;
+        prod_id.value_namespace = name_space;
+        prod_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vtepi-paddr")
+    {
+        vtepi_paddr = value;
+        vtepi_paddr.value_namespace = name_space;
+        vtepi_paddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-distance")
+    {
+        admin_distance = value;
+        admin_distance.value_namespace = name_space;
+        admin_distance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "producer-id")
+    {
+        producer_id = value;
+        producer_id.value_namespace = name_space;
+        producer_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "topo-id")
+    {
+        topo_id = value;
+        topo_id.value_namespace = name_space;
+        topo_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ethernet-tag-id")
+    {
+        ethernet_tag_id = value;
+        ethernet_tag_id.value_namespace = name_space;
+        ethernet_tag_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2rib::EviChildTables::Imets::Imet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "evi")
+    {
+        evi.yfilter = yfilter;
+    }
+    if(value_path == "tag-id")
+    {
+        tag_id.yfilter = yfilter;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr.yfilter = yfilter;
+    }
+    if(value_path == "admin-dist")
+    {
+        admin_dist.yfilter = yfilter;
+    }
+    if(value_path == "prod-id")
+    {
+        prod_id.yfilter = yfilter;
+    }
+    if(value_path == "vtepi-paddr")
+    {
+        vtepi_paddr.yfilter = yfilter;
+    }
+    if(value_path == "admin-distance")
+    {
+        admin_distance.yfilter = yfilter;
+    }
+    if(value_path == "producer-id")
+    {
+        producer_id.yfilter = yfilter;
+    }
+    if(value_path == "topo-id")
+    {
+        topo_id.yfilter = yfilter;
+    }
+    if(value_path == "ethernet-tag-id")
+    {
+        ethernet_tag_id.yfilter = yfilter;
+    }
+}
+
+bool L2rib::EviChildTables::Imets::Imet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "evi" || name == "tag-id" || name == "ip-addr" || name == "admin-dist" || name == "prod-id" || name == "vtepi-paddr" || name == "admin-distance" || name == "producer-id" || name == "topo-id" || name == "ethernet-tag-id")
+        return true;
+    return false;
+}
+
 L2rib::EviChildTables::MacDetails::MacDetails()
     :
     mac_detail(this, {})
@@ -10282,8 +10629,8 @@ L2rib::EviChildTables::MacDetails::MacDetail::MacDetail()
     admin_dist{YType::uint32, "admin-dist"},
     prod_id{YType::uint32, "prod-id"},
     sequence_number{YType::uint32, "sequence-number"},
-    flags{YType::uint32, "flags"},
-    baseflags{YType::uint32, "baseflags"},
+    flags{YType::str, "flags"},
+    baseflags{YType::str, "baseflags"},
     soo{YType::uint32, "soo"},
     slot_id{YType::uint32, "slot-id"},
     esi{YType::str, "esi"},
@@ -14820,6 +15167,491 @@ void L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::set_filter(con
 bool L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
+        return true;
+    return false;
+}
+
+L2rib::EviChildTables::ImetDetails::ImetDetails()
+    :
+    imet_detail(this, {})
+{
+
+    yang_name = "imet-details"; yang_parent_name = "evi-child-tables"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2rib::EviChildTables::ImetDetails::~ImetDetails()
+{
+}
+
+bool L2rib::EviChildTables::ImetDetails::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<imet_detail.len(); index++)
+    {
+        if(imet_detail[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool L2rib::EviChildTables::ImetDetails::has_operation() const
+{
+    for (std::size_t index=0; index<imet_detail.len(); index++)
+    {
+        if(imet_detail[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string L2rib::EviChildTables::ImetDetails::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2rib::EviChildTables::ImetDetails::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "imet-details";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::ImetDetails::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2rib::EviChildTables::ImetDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "imet-detail")
+    {
+        auto c = std::make_shared<L2rib::EviChildTables::ImetDetails::ImetDetail>();
+        c->parent = this;
+        imet_detail.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::ImetDetails::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : imet_detail.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void L2rib::EviChildTables::ImetDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2rib::EviChildTables::ImetDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2rib::EviChildTables::ImetDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "imet-detail")
+        return true;
+    return false;
+}
+
+L2rib::EviChildTables::ImetDetails::ImetDetail::ImetDetail()
+    :
+    evi{YType::uint32, "evi"},
+    tag_id{YType::uint32, "tag-id"},
+    ip_addr{YType::str, "ip-addr"},
+    admin_dist{YType::uint32, "admin-dist"},
+    prod_id{YType::uint32, "prod-id"},
+    tunnel_id{YType::str, "tunnel-id"},
+    flags{YType::uint32, "flags"},
+    tunnel_type{YType::uint32, "tunnel-type"},
+    l2r_label{YType::uint32, "l2r-label"},
+    encap_type{YType::uint32, "encap-type"},
+    last_update_timestamp{YType::uint64, "last-update-timestamp"}
+        ,
+    imet_route_base(std::make_shared<L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase>())
+{
+    imet_route_base->parent = this;
+
+    yang_name = "imet-detail"; yang_parent_name = "imet-details"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2rib::EviChildTables::ImetDetails::ImetDetail::~ImetDetail()
+{
+}
+
+bool L2rib::EviChildTables::ImetDetails::ImetDetail::has_data() const
+{
+    if (is_presence_container) return true;
+    return evi.is_set
+	|| tag_id.is_set
+	|| ip_addr.is_set
+	|| admin_dist.is_set
+	|| prod_id.is_set
+	|| tunnel_id.is_set
+	|| flags.is_set
+	|| tunnel_type.is_set
+	|| l2r_label.is_set
+	|| encap_type.is_set
+	|| last_update_timestamp.is_set
+	|| (imet_route_base !=  nullptr && imet_route_base->has_data());
+}
+
+bool L2rib::EviChildTables::ImetDetails::ImetDetail::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(evi.yfilter)
+	|| ydk::is_set(tag_id.yfilter)
+	|| ydk::is_set(ip_addr.yfilter)
+	|| ydk::is_set(admin_dist.yfilter)
+	|| ydk::is_set(prod_id.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(flags.yfilter)
+	|| ydk::is_set(tunnel_type.yfilter)
+	|| ydk::is_set(l2r_label.yfilter)
+	|| ydk::is_set(encap_type.yfilter)
+	|| ydk::is_set(last_update_timestamp.yfilter)
+	|| (imet_route_base !=  nullptr && imet_route_base->has_operation());
+}
+
+std::string L2rib::EviChildTables::ImetDetails::ImetDetail::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/imet-details/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2rib::EviChildTables::ImetDetails::ImetDetail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "imet-detail";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::ImetDetails::ImetDetail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (evi.is_set || is_set(evi.yfilter)) leaf_name_data.push_back(evi.get_name_leafdata());
+    if (tag_id.is_set || is_set(tag_id.yfilter)) leaf_name_data.push_back(tag_id.get_name_leafdata());
+    if (ip_addr.is_set || is_set(ip_addr.yfilter)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+    if (admin_dist.is_set || is_set(admin_dist.yfilter)) leaf_name_data.push_back(admin_dist.get_name_leafdata());
+    if (prod_id.is_set || is_set(prod_id.yfilter)) leaf_name_data.push_back(prod_id.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
+    if (tunnel_type.is_set || is_set(tunnel_type.yfilter)) leaf_name_data.push_back(tunnel_type.get_name_leafdata());
+    if (l2r_label.is_set || is_set(l2r_label.yfilter)) leaf_name_data.push_back(l2r_label.get_name_leafdata());
+    if (encap_type.is_set || is_set(encap_type.yfilter)) leaf_name_data.push_back(encap_type.get_name_leafdata());
+    if (last_update_timestamp.is_set || is_set(last_update_timestamp.yfilter)) leaf_name_data.push_back(last_update_timestamp.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2rib::EviChildTables::ImetDetails::ImetDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "imet-route-base")
+    {
+        if(imet_route_base == nullptr)
+        {
+            imet_route_base = std::make_shared<L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase>();
+        }
+        return imet_route_base;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::ImetDetails::ImetDetail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(imet_route_base != nullptr)
+    {
+        children["imet-route-base"] = imet_route_base;
+    }
+
+    return children;
+}
+
+void L2rib::EviChildTables::ImetDetails::ImetDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "evi")
+    {
+        evi = value;
+        evi.value_namespace = name_space;
+        evi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tag-id")
+    {
+        tag_id = value;
+        tag_id.value_namespace = name_space;
+        tag_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+        ip_addr.value_namespace = name_space;
+        ip_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-dist")
+    {
+        admin_dist = value;
+        admin_dist.value_namespace = name_space;
+        admin_dist.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prod-id")
+    {
+        prod_id = value;
+        prod_id.value_namespace = name_space;
+        prod_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flags")
+    {
+        flags = value;
+        flags.value_namespace = name_space;
+        flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-type")
+    {
+        tunnel_type = value;
+        tunnel_type.value_namespace = name_space;
+        tunnel_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "l2r-label")
+    {
+        l2r_label = value;
+        l2r_label.value_namespace = name_space;
+        l2r_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encap-type")
+    {
+        encap_type = value;
+        encap_type.value_namespace = name_space;
+        encap_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-update-timestamp")
+    {
+        last_update_timestamp = value;
+        last_update_timestamp.value_namespace = name_space;
+        last_update_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2rib::EviChildTables::ImetDetails::ImetDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "evi")
+    {
+        evi.yfilter = yfilter;
+    }
+    if(value_path == "tag-id")
+    {
+        tag_id.yfilter = yfilter;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr.yfilter = yfilter;
+    }
+    if(value_path == "admin-dist")
+    {
+        admin_dist.yfilter = yfilter;
+    }
+    if(value_path == "prod-id")
+    {
+        prod_id.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-type")
+    {
+        tunnel_type.yfilter = yfilter;
+    }
+    if(value_path == "l2r-label")
+    {
+        l2r_label.yfilter = yfilter;
+    }
+    if(value_path == "encap-type")
+    {
+        encap_type.yfilter = yfilter;
+    }
+    if(value_path == "last-update-timestamp")
+    {
+        last_update_timestamp.yfilter = yfilter;
+    }
+}
+
+bool L2rib::EviChildTables::ImetDetails::ImetDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "imet-route-base" || name == "evi" || name == "tag-id" || name == "ip-addr" || name == "admin-dist" || name == "prod-id" || name == "tunnel-id" || name == "flags" || name == "tunnel-type" || name == "l2r-label" || name == "encap-type" || name == "last-update-timestamp")
+        return true;
+    return false;
+}
+
+L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::ImetRouteBase()
+    :
+    vtepi_paddr{YType::str, "vtepi-paddr"},
+    admin_distance{YType::uint8, "admin-distance"},
+    producer_id{YType::uint8, "producer-id"},
+    topo_id{YType::uint32, "topo-id"},
+    ethernet_tag_id{YType::uint32, "ethernet-tag-id"}
+{
+
+    yang_name = "imet-route-base"; yang_parent_name = "imet-detail"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::~ImetRouteBase()
+{
+}
+
+bool L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::has_data() const
+{
+    if (is_presence_container) return true;
+    return vtepi_paddr.is_set
+	|| admin_distance.is_set
+	|| producer_id.is_set
+	|| topo_id.is_set
+	|| ethernet_tag_id.is_set;
+}
+
+bool L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vtepi_paddr.yfilter)
+	|| ydk::is_set(admin_distance.yfilter)
+	|| ydk::is_set(producer_id.yfilter)
+	|| ydk::is_set(topo_id.yfilter)
+	|| ydk::is_set(ethernet_tag_id.yfilter);
+}
+
+std::string L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/imet-details/imet-detail/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "imet-route-base";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vtepi_paddr.is_set || is_set(vtepi_paddr.yfilter)) leaf_name_data.push_back(vtepi_paddr.get_name_leafdata());
+    if (admin_distance.is_set || is_set(admin_distance.yfilter)) leaf_name_data.push_back(admin_distance.get_name_leafdata());
+    if (producer_id.is_set || is_set(producer_id.yfilter)) leaf_name_data.push_back(producer_id.get_name_leafdata());
+    if (topo_id.is_set || is_set(topo_id.yfilter)) leaf_name_data.push_back(topo_id.get_name_leafdata());
+    if (ethernet_tag_id.is_set || is_set(ethernet_tag_id.yfilter)) leaf_name_data.push_back(ethernet_tag_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vtepi-paddr")
+    {
+        vtepi_paddr = value;
+        vtepi_paddr.value_namespace = name_space;
+        vtepi_paddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-distance")
+    {
+        admin_distance = value;
+        admin_distance.value_namespace = name_space;
+        admin_distance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "producer-id")
+    {
+        producer_id = value;
+        producer_id.value_namespace = name_space;
+        producer_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "topo-id")
+    {
+        topo_id = value;
+        topo_id.value_namespace = name_space;
+        topo_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ethernet-tag-id")
+    {
+        ethernet_tag_id = value;
+        ethernet_tag_id.value_namespace = name_space;
+        ethernet_tag_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vtepi-paddr")
+    {
+        vtepi_paddr.yfilter = yfilter;
+    }
+    if(value_path == "admin-distance")
+    {
+        admin_distance.yfilter = yfilter;
+    }
+    if(value_path == "producer-id")
+    {
+        producer_id.yfilter = yfilter;
+    }
+    if(value_path == "topo-id")
+    {
+        topo_id.yfilter = yfilter;
+    }
+    if(value_path == "ethernet-tag-id")
+    {
+        ethernet_tag_id.yfilter = yfilter;
+    }
+}
+
+bool L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vtepi-paddr" || name == "admin-distance" || name == "producer-id" || name == "topo-id" || name == "ethernet-tag-id")
         return true;
     return false;
 }

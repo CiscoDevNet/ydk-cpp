@@ -183,6 +183,7 @@ class SessionRedundancyManager::Summary : public ydk::Entity
         ydk::YLeaf interface_count; //type: uint32
         ydk::YLeaf master_interface_count; //type: uint32
         ydk::YLeaf slave_interface_count; //type: uint32
+        ydk::YLeaf pool_count; //type: uint32
 
 }; // SessionRedundancyManager::Summary
 
@@ -464,6 +465,11 @@ class SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId : public ydk::Ent
         ydk::YLeaf tx_list_active_not_ok; //type: uint32
         ydk::YLeaf tx_list_de_active_ok; //type: uint32
         ydk::YLeaf tx_list_de_active_not_ok; //type: uint32
+        ydk::YLeaf tx_list_send_pool_role_ok; //type: uint32
+        ydk::YLeaf tx_list_send_pool_role_not_ok; //type: uint32
+        ydk::YLeaf tx_list_send_pool_update_ok; //type: uint32
+        ydk::YLeaf tx_list_send_pool_update_not_ok; //type: uint32
+        ydk::YLeaf tx_list_recv_pool_update_ok; //type: uint32
 
 }; // SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId
 
@@ -644,11 +650,14 @@ class SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId : public ydk::Entit
         ydk::YLeaf interface_count; //type: uint32
         ydk::YLeaf revertive_timer; //type: uint32
         ydk::YLeaf switchover_revert_time; //type: uint32
+        ydk::YLeaf pool_count; //type: uint32
         class ClientSessionCount; //type: SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount
         class Interface; //type: SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface
+        class Pool; //type: SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool
 
         ydk::YList client_session_count;
         ydk::YList interface;
+        ydk::YList pool;
         
 }; // SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId
 
@@ -697,6 +706,27 @@ class SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface : public
         ydk::YLeaf session_count; //type: uint32
 
 }; // SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface
+
+
+class SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool : public ydk::Entity
+{
+    public:
+        Pool();
+        ~Pool();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pool_name; //type: string
+
+}; // SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool
 
 
 class SessionRedundancyAgent::Nodes::Node::Interfaces : public ydk::Entity
@@ -888,6 +918,7 @@ class SessionRedundancyAgent::Nodes::Node::StatsGlobal : public ydk::Entity
         ydk::YLeaf tx_list_peer_cmd_connection_down_not_ok; //type: uint32
         ydk::YLeaf tx_list_peer_session_connection_up_not_ok; //type: uint32
         ydk::YLeaf tx_list_peer_session_connection_down_not_ok; //type: uint32
+        ydk::YLeaf tx_list_send_pool_update_not_ok; //type: uint32
         class IntfStatusStatistics; //type: SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics
         class TxListStatistics; //type: SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics
         class ClientStatus; //type: SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus
@@ -1178,6 +1209,7 @@ class SergShowComp : public ydk::Enum
         static const ydk::Enum::YLeaf serga;
         static const ydk::Enum::YLeaf ipv6nd;
         static const ydk::Enum::YLeaf dhcpv6;
+        static const ydk::Enum::YLeaf daps;
 
 };
 

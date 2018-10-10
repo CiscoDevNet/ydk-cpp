@@ -545,7 +545,8 @@ NatData::IpNatTranslation::IpNatTranslation()
     inside_global_port{YType::uint16, "inside-global-port"},
     outside_global_port{YType::uint16, "outside-global-port"},
     flags{YType::uint32, "flags"},
-    application_type{YType::uint8, "application-type"}
+    application_type{YType::uint8, "application-type"},
+    vrf_name{YType::str, "vrf-name"}
 {
 
     yang_name = "ip-nat-translation"; yang_parent_name = "nat-data"; is_top_level_class = false; has_list_ancestor = false; 
@@ -569,7 +570,8 @@ bool NatData::IpNatTranslation::has_data() const
 	|| inside_global_port.is_set
 	|| outside_global_port.is_set
 	|| flags.is_set
-	|| application_type.is_set;
+	|| application_type.is_set
+	|| vrf_name.is_set;
 }
 
 bool NatData::IpNatTranslation::has_operation() const
@@ -586,7 +588,8 @@ bool NatData::IpNatTranslation::has_operation() const
 	|| ydk::is_set(inside_global_port.yfilter)
 	|| ydk::is_set(outside_global_port.yfilter)
 	|| ydk::is_set(flags.yfilter)
-	|| ydk::is_set(application_type.yfilter);
+	|| ydk::is_set(application_type.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string NatData::IpNatTranslation::get_absolute_path() const
@@ -625,6 +628,7 @@ std::vector<std::pair<std::string, LeafData> > NatData::IpNatTranslation::get_na
     if (outside_global_port.is_set || is_set(outside_global_port.yfilter)) leaf_name_data.push_back(outside_global_port.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
     if (application_type.is_set || is_set(application_type.yfilter)) leaf_name_data.push_back(application_type.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -716,6 +720,12 @@ void NatData::IpNatTranslation::set_value(const std::string & value_path, const 
         application_type.value_namespace = name_space;
         application_type.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void NatData::IpNatTranslation::set_filter(const std::string & value_path, YFilter yfilter)
@@ -768,11 +778,15 @@ void NatData::IpNatTranslation::set_filter(const std::string & value_path, YFilt
     {
         application_type.yfilter = yfilter;
     }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
 }
 
 bool NatData::IpNatTranslation::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "inside-local-addr" || name == "outside-local-addr" || name == "inside-local-port" || name == "outside-local-port" || name == "vrfid" || name == "protocol" || name == "inside-global-addr" || name == "outside-global-addr" || name == "inside-global-port" || name == "outside-global-port" || name == "flags" || name == "application-type")
+    if(name == "inside-local-addr" || name == "outside-local-addr" || name == "inside-local-port" || name == "outside-local-port" || name == "vrfid" || name == "protocol" || name == "inside-global-addr" || name == "outside-global-addr" || name == "inside-global-port" || name == "outside-global-port" || name == "flags" || name == "application-type" || name == "vrf-name")
         return true;
     return false;
 }

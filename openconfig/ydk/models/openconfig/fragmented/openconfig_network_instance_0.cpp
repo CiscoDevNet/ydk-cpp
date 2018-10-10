@@ -17031,7 +17031,7 @@ const Enum::YLeaf NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes
 const Enum::YLeaf NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::Status::UP {0, "UP"};
 const Enum::YLeaf NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::Status::DOWN {1, "DOWN"};
 
-const Enum::YLeaf NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec::PeakDataRate::INFINITY_ {0, "INFINITY"};
+const Enum::YLeaf NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec::PeakDataRate::INFINITY {0, "INFINITY"};
 
 const Enum::YLeaf NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State::NeighborStatus::UP {0, "UP"};
 const Enum::YLeaf NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State::NeighborStatus::DOWN {1, "DOWN"};

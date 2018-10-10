@@ -159,7 +159,8 @@ class Ssh::Client::ClientEnable::ClientCipher : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf aescbc; //type: boolean
+        ydk::YLeaf aes_cbc; //type: boolean
+        ydk::YLeaf tripledes_cbc; //type: boolean
 
 }; // Ssh::Client::ClientEnable::ClientCipher
 
@@ -294,7 +295,8 @@ class Ssh::Server::Enable::Cipher : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf aescbc; //type: boolean
+        ydk::YLeaf aes_cbc; //type: boolean
+        ydk::YLeaf tripledes_cbc; //type: boolean
 
 }; // Ssh::Server::Enable::Cipher
 

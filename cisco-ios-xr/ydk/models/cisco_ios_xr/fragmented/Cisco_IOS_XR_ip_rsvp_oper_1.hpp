@@ -307,139 +307,6 @@ class RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2mpIpv4Session : pu
 }; // RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2mpIpv4Session
 
 
-class RsvpStandby::OpenConfig : public ydk::Entity
-{
-    public:
-        OpenConfig();
-        ~OpenConfig();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class GlobalCounters; //type: RsvpStandby::OpenConfig::GlobalCounters
-        class InterfaceCounters; //type: RsvpStandby::OpenConfig::InterfaceCounters
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::OpenConfig::GlobalCounters> global_counters;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::OpenConfig::InterfaceCounters> interface_counters;
-        
-}; // RsvpStandby::OpenConfig
-
-
-class RsvpStandby::OpenConfig::GlobalCounters : public ydk::Entity
-{
-    public:
-        GlobalCounters();
-        ~GlobalCounters();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf path_timeouts; //type: uint64
-        ydk::YLeaf reservation_timeouts; //type: uint64
-        ydk::YLeaf rate_limited_messages; //type: uint64
-        ydk::YLeaf in_path_messages; //type: uint64
-        ydk::YLeaf in_path_error_messages; //type: uint64
-        ydk::YLeaf in_path_tear_messages; //type: uint64
-        ydk::YLeaf in_reservation_messages; //type: uint64
-        ydk::YLeaf in_reservation_error_messages; //type: uint64
-        ydk::YLeaf in_reservation_tear_messages; //type: uint64
-        ydk::YLeaf in_hello_messages; //type: uint64
-        ydk::YLeaf in_srefresh_messages; //type: uint64
-        ydk::YLeaf in_ack_messages; //type: uint64
-        ydk::YLeaf out_path_messages; //type: uint64
-        ydk::YLeaf out_path_error_messages; //type: uint64
-        ydk::YLeaf out_path_tear_messages; //type: uint64
-        ydk::YLeaf out_reservation_messages; //type: uint64
-        ydk::YLeaf out_reservation_error_messages; //type: uint64
-        ydk::YLeaf out_reservation_tear_messages; //type: uint64
-        ydk::YLeaf out_hello_messages; //type: uint64
-        ydk::YLeaf out_srefresh_messages; //type: uint64
-        ydk::YLeaf out_ack_messages; //type: uint64
-
-}; // RsvpStandby::OpenConfig::GlobalCounters
-
-
-class RsvpStandby::OpenConfig::InterfaceCounters : public ydk::Entity
-{
-    public:
-        InterfaceCounters();
-        ~InterfaceCounters();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class InterfaceCounter; //type: RsvpStandby::OpenConfig::InterfaceCounters::InterfaceCounter
-
-        ydk::YList interface_counter;
-        
-}; // RsvpStandby::OpenConfig::InterfaceCounters
-
-
-class RsvpStandby::OpenConfig::InterfaceCounters::InterfaceCounter : public ydk::Entity
-{
-    public:
-        InterfaceCounter();
-        ~InterfaceCounter();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf interface_name_xr; //type: string
-        ydk::YLeaf in_path_messages; //type: uint64
-        ydk::YLeaf in_path_error_messages; //type: uint64
-        ydk::YLeaf in_path_tear_messages; //type: uint64
-        ydk::YLeaf in_reservation_messages; //type: uint64
-        ydk::YLeaf in_reservation_error_messages; //type: uint64
-        ydk::YLeaf in_reservation_tear_messages; //type: uint64
-        ydk::YLeaf in_hello_messages; //type: uint64
-        ydk::YLeaf in_srefresh_messages; //type: uint64
-        ydk::YLeaf in_ack_messages; //type: uint64
-        ydk::YLeaf out_path_messages; //type: uint64
-        ydk::YLeaf out_path_error_messages; //type: uint64
-        ydk::YLeaf out_path_tear_messages; //type: uint64
-        ydk::YLeaf out_reservation_messages; //type: uint64
-        ydk::YLeaf out_reservation_error_messages; //type: uint64
-        ydk::YLeaf out_reservation_tear_messages; //type: uint64
-        ydk::YLeaf out_hello_messages; //type: uint64
-        ydk::YLeaf out_srefresh_messages; //type: uint64
-        ydk::YLeaf out_ack_messages; //type: uint64
-
-}; // RsvpStandby::OpenConfig::InterfaceCounters::InterfaceCounter
-
-
 class RsvpStandby::Counters : public ydk::Entity
 {
     public:
@@ -4051,6 +3918,120 @@ class RsvpStandby::RequestDetails::RequestDetail::PolicyQueryFlags : public ydk:
         ydk::YLeaf is_bypass; //type: boolean
 
 }; // RsvpStandby::RequestDetails::RequestDetail::PolicyQueryFlags
+
+
+class RsvpStandby::RequestDetails::RequestDetail::PsbKey : public ydk::Entity
+{
+    public:
+        PsbKey();
+        ~PsbKey();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf p2mp_id; //type: uint32
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf destination_port_or_tunnel_id; //type: uint32
+        ydk::YLeaf protocol; //type: uint32
+        ydk::YLeaf extended_tunnel_id; //type: string
+        ydk::YLeaf session_type; //type: RsvpMgmtSession
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf source_port_or_lsp_id; //type: uint32
+        ydk::YLeaf p2mp_sub_group_origin; //type: string
+        ydk::YLeaf sub_group_id; //type: uint16
+        ydk::YLeaf vrfid; //type: uint32
+
+}; // RsvpStandby::RequestDetails::RequestDetail::PsbKey
+
+
+class RsvpStandby::RequestDetails::RequestDetail::RsbKey : public ydk::Entity
+{
+    public:
+        RsbKey();
+        ~RsbKey();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf p2mp_id; //type: uint32
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf destination_port_or_tunnel_id; //type: uint32
+        ydk::YLeaf protocol; //type: uint32
+        ydk::YLeaf extended_tunnel_id; //type: string
+        ydk::YLeaf session_type; //type: RsvpMgmtSession
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf source_port_or_lsp_id; //type: uint32
+        ydk::YLeaf p2mp_sub_group_origin; //type: string
+        ydk::YLeaf sub_group_id; //type: uint16
+        ydk::YLeaf vrfid; //type: uint32
+
+}; // RsvpStandby::RequestDetails::RequestDetail::RsbKey
+
+
+class RsvpStandby::InterfaceBriefs : public ydk::Entity
+{
+    public:
+        InterfaceBriefs();
+        ~InterfaceBriefs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class InterfaceBrief; //type: RsvpStandby::InterfaceBriefs::InterfaceBrief
+
+        ydk::YList interface_brief;
+        
+}; // RsvpStandby::InterfaceBriefs
+
+
+class RsvpStandby::InterfaceBriefs::InterfaceBrief : public ydk::Entity
+{
+    public:
+        InterfaceBrief();
+        ~InterfaceBrief();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name_xr; //type: string
+        class BandwidthInformation; //type: RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation> bandwidth_information;
+        
+}; // RsvpStandby::InterfaceBriefs::InterfaceBrief
 
 
 }

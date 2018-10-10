@@ -8747,7 +8747,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secytxes::MacsecSecond30secytx::MacsecSecond30secytx()
     :
-    number{YType::int32, "number"},
+    number{YType::uint32, "number"},
     index_{YType::uint32, "index"},
     valid{YType::boolean, "valid"},
     timestamp{YType::str, "timestamp"},
@@ -9872,7 +9872,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::MacsecHour24Ether()
     :
-    number{YType::int32, "number"},
+    number{YType::uint32, "number"},
     index_{YType::uint32, "index"},
     valid{YType::boolean, "valid"},
     timestamp{YType::str, "timestamp"},

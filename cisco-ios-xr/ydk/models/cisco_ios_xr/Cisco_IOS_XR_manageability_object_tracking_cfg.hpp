@@ -64,12 +64,16 @@ class ObjectTrackings::ObjectTracking : public ydk::Entity
         ydk::YLeaf type_route_enable; //type: empty
         ydk::YLeaf type_boolean_list_and_enable; //type: empty
         ydk::YLeaf type_boolean_list_or_enable; //type: empty
+        class Action; //type: ObjectTrackings::ObjectTracking::Action
+        class TypeBfdRtr; //type: ObjectTrackings::ObjectTracking::TypeBfdRtr
         class TypeInterface; //type: ObjectTrackings::ObjectTracking::TypeInterface
         class TypeRtr; //type: ObjectTrackings::ObjectTracking::TypeRtr
         class TypeList; //type: ObjectTrackings::ObjectTracking::TypeList
         class TypeRoute; //type: ObjectTrackings::ObjectTracking::TypeRoute
         class TypeBooleanList; //type: ObjectTrackings::ObjectTracking::TypeBooleanList
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::Action> action;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeBfdRtr> type_bfd_rtr;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeInterface> type_interface;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeRtr> type_rtr;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeList> type_list;
@@ -77,6 +81,122 @@ class ObjectTrackings::ObjectTracking : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeBooleanList> type_boolean_list;
         
 }; // ObjectTrackings::ObjectTracking
+
+
+class ObjectTrackings::ObjectTracking::Action : public ydk::Entity
+{
+    public:
+        Action();
+        ~Action();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf actions_enable; //type: empty
+        class ActionErrDis; //type: ObjectTrackings::ObjectTracking::Action::ActionErrDis
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::Action::ActionErrDis> action_err_dis;
+        
+}; // ObjectTrackings::ObjectTracking::Action
+
+
+class ObjectTrackings::ObjectTracking::Action::ActionErrDis : public ydk::Entity
+{
+    public:
+        ActionErrDis();
+        ~ActionErrDis();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ActionErrDi; //type: ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi
+
+        ydk::YList action_err_di;
+        
+}; // ObjectTrackings::ObjectTracking::Action::ActionErrDis
+
+
+class ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi : public ydk::Entity
+{
+    public:
+        ActionErrDi();
+        ~ActionErrDi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf track_state_type; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+
+}; // ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi
+
+
+class ObjectTrackings::ObjectTracking::TypeBfdRtr : public ydk::Entity
+{
+    public:
+        TypeBfdRtr();
+        ~TypeBfdRtr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class BfdRtr; //type: ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr> bfd_rtr; // presence node
+        
+}; // ObjectTrackings::ObjectTracking::TypeBfdRtr
+
+
+class ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr : public ydk::Entity
+{
+    public:
+        BfdRtr();
+        ~BfdRtr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rate; //type: uint32
+        ydk::YLeaf debounce_count; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf dest_address; //type: string
+
+}; // ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr
 
 
 class ObjectTrackings::ObjectTracking::TypeInterface : public ydk::Entity
@@ -137,6 +257,8 @@ class ObjectTrackings::ObjectTracking::TypeList : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf threshold_percentage_object_enable; //type: empty
+        ydk::YLeaf threshold_weight_object_enable; //type: empty
         class ThresholdWeight; //type: ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight
         class ThresholdPercentageObject; //type: ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject
         class ThresholdPercentage; //type: ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage

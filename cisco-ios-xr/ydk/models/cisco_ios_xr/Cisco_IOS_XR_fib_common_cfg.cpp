@@ -13,7 +13,10 @@ namespace Cisco_IOS_XR_fib_common_cfg {
 
 Fib::Fib()
     :
-    prefer_aib_routes{YType::boolean, "prefer-aib-routes"}
+    auto_hash_recover{YType::boolean, "auto-hash-recover"},
+    prefer_aib_routes{YType::boolean, "prefer-aib-routes"},
+    encap_sharing_disable{YType::boolean, "encap-sharing-disable"},
+    frr_follow_bgp_pic{YType::boolean, "frr-follow-bgp-pic"}
         ,
     pbts_forward_class_fallbacks(std::make_shared<Fib::PbtsForwardClassFallbacks>())
     , platform(std::make_shared<Fib::Platform>())
@@ -31,7 +34,10 @@ Fib::~Fib()
 bool Fib::has_data() const
 {
     if (is_presence_container) return true;
-    return prefer_aib_routes.is_set
+    return auto_hash_recover.is_set
+	|| prefer_aib_routes.is_set
+	|| encap_sharing_disable.is_set
+	|| frr_follow_bgp_pic.is_set
 	|| (pbts_forward_class_fallbacks !=  nullptr && pbts_forward_class_fallbacks->has_data())
 	|| (platform !=  nullptr && platform->has_data());
 }
@@ -39,7 +45,10 @@ bool Fib::has_data() const
 bool Fib::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(auto_hash_recover.yfilter)
 	|| ydk::is_set(prefer_aib_routes.yfilter)
+	|| ydk::is_set(encap_sharing_disable.yfilter)
+	|| ydk::is_set(frr_follow_bgp_pic.yfilter)
 	|| (pbts_forward_class_fallbacks !=  nullptr && pbts_forward_class_fallbacks->has_operation())
 	|| (platform !=  nullptr && platform->has_operation());
 }
@@ -55,7 +64,10 @@ std::vector<std::pair<std::string, LeafData> > Fib::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (auto_hash_recover.is_set || is_set(auto_hash_recover.yfilter)) leaf_name_data.push_back(auto_hash_recover.get_name_leafdata());
     if (prefer_aib_routes.is_set || is_set(prefer_aib_routes.yfilter)) leaf_name_data.push_back(prefer_aib_routes.get_name_leafdata());
+    if (encap_sharing_disable.is_set || is_set(encap_sharing_disable.yfilter)) leaf_name_data.push_back(encap_sharing_disable.get_name_leafdata());
+    if (frr_follow_bgp_pic.is_set || is_set(frr_follow_bgp_pic.yfilter)) leaf_name_data.push_back(frr_follow_bgp_pic.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -103,19 +115,49 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::get_children() const
 
 void Fib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "auto-hash-recover")
+    {
+        auto_hash_recover = value;
+        auto_hash_recover.value_namespace = name_space;
+        auto_hash_recover.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "prefer-aib-routes")
     {
         prefer_aib_routes = value;
         prefer_aib_routes.value_namespace = name_space;
         prefer_aib_routes.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "encap-sharing-disable")
+    {
+        encap_sharing_disable = value;
+        encap_sharing_disable.value_namespace = name_space;
+        encap_sharing_disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "frr-follow-bgp-pic")
+    {
+        frr_follow_bgp_pic = value;
+        frr_follow_bgp_pic.value_namespace = name_space;
+        frr_follow_bgp_pic.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Fib::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "auto-hash-recover")
+    {
+        auto_hash_recover.yfilter = yfilter;
+    }
     if(value_path == "prefer-aib-routes")
     {
         prefer_aib_routes.yfilter = yfilter;
+    }
+    if(value_path == "encap-sharing-disable")
+    {
+        encap_sharing_disable.yfilter = yfilter;
+    }
+    if(value_path == "frr-follow-bgp-pic")
+    {
+        frr_follow_bgp_pic.yfilter = yfilter;
     }
 }
 
@@ -146,7 +188,7 @@ std::map<std::pair<std::string, std::string>, std::string> Fib::get_namespace_id
 
 bool Fib::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pbts-forward-class-fallbacks" || name == "platform" || name == "prefer-aib-routes")
+    if(name == "pbts-forward-class-fallbacks" || name == "platform" || name == "auto-hash-recover" || name == "prefer-aib-routes" || name == "encap-sharing-disable" || name == "frr-follow-bgp-pic")
         return true;
     return false;
 }

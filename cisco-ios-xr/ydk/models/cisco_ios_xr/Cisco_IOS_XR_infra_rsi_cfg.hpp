@@ -140,13 +140,35 @@ class Vrfs::Vrf::Afs::Af : public ydk::Entity
         ydk::YLeaf saf_name; //type: VrfSubAddressFamily
         ydk::YLeaf topology_name; //type: string
         ydk::YLeaf create; //type: empty
-        class Bgp; //type: Vrfs::Vrf::Afs::Af::Bgp
         class MaximumPrefix; //type: Vrfs::Vrf::Afs::Af::MaximumPrefix
+        class Bgp; //type: Vrfs::Vrf::Afs::Af::Bgp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs::Af::Bgp> bgp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs::Af::MaximumPrefix> maximum_prefix; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs::Af::Bgp> bgp;
         
 }; // Vrfs::Vrf::Afs::Af
+
+
+class Vrfs::Vrf::Afs::Af::MaximumPrefix : public ydk::Entity
+{
+    public:
+        MaximumPrefix();
+        ~MaximumPrefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix_limit; //type: uint32
+        ydk::YLeaf mid_threshold; //type: uint32
+
+}; // Vrfs::Vrf::Afs::Af::MaximumPrefix
 
 
 class Vrfs::Vrf::Afs::Af::Bgp : public ydk::Entity
@@ -487,28 +509,6 @@ class Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy : public ydk::Entity
 }; // Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy
 
 
-class Vrfs::Vrf::Afs::Af::MaximumPrefix : public ydk::Entity
-{
-    public:
-        MaximumPrefix();
-        ~MaximumPrefix();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix_limit; //type: uint32
-        ydk::YLeaf mid_threshold; //type: uint32
-
-}; // Vrfs::Vrf::Afs::Af::MaximumPrefix
-
-
 class Vrfs::Vrf::BgpGlobal : public ydk::Entity
 {
     public:
@@ -697,13 +697,35 @@ class GlobalAf::Afs::Af : public ydk::Entity
         ydk::YLeaf saf_name; //type: VrfSubAddressFamily
         ydk::YLeaf topology_name; //type: string
         ydk::YLeaf create; //type: empty
-        class Bgp; //type: GlobalAf::Afs::Af::Bgp
         class MaximumPrefix; //type: GlobalAf::Afs::Af::MaximumPrefix
+        class Bgp; //type: GlobalAf::Afs::Af::Bgp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::GlobalAf::Afs::Af::Bgp> bgp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::GlobalAf::Afs::Af::MaximumPrefix> maximum_prefix; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::GlobalAf::Afs::Af::Bgp> bgp;
         
 }; // GlobalAf::Afs::Af
+
+
+class GlobalAf::Afs::Af::MaximumPrefix : public ydk::Entity
+{
+    public:
+        MaximumPrefix();
+        ~MaximumPrefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix_limit; //type: uint32
+        ydk::YLeaf mid_threshold; //type: uint32
+
+}; // GlobalAf::Afs::Af::MaximumPrefix
 
 
 class GlobalAf::Afs::Af::Bgp : public ydk::Entity
@@ -1042,28 +1064,6 @@ class GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy : public ydk::Entity
         ydk::YLeaf advertise_as_vpn; //type: boolean
 
 }; // GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy
-
-
-class GlobalAf::Afs::Af::MaximumPrefix : public ydk::Entity
-{
-    public:
-        MaximumPrefix();
-        ~MaximumPrefix();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix_limit; //type: uint32
-        ydk::YLeaf mid_threshold; //type: uint32
-
-}; // GlobalAf::Afs::Af::MaximumPrefix
 
 class Srlg : public ydk::Entity
 {

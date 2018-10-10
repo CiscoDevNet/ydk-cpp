@@ -27,7 +27,7 @@ SubscriberRedundancy::SubscriberRedundancy()
     groups->parent = this;
     revertive_timer->parent = this;
 
-    yang_name = "subscriber-redundancy"; yang_parent_name = "Cisco-IOS-XR-subscriber-srg-cfg"; is_top_level_class = true; has_list_ancestor = false; 
+    yang_name = "subscriber-redundancy"; yang_parent_name = "Cisco-IOS-XR-subscriber-srg-cfg"; is_top_level_class = true; has_list_ancestor = false; is_presence_container = true;
 }
 
 SubscriberRedundancy::~SubscriberRedundancy()
@@ -350,13 +350,12 @@ SubscriberRedundancy::Groups::Group::Group()
     enable_fast_switchover{YType::empty, "enable-fast-switchover"},
     redundancy_disable{YType::empty, "redundancy-disable"}
         ,
-    interface_list(std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList>())
+    interface_list(nullptr) // presence node
     , peer(std::make_shared<SubscriberRedundancy::Groups::Group::Peer>())
     , revertive_timer(std::make_shared<SubscriberRedundancy::Groups::Group::RevertiveTimer>())
     , virtual_mac(std::make_shared<SubscriberRedundancy::Groups::Group::VirtualMac>())
     , state_control_route(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute>())
 {
-    interface_list->parent = this;
     peer->parent = this;
     revertive_timer->parent = this;
     virtual_mac->parent = this;
@@ -676,7 +675,7 @@ SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceList()
     interfaces->parent = this;
     interface_ranges->parent = this;
 
-    yang_name = "interface-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "interface-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 SubscriberRedundancy::Groups::Group::InterfaceList::~InterfaceList()
@@ -1672,7 +1671,7 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::has_leaf_or_child_o
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Routes()
     :
-    ipv4_route(this, {"prefix_string", "prefix_length"})
+    ipv4_route(this, {"vrfname", "prefix_length", "prefix_string"})
 {
 
     yang_name = "ipv4-routes"; yang_parent_name = "state-control-route"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1765,13 +1764,11 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::has_lea
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4Route()
     :
+    vrfname{YType::str, "vrfname"},
+    prefix_length{YType::uint32, "prefix-length"},
     prefix_string{YType::str, "prefix-string"},
-    prefix_length{YType::uint32, "prefix-length"}
-        ,
-    ipv4_route_data(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData>())
-    , vrfname(this, {"vrfname"})
+    tagvalue{YType::uint32, "tagvalue"}
 {
-    ipv4_route_data->parent = this;
 
     yang_name = "ipv4-route"; yang_parent_name = "ipv4-routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1783,35 +1780,28 @@ SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::~
 bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<vrfname.len(); index++)
-    {
-        if(vrfname[index]->has_data())
-            return true;
-    }
-    return prefix_string.is_set
+    return vrfname.is_set
 	|| prefix_length.is_set
-	|| (ipv4_route_data !=  nullptr && ipv4_route_data->has_data());
+	|| prefix_string.is_set
+	|| tagvalue.is_set;
 }
 
 bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::has_operation() const
 {
-    for (std::size_t index=0; index<vrfname.len(); index++)
-    {
-        if(vrfname[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(prefix_string.yfilter)
+	|| ydk::is_set(vrfname.yfilter)
 	|| ydk::is_set(prefix_length.yfilter)
-	|| (ipv4_route_data !=  nullptr && ipv4_route_data->has_operation());
+	|| ydk::is_set(prefix_string.yfilter)
+	|| ydk::is_set(tagvalue.yfilter);
 }
 
 std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-route";
-    ADD_KEY_TOKEN(prefix_string, "prefix-string");
+    ADD_KEY_TOKEN(vrfname, "vrfname");
     ADD_KEY_TOKEN(prefix_length, "prefix-length");
+    ADD_KEY_TOKEN(prefix_string, "prefix-string");
     return path_buffer.str();
 }
 
@@ -1819,8 +1809,10 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix_string.is_set || is_set(prefix_string.yfilter)) leaf_name_data.push_back(prefix_string.get_name_leafdata());
+    if (vrfname.is_set || is_set(vrfname.yfilter)) leaf_name_data.push_back(vrfname.get_name_leafdata());
     if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (prefix_string.is_set || is_set(prefix_string.yfilter)) leaf_name_data.push_back(prefix_string.get_name_leafdata());
+    if (tagvalue.is_set || is_set(tagvalue.yfilter)) leaf_name_data.push_back(tagvalue.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1828,23 +1820,6 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ipv4-route-data")
-    {
-        if(ipv4_route_data == nullptr)
-        {
-            ipv4_route_data = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData>();
-        }
-        return ipv4_route_data;
-    }
-
-    if(child_yang_name == "vrfname")
-    {
-        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname>();
-        c->parent = this;
-        vrfname.append(c);
-        return c;
-    }
-
     return nullptr;
 }
 
@@ -1852,195 +1827,10 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Gro
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(ipv4_route_data != nullptr)
-    {
-        children["ipv4-route-data"] = ipv4_route_data;
-    }
-
-    count = 0;
-    for (auto c : vrfname.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
     return children;
 }
 
 void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix-string")
-    {
-        prefix_string = value;
-        prefix_string.value_namespace = name_space;
-        prefix_string.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix-string")
-    {
-        prefix_string.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-}
-
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4-route-data" || name == "vrfname" || name == "prefix-string" || name == "prefix-length")
-        return true;
-    return false;
-}
-
-SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::Ipv4RouteData()
-    :
-    tagvalue{YType::uint32, "tagvalue"}
-{
-
-    yang_name = "ipv4-route-data"; yang_parent_name = "ipv4-route"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::~Ipv4RouteData()
-{
-}
-
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::has_data() const
-{
-    if (is_presence_container) return true;
-    return tagvalue.is_set;
-}
-
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(tagvalue.yfilter);
-}
-
-std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-route-data";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (tagvalue.is_set || is_set(tagvalue.yfilter)) leaf_name_data.push_back(tagvalue.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "tagvalue")
-    {
-        tagvalue = value;
-        tagvalue.value_namespace = name_space;
-        tagvalue.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "tagvalue")
-    {
-        tagvalue.yfilter = yfilter;
-    }
-}
-
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tagvalue")
-        return true;
-    return false;
-}
-
-SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::Vrfname()
-    :
-    vrfname{YType::str, "vrfname"},
-    tagvalue{YType::uint32, "tagvalue"}
-{
-
-    yang_name = "vrfname"; yang_parent_name = "ipv4-route"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::~Vrfname()
-{
-}
-
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::has_data() const
-{
-    if (is_presence_container) return true;
-    return vrfname.is_set
-	|| tagvalue.is_set;
-}
-
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vrfname.yfilter)
-	|| ydk::is_set(tagvalue.yfilter);
-}
-
-std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrfname";
-    ADD_KEY_TOKEN(vrfname, "vrfname");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrfname.is_set || is_set(vrfname.yfilter)) leaf_name_data.push_back(vrfname.get_name_leafdata());
-    if (tagvalue.is_set || is_set(tagvalue.yfilter)) leaf_name_data.push_back(tagvalue.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrfname")
     {
@@ -2048,6 +1838,18 @@ void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Rou
         vrfname.value_namespace = name_space;
         vrfname.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-string")
+    {
+        prefix_string = value;
+        prefix_string.value_namespace = name_space;
+        prefix_string.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "tagvalue")
     {
         tagvalue = value;
@@ -2056,11 +1858,19 @@ void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Rou
     }
 }
 
-void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::set_filter(const std::string & value_path, YFilter yfilter)
+void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrfname")
     {
         vrfname.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "prefix-string")
+    {
+        prefix_string.yfilter = yfilter;
     }
     if(value_path == "tagvalue")
     {
@@ -2068,9 +1878,9 @@ void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Rou
     }
 }
 
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::has_leaf_or_child_of_name(const std::string & name) const
+bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vrfname" || name == "tagvalue")
+    if(name == "vrfname" || name == "prefix-length" || name == "prefix-string" || name == "tagvalue")
         return true;
     return false;
 }

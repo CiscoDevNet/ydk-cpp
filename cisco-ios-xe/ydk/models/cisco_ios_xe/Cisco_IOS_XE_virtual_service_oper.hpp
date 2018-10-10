@@ -158,6 +158,7 @@ class VirtualServices::VirtualService::Details::PackageInformation::Application 
         ydk::YLeaf installed_version; //type: string
         ydk::YLeaf description; //type: string
         ydk::YLeaf type; //type: string
+        ydk::YLeaf owner; //type: string
 
 }; // VirtualServices::VirtualService::Details::PackageInformation::Application
 

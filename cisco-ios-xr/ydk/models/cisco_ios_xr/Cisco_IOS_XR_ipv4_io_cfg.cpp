@@ -17,8 +17,6 @@ const Enum::YLeaf Ipv4DefaultPing::enabled {1, "enabled"};
 const Enum::YLeaf Ipv4SelfPing::disabled {0, "disabled"};
 const Enum::YLeaf Ipv4SelfPing::enabled {1, "enabled"};
 
-const Enum::YLeaf DhcpClientOptionCode::Y_60 {1, "60"};
-
 const Enum::YLeaf Ipv4Reachable::any {0, "any"};
 const Enum::YLeaf Ipv4Reachable::received {1, "received"};
 

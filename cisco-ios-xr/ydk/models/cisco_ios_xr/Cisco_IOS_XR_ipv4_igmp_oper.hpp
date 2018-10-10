@@ -2271,14 +2271,14 @@ class Mld::Standby::Process : public ydk::Entity
 
         class AmtSummary; //type: Mld::Standby::Process::AmtSummary
         class Nsr; //type: Mld::Standby::Process::Nsr
-        class AmtGatewaies; //type: Mld::Standby::Process::AmtGatewaies
+        class AmtGateways; //type: Mld::Standby::Process::AmtGateways
         class UnicastQosAdjustStats; //type: Mld::Standby::Process::UnicastQosAdjustStats
         class BviStatistics; //type: Mld::Standby::Process::BviStatistics
         class Nsf; //type: Mld::Standby::Process::Nsf
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Standby::Process::AmtSummary> amt_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Standby::Process::Nsr> nsr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Standby::Process::AmtGatewaies> amt_gatewaies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Standby::Process::AmtGateways> amt_gateways;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Standby::Process::UnicastQosAdjustStats> unicast_qos_adjust_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Standby::Process::BviStatistics> bvi_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Standby::Process::Nsf> nsf;
@@ -2355,11 +2355,11 @@ class Mld::Standby::Process::Nsr : public ydk::Entity
 }; // Mld::Standby::Process::Nsr
 
 
-class Mld::Standby::Process::AmtGatewaies : public ydk::Entity
+class Mld::Standby::Process::AmtGateways : public ydk::Entity
 {
     public:
-        AmtGatewaies();
-        ~AmtGatewaies();
+        AmtGateways();
+        ~AmtGateways();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2372,14 +2372,14 @@ class Mld::Standby::Process::AmtGatewaies : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class AmtGateway; //type: Mld::Standby::Process::AmtGatewaies::AmtGateway
+        class AmtGateway; //type: Mld::Standby::Process::AmtGateways::AmtGateway
 
         ydk::YList amt_gateway;
         
-}; // Mld::Standby::Process::AmtGatewaies
+}; // Mld::Standby::Process::AmtGateways
 
 
-class Mld::Standby::Process::AmtGatewaies::AmtGateway : public ydk::Entity
+class Mld::Standby::Process::AmtGateways::AmtGateway : public ydk::Entity
 {
     public:
         AmtGateway();
@@ -2407,7 +2407,7 @@ class Mld::Standby::Process::AmtGatewaies::AmtGateway : public ydk::Entity
         ydk::YLeaf mem_upd_in; //type: uint32
         ydk::YLeaf mem_upd_out; //type: uint32
 
-}; // Mld::Standby::Process::AmtGatewaies::AmtGateway
+}; // Mld::Standby::Process::AmtGateways::AmtGateway
 
 
 class Mld::Standby::Process::UnicastQosAdjustStats : public ydk::Entity
@@ -6978,14 +6978,14 @@ class Mld::Active::Process : public ydk::Entity
 
         class AmtSummary; //type: Mld::Active::Process::AmtSummary
         class Nsr; //type: Mld::Active::Process::Nsr
-        class AmtGatewaies; //type: Mld::Active::Process::AmtGatewaies
+        class AmtGateways; //type: Mld::Active::Process::AmtGateways
         class UnicastQosAdjustStats; //type: Mld::Active::Process::UnicastQosAdjustStats
         class BviStatistics; //type: Mld::Active::Process::BviStatistics
         class Nsf; //type: Mld::Active::Process::Nsf
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Active::Process::AmtSummary> amt_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Active::Process::Nsr> nsr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Active::Process::AmtGatewaies> amt_gatewaies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Active::Process::AmtGateways> amt_gateways;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Active::Process::UnicastQosAdjustStats> unicast_qos_adjust_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Active::Process::BviStatistics> bvi_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Mld::Active::Process::Nsf> nsf;
@@ -7062,11 +7062,11 @@ class Mld::Active::Process::Nsr : public ydk::Entity
 }; // Mld::Active::Process::Nsr
 
 
-class Mld::Active::Process::AmtGatewaies : public ydk::Entity
+class Mld::Active::Process::AmtGateways : public ydk::Entity
 {
     public:
-        AmtGatewaies();
-        ~AmtGatewaies();
+        AmtGateways();
+        ~AmtGateways();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -7079,14 +7079,14 @@ class Mld::Active::Process::AmtGatewaies : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class AmtGateway; //type: Mld::Active::Process::AmtGatewaies::AmtGateway
+        class AmtGateway; //type: Mld::Active::Process::AmtGateways::AmtGateway
 
         ydk::YList amt_gateway;
         
-}; // Mld::Active::Process::AmtGatewaies
+}; // Mld::Active::Process::AmtGateways
 
 
-class Mld::Active::Process::AmtGatewaies::AmtGateway : public ydk::Entity
+class Mld::Active::Process::AmtGateways::AmtGateway : public ydk::Entity
 {
     public:
         AmtGateway();
@@ -7114,7 +7114,7 @@ class Mld::Active::Process::AmtGatewaies::AmtGateway : public ydk::Entity
         ydk::YLeaf mem_upd_in; //type: uint32
         ydk::YLeaf mem_upd_out; //type: uint32
 
-}; // Mld::Active::Process::AmtGatewaies::AmtGateway
+}; // Mld::Active::Process::AmtGateways::AmtGateway
 
 
 class Mld::Active::Process::UnicastQosAdjustStats : public ydk::Entity
@@ -11714,14 +11714,14 @@ class Igmp::Standby::Process : public ydk::Entity
 
         class AmtSummary; //type: Igmp::Standby::Process::AmtSummary
         class Nsr; //type: Igmp::Standby::Process::Nsr
-        class AmtGatewaies; //type: Igmp::Standby::Process::AmtGatewaies
+        class AmtGateways; //type: Igmp::Standby::Process::AmtGateways
         class UnicastQosAdjustStats; //type: Igmp::Standby::Process::UnicastQosAdjustStats
         class BviStatistics; //type: Igmp::Standby::Process::BviStatistics
         class Nsf; //type: Igmp::Standby::Process::Nsf
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Standby::Process::AmtSummary> amt_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Standby::Process::Nsr> nsr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Standby::Process::AmtGatewaies> amt_gatewaies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Standby::Process::AmtGateways> amt_gateways;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Standby::Process::UnicastQosAdjustStats> unicast_qos_adjust_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Standby::Process::BviStatistics> bvi_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Standby::Process::Nsf> nsf;
@@ -11798,11 +11798,11 @@ class Igmp::Standby::Process::Nsr : public ydk::Entity
 }; // Igmp::Standby::Process::Nsr
 
 
-class Igmp::Standby::Process::AmtGatewaies : public ydk::Entity
+class Igmp::Standby::Process::AmtGateways : public ydk::Entity
 {
     public:
-        AmtGatewaies();
-        ~AmtGatewaies();
+        AmtGateways();
+        ~AmtGateways();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -11815,14 +11815,14 @@ class Igmp::Standby::Process::AmtGatewaies : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class AmtGateway; //type: Igmp::Standby::Process::AmtGatewaies::AmtGateway
+        class AmtGateway; //type: Igmp::Standby::Process::AmtGateways::AmtGateway
 
         ydk::YList amt_gateway;
         
-}; // Igmp::Standby::Process::AmtGatewaies
+}; // Igmp::Standby::Process::AmtGateways
 
 
-class Igmp::Standby::Process::AmtGatewaies::AmtGateway : public ydk::Entity
+class Igmp::Standby::Process::AmtGateways::AmtGateway : public ydk::Entity
 {
     public:
         AmtGateway();
@@ -11850,7 +11850,7 @@ class Igmp::Standby::Process::AmtGatewaies::AmtGateway : public ydk::Entity
         ydk::YLeaf mem_upd_in; //type: uint32
         ydk::YLeaf mem_upd_out; //type: uint32
 
-}; // Igmp::Standby::Process::AmtGatewaies::AmtGateway
+}; // Igmp::Standby::Process::AmtGateways::AmtGateway
 
 
 class Igmp::Standby::Process::UnicastQosAdjustStats : public ydk::Entity
@@ -16421,14 +16421,14 @@ class Igmp::Active::Process : public ydk::Entity
 
         class AmtSummary; //type: Igmp::Active::Process::AmtSummary
         class Nsr; //type: Igmp::Active::Process::Nsr
-        class AmtGatewaies; //type: Igmp::Active::Process::AmtGatewaies
+        class AmtGateways; //type: Igmp::Active::Process::AmtGateways
         class UnicastQosAdjustStats; //type: Igmp::Active::Process::UnicastQosAdjustStats
         class BviStatistics; //type: Igmp::Active::Process::BviStatistics
         class Nsf; //type: Igmp::Active::Process::Nsf
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::AmtSummary> amt_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::Nsr> nsr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::AmtGatewaies> amt_gatewaies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::AmtGateways> amt_gateways;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::UnicastQosAdjustStats> unicast_qos_adjust_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::BviStatistics> bvi_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::Nsf> nsf;
@@ -16505,11 +16505,11 @@ class Igmp::Active::Process::Nsr : public ydk::Entity
 }; // Igmp::Active::Process::Nsr
 
 
-class Igmp::Active::Process::AmtGatewaies : public ydk::Entity
+class Igmp::Active::Process::AmtGateways : public ydk::Entity
 {
     public:
-        AmtGatewaies();
-        ~AmtGatewaies();
+        AmtGateways();
+        ~AmtGateways();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -16522,14 +16522,14 @@ class Igmp::Active::Process::AmtGatewaies : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class AmtGateway; //type: Igmp::Active::Process::AmtGatewaies::AmtGateway
+        class AmtGateway; //type: Igmp::Active::Process::AmtGateways::AmtGateway
 
         ydk::YList amt_gateway;
         
-}; // Igmp::Active::Process::AmtGatewaies
+}; // Igmp::Active::Process::AmtGateways
 
 
-class Igmp::Active::Process::AmtGatewaies::AmtGateway : public ydk::Entity
+class Igmp::Active::Process::AmtGateways::AmtGateway : public ydk::Entity
 {
     public:
         AmtGateway();
@@ -16557,7 +16557,7 @@ class Igmp::Active::Process::AmtGatewaies::AmtGateway : public ydk::Entity
         ydk::YLeaf mem_upd_in; //type: uint32
         ydk::YLeaf mem_upd_out; //type: uint32
 
-}; // Igmp::Active::Process::AmtGatewaies::AmtGateway
+}; // Igmp::Active::Process::AmtGateways::AmtGateway
 
 
 class Igmp::Active::Process::UnicastQosAdjustStats : public ydk::Entity

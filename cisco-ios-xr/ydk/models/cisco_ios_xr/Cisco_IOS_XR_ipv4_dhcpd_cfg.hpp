@@ -607,6 +607,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server : public ydk::Entity
         ydk::YLeaf pool; //type: string
         ydk::YLeaf domain_name; //type: string
         ydk::YLeaf secure_arp; //type: empty
+        ydk::YLeaf arp_instal_skip_stdalone; //type: empty
         ydk::YLeaf boot_filename; //type: string
         ydk::YLeaf next_server; //type: string
         class ServerIdCheck; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::ServerIdCheck
@@ -1453,7 +1454,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf option_all; //type: uint32
-        ydk::YLeaf option_number; //type: uint32
+        ydk::YLeafList option_number; //type: list of  uint32
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List
 
@@ -1552,7 +1553,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddrPolicy : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf policy; //type: Ipv4dhcpdGiaddrPolicy
+        ydk::YLeaf policy; //type: Ipv4dhcpdRelayGiaddrPolicy
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddrPolicy
 
@@ -2936,47 +2937,6 @@ class Ipv4Dhcpd::RateLimit : public ydk::Entity
 
 }; // Ipv4Dhcpd::RateLimit
 
-class Dhcpv4LimitLease1 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interface;
-        static const ydk::Enum::YLeaf circuit_id;
-        static const ydk::Enum::YLeaf remote_id;
-        static const ydk::Enum::YLeaf circuit_id_remote_id;
-
-};
-
-class ProxyAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf allow;
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf relay;
-
-};
-
-class Ipv4dhcpdLayer : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf layer2;
-        static const ydk::Enum::YLeaf layer3;
-
-};
-
-class Ipv4dhcpdFmtSpecifier : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf physical_chassis;
-        static const ydk::Enum::YLeaf physical_slot;
-        static const ydk::Enum::YLeaf physical_sub_slot;
-        static const ydk::Enum::YLeaf physical_port;
-        static const ydk::Enum::YLeaf physical_sub_port;
-        static const ydk::Enum::YLeaf inner_vlan_id;
-        static const ydk::Enum::YLeaf outer_vlan_id;
-        static const ydk::Enum::YLeaf l2_interface;
-
-};
-
 class Matchaction : public ydk::Enum
 {
     public:
@@ -2993,81 +2953,12 @@ class Dhcpv4AuthUsername : public ydk::Enum
 
 };
 
-class LeaseLimitValue : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf per_interface;
-        static const ydk::Enum::YLeaf per_circuit_id;
-        static const ydk::Enum::YLeaf per_remote_id;
-
-};
-
-class Ipv4dhcpdRelayInfoOptionPolicy : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf replace;
-        static const ydk::Enum::YLeaf keep;
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf encapsulate;
-
-};
-
-class Ipv4dhcpdRelayInfoOptionAuthenticate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf received;
-        static const ydk::Enum::YLeaf inserted;
-
-};
-
 class Policy : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ignore;
         static const ydk::Enum::YLeaf check;
         static const ydk::Enum::YLeaf unicastalways;
-
-};
-
-class Ipv4dhcpdBroadcastFlagPolicy : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ignore;
-        static const ydk::Enum::YLeaf check;
-        static const ydk::Enum::YLeaf unicast_always;
-
-};
-
-class Dhcpv4MatchOption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf Y_60__FWD_SLASH__60;
-        static const ydk::Enum::YLeaf Y_77__FWD_SLASH__77;
-        static const ydk::Enum::YLeaf Y_124__FWD_SLASH__124;
-        static const ydk::Enum::YLeaf Y_125__FWD_SLASH__125;
-
-};
-
-class Ipv4dhcpdRelayInfoOptionvpnMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rfc;
-        static const ydk::Enum::YLeaf cisco;
-
-};
-
-class Ipv4dhcpdGiaddrPolicy : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf giaddr_policy_keep;
-
-};
-
-class Ipv4dhcpdFmt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_format;
-        static const ydk::Enum::YLeaf format;
 
 };
 
@@ -3083,19 +2974,36 @@ class Matchoption : public ydk::Enum
 
 };
 
-class MacMismatchAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf forward;
-        static const ydk::Enum::YLeaf drop;
-
-};
-
 class BaseAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf allow;
         static const ydk::Enum::YLeaf drop;
+
+};
+
+class Dhcpv4LimitLease1 : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf circuit_id;
+        static const ydk::Enum::YLeaf remote_id;
+        static const ydk::Enum::YLeaf circuit_id_remote_id;
+
+};
+
+class Ipv4dhcpdLayer : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf layer2;
+        static const ydk::Enum::YLeaf layer3;
+
+};
+
+class Ipv4dhcpdGiaddrPolicy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf giaddr_policy_keep;
 
 };
 
@@ -3108,6 +3016,109 @@ class Ipv4dhcpdMode : public ydk::Enum
         static const ydk::Enum::YLeaf server;
         static const ydk::Enum::YLeaf proxy;
         static const ydk::Enum::YLeaf base2;
+
+};
+
+class Ipv4dhcpdFmtSpecifier : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf physical_chassis;
+        static const ydk::Enum::YLeaf physical_slot;
+        static const ydk::Enum::YLeaf physical_sub_slot;
+        static const ydk::Enum::YLeaf physical_port;
+        static const ydk::Enum::YLeaf physical_sub_port;
+        static const ydk::Enum::YLeaf inner_vlan_id;
+        static const ydk::Enum::YLeaf outer_vlan_id;
+        static const ydk::Enum::YLeaf l2_interface;
+        static const ydk::Enum::YLeaf l3_interface;
+        static const ydk::Enum::YLeaf host_name;
+
+};
+
+class Ipv4dhcpdRelayInfoOptionPolicy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf replace;
+        static const ydk::Enum::YLeaf keep;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf encapsulate;
+
+};
+
+class MacMismatchAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf forward;
+        static const ydk::Enum::YLeaf drop;
+
+};
+
+class Ipv4dhcpdBroadcastFlagPolicy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ignore;
+        static const ydk::Enum::YLeaf check;
+        static const ydk::Enum::YLeaf unicast_always;
+
+};
+
+class Ipv4dhcpdFmt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_format;
+        static const ydk::Enum::YLeaf format;
+
+};
+
+class Ipv4dhcpdRelayInfoOptionvpnMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rfc;
+        static const ydk::Enum::YLeaf cisco;
+
+};
+
+class ProxyAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf allow;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf relay;
+
+};
+
+class LeaseLimitValue : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf per_interface;
+        static const ydk::Enum::YLeaf per_circuit_id;
+        static const ydk::Enum::YLeaf per_remote_id;
+
+};
+
+class Dhcpv4MatchOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_60__FWD_SLASH__60;
+        static const ydk::Enum::YLeaf Y_77__FWD_SLASH__77;
+        static const ydk::Enum::YLeaf Y_124__FWD_SLASH__124;
+        static const ydk::Enum::YLeaf Y_125__FWD_SLASH__125;
+
+};
+
+class Ipv4dhcpdRelayInfoOptionAuthenticate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf received;
+        static const ydk::Enum::YLeaf inserted;
+
+};
+
+class Ipv4dhcpdRelayGiaddrPolicy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf replace;
+        static const ydk::Enum::YLeaf drop;
 
 };
 

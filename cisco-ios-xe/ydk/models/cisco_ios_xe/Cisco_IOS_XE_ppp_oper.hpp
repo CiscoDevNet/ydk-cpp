@@ -224,6 +224,8 @@ class PppData::Pppoe::PppoeStatistics : public ydk::Entity
         ydk::YLeaf pppoe_pado_pkts; //type: uint32
         ydk::YLeaf pppoe_padr_pkts; //type: uint32
         ydk::YLeaf pppoe_pads_pkts; //type: uint32
+        ydk::YLeaf pppoe_padt_pkts; //type: uint32
+        ydk::YLeaf invalid_discovery_pkts; //type: uint32
 
 }; // PppData::Pppoe::PppoeStatistics
 

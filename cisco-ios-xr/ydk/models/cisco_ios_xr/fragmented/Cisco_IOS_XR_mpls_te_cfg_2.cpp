@@ -11,6 +11,455 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_te_cfg {
 
+MplsTe::GmplsNni::TunnelHeads::TunnelHeads()
+    :
+    tunnel_head(this, {"tunnel_id"})
+{
+
+    yang_name = "tunnel-heads"; yang_parent_name = "gmpls-nni"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+MplsTe::GmplsNni::TunnelHeads::~TunnelHeads()
+{
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel_head.len(); index++)
+    {
+        if(tunnel_head[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::has_operation() const
+{
+    for (std::size_t index=0; index<tunnel_head.len(); index++)
+    {
+        if(tunnel_head[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MplsTe::GmplsNni::TunnelHeads::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te/gmpls-nni/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsTe::GmplsNni::TunnelHeads::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tunnel-heads";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsTe::GmplsNni::TunnelHeads::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsTe::GmplsNni::TunnelHeads::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tunnel-head")
+    {
+        auto c = std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead>();
+        c->parent = this;
+        tunnel_head.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsNni::TunnelHeads::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : tunnel_head.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void MplsTe::GmplsNni::TunnelHeads::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MplsTe::GmplsNni::TunnelHeads::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel-head")
+        return true;
+    return false;
+}
+
+MplsTe::GmplsNni::TunnelHeads::TunnelHead::TunnelHead()
+    :
+    tunnel_id{YType::uint32, "tunnel-id"},
+    enable{YType::empty, "enable"},
+    announce_srlg{YType::empty, "announce-srlg"},
+    restore_lsp_shutdown{YType::empty, "restore-lsp-shutdown"},
+    current_lsp_shutdown{YType::empty, "current-lsp-shutdown"},
+    path_selection_metric{YType::enumeration, "path-selection-metric"},
+    payload{YType::enumeration, "payload"},
+    standby_lsp_shutdown{YType::empty, "standby-lsp-shutdown"},
+    shutdown{YType::empty, "shutdown"},
+    path_protection_attribute_set_profile{YType::str, "path-protection-attribute-set-profile"},
+    record_route{YType::empty, "record-route"},
+    signalled_name{YType::str, "signalled-name"}
+        ,
+    signalled_bandwidth(std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth>())
+    , destination(std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination>())
+    , protection_switching(std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching>())
+    , logging(std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging>())
+    , path_options(std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions>())
+    , static_uni(std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni>())
+{
+    signalled_bandwidth->parent = this;
+    destination->parent = this;
+    protection_switching->parent = this;
+    logging->parent = this;
+    path_options->parent = this;
+    static_uni->parent = this;
+
+    yang_name = "tunnel-head"; yang_parent_name = "tunnel-heads"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+MplsTe::GmplsNni::TunnelHeads::TunnelHead::~TunnelHead()
+{
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::has_data() const
+{
+    if (is_presence_container) return true;
+    return tunnel_id.is_set
+	|| enable.is_set
+	|| announce_srlg.is_set
+	|| restore_lsp_shutdown.is_set
+	|| current_lsp_shutdown.is_set
+	|| path_selection_metric.is_set
+	|| payload.is_set
+	|| standby_lsp_shutdown.is_set
+	|| shutdown.is_set
+	|| path_protection_attribute_set_profile.is_set
+	|| record_route.is_set
+	|| signalled_name.is_set
+	|| (signalled_bandwidth !=  nullptr && signalled_bandwidth->has_data())
+	|| (destination !=  nullptr && destination->has_data())
+	|| (protection_switching !=  nullptr && protection_switching->has_data())
+	|| (logging !=  nullptr && logging->has_data())
+	|| (path_options !=  nullptr && path_options->has_data())
+	|| (static_uni !=  nullptr && static_uni->has_data());
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(announce_srlg.yfilter)
+	|| ydk::is_set(restore_lsp_shutdown.yfilter)
+	|| ydk::is_set(current_lsp_shutdown.yfilter)
+	|| ydk::is_set(path_selection_metric.yfilter)
+	|| ydk::is_set(payload.yfilter)
+	|| ydk::is_set(standby_lsp_shutdown.yfilter)
+	|| ydk::is_set(shutdown.yfilter)
+	|| ydk::is_set(path_protection_attribute_set_profile.yfilter)
+	|| ydk::is_set(record_route.yfilter)
+	|| ydk::is_set(signalled_name.yfilter)
+	|| (signalled_bandwidth !=  nullptr && signalled_bandwidth->has_operation())
+	|| (destination !=  nullptr && destination->has_operation())
+	|| (protection_switching !=  nullptr && protection_switching->has_operation())
+	|| (logging !=  nullptr && logging->has_operation())
+	|| (path_options !=  nullptr && path_options->has_operation())
+	|| (static_uni !=  nullptr && static_uni->has_operation());
+}
+
+std::string MplsTe::GmplsNni::TunnelHeads::TunnelHead::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te/gmpls-nni/tunnel-heads/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsTe::GmplsNni::TunnelHeads::TunnelHead::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tunnel-head";
+    ADD_KEY_TOKEN(tunnel_id, "tunnel-id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsTe::GmplsNni::TunnelHeads::TunnelHead::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (announce_srlg.is_set || is_set(announce_srlg.yfilter)) leaf_name_data.push_back(announce_srlg.get_name_leafdata());
+    if (restore_lsp_shutdown.is_set || is_set(restore_lsp_shutdown.yfilter)) leaf_name_data.push_back(restore_lsp_shutdown.get_name_leafdata());
+    if (current_lsp_shutdown.is_set || is_set(current_lsp_shutdown.yfilter)) leaf_name_data.push_back(current_lsp_shutdown.get_name_leafdata());
+    if (path_selection_metric.is_set || is_set(path_selection_metric.yfilter)) leaf_name_data.push_back(path_selection_metric.get_name_leafdata());
+    if (payload.is_set || is_set(payload.yfilter)) leaf_name_data.push_back(payload.get_name_leafdata());
+    if (standby_lsp_shutdown.is_set || is_set(standby_lsp_shutdown.yfilter)) leaf_name_data.push_back(standby_lsp_shutdown.get_name_leafdata());
+    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+    if (path_protection_attribute_set_profile.is_set || is_set(path_protection_attribute_set_profile.yfilter)) leaf_name_data.push_back(path_protection_attribute_set_profile.get_name_leafdata());
+    if (record_route.is_set || is_set(record_route.yfilter)) leaf_name_data.push_back(record_route.get_name_leafdata());
+    if (signalled_name.is_set || is_set(signalled_name.yfilter)) leaf_name_data.push_back(signalled_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsTe::GmplsNni::TunnelHeads::TunnelHead::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "signalled-bandwidth")
+    {
+        if(signalled_bandwidth == nullptr)
+        {
+            signalled_bandwidth = std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth>();
+        }
+        return signalled_bandwidth;
+    }
+
+    if(child_yang_name == "destination")
+    {
+        if(destination == nullptr)
+        {
+            destination = std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination>();
+        }
+        return destination;
+    }
+
+    if(child_yang_name == "protection-switching")
+    {
+        if(protection_switching == nullptr)
+        {
+            protection_switching = std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching>();
+        }
+        return protection_switching;
+    }
+
+    if(child_yang_name == "logging")
+    {
+        if(logging == nullptr)
+        {
+            logging = std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging>();
+        }
+        return logging;
+    }
+
+    if(child_yang_name == "path-options")
+    {
+        if(path_options == nullptr)
+        {
+            path_options = std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions>();
+        }
+        return path_options;
+    }
+
+    if(child_yang_name == "static-uni")
+    {
+        if(static_uni == nullptr)
+        {
+            static_uni = std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni>();
+        }
+        return static_uni;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsNni::TunnelHeads::TunnelHead::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(signalled_bandwidth != nullptr)
+    {
+        children["signalled-bandwidth"] = signalled_bandwidth;
+    }
+
+    if(destination != nullptr)
+    {
+        children["destination"] = destination;
+    }
+
+    if(protection_switching != nullptr)
+    {
+        children["protection-switching"] = protection_switching;
+    }
+
+    if(logging != nullptr)
+    {
+        children["logging"] = logging;
+    }
+
+    if(path_options != nullptr)
+    {
+        children["path-options"] = path_options;
+    }
+
+    if(static_uni != nullptr)
+    {
+        children["static-uni"] = static_uni;
+    }
+
+    return children;
+}
+
+void MplsTe::GmplsNni::TunnelHeads::TunnelHead::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "announce-srlg")
+    {
+        announce_srlg = value;
+        announce_srlg.value_namespace = name_space;
+        announce_srlg.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restore-lsp-shutdown")
+    {
+        restore_lsp_shutdown = value;
+        restore_lsp_shutdown.value_namespace = name_space;
+        restore_lsp_shutdown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "current-lsp-shutdown")
+    {
+        current_lsp_shutdown = value;
+        current_lsp_shutdown.value_namespace = name_space;
+        current_lsp_shutdown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-selection-metric")
+    {
+        path_selection_metric = value;
+        path_selection_metric.value_namespace = name_space;
+        path_selection_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload")
+    {
+        payload = value;
+        payload.value_namespace = name_space;
+        payload.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "standby-lsp-shutdown")
+    {
+        standby_lsp_shutdown = value;
+        standby_lsp_shutdown.value_namespace = name_space;
+        standby_lsp_shutdown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown = value;
+        shutdown.value_namespace = name_space;
+        shutdown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-protection-attribute-set-profile")
+    {
+        path_protection_attribute_set_profile = value;
+        path_protection_attribute_set_profile.value_namespace = name_space;
+        path_protection_attribute_set_profile.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "record-route")
+    {
+        record_route = value;
+        record_route.value_namespace = name_space;
+        record_route.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "signalled-name")
+    {
+        signalled_name = value;
+        signalled_name.value_namespace = name_space;
+        signalled_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsTe::GmplsNni::TunnelHeads::TunnelHead::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "announce-srlg")
+    {
+        announce_srlg.yfilter = yfilter;
+    }
+    if(value_path == "restore-lsp-shutdown")
+    {
+        restore_lsp_shutdown.yfilter = yfilter;
+    }
+    if(value_path == "current-lsp-shutdown")
+    {
+        current_lsp_shutdown.yfilter = yfilter;
+    }
+    if(value_path == "path-selection-metric")
+    {
+        path_selection_metric.yfilter = yfilter;
+    }
+    if(value_path == "payload")
+    {
+        payload.yfilter = yfilter;
+    }
+    if(value_path == "standby-lsp-shutdown")
+    {
+        standby_lsp_shutdown.yfilter = yfilter;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown.yfilter = yfilter;
+    }
+    if(value_path == "path-protection-attribute-set-profile")
+    {
+        path_protection_attribute_set_profile.yfilter = yfilter;
+    }
+    if(value_path == "record-route")
+    {
+        record_route.yfilter = yfilter;
+    }
+    if(value_path == "signalled-name")
+    {
+        signalled_name.yfilter = yfilter;
+    }
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "signalled-bandwidth" || name == "destination" || name == "protection-switching" || name == "logging" || name == "path-options" || name == "static-uni" || name == "tunnel-id" || name == "enable" || name == "announce-srlg" || name == "restore-lsp-shutdown" || name == "current-lsp-shutdown" || name == "path-selection-metric" || name == "payload" || name == "standby-lsp-shutdown" || name == "shutdown" || name == "path-protection-attribute-set-profile" || name == "record-route" || name == "signalled-name")
+        return true;
+    return false;
+}
+
 MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth::SignalledBandwidth()
     :
     signalled_bandwidth_type{YType::enumeration, "signalled-bandwidth-type"},

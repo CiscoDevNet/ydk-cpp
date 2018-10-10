@@ -36,12 +36,14 @@ class Ipsla : public ydk::Entity
         class Operation; //type: Ipsla::Operation
         class Responder; //type: Ipsla::Responder
         class MplsDiscovery; //type: Ipsla::MplsDiscovery
+        class ServerTwamp; //type: Ipsla::ServerTwamp
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Common> common;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor> mpls_lsp_monitor;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation> operation_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder> responder;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsDiscovery> mpls_discovery;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::ServerTwamp> server_twamp;
         
 }; // Ipsla
 
@@ -64,11 +66,35 @@ class Ipsla::Common : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf low_memory; //type: uint32
+        class HardwareTimestamp; //type: Ipsla::Common::HardwareTimestamp
         class Authentication; //type: Ipsla::Common::Authentication
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Common::HardwareTimestamp> hardware_timestamp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Common::Authentication> authentication;
         
 }; // Ipsla::Common
+
+
+class Ipsla::Common::HardwareTimestamp : public ydk::Entity
+{
+    public:
+        HardwareTimestamp();
+        ~HardwareTimestamp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Ipsla::Common::HardwareTimestamp
 
 
 class Ipsla::Common::Authentication : public ydk::Entity
@@ -3297,12 +3323,35 @@ class Ipsla::Responder : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf enable; //type: empty
+        class Twamp; //type: Ipsla::Responder::Twamp
         class Type; //type: Ipsla::Responder::Type
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::Twamp> twamp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::Type> type;
         
 }; // Ipsla::Responder
+
+
+class Ipsla::Responder::Twamp : public ydk::Entity
+{
+    public:
+        Twamp();
+        ~Twamp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf timeout; //type: uint32
+
+}; // Ipsla::Responder::Twamp
 
 
 class Ipsla::Responder::Type : public ydk::Entity
@@ -3490,6 +3539,29 @@ class Ipsla::MplsDiscovery::Vpn : public ydk::Entity
         ydk::YLeaf interval; //type: uint32
 
 }; // Ipsla::MplsDiscovery::Vpn
+
+
+class Ipsla::ServerTwamp : public ydk::Entity
+{
+    public:
+        ServerTwamp();
+        ~ServerTwamp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf inactivity_timer; //type: uint32
+        ydk::YLeaf port; //type: uint16
+
+}; // Ipsla::ServerTwamp
 
 class IpslaMonth : public ydk::Enum
 {

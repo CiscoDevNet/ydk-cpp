@@ -1024,7 +1024,10 @@ Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLin
     sham_link_youngest_md_key{YType::boolean, "sham-link-youngest-md-key"},
     sham_link_youngest_md_key_id{YType::uint16, "sham-link-youngest-md-key-id"},
     sham_link_old_md_key_count{YType::uint32, "sham-link-old-md-key-count"},
+    keychain_name{YType::str, "keychain-name"},
+    sham_link_keychain_key_conf{YType::boolean, "sham-link-keychain-key-conf"},
     sham_link_keychain_id{YType::uint64, "sham-link-keychain-id"},
+    sham_link_keychain_alg{YType::enumeration, "sham-link-keychain-alg"},
     sham_link_nsf_enabled{YType::boolean, "sham-link-nsf-enabled"},
     sham_link_nsf{YType::boolean, "sham-link-nsf"},
     sham_link_last_nsf{YType::uint32, "sham-link-last-nsf"}
@@ -1073,7 +1076,10 @@ bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::Sh
 	|| sham_link_youngest_md_key.is_set
 	|| sham_link_youngest_md_key_id.is_set
 	|| sham_link_old_md_key_count.is_set
+	|| keychain_name.is_set
+	|| sham_link_keychain_key_conf.is_set
 	|| sham_link_keychain_id.is_set
+	|| sham_link_keychain_alg.is_set
 	|| sham_link_nsf_enabled.is_set
 	|| sham_link_nsf.is_set
 	|| sham_link_last_nsf.is_set
@@ -1112,7 +1118,10 @@ bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::Sh
 	|| ydk::is_set(sham_link_youngest_md_key.yfilter)
 	|| ydk::is_set(sham_link_youngest_md_key_id.yfilter)
 	|| ydk::is_set(sham_link_old_md_key_count.yfilter)
+	|| ydk::is_set(keychain_name.yfilter)
+	|| ydk::is_set(sham_link_keychain_key_conf.yfilter)
 	|| ydk::is_set(sham_link_keychain_id.yfilter)
+	|| ydk::is_set(sham_link_keychain_alg.yfilter)
 	|| ydk::is_set(sham_link_nsf_enabled.yfilter)
 	|| ydk::is_set(sham_link_nsf.yfilter)
 	|| ydk::is_set(sham_link_last_nsf.yfilter)
@@ -1155,7 +1164,10 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::V
     if (sham_link_youngest_md_key.is_set || is_set(sham_link_youngest_md_key.yfilter)) leaf_name_data.push_back(sham_link_youngest_md_key.get_name_leafdata());
     if (sham_link_youngest_md_key_id.is_set || is_set(sham_link_youngest_md_key_id.yfilter)) leaf_name_data.push_back(sham_link_youngest_md_key_id.get_name_leafdata());
     if (sham_link_old_md_key_count.is_set || is_set(sham_link_old_md_key_count.yfilter)) leaf_name_data.push_back(sham_link_old_md_key_count.get_name_leafdata());
+    if (keychain_name.is_set || is_set(keychain_name.yfilter)) leaf_name_data.push_back(keychain_name.get_name_leafdata());
+    if (sham_link_keychain_key_conf.is_set || is_set(sham_link_keychain_key_conf.yfilter)) leaf_name_data.push_back(sham_link_keychain_key_conf.get_name_leafdata());
     if (sham_link_keychain_id.is_set || is_set(sham_link_keychain_id.yfilter)) leaf_name_data.push_back(sham_link_keychain_id.get_name_leafdata());
+    if (sham_link_keychain_alg.is_set || is_set(sham_link_keychain_alg.yfilter)) leaf_name_data.push_back(sham_link_keychain_alg.get_name_leafdata());
     if (sham_link_nsf_enabled.is_set || is_set(sham_link_nsf_enabled.yfilter)) leaf_name_data.push_back(sham_link_nsf_enabled.get_name_leafdata());
     if (sham_link_nsf.is_set || is_set(sham_link_nsf.yfilter)) leaf_name_data.push_back(sham_link_nsf.get_name_leafdata());
     if (sham_link_last_nsf.is_set || is_set(sham_link_last_nsf.yfilter)) leaf_name_data.push_back(sham_link_last_nsf.get_name_leafdata());
@@ -1353,11 +1365,29 @@ void Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::Sh
         sham_link_old_md_key_count.value_namespace = name_space;
         sham_link_old_md_key_count.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "keychain-name")
+    {
+        keychain_name = value;
+        keychain_name.value_namespace = name_space;
+        keychain_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sham-link-keychain-key-conf")
+    {
+        sham_link_keychain_key_conf = value;
+        sham_link_keychain_key_conf.value_namespace = name_space;
+        sham_link_keychain_key_conf.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "sham-link-keychain-id")
     {
         sham_link_keychain_id = value;
         sham_link_keychain_id.value_namespace = name_space;
         sham_link_keychain_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sham-link-keychain-alg")
+    {
+        sham_link_keychain_alg = value;
+        sham_link_keychain_alg.value_namespace = name_space;
+        sham_link_keychain_alg.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sham-link-nsf-enabled")
     {
@@ -1477,9 +1507,21 @@ void Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::Sh
     {
         sham_link_old_md_key_count.yfilter = yfilter;
     }
+    if(value_path == "keychain-name")
+    {
+        keychain_name.yfilter = yfilter;
+    }
+    if(value_path == "sham-link-keychain-key-conf")
+    {
+        sham_link_keychain_key_conf.yfilter = yfilter;
+    }
     if(value_path == "sham-link-keychain-id")
     {
         sham_link_keychain_id.yfilter = yfilter;
+    }
+    if(value_path == "sham-link-keychain-alg")
+    {
+        sham_link_keychain_alg.yfilter = yfilter;
     }
     if(value_path == "sham-link-nsf-enabled")
     {
@@ -1497,7 +1539,7 @@ void Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::Sh
 
 bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sham-link-neighbor" || name == "sham-link-md-key" || name == "sham-link-name" || name == "sham-link-name-xr" || name == "sham-link-neighbor-id" || name == "sham-link-source-address" || name == "sham-link-dest-address" || name == "sham-link-state" || name == "sham-link-demand-circuit" || name == "sham-link-dc-bitless-lsa" || name == "sham-link-ifindex" || name == "sham-link-area" || name == "sham-link-cost" || name == "sham-link-transmission-delay" || name == "sham-link-hello-interval" || name == "sham-link-hello-interval-ms" || name == "sham-link-dead-interval" || name == "sham-link-wait-interval" || name == "sham-link-retransmission-interval" || name == "sham-link-next-hello" || name == "sham-link-next-hello-ms" || name == "sham-link-passive" || name == "sham-link-authentication-type" || name == "sham-link-youngest-md-key" || name == "sham-link-youngest-md-key-id" || name == "sham-link-old-md-key-count" || name == "sham-link-keychain-id" || name == "sham-link-nsf-enabled" || name == "sham-link-nsf" || name == "sham-link-last-nsf")
+    if(name == "sham-link-neighbor" || name == "sham-link-md-key" || name == "sham-link-name" || name == "sham-link-name-xr" || name == "sham-link-neighbor-id" || name == "sham-link-source-address" || name == "sham-link-dest-address" || name == "sham-link-state" || name == "sham-link-demand-circuit" || name == "sham-link-dc-bitless-lsa" || name == "sham-link-ifindex" || name == "sham-link-area" || name == "sham-link-cost" || name == "sham-link-transmission-delay" || name == "sham-link-hello-interval" || name == "sham-link-hello-interval-ms" || name == "sham-link-dead-interval" || name == "sham-link-wait-interval" || name == "sham-link-retransmission-interval" || name == "sham-link-next-hello" || name == "sham-link-next-hello-ms" || name == "sham-link-passive" || name == "sham-link-authentication-type" || name == "sham-link-youngest-md-key" || name == "sham-link-youngest-md-key-id" || name == "sham-link-old-md-key-count" || name == "keychain-name" || name == "sham-link-keychain-key-conf" || name == "sham-link-keychain-id" || name == "sham-link-keychain-alg" || name == "sham-link-nsf-enabled" || name == "sham-link-nsf" || name == "sham-link-last-nsf")
         return true;
     return false;
 }
@@ -19682,8 +19724,9 @@ const Enum::YLeaf IpfrrTbrkr::node_protect {3, "node-protect"};
 const Enum::YLeaf IpfrrTbrkr::primary_path {4, "primary-path"};
 const Enum::YLeaf IpfrrTbrkr::secondary_path {5, "secondary-path"};
 const Enum::YLeaf IpfrrTbrkr::srlg_disjoint {6, "srlg-disjoint"};
-const Enum::YLeaf IpfrrTbrkr::tunnel {7, "tunnel"};
-const Enum::YLeaf IpfrrTbrkr::post_convergence {8, "post-convergence"};
+const Enum::YLeaf IpfrrTbrkr::interface_disjoint {7, "interface-disjoint"};
+const Enum::YLeaf IpfrrTbrkr::tunnel {8, "tunnel"};
+const Enum::YLeaf IpfrrTbrkr::post_convergence {9, "post-convergence"};
 
 const Enum::YLeaf IgpteLibBwModel::rdm {0, "rdm"};
 const Enum::YLeaf IgpteLibBwModel::mam {1, "mam"};
@@ -19750,6 +19793,10 @@ const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_na_bit_epl {10, "
 const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_area_mismatch {11, "ospf-se-res-fail-area-mismatch"};
 const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_rid_mismatch {12, "ospf-se-res-fail-rid-mismatch"};
 
+const Enum::YLeaf OspfSrlbStatus::unknown {0, "unknown"};
+const Enum::YLeaf OspfSrlbStatus::not_allocated {1, "not-allocated"};
+const Enum::YLeaf OspfSrlbStatus::allocated {2, "allocated"};
+
 const Enum::YLeaf SrDp::mgmt_ospf_sr_dp_none {0, "mgmt-ospf-sr-dp-none"};
 const Enum::YLeaf SrDp::mgmt_ospf_sr_dp_mpls {1, "mgmt-ospf-sr-dp-mpls"};
 
@@ -19762,11 +19809,17 @@ const Enum::YLeaf Interface::mgmt_if_virtual_link {6, "mgmt-if-virtual-link"};
 const Enum::YLeaf Interface::mgmt_if_sham_link {7, "mgmt-if-sham-link"};
 const Enum::YLeaf Interface::mgmt_if_loop_back {8, "mgmt-if-loop-back"};
 
-const Enum::YLeaf InterfaceState::mgmt_ifs_unknown {0, "mgmt-ifs-unknown"};
-const Enum::YLeaf InterfaceState::mgmt_ifs_admin_down {1, "mgmt-ifs-admin-down"};
-const Enum::YLeaf InterfaceState::mgmt_ifs_down {2, "mgmt-ifs-down"};
-const Enum::YLeaf InterfaceState::mgmt_ifs_up {3, "mgmt-ifs-up"};
-const Enum::YLeaf InterfaceState::mgmt_ifs_shutdown {4, "mgmt-ifs-shutdown"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_rtr_type {1, "mgmt-rtr-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_ntwk_type {2, "mgmt-ntwk-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_sum_type {3, "mgmt-sum-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_ext_type {4, "mgmt-ext-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_type {5, "mgmt-opq-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_link_type {6, "mgmt-opq-link-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_rrr_type {7, "mgmt-opq-rrr-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_gr_type {8, "mgmt-opq-gr-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_ri_type {9, "mgmt-opq-ri-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_epl_type {10, "mgmt-opq-epl-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_ell_type {11, "mgmt-opq-ell-type"};
 
 const Enum::YLeaf ExMetric::mgmt_ex_metric_type_none {0, "mgmt-ex-metric-type-none"};
 const Enum::YLeaf ExMetric::mgmt_ex_metric_type_1 {1, "mgmt-ex-metric-type-1"};
@@ -19818,6 +19871,7 @@ const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_pce_discovery {
 const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_sr_algo {3, "mgmt-ospf-opq-ri-tlv-type-sr-algo"};
 const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_sr_range {4, "mgmt-ospf-opq-ri-tlv-type-sr-range"};
 const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_node_msd {5, "mgmt-ospf-opq-ri-tlv-type-node-msd"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_srlb {6, "mgmt-ospf-opq-ri-tlv-type-srlb"};
 
 const Enum::YLeaf Timer::mgmt_db_stop {0, "mgmt-db-stop"};
 const Enum::YLeaf Timer::mgmt_db_refresh {1, "mgmt-db-refresh"};
@@ -19871,17 +19925,11 @@ const Enum::YLeaf NeighborState::mgmt_nbr_load_ing {6, "mgmt-nbr-load-ing"};
 const Enum::YLeaf NeighborState::mgmt_nbr_full {7, "mgmt-nbr-full"};
 const Enum::YLeaf NeighborState::mgmt_nbr_sc_virtual {8, "mgmt-nbr-sc-virtual"};
 
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_rtr_type {1, "mgmt-rtr-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_ntwk_type {2, "mgmt-ntwk-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_sum_type {3, "mgmt-sum-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_ext_type {4, "mgmt-ext-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_type {5, "mgmt-opq-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_link_type {6, "mgmt-opq-link-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_rrr_type {7, "mgmt-opq-rrr-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_gr_type {8, "mgmt-opq-gr-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_ri_type {9, "mgmt-opq-ri-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_epl_type {10, "mgmt-opq-epl-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_ell_type {11, "mgmt-opq-ell-type"};
+const Enum::YLeaf InterfaceState::mgmt_ifs_unknown {0, "mgmt-ifs-unknown"};
+const Enum::YLeaf InterfaceState::mgmt_ifs_admin_down {1, "mgmt-ifs-admin-down"};
+const Enum::YLeaf InterfaceState::mgmt_ifs_down {2, "mgmt-ifs-down"};
+const Enum::YLeaf InterfaceState::mgmt_ifs_up {3, "mgmt-ifs-up"};
+const Enum::YLeaf InterfaceState::mgmt_ifs_shutdown {4, "mgmt-ifs-shutdown"};
 
 const Enum::YLeaf MplsTeOptTlv::mpls_te_opt_tlv_type_none {0, "mpls-te-opt-tlv-type-none"};
 const Enum::YLeaf MplsTeOptTlv::mpls_te_opt_tlv_type_srlg {1, "mpls-te-opt-tlv-type-srlg"};
@@ -19933,6 +19981,19 @@ const Enum::YLeaf DrBdrState::mgmt_dbdr_none {0, "mgmt-dbdr-none"};
 const Enum::YLeaf DrBdrState::mgmt_dbdr_dr {1, "mgmt-dbdr-dr"};
 const Enum::YLeaf DrBdrState::mgmt_dbdr_bdr {2, "mgmt-dbdr-bdr"};
 const Enum::YLeaf DrBdrState::mgmt_dbdr_dr_other {3, "mgmt-dbdr-dr-other"};
+
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_not_configured {0, "mgmt-not-configured"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_aes_128_cmac_96 {1, "mgmt-aes-128-cmac-96"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha1_12 {2, "mgmt-hmac-sha1-12"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_md5_16 {3, "mgmt-md5-16"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_sha1_20 {4, "mgmt-sha1-20"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_md5_16 {5, "mgmt-hmac-md5-16"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha1_20 {6, "mgmt-hmac-sha1-20"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_aes_128_cmac {7, "mgmt-aes-128-cmac"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_aes_256_cmac {8, "mgmt-aes-256-cmac"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha1_96 {9, "mgmt-hmac-sha1-96"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha_256 {10, "mgmt-hmac-sha-256"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha1 {11, "mgmt-hmac-sha1"};
 
 const Enum::YLeaf TimerTable::mgmt_db_no_table {0, "mgmt-db-no-table"};
 const Enum::YLeaf TimerTable::mgmt_db_sec_table {1, "mgmt-db-sec-table"};

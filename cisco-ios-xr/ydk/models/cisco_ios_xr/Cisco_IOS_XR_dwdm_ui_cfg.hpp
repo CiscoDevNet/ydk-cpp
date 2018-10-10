@@ -41,6 +41,8 @@ class Fec : public ydk::Enum
         static const ydk::Enum::YLeaf long_haul_sd;
         static const ydk::Enum::YLeaf ci_bch;
         static const ydk::Enum::YLeaf high_gain_multivendor_hd;
+        static const ydk::Enum::YLeaf sd_everest;
+        static const ydk::Enum::YLeaf sd_denali;
 
 };
 

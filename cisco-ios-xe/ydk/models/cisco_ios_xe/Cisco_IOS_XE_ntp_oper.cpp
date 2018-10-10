@@ -649,11 +649,19 @@ NtpOperData::NtpStatusInfo::NtpAssociations::NtpAssociations()
     poll{YType::uint32, "poll"},
     delay{YType::str, "delay"},
     offset{YType::str, "offset"},
-    jitter{YType::str, "jitter"}
+    jitter{YType::str, "jitter"},
+    num_events{YType::uint8, "num-events"},
+    last_peer_event{YType::enumeration, "last-peer-event"},
+    peer_selection_status{YType::enumeration, "peer-selection-status"},
+    peer_authentication_status{YType::enumeration, "peer-authentication-status"},
+    serv_type{YType::enumeration, "serv-type"},
+    psw_crypto{YType::enumeration, "psw-crypto"}
         ,
     refid(std::make_shared<NtpOperData::NtpStatusInfo::NtpAssociations::Refid>())
+    , ntp_address(std::make_shared<NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress>())
 {
     refid->parent = this;
+    ntp_address->parent = this;
 
     yang_name = "ntp-associations"; yang_parent_name = "ntp-status-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -674,7 +682,14 @@ bool NtpOperData::NtpStatusInfo::NtpAssociations::has_data() const
 	|| delay.is_set
 	|| offset.is_set
 	|| jitter.is_set
-	|| (refid !=  nullptr && refid->has_data());
+	|| num_events.is_set
+	|| last_peer_event.is_set
+	|| peer_selection_status.is_set
+	|| peer_authentication_status.is_set
+	|| serv_type.is_set
+	|| psw_crypto.is_set
+	|| (refid !=  nullptr && refid->has_data())
+	|| (ntp_address !=  nullptr && ntp_address->has_data());
 }
 
 bool NtpOperData::NtpStatusInfo::NtpAssociations::has_operation() const
@@ -689,7 +704,14 @@ bool NtpOperData::NtpStatusInfo::NtpAssociations::has_operation() const
 	|| ydk::is_set(delay.yfilter)
 	|| ydk::is_set(offset.yfilter)
 	|| ydk::is_set(jitter.yfilter)
-	|| (refid !=  nullptr && refid->has_operation());
+	|| ydk::is_set(num_events.yfilter)
+	|| ydk::is_set(last_peer_event.yfilter)
+	|| ydk::is_set(peer_selection_status.yfilter)
+	|| ydk::is_set(peer_authentication_status.yfilter)
+	|| ydk::is_set(serv_type.yfilter)
+	|| ydk::is_set(psw_crypto.yfilter)
+	|| (refid !=  nullptr && refid->has_operation())
+	|| (ntp_address !=  nullptr && ntp_address->has_operation());
 }
 
 std::string NtpOperData::NtpStatusInfo::NtpAssociations::get_absolute_path() const
@@ -720,6 +742,12 @@ std::vector<std::pair<std::string, LeafData> > NtpOperData::NtpStatusInfo::NtpAs
     if (delay.is_set || is_set(delay.yfilter)) leaf_name_data.push_back(delay.get_name_leafdata());
     if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
     if (jitter.is_set || is_set(jitter.yfilter)) leaf_name_data.push_back(jitter.get_name_leafdata());
+    if (num_events.is_set || is_set(num_events.yfilter)) leaf_name_data.push_back(num_events.get_name_leafdata());
+    if (last_peer_event.is_set || is_set(last_peer_event.yfilter)) leaf_name_data.push_back(last_peer_event.get_name_leafdata());
+    if (peer_selection_status.is_set || is_set(peer_selection_status.yfilter)) leaf_name_data.push_back(peer_selection_status.get_name_leafdata());
+    if (peer_authentication_status.is_set || is_set(peer_authentication_status.yfilter)) leaf_name_data.push_back(peer_authentication_status.get_name_leafdata());
+    if (serv_type.is_set || is_set(serv_type.yfilter)) leaf_name_data.push_back(serv_type.get_name_leafdata());
+    if (psw_crypto.is_set || is_set(psw_crypto.yfilter)) leaf_name_data.push_back(psw_crypto.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -736,6 +764,15 @@ std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::NtpAssociations::get_child_b
         return refid;
     }
 
+    if(child_yang_name == "ntp-address")
+    {
+        if(ntp_address == nullptr)
+        {
+            ntp_address = std::make_shared<NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress>();
+        }
+        return ntp_address;
+    }
+
     return nullptr;
 }
 
@@ -746,6 +783,11 @@ std::map<std::string, std::shared_ptr<Entity>> NtpOperData::NtpStatusInfo::NtpAs
     if(refid != nullptr)
     {
         children["refid"] = refid;
+    }
+
+    if(ntp_address != nullptr)
+    {
+        children["ntp-address"] = ntp_address;
     }
 
     return children;
@@ -807,6 +849,42 @@ void NtpOperData::NtpStatusInfo::NtpAssociations::set_value(const std::string & 
         jitter.value_namespace = name_space;
         jitter.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "num-events")
+    {
+        num_events = value;
+        num_events.value_namespace = name_space;
+        num_events.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-peer-event")
+    {
+        last_peer_event = value;
+        last_peer_event.value_namespace = name_space;
+        last_peer_event.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peer-selection-status")
+    {
+        peer_selection_status = value;
+        peer_selection_status.value_namespace = name_space;
+        peer_selection_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peer-authentication-status")
+    {
+        peer_authentication_status = value;
+        peer_authentication_status.value_namespace = name_space;
+        peer_authentication_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serv-type")
+    {
+        serv_type = value;
+        serv_type.value_namespace = name_space;
+        serv_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "psw-crypto")
+    {
+        psw_crypto = value;
+        psw_crypto.value_namespace = name_space;
+        psw_crypto.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void NtpOperData::NtpStatusInfo::NtpAssociations::set_filter(const std::string & value_path, YFilter yfilter)
@@ -847,11 +925,35 @@ void NtpOperData::NtpStatusInfo::NtpAssociations::set_filter(const std::string &
     {
         jitter.yfilter = yfilter;
     }
+    if(value_path == "num-events")
+    {
+        num_events.yfilter = yfilter;
+    }
+    if(value_path == "last-peer-event")
+    {
+        last_peer_event.yfilter = yfilter;
+    }
+    if(value_path == "peer-selection-status")
+    {
+        peer_selection_status.yfilter = yfilter;
+    }
+    if(value_path == "peer-authentication-status")
+    {
+        peer_authentication_status.yfilter = yfilter;
+    }
+    if(value_path == "serv-type")
+    {
+        serv_type.yfilter = yfilter;
+    }
+    if(value_path == "psw-crypto")
+    {
+        psw_crypto.yfilter = yfilter;
+    }
 }
 
 bool NtpOperData::NtpStatusInfo::NtpAssociations::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "refid" || name == "assoc-id" || name == "peer-reach" || name == "peer-stratum" || name == "reftime" || name == "last-poll-time" || name == "poll" || name == "delay" || name == "offset" || name == "jitter")
+    if(name == "refid" || name == "ntp-address" || name == "assoc-id" || name == "peer-reach" || name == "peer-stratum" || name == "reftime" || name == "last-poll-time" || name == "poll" || name == "delay" || name == "offset" || name == "jitter" || name == "num-events" || name == "last-peer-event" || name == "peer-selection-status" || name == "peer-authentication-status" || name == "serv-type" || name == "psw-crypto")
         return true;
     return false;
 }
@@ -1141,6 +1243,98 @@ bool NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData::has_leaf
     return false;
 }
 
+NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::NtpAddress()
+    :
+    ip_addr{YType::str, "ip-addr"},
+    vrf_name{YType::str, "vrf-name"}
+{
+
+    yang_name = "ntp-address"; yang_parent_name = "ntp-associations"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::~NtpAddress()
+{
+}
+
+bool NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return ip_addr.is_set
+	|| vrf_name.is_set;
+}
+
+bool NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip_addr.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
+}
+
+std::string NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ntp-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip_addr.is_set || is_set(ip_addr.yfilter)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+        ip_addr.value_namespace = name_space;
+        ip_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-addr")
+    {
+        ip_addr.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-addr" || name == "vrf-name")
+        return true;
+    return false;
+}
+
 const Enum::YLeaf KissCodeType::ntp_ref_acst {0, "ntp-ref-acst"};
 const Enum::YLeaf KissCodeType::ntp_ref_auth {1, "ntp-ref-auth"};
 const Enum::YLeaf KissCodeType::ntp_ref_auto {2, "ntp-ref-auto"};
@@ -1155,6 +1349,49 @@ const Enum::YLeaf KissCodeType::ntp_ref_nkey {10, "ntp-ref-nkey"};
 const Enum::YLeaf KissCodeType::ntp_ref_rate {11, "ntp-ref-rate"};
 const Enum::YLeaf KissCodeType::ntp_ref_rmot {12, "ntp-ref-rmot"};
 const Enum::YLeaf KissCodeType::ntp_ref_step {13, "ntp-ref-step"};
+
+const Enum::YLeaf PeerEvent::ntp_peer_event_mobilize {0, "ntp-peer-event-mobilize"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_demobilize {1, "ntp-peer-event-demobilize"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_unreachable {2, "ntp-peer-event-unreachable"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_reachable {3, "ntp-peer-event-reachable"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_restart {4, "ntp-peer-event-restart"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_reply {5, "ntp-peer-event-reply"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_rate {6, "ntp-peer-event-rate"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_deny {7, "ntp-peer-event-deny"};
+const Enum::YLeaf PeerEvent::ntp_peer_disarmed {8, "ntp-peer-disarmed"};
+const Enum::YLeaf PeerEvent::ntp_peer_armed {9, "ntp-peer-armed"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_newpeer {10, "ntp-peer-event-newpeer"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_clock {11, "ntp-peer-event-clock"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_auth {12, "ntp-peer-event-auth"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_popcorn {13, "ntp-peer-event-popcorn"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_xleave {14, "ntp-peer-event-xleave"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_xerr {15, "ntp-peer-event-xerr"};
+const Enum::YLeaf PeerEvent::ntp_peer_event_tai {16, "ntp-peer-event-tai"};
+
+const Enum::YLeaf ServerType::ntp_peer {0, "ntp-peer"};
+const Enum::YLeaf ServerType::ntp_server {1, "ntp-server"};
+const Enum::YLeaf ServerType::ntp_unknown_type {2, "ntp-unknown-type"};
+
+const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_kod {0, "ntp-ref-state-kod"};
+const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_resolved_with_clk_source {1, "ntp-ref-state-resolved-with-clk-source"};
+const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_resolved_with_ip_addr {2, "ntp-ref-state-resolved-with-ip-addr"};
+const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_bad_state {3, "ntp-ref-state-bad-state"};
+
+const Enum::YLeaf PeerStatusWord::crypto_flag_sig {0, "crypto-flag-sig"};
+const Enum::YLeaf PeerStatusWord::crypto_flag_leap {1, "crypto-flag-leap"};
+const Enum::YLeaf PeerStatusWord::crypto_flag_vrfy {2, "crypto-flag-vrfy"};
+const Enum::YLeaf PeerStatusWord::crypto_flag_cook {3, "crypto-flag-cook"};
+const Enum::YLeaf PeerStatusWord::crypto_flag_auto {4, "crypto-flag-auto"};
+const Enum::YLeaf PeerStatusWord::crypto_flag_cert {5, "crypto-flag-cert"};
+
+const Enum::YLeaf PeerSelectStatus::ntp_peer_as_backup {0, "ntp-peer-as-backup"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_rejected {1, "ntp-peer-rejected"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_false_ticker {2, "ntp-peer-false-ticker"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_excess {3, "ntp-peer-excess"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_outlier {4, "ntp-peer-outlier"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_candidate {5, "ntp-peer-candidate"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_sys_peer {6, "ntp-peer-sys-peer"};
+const Enum::YLeaf PeerSelectStatus::ntp_peer_pps_peer {7, "ntp-peer-pps-peer"};
 
 const Enum::YLeaf RefClockSourceType::ntp_ref_goes {0, "ntp-ref-goes"};
 const Enum::YLeaf RefClockSourceType::ntp_ref_gps {1, "ntp-ref-gps"};
@@ -1176,10 +1413,12 @@ const Enum::YLeaf RefClockSourceType::ntp_ref_acts {16, "ntp-ref-acts"};
 const Enum::YLeaf RefClockSourceType::ntp_ref_usno {17, "ntp-ref-usno"};
 const Enum::YLeaf RefClockSourceType::ntp_ref_ptb {18, "ntp-ref-ptb"};
 
-const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_kod {0, "ntp-ref-state-kod"};
-const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_resolved_with_clk_source {1, "ntp-ref-state-resolved-with-clk-source"};
-const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_resolved_with_ip_addr {2, "ntp-ref-state-resolved-with-ip-addr"};
-const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_bad_state {3, "ntp-ref-state-bad-state"};
+const Enum::YLeaf PeerAuthStatus::ntp_auth_ok {0, "ntp-auth-ok"};
+const Enum::YLeaf PeerAuthStatus::ntp_auth_bad_auth {1, "ntp-auth-bad-auth"};
+const Enum::YLeaf PeerAuthStatus::ntp_auth_auth_not_configured {2, "ntp-auth-auth-not-configured"};
+const Enum::YLeaf PeerAuthStatus::ntp_auth_status_not_available {3, "ntp-auth-status-not-available"};
+const Enum::YLeaf PeerAuthStatus::ntp_auth_none {4, "ntp-auth-none"};
+const Enum::YLeaf PeerAuthStatus::ntp_auth_crypto {5, "ntp-auth-crypto"};
 
 
 }

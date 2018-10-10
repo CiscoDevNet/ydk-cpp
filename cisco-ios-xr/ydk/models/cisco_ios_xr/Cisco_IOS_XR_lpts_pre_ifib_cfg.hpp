@@ -132,6 +132,8 @@ class LptsFlow : public ydk::Enum
         static const ydk::Enum::YLeaf dhcp6;
         static const ydk::Enum::YLeaf onepk;
         static const ydk::Enum::YLeaf exr;
+        static const ydk::Enum::YLeaf bob_ietf;
+        static const ydk::Enum::YLeaf xipc_throt;
         static const ydk::Enum::YLeaf platform_limit;
 
 };

@@ -3025,14 +3025,14 @@ class Igmp::Active::Process : public ydk::Entity
 
         class AmtSummary; //type: Igmp::Active::Process::AmtSummary
         class Nsr; //type: Igmp::Active::Process::Nsr
-        class AmtGatewaies; //type: Igmp::Active::Process::AmtGatewaies
+        class AmtGateways; //type: Igmp::Active::Process::AmtGateways
         class UnicastQosAdjustStats; //type: Igmp::Active::Process::UnicastQosAdjustStats
         class BviStatistics; //type: Igmp::Active::Process::BviStatistics
         class Nsf; //type: Igmp::Active::Process::Nsf
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::AmtSummary> amt_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::Nsr> nsr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::AmtGatewaies> amt_gatewaies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::AmtGateways> amt_gateways;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::UnicastQosAdjustStats> unicast_qos_adjust_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::BviStatistics> bvi_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::Nsf> nsf;
@@ -3109,11 +3109,11 @@ class Igmp::Active::Process::Nsr : public ydk::Entity
 }; // Igmp::Active::Process::Nsr
 
 
-class Igmp::Active::Process::AmtGatewaies : public ydk::Entity
+class Igmp::Active::Process::AmtGateways : public ydk::Entity
 {
     public:
-        AmtGatewaies();
-        ~AmtGatewaies();
+        AmtGateways();
+        ~AmtGateways();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3126,14 +3126,14 @@ class Igmp::Active::Process::AmtGatewaies : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class AmtGateway; //type: Igmp::Active::Process::AmtGatewaies::AmtGateway
+        class AmtGateway; //type: Igmp::Active::Process::AmtGateways::AmtGateway
 
         ydk::YList amt_gateway;
         
-}; // Igmp::Active::Process::AmtGatewaies
+}; // Igmp::Active::Process::AmtGateways
 
 
-class Igmp::Active::Process::AmtGatewaies::AmtGateway : public ydk::Entity
+class Igmp::Active::Process::AmtGateways::AmtGateway : public ydk::Entity
 {
     public:
         AmtGateway();
@@ -3161,7 +3161,7 @@ class Igmp::Active::Process::AmtGatewaies::AmtGateway : public ydk::Entity
         ydk::YLeaf mem_upd_in; //type: uint32
         ydk::YLeaf mem_upd_out; //type: uint32
 
-}; // Igmp::Active::Process::AmtGatewaies::AmtGateway
+}; // Igmp::Active::Process::AmtGateways::AmtGateway
 
 
 class Igmp::Active::Process::UnicastQosAdjustStats : public ydk::Entity

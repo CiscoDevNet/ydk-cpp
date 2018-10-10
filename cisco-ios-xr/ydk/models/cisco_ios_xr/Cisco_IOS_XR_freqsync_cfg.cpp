@@ -20,7 +20,7 @@ FrequencySynchronization::FrequencySynchronization()
     system_timing_mode{YType::enumeration, "system-timing-mode"}
 {
 
-    yang_name = "frequency-synchronization"; yang_parent_name = "Cisco-IOS-XR-freqsync-cfg"; is_top_level_class = true; has_list_ancestor = false; is_presence_container = true;
+    yang_name = "frequency-synchronization"; yang_parent_name = "Cisco-IOS-XR-freqsync-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::~FrequencySynchronization()

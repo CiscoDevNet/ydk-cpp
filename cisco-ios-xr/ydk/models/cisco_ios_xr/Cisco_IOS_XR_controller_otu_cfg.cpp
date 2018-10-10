@@ -55,6 +55,8 @@ const Enum::YLeaf OtuForwardErrorCorrection::enhanced_i4 {8, "enhanced-i4"};
 const Enum::YLeaf OtuForwardErrorCorrection::enhanced_swizzle {16, "enhanced-swizzle"};
 const Enum::YLeaf OtuForwardErrorCorrection::enhanced_hg20 {32, "enhanced-hg20"};
 const Enum::YLeaf OtuForwardErrorCorrection::enhanced_hg7 {64, "enhanced-hg7"};
+const Enum::YLeaf OtuForwardErrorCorrection::enhanced_sd15 {512, "enhanced-sd15"};
+const Enum::YLeaf OtuForwardErrorCorrection::enhanced_sd27 {1024, "enhanced-sd27"};
 
 const Enum::YLeaf OtnExpTtiTypeDapi::exp_tti_dapi_ascii__FWD_SLASH__dapi_ascii {9, "exp-tti-dapi-ascii/dapi-ascii"};
 

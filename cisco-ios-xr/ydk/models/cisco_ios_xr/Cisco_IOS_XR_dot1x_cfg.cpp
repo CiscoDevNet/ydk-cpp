@@ -346,6 +346,8 @@ bool Dot1x::Dot1xProfile::Supplicant::has_leaf_or_child_of_name(const std::strin
 
 Dot1x::Dot1xProfile::Authenticator::Authenticator()
     :
+    eap_profile{YType::str, "eap-profile"}
+        ,
     timers(std::make_shared<Dot1x::Dot1xProfile::Authenticator::Timers>())
 {
     timers->parent = this;
@@ -360,12 +362,14 @@ Dot1x::Dot1xProfile::Authenticator::~Authenticator()
 bool Dot1x::Dot1xProfile::Authenticator::has_data() const
 {
     if (is_presence_container) return true;
-    return (timers !=  nullptr && timers->has_data());
+    return eap_profile.is_set
+	|| (timers !=  nullptr && timers->has_data());
 }
 
 bool Dot1x::Dot1xProfile::Authenticator::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(eap_profile.yfilter)
 	|| (timers !=  nullptr && timers->has_operation());
 }
 
@@ -380,6 +384,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Dot1xProfile::Authenticato
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (eap_profile.is_set || is_set(eap_profile.yfilter)) leaf_name_data.push_back(eap_profile.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -413,15 +418,25 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1x::Dot1xProfile::Authenticato
 
 void Dot1x::Dot1xProfile::Authenticator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "eap-profile")
+    {
+        eap_profile = value;
+        eap_profile.value_namespace = name_space;
+        eap_profile.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Dot1x::Dot1xProfile::Authenticator::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "eap-profile")
+    {
+        eap_profile.yfilter = yfilter;
+    }
 }
 
 bool Dot1x::Dot1xProfile::Authenticator::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "timers")
+    if(name == "timers" || name == "eap-profile")
         return true;
     return false;
 }

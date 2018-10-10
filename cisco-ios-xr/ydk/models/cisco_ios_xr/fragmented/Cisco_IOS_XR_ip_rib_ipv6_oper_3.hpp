@@ -203,6 +203,8 @@ class Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
         ydk::YLeaf span_diag_interface; //type: string
         ydk::YLeaf has_subscriber_parent_interface; //type: boolean
         ydk::YLeaf subscriber_parent_interface; //type: string
+        ydk::YLeaf interface_index_present; //type: boolean
+        ydk::YLeaf interface_index_attribute; //type: uint32
         class RemoteBackupAddr; //type: Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv6RibEdmPath::Labelstk
         class NextNextHop; //type: Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv6RibEdmPath::NextNextHop

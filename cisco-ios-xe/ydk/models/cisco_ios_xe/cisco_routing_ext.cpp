@@ -11,6 +11,46 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace cisco_routing_ext {
 
+Igrp::Igrp()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:igrp")
+{
+
+}
+
+Igrp::~Igrp()
+{
+}
+
+Nhrp::Nhrp()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:nhrp")
+{
+
+}
+
+Nhrp::~Nhrp()
+{
+}
+
+Hsrp::Hsrp()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:hsrp")
+{
+
+}
+
+Hsrp::~Hsrp()
+{
+}
+
+Rip::Rip()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:rip")
+{
+
+}
+
+Rip::~Rip()
+{
+}
+
 Bgp::Bgp()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:bgp")
 {
@@ -21,13 +61,13 @@ Bgp::~Bgp()
 {
 }
 
-Mobile::Mobile()
-     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:mobile")
+Lisp::Lisp()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:lisp")
 {
 
 }
 
-Mobile::~Mobile()
+Lisp::~Lisp()
 {
 }
 
@@ -48,16 +88,6 @@ IsIs::IsIs()
 }
 
 IsIs::~IsIs()
-{
-}
-
-Rip::Rip()
-     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:rip")
-{
-
-}
-
-Rip::~Rip()
 {
 }
 

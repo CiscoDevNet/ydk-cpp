@@ -497,6 +497,7 @@ Otu::Controllers::Controller::Info::Info()
     , otu_alarm_info(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo>())
     , proactive(std::make_shared<Otu::Controllers::Controller::Info::Proactive>())
     , otu_fec_satistics(std::make_shared<Otu::Controllers::Controller::Info::OtuFecSatistics>())
+    , ains_info(std::make_shared<Otu::Controllers::Controller::Info::AinsInfo>())
 {
     local->parent = this;
     remote->parent = this;
@@ -505,6 +506,7 @@ Otu::Controllers::Controller::Info::Info()
     otu_alarm_info->parent = this;
     proactive->parent = this;
     otu_fec_satistics->parent = this;
+    ains_info->parent = this;
 
     yang_name = "info"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -548,7 +550,8 @@ bool Otu::Controllers::Controller::Info::has_data() const
 	|| (network_srlg !=  nullptr && network_srlg->has_data())
 	|| (otu_alarm_info !=  nullptr && otu_alarm_info->has_data())
 	|| (proactive !=  nullptr && proactive->has_data())
-	|| (otu_fec_satistics !=  nullptr && otu_fec_satistics->has_data());
+	|| (otu_fec_satistics !=  nullptr && otu_fec_satistics->has_data())
+	|| (ains_info !=  nullptr && ains_info->has_data());
 }
 
 bool Otu::Controllers::Controller::Info::has_operation() const
@@ -586,7 +589,8 @@ bool Otu::Controllers::Controller::Info::has_operation() const
 	|| (network_srlg !=  nullptr && network_srlg->has_operation())
 	|| (otu_alarm_info !=  nullptr && otu_alarm_info->has_operation())
 	|| (proactive !=  nullptr && proactive->has_operation())
-	|| (otu_fec_satistics !=  nullptr && otu_fec_satistics->has_operation());
+	|| (otu_fec_satistics !=  nullptr && otu_fec_satistics->has_operation())
+	|| (ains_info !=  nullptr && ains_info->has_operation());
 }
 
 std::string Otu::Controllers::Controller::Info::get_segment_path() const
@@ -696,6 +700,15 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::get_child_by_name(co
         return otu_fec_satistics;
     }
 
+    if(child_yang_name == "ains-info")
+    {
+        if(ains_info == nullptr)
+        {
+            ains_info = std::make_shared<Otu::Controllers::Controller::Info::AinsInfo>();
+        }
+        return ains_info;
+    }
+
     return nullptr;
 }
 
@@ -736,6 +749,11 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     if(otu_fec_satistics != nullptr)
     {
         children["otu-fec-satistics"] = otu_fec_satistics;
+    }
+
+    if(ains_info != nullptr)
+    {
+        children["ains-info"] = ains_info;
     }
 
     return children;
@@ -1011,7 +1029,7 @@ void Otu::Controllers::Controller::Info::set_filter(const std::string & value_pa
 
 bool Otu::Controllers::Controller::Info::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local" || name == "remote" || name == "tti-mode" || name == "network-srlg" || name == "otu-alarm-info" || name == "proactive" || name == "otu-fec-satistics" || name == "state" || name == "name" || name == "sf" || name == "sd" || name == "loopback-mode" || name == "fec-mode" || name == "derivedstate-mode" || name == "inherit-sec-state" || name == "config-sec-state" || name == "gcc-mode" || name == "q" || name == "q-margin" || name == "performance-monitoring" || name == "ec" || name == "uc" || name == "pre-fec-val" || name == "pre-fec-mantissa" || name == "ec-value" || name == "uc-value" || name == "pre-fec-ber-value" || name == "pre-fec-ber-mantissa" || name == "nv-optical-support" || name == "gmpls-tti-mode" || name == "gmpls-tvm-id" || name == "auto-tti-flag" || name == "description")
+    if(name == "local" || name == "remote" || name == "tti-mode" || name == "network-srlg" || name == "otu-alarm-info" || name == "proactive" || name == "otu-fec-satistics" || name == "ains-info" || name == "state" || name == "name" || name == "sf" || name == "sd" || name == "loopback-mode" || name == "fec-mode" || name == "derivedstate-mode" || name == "inherit-sec-state" || name == "config-sec-state" || name == "gcc-mode" || name == "q" || name == "q-margin" || name == "performance-monitoring" || name == "ec" || name == "uc" || name == "pre-fec-val" || name == "pre-fec-mantissa" || name == "ec-value" || name == "uc-value" || name == "pre-fec-ber-value" || name == "pre-fec-ber-mantissa" || name == "nv-optical-support" || name == "gmpls-tti-mode" || name == "gmpls-tvm-id" || name == "auto-tti-flag" || name == "description")
         return true;
     return false;
 }
@@ -5592,6 +5610,112 @@ bool Otu::Controllers::Controller::Info::OtuFecSatistics::has_leaf_or_child_of_n
     return false;
 }
 
+Otu::Controllers::Controller::Info::AinsInfo::AinsInfo()
+    :
+    ains_state{YType::enumeration, "ains-state"},
+    ains_timer_minutes{YType::uint32, "ains-timer-minutes"},
+    ains_remaining_secs{YType::uint32, "ains-remaining-secs"}
+{
+
+    yang_name = "ains-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Otu::Controllers::Controller::Info::AinsInfo::~AinsInfo()
+{
+}
+
+bool Otu::Controllers::Controller::Info::AinsInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return ains_state.is_set
+	|| ains_timer_minutes.is_set
+	|| ains_remaining_secs.is_set;
+}
+
+bool Otu::Controllers::Controller::Info::AinsInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ains_state.yfilter)
+	|| ydk::is_set(ains_timer_minutes.yfilter)
+	|| ydk::is_set(ains_remaining_secs.yfilter);
+}
+
+std::string Otu::Controllers::Controller::Info::AinsInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ains-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Info::AinsInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ains_state.is_set || is_set(ains_state.yfilter)) leaf_name_data.push_back(ains_state.get_name_leafdata());
+    if (ains_timer_minutes.is_set || is_set(ains_timer_minutes.yfilter)) leaf_name_data.push_back(ains_timer_minutes.get_name_leafdata());
+    if (ains_remaining_secs.is_set || is_set(ains_remaining_secs.yfilter)) leaf_name_data.push_back(ains_remaining_secs.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Otu::Controllers::Controller::Info::AinsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::AinsInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Otu::Controllers::Controller::Info::AinsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ains-state")
+    {
+        ains_state = value;
+        ains_state.value_namespace = name_space;
+        ains_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ains-timer-minutes")
+    {
+        ains_timer_minutes = value;
+        ains_timer_minutes.value_namespace = name_space;
+        ains_timer_minutes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ains-remaining-secs")
+    {
+        ains_remaining_secs = value;
+        ains_remaining_secs.value_namespace = name_space;
+        ains_remaining_secs.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Otu::Controllers::Controller::Info::AinsInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ains-state")
+    {
+        ains_state.yfilter = yfilter;
+    }
+    if(value_path == "ains-timer-minutes")
+    {
+        ains_timer_minutes.yfilter = yfilter;
+    }
+    if(value_path == "ains-remaining-secs")
+    {
+        ains_remaining_secs.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::AinsInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ains-state" || name == "ains-timer-minutes" || name == "ains-remaining-secs")
+        return true;
+    return false;
+}
+
 const Enum::YLeaf OtuPrbsStatus::locked {0, "locked"};
 const Enum::YLeaf OtuPrbsStatus::unlocked {1, "unlocked"};
 const Enum::YLeaf OtuPrbsStatus::not_applicable {2, "not-applicable"};
@@ -5627,6 +5751,10 @@ const Enum::YLeaf OtuStateEt::last {18, "last"};
 const Enum::YLeaf OtuPrbsTest::disable {0, "disable"};
 const Enum::YLeaf OtuPrbsTest::enable {1, "enable"};
 
+const Enum::YLeaf OtuAinsStateEt::none {0, "none"};
+const Enum::YLeaf OtuAinsStateEt::active_running {1, "active-running"};
+const Enum::YLeaf OtuAinsStateEt::active_pending {2, "active-pending"};
+
 const Enum::YLeaf OtuPpFsmState::otu_in_active {0, "otu-in-active"};
 const Enum::YLeaf OtuPpFsmState::otu_disabled {1, "otu-disabled"};
 const Enum::YLeaf OtuPpFsmState::otu_normal_state {2, "otu-normal-state"};
@@ -5648,7 +5776,9 @@ const Enum::YLeaf OtuG709fecMode::otu_bag_hg20_fec {32, "otu-bag-hg20-fec"};
 const Enum::YLeaf OtuG709fecMode::otu_bag_enhanced_hg7_fec {64, "otu-bag-enhanced-hg7-fec"};
 const Enum::YLeaf OtuG709fecMode::otu_bag_sd20_fec {128, "otu-bag-sd20-fec"};
 const Enum::YLeaf OtuG709fecMode::otu_bag_sd7_fec {256, "otu-bag-sd7-fec"};
-const Enum::YLeaf OtuG709fecMode::otu_bag_all_fec {512, "otu-bag-all-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_sd15_fec {512, "otu-bag-sd15-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_sd27_fec {1024, "otu-bag-sd27-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_all_fec {2048, "otu-bag-all-fec"};
 
 const Enum::YLeaf OtuPrbsMode::not_applicable {0, "not-applicable"};
 const Enum::YLeaf OtuPrbsMode::source {1, "source"};
@@ -5669,7 +5799,7 @@ const Enum::YLeaf OtuPpIntfState::otu_pp_intf_down {2, "otu-pp-intf-down"};
 
 const Enum::YLeaf OtuSecState::normal {0, "normal"};
 const Enum::YLeaf OtuSecState::maintenance {1, "maintenance"};
-const Enum::YLeaf OtuSecState::ais {2, "ais"};
+const Enum::YLeaf OtuSecState::ains {2, "ains"};
 
 const Enum::YLeaf OtuLoopBackMode::none {1, "none"};
 const Enum::YLeaf OtuLoopBackMode::line {2, "line"};
@@ -5683,7 +5813,7 @@ const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_tcm {3, "gmpls-otu-tti-mod
 const Enum::YLeaf OtuDerState::out_of_service {0, "out-of-service"};
 const Enum::YLeaf OtuDerState::in_service {1, "in-service"};
 const Enum::YLeaf OtuDerState::maintenance {2, "maintenance"};
-const Enum::YLeaf OtuDerState::ais {3, "ais"};
+const Enum::YLeaf OtuDerState::ains {3, "ains"};
 
 
 }

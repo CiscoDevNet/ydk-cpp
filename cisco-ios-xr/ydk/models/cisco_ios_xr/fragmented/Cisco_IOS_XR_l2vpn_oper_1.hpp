@@ -13,79 +13,6 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_oper {
 
 
-class L2vpnForwarding::Nodes::Node::L2fibEvpnIp4macs::L2fibEvpnIp4mac::IpAddressXr : public ydk::Entity
-{
-    public:
-        IpAddressXr();
-        ~IpAddressXr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf addr_type; //type: L2fibIpAddr
-        ydk::YLeaf ip; //type: string
-
-}; // L2vpnForwarding::Nodes::Node::L2fibEvpnIp4macs::L2fibEvpnIp4mac::IpAddressXr
-
-
-class L2vpnForwarding::Nodes::Node::L2fibPwheMainPorts : public ydk::Entity
-{
-    public:
-        L2fibPwheMainPorts();
-        ~L2fibPwheMainPorts();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class L2fibPwheMainPort; //type: L2vpnForwarding::Nodes::Node::L2fibPwheMainPorts::L2fibPwheMainPort
-
-        ydk::YList l2fib_pwhe_main_port;
-        
-}; // L2vpnForwarding::Nodes::Node::L2fibPwheMainPorts
-
-
-class L2vpnForwarding::Nodes::Node::L2fibPwheMainPorts::L2fibPwheMainPort : public ydk::Entity
-{
-    public:
-        L2fibPwheMainPort();
-        ~L2fibPwheMainPort();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf next_hop_valid; //type: boolean
-        ydk::YLeaf next_hop_address; //type: string
-        ydk::YLeaf pseudo_wire_type; //type: uint32
-        ydk::YLeaf generic_interface_list_id; //type: uint32
-        ydk::YLeaf internal_label; //type: uint32
-        ydk::YLeaf remote_label; //type: uint32
-        ydk::YLeaf control_word_enabled; //type: boolean
-
-}; // L2vpnForwarding::Nodes::Node::L2fibPwheMainPorts::L2fibPwheMainPort
-
-
 class L2vpnForwarding::Nodes::Node::L2fibDhcpBindingCount : public ydk::Entity
 {
     public:
@@ -607,6 +534,7 @@ class L2vpnForwarding::Nodes::Node::L2fibMstpSummaries::L2fibMstpSummary : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf parent_interface; //type: string
+        ydk::YLeaf main_interface_type; //type: EvpnMainInterface
         ydk::YLeaf msti; //type: uint32
         ydk::YLeaf parent_interface_xr; //type: string
         ydk::YLeaf msti_xr; //type: uint32
@@ -657,11 +585,10 @@ class L2vpnForwarding::Nodes::Node::L2fibResourceAvailability : public ydk::Enti
 
         ydk::YLeaf overall_out_of_resource_mode; //type: uint32
         ydk::YLeaf hardware_resource_mode_information; //type: string
+        ydk::YLeafList hardware_resource_mode; //type: list of  uint32
         class ShmResource; //type: L2vpnForwarding::Nodes::Node::L2fibResourceAvailability::ShmResource
-        class HardwareResourceMode; //type: L2vpnForwarding::Nodes::Node::L2fibResourceAvailability::HardwareResourceMode
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibResourceAvailability::ShmResource> shm_resource;
-        ydk::YList hardware_resource_mode;
         
 }; // L2vpnForwarding::Nodes::Node::L2fibResourceAvailability
 
@@ -688,27 +615,6 @@ class L2vpnForwarding::Nodes::Node::L2fibResourceAvailability::ShmResource : pub
         ydk::YLeaf average_utility; //type: uint64
 
 }; // L2vpnForwarding::Nodes::Node::L2fibResourceAvailability::ShmResource
-
-
-class L2vpnForwarding::Nodes::Node::L2fibResourceAvailability::HardwareResourceMode : public ydk::Entity
-{
-    public:
-        HardwareResourceMode();
-        ~HardwareResourceMode();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // L2vpnForwarding::Nodes::Node::L2fibResourceAvailability::HardwareResourceMode
 
 
 class L2vpnForwarding::Nodes::Node::L2fibmacHardwareEgresses : public ydk::Entity
@@ -846,7 +752,8 @@ class L2vpnForwarding::Nodes::Node::L2fibmacHardwareEgresses::L2fibmacHardwareEg
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf vsp_vlan; //type: uint16
 
 }; // L2vpnForwarding::Nodes::Node::L2fibmacHardwareEgresses::L2fibmacHardwareEgress::Segment::Ac
 
@@ -981,8 +888,10 @@ class L2vpnForwarding::Nodes::Node::L2fibmacHardwareEgresses::L2fibmacHardwareEg
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf tunnel_endpoint_id; //type: uint32
         ydk::YLeaf next_hop_ipv6_addr; //type: string
         ydk::YLeaf mcast_label; //type: uint32
+        ydk::YLeaf mcast_encapsulation; //type: uint32
 
 }; // L2vpnForwarding::Nodes::Node::L2fibmacHardwareEgresses::L2fibmacHardwareEgress::EvpnCtx::McastOle
 
@@ -1076,6 +985,7 @@ class L2vpnForwarding::Nodes::Node::L2fibxConL2tpv2s::L2fibxConL2tpv2 : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf vsp_vlan_id; //type: uint32
         ydk::YLeaf xcon_name; //type: string
         ydk::YLeaf bound; //type: boolean
         ydk::YLeaf switching_type; //type: MgmtL2fibSwitching
@@ -1160,7 +1070,7 @@ class L2vpnForwarding::Nodes::Node::L2fibxConL2tpv2s::L2fibxConL2tpv2::Segment1:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf interface_name; //type: string
         ydk::YLeaf sub_interface_handle; //type: string
         ydk::YLeaf attachment_circuit_id; //type: uint32
         ydk::YLeaf attachment_circuit_mtu; //type: uint16
@@ -1174,6 +1084,9 @@ class L2vpnForwarding::Nodes::Node::L2fibxConL2tpv2s::L2fibxConL2tpv2::Segment1:
         ydk::YLeaf redundancy_object_id; //type: uint64
         ydk::YLeaf evpn_internal_label; //type: uint32
         ydk::YLeaf fxc_next_hop_valid; //type: boolean
+        ydk::YLeaf vlan_id_count; //type: uint8
+        ydk::YLeaf first_vlan_id; //type: uint16
+        ydk::YLeaf second_vlan_id; //type: uint16
         class Base; //type: L2vpnForwarding::Nodes::Node::L2fibxConL2tpv2s::L2fibxConL2tpv2::Segment1::Ac::Base
         class FxcNextHop; //type: L2vpnForwarding::Nodes::Node::L2fibxConL2tpv2s::L2fibxConL2tpv2::Segment1::Ac::FxcNextHop
 
@@ -2029,7 +1942,7 @@ class L2vpnForwarding::Nodes::Node::L2fibxConL2tpv2s::L2fibxConL2tpv2::Segment2:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf interface_name; //type: string
         ydk::YLeaf sub_interface_handle; //type: string
         ydk::YLeaf attachment_circuit_id; //type: uint32
         ydk::YLeaf attachment_circuit_mtu; //type: uint16
@@ -2043,6 +1956,9 @@ class L2vpnForwarding::Nodes::Node::L2fibxConL2tpv2s::L2fibxConL2tpv2::Segment2:
         ydk::YLeaf redundancy_object_id; //type: uint64
         ydk::YLeaf evpn_internal_label; //type: uint32
         ydk::YLeaf fxc_next_hop_valid; //type: boolean
+        ydk::YLeaf vlan_id_count; //type: uint8
+        ydk::YLeaf first_vlan_id; //type: uint16
+        ydk::YLeaf second_vlan_id; //type: uint16
         class Base; //type: L2vpnForwarding::Nodes::Node::L2fibxConL2tpv2s::L2fibxConL2tpv2::Segment2::Ac::Base
         class FxcNextHop; //type: L2vpnForwarding::Nodes::Node::L2fibxConL2tpv2s::L2fibxConL2tpv2::Segment2::Ac::FxcNextHop
 
@@ -3275,32 +3191,9 @@ class L2vpnForwarding::Nodes::Node::L2fibMrouteIpv6s::L2fibMrouteIpv6::IrbInfo :
         ydk::YLeaf mxid_pw_id; //type: uint32
         ydk::YLeaf mxid_next_hop_address; //type: string
         ydk::YLeaf irb_plat_data_len; //type: uint16
-        class IrbPlatData; //type: L2vpnForwarding::Nodes::Node::L2fibMrouteIpv6s::L2fibMrouteIpv6::IrbInfo::IrbPlatData
+        ydk::YLeafList irb_plat_data; //type: list of  uint32
 
-        ydk::YList irb_plat_data;
-        
 }; // L2vpnForwarding::Nodes::Node::L2fibMrouteIpv6s::L2fibMrouteIpv6::IrbInfo
-
-
-class L2vpnForwarding::Nodes::Node::L2fibMrouteIpv6s::L2fibMrouteIpv6::IrbInfo::IrbPlatData : public ydk::Entity
-{
-    public:
-        IrbPlatData();
-        ~IrbPlatData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // L2vpnForwarding::Nodes::Node::L2fibMrouteIpv6s::L2fibMrouteIpv6::IrbInfo::IrbPlatData
 
 
 class L2vpnForwarding::Nodes::Node::L2fibMonSessXCons : public ydk::Entity
@@ -3427,7 +3320,7 @@ class L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf interface_name; //type: string
         ydk::YLeaf sub_interface_handle; //type: string
         ydk::YLeaf attachment_circuit_id; //type: uint32
         ydk::YLeaf attachment_circuit_mtu; //type: uint16
@@ -3441,6 +3334,9 @@ class L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment
         ydk::YLeaf redundancy_object_id; //type: uint64
         ydk::YLeaf evpn_internal_label; //type: uint32
         ydk::YLeaf fxc_next_hop_valid; //type: boolean
+        ydk::YLeaf vlan_id_count; //type: uint8
+        ydk::YLeaf first_vlan_id; //type: uint16
+        ydk::YLeaf second_vlan_id; //type: uint16
         class Base; //type: L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Ac::Base
         class FxcNextHop; //type: L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Ac::FxcNextHop
 
@@ -3982,6 +3878,132 @@ class L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote> remote;
         
 }; // L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp
+
+
+class L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Local : public ydk::Entity
+{
+    public:
+        Local();
+        ~Local();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf session_id; //type: uint32
+        ydk::YLeaf cookie_size; //type: uint8
+        ydk::YLeaf cookie_low_value; //type: uint32
+        ydk::YLeaf cookie_high_value; //type: uint32
+
+}; // L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Local
+
+
+class L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote : public ydk::Entity
+{
+    public:
+        Remote();
+        ~Remote();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf session_id; //type: uint32
+        ydk::YLeaf cookie_size; //type: uint8
+        ydk::YLeaf cookie_low_value; //type: uint32
+        ydk::YLeaf cookie_high_value; //type: uint32
+
+}; // L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote
+
+
+class L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2 : public ydk::Entity
+{
+    public:
+        L2tpv2();
+        ~L2tpv2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pw_flags; //type: uint8
+        ydk::YLeaf tos_val; //type: uint8
+        ydk::YLeaf ttl; //type: uint8
+        ydk::YLeaf path_mtu; //type: uint16
+        ydk::YLeaf protocol; //type: uint16
+        ydk::YLeaf rem_udp_port; //type: uint16
+        ydk::YLeaf xconnect_id; //type: uint32
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf source_address; //type: string
+        class Local; //type: L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local
+        class Remote; //type: L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local> local;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote> remote;
+        
+}; // L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2
+
+
+class L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local : public ydk::Entity
+{
+    public:
+        Local();
+        ~Local();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf session_id; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+
+}; // L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local
+
+
+class L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote : public ydk::Entity
+{
+    public:
+        Remote();
+        ~Remote();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf session_id; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+
+}; // L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote
 
 
 }

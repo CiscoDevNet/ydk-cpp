@@ -281,7 +281,7 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf link; //type: int32
+        ydk::YLeaf link; //type: uint32
         ydk::YLeaf speed; //type: uint32
         ydk::YLeaf stage; //type: LinkStage
         ydk::YLeaf is_link_valid; //type: boolean
@@ -573,6 +573,11 @@ class Fia::Nodes::Node::DriverInformation : public ydk::Entity
         ydk::YLeaf fabric_mode; //type: uint8
         ydk::YLeaf fc_mode; //type: FcMode
         ydk::YLeaf board_rev_id; //type: uint32
+        ydk::YLeaf all_wb_insync; //type: boolean
+        ydk::YLeaf all_wb_insync_since; //type: uint32
+        ydk::YLeaf all_startup_wb_insync; //type: boolean
+        ydk::YLeaf plane_a_bitmap; //type: uint32
+        ydk::YLeaf plane_b_bitmap; //type: uint32
         class DeviceInfo; //type: Fia::Nodes::Node::DriverInformation::DeviceInfo
         class CardInfo; //type: Fia::Nodes::Node::DriverInformation::CardInfo
 
@@ -609,6 +614,12 @@ class Fia::Nodes::Node::DriverInformation::DeviceInfo : public ydk::Entity
         ydk::YLeaf num_pon_resets; //type: uint32
         ydk::YLeaf num_hard_resets; //type: uint32
         ydk::YLeaf local_switch_state; //type: boolean
+        ydk::YLeaf startup_wb_mtime_str; //type: string
+        ydk::YLeaf startup_wb_outof_sync; //type: boolean
+        ydk::YLeaf local_wb_sync_end_str; //type: string
+        ydk::YLeaf remote_wb_sync_end_str; //type: string
+        ydk::YLeaf local_wb_sync_pending; //type: boolean
+        ydk::YLeaf sdk_delay_msec; //type: uint32
         class AsicId; //type: Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId> asic_id;
@@ -795,7 +806,7 @@ class Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf instance; //type: int32
+        ydk::YLeaf instance; //type: uint32
 
 }; // Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance
 
@@ -980,7 +991,7 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf link; //type: int32
+        ydk::YLeaf link; //type: uint32
         ydk::YLeaf speed; //type: uint32
         ydk::YLeaf stage; //type: uint8
         ydk::YLeaf is_link_valid; //type: boolean
@@ -1381,7 +1392,7 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf flag; //type: int32
+        ydk::YLeaf flag; //type: uint32
         class Slots; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots> slots;
@@ -1428,7 +1439,7 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf slot; //type: int32
+        ydk::YLeaf slot; //type: uint32
         ydk::YLeaf drv_version; //type: uint32
         ydk::YLeaf coeff_major_rev; //type: uint32
         ydk::YLeaf coeff_minor_rev; //type: uint32
@@ -1473,6 +1484,11 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot : public ydk::Entit
         ydk::YLeaf fabric_mode; //type: uint8
         ydk::YLeaf fc_mode; //type: FcMode
         ydk::YLeaf board_rev_id; //type: uint32
+        ydk::YLeaf all_wb_insync; //type: boolean
+        ydk::YLeaf all_wb_insync_since; //type: uint32
+        ydk::YLeaf all_startup_wb_insync; //type: boolean
+        ydk::YLeaf plane_a_bitmap; //type: uint32
+        ydk::YLeaf plane_b_bitmap; //type: uint32
         class DeviceInfo; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo
         class CardInfo; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo
 
@@ -1509,6 +1525,12 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo : publi
         ydk::YLeaf num_pon_resets; //type: uint32
         ydk::YLeaf num_hard_resets; //type: uint32
         ydk::YLeaf local_switch_state; //type: boolean
+        ydk::YLeaf startup_wb_mtime_str; //type: string
+        ydk::YLeaf startup_wb_outof_sync; //type: boolean
+        ydk::YLeaf local_wb_sync_end_str; //type: string
+        ydk::YLeaf remote_wb_sync_end_str; //type: string
+        ydk::YLeaf local_wb_sync_pending; //type: boolean
+        ydk::YLeaf sdk_delay_msec; //type: uint32
         class AsicId; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId> asic_id;
@@ -1889,7 +1911,7 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf link; //type: int32
+        ydk::YLeaf link; //type: uint32
         class FmacAsic; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic
 
         ydk::YList fmac_asic;
@@ -1913,7 +1935,7 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf asic; //type: int32
+        ydk::YLeaf asic; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf rack_no; //type: uint32
         ydk::YLeaf slot_no; //type: uint32

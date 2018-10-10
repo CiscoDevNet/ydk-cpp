@@ -84,6 +84,7 @@ class Radius::Nodes::Node : public ydk::Entity
         class DeadCriteria; //type: Radius::Nodes::Node::DeadCriteria
         class Authentication; //type: Radius::Nodes::Node::Authentication
         class Accounting; //type: Radius::Nodes::Node::Accounting
+        class DynamicAuthorizationClients; //type: Radius::Nodes::Node::DynamicAuthorizationClients
         class ServerGroups; //type: Radius::Nodes::Node::ServerGroups
         class DynamicAuthorization; //type: Radius::Nodes::Node::DynamicAuthorization
 
@@ -91,6 +92,7 @@ class Radius::Nodes::Node : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::DeadCriteria> dead_criteria;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::Authentication> authentication;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::Accounting> accounting;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::DynamicAuthorizationClients> dynamic_authorization_clients;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::ServerGroups> server_groups;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::DynamicAuthorization> dynamic_authorization;
         
@@ -412,6 +414,74 @@ class Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_ : public ydk
 }; // Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_
 
 
+class Radius::Nodes::Node::DynamicAuthorizationClients : public ydk::Entity
+{
+    public:
+        DynamicAuthorizationClients();
+        ~DynamicAuthorizationClients();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class DynamicAuthorClient; //type: Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient
+
+        ydk::YList dynamic_author_client;
+        
+}; // Radius::Nodes::Node::DynamicAuthorizationClients
+
+
+class Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient : public ydk::Entity
+{
+    public:
+        DynamicAuthorClient();
+        ~DynamicAuthorClient();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf client_address; //type: string
+        ydk::YLeaf disc_reqs; //type: uint32
+        ydk::YLeaf disc_acks; //type: uint32
+        ydk::YLeaf disc_naks; //type: uint32
+        ydk::YLeaf disc_bad_auth; //type: uint32
+        ydk::YLeaf drop_disc_reqs; //type: uint32
+        ydk::YLeaf coa_reqs; //type: uint32
+        ydk::YLeaf coa_acks; //type: uint32
+        ydk::YLeaf coa_naks; //type: uint32
+        ydk::YLeaf coa_bad_auth; //type: uint32
+        ydk::YLeaf drop_coa_reqs; //type: uint32
+        ydk::YLeaf unknown_types; //type: uint32
+        ydk::YLeaf internal_error; //type: uint32
+        ydk::YLeaf pak_decode_fail; //type: uint32
+        ydk::YLeaf vrf_parse_fail_err; //type: uint32
+        ydk::YLeaf unknown_vsa_error; //type: uint32
+        ydk::YLeaf send_msg_failed; //type: uint32
+        ydk::YLeaf radius_to_ch; //type: uint32
+        ydk::YLeaf ch_to_radius; //type: uint32
+        ydk::YLeaf service_parse_fail; //type: uint32
+        ydk::YLeaf multi_subs_error; //type: uint32
+        ydk::YLeaf service_not_present; //type: uint32
+        ydk::YLeaf send_to_ch_fail; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf addr_buf; //type: string
+
+}; // Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient
+
+
 class Radius::Nodes::Node::ServerGroups : public ydk::Entity
 {
     public:
@@ -485,6 +555,7 @@ class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_ : public ydk:
         ydk::YLeaf is_private; //type: boolean
         ydk::YLeaf ip_address; //type: string
         ydk::YLeaf family; //type: string
+        ydk::YLeaf redirected_requests; //type: uint32
         class Accounting; //type: Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting
         class Authentication; //type: Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication
         class Authorization; //type: Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization
@@ -616,6 +687,8 @@ class Radius::Nodes::Node::DynamicAuthorization : public ydk::Entity
 
         ydk::YLeaf disconnected_invalid_requests; //type: uint32
         ydk::YLeaf invalid_coa_requests; //type: uint32
+        ydk::YLeaf radius_context_not_found; //type: uint32
+        ydk::YLeaf client_context_not_found; //type: uint32
 
 }; // Radius::Nodes::Node::DynamicAuthorization
 

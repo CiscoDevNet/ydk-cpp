@@ -161,7 +161,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges> address_ranges;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes> excludes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark> utilization_mark;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark> utilization_mark; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges> prefix_ranges;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks> networks;
         
@@ -443,7 +443,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges> address_ranges;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes> excludes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark> utilization_mark;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark> utilization_mark; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks> networks;
         
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool

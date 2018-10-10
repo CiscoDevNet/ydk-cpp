@@ -767,7 +767,8 @@ SessionRedundancyManager::Summary::Summary()
     slave_group_count{YType::uint32, "slave-group-count"},
     interface_count{YType::uint32, "interface-count"},
     master_interface_count{YType::uint32, "master-interface-count"},
-    slave_interface_count{YType::uint32, "slave-interface-count"}
+    slave_interface_count{YType::uint32, "slave-interface-count"},
+    pool_count{YType::uint32, "pool-count"}
 {
 
     yang_name = "summary"; yang_parent_name = "session-redundancy-manager"; is_top_level_class = false; has_list_ancestor = false; 
@@ -795,7 +796,8 @@ bool SessionRedundancyManager::Summary::has_data() const
 	|| slave_group_count.is_set
 	|| interface_count.is_set
 	|| master_interface_count.is_set
-	|| slave_interface_count.is_set;
+	|| slave_interface_count.is_set
+	|| pool_count.is_set;
 }
 
 bool SessionRedundancyManager::Summary::has_operation() const
@@ -816,7 +818,8 @@ bool SessionRedundancyManager::Summary::has_operation() const
 	|| ydk::is_set(slave_group_count.yfilter)
 	|| ydk::is_set(interface_count.yfilter)
 	|| ydk::is_set(master_interface_count.yfilter)
-	|| ydk::is_set(slave_interface_count.yfilter);
+	|| ydk::is_set(slave_interface_count.yfilter)
+	|| ydk::is_set(pool_count.yfilter);
 }
 
 std::string SessionRedundancyManager::Summary::get_absolute_path() const
@@ -853,6 +856,7 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyManager::Summary
     if (interface_count.is_set || is_set(interface_count.yfilter)) leaf_name_data.push_back(interface_count.get_name_leafdata());
     if (master_interface_count.is_set || is_set(master_interface_count.yfilter)) leaf_name_data.push_back(master_interface_count.get_name_leafdata());
     if (slave_interface_count.is_set || is_set(slave_interface_count.yfilter)) leaf_name_data.push_back(slave_interface_count.get_name_leafdata());
+    if (pool_count.is_set || is_set(pool_count.yfilter)) leaf_name_data.push_back(pool_count.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -968,6 +972,12 @@ void SessionRedundancyManager::Summary::set_value(const std::string & value_path
         slave_interface_count.value_namespace = name_space;
         slave_interface_count.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "pool-count")
+    {
+        pool_count = value;
+        pool_count.value_namespace = name_space;
+        pool_count.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void SessionRedundancyManager::Summary::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1036,11 +1046,15 @@ void SessionRedundancyManager::Summary::set_filter(const std::string & value_pat
     {
         slave_interface_count.yfilter = yfilter;
     }
+    if(value_path == "pool-count")
+    {
+        pool_count.yfilter = yfilter;
+    }
 }
 
 bool SessionRedundancyManager::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "disabled" || name == "active-state" || name == "preferred-role" || name == "slave-mode" || name == "hold-timer" || name == "source-interface-name" || name == "vrf-name" || name == "source-interface-ipv4-address" || name == "source-interface-ipv6-address" || name == "group-count" || name == "disabled-group-count" || name == "master-group-count" || name == "slave-group-count" || name == "interface-count" || name == "master-interface-count" || name == "slave-interface-count")
+    if(name == "disabled" || name == "active-state" || name == "preferred-role" || name == "slave-mode" || name == "hold-timer" || name == "source-interface-name" || name == "vrf-name" || name == "source-interface-ipv4-address" || name == "source-interface-ipv6-address" || name == "group-count" || name == "disabled-group-count" || name == "master-group-count" || name == "slave-group-count" || name == "interface-count" || name == "master-interface-count" || name == "slave-interface-count" || name == "pool-count")
         return true;
     return false;
 }
@@ -2146,7 +2160,12 @@ SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::ClientId()
     tx_list_active_ok{YType::uint32, "tx-list-active-ok"},
     tx_list_active_not_ok{YType::uint32, "tx-list-active-not-ok"},
     tx_list_de_active_ok{YType::uint32, "tx-list-de-active-ok"},
-    tx_list_de_active_not_ok{YType::uint32, "tx-list-de-active-not-ok"}
+    tx_list_de_active_not_ok{YType::uint32, "tx-list-de-active-not-ok"},
+    tx_list_send_pool_role_ok{YType::uint32, "tx-list-send-pool-role-ok"},
+    tx_list_send_pool_role_not_ok{YType::uint32, "tx-list-send-pool-role-not-ok"},
+    tx_list_send_pool_update_ok{YType::uint32, "tx-list-send-pool-update-ok"},
+    tx_list_send_pool_update_not_ok{YType::uint32, "tx-list-send-pool-update-not-ok"},
+    tx_list_recv_pool_update_ok{YType::uint32, "tx-list-recv-pool-update-ok"}
 {
 
     yang_name = "client-id"; yang_parent_name = "client-ids"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2206,7 +2225,12 @@ bool SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::has_data() const
 	|| tx_list_active_ok.is_set
 	|| tx_list_active_not_ok.is_set
 	|| tx_list_de_active_ok.is_set
-	|| tx_list_de_active_not_ok.is_set;
+	|| tx_list_de_active_not_ok.is_set
+	|| tx_list_send_pool_role_ok.is_set
+	|| tx_list_send_pool_role_not_ok.is_set
+	|| tx_list_send_pool_update_ok.is_set
+	|| tx_list_send_pool_update_not_ok.is_set
+	|| tx_list_recv_pool_update_ok.is_set;
 }
 
 bool SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::has_operation() const
@@ -2259,7 +2283,12 @@ bool SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::has_operation() c
 	|| ydk::is_set(tx_list_active_ok.yfilter)
 	|| ydk::is_set(tx_list_active_not_ok.yfilter)
 	|| ydk::is_set(tx_list_de_active_ok.yfilter)
-	|| ydk::is_set(tx_list_de_active_not_ok.yfilter);
+	|| ydk::is_set(tx_list_de_active_not_ok.yfilter)
+	|| ydk::is_set(tx_list_send_pool_role_ok.yfilter)
+	|| ydk::is_set(tx_list_send_pool_role_not_ok.yfilter)
+	|| ydk::is_set(tx_list_send_pool_update_ok.yfilter)
+	|| ydk::is_set(tx_list_send_pool_update_not_ok.yfilter)
+	|| ydk::is_set(tx_list_recv_pool_update_ok.yfilter);
 }
 
 std::string SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::get_segment_path() const
@@ -2322,6 +2351,11 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
     if (tx_list_active_not_ok.is_set || is_set(tx_list_active_not_ok.yfilter)) leaf_name_data.push_back(tx_list_active_not_ok.get_name_leafdata());
     if (tx_list_de_active_ok.is_set || is_set(tx_list_de_active_ok.yfilter)) leaf_name_data.push_back(tx_list_de_active_ok.get_name_leafdata());
     if (tx_list_de_active_not_ok.is_set || is_set(tx_list_de_active_not_ok.yfilter)) leaf_name_data.push_back(tx_list_de_active_not_ok.get_name_leafdata());
+    if (tx_list_send_pool_role_ok.is_set || is_set(tx_list_send_pool_role_ok.yfilter)) leaf_name_data.push_back(tx_list_send_pool_role_ok.get_name_leafdata());
+    if (tx_list_send_pool_role_not_ok.is_set || is_set(tx_list_send_pool_role_not_ok.yfilter)) leaf_name_data.push_back(tx_list_send_pool_role_not_ok.get_name_leafdata());
+    if (tx_list_send_pool_update_ok.is_set || is_set(tx_list_send_pool_update_ok.yfilter)) leaf_name_data.push_back(tx_list_send_pool_update_ok.get_name_leafdata());
+    if (tx_list_send_pool_update_not_ok.is_set || is_set(tx_list_send_pool_update_not_ok.yfilter)) leaf_name_data.push_back(tx_list_send_pool_update_not_ok.get_name_leafdata());
+    if (tx_list_recv_pool_update_ok.is_set || is_set(tx_list_recv_pool_update_ok.yfilter)) leaf_name_data.push_back(tx_list_recv_pool_update_ok.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2629,6 +2663,36 @@ void SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::set_value(const s
         tx_list_de_active_not_ok.value_namespace = name_space;
         tx_list_de_active_not_ok.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "tx-list-send-pool-role-ok")
+    {
+        tx_list_send_pool_role_ok = value;
+        tx_list_send_pool_role_ok.value_namespace = name_space;
+        tx_list_send_pool_role_ok.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-list-send-pool-role-not-ok")
+    {
+        tx_list_send_pool_role_not_ok = value;
+        tx_list_send_pool_role_not_ok.value_namespace = name_space;
+        tx_list_send_pool_role_not_ok.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-list-send-pool-update-ok")
+    {
+        tx_list_send_pool_update_ok = value;
+        tx_list_send_pool_update_ok.value_namespace = name_space;
+        tx_list_send_pool_update_ok.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-list-send-pool-update-not-ok")
+    {
+        tx_list_send_pool_update_not_ok = value;
+        tx_list_send_pool_update_not_ok.value_namespace = name_space;
+        tx_list_send_pool_update_not_ok.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-list-recv-pool-update-ok")
+    {
+        tx_list_recv_pool_update_ok = value;
+        tx_list_recv_pool_update_ok.value_namespace = name_space;
+        tx_list_recv_pool_update_ok.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2825,11 +2889,31 @@ void SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::set_filter(const 
     {
         tx_list_de_active_not_ok.yfilter = yfilter;
     }
+    if(value_path == "tx-list-send-pool-role-ok")
+    {
+        tx_list_send_pool_role_ok.yfilter = yfilter;
+    }
+    if(value_path == "tx-list-send-pool-role-not-ok")
+    {
+        tx_list_send_pool_role_not_ok.yfilter = yfilter;
+    }
+    if(value_path == "tx-list-send-pool-update-ok")
+    {
+        tx_list_send_pool_update_ok.yfilter = yfilter;
+    }
+    if(value_path == "tx-list-send-pool-update-not-ok")
+    {
+        tx_list_send_pool_update_not_ok.yfilter = yfilter;
+    }
+    if(value_path == "tx-list-recv-pool-update-ok")
+    {
+        tx_list_recv_pool_update_ok.yfilter = yfilter;
+    }
 }
 
 bool SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "stats-client-id" || name == "tx-list-start-of-download-add-ok" || name == "tx-list-start-of-download-add-not-ok" || name == "tx-list-end-of-download-add-ok" || name == "tx-list-end-of-download-add-not-ok" || name == "tx-list-end-of-message-add-ok" || name == "tx-list-end-of-message-add-not-ok" || name == "tx-list-clear-all-add-ok" || name == "tx-list-clear-all-add-not-ok" || name == "tx-list-clear-selected-add-ok" || name == "tx-list-clear-selected-add-not-ok" || name == "tx-list-replay-all-add-ok" || name == "tx-list-replay-all-add-not-ok" || name == "tx-list-replay-selected-add-ok" || name == "tx-list-replay-selected-add-not-ok" || name == "tx-list-session-session-add-ok" || name == "tx-list-session-session-add-not-ok" || name == "tx-list-session-session-update-ok" || name == "tx-list-session-session-update-not-ok" || name == "tx-list-session-session-delete" || name == "clean-call-back" || name == "tx-list-encode-session-session-ok" || name == "tx-list-encode-session-session-partial-write" || name == "last-replay-all-count" || name == "tx-list-receive-command-replay-all" || name == "tx-list-receive-command-replay-selected" || name == "tx-list-receive-session-session-delete-valid" || name == "tx-list-receive-session-session-delete-invalid" || name == "tx-list-receive-session-session-update-valid" || name == "tx-list-receive-session-session-update-invalid" || name == "tx-list-receive-session-session-sod-all" || name == "tx-list-receive-session-session-sod-selected" || name == "tx-list-receive-session-session-eod-all" || name == "tx-list-receive-session-session-eod-selected" || name == "tx-list-receive-session-session-eoms" || name == "tx-list-receive-session-session-clear-all" || name == "tx-list-receive-session-session-clear-selected" || name == "tx-list-receive-session-session-neg-ack" || name == "tx-list-receive-session-session-neg-ack-not-ok" || name == "tx-list-client-registration-ok" || name == "tx-list-client-registration-not-ok" || name == "tx-list-client-de-registration" || name == "tx-list-client-connection-down" || name == "tx-list-client-cleanup" || name == "tx-list-active-ok" || name == "tx-list-active-not-ok" || name == "tx-list-de-active-ok" || name == "tx-list-de-active-not-ok")
+    if(name == "stats-client-id" || name == "tx-list-start-of-download-add-ok" || name == "tx-list-start-of-download-add-not-ok" || name == "tx-list-end-of-download-add-ok" || name == "tx-list-end-of-download-add-not-ok" || name == "tx-list-end-of-message-add-ok" || name == "tx-list-end-of-message-add-not-ok" || name == "tx-list-clear-all-add-ok" || name == "tx-list-clear-all-add-not-ok" || name == "tx-list-clear-selected-add-ok" || name == "tx-list-clear-selected-add-not-ok" || name == "tx-list-replay-all-add-ok" || name == "tx-list-replay-all-add-not-ok" || name == "tx-list-replay-selected-add-ok" || name == "tx-list-replay-selected-add-not-ok" || name == "tx-list-session-session-add-ok" || name == "tx-list-session-session-add-not-ok" || name == "tx-list-session-session-update-ok" || name == "tx-list-session-session-update-not-ok" || name == "tx-list-session-session-delete" || name == "clean-call-back" || name == "tx-list-encode-session-session-ok" || name == "tx-list-encode-session-session-partial-write" || name == "last-replay-all-count" || name == "tx-list-receive-command-replay-all" || name == "tx-list-receive-command-replay-selected" || name == "tx-list-receive-session-session-delete-valid" || name == "tx-list-receive-session-session-delete-invalid" || name == "tx-list-receive-session-session-update-valid" || name == "tx-list-receive-session-session-update-invalid" || name == "tx-list-receive-session-session-sod-all" || name == "tx-list-receive-session-session-sod-selected" || name == "tx-list-receive-session-session-eod-all" || name == "tx-list-receive-session-session-eod-selected" || name == "tx-list-receive-session-session-eoms" || name == "tx-list-receive-session-session-clear-all" || name == "tx-list-receive-session-session-clear-selected" || name == "tx-list-receive-session-session-neg-ack" || name == "tx-list-receive-session-session-neg-ack-not-ok" || name == "tx-list-client-registration-ok" || name == "tx-list-client-registration-not-ok" || name == "tx-list-client-de-registration" || name == "tx-list-client-connection-down" || name == "tx-list-client-cleanup" || name == "tx-list-active-ok" || name == "tx-list-active-not-ok" || name == "tx-list-de-active-ok" || name == "tx-list-de-active-not-ok" || name == "tx-list-send-pool-role-ok" || name == "tx-list-send-pool-role-not-ok" || name == "tx-list-send-pool-update-ok" || name == "tx-list-send-pool-update-not-ok" || name == "tx-list-recv-pool-update-ok")
         return true;
     return false;
 }
@@ -3514,10 +3598,12 @@ SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::GroupId()
     pending_session_delete_count{YType::uint32, "pending-session-delete-count"},
     interface_count{YType::uint32, "interface-count"},
     revertive_timer{YType::uint32, "revertive-timer"},
-    switchover_revert_time{YType::uint32, "switchover-revert-time"}
+    switchover_revert_time{YType::uint32, "switchover-revert-time"},
+    pool_count{YType::uint32, "pool-count"}
         ,
     client_session_count(this, {})
     , interface(this, {})
+    , pool(this, {})
 {
 
     yang_name = "group-id"; yang_parent_name = "group-ids"; is_top_level_class = false; has_list_ancestor = true; 
@@ -3538,6 +3624,11 @@ bool SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::has_data() const
     for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<pool.len(); index++)
+    {
+        if(pool[index]->has_data())
             return true;
     }
     return group_id.is_set
@@ -3574,7 +3665,8 @@ bool SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::has_data() const
 	|| pending_session_delete_count.is_set
 	|| interface_count.is_set
 	|| revertive_timer.is_set
-	|| switchover_revert_time.is_set;
+	|| switchover_revert_time.is_set
+	|| pool_count.is_set;
 }
 
 bool SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::has_operation() const
@@ -3587,6 +3679,11 @@ bool SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::has_operation() con
     for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<pool.len(); index++)
+    {
+        if(pool[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -3624,7 +3721,8 @@ bool SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::has_operation() con
 	|| ydk::is_set(pending_session_delete_count.yfilter)
 	|| ydk::is_set(interface_count.yfilter)
 	|| ydk::is_set(revertive_timer.yfilter)
-	|| ydk::is_set(switchover_revert_time.yfilter);
+	|| ydk::is_set(switchover_revert_time.yfilter)
+	|| ydk::is_set(pool_count.yfilter);
 }
 
 std::string SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_segment_path() const
@@ -3674,6 +3772,7 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
     if (interface_count.is_set || is_set(interface_count.yfilter)) leaf_name_data.push_back(interface_count.get_name_leafdata());
     if (revertive_timer.is_set || is_set(revertive_timer.yfilter)) leaf_name_data.push_back(revertive_timer.get_name_leafdata());
     if (switchover_revert_time.is_set || is_set(switchover_revert_time.yfilter)) leaf_name_data.push_back(switchover_revert_time.get_name_leafdata());
+    if (pool_count.is_set || is_set(pool_count.yfilter)) leaf_name_data.push_back(pool_count.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3697,6 +3796,14 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::
         return c;
     }
 
+    if(child_yang_name == "pool")
+    {
+        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool>();
+        c->parent = this;
+        pool.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -3715,6 +3822,15 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::No
 
     count = 0;
     for (auto c : interface.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : pool.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3937,6 +4053,12 @@ void SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::set_value(const std
         switchover_revert_time.value_namespace = name_space;
         switchover_revert_time.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "pool-count")
+    {
+        pool_count = value;
+        pool_count.value_namespace = name_space;
+        pool_count.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4081,11 +4203,15 @@ void SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::set_filter(const st
     {
         switchover_revert_time.yfilter = yfilter;
     }
+    if(value_path == "pool-count")
+    {
+        pool_count.yfilter = yfilter;
+    }
 }
 
 bool SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-session-count" || name == "interface" || name == "group-id" || name == "group-id-xr" || name == "description" || name == "disabled" || name == "init-role" || name == "negotiating-role" || name == "current-role" || name == "slave-mode" || name == "hold-timer" || name == "core-tracking-object-name" || name == "core-tracking-object-status" || name == "access-tracking-object-name" || name == "access-tracking-object-status" || name == "object-tracking-status" || name == "peer-ipv4-address" || name == "peer-ipv6-address" || name == "peer-status" || name == "peer-last-negotiation-time" || name == "peer-last-up-time" || name == "peer-last-down-time" || name == "peer-init-role" || name == "peer-negotiating-role" || name == "peer-current-role" || name == "peer-object-tracking-status" || name == "last-switchover-time" || name == "switchover-count" || name == "last-switchover-reason" || name == "switchover-hold-time" || name == "session-count" || name == "slave-update-failure-count" || name == "pending-session-update-count" || name == "pending-session-delete-count" || name == "interface-count" || name == "revertive-timer" || name == "switchover-revert-time")
+    if(name == "client-session-count" || name == "interface" || name == "pool" || name == "group-id" || name == "group-id-xr" || name == "description" || name == "disabled" || name == "init-role" || name == "negotiating-role" || name == "current-role" || name == "slave-mode" || name == "hold-timer" || name == "core-tracking-object-name" || name == "core-tracking-object-status" || name == "access-tracking-object-name" || name == "access-tracking-object-status" || name == "object-tracking-status" || name == "peer-ipv4-address" || name == "peer-ipv6-address" || name == "peer-status" || name == "peer-last-negotiation-time" || name == "peer-last-up-time" || name == "peer-last-down-time" || name == "peer-init-role" || name == "peer-negotiating-role" || name == "peer-current-role" || name == "peer-object-tracking-status" || name == "last-switchover-time" || name == "switchover-count" || name == "last-switchover-reason" || name == "switchover-hold-time" || name == "session-count" || name == "slave-update-failure-count" || name == "pending-session-update-count" || name == "pending-session-delete-count" || name == "interface-count" || name == "revertive-timer" || name == "switchover-revert-time" || name == "pool-count")
         return true;
     return false;
 }
@@ -4298,6 +4424,84 @@ void SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::set_filt
 bool SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name" || name == "interface-synchronization-id" || name == "forward-referenced" || name == "session-count")
+        return true;
+    return false;
+}
+
+SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::Pool()
+    :
+    pool_name{YType::str, "pool-name"}
+{
+
+    yang_name = "pool"; yang_parent_name = "group-id"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::~Pool()
+{
+}
+
+bool SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::has_data() const
+{
+    if (is_presence_container) return true;
+    return pool_name.is_set;
+}
+
+bool SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(pool_name.yfilter);
+}
+
+std::string SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pool";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pool_name.is_set || is_set(pool_name.yfilter)) leaf_name_data.push_back(pool_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pool-name")
+    {
+        pool_name = value;
+        pool_name.value_namespace = name_space;
+        pool_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pool-name")
+    {
+        pool_name.yfilter = yfilter;
+    }
+}
+
+bool SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pool-name")
         return true;
     return false;
 }
@@ -5158,7 +5362,8 @@ SessionRedundancyAgent::Nodes::Node::StatsGlobal::StatsGlobal()
     tx_list_peer_cmd_connection_up_not_ok{YType::uint32, "tx-list-peer-cmd-connection-up-not-ok"},
     tx_list_peer_cmd_connection_down_not_ok{YType::uint32, "tx-list-peer-cmd-connection-down-not-ok"},
     tx_list_peer_session_connection_up_not_ok{YType::uint32, "tx-list-peer-session-connection-up-not-ok"},
-    tx_list_peer_session_connection_down_not_ok{YType::uint32, "tx-list-peer-session-connection-down-not-ok"}
+    tx_list_peer_session_connection_down_not_ok{YType::uint32, "tx-list-peer-session-connection-down-not-ok"},
+    tx_list_send_pool_update_not_ok{YType::uint32, "tx-list-send-pool-update-not-ok"}
         ,
     intf_status_statistics(std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics>())
     , tx_list_statistics(std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics>())
@@ -5228,6 +5433,7 @@ bool SessionRedundancyAgent::Nodes::Node::StatsGlobal::has_data() const
 	|| tx_list_peer_cmd_connection_down_not_ok.is_set
 	|| tx_list_peer_session_connection_up_not_ok.is_set
 	|| tx_list_peer_session_connection_down_not_ok.is_set
+	|| tx_list_send_pool_update_not_ok.is_set
 	|| (intf_status_statistics !=  nullptr && intf_status_statistics->has_data())
 	|| (tx_list_statistics !=  nullptr && tx_list_statistics->has_data());
 }
@@ -5284,6 +5490,7 @@ bool SessionRedundancyAgent::Nodes::Node::StatsGlobal::has_operation() const
 	|| ydk::is_set(tx_list_peer_cmd_connection_down_not_ok.yfilter)
 	|| ydk::is_set(tx_list_peer_session_connection_up_not_ok.yfilter)
 	|| ydk::is_set(tx_list_peer_session_connection_down_not_ok.yfilter)
+	|| ydk::is_set(tx_list_send_pool_update_not_ok.yfilter)
 	|| (intf_status_statistics !=  nullptr && intf_status_statistics->has_operation())
 	|| (tx_list_statistics !=  nullptr && tx_list_statistics->has_operation());
 }
@@ -5333,6 +5540,7 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
     if (tx_list_peer_cmd_connection_down_not_ok.is_set || is_set(tx_list_peer_cmd_connection_down_not_ok.yfilter)) leaf_name_data.push_back(tx_list_peer_cmd_connection_down_not_ok.get_name_leafdata());
     if (tx_list_peer_session_connection_up_not_ok.is_set || is_set(tx_list_peer_session_connection_up_not_ok.yfilter)) leaf_name_data.push_back(tx_list_peer_session_connection_up_not_ok.get_name_leafdata());
     if (tx_list_peer_session_connection_down_not_ok.is_set || is_set(tx_list_peer_session_connection_down_not_ok.yfilter)) leaf_name_data.push_back(tx_list_peer_session_connection_down_not_ok.get_name_leafdata());
+    if (tx_list_send_pool_update_not_ok.is_set || is_set(tx_list_send_pool_update_not_ok.yfilter)) leaf_name_data.push_back(tx_list_send_pool_update_not_ok.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5635,6 +5843,12 @@ void SessionRedundancyAgent::Nodes::Node::StatsGlobal::set_value(const std::stri
         tx_list_peer_session_connection_down_not_ok.value_namespace = name_space;
         tx_list_peer_session_connection_down_not_ok.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "tx-list-send-pool-update-not-ok")
+    {
+        tx_list_send_pool_update_not_ok = value;
+        tx_list_send_pool_update_not_ok.value_namespace = name_space;
+        tx_list_send_pool_update_not_ok.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void SessionRedundancyAgent::Nodes::Node::StatsGlobal::set_filter(const std::string & value_path, YFilter yfilter)
@@ -5775,11 +5989,15 @@ void SessionRedundancyAgent::Nodes::Node::StatsGlobal::set_filter(const std::str
     {
         tx_list_peer_session_connection_down_not_ok.yfilter = yfilter;
     }
+    if(value_path == "tx-list-send-pool-update-not-ok")
+    {
+        tx_list_send_pool_update_not_ok.yfilter = yfilter;
+    }
 }
 
 bool SessionRedundancyAgent::Nodes::Node::StatsGlobal::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "intf-status-statistics" || name == "tx-list-statistics" || name == "client-status" || name == "opaque-memory-status" || name == "tx-list-over-tcp-status" || name == "source-interface-name" || name == "vrf-name" || name == "source-interface-ipv4-address" || name == "source-interface-ipv6-address" || name == "redundancy-role" || name == "restart-client-sync-in-progress" || name == "client-init-sync-time-stamp" || name == "restart-peer-sync-in-progress" || name == "peer-init-sync-time-stamp" || name == "sync-in-progress" || name == "peer-action-timer" || name == "retry-timer-remaining" || name == "tx-list-client-registration-invalid" || name == "tx-list-client-de-registration-invalid" || name == "tx-list-client-connection-up" || name == "tx-list-client-connection-down" || name == "tx-list-client-peer-done" || name == "tx-list-client-message-call-back" || name == "tx-list-client-receive-valid" || name == "tx-list-client-receive-invalid" || name == "tx-list-client-receive-command-valid" || name == "tx-list-client-receive-command-invalid" || name == "tx-list-client-receive-session-sessionvalid" || name == "tx-list-client-receive-session-session-invalid" || name == "tx-list-peer-timer-handler" || name == "tx-list-peer-registration-invalid" || name == "tx-list-peer-de-registration-invalid" || name == "tx-list-peer-message-call-back-valid" || name == "tx-list-peer-message-call-back-invalid" || name == "tx-list-peer-done" || name == "tx-list-peer-cmd-connection-up-not-ok" || name == "tx-list-peer-cmd-connection-down-not-ok" || name == "tx-list-peer-session-connection-up-not-ok" || name == "tx-list-peer-session-connection-down-not-ok")
+    if(name == "intf-status-statistics" || name == "tx-list-statistics" || name == "client-status" || name == "opaque-memory-status" || name == "tx-list-over-tcp-status" || name == "source-interface-name" || name == "vrf-name" || name == "source-interface-ipv4-address" || name == "source-interface-ipv6-address" || name == "redundancy-role" || name == "restart-client-sync-in-progress" || name == "client-init-sync-time-stamp" || name == "restart-peer-sync-in-progress" || name == "peer-init-sync-time-stamp" || name == "sync-in-progress" || name == "peer-action-timer" || name == "retry-timer-remaining" || name == "tx-list-client-registration-invalid" || name == "tx-list-client-de-registration-invalid" || name == "tx-list-client-connection-up" || name == "tx-list-client-connection-down" || name == "tx-list-client-peer-done" || name == "tx-list-client-message-call-back" || name == "tx-list-client-receive-valid" || name == "tx-list-client-receive-invalid" || name == "tx-list-client-receive-command-valid" || name == "tx-list-client-receive-command-invalid" || name == "tx-list-client-receive-session-sessionvalid" || name == "tx-list-client-receive-session-session-invalid" || name == "tx-list-peer-timer-handler" || name == "tx-list-peer-registration-invalid" || name == "tx-list-peer-de-registration-invalid" || name == "tx-list-peer-message-call-back-valid" || name == "tx-list-peer-message-call-back-invalid" || name == "tx-list-peer-done" || name == "tx-list-peer-cmd-connection-up-not-ok" || name == "tx-list-peer-cmd-connection-down-not-ok" || name == "tx-list-peer-session-connection-up-not-ok" || name == "tx-list-peer-session-connection-down-not-ok" || name == "tx-list-send-pool-update-not-ok")
         return true;
     return false;
 }
@@ -7155,6 +7373,7 @@ const Enum::YLeaf SergShowImRole::slave {2, "slave"};
 const Enum::YLeaf SergShowComp::serga {0, "serga"};
 const Enum::YLeaf SergShowComp::ipv6nd {1, "ipv6nd"};
 const Enum::YLeaf SergShowComp::dhcpv6 {2, "dhcpv6"};
+const Enum::YLeaf SergShowComp::daps {3, "daps"};
 
 const Enum::YLeaf SergShowSessionOperation::none {0, "none"};
 const Enum::YLeaf SergShowSessionOperation::update {1, "update"};

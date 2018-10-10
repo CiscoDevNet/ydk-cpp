@@ -22,6 +22,7 @@ Pce::Pce()
     , pcc_addresses(std::make_shared<Pce::PccAddresses>())
     , logging(std::make_shared<Pce::Logging>())
     , backoff(nullptr) // presence node
+    , rest(nullptr) // presence node
     , state_syncs(std::make_shared<Pce::StateSyncs>())
     , segment_routing(std::make_shared<Pce::SegmentRouting>())
     , timers(nullptr) // presence node
@@ -56,6 +57,7 @@ bool Pce::has_data() const
 	|| (pcc_addresses !=  nullptr && pcc_addresses->has_data())
 	|| (logging !=  nullptr && logging->has_data())
 	|| (backoff !=  nullptr && backoff->has_data())
+	|| (rest !=  nullptr && rest->has_data())
 	|| (state_syncs !=  nullptr && state_syncs->has_data())
 	|| (segment_routing !=  nullptr && segment_routing->has_data())
 	|| (timers !=  nullptr && timers->has_data())
@@ -75,6 +77,7 @@ bool Pce::has_operation() const
 	|| (pcc_addresses !=  nullptr && pcc_addresses->has_operation())
 	|| (logging !=  nullptr && logging->has_operation())
 	|| (backoff !=  nullptr && backoff->has_operation())
+	|| (rest !=  nullptr && rest->has_operation())
 	|| (state_syncs !=  nullptr && state_syncs->has_operation())
 	|| (segment_routing !=  nullptr && segment_routing->has_operation())
 	|| (timers !=  nullptr && timers->has_operation())
@@ -139,6 +142,15 @@ std::shared_ptr<Entity> Pce::get_child_by_name(const std::string & child_yang_na
             backoff = std::make_shared<Pce::Backoff>();
         }
         return backoff;
+    }
+
+    if(child_yang_name == "rest")
+    {
+        if(rest == nullptr)
+        {
+            rest = std::make_shared<Pce::Rest>();
+        }
+        return rest;
     }
 
     if(child_yang_name == "state-syncs")
@@ -220,6 +232,11 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::get_children() const
     if(backoff != nullptr)
     {
         children["backoff"] = backoff;
+    }
+
+    if(rest != nullptr)
+    {
+        children["rest"] = rest;
     }
 
     if(state_syncs != nullptr)
@@ -330,7 +347,7 @@ std::map<std::pair<std::string, std::string>, std::string> Pce::get_namespace_id
 
 bool Pce::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv6-state-syncs" || name == "pcc-addresses" || name == "logging" || name == "backoff" || name == "state-syncs" || name == "segment-routing" || name == "timers" || name == "netconf" || name == "disjoint-path" || name == "explicit-paths" || name == "server-address" || name == "ipv6-server-address" || name == "password" || name == "enable")
+    if(name == "ipv6-state-syncs" || name == "pcc-addresses" || name == "logging" || name == "backoff" || name == "rest" || name == "state-syncs" || name == "segment-routing" || name == "timers" || name == "netconf" || name == "disjoint-path" || name == "explicit-paths" || name == "server-address" || name == "ipv6-server-address" || name == "password" || name == "enable")
         return true;
     return false;
 }
@@ -1538,6 +1555,338 @@ bool Pce::Backoff::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+Pce::Rest::Rest()
+    :
+    rest_authentication{YType::enumeration, "rest-authentication"},
+    enable{YType::empty, "enable"}
+        ,
+    rest_users(std::make_shared<Pce::Rest::RestUsers>())
+{
+    rest_users->parent = this;
+
+    yang_name = "rest"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Pce::Rest::~Rest()
+{
+}
+
+bool Pce::Rest::has_data() const
+{
+    if (is_presence_container) return true;
+    return rest_authentication.is_set
+	|| enable.is_set
+	|| (rest_users !=  nullptr && rest_users->has_data());
+}
+
+bool Pce::Rest::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rest_authentication.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (rest_users !=  nullptr && rest_users->has_operation());
+}
+
+std::string Pce::Rest::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-cfg:pce/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::Rest::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rest";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::Rest::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rest_authentication.is_set || is_set(rest_authentication.yfilter)) leaf_name_data.push_back(rest_authentication.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::Rest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rest-users")
+    {
+        if(rest_users == nullptr)
+        {
+            rest_users = std::make_shared<Pce::Rest::RestUsers>();
+        }
+        return rest_users;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::Rest::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(rest_users != nullptr)
+    {
+        children["rest-users"] = rest_users;
+    }
+
+    return children;
+}
+
+void Pce::Rest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rest-authentication")
+    {
+        rest_authentication = value;
+        rest_authentication.value_namespace = name_space;
+        rest_authentication.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::Rest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rest-authentication")
+    {
+        rest_authentication.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Pce::Rest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rest-users" || name == "rest-authentication" || name == "enable")
+        return true;
+    return false;
+}
+
+Pce::Rest::RestUsers::RestUsers()
+    :
+    rest_user(this, {"name"})
+{
+
+    yang_name = "rest-users"; yang_parent_name = "rest"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::Rest::RestUsers::~RestUsers()
+{
+}
+
+bool Pce::Rest::RestUsers::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rest_user.len(); index++)
+    {
+        if(rest_user[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Pce::Rest::RestUsers::has_operation() const
+{
+    for (std::size_t index=0; index<rest_user.len(); index++)
+    {
+        if(rest_user[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Pce::Rest::RestUsers::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-cfg:pce/rest/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::Rest::RestUsers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rest-users";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::Rest::RestUsers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::Rest::RestUsers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rest-user")
+    {
+        auto c = std::make_shared<Pce::Rest::RestUsers::RestUser>();
+        c->parent = this;
+        rest_user.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::Rest::RestUsers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : rest_user.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Pce::Rest::RestUsers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pce::Rest::RestUsers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::Rest::RestUsers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rest-user")
+        return true;
+    return false;
+}
+
+Pce::Rest::RestUsers::RestUser::RestUser()
+    :
+    name{YType::str, "name"},
+    rest_user_password{YType::str, "rest-user-password"},
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "rest-user"; yang_parent_name = "rest-users"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::Rest::RestUsers::RestUser::~RestUser()
+{
+}
+
+bool Pce::Rest::RestUsers::RestUser::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| rest_user_password.is_set
+	|| enable.is_set;
+}
+
+bool Pce::Rest::RestUsers::RestUser::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(rest_user_password.yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Pce::Rest::RestUsers::RestUser::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-cfg:pce/rest/rest-users/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::Rest::RestUsers::RestUser::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rest-user";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::Rest::RestUsers::RestUser::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (rest_user_password.is_set || is_set(rest_user_password.yfilter)) leaf_name_data.push_back(rest_user_password.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::Rest::RestUsers::RestUser::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::Rest::RestUsers::RestUser::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pce::Rest::RestUsers::RestUser::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rest-user-password")
+    {
+        rest_user_password = value;
+        rest_user_password.value_namespace = name_space;
+        rest_user_password.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::Rest::RestUsers::RestUser::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "rest-user-password")
+    {
+        rest_user_password.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Pce::Rest::RestUsers::RestUser::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "rest-user-password" || name == "enable")
+        return true;
+    return false;
+}
+
 Pce::StateSyncs::StateSyncs()
     :
     state_sync(this, {"address"})
@@ -1728,7 +2077,10 @@ Pce::SegmentRouting::SegmentRouting()
     :
     te_latency{YType::empty, "te-latency"},
     strict_sid_only{YType::empty, "strict-sid-only"}
+        ,
+    traffic_engineering(std::make_shared<Pce::SegmentRouting::TrafficEngineering>())
 {
+    traffic_engineering->parent = this;
 
     yang_name = "segment-routing"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -1741,14 +2093,16 @@ bool Pce::SegmentRouting::has_data() const
 {
     if (is_presence_container) return true;
     return te_latency.is_set
-	|| strict_sid_only.is_set;
+	|| strict_sid_only.is_set
+	|| (traffic_engineering !=  nullptr && traffic_engineering->has_data());
 }
 
 bool Pce::SegmentRouting::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(te_latency.yfilter)
-	|| ydk::is_set(strict_sid_only.yfilter);
+	|| ydk::is_set(strict_sid_only.yfilter)
+	|| (traffic_engineering !=  nullptr && traffic_engineering->has_operation());
 }
 
 std::string Pce::SegmentRouting::get_absolute_path() const
@@ -1778,6 +2132,15 @@ std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::get_name_lea
 
 std::shared_ptr<Entity> Pce::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "traffic-engineering")
+    {
+        if(traffic_engineering == nullptr)
+        {
+            traffic_engineering = std::make_shared<Pce::SegmentRouting::TrafficEngineering>();
+        }
+        return traffic_engineering;
+    }
+
     return nullptr;
 }
 
@@ -1785,6 +2148,11 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::get_children
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(traffic_engineering != nullptr)
+    {
+        children["traffic-engineering"] = traffic_engineering;
+    }
+
     return children;
 }
 
@@ -1818,7 +2186,2257 @@ void Pce::SegmentRouting::set_filter(const std::string & value_path, YFilter yfi
 
 bool Pce::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "te-latency" || name == "strict-sid-only")
+    if(name == "traffic-engineering" || name == "te-latency" || name == "strict-sid-only")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::TrafficEngineering()
+    :
+    enable{YType::empty, "enable"}
+        ,
+    affinity_bits(std::make_shared<Pce::SegmentRouting::TrafficEngineering::AffinityBits>())
+    , peers(std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers>())
+    , segments(std::make_shared<Pce::SegmentRouting::TrafficEngineering::Segments>())
+{
+    affinity_bits->parent = this;
+    peers->parent = this;
+    segments->parent = this;
+
+    yang_name = "traffic-engineering"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::~TrafficEngineering()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set
+	|| (affinity_bits !=  nullptr && affinity_bits->has_data())
+	|| (peers !=  nullptr && peers->has_data())
+	|| (segments !=  nullptr && segments->has_data());
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (affinity_bits !=  nullptr && affinity_bits->has_operation())
+	|| (peers !=  nullptr && peers->has_operation())
+	|| (segments !=  nullptr && segments->has_operation());
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-cfg:pce/segment-routing/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "traffic-engineering";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "affinity-bits")
+    {
+        if(affinity_bits == nullptr)
+        {
+            affinity_bits = std::make_shared<Pce::SegmentRouting::TrafficEngineering::AffinityBits>();
+        }
+        return affinity_bits;
+    }
+
+    if(child_yang_name == "peers")
+    {
+        if(peers == nullptr)
+        {
+            peers = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers>();
+        }
+        return peers;
+    }
+
+    if(child_yang_name == "segments")
+    {
+        if(segments == nullptr)
+        {
+            segments = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Segments>();
+        }
+        return segments;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(affinity_bits != nullptr)
+    {
+        children["affinity-bits"] = affinity_bits;
+    }
+
+    if(peers != nullptr)
+    {
+        children["peers"] = peers;
+    }
+
+    if(segments != nullptr)
+    {
+        children["segments"] = segments;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::SegmentRouting::TrafficEngineering::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-bits" || name == "peers" || name == "segments" || name == "enable")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBits()
+    :
+    affinity_bit(this, {"color_name"})
+{
+
+    yang_name = "affinity-bits"; yang_parent_name = "traffic-engineering"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::AffinityBits::~AffinityBits()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::AffinityBits::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<affinity_bit.len(); index++)
+    {
+        if(affinity_bit[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::AffinityBits::has_operation() const
+{
+    for (std::size_t index=0; index<affinity_bit.len(); index++)
+    {
+        if(affinity_bit[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::AffinityBits::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-cfg:pce/segment-routing/traffic-engineering/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::AffinityBits::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-bits";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::AffinityBits::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::AffinityBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "affinity-bit")
+    {
+        auto c = std::make_shared<Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBit>();
+        c->parent = this;
+        affinity_bit.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::AffinityBits::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : affinity_bit.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::AffinityBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pce::SegmentRouting::TrafficEngineering::AffinityBits::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::AffinityBits::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-bit")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBit::AffinityBit()
+    :
+    color_name{YType::str, "color-name"},
+    bit{YType::uint32, "bit"}
+{
+
+    yang_name = "affinity-bit"; yang_parent_name = "affinity-bits"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBit::~AffinityBit()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBit::has_data() const
+{
+    if (is_presence_container) return true;
+    return color_name.is_set
+	|| bit.is_set;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBit::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(color_name.yfilter)
+	|| ydk::is_set(bit.yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBit::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-cfg:pce/segment-routing/traffic-engineering/affinity-bits/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-bit";
+    ADD_KEY_TOKEN(color_name, "color-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBit::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (color_name.is_set || is_set(color_name.yfilter)) leaf_name_data.push_back(color_name.get_name_leafdata());
+    if (bit.is_set || is_set(bit.yfilter)) leaf_name_data.push_back(bit.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "color-name")
+    {
+        color_name = value;
+        color_name.value_namespace = name_space;
+        color_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bit")
+    {
+        bit = value;
+        bit.value_namespace = name_space;
+        bit.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "color-name")
+    {
+        color_name.yfilter = yfilter;
+    }
+    if(value_path == "bit")
+    {
+        bit.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::AffinityBits::AffinityBit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "color-name" || name == "bit")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peers()
+    :
+    peer(this, {"peer_addr"})
+{
+
+    yang_name = "peers"; yang_parent_name = "traffic-engineering"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::~Peers()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
+    {
+        if(peer[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::has_operation() const
+{
+    for (std::size_t index=0; index<peer.len(); index++)
+    {
+        if(peer[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-cfg:pce/segment-routing/traffic-engineering/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "peers";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "peer")
+    {
+        auto c = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer>();
+        c->parent = this;
+        peer.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : peer.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Peer()
+    :
+    peer_addr{YType::str, "peer-addr"},
+    enable{YType::empty, "enable"}
+        ,
+    policies(std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies>())
+{
+    policies->parent = this;
+
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::~Peer()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::has_data() const
+{
+    if (is_presence_container) return true;
+    return peer_addr.is_set
+	|| enable.is_set
+	|| (policies !=  nullptr && policies->has_data());
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(peer_addr.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (policies !=  nullptr && policies->has_operation());
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-cfg:pce/segment-routing/traffic-engineering/peers/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(peer_addr, "peer-addr");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::Peer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (peer_addr.is_set || is_set(peer_addr.yfilter)) leaf_name_data.push_back(peer_addr.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "policies")
+    {
+        if(policies == nullptr)
+        {
+            policies = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies>();
+        }
+        return policies;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(policies != nullptr)
+    {
+        children["policies"] = policies;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "peer-addr")
+    {
+        peer_addr = value;
+        peer_addr.value_namespace = name_space;
+        peer_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-addr")
+    {
+        peer_addr.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policies" || name == "peer-addr" || name == "enable")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policies()
+    :
+    policy(this, {"policy_name"})
+{
+
+    yang_name = "policies"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::~Policies()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy.len(); index++)
+    {
+        if(policy[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::has_operation() const
+{
+    for (std::size_t index=0; index<policy.len(); index++)
+    {
+        if(policy[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policies";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "policy")
+    {
+        auto c = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy>();
+        c->parent = this;
+        policy.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : policy.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::Policy()
+    :
+    policy_name{YType::str, "policy-name"},
+    enable{YType::empty, "enable"},
+    shutdown{YType::empty, "shutdown"}
+        ,
+    binding_sid(std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::BindingSid>())
+    , color_endpoint(std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::ColorEndpoint>())
+    , candidate_paths(std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths>())
+{
+    binding_sid->parent = this;
+    color_endpoint->parent = this;
+    candidate_paths->parent = this;
+
+    yang_name = "policy"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::~Policy()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::has_data() const
+{
+    if (is_presence_container) return true;
+    return policy_name.is_set
+	|| enable.is_set
+	|| shutdown.is_set
+	|| (binding_sid !=  nullptr && binding_sid->has_data())
+	|| (color_endpoint !=  nullptr && color_endpoint->has_data())
+	|| (candidate_paths !=  nullptr && candidate_paths->has_data());
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(shutdown.yfilter)
+	|| (binding_sid !=  nullptr && binding_sid->has_operation())
+	|| (color_endpoint !=  nullptr && color_endpoint->has_operation())
+	|| (candidate_paths !=  nullptr && candidate_paths->has_operation());
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy";
+    ADD_KEY_TOKEN(policy_name, "policy-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "binding-sid")
+    {
+        if(binding_sid == nullptr)
+        {
+            binding_sid = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::BindingSid>();
+        }
+        return binding_sid;
+    }
+
+    if(child_yang_name == "color-endpoint")
+    {
+        if(color_endpoint == nullptr)
+        {
+            color_endpoint = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::ColorEndpoint>();
+        }
+        return color_endpoint;
+    }
+
+    if(child_yang_name == "candidate-paths")
+    {
+        if(candidate_paths == nullptr)
+        {
+            candidate_paths = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths>();
+        }
+        return candidate_paths;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(binding_sid != nullptr)
+    {
+        children["binding-sid"] = binding_sid;
+    }
+
+    if(color_endpoint != nullptr)
+    {
+        children["color-endpoint"] = color_endpoint;
+    }
+
+    if(candidate_paths != nullptr)
+    {
+        children["candidate-paths"] = candidate_paths;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown = value;
+        shutdown.value_namespace = name_space;
+        shutdown.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding-sid" || name == "color-endpoint" || name == "candidate-paths" || name == "policy-name" || name == "enable" || name == "shutdown")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::BindingSid::BindingSid()
+    :
+    binding_sid_type{YType::enumeration, "binding-sid-type"},
+    mpls_label{YType::uint32, "mpls-label"}
+{
+
+    yang_name = "binding-sid"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::BindingSid::~BindingSid()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::BindingSid::has_data() const
+{
+    if (is_presence_container) return true;
+    return binding_sid_type.is_set
+	|| mpls_label.is_set;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::BindingSid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(binding_sid_type.yfilter)
+	|| ydk::is_set(mpls_label.yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::BindingSid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "binding-sid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::BindingSid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (binding_sid_type.is_set || is_set(binding_sid_type.yfilter)) leaf_name_data.push_back(binding_sid_type.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::BindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::BindingSid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::BindingSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "binding-sid-type")
+    {
+        binding_sid_type = value;
+        binding_sid_type.value_namespace = name_space;
+        binding_sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::BindingSid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "binding-sid-type")
+    {
+        binding_sid_type.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::BindingSid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding-sid-type" || name == "mpls-label")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::ColorEndpoint::ColorEndpoint()
+    :
+    color{YType::uint32, "color"},
+    end_point_type{YType::enumeration, "end-point-type"},
+    end_point_address{YType::str, "end-point-address"}
+{
+
+    yang_name = "color-endpoint"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::ColorEndpoint::~ColorEndpoint()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::ColorEndpoint::has_data() const
+{
+    if (is_presence_container) return true;
+    return color.is_set
+	|| end_point_type.is_set
+	|| end_point_address.is_set;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::ColorEndpoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(color.yfilter)
+	|| ydk::is_set(end_point_type.yfilter)
+	|| ydk::is_set(end_point_address.yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::ColorEndpoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "color-endpoint";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::ColorEndpoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
+    if (end_point_type.is_set || is_set(end_point_type.yfilter)) leaf_name_data.push_back(end_point_type.get_name_leafdata());
+    if (end_point_address.is_set || is_set(end_point_address.yfilter)) leaf_name_data.push_back(end_point_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::ColorEndpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::ColorEndpoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::ColorEndpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "color")
+    {
+        color = value;
+        color.value_namespace = name_space;
+        color.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-point-type")
+    {
+        end_point_type = value;
+        end_point_type.value_namespace = name_space;
+        end_point_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-point-address")
+    {
+        end_point_address = value;
+        end_point_address.value_namespace = name_space;
+        end_point_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::ColorEndpoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "color")
+    {
+        color.yfilter = yfilter;
+    }
+    if(value_path == "end-point-type")
+    {
+        end_point_type.yfilter = yfilter;
+    }
+    if(value_path == "end-point-address")
+    {
+        end_point_address.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::ColorEndpoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "color" || name == "end-point-type" || name == "end-point-address")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::CandidatePaths()
+    :
+    enable{YType::empty, "enable"}
+        ,
+    affinity_rules(std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules>())
+    , preferences(std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences>())
+{
+    affinity_rules->parent = this;
+    preferences->parent = this;
+
+    yang_name = "candidate-paths"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::~CandidatePaths()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set
+	|| (affinity_rules !=  nullptr && affinity_rules->has_data())
+	|| (preferences !=  nullptr && preferences->has_data());
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (affinity_rules !=  nullptr && affinity_rules->has_operation())
+	|| (preferences !=  nullptr && preferences->has_operation());
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "candidate-paths";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "affinity-rules")
+    {
+        if(affinity_rules == nullptr)
+        {
+            affinity_rules = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules>();
+        }
+        return affinity_rules;
+    }
+
+    if(child_yang_name == "preferences")
+    {
+        if(preferences == nullptr)
+        {
+            preferences = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences>();
+        }
+        return preferences;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(affinity_rules != nullptr)
+    {
+        children["affinity-rules"] = affinity_rules;
+    }
+
+    if(preferences != nullptr)
+    {
+        children["preferences"] = preferences;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-rules" || name == "preferences" || name == "enable")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::AffinityRules()
+    :
+    affinity_rule(this, {"rule", "aff_value"})
+{
+
+    yang_name = "affinity-rules"; yang_parent_name = "candidate-paths"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::~AffinityRules()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<affinity_rule.len(); index++)
+    {
+        if(affinity_rule[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::has_operation() const
+{
+    for (std::size_t index=0; index<affinity_rule.len(); index++)
+    {
+        if(affinity_rule[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-rules";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "affinity-rule")
+    {
+        auto c = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::AffinityRule>();
+        c->parent = this;
+        affinity_rule.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : affinity_rule.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-rule")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::AffinityRule::AffinityRule()
+    :
+    rule{YType::uint32, "rule"},
+    aff_value{YType::str, "aff-value"}
+{
+
+    yang_name = "affinity-rule"; yang_parent_name = "affinity-rules"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::AffinityRule::~AffinityRule()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::AffinityRule::has_data() const
+{
+    if (is_presence_container) return true;
+    return rule.is_set
+	|| aff_value.is_set;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::AffinityRule::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rule.yfilter)
+	|| ydk::is_set(aff_value.yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::AffinityRule::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-rule";
+    ADD_KEY_TOKEN(rule, "rule");
+    ADD_KEY_TOKEN(aff_value, "aff-value");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::AffinityRule::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rule.is_set || is_set(rule.yfilter)) leaf_name_data.push_back(rule.get_name_leafdata());
+    if (aff_value.is_set || is_set(aff_value.yfilter)) leaf_name_data.push_back(aff_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::AffinityRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::AffinityRule::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::AffinityRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rule")
+    {
+        rule = value;
+        rule.value_namespace = name_space;
+        rule.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aff-value")
+    {
+        aff_value = value;
+        aff_value.value_namespace = name_space;
+        aff_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::AffinityRule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rule")
+    {
+        rule.yfilter = yfilter;
+    }
+    if(value_path == "aff-value")
+    {
+        aff_value.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::AffinityRules::AffinityRule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule" || name == "aff-value")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preferences()
+    :
+    preference(this, {"path_index"})
+{
+
+    yang_name = "preferences"; yang_parent_name = "candidate-paths"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::~Preferences()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<preference.len(); index++)
+    {
+        if(preference[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::has_operation() const
+{
+    for (std::size_t index=0; index<preference.len(); index++)
+    {
+        if(preference[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "preferences";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "preference")
+    {
+        auto c = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference>();
+        c->parent = this;
+        preference.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : preference.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "preference")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::Preference()
+    :
+    path_index{YType::uint32, "path-index"},
+    enable{YType::empty, "enable"}
+        ,
+    path_infos(std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos>())
+{
+    path_infos->parent = this;
+
+    yang_name = "preference"; yang_parent_name = "preferences"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::~Preference()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::has_data() const
+{
+    if (is_presence_container) return true;
+    return path_index.is_set
+	|| enable.is_set
+	|| (path_infos !=  nullptr && path_infos->has_data());
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(path_index.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (path_infos !=  nullptr && path_infos->has_operation());
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "preference";
+    ADD_KEY_TOKEN(path_index, "path-index");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (path_index.is_set || is_set(path_index.yfilter)) leaf_name_data.push_back(path_index.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "path-infos")
+    {
+        if(path_infos == nullptr)
+        {
+            path_infos = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos>();
+        }
+        return path_infos;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(path_infos != nullptr)
+    {
+        children["path-infos"] = path_infos;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "path-index")
+    {
+        path_index = value;
+        path_index.value_namespace = name_space;
+        path_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-index")
+    {
+        path_index.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-infos" || name == "path-index" || name == "enable")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfos()
+    :
+    path_info(this, {"type", "hop_type", "segment_list_name"})
+{
+
+    yang_name = "path-infos"; yang_parent_name = "preference"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::~PathInfos()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path_info.len(); index++)
+    {
+        if(path_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::has_operation() const
+{
+    for (std::size_t index=0; index<path_info.len(); index++)
+    {
+        if(path_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-infos";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "path-info")
+    {
+        auto c = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo>();
+        c->parent = this;
+        path_info.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : path_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-info")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::PathInfo()
+    :
+    type{YType::enumeration, "type"},
+    hop_type{YType::enumeration, "hop-type"},
+    segment_list_name{YType::str, "segment-list-name"},
+    enable{YType::empty, "enable"}
+        ,
+    metric(nullptr) // presence node
+{
+
+    yang_name = "path-info"; yang_parent_name = "path-infos"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::~PathInfo()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| hop_type.is_set
+	|| segment_list_name.is_set
+	|| enable.is_set
+	|| (metric !=  nullptr && metric->has_data());
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(hop_type.yfilter)
+	|| ydk::is_set(segment_list_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (metric !=  nullptr && metric->has_operation());
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-info";
+    ADD_KEY_TOKEN(type, "type");
+    ADD_KEY_TOKEN(hop_type, "hop-type");
+    ADD_KEY_TOKEN(segment_list_name, "segment-list-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (hop_type.is_set || is_set(hop_type.yfilter)) leaf_name_data.push_back(hop_type.get_name_leafdata());
+    if (segment_list_name.is_set || is_set(segment_list_name.yfilter)) leaf_name_data.push_back(segment_list_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "metric")
+    {
+        if(metric == nullptr)
+        {
+            metric = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric>();
+        }
+        return metric;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(metric != nullptr)
+    {
+        children["metric"] = metric;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hop-type")
+    {
+        hop_type = value;
+        hop_type.value_namespace = name_space;
+        hop_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "segment-list-name")
+    {
+        segment_list_name = value;
+        segment_list_name.value_namespace = name_space;
+        segment_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "hop-type")
+    {
+        hop_type.yfilter = yfilter;
+    }
+    if(value_path == "segment-list-name")
+    {
+        segment_list_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "metric" || name == "type" || name == "hop-type" || name == "segment-list-name" || name == "enable")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Metric()
+    :
+    metric_type{YType::enumeration, "metric-type"}
+{
+
+    yang_name = "metric"; yang_parent_name = "path-info"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::~Metric()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::has_data() const
+{
+    if (is_presence_container) return true;
+    return metric_type.is_set;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(metric_type.yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "metric";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "metric-type")
+    {
+        metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Peers::Peer::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "metric-type")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Segments::Segments()
+    :
+    segment(this, {"path_name"})
+{
+
+    yang_name = "segments"; yang_parent_name = "traffic-engineering"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Segments::~Segments()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Segments::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<segment.len(); index++)
+    {
+        if(segment[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Segments::has_operation() const
+{
+    for (std::size_t index=0; index<segment.len(); index++)
+    {
+        if(segment[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Segments::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-cfg:pce/segment-routing/traffic-engineering/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Segments::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segments";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Segments::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Segments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "segment")
+    {
+        auto c = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Segments::Segment>();
+        c->parent = this;
+        segment.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Segments::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : segment.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Segments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Segments::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Segments::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "segment")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segment()
+    :
+    path_name{YType::str, "path-name"}
+        ,
+    segments(std::make_shared<Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_>())
+{
+    segments->parent = this;
+
+    yang_name = "segment"; yang_parent_name = "segments"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Segments::Segment::~Segment()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Segments::Segment::has_data() const
+{
+    if (is_presence_container) return true;
+    return path_name.is_set
+	|| (segments !=  nullptr && segments->has_data());
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Segments::Segment::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(path_name.yfilter)
+	|| (segments !=  nullptr && segments->has_operation());
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Segments::Segment::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-cfg:pce/segment-routing/traffic-engineering/segments/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Segments::Segment::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segment";
+    ADD_KEY_TOKEN(path_name, "path-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Segments::Segment::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (path_name.is_set || is_set(path_name.yfilter)) leaf_name_data.push_back(path_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Segments::Segment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "segments")
+    {
+        if(segments == nullptr)
+        {
+            segments = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_>();
+        }
+        return segments;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Segments::Segment::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(segments != nullptr)
+    {
+        children["segments"] = segments;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Segments::Segment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "path-name")
+    {
+        path_name = value;
+        path_name.value_namespace = name_space;
+        path_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Segments::Segment::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-name")
+    {
+        path_name.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Segments::Segment::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "segments" || name == "path-name")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::Segments_()
+    :
+    segment(this, {"segment_index"})
+{
+
+    yang_name = "segments"; yang_parent_name = "segment"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::~Segments_()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<segment.len(); index++)
+    {
+        if(segment[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::has_operation() const
+{
+    for (std::size_t index=0; index<segment.len(); index++)
+    {
+        if(segment[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segments";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "segment")
+    {
+        auto c = std::make_shared<Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::Segment_>();
+        c->parent = this;
+        segment.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : segment.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "segment")
+        return true;
+    return false;
+}
+
+Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::Segment_::Segment_()
+    :
+    segment_index{YType::uint32, "segment-index"},
+    segment_type{YType::enumeration, "segment-type"},
+    address{YType::str, "address"},
+    mpls_label{YType::uint32, "mpls-label"}
+{
+
+    yang_name = "segment"; yang_parent_name = "segments"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::Segment_::~Segment_()
+{
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::Segment_::has_data() const
+{
+    if (is_presence_container) return true;
+    return segment_index.is_set
+	|| segment_type.is_set
+	|| address.is_set
+	|| mpls_label.is_set;
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::Segment_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(segment_index.yfilter)
+	|| ydk::is_set(segment_type.yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(mpls_label.yfilter);
+}
+
+std::string Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::Segment_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segment";
+    ADD_KEY_TOKEN(segment_index, "segment-index");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::Segment_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (segment_index.is_set || is_set(segment_index.yfilter)) leaf_name_data.push_back(segment_index.get_name_leafdata());
+    if (segment_type.is_set || is_set(segment_type.yfilter)) leaf_name_data.push_back(segment_type.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::Segment_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::Segment_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::Segment_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "segment-index")
+    {
+        segment_index = value;
+        segment_index.value_namespace = name_space;
+        segment_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "segment-type")
+    {
+        segment_type = value;
+        segment_type.value_namespace = name_space;
+        segment_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::Segment_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "segment-index")
+    {
+        segment_index.yfilter = yfilter;
+    }
+    if(value_path == "segment-type")
+    {
+        segment_type.yfilter = yfilter;
+    }
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::TrafficEngineering::Segments::Segment::Segments_::Segment_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "segment-index" || name == "segment-type" || name == "address" || name == "mpls-label")
         return true;
     return false;
 }
@@ -1938,8 +4556,11 @@ bool Pce::Timers::has_leaf_or_child_of_name(const std::string & name) const
 
 Pce::Netconf::Netconf()
     :
-    netconf_ssh(nullptr) // presence node
+    enable{YType::empty, "enable"}
+        ,
+    netconf_ssh(std::make_shared<Pce::Netconf::NetconfSsh>())
 {
+    netconf_ssh->parent = this;
 
     yang_name = "netconf"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -1951,12 +4572,14 @@ Pce::Netconf::~Netconf()
 bool Pce::Netconf::has_data() const
 {
     if (is_presence_container) return true;
-    return (netconf_ssh !=  nullptr && netconf_ssh->has_data());
+    return enable.is_set
+	|| (netconf_ssh !=  nullptr && netconf_ssh->has_data());
 }
 
 bool Pce::Netconf::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (netconf_ssh !=  nullptr && netconf_ssh->has_operation());
 }
 
@@ -1978,6 +4601,7 @@ std::vector<std::pair<std::string, LeafData> > Pce::Netconf::get_name_leaf_data(
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2011,15 +4635,25 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::Netconf::get_children() cons
 
 void Pce::Netconf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Pce::Netconf::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
 }
 
 bool Pce::Netconf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "netconf-ssh")
+    if(name == "netconf-ssh" || name == "enable")
         return true;
     return false;
 }
@@ -2030,7 +4664,7 @@ Pce::Netconf::NetconfSsh::NetconfSsh()
     netconf_ssh_user{YType::str, "netconf-ssh-user"}
 {
 
-    yang_name = "netconf-ssh"; yang_parent_name = "netconf"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+    yang_name = "netconf-ssh"; yang_parent_name = "netconf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::Netconf::NetconfSsh::~NetconfSsh()
@@ -3151,10 +5785,31 @@ bool Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::has_leaf_or_child_of_n
     return false;
 }
 
+const Enum::YLeaf PceSegment::ipv4_address {1, "ipv4-address"};
+const Enum::YLeaf PceSegment::mpls_label {3, "mpls-label"};
+
+const Enum::YLeaf PceBindingSid::mpls_label_specified {1, "mpls-label-specified"};
+const Enum::YLeaf PceBindingSid::mpls_label_any {2, "mpls-label-any"};
+
 const Enum::YLeaf PceExplicitPathHop::address {1, "address"};
 const Enum::YLeaf PceExplicitPathHop::sid_node {2, "sid-node"};
 const Enum::YLeaf PceExplicitPathHop::sid_adjancency {3, "sid-adjancency"};
 const Enum::YLeaf PceExplicitPathHop::binding_sid {4, "binding-sid"};
+
+const Enum::YLeaf PcePath::explicit_ {1, "explicit"};
+const Enum::YLeaf PcePath::dynamic {2, "dynamic"};
+
+const Enum::YLeaf PceEndPoint::end_point_type_ipv4 {1, "end-point-type-ipv4"};
+const Enum::YLeaf PceEndPoint::end_point_type_ipv6 {2, "end-point-type-ipv6"};
+
+const Enum::YLeaf PcerestAuthentication::basic {1, "basic"};
+const Enum::YLeaf PcerestAuthentication::digest {2, "digest"};
+
+const Enum::YLeaf PcePathHop::mpls {1, "mpls"};
+const Enum::YLeaf PcePathHop::srv6 {2, "srv6"};
+
+const Enum::YLeaf PceMetric::igp {1, "igp"};
+const Enum::YLeaf PceMetric::te {2, "te"};
 
 const Enum::YLeaf PceDisjointPath::link {1, "link"};
 const Enum::YLeaf PceDisjointPath::node {2, "node"};

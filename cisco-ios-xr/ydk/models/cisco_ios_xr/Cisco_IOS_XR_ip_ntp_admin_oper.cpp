@@ -2133,7 +2133,8 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
     synch_distance{YType::str, "synch-distance"},
     precision{YType::int8, "precision"},
     version{YType::uint8, "version"},
-    filter_index{YType::uint32, "filter-index"}
+    filter_index{YType::uint32, "filter-index"},
+    cast_flags{YType::uint8, "cast-flags"}
         ,
     peer_info_common(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon>())
     , ref_time(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime>())
@@ -2174,6 +2175,7 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pee
 	|| precision.is_set
 	|| version.is_set
 	|| filter_index.is_set
+	|| cast_flags.is_set
 	|| (peer_info_common !=  nullptr && peer_info_common->has_data())
 	|| (ref_time !=  nullptr && ref_time->has_data())
 	|| (originate_time !=  nullptr && originate_time->has_data())
@@ -2200,6 +2202,7 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pee
 	|| ydk::is_set(precision.yfilter)
 	|| ydk::is_set(version.yfilter)
 	|| ydk::is_set(filter_index.yfilter)
+	|| ydk::is_set(cast_flags.yfilter)
 	|| (peer_info_common !=  nullptr && peer_info_common->has_operation())
 	|| (ref_time !=  nullptr && ref_time->has_operation())
 	|| (originate_time !=  nullptr && originate_time->has_operation())
@@ -2229,6 +2232,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
     if (precision.is_set || is_set(precision.yfilter)) leaf_name_data.push_back(precision.get_name_leafdata());
     if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
     if (filter_index.is_set || is_set(filter_index.yfilter)) leaf_name_data.push_back(filter_index.get_name_leafdata());
+    if (cast_flags.is_set || is_set(cast_flags.yfilter)) leaf_name_data.push_back(cast_flags.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2401,6 +2405,12 @@ void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pee
         filter_index.value_namespace = name_space;
         filter_index.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "cast-flags")
+    {
+        cast_flags = value;
+        cast_flags.value_namespace = name_space;
+        cast_flags.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2449,11 +2459,15 @@ void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pee
     {
         filter_index.yfilter = yfilter;
     }
+    if(value_path == "cast-flags")
+    {
+        cast_flags.yfilter = yfilter;
+    }
 }
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "peer-info-common" || name == "ref-time" || name == "originate-time" || name == "receive-time" || name == "transmit-time" || name == "filter-detail" || name == "leap" || name == "peer-mode" || name == "poll-interval" || name == "is-ref-clock" || name == "is-authenticated" || name == "root-delay" || name == "root-dispersion" || name == "synch-distance" || name == "precision" || name == "version" || name == "filter-index")
+    if(name == "peer-info-common" || name == "ref-time" || name == "originate-time" || name == "receive-time" || name == "transmit-time" || name == "filter-detail" || name == "leap" || name == "peer-mode" || name == "poll-interval" || name == "is-ref-clock" || name == "is-authenticated" || name == "root-delay" || name == "root-dispersion" || name == "synch-distance" || name == "precision" || name == "version" || name == "filter-index" || name == "cast-flags")
         return true;
     return false;
 }
@@ -3843,12 +3857,12 @@ const Enum::YLeaf ClockUpdateNode::clk_never_updated {0, "clk-never-updated"};
 const Enum::YLeaf ClockUpdateNode::clk_updated {1, "clk-updated"};
 const Enum::YLeaf ClockUpdateNode::clk_no_update_info {2, "clk-no-update-info"};
 
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_n_set {0, "ntp-loop-flt-n-set"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_f_set {1, "ntp-loop-flt-f-set"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_spik {2, "ntp-loop-flt-spik"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_freq {3, "ntp-loop-flt-freq"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_sync {4, "ntp-loop-flt-sync"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_unkn {5, "ntp-loop-flt-unkn"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_n_set {1, "ntp-loop-flt-n-set"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_f_set {2, "ntp-loop-flt-f-set"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_spik {3, "ntp-loop-flt-spik"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_freq {4, "ntp-loop-flt-freq"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_sync {5, "ntp-loop-flt-sync"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_unkn {6, "ntp-loop-flt-unkn"};
 
 const Enum::YLeaf NtpLeap::ntp_leap_no_warning {0, "ntp-leap-no-warning"};
 const Enum::YLeaf NtpLeap::ntp_leap_addse_cond {1, "ntp-leap-addse-cond"};

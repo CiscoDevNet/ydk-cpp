@@ -151,6 +151,7 @@ class MemorySummary::Nodes::Node::Detail : public ydk::Entity
         ydk::YLeaf program_text; //type: uint64
         ydk::YLeaf program_data; //type: uint64
         ydk::YLeaf program_stack; //type: uint64
+        ydk::YLeaf total_used; //type: uint64
         class SharedWindow; //type: MemorySummary::Nodes::Node::Detail::SharedWindow
 
         ydk::YList shared_window;

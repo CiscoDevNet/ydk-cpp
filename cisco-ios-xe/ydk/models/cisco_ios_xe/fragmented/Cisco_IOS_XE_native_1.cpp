@@ -12,6 +12,524 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
+Native::Service::Timestamps::Debug::Datetime::Localtime::Year::Year()
+    :
+    msec{YType::empty, "msec"},
+    show_timezone{YType::empty, "show-timezone"}
+{
+
+    yang_name = "year"; yang_parent_name = "localtime"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Native::Service::Timestamps::Debug::Datetime::Localtime::Year::~Year()
+{
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Localtime::Year::has_data() const
+{
+    if (is_presence_container) return true;
+    return msec.is_set
+	|| show_timezone.is_set;
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Localtime::Year::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(msec.yfilter)
+	|| ydk::is_set(show_timezone.yfilter);
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Localtime::Year::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/service/timestamps/debug/datetime/localtime/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Localtime::Year::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "year";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Service::Timestamps::Debug::Datetime::Localtime::Year::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (msec.is_set || is_set(msec.yfilter)) leaf_name_data.push_back(msec.get_name_leafdata());
+    if (show_timezone.is_set || is_set(show_timezone.yfilter)) leaf_name_data.push_back(show_timezone.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Service::Timestamps::Debug::Datetime::Localtime::Year::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Service::Timestamps::Debug::Datetime::Localtime::Year::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Localtime::Year::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "msec")
+    {
+        msec = value;
+        msec.value_namespace = name_space;
+        msec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "show-timezone")
+    {
+        show_timezone = value;
+        show_timezone.value_namespace = name_space;
+        show_timezone.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Localtime::Year::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "msec")
+    {
+        msec.yfilter = yfilter;
+    }
+    if(value_path == "show-timezone")
+    {
+        show_timezone.yfilter = yfilter;
+    }
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Localtime::Year::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "msec" || name == "show-timezone")
+        return true;
+    return false;
+}
+
+Native::Service::Timestamps::Debug::Datetime::Msec::Msec()
+    :
+    localtime(nullptr) // presence node
+    , show_timezone(nullptr) // presence node
+    , year(nullptr) // presence node
+{
+
+    yang_name = "msec"; yang_parent_name = "datetime"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Native::Service::Timestamps::Debug::Datetime::Msec::~Msec()
+{
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Msec::has_data() const
+{
+    if (is_presence_container) return true;
+    return (localtime !=  nullptr && localtime->has_data())
+	|| (show_timezone !=  nullptr && show_timezone->has_data())
+	|| (year !=  nullptr && year->has_data());
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Msec::has_operation() const
+{
+    return is_set(yfilter)
+	|| (localtime !=  nullptr && localtime->has_operation())
+	|| (show_timezone !=  nullptr && show_timezone->has_operation())
+	|| (year !=  nullptr && year->has_operation());
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Msec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/service/timestamps/debug/datetime/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Msec::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "msec";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Service::Timestamps::Debug::Datetime::Msec::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Service::Timestamps::Debug::Datetime::Msec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "localtime")
+    {
+        if(localtime == nullptr)
+        {
+            localtime = std::make_shared<Native::Service::Timestamps::Debug::Datetime::Msec::Localtime>();
+        }
+        return localtime;
+    }
+
+    if(child_yang_name == "show-timezone")
+    {
+        if(show_timezone == nullptr)
+        {
+            show_timezone = std::make_shared<Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone>();
+        }
+        return show_timezone;
+    }
+
+    if(child_yang_name == "year")
+    {
+        if(year == nullptr)
+        {
+            year = std::make_shared<Native::Service::Timestamps::Debug::Datetime::Msec::Year>();
+        }
+        return year;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Service::Timestamps::Debug::Datetime::Msec::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(localtime != nullptr)
+    {
+        children["localtime"] = localtime;
+    }
+
+    if(show_timezone != nullptr)
+    {
+        children["show-timezone"] = show_timezone;
+    }
+
+    if(year != nullptr)
+    {
+        children["year"] = year;
+    }
+
+    return children;
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Msec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Msec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Msec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "localtime" || name == "show-timezone" || name == "year")
+        return true;
+    return false;
+}
+
+Native::Service::Timestamps::Debug::Datetime::Msec::Localtime::Localtime()
+    :
+    show_timezone{YType::empty, "show-timezone"},
+    year{YType::empty, "year"}
+{
+
+    yang_name = "localtime"; yang_parent_name = "msec"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Native::Service::Timestamps::Debug::Datetime::Msec::Localtime::~Localtime()
+{
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Msec::Localtime::has_data() const
+{
+    if (is_presence_container) return true;
+    return show_timezone.is_set
+	|| year.is_set;
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Msec::Localtime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(show_timezone.yfilter)
+	|| ydk::is_set(year.yfilter);
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Msec::Localtime::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/service/timestamps/debug/datetime/msec/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Msec::Localtime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "localtime";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Service::Timestamps::Debug::Datetime::Msec::Localtime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (show_timezone.is_set || is_set(show_timezone.yfilter)) leaf_name_data.push_back(show_timezone.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Service::Timestamps::Debug::Datetime::Msec::Localtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Service::Timestamps::Debug::Datetime::Msec::Localtime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Msec::Localtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "show-timezone")
+    {
+        show_timezone = value;
+        show_timezone.value_namespace = name_space;
+        show_timezone.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Msec::Localtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "show-timezone")
+    {
+        show_timezone.yfilter = yfilter;
+    }
+    if(value_path == "year")
+    {
+        year.yfilter = yfilter;
+    }
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Msec::Localtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "show-timezone" || name == "year")
+        return true;
+    return false;
+}
+
+Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone::ShowTimezone()
+    :
+    localtime{YType::empty, "localtime"},
+    year{YType::empty, "year"}
+{
+
+    yang_name = "show-timezone"; yang_parent_name = "msec"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone::~ShowTimezone()
+{
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone::has_data() const
+{
+    if (is_presence_container) return true;
+    return localtime.is_set
+	|| year.is_set;
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(localtime.yfilter)
+	|| ydk::is_set(year.yfilter);
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/service/timestamps/debug/datetime/msec/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "show-timezone";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (localtime.is_set || is_set(localtime.yfilter)) leaf_name_data.push_back(localtime.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "localtime")
+    {
+        localtime = value;
+        localtime.value_namespace = name_space;
+        localtime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "localtime")
+    {
+        localtime.yfilter = yfilter;
+    }
+    if(value_path == "year")
+    {
+        year.yfilter = yfilter;
+    }
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "localtime" || name == "year")
+        return true;
+    return false;
+}
+
+Native::Service::Timestamps::Debug::Datetime::Msec::Year::Year()
+    :
+    localtime{YType::empty, "localtime"},
+    show_timezone{YType::empty, "show-timezone"}
+{
+
+    yang_name = "year"; yang_parent_name = "msec"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Native::Service::Timestamps::Debug::Datetime::Msec::Year::~Year()
+{
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Msec::Year::has_data() const
+{
+    if (is_presence_container) return true;
+    return localtime.is_set
+	|| show_timezone.is_set;
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Msec::Year::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(localtime.yfilter)
+	|| ydk::is_set(show_timezone.yfilter);
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Msec::Year::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/service/timestamps/debug/datetime/msec/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Msec::Year::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "year";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Service::Timestamps::Debug::Datetime::Msec::Year::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (localtime.is_set || is_set(localtime.yfilter)) leaf_name_data.push_back(localtime.get_name_leafdata());
+    if (show_timezone.is_set || is_set(show_timezone.yfilter)) leaf_name_data.push_back(show_timezone.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Service::Timestamps::Debug::Datetime::Msec::Year::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Service::Timestamps::Debug::Datetime::Msec::Year::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Msec::Year::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "localtime")
+    {
+        localtime = value;
+        localtime.value_namespace = name_space;
+        localtime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "show-timezone")
+    {
+        show_timezone = value;
+        show_timezone.value_namespace = name_space;
+        show_timezone.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Msec::Year::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "localtime")
+    {
+        localtime.yfilter = yfilter;
+    }
+    if(value_path == "show-timezone")
+    {
+        show_timezone.yfilter = yfilter;
+    }
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Msec::Year::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "localtime" || name == "show-timezone")
+        return true;
+    return false;
+}
+
 Native::Service::Timestamps::Debug::Datetime::ShowTimezone::ShowTimezone()
     :
     localtime(nullptr) // presence node
@@ -1590,6 +2108,7 @@ Native::Platform::Platform()
     icmp(std::make_shared<Native::Platform::Icmp>())
     , ip_ports(std::make_shared<Native::Platform::IpPorts>())
     , bfd(std::make_shared<Native::Platform::Bfd>())
+    , time_source(std::make_shared<Native::Platform::TimeSource>())
     , console(nullptr) // presence node
     , enable(std::make_shared<Native::Platform::Enable>())
     , external_alarm(std::make_shared<Native::Platform::ExternalAlarm>())
@@ -1608,6 +2127,7 @@ Native::Platform::Platform()
     icmp->parent = this;
     ip_ports->parent = this;
     bfd->parent = this;
+    time_source->parent = this;
     enable->parent = this;
     external_alarm->parent = this;
     hardware->parent = this;
@@ -1639,6 +2159,7 @@ bool Native::Platform::has_data() const
 	|| (icmp !=  nullptr && icmp->has_data())
 	|| (ip_ports !=  nullptr && ip_ports->has_data())
 	|| (bfd !=  nullptr && bfd->has_data())
+	|| (time_source !=  nullptr && time_source->has_data())
 	|| (console !=  nullptr && console->has_data())
 	|| (enable !=  nullptr && enable->has_data())
 	|| (external_alarm !=  nullptr && external_alarm->has_data())
@@ -1666,6 +2187,7 @@ bool Native::Platform::has_operation() const
 	|| (icmp !=  nullptr && icmp->has_operation())
 	|| (ip_ports !=  nullptr && ip_ports->has_operation())
 	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (time_source !=  nullptr && time_source->has_operation())
 	|| (console !=  nullptr && console->has_operation())
 	|| (enable !=  nullptr && enable->has_operation())
 	|| (external_alarm !=  nullptr && external_alarm->has_operation())
@@ -1737,6 +2259,15 @@ std::shared_ptr<Entity> Native::Platform::get_child_by_name(const std::string & 
             bfd = std::make_shared<Native::Platform::Bfd>();
         }
         return bfd;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-platform:time-source")
+    {
+        if(time_source == nullptr)
+        {
+            time_source = std::make_shared<Native::Platform::TimeSource>();
+        }
+        return time_source;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-platform:console")
@@ -1887,6 +2418,11 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Platform::get_children() 
         children["Cisco-IOS-XE-platform:bfd"] = bfd;
     }
 
+    if(time_source != nullptr)
+    {
+        children["Cisco-IOS-XE-platform:time-source"] = time_source;
+    }
+
     if(console != nullptr)
     {
         children["Cisco-IOS-XE-platform:console"] = console;
@@ -2020,7 +2556,7 @@ void Native::Platform::set_filter(const std::string & value_path, YFilter yfilte
 
 bool Native::Platform::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "icmp" || name == "ip-ports" || name == "bfd" || name == "console" || name == "enable" || name == "external-alarm" || name == "hardware" || name == "ipsec" || name == "l2vpn" || name == "multicast" || name == "punt-keepalive" || name == "punt-policer" || name == "qos" || name == "reload" || name == "urpf" || name == "tcam-threshold" || name == "trace" || name == "atm-cdvt" || name == "cfm" || name == "bfd-debug-trace" || name == "shell" || name == "tcam-parity-error")
+    if(name == "icmp" || name == "ip-ports" || name == "bfd" || name == "time-source" || name == "console" || name == "enable" || name == "external-alarm" || name == "hardware" || name == "ipsec" || name == "l2vpn" || name == "multicast" || name == "punt-keepalive" || name == "punt-policer" || name == "qos" || name == "reload" || name == "urpf" || name == "tcam-threshold" || name == "trace" || name == "atm-cdvt" || name == "cfm" || name == "bfd-debug-trace" || name == "shell" || name == "tcam-parity-error")
         return true;
     return false;
 }
@@ -2411,6 +2947,179 @@ bool Native::Platform::Bfd::has_leaf_or_child_of_name(const std::string & name) 
     return false;
 }
 
+Native::Platform::TimeSource::TimeSource()
+    :
+    ntp(nullptr) // presence node
+{
+
+    yang_name = "time-source"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Platform::TimeSource::~TimeSource()
+{
+}
+
+bool Native::Platform::TimeSource::has_data() const
+{
+    if (is_presence_container) return true;
+    return (ntp !=  nullptr && ntp->has_data());
+}
+
+bool Native::Platform::TimeSource::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ntp !=  nullptr && ntp->has_operation());
+}
+
+std::string Native::Platform::TimeSource::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/platform/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Platform::TimeSource::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-platform:time-source";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Platform::TimeSource::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Platform::TimeSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ntp")
+    {
+        if(ntp == nullptr)
+        {
+            ntp = std::make_shared<Native::Platform::TimeSource::Ntp>();
+        }
+        return ntp;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Platform::TimeSource::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ntp != nullptr)
+    {
+        children["ntp"] = ntp;
+    }
+
+    return children;
+}
+
+void Native::Platform::TimeSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Platform::TimeSource::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Platform::TimeSource::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ntp")
+        return true;
+    return false;
+}
+
+Native::Platform::TimeSource::Ntp::Ntp()
+    :
+    time_scale{YType::enumeration, "time-scale"}
+{
+
+    yang_name = "ntp"; yang_parent_name = "time-source"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Native::Platform::TimeSource::Ntp::~Ntp()
+{
+}
+
+bool Native::Platform::TimeSource::Ntp::has_data() const
+{
+    if (is_presence_container) return true;
+    return time_scale.is_set;
+}
+
+bool Native::Platform::TimeSource::Ntp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_scale.yfilter);
+}
+
+std::string Native::Platform::TimeSource::Ntp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/platform/Cisco-IOS-XE-platform:time-source/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Platform::TimeSource::Ntp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ntp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Platform::TimeSource::Ntp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_scale.is_set || is_set(time_scale.yfilter)) leaf_name_data.push_back(time_scale.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Platform::TimeSource::Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Platform::TimeSource::Ntp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Platform::TimeSource::Ntp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-scale")
+    {
+        time_scale = value;
+        time_scale.value_namespace = name_space;
+        time_scale.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Platform::TimeSource::Ntp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-scale")
+    {
+        time_scale.yfilter = yfilter;
+    }
+}
+
+bool Native::Platform::TimeSource::Ntp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-scale")
+        return true;
+    return false;
+}
+
 Native::Platform::Console::Console()
     :
     output{YType::enumeration, "output"}
@@ -2785,9 +3494,11 @@ Native::Platform::Hardware::Hardware()
     :
     lite(std::make_shared<Native::Platform::Hardware::Lite>())
     , throughput(std::make_shared<Native::Platform::Hardware::Throughput>())
+    , crypto_offload(std::make_shared<Native::Platform::Hardware::CryptoOffload>())
 {
     lite->parent = this;
     throughput->parent = this;
+    crypto_offload->parent = this;
 
     yang_name = "hardware"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -2800,14 +3511,16 @@ bool Native::Platform::Hardware::has_data() const
 {
     if (is_presence_container) return true;
     return (lite !=  nullptr && lite->has_data())
-	|| (throughput !=  nullptr && throughput->has_data());
+	|| (throughput !=  nullptr && throughput->has_data())
+	|| (crypto_offload !=  nullptr && crypto_offload->has_data());
 }
 
 bool Native::Platform::Hardware::has_operation() const
 {
     return is_set(yfilter)
 	|| (lite !=  nullptr && lite->has_operation())
-	|| (throughput !=  nullptr && throughput->has_operation());
+	|| (throughput !=  nullptr && throughput->has_operation())
+	|| (crypto_offload !=  nullptr && crypto_offload->has_operation());
 }
 
 std::string Native::Platform::Hardware::get_absolute_path() const
@@ -2853,6 +3566,15 @@ std::shared_ptr<Entity> Native::Platform::Hardware::get_child_by_name(const std:
         return throughput;
     }
 
+    if(child_yang_name == "crypto-offload")
+    {
+        if(crypto_offload == nullptr)
+        {
+            crypto_offload = std::make_shared<Native::Platform::Hardware::CryptoOffload>();
+        }
+        return crypto_offload;
+    }
+
     return nullptr;
 }
 
@@ -2870,6 +3592,11 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Platform::Hardware::get_c
         children["throughput"] = throughput;
     }
 
+    if(crypto_offload != nullptr)
+    {
+        children["crypto-offload"] = crypto_offload;
+    }
+
     return children;
 }
 
@@ -2883,7 +3610,7 @@ void Native::Platform::Hardware::set_filter(const std::string & value_path, YFil
 
 bool Native::Platform::Hardware::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lite" || name == "throughput")
+    if(name == "lite" || name == "throughput" || name == "crypto-offload")
         return true;
     return false;
 }
@@ -3176,11 +3903,99 @@ bool Native::Platform::Hardware::Throughput::Level::has_leaf_or_child_of_name(co
     return false;
 }
 
+Native::Platform::Hardware::CryptoOffload::CryptoOffload()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "crypto-offload"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Platform::Hardware::CryptoOffload::~CryptoOffload()
+{
+}
+
+bool Native::Platform::Hardware::CryptoOffload::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Native::Platform::Hardware::CryptoOffload::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Native::Platform::Hardware::CryptoOffload::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/platform/Cisco-IOS-XE-platform:hardware/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Platform::Hardware::CryptoOffload::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "crypto-offload";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Platform::Hardware::CryptoOffload::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Platform::Hardware::CryptoOffload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Platform::Hardware::CryptoOffload::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Platform::Hardware::CryptoOffload::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Platform::Hardware::CryptoOffload::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Native::Platform::Hardware::CryptoOffload::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
 Native::Platform::Ipsec::Ipsec()
     :
     arlog_supress{YType::empty, "arlog-supress"},
     fips_mode{YType::empty, "fips-mode"},
-    gdoi{YType::enumeration, "gdoi"}
+    gdoi{YType::enumeration, "gdoi"},
+    flexvpn_bypass_tcam{YType::empty, "flexvpn-bypass-tcam"},
+    modexp_throttle_window{YType::uint8, "modexp-throttle-window"},
+    control_plane{YType::enumeration, "control-plane"}
         ,
     llq(std::make_shared<Native::Platform::Ipsec::Llq>())
     , reassemble(std::make_shared<Native::Platform::Ipsec::Reassemble>())
@@ -3201,6 +4016,9 @@ bool Native::Platform::Ipsec::has_data() const
     return arlog_supress.is_set
 	|| fips_mode.is_set
 	|| gdoi.is_set
+	|| flexvpn_bypass_tcam.is_set
+	|| modexp_throttle_window.is_set
+	|| control_plane.is_set
 	|| (llq !=  nullptr && llq->has_data())
 	|| (reassemble !=  nullptr && reassemble->has_data());
 }
@@ -3211,6 +4029,9 @@ bool Native::Platform::Ipsec::has_operation() const
 	|| ydk::is_set(arlog_supress.yfilter)
 	|| ydk::is_set(fips_mode.yfilter)
 	|| ydk::is_set(gdoi.yfilter)
+	|| ydk::is_set(flexvpn_bypass_tcam.yfilter)
+	|| ydk::is_set(modexp_throttle_window.yfilter)
+	|| ydk::is_set(control_plane.yfilter)
 	|| (llq !=  nullptr && llq->has_operation())
 	|| (reassemble !=  nullptr && reassemble->has_operation());
 }
@@ -3236,6 +4057,9 @@ std::vector<std::pair<std::string, LeafData> > Native::Platform::Ipsec::get_name
     if (arlog_supress.is_set || is_set(arlog_supress.yfilter)) leaf_name_data.push_back(arlog_supress.get_name_leafdata());
     if (fips_mode.is_set || is_set(fips_mode.yfilter)) leaf_name_data.push_back(fips_mode.get_name_leafdata());
     if (gdoi.is_set || is_set(gdoi.yfilter)) leaf_name_data.push_back(gdoi.get_name_leafdata());
+    if (flexvpn_bypass_tcam.is_set || is_set(flexvpn_bypass_tcam.yfilter)) leaf_name_data.push_back(flexvpn_bypass_tcam.get_name_leafdata());
+    if (modexp_throttle_window.is_set || is_set(modexp_throttle_window.yfilter)) leaf_name_data.push_back(modexp_throttle_window.get_name_leafdata());
+    if (control_plane.is_set || is_set(control_plane.yfilter)) leaf_name_data.push_back(control_plane.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3301,6 +4125,24 @@ void Native::Platform::Ipsec::set_value(const std::string & value_path, const st
         gdoi.value_namespace = name_space;
         gdoi.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "flexvpn-bypass-tcam")
+    {
+        flexvpn_bypass_tcam = value;
+        flexvpn_bypass_tcam.value_namespace = name_space;
+        flexvpn_bypass_tcam.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "modexp-throttle-window")
+    {
+        modexp_throttle_window = value;
+        modexp_throttle_window.value_namespace = name_space;
+        modexp_throttle_window.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "control-plane")
+    {
+        control_plane = value;
+        control_plane.value_namespace = name_space;
+        control_plane.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Native::Platform::Ipsec::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3317,11 +4159,23 @@ void Native::Platform::Ipsec::set_filter(const std::string & value_path, YFilter
     {
         gdoi.yfilter = yfilter;
     }
+    if(value_path == "flexvpn-bypass-tcam")
+    {
+        flexvpn_bypass_tcam.yfilter = yfilter;
+    }
+    if(value_path == "modexp-throttle-window")
+    {
+        modexp_throttle_window.yfilter = yfilter;
+    }
+    if(value_path == "control-plane")
+    {
+        control_plane.yfilter = yfilter;
+    }
 }
 
 bool Native::Platform::Ipsec::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "llq" || name == "reassemble" || name == "arlog-supress" || name == "fips-mode" || name == "gdoi")
+    if(name == "llq" || name == "reassemble" || name == "arlog-supress" || name == "fips-mode" || name == "gdoi" || name == "flexvpn-bypass-tcam" || name == "modexp-throttle-window" || name == "control-plane")
         return true;
     return false;
 }
@@ -7785,6 +8639,119 @@ bool Native::Username::Secret::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
+Native::Card::Card()
+    :
+    type{YType::enumeration, "Cisco-IOS-XE-card:type"},
+    slot{YType::uint32, "Cisco-IOS-XE-card:slot"},
+    bay{YType::uint32, "Cisco-IOS-XE-card:bay"}
+{
+
+    yang_name = "card"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Card::~Card()
+{
+}
+
+bool Native::Card::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| slot.is_set
+	|| bay.is_set;
+}
+
+bool Native::Card::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(slot.yfilter)
+	|| ydk::is_set(bay.yfilter);
+}
+
+std::string Native::Card::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Card::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "card";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Card::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
+    if (bay.is_set || is_set(bay.yfilter)) leaf_name_data.push_back(bay.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Card::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Card::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "Cisco-IOS-XE-card:type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Cisco-IOS-XE-card:slot")
+    {
+        slot = value;
+        slot.value_namespace = name_space;
+        slot.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Cisco-IOS-XE-card:bay")
+    {
+        bay = value;
+        bay.value_namespace = name_space;
+        bay.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Card::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "slot")
+    {
+        slot.yfilter = yfilter;
+    }
+    if(value_path == "bay")
+    {
+        bay.yfilter = yfilter;
+    }
+}
+
+bool Native::Card::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "slot" || name == "bay")
+        return true;
+    return false;
+}
+
 Native::Controller::Controller()
     :
     controller_tx_ex_list(this, {"name", "number"})
@@ -7792,6 +8759,7 @@ Native::Controller::Controller()
     , sonet(this, {"name"})
     , sonet_acr(this, {"name"})
     , wanphy(this, {"name"})
+    , vdsl(this, {"name"})
 {
 
     yang_name = "controller"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
@@ -7829,6 +8797,11 @@ bool Native::Controller::has_data() const
         if(wanphy[index]->has_data())
             return true;
     }
+    for (std::size_t index=0; index<vdsl.len(); index++)
+    {
+        if(vdsl[index]->has_data())
+            return true;
+    }
     return false;
 }
 
@@ -7857,6 +8830,11 @@ bool Native::Controller::has_operation() const
     for (std::size_t index=0; index<wanphy.len(); index++)
     {
         if(wanphy[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<vdsl.len(); index++)
+    {
+        if(vdsl[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
@@ -7927,6 +8905,14 @@ std::shared_ptr<Entity> Native::Controller::get_child_by_name(const std::string 
         return c;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-controller:vdsl")
+    {
+        auto c = std::make_shared<Native::Controller::Vdsl>();
+        c->parent = this;
+        vdsl.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -7979,6 +8965,15 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::get_children(
             children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
+    for (auto c : vdsl.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -7992,7 +8987,7 @@ void Native::Controller::set_filter(const std::string & value_path, YFilter yfil
 
 bool Native::Controller::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "controller-tx-ex-list" || name == "Cellular" || name == "SONET" || name == "SONET-ACR" || name == "wanphy")
+    if(name == "controller-tx-ex-list" || name == "Cellular" || name == "SONET" || name == "SONET-ACR" || name == "wanphy" || name == "vdsl")
         return true;
     return false;
 }
@@ -8792,15 +9787,21 @@ Native::Controller::Cellular::Lte::Lte()
     failovertimer{YType::uint8, "failovertimer"}
         ,
     sim(std::make_shared<Native::Controller::Cellular::Lte::Sim>())
+    , sms(std::make_shared<Native::Controller::Cellular::Lte::Sms>())
     , gps(std::make_shared<Native::Controller::Cellular::Lte::Gps>())
     , firmware(nullptr) // presence node
     , radio(std::make_shared<Native::Controller::Cellular::Lte::Radio>())
     , modem(std::make_shared<Native::Controller::Cellular::Lte::Modem>())
+    , event(std::make_shared<Native::Controller::Cellular::Lte::Event>())
+    , dyinggasp(std::make_shared<Native::Controller::Cellular::Lte::Dyinggasp>())
 {
     sim->parent = this;
+    sms->parent = this;
     gps->parent = this;
     radio->parent = this;
     modem->parent = this;
+    event->parent = this;
+    dyinggasp->parent = this;
 
     yang_name = "lte"; yang_parent_name = "Cellular"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -8814,10 +9815,13 @@ bool Native::Controller::Cellular::Lte::has_data() const
     if (is_presence_container) return true;
     return failovertimer.is_set
 	|| (sim !=  nullptr && sim->has_data())
+	|| (sms !=  nullptr && sms->has_data())
 	|| (gps !=  nullptr && gps->has_data())
 	|| (firmware !=  nullptr && firmware->has_data())
 	|| (radio !=  nullptr && radio->has_data())
-	|| (modem !=  nullptr && modem->has_data());
+	|| (modem !=  nullptr && modem->has_data())
+	|| (event !=  nullptr && event->has_data())
+	|| (dyinggasp !=  nullptr && dyinggasp->has_data());
 }
 
 bool Native::Controller::Cellular::Lte::has_operation() const
@@ -8825,10 +9829,13 @@ bool Native::Controller::Cellular::Lte::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(failovertimer.yfilter)
 	|| (sim !=  nullptr && sim->has_operation())
+	|| (sms !=  nullptr && sms->has_operation())
 	|| (gps !=  nullptr && gps->has_operation())
 	|| (firmware !=  nullptr && firmware->has_operation())
 	|| (radio !=  nullptr && radio->has_operation())
-	|| (modem !=  nullptr && modem->has_operation());
+	|| (modem !=  nullptr && modem->has_operation())
+	|| (event !=  nullptr && event->has_operation())
+	|| (dyinggasp !=  nullptr && dyinggasp->has_operation());
 }
 
 std::string Native::Controller::Cellular::Lte::get_segment_path() const
@@ -8857,6 +9864,15 @@ std::shared_ptr<Entity> Native::Controller::Cellular::Lte::get_child_by_name(con
             sim = std::make_shared<Native::Controller::Cellular::Lte::Sim>();
         }
         return sim;
+    }
+
+    if(child_yang_name == "sms")
+    {
+        if(sms == nullptr)
+        {
+            sms = std::make_shared<Native::Controller::Cellular::Lte::Sms>();
+        }
+        return sms;
     }
 
     if(child_yang_name == "gps")
@@ -8895,6 +9911,24 @@ std::shared_ptr<Entity> Native::Controller::Cellular::Lte::get_child_by_name(con
         return modem;
     }
 
+    if(child_yang_name == "event")
+    {
+        if(event == nullptr)
+        {
+            event = std::make_shared<Native::Controller::Cellular::Lte::Event>();
+        }
+        return event;
+    }
+
+    if(child_yang_name == "dyinggasp")
+    {
+        if(dyinggasp == nullptr)
+        {
+            dyinggasp = std::make_shared<Native::Controller::Cellular::Lte::Dyinggasp>();
+        }
+        return dyinggasp;
+    }
+
     return nullptr;
 }
 
@@ -8905,6 +9939,11 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte
     if(sim != nullptr)
     {
         children["sim"] = sim;
+    }
+
+    if(sms != nullptr)
+    {
+        children["sms"] = sms;
     }
 
     if(gps != nullptr)
@@ -8925,6 +9964,16 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte
     if(modem != nullptr)
     {
         children["modem"] = modem;
+    }
+
+    if(event != nullptr)
+    {
+        children["event"] = event;
+    }
+
+    if(dyinggasp != nullptr)
+    {
+        children["dyinggasp"] = dyinggasp;
     }
 
     return children;
@@ -8950,7 +9999,7 @@ void Native::Controller::Cellular::Lte::set_filter(const std::string & value_pat
 
 bool Native::Controller::Cellular::Lte::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sim" || name == "gps" || name == "firmware" || name == "radio" || name == "modem" || name == "failovertimer")
+    if(name == "sim" || name == "sms" || name == "gps" || name == "firmware" || name == "radio" || name == "modem" || name == "event" || name == "dyinggasp" || name == "failovertimer")
         return true;
     return false;
 }
@@ -9385,6 +10434,166 @@ void Native::Controller::Cellular::Lte::Sim::Primary::set_filter(const std::stri
 bool Native::Controller::Cellular::Lte::Sim::Primary::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "slot")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Sms::Sms()
+    :
+    archive(std::make_shared<Native::Controller::Cellular::Lte::Sms::Archive>())
+{
+    archive->parent = this;
+
+    yang_name = "sms"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Sms::~Sms()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Sms::has_data() const
+{
+    if (is_presence_container) return true;
+    return (archive !=  nullptr && archive->has_data());
+}
+
+bool Native::Controller::Cellular::Lte::Sms::has_operation() const
+{
+    return is_set(yfilter)
+	|| (archive !=  nullptr && archive->has_operation());
+}
+
+std::string Native::Controller::Cellular::Lte::Sms::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sms";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Sms::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Sms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "archive")
+    {
+        if(archive == nullptr)
+        {
+            archive = std::make_shared<Native::Controller::Cellular::Lte::Sms::Archive>();
+        }
+        return archive;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Sms::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(archive != nullptr)
+    {
+        children["archive"] = archive;
+    }
+
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Sms::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Controller::Cellular::Lte::Sms::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Controller::Cellular::Lte::Sms::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "archive")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Sms::Archive::Archive()
+    :
+    path{YType::enumeration, "path"}
+{
+
+    yang_name = "archive"; yang_parent_name = "sms"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Sms::Archive::~Archive()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Sms::Archive::has_data() const
+{
+    if (is_presence_container) return true;
+    return path.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Sms::Archive::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(path.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Sms::Archive::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "archive";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Sms::Archive::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Sms::Archive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Sms::Archive::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Sms::Archive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "path")
+    {
+        path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Sms::Archive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Sms::Archive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
         return true;
     return false;
 }
@@ -10024,9 +11233,15 @@ bool Native::Controller::Cellular::Lte::Radio::has_leaf_or_child_of_name(const s
 
 Native::Controller::Cellular::Lte::Modem::Modem()
     :
-    link_recovery(std::make_shared<Native::Controller::Cellular::Lte::Modem::LinkRecovery>())
+    dm_log(std::make_shared<Native::Controller::Cellular::Lte::Modem::DmLog>())
+    , fota(std::make_shared<Native::Controller::Cellular::Lte::Modem::Fota>())
+    , link_recovery(std::make_shared<Native::Controller::Cellular::Lte::Modem::LinkRecovery>())
+    , nas_log(std::make_shared<Native::Controller::Cellular::Lte::Modem::NasLog>())
 {
+    dm_log->parent = this;
+    fota->parent = this;
     link_recovery->parent = this;
+    nas_log->parent = this;
 
     yang_name = "modem"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -10038,13 +11253,19 @@ Native::Controller::Cellular::Lte::Modem::~Modem()
 bool Native::Controller::Cellular::Lte::Modem::has_data() const
 {
     if (is_presence_container) return true;
-    return (link_recovery !=  nullptr && link_recovery->has_data());
+    return (dm_log !=  nullptr && dm_log->has_data())
+	|| (fota !=  nullptr && fota->has_data())
+	|| (link_recovery !=  nullptr && link_recovery->has_data())
+	|| (nas_log !=  nullptr && nas_log->has_data());
 }
 
 bool Native::Controller::Cellular::Lte::Modem::has_operation() const
 {
     return is_set(yfilter)
-	|| (link_recovery !=  nullptr && link_recovery->has_operation());
+	|| (dm_log !=  nullptr && dm_log->has_operation())
+	|| (fota !=  nullptr && fota->has_operation())
+	|| (link_recovery !=  nullptr && link_recovery->has_operation())
+	|| (nas_log !=  nullptr && nas_log->has_operation());
 }
 
 std::string Native::Controller::Cellular::Lte::Modem::get_segment_path() const
@@ -10065,6 +11286,24 @@ std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte
 
 std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Modem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "dm-log")
+    {
+        if(dm_log == nullptr)
+        {
+            dm_log = std::make_shared<Native::Controller::Cellular::Lte::Modem::DmLog>();
+        }
+        return dm_log;
+    }
+
+    if(child_yang_name == "fota")
+    {
+        if(fota == nullptr)
+        {
+            fota = std::make_shared<Native::Controller::Cellular::Lte::Modem::Fota>();
+        }
+        return fota;
+    }
+
     if(child_yang_name == "link-recovery")
     {
         if(link_recovery == nullptr)
@@ -10074,6 +11313,15 @@ std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Modem::get_child_by_n
         return link_recovery;
     }
 
+    if(child_yang_name == "nas-log")
+    {
+        if(nas_log == nullptr)
+        {
+            nas_log = std::make_shared<Native::Controller::Cellular::Lte::Modem::NasLog>();
+        }
+        return nas_log;
+    }
+
     return nullptr;
 }
 
@@ -10081,9 +11329,24 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(dm_log != nullptr)
+    {
+        children["dm-log"] = dm_log;
+    }
+
+    if(fota != nullptr)
+    {
+        children["fota"] = fota;
+    }
+
     if(link_recovery != nullptr)
     {
         children["link-recovery"] = link_recovery;
+    }
+
+    if(nas_log != nullptr)
+    {
+        children["nas-log"] = nas_log;
     }
 
     return children;
@@ -10099,7 +11362,454 @@ void Native::Controller::Cellular::Lte::Modem::set_filter(const std::string & va
 
 bool Native::Controller::Cellular::Lte::Modem::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "link-recovery")
+    if(name == "dm-log" || name == "fota" || name == "link-recovery" || name == "nas-log")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Modem::DmLog::DmLog()
+    :
+    filter{YType::enumeration, "filter"},
+    size{YType::uint16, "size"},
+    filesize{YType::int8, "filesize"},
+    rotation{YType::empty, "rotation"},
+    enable{YType::empty, "enable"}
+        ,
+    output(std::make_shared<Native::Controller::Cellular::Lte::Modem::DmLog::Output>())
+    , autostop(std::make_shared<Native::Controller::Cellular::Lte::Modem::DmLog::Autostop>())
+{
+    output->parent = this;
+    autostop->parent = this;
+
+    yang_name = "dm-log"; yang_parent_name = "modem"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Modem::DmLog::~DmLog()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Modem::DmLog::has_data() const
+{
+    if (is_presence_container) return true;
+    return filter.is_set
+	|| size.is_set
+	|| filesize.is_set
+	|| rotation.is_set
+	|| enable.is_set
+	|| (output !=  nullptr && output->has_data())
+	|| (autostop !=  nullptr && autostop->has_data());
+}
+
+bool Native::Controller::Cellular::Lte::Modem::DmLog::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(filter.yfilter)
+	|| ydk::is_set(size.yfilter)
+	|| ydk::is_set(filesize.yfilter)
+	|| ydk::is_set(rotation.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (output !=  nullptr && output->has_operation())
+	|| (autostop !=  nullptr && autostop->has_operation());
+}
+
+std::string Native::Controller::Cellular::Lte::Modem::DmLog::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dm-log";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Modem::DmLog::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (filter.is_set || is_set(filter.yfilter)) leaf_name_data.push_back(filter.get_name_leafdata());
+    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
+    if (filesize.is_set || is_set(filesize.yfilter)) leaf_name_data.push_back(filesize.get_name_leafdata());
+    if (rotation.is_set || is_set(rotation.yfilter)) leaf_name_data.push_back(rotation.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Modem::DmLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<Native::Controller::Cellular::Lte::Modem::DmLog::Output>();
+        }
+        return output;
+    }
+
+    if(child_yang_name == "autostop")
+    {
+        if(autostop == nullptr)
+        {
+            autostop = std::make_shared<Native::Controller::Cellular::Lte::Modem::DmLog::Autostop>();
+        }
+        return autostop;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Modem::DmLog::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(output != nullptr)
+    {
+        children["output"] = output;
+    }
+
+    if(autostop != nullptr)
+    {
+        children["autostop"] = autostop;
+    }
+
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Modem::DmLog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "filter")
+    {
+        filter = value;
+        filter.value_namespace = name_space;
+        filter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "size")
+    {
+        size = value;
+        size.value_namespace = name_space;
+        size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "filesize")
+    {
+        filesize = value;
+        filesize.value_namespace = name_space;
+        filesize.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rotation")
+    {
+        rotation = value;
+        rotation.value_namespace = name_space;
+        rotation.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Modem::DmLog::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "filter")
+    {
+        filter.yfilter = yfilter;
+    }
+    if(value_path == "size")
+    {
+        size.yfilter = yfilter;
+    }
+    if(value_path == "filesize")
+    {
+        filesize.yfilter = yfilter;
+    }
+    if(value_path == "rotation")
+    {
+        rotation.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Modem::DmLog::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "output" || name == "autostop" || name == "filter" || name == "size" || name == "filesize" || name == "rotation" || name == "enable")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Modem::DmLog::Output::Output()
+    :
+    local_uf{YType::empty, "local-uf"},
+    path{YType::enumeration, "path"}
+{
+
+    yang_name = "output"; yang_parent_name = "dm-log"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Modem::DmLog::Output::~Output()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Modem::DmLog::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return local_uf.is_set
+	|| path.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Modem::DmLog::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(local_uf.yfilter)
+	|| ydk::is_set(path.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Modem::DmLog::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Modem::DmLog::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (local_uf.is_set || is_set(local_uf.yfilter)) leaf_name_data.push_back(local_uf.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Modem::DmLog::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Modem::DmLog::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Modem::DmLog::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "local-uf")
+    {
+        local_uf = value;
+        local_uf.value_namespace = name_space;
+        local_uf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path")
+    {
+        path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Modem::DmLog::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-uf")
+    {
+        local_uf.yfilter = yfilter;
+    }
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Modem::DmLog::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-uf" || name == "path")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Modem::DmLog::Autostop::Autostop()
+    :
+    link_down{YType::empty, "link-down"},
+    timer{YType::int8, "timer"}
+{
+
+    yang_name = "autostop"; yang_parent_name = "dm-log"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Modem::DmLog::Autostop::~Autostop()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Modem::DmLog::Autostop::has_data() const
+{
+    if (is_presence_container) return true;
+    return link_down.is_set
+	|| timer.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Modem::DmLog::Autostop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(link_down.yfilter)
+	|| ydk::is_set(timer.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Modem::DmLog::Autostop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "autostop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Modem::DmLog::Autostop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (link_down.is_set || is_set(link_down.yfilter)) leaf_name_data.push_back(link_down.get_name_leafdata());
+    if (timer.is_set || is_set(timer.yfilter)) leaf_name_data.push_back(timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Modem::DmLog::Autostop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Modem::DmLog::Autostop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Modem::DmLog::Autostop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "link-down")
+    {
+        link_down = value;
+        link_down.value_namespace = name_space;
+        link_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timer")
+    {
+        timer = value;
+        timer.value_namespace = name_space;
+        timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Modem::DmLog::Autostop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-down")
+    {
+        link_down.yfilter = yfilter;
+    }
+    if(value_path == "timer")
+    {
+        timer.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Modem::DmLog::Autostop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-down" || name == "timer")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Modem::Fota::Fota()
+    :
+    enable{YType::empty, "enable"},
+    poll_timer{YType::uint32, "poll-timer"}
+{
+
+    yang_name = "fota"; yang_parent_name = "modem"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Modem::Fota::~Fota()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Modem::Fota::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set
+	|| poll_timer.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Modem::Fota::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(poll_timer.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Modem::Fota::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fota";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Modem::Fota::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (poll_timer.is_set || is_set(poll_timer.yfilter)) leaf_name_data.push_back(poll_timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Modem::Fota::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Modem::Fota::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Modem::Fota::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "poll-timer")
+    {
+        poll_timer = value;
+        poll_timer.value_namespace = name_space;
+        poll_timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Modem::Fota::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "poll-timer")
+    {
+        poll_timer.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Modem::Fota::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "poll-timer")
         return true;
     return false;
 }
@@ -10317,6 +12027,2519 @@ void Native::Controller::Cellular::Lte::Modem::LinkRecovery::Rssi::set_filter(co
 bool Native::Controller::Cellular::Lte::Modem::LinkRecovery::Rssi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "onset-threshold")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Modem::NasLog::NasLog()
+    :
+    size{YType::uint16, "size"},
+    filesize{YType::int8, "filesize"},
+    enable{YType::empty, "enable"}
+        ,
+    output(std::make_shared<Native::Controller::Cellular::Lte::Modem::NasLog::Output>())
+{
+    output->parent = this;
+
+    yang_name = "nas-log"; yang_parent_name = "modem"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Modem::NasLog::~NasLog()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Modem::NasLog::has_data() const
+{
+    if (is_presence_container) return true;
+    return size.is_set
+	|| filesize.is_set
+	|| enable.is_set
+	|| (output !=  nullptr && output->has_data());
+}
+
+bool Native::Controller::Cellular::Lte::Modem::NasLog::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(size.yfilter)
+	|| ydk::is_set(filesize.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (output !=  nullptr && output->has_operation());
+}
+
+std::string Native::Controller::Cellular::Lte::Modem::NasLog::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nas-log";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Modem::NasLog::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
+    if (filesize.is_set || is_set(filesize.yfilter)) leaf_name_data.push_back(filesize.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Modem::NasLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<Native::Controller::Cellular::Lte::Modem::NasLog::Output>();
+        }
+        return output;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Modem::NasLog::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(output != nullptr)
+    {
+        children["output"] = output;
+    }
+
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Modem::NasLog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "size")
+    {
+        size = value;
+        size.value_namespace = name_space;
+        size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "filesize")
+    {
+        filesize = value;
+        filesize.value_namespace = name_space;
+        filesize.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Modem::NasLog::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "size")
+    {
+        size.yfilter = yfilter;
+    }
+    if(value_path == "filesize")
+    {
+        filesize.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Modem::NasLog::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "output" || name == "size" || name == "filesize" || name == "enable")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Modem::NasLog::Output::Output()
+    :
+    path{YType::enumeration, "path"}
+{
+
+    yang_name = "output"; yang_parent_name = "nas-log"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Modem::NasLog::Output::~Output()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Modem::NasLog::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return path.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Modem::NasLog::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(path.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Modem::NasLog::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Modem::NasLog::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Modem::NasLog::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Modem::NasLog::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Modem::NasLog::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "path")
+    {
+        path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Modem::NasLog::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Modem::NasLog::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Event()
+    :
+    connection_status(std::make_shared<Native::Controller::Cellular::Lte::Event::ConnectionStatus>())
+    , ecio(std::make_shared<Native::Controller::Cellular::Lte::Event::Ecio>())
+    , modem_state(std::make_shared<Native::Controller::Cellular::Lte::Event::ModemState>())
+    , network(std::make_shared<Native::Controller::Cellular::Lte::Event::Network>())
+    , rsrp(std::make_shared<Native::Controller::Cellular::Lte::Event::Rsrp>())
+    , rsrq(std::make_shared<Native::Controller::Cellular::Lte::Event::Rsrq>())
+    , rssi(std::make_shared<Native::Controller::Cellular::Lte::Event::Rssi>())
+    , service(std::make_shared<Native::Controller::Cellular::Lte::Event::Service>())
+    , temperature(std::make_shared<Native::Controller::Cellular::Lte::Event::Temperature>())
+{
+    connection_status->parent = this;
+    ecio->parent = this;
+    modem_state->parent = this;
+    network->parent = this;
+    rsrp->parent = this;
+    rsrq->parent = this;
+    rssi->parent = this;
+    service->parent = this;
+    temperature->parent = this;
+
+    yang_name = "event"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::~Event()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::has_data() const
+{
+    if (is_presence_container) return true;
+    return (connection_status !=  nullptr && connection_status->has_data())
+	|| (ecio !=  nullptr && ecio->has_data())
+	|| (modem_state !=  nullptr && modem_state->has_data())
+	|| (network !=  nullptr && network->has_data())
+	|| (rsrp !=  nullptr && rsrp->has_data())
+	|| (rsrq !=  nullptr && rsrq->has_data())
+	|| (rssi !=  nullptr && rssi->has_data())
+	|| (service !=  nullptr && service->has_data())
+	|| (temperature !=  nullptr && temperature->has_data());
+}
+
+bool Native::Controller::Cellular::Lte::Event::has_operation() const
+{
+    return is_set(yfilter)
+	|| (connection_status !=  nullptr && connection_status->has_operation())
+	|| (ecio !=  nullptr && ecio->has_operation())
+	|| (modem_state !=  nullptr && modem_state->has_operation())
+	|| (network !=  nullptr && network->has_operation())
+	|| (rsrp !=  nullptr && rsrp->has_operation())
+	|| (rsrq !=  nullptr && rsrq->has_operation())
+	|| (rssi !=  nullptr && rssi->has_operation())
+	|| (service !=  nullptr && service->has_operation())
+	|| (temperature !=  nullptr && temperature->has_operation());
+}
+
+std::string Native::Controller::Cellular::Lte::Event::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "event";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "connection-status")
+    {
+        if(connection_status == nullptr)
+        {
+            connection_status = std::make_shared<Native::Controller::Cellular::Lte::Event::ConnectionStatus>();
+        }
+        return connection_status;
+    }
+
+    if(child_yang_name == "ecio")
+    {
+        if(ecio == nullptr)
+        {
+            ecio = std::make_shared<Native::Controller::Cellular::Lte::Event::Ecio>();
+        }
+        return ecio;
+    }
+
+    if(child_yang_name == "modem-state")
+    {
+        if(modem_state == nullptr)
+        {
+            modem_state = std::make_shared<Native::Controller::Cellular::Lte::Event::ModemState>();
+        }
+        return modem_state;
+    }
+
+    if(child_yang_name == "network")
+    {
+        if(network == nullptr)
+        {
+            network = std::make_shared<Native::Controller::Cellular::Lte::Event::Network>();
+        }
+        return network;
+    }
+
+    if(child_yang_name == "rsrp")
+    {
+        if(rsrp == nullptr)
+        {
+            rsrp = std::make_shared<Native::Controller::Cellular::Lte::Event::Rsrp>();
+        }
+        return rsrp;
+    }
+
+    if(child_yang_name == "rsrq")
+    {
+        if(rsrq == nullptr)
+        {
+            rsrq = std::make_shared<Native::Controller::Cellular::Lte::Event::Rsrq>();
+        }
+        return rsrq;
+    }
+
+    if(child_yang_name == "rssi")
+    {
+        if(rssi == nullptr)
+        {
+            rssi = std::make_shared<Native::Controller::Cellular::Lte::Event::Rssi>();
+        }
+        return rssi;
+    }
+
+    if(child_yang_name == "service")
+    {
+        if(service == nullptr)
+        {
+            service = std::make_shared<Native::Controller::Cellular::Lte::Event::Service>();
+        }
+        return service;
+    }
+
+    if(child_yang_name == "temperature")
+    {
+        if(temperature == nullptr)
+        {
+            temperature = std::make_shared<Native::Controller::Cellular::Lte::Event::Temperature>();
+        }
+        return temperature;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(connection_status != nullptr)
+    {
+        children["connection-status"] = connection_status;
+    }
+
+    if(ecio != nullptr)
+    {
+        children["ecio"] = ecio;
+    }
+
+    if(modem_state != nullptr)
+    {
+        children["modem-state"] = modem_state;
+    }
+
+    if(network != nullptr)
+    {
+        children["network"] = network;
+    }
+
+    if(rsrp != nullptr)
+    {
+        children["rsrp"] = rsrp;
+    }
+
+    if(rsrq != nullptr)
+    {
+        children["rsrq"] = rsrq;
+    }
+
+    if(rssi != nullptr)
+    {
+        children["rssi"] = rssi;
+    }
+
+    if(service != nullptr)
+    {
+        children["service"] = service;
+    }
+
+    if(temperature != nullptr)
+    {
+        children["temperature"] = temperature;
+    }
+
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Controller::Cellular::Lte::Event::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "connection-status" || name == "ecio" || name == "modem-state" || name == "network" || name == "rsrp" || name == "rsrq" || name == "rssi" || name == "service" || name == "temperature")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::ConnectionStatus::ConnectionStatus()
+    :
+    mib_trap{YType::enumeration, "mib-trap"}
+{
+
+    yang_name = "connection-status"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::ConnectionStatus::~ConnectionStatus()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::ConnectionStatus::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool Native::Controller::Cellular::Lte::Event::ConnectionStatus::has_operation() const
+{
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::ConnectionStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "connection-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::ConnectionStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto mib_trap_name_datas = mib_trap.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), mib_trap_name_datas.begin(), mib_trap_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::ConnectionStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::ConnectionStatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::ConnectionStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.append(value);
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::ConnectionStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::ConnectionStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Ecio::Ecio()
+    :
+    abate(std::make_shared<Native::Controller::Cellular::Lte::Event::Ecio::Abate>())
+    , onset(std::make_shared<Native::Controller::Cellular::Lte::Event::Ecio::Onset>())
+{
+    abate->parent = this;
+    onset->parent = this;
+
+    yang_name = "ecio"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Ecio::~Ecio()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Ecio::has_data() const
+{
+    if (is_presence_container) return true;
+    return (abate !=  nullptr && abate->has_data())
+	|| (onset !=  nullptr && onset->has_data());
+}
+
+bool Native::Controller::Cellular::Lte::Event::Ecio::has_operation() const
+{
+    return is_set(yfilter)
+	|| (abate !=  nullptr && abate->has_operation())
+	|| (onset !=  nullptr && onset->has_operation());
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Ecio::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ecio";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Ecio::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Ecio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "abate")
+    {
+        if(abate == nullptr)
+        {
+            abate = std::make_shared<Native::Controller::Cellular::Lte::Event::Ecio::Abate>();
+        }
+        return abate;
+    }
+
+    if(child_yang_name == "onset")
+    {
+        if(onset == nullptr)
+        {
+            onset = std::make_shared<Native::Controller::Cellular::Lte::Event::Ecio::Onset>();
+        }
+        return onset;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Ecio::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(abate != nullptr)
+    {
+        children["abate"] = abate;
+    }
+
+    if(onset != nullptr)
+    {
+        children["onset"] = onset;
+    }
+
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Ecio::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Controller::Cellular::Lte::Event::Ecio::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Ecio::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "abate" || name == "onset")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Ecio::Abate::Abate()
+    :
+    mib_trap{YType::enumeration, "mib-trap"},
+    threshold{YType::int16, "threshold"}
+{
+
+    yang_name = "abate"; yang_parent_name = "ecio"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Ecio::Abate::~Abate()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Ecio::Abate::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return threshold.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Event::Ecio::Abate::has_operation() const
+{
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Ecio::Abate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "abate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Ecio::Abate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    auto mib_trap_name_datas = mib_trap.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), mib_trap_name_datas.begin(), mib_trap_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Ecio::Abate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Ecio::Abate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Ecio::Abate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.append(value);
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::Ecio::Abate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::Ecio::Abate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Ecio::Onset::Onset()
+    :
+    mib_trap{YType::enumeration, "mib-trap"},
+    threshold{YType::int16, "threshold"}
+{
+
+    yang_name = "onset"; yang_parent_name = "ecio"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Ecio::Onset::~Onset()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Ecio::Onset::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return threshold.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Event::Ecio::Onset::has_operation() const
+{
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Ecio::Onset::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "onset";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Ecio::Onset::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    auto mib_trap_name_datas = mib_trap.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), mib_trap_name_datas.begin(), mib_trap_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Ecio::Onset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Ecio::Onset::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Ecio::Onset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.append(value);
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::Ecio::Onset::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::Ecio::Onset::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::ModemState::ModemState()
+    :
+    mib_trap{YType::enumeration, "mib-trap"}
+{
+
+    yang_name = "modem-state"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::ModemState::~ModemState()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::ModemState::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool Native::Controller::Cellular::Lte::Event::ModemState::has_operation() const
+{
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::ModemState::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "modem-state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::ModemState::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto mib_trap_name_datas = mib_trap.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), mib_trap_name_datas.begin(), mib_trap_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::ModemState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::ModemState::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::ModemState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.append(value);
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::ModemState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::ModemState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Network::Network()
+    :
+    mib_trap{YType::empty, "mib-trap"}
+{
+
+    yang_name = "network"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Network::~Network()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Network::has_data() const
+{
+    if (is_presence_container) return true;
+    return mib_trap.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Event::Network::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Network::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "network";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Network::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mib_trap.is_set || is_set(mib_trap.yfilter)) leaf_name_data.push_back(mib_trap.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Network::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap = value;
+        mib_trap.value_namespace = name_space;
+        mib_trap.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Rsrp::Rsrp()
+    :
+    abate(std::make_shared<Native::Controller::Cellular::Lte::Event::Rsrp::Abate>())
+    , onset(std::make_shared<Native::Controller::Cellular::Lte::Event::Rsrp::Onset>())
+{
+    abate->parent = this;
+    onset->parent = this;
+
+    yang_name = "rsrp"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Rsrp::~Rsrp()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrp::has_data() const
+{
+    if (is_presence_container) return true;
+    return (abate !=  nullptr && abate->has_data())
+	|| (onset !=  nullptr && onset->has_data());
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrp::has_operation() const
+{
+    return is_set(yfilter)
+	|| (abate !=  nullptr && abate->has_operation())
+	|| (onset !=  nullptr && onset->has_operation());
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Rsrp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rsrp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Rsrp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Rsrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "abate")
+    {
+        if(abate == nullptr)
+        {
+            abate = std::make_shared<Native::Controller::Cellular::Lte::Event::Rsrp::Abate>();
+        }
+        return abate;
+    }
+
+    if(child_yang_name == "onset")
+    {
+        if(onset == nullptr)
+        {
+            onset = std::make_shared<Native::Controller::Cellular::Lte::Event::Rsrp::Onset>();
+        }
+        return onset;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Rsrp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(abate != nullptr)
+    {
+        children["abate"] = abate;
+    }
+
+    if(onset != nullptr)
+    {
+        children["onset"] = onset;
+    }
+
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Rsrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Controller::Cellular::Lte::Event::Rsrp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "abate" || name == "onset")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Rsrp::Abate::Abate()
+    :
+    mib_trap{YType::enumeration, "mib-trap"},
+    threshold{YType::int16, "threshold"}
+{
+
+    yang_name = "abate"; yang_parent_name = "rsrp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Rsrp::Abate::~Abate()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrp::Abate::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return threshold.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrp::Abate::has_operation() const
+{
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Rsrp::Abate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "abate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Rsrp::Abate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    auto mib_trap_name_datas = mib_trap.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), mib_trap_name_datas.begin(), mib_trap_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Rsrp::Abate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Rsrp::Abate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Rsrp::Abate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.append(value);
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::Rsrp::Abate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrp::Abate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Rsrp::Onset::Onset()
+    :
+    mib_trap{YType::enumeration, "mib-trap"},
+    threshold{YType::int16, "threshold"}
+{
+
+    yang_name = "onset"; yang_parent_name = "rsrp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Rsrp::Onset::~Onset()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrp::Onset::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return threshold.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrp::Onset::has_operation() const
+{
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Rsrp::Onset::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "onset";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Rsrp::Onset::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    auto mib_trap_name_datas = mib_trap.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), mib_trap_name_datas.begin(), mib_trap_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Rsrp::Onset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Rsrp::Onset::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Rsrp::Onset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.append(value);
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::Rsrp::Onset::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrp::Onset::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Rsrq::Rsrq()
+    :
+    abate(std::make_shared<Native::Controller::Cellular::Lte::Event::Rsrq::Abate>())
+    , onset(std::make_shared<Native::Controller::Cellular::Lte::Event::Rsrq::Onset>())
+{
+    abate->parent = this;
+    onset->parent = this;
+
+    yang_name = "rsrq"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Rsrq::~Rsrq()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrq::has_data() const
+{
+    if (is_presence_container) return true;
+    return (abate !=  nullptr && abate->has_data())
+	|| (onset !=  nullptr && onset->has_data());
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrq::has_operation() const
+{
+    return is_set(yfilter)
+	|| (abate !=  nullptr && abate->has_operation())
+	|| (onset !=  nullptr && onset->has_operation());
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Rsrq::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rsrq";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Rsrq::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Rsrq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "abate")
+    {
+        if(abate == nullptr)
+        {
+            abate = std::make_shared<Native::Controller::Cellular::Lte::Event::Rsrq::Abate>();
+        }
+        return abate;
+    }
+
+    if(child_yang_name == "onset")
+    {
+        if(onset == nullptr)
+        {
+            onset = std::make_shared<Native::Controller::Cellular::Lte::Event::Rsrq::Onset>();
+        }
+        return onset;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Rsrq::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(abate != nullptr)
+    {
+        children["abate"] = abate;
+    }
+
+    if(onset != nullptr)
+    {
+        children["onset"] = onset;
+    }
+
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Rsrq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Controller::Cellular::Lte::Event::Rsrq::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrq::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "abate" || name == "onset")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Rsrq::Abate::Abate()
+    :
+    mib_trap{YType::enumeration, "mib-trap"},
+    threshold{YType::int8, "threshold"}
+{
+
+    yang_name = "abate"; yang_parent_name = "rsrq"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Rsrq::Abate::~Abate()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrq::Abate::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return threshold.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrq::Abate::has_operation() const
+{
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Rsrq::Abate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "abate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Rsrq::Abate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    auto mib_trap_name_datas = mib_trap.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), mib_trap_name_datas.begin(), mib_trap_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Rsrq::Abate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Rsrq::Abate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Rsrq::Abate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.append(value);
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::Rsrq::Abate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrq::Abate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Rsrq::Onset::Onset()
+    :
+    mib_trap{YType::enumeration, "mib-trap"},
+    threshold{YType::int8, "threshold"}
+{
+
+    yang_name = "onset"; yang_parent_name = "rsrq"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Rsrq::Onset::~Onset()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrq::Onset::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return threshold.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrq::Onset::has_operation() const
+{
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Rsrq::Onset::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "onset";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Rsrq::Onset::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    auto mib_trap_name_datas = mib_trap.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), mib_trap_name_datas.begin(), mib_trap_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Rsrq::Onset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Rsrq::Onset::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Rsrq::Onset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.append(value);
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::Rsrq::Onset::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rsrq::Onset::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Rssi::Rssi()
+    :
+    abate(std::make_shared<Native::Controller::Cellular::Lte::Event::Rssi::Abate>())
+    , onset(std::make_shared<Native::Controller::Cellular::Lte::Event::Rssi::Onset>())
+{
+    abate->parent = this;
+    onset->parent = this;
+
+    yang_name = "rssi"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Rssi::~Rssi()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rssi::has_data() const
+{
+    if (is_presence_container) return true;
+    return (abate !=  nullptr && abate->has_data())
+	|| (onset !=  nullptr && onset->has_data());
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rssi::has_operation() const
+{
+    return is_set(yfilter)
+	|| (abate !=  nullptr && abate->has_operation())
+	|| (onset !=  nullptr && onset->has_operation());
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Rssi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rssi";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Rssi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Rssi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "abate")
+    {
+        if(abate == nullptr)
+        {
+            abate = std::make_shared<Native::Controller::Cellular::Lte::Event::Rssi::Abate>();
+        }
+        return abate;
+    }
+
+    if(child_yang_name == "onset")
+    {
+        if(onset == nullptr)
+        {
+            onset = std::make_shared<Native::Controller::Cellular::Lte::Event::Rssi::Onset>();
+        }
+        return onset;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Rssi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(abate != nullptr)
+    {
+        children["abate"] = abate;
+    }
+
+    if(onset != nullptr)
+    {
+        children["onset"] = onset;
+    }
+
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Rssi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Controller::Cellular::Lte::Event::Rssi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rssi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "abate" || name == "onset")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Rssi::Abate::Abate()
+    :
+    mib_trap{YType::enumeration, "mib-trap"},
+    threshold{YType::int16, "threshold"}
+{
+
+    yang_name = "abate"; yang_parent_name = "rssi"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Rssi::Abate::~Abate()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rssi::Abate::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return threshold.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rssi::Abate::has_operation() const
+{
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Rssi::Abate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "abate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Rssi::Abate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    auto mib_trap_name_datas = mib_trap.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), mib_trap_name_datas.begin(), mib_trap_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Rssi::Abate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Rssi::Abate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Rssi::Abate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.append(value);
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::Rssi::Abate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rssi::Abate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Rssi::Onset::Onset()
+    :
+    mib_trap{YType::enumeration, "mib-trap"},
+    threshold{YType::int16, "threshold"}
+{
+
+    yang_name = "onset"; yang_parent_name = "rssi"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Rssi::Onset::~Onset()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rssi::Onset::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return threshold.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rssi::Onset::has_operation() const
+{
+    for (auto const & leaf : mib_trap.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Rssi::Onset::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "onset";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Rssi::Onset::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    auto mib_trap_name_datas = mib_trap.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), mib_trap_name_datas.begin(), mib_trap_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Rssi::Onset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Rssi::Onset::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Rssi::Onset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.append(value);
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::Rssi::Onset::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::Rssi::Onset::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Service::Service()
+    :
+    mib_trap{YType::empty, "mib-trap"}
+{
+
+    yang_name = "service"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Service::~Service()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Service::has_data() const
+{
+    if (is_presence_container) return true;
+    return mib_trap.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Event::Service::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Service::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "service";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Service::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mib_trap.is_set || is_set(mib_trap.yfilter)) leaf_name_data.push_back(mib_trap.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Service::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Service::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap = value;
+        mib_trap.value_namespace = name_space;
+        mib_trap.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::Service::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::Service::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Temperature::Temperature()
+    :
+    abate(std::make_shared<Native::Controller::Cellular::Lte::Event::Temperature::Abate>())
+    , onset(std::make_shared<Native::Controller::Cellular::Lte::Event::Temperature::Onset>())
+{
+    abate->parent = this;
+    onset->parent = this;
+
+    yang_name = "temperature"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Temperature::~Temperature()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Temperature::has_data() const
+{
+    if (is_presence_container) return true;
+    return (abate !=  nullptr && abate->has_data())
+	|| (onset !=  nullptr && onset->has_data());
+}
+
+bool Native::Controller::Cellular::Lte::Event::Temperature::has_operation() const
+{
+    return is_set(yfilter)
+	|| (abate !=  nullptr && abate->has_operation())
+	|| (onset !=  nullptr && onset->has_operation());
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Temperature::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "temperature";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Temperature::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Temperature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "abate")
+    {
+        if(abate == nullptr)
+        {
+            abate = std::make_shared<Native::Controller::Cellular::Lte::Event::Temperature::Abate>();
+        }
+        return abate;
+    }
+
+    if(child_yang_name == "onset")
+    {
+        if(onset == nullptr)
+        {
+            onset = std::make_shared<Native::Controller::Cellular::Lte::Event::Temperature::Onset>();
+        }
+        return onset;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Temperature::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(abate != nullptr)
+    {
+        children["abate"] = abate;
+    }
+
+    if(onset != nullptr)
+    {
+        children["onset"] = onset;
+    }
+
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Temperature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Controller::Cellular::Lte::Event::Temperature::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Temperature::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "abate" || name == "onset")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Temperature::Abate::Abate()
+    :
+    mib_trap{YType::empty, "mib-trap"},
+    threshold{YType::int16, "threshold"}
+{
+
+    yang_name = "abate"; yang_parent_name = "temperature"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Temperature::Abate::~Abate()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Temperature::Abate::has_data() const
+{
+    if (is_presence_container) return true;
+    return mib_trap.is_set
+	|| threshold.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Event::Temperature::Abate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Temperature::Abate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "abate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Temperature::Abate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mib_trap.is_set || is_set(mib_trap.yfilter)) leaf_name_data.push_back(mib_trap.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Temperature::Abate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Temperature::Abate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Temperature::Abate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap = value;
+        mib_trap.value_namespace = name_space;
+        mib_trap.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::Temperature::Abate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::Temperature::Abate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Event::Temperature::Onset::Onset()
+    :
+    mib_trap{YType::empty, "mib-trap"},
+    threshold{YType::int16, "threshold"}
+{
+
+    yang_name = "onset"; yang_parent_name = "temperature"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Event::Temperature::Onset::~Onset()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Event::Temperature::Onset::has_data() const
+{
+    if (is_presence_container) return true;
+    return mib_trap.is_set
+	|| threshold.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Event::Temperature::Onset::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mib_trap.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Event::Temperature::Onset::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "onset";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Event::Temperature::Onset::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mib_trap.is_set || is_set(mib_trap.yfilter)) leaf_name_data.push_back(mib_trap.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Event::Temperature::Onset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Event::Temperature::Onset::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Event::Temperature::Onset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap = value;
+        mib_trap.value_namespace = name_space;
+        mib_trap.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Event::Temperature::Onset::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mib-trap")
+    {
+        mib_trap.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Event::Temperature::Onset::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-trap" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Dyinggasp::Dyinggasp()
+    :
+    detach(std::make_shared<Native::Controller::Cellular::Lte::Dyinggasp::Detach>())
+    , sms(std::make_shared<Native::Controller::Cellular::Lte::Dyinggasp::Sms>())
+{
+    detach->parent = this;
+    sms->parent = this;
+
+    yang_name = "dyinggasp"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Dyinggasp::~Dyinggasp()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Dyinggasp::has_data() const
+{
+    if (is_presence_container) return true;
+    return (detach !=  nullptr && detach->has_data())
+	|| (sms !=  nullptr && sms->has_data());
+}
+
+bool Native::Controller::Cellular::Lte::Dyinggasp::has_operation() const
+{
+    return is_set(yfilter)
+	|| (detach !=  nullptr && detach->has_operation())
+	|| (sms !=  nullptr && sms->has_operation());
+}
+
+std::string Native::Controller::Cellular::Lte::Dyinggasp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dyinggasp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Dyinggasp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Dyinggasp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "detach")
+    {
+        if(detach == nullptr)
+        {
+            detach = std::make_shared<Native::Controller::Cellular::Lte::Dyinggasp::Detach>();
+        }
+        return detach;
+    }
+
+    if(child_yang_name == "sms")
+    {
+        if(sms == nullptr)
+        {
+            sms = std::make_shared<Native::Controller::Cellular::Lte::Dyinggasp::Sms>();
+        }
+        return sms;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Dyinggasp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(detach != nullptr)
+    {
+        children["detach"] = detach;
+    }
+
+    if(sms != nullptr)
+    {
+        children["sms"] = sms;
+    }
+
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Dyinggasp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Controller::Cellular::Lte::Dyinggasp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Controller::Cellular::Lte::Dyinggasp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detach" || name == "sms")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Dyinggasp::Detach::Detach()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "detach"; yang_parent_name = "dyinggasp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Dyinggasp::Detach::~Detach()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Dyinggasp::Detach::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Dyinggasp::Detach::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Dyinggasp::Detach::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "detach";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Dyinggasp::Detach::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Dyinggasp::Detach::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Dyinggasp::Detach::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Dyinggasp::Detach::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Dyinggasp::Detach::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Dyinggasp::Detach::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Native::Controller::Cellular::Lte::Dyinggasp::Sms::Sms()
+    :
+    send{YType::str, "send"},
+    sms_text{YType::str, "sms-text"}
+{
+
+    yang_name = "sms"; yang_parent_name = "dyinggasp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Controller::Cellular::Lte::Dyinggasp::Sms::~Sms()
+{
+}
+
+bool Native::Controller::Cellular::Lte::Dyinggasp::Sms::has_data() const
+{
+    if (is_presence_container) return true;
+    return send.is_set
+	|| sms_text.is_set;
+}
+
+bool Native::Controller::Cellular::Lte::Dyinggasp::Sms::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(send.yfilter)
+	|| ydk::is_set(sms_text.yfilter);
+}
+
+std::string Native::Controller::Cellular::Lte::Dyinggasp::Sms::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sms";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Controller::Cellular::Lte::Dyinggasp::Sms::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (send.is_set || is_set(send.yfilter)) leaf_name_data.push_back(send.get_name_leafdata());
+    if (sms_text.is_set || is_set(sms_text.yfilter)) leaf_name_data.push_back(sms_text.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Dyinggasp::Sms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte::Dyinggasp::Sms::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Controller::Cellular::Lte::Dyinggasp::Sms::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "send")
+    {
+        send = value;
+        send.value_namespace = name_space;
+        send.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sms-text")
+    {
+        sms_text = value;
+        sms_text.value_namespace = name_space;
+        sms_text.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Controller::Cellular::Lte::Dyinggasp::Sms::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "send")
+    {
+        send.yfilter = yfilter;
+    }
+    if(value_path == "sms-text")
+    {
+        sms_text.yfilter = yfilter;
+    }
+}
+
+bool Native::Controller::Cellular::Lte::Dyinggasp::Sms::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "send" || name == "sms-text")
         return true;
     return false;
 }
@@ -12087,4424 +16310,11 @@ bool Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::has_leaf_or_child_o
     return false;
 }
 
-Native::Controller::SONET::Au4::FramingUnframed::FramingUnframed()
-    :
-    tug_2(this, {"number", "e1"})
-{
-
-    yang_name = "framing-unframed"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONET::Au4::FramingUnframed::~FramingUnframed()
-{
-}
-
-bool Native::Controller::SONET::Au4::FramingUnframed::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Controller::SONET::Au4::FramingUnframed::has_operation() const
-{
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Controller::SONET::Au4::FramingUnframed::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "framing-unframed";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Au4::FramingUnframed::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONET::Au4::FramingUnframed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tug-2")
-    {
-        auto c = std::make_shared<Native::Controller::SONET::Au4::FramingUnframed::Tug2>();
-        c->parent = this;
-        tug_2.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Au4::FramingUnframed::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tug_2.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONET::Au4::FramingUnframed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Controller::SONET::Au4::FramingUnframed::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Controller::SONET::Au4::FramingUnframed::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tug-2")
-        return true;
-    return false;
-}
-
-Native::Controller::SONET::Au4::FramingUnframed::Tug2::Tug2()
-    :
-    number{YType::int8, "number"},
-    e1{YType::int8, "e1"},
-    framing{YType::enumeration, "framing"}
-{
-
-    yang_name = "tug-2"; yang_parent_name = "framing-unframed"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONET::Au4::FramingUnframed::Tug2::~Tug2()
-{
-}
-
-bool Native::Controller::SONET::Au4::FramingUnframed::Tug2::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| e1.is_set
-	|| framing.is_set;
-}
-
-bool Native::Controller::SONET::Au4::FramingUnframed::Tug2::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(e1.yfilter)
-	|| ydk::is_set(framing.yfilter);
-}
-
-std::string Native::Controller::SONET::Au4::FramingUnframed::Tug2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tug-2";
-    ADD_KEY_TOKEN(number, "number");
-    ADD_KEY_TOKEN(e1, "e1");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Au4::FramingUnframed::Tug2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (e1.is_set || is_set(e1.yfilter)) leaf_name_data.push_back(e1.get_name_leafdata());
-    if (framing.is_set || is_set(framing.yfilter)) leaf_name_data.push_back(framing.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONET::Au4::FramingUnframed::Tug2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Au4::FramingUnframed::Tug2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONET::Au4::FramingUnframed::Tug2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "e1")
-    {
-        e1 = value;
-        e1.value_namespace = name_space;
-        e1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "framing")
-    {
-        framing = value;
-        framing.value_namespace = name_space;
-        framing.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONET::Au4::FramingUnframed::Tug2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "e1")
-    {
-        e1.yfilter = yfilter;
-    }
-    if(value_path == "framing")
-    {
-        framing.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONET::Au4::FramingUnframed::Tug2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "number" || name == "e1" || name == "framing")
-        return true;
-    return false;
-}
-
-Native::Controller::SONET::Au4::CemGroupAtm::CemGroupAtm()
-    :
-    tug_2(this, {"number", "e1"})
-{
-
-    yang_name = "cem-group-atm"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONET::Au4::CemGroupAtm::~CemGroupAtm()
-{
-}
-
-bool Native::Controller::SONET::Au4::CemGroupAtm::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Controller::SONET::Au4::CemGroupAtm::has_operation() const
-{
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Controller::SONET::Au4::CemGroupAtm::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cem-group-atm";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Au4::CemGroupAtm::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONET::Au4::CemGroupAtm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tug-2")
-    {
-        auto c = std::make_shared<Native::Controller::SONET::Au4::CemGroupAtm::Tug2>();
-        c->parent = this;
-        tug_2.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Au4::CemGroupAtm::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tug_2.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONET::Au4::CemGroupAtm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Controller::SONET::Au4::CemGroupAtm::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Controller::SONET::Au4::CemGroupAtm::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tug-2")
-        return true;
-    return false;
-}
-
-Native::Controller::SONET::Au4::CemGroupAtm::Tug2::Tug2()
-    :
-    number{YType::int8, "number"},
-    e1{YType::int8, "e1"},
-    atm{YType::empty, "atm"}
-{
-
-    yang_name = "tug-2"; yang_parent_name = "cem-group-atm"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONET::Au4::CemGroupAtm::Tug2::~Tug2()
-{
-}
-
-bool Native::Controller::SONET::Au4::CemGroupAtm::Tug2::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| e1.is_set
-	|| atm.is_set;
-}
-
-bool Native::Controller::SONET::Au4::CemGroupAtm::Tug2::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(e1.yfilter)
-	|| ydk::is_set(atm.yfilter);
-}
-
-std::string Native::Controller::SONET::Au4::CemGroupAtm::Tug2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tug-2";
-    ADD_KEY_TOKEN(number, "number");
-    ADD_KEY_TOKEN(e1, "e1");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Au4::CemGroupAtm::Tug2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (e1.is_set || is_set(e1.yfilter)) leaf_name_data.push_back(e1.get_name_leafdata());
-    if (atm.is_set || is_set(atm.yfilter)) leaf_name_data.push_back(atm.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONET::Au4::CemGroupAtm::Tug2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Au4::CemGroupAtm::Tug2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONET::Au4::CemGroupAtm::Tug2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "e1")
-    {
-        e1 = value;
-        e1.value_namespace = name_space;
-        e1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "atm")
-    {
-        atm = value;
-        atm.value_namespace = name_space;
-        atm.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONET::Au4::CemGroupAtm::Tug2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "e1")
-    {
-        e1.yfilter = yfilter;
-    }
-    if(value_path == "atm")
-    {
-        atm.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONET::Au4::CemGroupAtm::Tug2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "number" || name == "e1" || name == "atm")
-        return true;
-    return false;
-}
-
-Native::Controller::SONET::Au4::ImaGroup::ImaGroup()
-    :
-    tug_2(this, {"number", "e1", "ima_group"})
-{
-
-    yang_name = "ima-group"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONET::Au4::ImaGroup::~ImaGroup()
-{
-}
-
-bool Native::Controller::SONET::Au4::ImaGroup::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Controller::SONET::Au4::ImaGroup::has_operation() const
-{
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Controller::SONET::Au4::ImaGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ima-group";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Au4::ImaGroup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONET::Au4::ImaGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tug-2")
-    {
-        auto c = std::make_shared<Native::Controller::SONET::Au4::ImaGroup::Tug2>();
-        c->parent = this;
-        tug_2.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Au4::ImaGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tug_2.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONET::Au4::ImaGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Controller::SONET::Au4::ImaGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Controller::SONET::Au4::ImaGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tug-2")
-        return true;
-    return false;
-}
-
-Native::Controller::SONET::Au4::ImaGroup::Tug2::Tug2()
-    :
-    number{YType::int8, "number"},
-    e1{YType::int8, "e1"},
-    ima_group{YType::int32, "ima-group"}
-{
-
-    yang_name = "tug-2"; yang_parent_name = "ima-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONET::Au4::ImaGroup::Tug2::~Tug2()
-{
-}
-
-bool Native::Controller::SONET::Au4::ImaGroup::Tug2::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| e1.is_set
-	|| ima_group.is_set;
-}
-
-bool Native::Controller::SONET::Au4::ImaGroup::Tug2::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(e1.yfilter)
-	|| ydk::is_set(ima_group.yfilter);
-}
-
-std::string Native::Controller::SONET::Au4::ImaGroup::Tug2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tug-2";
-    ADD_KEY_TOKEN(number, "number");
-    ADD_KEY_TOKEN(e1, "e1");
-    ADD_KEY_TOKEN(ima_group, "ima-group");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Au4::ImaGroup::Tug2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (e1.is_set || is_set(e1.yfilter)) leaf_name_data.push_back(e1.get_name_leafdata());
-    if (ima_group.is_set || is_set(ima_group.yfilter)) leaf_name_data.push_back(ima_group.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONET::Au4::ImaGroup::Tug2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Au4::ImaGroup::Tug2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONET::Au4::ImaGroup::Tug2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "e1")
-    {
-        e1 = value;
-        e1.value_namespace = name_space;
-        e1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ima-group")
-    {
-        ima_group = value;
-        ima_group.value_namespace = name_space;
-        ima_group.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONET::Au4::ImaGroup::Tug2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "e1")
-    {
-        e1.yfilter = yfilter;
-    }
-    if(value_path == "ima-group")
-    {
-        ima_group.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONET::Au4::ImaGroup::Tug2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "number" || name == "e1" || name == "ima-group")
-        return true;
-    return false;
-}
-
-Native::Controller::SONET::Aps::Aps()
-    :
-    working{YType::int8, "working"},
-    hspw_icrm_grp{YType::uint8, "hspw-icrm-grp"}
-        ,
-    group(std::make_shared<Native::Controller::SONET::Aps::Group>())
-    , protect(std::make_shared<Native::Controller::SONET::Aps::Protect>())
-    , interchassis(std::make_shared<Native::Controller::SONET::Aps::Interchassis>())
-{
-    group->parent = this;
-    protect->parent = this;
-    interchassis->parent = this;
-
-    yang_name = "aps"; yang_parent_name = "SONET"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONET::Aps::~Aps()
-{
-}
-
-bool Native::Controller::SONET::Aps::has_data() const
-{
-    if (is_presence_container) return true;
-    return working.is_set
-	|| hspw_icrm_grp.is_set
-	|| (group !=  nullptr && group->has_data())
-	|| (protect !=  nullptr && protect->has_data())
-	|| (interchassis !=  nullptr && interchassis->has_data());
-}
-
-bool Native::Controller::SONET::Aps::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(working.yfilter)
-	|| ydk::is_set(hspw_icrm_grp.yfilter)
-	|| (group !=  nullptr && group->has_operation())
-	|| (protect !=  nullptr && protect->has_operation())
-	|| (interchassis !=  nullptr && interchassis->has_operation());
-}
-
-std::string Native::Controller::SONET::Aps::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "aps";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Aps::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (working.is_set || is_set(working.yfilter)) leaf_name_data.push_back(working.get_name_leafdata());
-    if (hspw_icrm_grp.is_set || is_set(hspw_icrm_grp.yfilter)) leaf_name_data.push_back(hspw_icrm_grp.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONET::Aps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "group")
-    {
-        if(group == nullptr)
-        {
-            group = std::make_shared<Native::Controller::SONET::Aps::Group>();
-        }
-        return group;
-    }
-
-    if(child_yang_name == "protect")
-    {
-        if(protect == nullptr)
-        {
-            protect = std::make_shared<Native::Controller::SONET::Aps::Protect>();
-        }
-        return protect;
-    }
-
-    if(child_yang_name == "interchassis")
-    {
-        if(interchassis == nullptr)
-        {
-            interchassis = std::make_shared<Native::Controller::SONET::Aps::Interchassis>();
-        }
-        return interchassis;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Aps::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(group != nullptr)
-    {
-        children["group"] = group;
-    }
-
-    if(protect != nullptr)
-    {
-        children["protect"] = protect;
-    }
-
-    if(interchassis != nullptr)
-    {
-        children["interchassis"] = interchassis;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONET::Aps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "working")
-    {
-        working = value;
-        working.value_namespace = name_space;
-        working.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hspw-icrm-grp")
-    {
-        hspw_icrm_grp = value;
-        hspw_icrm_grp.value_namespace = name_space;
-        hspw_icrm_grp.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONET::Aps::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "working")
-    {
-        working.yfilter = yfilter;
-    }
-    if(value_path == "hspw-icrm-grp")
-    {
-        hspw_icrm_grp.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONET::Aps::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "group" || name == "protect" || name == "interchassis" || name == "working" || name == "hspw-icrm-grp")
-        return true;
-    return false;
-}
-
-Native::Controller::SONET::Aps::Group::Group()
-    :
-    group_number{YType::uint8, "group-number"},
-    acr{YType::int8, "acr"}
-{
-
-    yang_name = "group"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONET::Aps::Group::~Group()
-{
-}
-
-bool Native::Controller::SONET::Aps::Group::has_data() const
-{
-    if (is_presence_container) return true;
-    return group_number.is_set
-	|| acr.is_set;
-}
-
-bool Native::Controller::SONET::Aps::Group::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(group_number.yfilter)
-	|| ydk::is_set(acr.yfilter);
-}
-
-std::string Native::Controller::SONET::Aps::Group::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "group";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Aps::Group::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (group_number.is_set || is_set(group_number.yfilter)) leaf_name_data.push_back(group_number.get_name_leafdata());
-    if (acr.is_set || is_set(acr.yfilter)) leaf_name_data.push_back(acr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONET::Aps::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Aps::Group::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONET::Aps::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "group-number")
-    {
-        group_number = value;
-        group_number.value_namespace = name_space;
-        group_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acr")
-    {
-        acr = value;
-        acr.value_namespace = name_space;
-        acr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONET::Aps::Group::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "group-number")
-    {
-        group_number.yfilter = yfilter;
-    }
-    if(value_path == "acr")
-    {
-        acr.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONET::Aps::Group::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "group-number" || name == "acr")
-        return true;
-    return false;
-}
-
-Native::Controller::SONET::Aps::Protect::Protect()
-    :
-    number{YType::int8, "number"},
-    ip_addr{YType::str, "ip-addr"}
-{
-
-    yang_name = "protect"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONET::Aps::Protect::~Protect()
-{
-}
-
-bool Native::Controller::SONET::Aps::Protect::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| ip_addr.is_set;
-}
-
-bool Native::Controller::SONET::Aps::Protect::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(ip_addr.yfilter);
-}
-
-std::string Native::Controller::SONET::Aps::Protect::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "protect";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Aps::Protect::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.yfilter)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONET::Aps::Protect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Aps::Protect::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONET::Aps::Protect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-        ip_addr.value_namespace = name_space;
-        ip_addr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONET::Aps::Protect::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONET::Aps::Protect::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "number" || name == "ip-addr")
-        return true;
-    return false;
-}
-
-Native::Controller::SONET::Aps::Interchassis::Interchassis()
-    :
-    group{YType::uint8, "group"}
-{
-
-    yang_name = "interchassis"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONET::Aps::Interchassis::~Interchassis()
-{
-}
-
-bool Native::Controller::SONET::Aps::Interchassis::has_data() const
-{
-    if (is_presence_container) return true;
-    return group.is_set;
-}
-
-bool Native::Controller::SONET::Aps::Interchassis::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(group.yfilter);
-}
-
-std::string Native::Controller::SONET::Aps::Interchassis::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interchassis";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Aps::Interchassis::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONET::Aps::Interchassis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Aps::Interchassis::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONET::Aps::Interchassis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "group")
-    {
-        group = value;
-        group.value_namespace = name_space;
-        group.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONET::Aps::Interchassis::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "group")
-    {
-        group.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONET::Aps::Interchassis::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "group")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::SONETACR()
-    :
-    name{YType::str, "name"},
-    framing{YType::enumeration, "framing"},
-    shutdown{YType::empty, "shutdown"}
-        ,
-    clock_(std::make_shared<Native::Controller::SONETACR::Clock>())
-    , aug(std::make_shared<Native::Controller::SONETACR::Aug>())
-    , au_3(this, {"number"})
-    , au_4_atm(std::make_shared<Native::Controller::SONETACR::Au4Atm>())
-    , au_4(this, {"number", "tug_3"})
-    , aps(std::make_shared<Native::Controller::SONETACR::Aps>())
-{
-    clock_->parent = this;
-    aug->parent = this;
-    au_4_atm->parent = this;
-    aps->parent = this;
-
-    yang_name = "SONET-ACR"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Controller::SONETACR::~SONETACR()
-{
-}
-
-bool Native::Controller::SONETACR::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<au_3.len(); index++)
-    {
-        if(au_3[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<au_4.len(); index++)
-    {
-        if(au_4[index]->has_data())
-            return true;
-    }
-    return name.is_set
-	|| framing.is_set
-	|| shutdown.is_set
-	|| (clock_ !=  nullptr && clock_->has_data())
-	|| (aug !=  nullptr && aug->has_data())
-	|| (au_4_atm !=  nullptr && au_4_atm->has_data())
-	|| (aps !=  nullptr && aps->has_data());
-}
-
-bool Native::Controller::SONETACR::has_operation() const
-{
-    for (std::size_t index=0; index<au_3.len(); index++)
-    {
-        if(au_3[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<au_4.len(); index++)
-    {
-        if(au_4[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(framing.yfilter)
-	|| ydk::is_set(shutdown.yfilter)
-	|| (clock_ !=  nullptr && clock_->has_operation())
-	|| (aug !=  nullptr && aug->has_operation())
-	|| (au_4_atm !=  nullptr && au_4_atm->has_operation())
-	|| (aps !=  nullptr && aps->has_operation());
-}
-
-std::string Native::Controller::SONETACR::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/controller/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Controller::SONETACR::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-controller:SONET-ACR";
-    ADD_KEY_TOKEN(name, "name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (framing.is_set || is_set(framing.yfilter)) leaf_name_data.push_back(framing.get_name_leafdata());
-    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "clock")
-    {
-        if(clock_ == nullptr)
-        {
-            clock_ = std::make_shared<Native::Controller::SONETACR::Clock>();
-        }
-        return clock_;
-    }
-
-    if(child_yang_name == "aug")
-    {
-        if(aug == nullptr)
-        {
-            aug = std::make_shared<Native::Controller::SONETACR::Aug>();
-        }
-        return aug;
-    }
-
-    if(child_yang_name == "au-3")
-    {
-        auto c = std::make_shared<Native::Controller::SONETACR::Au3>();
-        c->parent = this;
-        au_3.append(c);
-        return c;
-    }
-
-    if(child_yang_name == "au-4-atm")
-    {
-        if(au_4_atm == nullptr)
-        {
-            au_4_atm = std::make_shared<Native::Controller::SONETACR::Au4Atm>();
-        }
-        return au_4_atm;
-    }
-
-    if(child_yang_name == "au-4")
-    {
-        auto c = std::make_shared<Native::Controller::SONETACR::Au4>();
-        c->parent = this;
-        au_4.append(c);
-        return c;
-    }
-
-    if(child_yang_name == "aps")
-    {
-        if(aps == nullptr)
-        {
-            aps = std::make_shared<Native::Controller::SONETACR::Aps>();
-        }
-        return aps;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(clock_ != nullptr)
-    {
-        children["clock"] = clock_;
-    }
-
-    if(aug != nullptr)
-    {
-        children["aug"] = aug;
-    }
-
-    count = 0;
-    for (auto c : au_3.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    if(au_4_atm != nullptr)
-    {
-        children["au-4-atm"] = au_4_atm;
-    }
-
-    count = 0;
-    for (auto c : au_4.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    if(aps != nullptr)
-    {
-        children["aps"] = aps;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONETACR::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "framing")
-    {
-        framing = value;
-        framing.value_namespace = name_space;
-        framing.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "shutdown")
-    {
-        shutdown = value;
-        shutdown.value_namespace = name_space;
-        shutdown.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "framing")
-    {
-        framing.yfilter = yfilter;
-    }
-    if(value_path == "shutdown")
-    {
-        shutdown.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "clock" || name == "aug" || name == "au-3" || name == "au-4-atm" || name == "au-4" || name == "aps" || name == "name" || name == "framing" || name == "shutdown")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Clock::Clock()
-    :
-    source{YType::enumeration, "source"}
-{
-
-    yang_name = "clock"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Clock::~Clock()
-{
-}
-
-bool Native::Controller::SONETACR::Clock::has_data() const
-{
-    if (is_presence_container) return true;
-    return source.is_set;
-}
-
-bool Native::Controller::SONETACR::Clock::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(source.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Clock::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "clock";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Clock::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Clock::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Clock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "source")
-    {
-        source = value;
-        source.value_namespace = name_space;
-        source.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Clock::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "source")
-    {
-        source.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Clock::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "source")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Aug::Aug()
-    :
-    mapping{YType::enumeration, "mapping"}
-{
-
-    yang_name = "aug"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Aug::~Aug()
-{
-}
-
-bool Native::Controller::SONETACR::Aug::has_data() const
-{
-    if (is_presence_container) return true;
-    return mapping.is_set;
-}
-
-bool Native::Controller::SONETACR::Aug::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mapping.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Aug::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "aug";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Aug::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mapping.is_set || is_set(mapping.yfilter)) leaf_name_data.push_back(mapping.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Aug::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Aug::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Aug::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mapping")
-    {
-        mapping = value;
-        mapping.value_namespace = name_space;
-        mapping.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Aug::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mapping")
-    {
-        mapping.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Aug::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mapping")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au3::Au3()
-    :
-    number{YType::int8, "number"}
-        ,
-    overhead(std::make_shared<Native::Controller::SONETACR::Au3::Overhead>())
-    , mode(std::make_shared<Native::Controller::SONETACR::Au3::Mode>())
-{
-    overhead->parent = this;
-    mode->parent = this;
-
-    yang_name = "au-3"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au3::~Au3()
-{
-}
-
-bool Native::Controller::SONETACR::Au3::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| (overhead !=  nullptr && overhead->has_data())
-	|| (mode !=  nullptr && mode->has_data());
-}
-
-bool Native::Controller::SONETACR::Au3::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| (overhead !=  nullptr && overhead->has_operation())
-	|| (mode !=  nullptr && mode->has_operation());
-}
-
-std::string Native::Controller::SONETACR::Au3::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "au-3";
-    ADD_KEY_TOKEN(number, "number");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au3::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "overhead")
-    {
-        if(overhead == nullptr)
-        {
-            overhead = std::make_shared<Native::Controller::SONETACR::Au3::Overhead>();
-        }
-        return overhead;
-    }
-
-    if(child_yang_name == "mode")
-    {
-        if(mode == nullptr)
-        {
-            mode = std::make_shared<Native::Controller::SONETACR::Au3::Mode>();
-        }
-        return mode;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au3::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(overhead != nullptr)
-    {
-        children["overhead"] = overhead;
-    }
-
-    if(mode != nullptr)
-    {
-        children["mode"] = mode;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONETACR::Au3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Au3::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Au3::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "overhead" || name == "mode" || name == "number")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au3::Overhead::Overhead()
-    :
-    byte{YType::enumeration, "byte"},
-    length{YType::uint8, "length"}
-{
-
-    yang_name = "overhead"; yang_parent_name = "au-3"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au3::Overhead::~Overhead()
-{
-}
-
-bool Native::Controller::SONETACR::Au3::Overhead::has_data() const
-{
-    if (is_presence_container) return true;
-    return byte.is_set
-	|| length.is_set;
-}
-
-bool Native::Controller::SONETACR::Au3::Overhead::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(byte.yfilter)
-	|| ydk::is_set(length.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au3::Overhead::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "overhead";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au3::Overhead::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (byte.is_set || is_set(byte.yfilter)) leaf_name_data.push_back(byte.get_name_leafdata());
-    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au3::Overhead::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au3::Overhead::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Au3::Overhead::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "byte")
-    {
-        byte = value;
-        byte.value_namespace = name_space;
-        byte.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "length")
-    {
-        length = value;
-        length.value_namespace = name_space;
-        length.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Au3::Overhead::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "byte")
-    {
-        byte.yfilter = yfilter;
-    }
-    if(value_path == "length")
-    {
-        length.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Au3::Overhead::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "byte" || name == "length")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au3::Mode::Mode()
-    :
-    mapping{YType::enumeration, "mapping"}
-{
-
-    yang_name = "mode"; yang_parent_name = "au-3"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au3::Mode::~Mode()
-{
-}
-
-bool Native::Controller::SONETACR::Au3::Mode::has_data() const
-{
-    if (is_presence_container) return true;
-    return mapping.is_set;
-}
-
-bool Native::Controller::SONETACR::Au3::Mode::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mapping.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au3::Mode::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mode";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au3::Mode::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mapping.is_set || is_set(mapping.yfilter)) leaf_name_data.push_back(mapping.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au3::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au3::Mode::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Au3::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mapping")
-    {
-        mapping = value;
-        mapping.value_namespace = name_space;
-        mapping.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Au3::Mode::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mapping")
-    {
-        mapping.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Au3::Mode::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mapping")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4Atm::Au4Atm()
-    :
-    au_4(std::make_shared<Native::Controller::SONETACR::Au4Atm::Au4>())
-{
-    au_4->parent = this;
-
-    yang_name = "au-4-atm"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4Atm::~Au4Atm()
-{
-}
-
-bool Native::Controller::SONETACR::Au4Atm::has_data() const
-{
-    if (is_presence_container) return true;
-    return (au_4 !=  nullptr && au_4->has_data());
-}
-
-bool Native::Controller::SONETACR::Au4Atm::has_operation() const
-{
-    return is_set(yfilter)
-	|| (au_4 !=  nullptr && au_4->has_operation());
-}
-
-std::string Native::Controller::SONETACR::Au4Atm::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "au-4-atm";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4Atm::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "au-4")
-    {
-        if(au_4 == nullptr)
-        {
-            au_4 = std::make_shared<Native::Controller::SONETACR::Au4Atm::Au4>();
-        }
-        return au_4;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4Atm::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(au_4 != nullptr)
-    {
-        children["au-4"] = au_4;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4Atm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Controller::SONETACR::Au4Atm::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Controller::SONETACR::Au4Atm::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "au-4")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4Atm::Au4::Au4()
-    :
-    number{YType::int8, "number"},
-    atm{YType::empty, "atm"}
-{
-
-    yang_name = "au-4"; yang_parent_name = "au-4-atm"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4Atm::Au4::~Au4()
-{
-}
-
-bool Native::Controller::SONETACR::Au4Atm::Au4::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| atm.is_set;
-}
-
-bool Native::Controller::SONETACR::Au4Atm::Au4::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(atm.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au4Atm::Au4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "au-4";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4Atm::Au4::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (atm.is_set || is_set(atm.yfilter)) leaf_name_data.push_back(atm.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4Atm::Au4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4Atm::Au4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4Atm::Au4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "atm")
-    {
-        atm = value;
-        atm.value_namespace = name_space;
-        atm.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Au4Atm::Au4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "atm")
-    {
-        atm.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Au4Atm::Au4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "number" || name == "atm")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4::Au4()
-    :
-    number{YType::int8, "number"},
-    tug_3{YType::int8, "tug-3"},
-    mode{YType::enumeration, "mode"},
-    cem_group{YType::int32, "cem-group"},
-    unframed{YType::empty, "unframed"},
-    framing{YType::enumeration, "framing"}
-        ,
-    cem_group_timeslots(std::make_shared<Native::Controller::SONETACR::Au4::CemGroupTimeslots>())
-    , channel_group_timeslots(std::make_shared<Native::Controller::SONETACR::Au4::ChannelGroupTimeslots>())
-    , cem_group_unframed(std::make_shared<Native::Controller::SONETACR::Au4::CemGroupUnframed>())
-    , framing_unframed(std::make_shared<Native::Controller::SONETACR::Au4::FramingUnframed>())
-    , cem_group_atm(std::make_shared<Native::Controller::SONETACR::Au4::CemGroupAtm>())
-    , ima_group(std::make_shared<Native::Controller::SONETACR::Au4::ImaGroup>())
-{
-    cem_group_timeslots->parent = this;
-    channel_group_timeslots->parent = this;
-    cem_group_unframed->parent = this;
-    framing_unframed->parent = this;
-    cem_group_atm->parent = this;
-    ima_group->parent = this;
-
-    yang_name = "au-4"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4::~Au4()
-{
-}
-
-bool Native::Controller::SONETACR::Au4::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| tug_3.is_set
-	|| mode.is_set
-	|| cem_group.is_set
-	|| unframed.is_set
-	|| framing.is_set
-	|| (cem_group_timeslots !=  nullptr && cem_group_timeslots->has_data())
-	|| (channel_group_timeslots !=  nullptr && channel_group_timeslots->has_data())
-	|| (cem_group_unframed !=  nullptr && cem_group_unframed->has_data())
-	|| (framing_unframed !=  nullptr && framing_unframed->has_data())
-	|| (cem_group_atm !=  nullptr && cem_group_atm->has_data())
-	|| (ima_group !=  nullptr && ima_group->has_data());
-}
-
-bool Native::Controller::SONETACR::Au4::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(tug_3.yfilter)
-	|| ydk::is_set(mode.yfilter)
-	|| ydk::is_set(cem_group.yfilter)
-	|| ydk::is_set(unframed.yfilter)
-	|| ydk::is_set(framing.yfilter)
-	|| (cem_group_timeslots !=  nullptr && cem_group_timeslots->has_operation())
-	|| (channel_group_timeslots !=  nullptr && channel_group_timeslots->has_operation())
-	|| (cem_group_unframed !=  nullptr && cem_group_unframed->has_operation())
-	|| (framing_unframed !=  nullptr && framing_unframed->has_operation())
-	|| (cem_group_atm !=  nullptr && cem_group_atm->has_operation())
-	|| (ima_group !=  nullptr && ima_group->has_operation());
-}
-
-std::string Native::Controller::SONETACR::Au4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "au-4";
-    ADD_KEY_TOKEN(number, "number");
-    ADD_KEY_TOKEN(tug_3, "tug-3");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (tug_3.is_set || is_set(tug_3.yfilter)) leaf_name_data.push_back(tug_3.get_name_leafdata());
-    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (cem_group.is_set || is_set(cem_group.yfilter)) leaf_name_data.push_back(cem_group.get_name_leafdata());
-    if (unframed.is_set || is_set(unframed.yfilter)) leaf_name_data.push_back(unframed.get_name_leafdata());
-    if (framing.is_set || is_set(framing.yfilter)) leaf_name_data.push_back(framing.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cem-group-timeslots")
-    {
-        if(cem_group_timeslots == nullptr)
-        {
-            cem_group_timeslots = std::make_shared<Native::Controller::SONETACR::Au4::CemGroupTimeslots>();
-        }
-        return cem_group_timeslots;
-    }
-
-    if(child_yang_name == "channel-group-timeslots")
-    {
-        if(channel_group_timeslots == nullptr)
-        {
-            channel_group_timeslots = std::make_shared<Native::Controller::SONETACR::Au4::ChannelGroupTimeslots>();
-        }
-        return channel_group_timeslots;
-    }
-
-    if(child_yang_name == "cem-group-unframed")
-    {
-        if(cem_group_unframed == nullptr)
-        {
-            cem_group_unframed = std::make_shared<Native::Controller::SONETACR::Au4::CemGroupUnframed>();
-        }
-        return cem_group_unframed;
-    }
-
-    if(child_yang_name == "framing-unframed")
-    {
-        if(framing_unframed == nullptr)
-        {
-            framing_unframed = std::make_shared<Native::Controller::SONETACR::Au4::FramingUnframed>();
-        }
-        return framing_unframed;
-    }
-
-    if(child_yang_name == "cem-group-atm")
-    {
-        if(cem_group_atm == nullptr)
-        {
-            cem_group_atm = std::make_shared<Native::Controller::SONETACR::Au4::CemGroupAtm>();
-        }
-        return cem_group_atm;
-    }
-
-    if(child_yang_name == "ima-group")
-    {
-        if(ima_group == nullptr)
-        {
-            ima_group = std::make_shared<Native::Controller::SONETACR::Au4::ImaGroup>();
-        }
-        return ima_group;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(cem_group_timeslots != nullptr)
-    {
-        children["cem-group-timeslots"] = cem_group_timeslots;
-    }
-
-    if(channel_group_timeslots != nullptr)
-    {
-        children["channel-group-timeslots"] = channel_group_timeslots;
-    }
-
-    if(cem_group_unframed != nullptr)
-    {
-        children["cem-group-unframed"] = cem_group_unframed;
-    }
-
-    if(framing_unframed != nullptr)
-    {
-        children["framing-unframed"] = framing_unframed;
-    }
-
-    if(cem_group_atm != nullptr)
-    {
-        children["cem-group-atm"] = cem_group_atm;
-    }
-
-    if(ima_group != nullptr)
-    {
-        children["ima-group"] = ima_group;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tug-3")
-    {
-        tug_3 = value;
-        tug_3.value_namespace = name_space;
-        tug_3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mode")
-    {
-        mode = value;
-        mode.value_namespace = name_space;
-        mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cem-group")
-    {
-        cem_group = value;
-        cem_group.value_namespace = name_space;
-        cem_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unframed")
-    {
-        unframed = value;
-        unframed.value_namespace = name_space;
-        unframed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "framing")
-    {
-        framing = value;
-        framing.value_namespace = name_space;
-        framing.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Au4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "tug-3")
-    {
-        tug_3.yfilter = yfilter;
-    }
-    if(value_path == "mode")
-    {
-        mode.yfilter = yfilter;
-    }
-    if(value_path == "cem-group")
-    {
-        cem_group.yfilter = yfilter;
-    }
-    if(value_path == "unframed")
-    {
-        unframed.yfilter = yfilter;
-    }
-    if(value_path == "framing")
-    {
-        framing.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Au4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cem-group-timeslots" || name == "channel-group-timeslots" || name == "cem-group-unframed" || name == "framing-unframed" || name == "cem-group-atm" || name == "ima-group" || name == "number" || name == "tug-3" || name == "mode" || name == "cem-group" || name == "unframed" || name == "framing")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4::CemGroupTimeslots::CemGroupTimeslots()
-    :
-    tug_2(this, {"number", "e1", "cem_group"})
-{
-
-    yang_name = "cem-group-timeslots"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4::CemGroupTimeslots::~CemGroupTimeslots()
-{
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupTimeslots::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupTimeslots::has_operation() const
-{
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au4::CemGroupTimeslots::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cem-group-timeslots";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4::CemGroupTimeslots::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::CemGroupTimeslots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tug-2")
-    {
-        auto c = std::make_shared<Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2>();
-        c->parent = this;
-        tug_2.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4::CemGroupTimeslots::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tug_2.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4::CemGroupTimeslots::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Controller::SONETACR::Au4::CemGroupTimeslots::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupTimeslots::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tug-2")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::Tug2()
-    :
-    number{YType::int8, "number"},
-    e1{YType::int8, "e1"},
-    cem_group{YType::int32, "cem-group"},
-    timeslots{YType::str, "timeslots"}
-{
-
-    yang_name = "tug-2"; yang_parent_name = "cem-group-timeslots"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::~Tug2()
-{
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| e1.is_set
-	|| cem_group.is_set
-	|| timeslots.is_set;
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(e1.yfilter)
-	|| ydk::is_set(cem_group.yfilter)
-	|| ydk::is_set(timeslots.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tug-2";
-    ADD_KEY_TOKEN(number, "number");
-    ADD_KEY_TOKEN(e1, "e1");
-    ADD_KEY_TOKEN(cem_group, "cem-group");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (e1.is_set || is_set(e1.yfilter)) leaf_name_data.push_back(e1.get_name_leafdata());
-    if (cem_group.is_set || is_set(cem_group.yfilter)) leaf_name_data.push_back(cem_group.get_name_leafdata());
-    if (timeslots.is_set || is_set(timeslots.yfilter)) leaf_name_data.push_back(timeslots.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "e1")
-    {
-        e1 = value;
-        e1.value_namespace = name_space;
-        e1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cem-group")
-    {
-        cem_group = value;
-        cem_group.value_namespace = name_space;
-        cem_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeslots")
-    {
-        timeslots = value;
-        timeslots.value_namespace = name_space;
-        timeslots.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "e1")
-    {
-        e1.yfilter = yfilter;
-    }
-    if(value_path == "cem-group")
-    {
-        cem_group.yfilter = yfilter;
-    }
-    if(value_path == "timeslots")
-    {
-        timeslots.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "number" || name == "e1" || name == "cem-group" || name == "timeslots")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::ChannelGroupTimeslots()
-    :
-    tug_2(this, {"number", "e1", "channel_group"})
-{
-
-    yang_name = "channel-group-timeslots"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::~ChannelGroupTimeslots()
-{
-}
-
-bool Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::has_operation() const
-{
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "channel-group-timeslots";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tug-2")
-    {
-        auto c = std::make_shared<Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2>();
-        c->parent = this;
-        tug_2.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tug_2.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tug-2")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::Tug2()
-    :
-    number{YType::int8, "number"},
-    e1{YType::int8, "e1"},
-    channel_group{YType::int32, "channel-group"},
-    timeslots{YType::str, "timeslots"}
-{
-
-    yang_name = "tug-2"; yang_parent_name = "channel-group-timeslots"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::~Tug2()
-{
-}
-
-bool Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| e1.is_set
-	|| channel_group.is_set
-	|| timeslots.is_set;
-}
-
-bool Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(e1.yfilter)
-	|| ydk::is_set(channel_group.yfilter)
-	|| ydk::is_set(timeslots.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tug-2";
-    ADD_KEY_TOKEN(number, "number");
-    ADD_KEY_TOKEN(e1, "e1");
-    ADD_KEY_TOKEN(channel_group, "channel-group");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (e1.is_set || is_set(e1.yfilter)) leaf_name_data.push_back(e1.get_name_leafdata());
-    if (channel_group.is_set || is_set(channel_group.yfilter)) leaf_name_data.push_back(channel_group.get_name_leafdata());
-    if (timeslots.is_set || is_set(timeslots.yfilter)) leaf_name_data.push_back(timeslots.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "e1")
-    {
-        e1 = value;
-        e1.value_namespace = name_space;
-        e1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "channel-group")
-    {
-        channel_group = value;
-        channel_group.value_namespace = name_space;
-        channel_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeslots")
-    {
-        timeslots = value;
-        timeslots.value_namespace = name_space;
-        timeslots.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "e1")
-    {
-        e1.yfilter = yfilter;
-    }
-    if(value_path == "channel-group")
-    {
-        channel_group.yfilter = yfilter;
-    }
-    if(value_path == "timeslots")
-    {
-        timeslots.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "number" || name == "e1" || name == "channel-group" || name == "timeslots")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4::CemGroupUnframed::CemGroupUnframed()
-    :
-    tug_2(this, {"number", "e1", "cem_group"})
-{
-
-    yang_name = "cem-group-unframed"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4::CemGroupUnframed::~CemGroupUnframed()
-{
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupUnframed::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupUnframed::has_operation() const
-{
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au4::CemGroupUnframed::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cem-group-unframed";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4::CemGroupUnframed::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::CemGroupUnframed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tug-2")
-    {
-        auto c = std::make_shared<Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2>();
-        c->parent = this;
-        tug_2.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4::CemGroupUnframed::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tug_2.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4::CemGroupUnframed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Controller::SONETACR::Au4::CemGroupUnframed::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupUnframed::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tug-2")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::Tug2()
-    :
-    number{YType::int8, "number"},
-    e1{YType::int8, "e1"},
-    cem_group{YType::int32, "cem-group"},
-    unframed{YType::empty, "unframed"}
-{
-
-    yang_name = "tug-2"; yang_parent_name = "cem-group-unframed"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::~Tug2()
-{
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| e1.is_set
-	|| cem_group.is_set
-	|| unframed.is_set;
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(e1.yfilter)
-	|| ydk::is_set(cem_group.yfilter)
-	|| ydk::is_set(unframed.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tug-2";
-    ADD_KEY_TOKEN(number, "number");
-    ADD_KEY_TOKEN(e1, "e1");
-    ADD_KEY_TOKEN(cem_group, "cem-group");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (e1.is_set || is_set(e1.yfilter)) leaf_name_data.push_back(e1.get_name_leafdata());
-    if (cem_group.is_set || is_set(cem_group.yfilter)) leaf_name_data.push_back(cem_group.get_name_leafdata());
-    if (unframed.is_set || is_set(unframed.yfilter)) leaf_name_data.push_back(unframed.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "e1")
-    {
-        e1 = value;
-        e1.value_namespace = name_space;
-        e1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cem-group")
-    {
-        cem_group = value;
-        cem_group.value_namespace = name_space;
-        cem_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unframed")
-    {
-        unframed = value;
-        unframed.value_namespace = name_space;
-        unframed.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "e1")
-    {
-        e1.yfilter = yfilter;
-    }
-    if(value_path == "cem-group")
-    {
-        cem_group.yfilter = yfilter;
-    }
-    if(value_path == "unframed")
-    {
-        unframed.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "number" || name == "e1" || name == "cem-group" || name == "unframed")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4::FramingUnframed::FramingUnframed()
-    :
-    tug_2(this, {"number", "e1"})
-{
-
-    yang_name = "framing-unframed"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4::FramingUnframed::~FramingUnframed()
-{
-}
-
-bool Native::Controller::SONETACR::Au4::FramingUnframed::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Controller::SONETACR::Au4::FramingUnframed::has_operation() const
-{
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au4::FramingUnframed::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "framing-unframed";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4::FramingUnframed::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::FramingUnframed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tug-2")
-    {
-        auto c = std::make_shared<Native::Controller::SONETACR::Au4::FramingUnframed::Tug2>();
-        c->parent = this;
-        tug_2.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4::FramingUnframed::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tug_2.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4::FramingUnframed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Controller::SONETACR::Au4::FramingUnframed::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Controller::SONETACR::Au4::FramingUnframed::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tug-2")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::Tug2()
-    :
-    number{YType::int8, "number"},
-    e1{YType::int8, "e1"},
-    framing{YType::enumeration, "framing"}
-{
-
-    yang_name = "tug-2"; yang_parent_name = "framing-unframed"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::~Tug2()
-{
-}
-
-bool Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| e1.is_set
-	|| framing.is_set;
-}
-
-bool Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(e1.yfilter)
-	|| ydk::is_set(framing.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tug-2";
-    ADD_KEY_TOKEN(number, "number");
-    ADD_KEY_TOKEN(e1, "e1");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (e1.is_set || is_set(e1.yfilter)) leaf_name_data.push_back(e1.get_name_leafdata());
-    if (framing.is_set || is_set(framing.yfilter)) leaf_name_data.push_back(framing.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "e1")
-    {
-        e1 = value;
-        e1.value_namespace = name_space;
-        e1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "framing")
-    {
-        framing = value;
-        framing.value_namespace = name_space;
-        framing.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "e1")
-    {
-        e1.yfilter = yfilter;
-    }
-    if(value_path == "framing")
-    {
-        framing.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "number" || name == "e1" || name == "framing")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4::CemGroupAtm::CemGroupAtm()
-    :
-    tug_2(this, {"number", "e1"})
-{
-
-    yang_name = "cem-group-atm"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4::CemGroupAtm::~CemGroupAtm()
-{
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupAtm::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupAtm::has_operation() const
-{
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au4::CemGroupAtm::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cem-group-atm";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4::CemGroupAtm::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::CemGroupAtm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tug-2")
-    {
-        auto c = std::make_shared<Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2>();
-        c->parent = this;
-        tug_2.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4::CemGroupAtm::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tug_2.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4::CemGroupAtm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Controller::SONETACR::Au4::CemGroupAtm::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupAtm::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tug-2")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::Tug2()
-    :
-    number{YType::int8, "number"},
-    e1{YType::int8, "e1"},
-    atm{YType::empty, "atm"}
-{
-
-    yang_name = "tug-2"; yang_parent_name = "cem-group-atm"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::~Tug2()
-{
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| e1.is_set
-	|| atm.is_set;
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(e1.yfilter)
-	|| ydk::is_set(atm.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tug-2";
-    ADD_KEY_TOKEN(number, "number");
-    ADD_KEY_TOKEN(e1, "e1");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (e1.is_set || is_set(e1.yfilter)) leaf_name_data.push_back(e1.get_name_leafdata());
-    if (atm.is_set || is_set(atm.yfilter)) leaf_name_data.push_back(atm.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "e1")
-    {
-        e1 = value;
-        e1.value_namespace = name_space;
-        e1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "atm")
-    {
-        atm = value;
-        atm.value_namespace = name_space;
-        atm.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "e1")
-    {
-        e1.yfilter = yfilter;
-    }
-    if(value_path == "atm")
-    {
-        atm.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "number" || name == "e1" || name == "atm")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4::ImaGroup::ImaGroup()
-    :
-    tug_2(this, {"number", "e1", "ima_group"})
-{
-
-    yang_name = "ima-group"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4::ImaGroup::~ImaGroup()
-{
-}
-
-bool Native::Controller::SONETACR::Au4::ImaGroup::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Controller::SONETACR::Au4::ImaGroup::has_operation() const
-{
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au4::ImaGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ima-group";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4::ImaGroup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::ImaGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tug-2")
-    {
-        auto c = std::make_shared<Native::Controller::SONETACR::Au4::ImaGroup::Tug2>();
-        c->parent = this;
-        tug_2.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4::ImaGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tug_2.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4::ImaGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Controller::SONETACR::Au4::ImaGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Controller::SONETACR::Au4::ImaGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tug-2")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Au4::ImaGroup::Tug2::Tug2()
-    :
-    number{YType::int8, "number"},
-    e1{YType::int8, "e1"},
-    ima_group{YType::int32, "ima-group"}
-{
-
-    yang_name = "tug-2"; yang_parent_name = "ima-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Au4::ImaGroup::Tug2::~Tug2()
-{
-}
-
-bool Native::Controller::SONETACR::Au4::ImaGroup::Tug2::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| e1.is_set
-	|| ima_group.is_set;
-}
-
-bool Native::Controller::SONETACR::Au4::ImaGroup::Tug2::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(e1.yfilter)
-	|| ydk::is_set(ima_group.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Au4::ImaGroup::Tug2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tug-2";
-    ADD_KEY_TOKEN(number, "number");
-    ADD_KEY_TOKEN(e1, "e1");
-    ADD_KEY_TOKEN(ima_group, "ima-group");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Au4::ImaGroup::Tug2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (e1.is_set || is_set(e1.yfilter)) leaf_name_data.push_back(e1.get_name_leafdata());
-    if (ima_group.is_set || is_set(ima_group.yfilter)) leaf_name_data.push_back(ima_group.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::ImaGroup::Tug2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4::ImaGroup::Tug2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Au4::ImaGroup::Tug2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "e1")
-    {
-        e1 = value;
-        e1.value_namespace = name_space;
-        e1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ima-group")
-    {
-        ima_group = value;
-        ima_group.value_namespace = name_space;
-        ima_group.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Au4::ImaGroup::Tug2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "e1")
-    {
-        e1.yfilter = yfilter;
-    }
-    if(value_path == "ima-group")
-    {
-        ima_group.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Au4::ImaGroup::Tug2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "number" || name == "e1" || name == "ima-group")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Aps::Aps()
-    :
-    working{YType::int8, "working"},
-    hspw_icrm_grp{YType::uint8, "hspw-icrm-grp"}
-        ,
-    group(std::make_shared<Native::Controller::SONETACR::Aps::Group>())
-    , protect(std::make_shared<Native::Controller::SONETACR::Aps::Protect>())
-    , interchassis(std::make_shared<Native::Controller::SONETACR::Aps::Interchassis>())
-{
-    group->parent = this;
-    protect->parent = this;
-    interchassis->parent = this;
-
-    yang_name = "aps"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Aps::~Aps()
-{
-}
-
-bool Native::Controller::SONETACR::Aps::has_data() const
-{
-    if (is_presence_container) return true;
-    return working.is_set
-	|| hspw_icrm_grp.is_set
-	|| (group !=  nullptr && group->has_data())
-	|| (protect !=  nullptr && protect->has_data())
-	|| (interchassis !=  nullptr && interchassis->has_data());
-}
-
-bool Native::Controller::SONETACR::Aps::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(working.yfilter)
-	|| ydk::is_set(hspw_icrm_grp.yfilter)
-	|| (group !=  nullptr && group->has_operation())
-	|| (protect !=  nullptr && protect->has_operation())
-	|| (interchassis !=  nullptr && interchassis->has_operation());
-}
-
-std::string Native::Controller::SONETACR::Aps::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "aps";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Aps::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (working.is_set || is_set(working.yfilter)) leaf_name_data.push_back(working.get_name_leafdata());
-    if (hspw_icrm_grp.is_set || is_set(hspw_icrm_grp.yfilter)) leaf_name_data.push_back(hspw_icrm_grp.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Aps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "group")
-    {
-        if(group == nullptr)
-        {
-            group = std::make_shared<Native::Controller::SONETACR::Aps::Group>();
-        }
-        return group;
-    }
-
-    if(child_yang_name == "protect")
-    {
-        if(protect == nullptr)
-        {
-            protect = std::make_shared<Native::Controller::SONETACR::Aps::Protect>();
-        }
-        return protect;
-    }
-
-    if(child_yang_name == "interchassis")
-    {
-        if(interchassis == nullptr)
-        {
-            interchassis = std::make_shared<Native::Controller::SONETACR::Aps::Interchassis>();
-        }
-        return interchassis;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Aps::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(group != nullptr)
-    {
-        children["group"] = group;
-    }
-
-    if(protect != nullptr)
-    {
-        children["protect"] = protect;
-    }
-
-    if(interchassis != nullptr)
-    {
-        children["interchassis"] = interchassis;
-    }
-
-    return children;
-}
-
-void Native::Controller::SONETACR::Aps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "working")
-    {
-        working = value;
-        working.value_namespace = name_space;
-        working.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hspw-icrm-grp")
-    {
-        hspw_icrm_grp = value;
-        hspw_icrm_grp.value_namespace = name_space;
-        hspw_icrm_grp.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Aps::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "working")
-    {
-        working.yfilter = yfilter;
-    }
-    if(value_path == "hspw-icrm-grp")
-    {
-        hspw_icrm_grp.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Aps::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "group" || name == "protect" || name == "interchassis" || name == "working" || name == "hspw-icrm-grp")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Aps::Group::Group()
-    :
-    group_number{YType::uint8, "group-number"},
-    acr{YType::int8, "acr"}
-{
-
-    yang_name = "group"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Aps::Group::~Group()
-{
-}
-
-bool Native::Controller::SONETACR::Aps::Group::has_data() const
-{
-    if (is_presence_container) return true;
-    return group_number.is_set
-	|| acr.is_set;
-}
-
-bool Native::Controller::SONETACR::Aps::Group::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(group_number.yfilter)
-	|| ydk::is_set(acr.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Aps::Group::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "group";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Aps::Group::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (group_number.is_set || is_set(group_number.yfilter)) leaf_name_data.push_back(group_number.get_name_leafdata());
-    if (acr.is_set || is_set(acr.yfilter)) leaf_name_data.push_back(acr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Aps::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Aps::Group::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Aps::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "group-number")
-    {
-        group_number = value;
-        group_number.value_namespace = name_space;
-        group_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acr")
-    {
-        acr = value;
-        acr.value_namespace = name_space;
-        acr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Aps::Group::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "group-number")
-    {
-        group_number.yfilter = yfilter;
-    }
-    if(value_path == "acr")
-    {
-        acr.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Aps::Group::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "group-number" || name == "acr")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Aps::Protect::Protect()
-    :
-    number{YType::int8, "number"},
-    ip_addr{YType::str, "ip-addr"}
-{
-
-    yang_name = "protect"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Aps::Protect::~Protect()
-{
-}
-
-bool Native::Controller::SONETACR::Aps::Protect::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| ip_addr.is_set;
-}
-
-bool Native::Controller::SONETACR::Aps::Protect::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(ip_addr.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Aps::Protect::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "protect";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Aps::Protect::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.yfilter)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Aps::Protect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Aps::Protect::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Aps::Protect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-        ip_addr.value_namespace = name_space;
-        ip_addr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Aps::Protect::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Aps::Protect::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "number" || name == "ip-addr")
-        return true;
-    return false;
-}
-
-Native::Controller::SONETACR::Aps::Interchassis::Interchassis()
-    :
-    group{YType::uint8, "group"}
-{
-
-    yang_name = "interchassis"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONETACR::Aps::Interchassis::~Interchassis()
-{
-}
-
-bool Native::Controller::SONETACR::Aps::Interchassis::has_data() const
-{
-    if (is_presence_container) return true;
-    return group.is_set;
-}
-
-bool Native::Controller::SONETACR::Aps::Interchassis::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(group.yfilter);
-}
-
-std::string Native::Controller::SONETACR::Aps::Interchassis::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interchassis";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONETACR::Aps::Interchassis::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::SONETACR::Aps::Interchassis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Aps::Interchassis::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::SONETACR::Aps::Interchassis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "group")
-    {
-        group = value;
-        group.value_namespace = name_space;
-        group.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONETACR::Aps::Interchassis::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "group")
-    {
-        group.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONETACR::Aps::Interchassis::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "group")
-        return true;
-    return false;
-}
-
-Native::Controller::Wanphy::Wanphy()
-    :
-    name{YType::str, "name"}
-{
-
-    yang_name = "wanphy"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Controller::Wanphy::~Wanphy()
-{
-}
-
-bool Native::Controller::Wanphy::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set;
-}
-
-bool Native::Controller::Wanphy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::Controller::Wanphy::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/controller/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Controller::Wanphy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-controller:wanphy";
-    ADD_KEY_TOKEN(name, "name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::Wanphy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Controller::Wanphy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Wanphy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Controller::Wanphy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::Wanphy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::Wanphy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
-        return true;
-    return false;
-}
-
-Native::Vrf::Vrf()
-    :
-    definition(this, {"name"})
-{
-
-    yang_name = "vrf"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Vrf::~Vrf()
-{
-}
-
-bool Native::Vrf::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<definition.len(); index++)
-    {
-        if(definition[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Vrf::has_operation() const
-{
-    for (std::size_t index=0; index<definition.len(); index++)
-    {
-        if(definition[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Vrf::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Vrf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrf";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Vrf::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "definition")
-    {
-        auto c = std::make_shared<Native::Vrf::Definition>();
-        c->parent = this;
-        definition.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Vrf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : definition.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Vrf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "definition")
-        return true;
-    return false;
-}
-
-Native::Vrf::Definition::Definition()
-    :
-    name{YType::str, "name"},
-    description{YType::str, "description"},
-    rd{YType::str, "rd"}
-        ,
-    address_family(std::make_shared<Native::Vrf::Definition::AddressFamily>())
-    , route_target(std::make_shared<Native::Vrf::Definition::RouteTarget>())
-    , vpn(std::make_shared<Native::Vrf::Definition::Vpn>())
-{
-    address_family->parent = this;
-    route_target->parent = this;
-    vpn->parent = this;
-
-    yang_name = "definition"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Vrf::Definition::~Definition()
-{
-}
-
-bool Native::Vrf::Definition::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| description.is_set
-	|| rd.is_set
-	|| (address_family !=  nullptr && address_family->has_data())
-	|| (route_target !=  nullptr && route_target->has_data())
-	|| (vpn !=  nullptr && vpn->has_data());
-}
-
-bool Native::Vrf::Definition::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(rd.yfilter)
-	|| (address_family !=  nullptr && address_family->has_operation())
-	|| (route_target !=  nullptr && route_target->has_operation())
-	|| (vpn !=  nullptr && vpn->has_operation());
-}
-
-std::string Native::Vrf::Definition::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/vrf/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Vrf::Definition::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "definition";
-    ADD_KEY_TOKEN(name, "name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (rd.is_set || is_set(rd.yfilter)) leaf_name_data.push_back(rd.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Vrf::Definition::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address-family")
-    {
-        if(address_family == nullptr)
-        {
-            address_family = std::make_shared<Native::Vrf::Definition::AddressFamily>();
-        }
-        return address_family;
-    }
-
-    if(child_yang_name == "route-target")
-    {
-        if(route_target == nullptr)
-        {
-            route_target = std::make_shared<Native::Vrf::Definition::RouteTarget>();
-        }
-        return route_target;
-    }
-
-    if(child_yang_name == "vpn")
-    {
-        if(vpn == nullptr)
-        {
-            vpn = std::make_shared<Native::Vrf::Definition::Vpn>();
-        }
-        return vpn;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Vrf::Definition::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(address_family != nullptr)
-    {
-        children["address-family"] = address_family;
-    }
-
-    if(route_target != nullptr)
-    {
-        children["route-target"] = route_target;
-    }
-
-    if(vpn != nullptr)
-    {
-        children["vpn"] = vpn;
-    }
-
-    return children;
-}
-
-void Native::Vrf::Definition::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-        rd.value_namespace = name_space;
-        rd.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Vrf::Definition::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "rd")
-    {
-        rd.yfilter = yfilter;
-    }
-}
-
-bool Native::Vrf::Definition::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family" || name == "route-target" || name == "vpn" || name == "name" || name == "description" || name == "rd")
-        return true;
-    return false;
-}
-
-Native::Vrf::Definition::AddressFamily::AddressFamily()
-    :
-    ipv4(nullptr) // presence node
-    , ipv6(nullptr) // presence node
-{
-
-    yang_name = "address-family"; yang_parent_name = "definition"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Vrf::Definition::AddressFamily::~AddressFamily()
-{
-}
-
-bool Native::Vrf::Definition::AddressFamily::has_data() const
-{
-    if (is_presence_container) return true;
-    return (ipv4 !=  nullptr && ipv4->has_data())
-	|| (ipv6 !=  nullptr && ipv6->has_data());
-}
-
-bool Native::Vrf::Definition::AddressFamily::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ipv4 !=  nullptr && ipv4->has_operation())
-	|| (ipv6 !=  nullptr && ipv6->has_operation());
-}
-
-std::string Native::Vrf::Definition::AddressFamily::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-family";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::AddressFamily::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Vrf::Definition::AddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipv4")
-    {
-        if(ipv4 == nullptr)
-        {
-            ipv4 = std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4>();
-        }
-        return ipv4;
-    }
-
-    if(child_yang_name == "ipv6")
-    {
-        if(ipv6 == nullptr)
-        {
-            ipv6 = std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv6>();
-        }
-        return ipv6;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Vrf::Definition::AddressFamily::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(ipv4 != nullptr)
-    {
-        children["ipv4"] = ipv4;
-    }
-
-    if(ipv6 != nullptr)
-    {
-        children["ipv6"] = ipv6;
-    }
-
-    return children;
-}
-
-void Native::Vrf::Definition::AddressFamily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Vrf::Definition::AddressFamily::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Vrf::Definition::AddressFamily::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4" || name == "ipv6")
-        return true;
-    return false;
-}
-
-Native::Vrf::Definition::AddressFamily::Ipv4::Ipv4()
-    :
-    export_(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Export>())
-    , maximum(nullptr) // presence node
-    , mdt(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Mdt>())
-    , route_target(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget>())
-    , bgp(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Bgp>())
-    , import(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Import>())
-{
-    export_->parent = this;
-    mdt->parent = this;
-    route_target->parent = this;
-    bgp->parent = this;
-    import->parent = this;
-
-    yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Vrf::Definition::AddressFamily::Ipv4::~Ipv4()
-{
-}
-
-bool Native::Vrf::Definition::AddressFamily::Ipv4::has_data() const
-{
-    if (is_presence_container) return true;
-    return (export_ !=  nullptr && export_->has_data())
-	|| (maximum !=  nullptr && maximum->has_data())
-	|| (mdt !=  nullptr && mdt->has_data())
-	|| (route_target !=  nullptr && route_target->has_data())
-	|| (bgp !=  nullptr && bgp->has_data())
-	|| (import !=  nullptr && import->has_data());
-}
-
-bool Native::Vrf::Definition::AddressFamily::Ipv4::has_operation() const
-{
-    return is_set(yfilter)
-	|| (export_ !=  nullptr && export_->has_operation())
-	|| (maximum !=  nullptr && maximum->has_operation())
-	|| (mdt !=  nullptr && mdt->has_operation())
-	|| (route_target !=  nullptr && route_target->has_operation())
-	|| (bgp !=  nullptr && bgp->has_operation())
-	|| (import !=  nullptr && import->has_operation());
-}
-
-std::string Native::Vrf::Definition::AddressFamily::Ipv4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Vrf::Definition::AddressFamily::Ipv4::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Vrf::Definition::AddressFamily::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "export")
-    {
-        if(export_ == nullptr)
-        {
-            export_ = std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Export>();
-        }
-        return export_;
-    }
-
-    if(child_yang_name == "maximum")
-    {
-        if(maximum == nullptr)
-        {
-            maximum = std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Maximum>();
-        }
-        return maximum;
-    }
-
-    if(child_yang_name == "mdt")
-    {
-        if(mdt == nullptr)
-        {
-            mdt = std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Mdt>();
-        }
-        return mdt;
-    }
-
-    if(child_yang_name == "route-target")
-    {
-        if(route_target == nullptr)
-        {
-            route_target = std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget>();
-        }
-        return route_target;
-    }
-
-    if(child_yang_name == "bgp")
-    {
-        if(bgp == nullptr)
-        {
-            bgp = std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Bgp>();
-        }
-        return bgp;
-    }
-
-    if(child_yang_name == "import")
-    {
-        if(import == nullptr)
-        {
-            import = std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Import>();
-        }
-        return import;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Vrf::Definition::AddressFamily::Ipv4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(export_ != nullptr)
-    {
-        children["export"] = export_;
-    }
-
-    if(maximum != nullptr)
-    {
-        children["maximum"] = maximum;
-    }
-
-    if(mdt != nullptr)
-    {
-        children["mdt"] = mdt;
-    }
-
-    if(route_target != nullptr)
-    {
-        children["route-target"] = route_target;
-    }
-
-    if(bgp != nullptr)
-    {
-        children["bgp"] = bgp;
-    }
-
-    if(import != nullptr)
-    {
-        children["import"] = import;
-    }
-
-    return children;
-}
-
-void Native::Vrf::Definition::AddressFamily::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Vrf::Definition::AddressFamily::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Vrf::Definition::AddressFamily::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "export" || name == "maximum" || name == "mdt" || name == "route-target" || name == "bgp" || name == "import")
-        return true;
-    return false;
-}
-
 const Enum::YLeaf Native::Platform::TcamParityError::enable {0, "enable"};
 const Enum::YLeaf Native::Platform::TcamParityError::disable {1, "disable"};
+
+const Enum::YLeaf Native::Platform::TimeSource::Ntp::TimeScale::epoch_1900 {0, "epoch-1900"};
+const Enum::YLeaf Native::Platform::TimeSource::Ntp::TimeScale::epoch_1970 {1, "epoch-1970"};
 
 const Enum::YLeaf Native::Platform::Console::Output::auto_ {0, "auto"};
 const Enum::YLeaf Native::Platform::Console::Output::serial {1, "serial"};
@@ -16519,6 +16329,9 @@ const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_25000 {
 const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_50000 {2, "50000"};
 
 const Enum::YLeaf Native::Platform::Ipsec::Gdoi::accept_both {0, "accept-both"};
+
+const Enum::YLeaf Native::Platform::Ipsec::ControlPlane::heavy {0, "heavy"};
+const Enum::YLeaf Native::Platform::Ipsec::ControlPlane::medium {1, "medium"};
 
 const Enum::YLeaf Native::Platform::Trace::Runtime::Process::iomd {0, "iomd"};
 
@@ -16555,6 +16368,10 @@ const Enum::YLeaf Native::Username::Password::Encryption::Y_7 {1, "7"};
 
 const Enum::YLeaf Native::Username::Secret::Encryption::Y_0 {0, "0"};
 const Enum::YLeaf Native::Username::Secret::Encryption::Y_5 {1, "5"};
+const Enum::YLeaf Native::Username::Secret::Encryption::Y_9 {2, "9"};
+
+const Enum::YLeaf Native::Card::Type::t1 {0, "t1"};
+const Enum::YLeaf Native::Card::Type::e1 {1, "e1"};
 
 const Enum::YLeaf Native::Controller::ControllerTxExList::Name::T1 {0, "T1"};
 const Enum::YLeaf Native::Controller::ControllerTxExList::Name::E1 {1, "E1"};
@@ -16570,8 +16387,95 @@ const Enum::YLeaf Native::Controller::ControllerTxExList::Clock::Source::Line::L
 const Enum::YLeaf Native::Controller::Cellular::Lte::Sim::Authenticate::PinType::Y_0 {0, "0"};
 const Enum::YLeaf Native::Controller::Cellular::Lte::Sim::Authenticate::PinType::Y_7 {1, "7"};
 
+const Enum::YLeaf Native::Controller::Cellular::Lte::Sms::Archive::Path::ftp__COLON__ {0, "ftp:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Sms::Archive::Path::http__COLON__ {1, "http:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Sms::Archive::Path::https__COLON__ {2, "https:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Sms::Archive::Path::pram__COLON__ {3, "pram:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Sms::Archive::Path::rcp__COLON__ {4, "rcp:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Sms::Archive::Path::scp__COLON__ {5, "scp:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Sms::Archive::Path::tftp__COLON__ {6, "tftp:"};
+
 const Enum::YLeaf Native::Controller::Cellular::Lte::Gps::Mode::ms_based {0, "ms-based"};
 const Enum::YLeaf Native::Controller::Cellular::Lte::Gps::Mode::standalone {1, "standalone"};
+
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::DmLog::Filter::bootflash__COLON__ {0, "bootflash:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::DmLog::Filter::flash__COLON__ {1, "flash:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::DmLog::Filter::webui__COLON__ {2, "webui:"};
+
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::DmLog::Output::Path::bootflash__COLON__ {0, "bootflash:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::DmLog::Output::Path::flash__COLON__ {1, "flash:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::DmLog::Output::Path::ftp__COLON__ {2, "ftp:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::DmLog::Output::Path::http__COLON__ {3, "http:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::DmLog::Output::Path::https__COLON__ {4, "https:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::DmLog::Output::Path::pram__COLON__ {5, "pram:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::DmLog::Output::Path::rcp__COLON__ {6, "rcp:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::DmLog::Output::Path::scp__COLON__ {7, "scp:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::DmLog::Output::Path::tftp__COLON__ {8, "tftp:"};
+
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::NasLog::Output::Path::bootflash__COLON__ {0, "bootflash:"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Modem::NasLog::Output::Path::flash__COLON__ {1, "flash:"};
+
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::ConnectionStatus::MibTrap::All_lte {0, "All-lte"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::ConnectionStatus::MibTrap::active {1, "active"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::ConnectionStatus::MibTrap::inactive {2, "inactive"};
+
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::Y_1xrtt {0, "1xrtt"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::All_lte {1, "All-lte"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::edge {2, "edge"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::evdoRel0 {3, "evdoRel0"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::evdoRelA {4, "evdoRelA"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::evdoRelB {5, "evdoRelB"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::gprs {6, "gprs"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::umts__FWD_SLASH__wcdma {7, "umts/wcdma"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::hsdpa {8, "hsdpa"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::hsupa {9, "hsupa"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::hspa {10, "hspa"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::hspa_plus {11, "hspa-plus"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::lte_tdd {12, "lte-tdd"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Abate::MibTrap::lte_fdd {13, "lte-fdd"};
+
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::Y_1xrtt {0, "1xrtt"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::All_lte {1, "All-lte"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::edge {2, "edge"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::evdoRel0 {3, "evdoRel0"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::evdoRelA {4, "evdoRelA"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::evdoRelB {5, "evdoRelB"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::gprs {6, "gprs"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::umts__FWD_SLASH__wcdma {7, "umts/wcdma"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::hsdpa {8, "hsdpa"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::hsupa {9, "hsupa"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::hspa {10, "hspa"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::hspa_plus {11, "hspa-plus"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::lte_tdd {12, "lte-tdd"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Ecio::Onset::MibTrap::lte_fdd {13, "lte-fdd"};
+
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::ModemState::MibTrap::all {0, "all"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::ModemState::MibTrap::down {1, "down"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::ModemState::MibTrap::up {2, "up"};
+
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rsrp::Abate::MibTrap::All_lte {0, "All-lte"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rsrp::Abate::MibTrap::lte_tdd {1, "lte-tdd"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rsrp::Abate::MibTrap::lte_fdd {2, "lte-fdd"};
+
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rsrp::Onset::MibTrap::All_lte {0, "All-lte"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rsrp::Onset::MibTrap::lte_tdd {1, "lte-tdd"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rsrp::Onset::MibTrap::lte_fdd {2, "lte-fdd"};
+
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rsrq::Abate::MibTrap::All_lte {0, "All-lte"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rsrq::Abate::MibTrap::lte_tdd {1, "lte-tdd"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rsrq::Abate::MibTrap::lte_fdd {2, "lte-fdd"};
+
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rsrq::Onset::MibTrap::All_lte {0, "All-lte"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rsrq::Onset::MibTrap::lte_tdd {1, "lte-tdd"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rsrq::Onset::MibTrap::lte_fdd {2, "lte-fdd"};
+
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rssi::Abate::MibTrap::All_lte {0, "All-lte"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rssi::Abate::MibTrap::lte_tdd {1, "lte-tdd"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rssi::Abate::MibTrap::lte_fdd {2, "lte-fdd"};
+
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rssi::Onset::MibTrap::All_lte {0, "All-lte"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rssi::Onset::MibTrap::lte_tdd {1, "lte-tdd"};
+const Enum::YLeaf Native::Controller::Cellular::Lte::Event::Rssi::Onset::MibTrap::lte_fdd {2, "lte-fdd"};
 
 const Enum::YLeaf Native::Controller::SONET::Framing::sonet {0, "sonet"};
 const Enum::YLeaf Native::Controller::SONET::Framing::sdh {1, "sdh"};
@@ -16596,34 +16500,6 @@ const Enum::YLeaf Native::Controller::SONET::Au4::Mode::c_4 {4, "c-4"};
 const Enum::YLeaf Native::Controller::SONET::Au4::Mode::e3 {5, "e3"};
 
 const Enum::YLeaf Native::Controller::SONET::Au4::Framing::unframed {0, "unframed"};
-
-const Enum::YLeaf Native::Controller::SONET::Au4::FramingUnframed::Tug2::Framing::unframed {0, "unframed"};
-
-const Enum::YLeaf Native::Controller::SONETACR::Framing::sonet {0, "sonet"};
-const Enum::YLeaf Native::Controller::SONETACR::Framing::sdh {1, "sdh"};
-
-const Enum::YLeaf Native::Controller::SONETACR::Clock::Source::internal {0, "internal"};
-const Enum::YLeaf Native::Controller::SONETACR::Clock::Source::line {1, "line"};
-
-const Enum::YLeaf Native::Controller::SONETACR::Aug::Mapping::au_3 {0, "au-3"};
-const Enum::YLeaf Native::Controller::SONETACR::Aug::Mapping::au_4 {1, "au-4"};
-
-const Enum::YLeaf Native::Controller::SONETACR::Au3::Overhead::Byte::j1 {0, "j1"};
-
-const Enum::YLeaf Native::Controller::SONETACR::Au3::Mode::Mapping::c_11 {0, "c-11"};
-const Enum::YLeaf Native::Controller::SONETACR::Au3::Mode::Mapping::c_12 {1, "c-12"};
-const Enum::YLeaf Native::Controller::SONETACR::Au3::Mode::Mapping::c_2 {2, "c-2"};
-
-const Enum::YLeaf Native::Controller::SONETACR::Au4::Mode::c_11 {0, "c-11"};
-const Enum::YLeaf Native::Controller::SONETACR::Au4::Mode::c_12 {1, "c-12"};
-const Enum::YLeaf Native::Controller::SONETACR::Au4::Mode::c_2 {2, "c-2"};
-const Enum::YLeaf Native::Controller::SONETACR::Au4::Mode::c_3 {3, "c-3"};
-const Enum::YLeaf Native::Controller::SONETACR::Au4::Mode::c_4 {4, "c-4"};
-const Enum::YLeaf Native::Controller::SONETACR::Au4::Mode::e3 {5, "e3"};
-
-const Enum::YLeaf Native::Controller::SONETACR::Au4::Framing::unframed {0, "unframed"};
-
-const Enum::YLeaf Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::Framing::unframed {0, "unframed"};
 
 
 }

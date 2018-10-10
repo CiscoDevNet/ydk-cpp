@@ -15,6 +15,7 @@ class MplsLdpOperAfName : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf all;
 
 };
 

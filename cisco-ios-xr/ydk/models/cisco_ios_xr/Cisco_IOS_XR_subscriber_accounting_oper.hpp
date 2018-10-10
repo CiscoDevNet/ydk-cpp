@@ -130,7 +130,7 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::Su
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sub_label; //type: int32
+        ydk::YLeaf sub_label; //type: uint32
         class SessionFeatureData; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData> session_feature_data;
@@ -409,7 +409,7 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subsc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf class_label; //type: int32
+        ydk::YLeaf class_label; //type: uint32
         class FlowFeatureData; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData> flow_feature_data;
@@ -468,6 +468,9 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subsc
         ydk::YLeaf prepaid_volume_refi_quota; //type: uint64
         ydk::YLeaf prepaid_volume_refo_quota; //type: uint64
         ydk::YLeaf prepaid_volume_refb_quota; //type: uint64
+        ydk::YLeaf prepaid_volume_agg_refi_quota; //type: uint64
+        ydk::YLeaf prepaid_volume_agg_refo_quota; //type: uint64
+        ydk::YLeaf prepaid_volume_agg_refb_quota; //type: uint64
         ydk::YLeaf prepaid_volume_newi_quota; //type: uint64
         ydk::YLeaf prepaid_volume_newo_quota; //type: uint64
         ydk::YLeaf prepaid_volume_newb_quota; //type: uint64

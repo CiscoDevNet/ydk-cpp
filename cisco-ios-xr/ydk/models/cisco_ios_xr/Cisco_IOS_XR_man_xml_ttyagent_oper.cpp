@@ -398,7 +398,7 @@ bool Netconf::Agent::Tty::Sessions::has_leaf_or_child_of_name(const std::string 
 
 Netconf::Agent::Tty::Sessions::Session::Session()
     :
-    session_id{YType::int32, "session-id"},
+    session_id{YType::uint32, "session-id"},
     username{YType::str, "username"},
     state{YType::enumeration, "state"},
     client_address{YType::str, "client-address"},
@@ -1059,7 +1059,7 @@ bool XrXml::Agent::Tty::Sessions::has_leaf_or_child_of_name(const std::string & 
 
 XrXml::Agent::Tty::Sessions::Session::Session()
     :
-    session_id{YType::int32, "session-id"},
+    session_id{YType::uint32, "session-id"},
     username{YType::str, "username"},
     state{YType::enumeration, "state"},
     client_address{YType::str, "client-address"},
@@ -1488,7 +1488,7 @@ bool XrXml::Agent::Default::Sessions::has_leaf_or_child_of_name(const std::strin
 
 XrXml::Agent::Default::Sessions::Session::Session()
     :
-    session_id{YType::int32, "session-id"},
+    session_id{YType::uint32, "session-id"},
     username{YType::str, "username"},
     state{YType::enumeration, "state"},
     client_address{YType::str, "client-address"},
@@ -1917,7 +1917,7 @@ bool XrXml::Agent::Ssl::Sessions::has_leaf_or_child_of_name(const std::string & 
 
 XrXml::Agent::Ssl::Sessions::Session::Session()
     :
-    session_id{YType::int32, "session-id"},
+    session_id{YType::uint32, "session-id"},
     username{YType::str, "username"},
     state{YType::enumeration, "state"},
     client_address{YType::str, "client-address"},

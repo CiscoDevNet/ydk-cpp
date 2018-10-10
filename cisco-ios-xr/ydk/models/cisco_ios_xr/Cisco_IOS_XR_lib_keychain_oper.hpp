@@ -31,18 +31,18 @@ class Keychain : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Keies; //type: Keychain::Keies
+        class Keys; //type: Keychain::Keys
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_oper::Keychain::Keies> keies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_oper::Keychain::Keys> keys;
         
 }; // Keychain
 
 
-class Keychain::Keies : public ydk::Entity
+class Keychain::Keys : public ydk::Entity
 {
     public:
-        Keies();
-        ~Keies();
+        Keys();
+        ~Keys();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -55,14 +55,14 @@ class Keychain::Keies : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Key; //type: Keychain::Keies::Key
+        class Key; //type: Keychain::Keys::Key
 
         ydk::YList key;
         
-}; // Keychain::Keies
+}; // Keychain::Keys
 
 
-class Keychain::Keies::Key : public ydk::Entity
+class Keychain::Keys::Key : public ydk::Entity
 {
     public:
         Key();
@@ -81,14 +81,14 @@ class Keychain::Keies::Key : public ydk::Entity
 
         ydk::YLeaf key_name; //type: string
         ydk::YLeaf accept_tolerance; //type: string
-        class Key_; //type: Keychain::Keies::Key::Key_
+        class Key_; //type: Keychain::Keys::Key::Key_
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_oper::Keychain::Keies::Key::Key_> key;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_oper::Keychain::Keys::Key::Key_> key;
         
-}; // Keychain::Keies::Key
+}; // Keychain::Keys::Key
 
 
-class Keychain::Keies::Key::Key_ : public ydk::Entity
+class Keychain::Keys::Key::Key_ : public ydk::Entity
 {
     public:
         Key_();
@@ -104,14 +104,14 @@ class Keychain::Keies::Key::Key_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class KeyId; //type: Keychain::Keies::Key::Key_::KeyId
+        class KeyId; //type: Keychain::Keys::Key::Key_::KeyId
 
         ydk::YList key_id;
         
-}; // Keychain::Keies::Key::Key_
+}; // Keychain::Keys::Key::Key_
 
 
-class Keychain::Keies::Key::Key_::KeyId : public ydk::Entity
+class Keychain::Keys::Key::Key_::KeyId : public ydk::Entity
 {
     public:
         KeyId();
@@ -131,18 +131,18 @@ class Keychain::Keies::Key::Key_::KeyId : public ydk::Entity
         ydk::YLeaf type; //type: Enc
         ydk::YLeaf key_id; //type: string
         ydk::YLeaf cryptographic_algorithm; //type: CrytoAlgo
-        class Macsec; //type: Keychain::Keies::Key::Key_::KeyId::Macsec
-        class SendLifetime; //type: Keychain::Keies::Key::Key_::KeyId::SendLifetime
-        class AcceptLifetime; //type: Keychain::Keies::Key::Key_::KeyId::AcceptLifetime
+        class Macsec; //type: Keychain::Keys::Key::Key_::KeyId::Macsec
+        class SendLifetime; //type: Keychain::Keys::Key::Key_::KeyId::SendLifetime
+        class AcceptLifetime; //type: Keychain::Keys::Key::Key_::KeyId::AcceptLifetime
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_oper::Keychain::Keies::Key::Key_::KeyId::Macsec> macsec;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_oper::Keychain::Keies::Key::Key_::KeyId::SendLifetime> send_lifetime;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_oper::Keychain::Keies::Key::Key_::KeyId::AcceptLifetime> accept_lifetime;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_oper::Keychain::Keys::Key::Key_::KeyId::Macsec> macsec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_oper::Keychain::Keys::Key::Key_::KeyId::SendLifetime> send_lifetime;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_oper::Keychain::Keys::Key::Key_::KeyId::AcceptLifetime> accept_lifetime;
         
-}; // Keychain::Keies::Key::Key_::KeyId
+}; // Keychain::Keys::Key::Key_::KeyId
 
 
-class Keychain::Keies::Key::Key_::KeyId::Macsec : public ydk::Entity
+class Keychain::Keys::Key::Key_::KeyId::Macsec : public ydk::Entity
 {
     public:
         Macsec();
@@ -160,10 +160,10 @@ class Keychain::Keies::Key::Key_::KeyId::Macsec : public ydk::Entity
 
         ydk::YLeaf is_macsec_key; //type: boolean
 
-}; // Keychain::Keies::Key::Key_::KeyId::Macsec
+}; // Keychain::Keys::Key::Key_::KeyId::Macsec
 
 
-class Keychain::Keies::Key::Key_::KeyId::SendLifetime : public ydk::Entity
+class Keychain::Keys::Key::Key_::KeyId::SendLifetime : public ydk::Entity
 {
     public:
         SendLifetime();
@@ -185,10 +185,10 @@ class Keychain::Keies::Key::Key_::KeyId::SendLifetime : public ydk::Entity
         ydk::YLeaf is_always_valid; //type: boolean
         ydk::YLeaf is_valid_now; //type: boolean
 
-}; // Keychain::Keies::Key::Key_::KeyId::SendLifetime
+}; // Keychain::Keys::Key::Key_::KeyId::SendLifetime
 
 
-class Keychain::Keies::Key::Key_::KeyId::AcceptLifetime : public ydk::Entity
+class Keychain::Keys::Key::Key_::KeyId::AcceptLifetime : public ydk::Entity
 {
     public:
         AcceptLifetime();
@@ -210,7 +210,7 @@ class Keychain::Keies::Key::Key_::KeyId::AcceptLifetime : public ydk::Entity
         ydk::YLeaf is_always_valid; //type: boolean
         ydk::YLeaf is_valid_now; //type: boolean
 
-}; // Keychain::Keies::Key::Key_::KeyId::AcceptLifetime
+}; // Keychain::Keys::Key::Key_::KeyId::AcceptLifetime
 
 class Enc : public ydk::Enum
 {
@@ -224,6 +224,7 @@ class CrytoAlgo : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf not_configured;
+        static const ydk::Enum::YLeaf aes_128_cmac_96;
         static const ydk::Enum::YLeaf hmac_sha1_12;
         static const ydk::Enum::YLeaf md5;
         static const ydk::Enum::YLeaf sha1;
@@ -231,6 +232,8 @@ class CrytoAlgo : public ydk::Enum
         static const ydk::Enum::YLeaf hmac_sha1_20;
         static const ydk::Enum::YLeaf aes_128_cmac;
         static const ydk::Enum::YLeaf aes_256_cmac;
+        static const ydk::Enum::YLeaf hmac_sha1_96;
+        static const ydk::Enum::YLeaf hmac_sha_256;
 
 };
 

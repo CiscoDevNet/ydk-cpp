@@ -137,8 +137,8 @@ class PerfMgmt::Resources::MemoryResources : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf max_limit; //type: int32
-        ydk::YLeaf min_reserved; //type: int32
+        ydk::YLeaf max_limit; //type: uint32
+        ydk::YLeaf min_reserved; //type: uint32
 
 }; // PerfMgmt::Resources::MemoryResources
 
@@ -3619,8 +3619,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -3645,8 +3645,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWith
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -3671,8 +3671,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -3697,8 +3697,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWith
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -3723,8 +3723,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Notificat
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -3775,8 +3775,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Notificat
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -3801,8 +3801,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgs
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -3827,8 +3827,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelRele
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -3853,8 +3853,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsR
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -3879,8 +3879,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelRele
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -3905,8 +3905,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsS
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -3931,8 +3931,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMapp
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -3957,8 +3957,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Keepalive
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -3983,8 +3983,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMapp
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -4009,8 +4009,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Keepalive
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -4035,8 +4035,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMs
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -4061,8 +4061,8 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMs
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -5499,8 +5499,8 @@ class PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcess
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -5955,8 +5955,8 @@ class PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplat
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32
@@ -6109,8 +6109,8 @@ class PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_; //type: PmThresholdOp
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf end_range_value; //type: int32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf end_range_value; //type: uint32
         ydk::YLeaf percent; //type: boolean
         ydk::YLeaf rearm_type; //type: PmThresholdRearm
         ydk::YLeaf rearm_window; //type: uint32

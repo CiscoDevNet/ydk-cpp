@@ -107,6 +107,8 @@ class Grpc::Status : public ydk::Entity
         ydk::YLeaf vrf_socket_ns_path; //type: string
         ydk::YLeaf max_req_per_user; //type: uint32
         ydk::YLeaf max_req_total; //type: uint32
+        ydk::YLeaf max_streams; //type: uint32
+        ydk::YLeaf max_streams_per_user; //type: uint32
 
 }; // Grpc::Status
 

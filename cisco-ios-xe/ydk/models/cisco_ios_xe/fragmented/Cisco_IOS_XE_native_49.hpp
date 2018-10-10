@@ -8,7 +8,7 @@
 #include <ydk/errors.hpp>
 
 #include "Cisco_IOS_XE_native_0.hpp"
-#include "Cisco_IOS_XE_native_18.hpp"
+#include "Cisco_IOS_XE_native_19.hpp"
 #include "Cisco_IOS_XE_native_44.hpp"
 #include "Cisco_IOS_XE_native_48.hpp"
 
@@ -16,11 +16,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Interface::FiveGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight : public ydk::Entity
 {
     public:
-        KeyString();
-        ~KeyString();
+        Weight();
+        ~Weight();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -32,14 +32,170 @@ class Native::Interface::FiveGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf encrypt; //type: Encrypt
-        ydk::YLeaf string; //type: string
-        class Encrypt;
+        class L2Factor; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor
+        class Latency; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency
+        class Resources; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources
+        class Throughput; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput
 
-}; // Native::Interface::FiveGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor> l2_factor; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency> latency; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources> resources; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput> throughput; // presence node
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight
 
 
-class Native::Interface::FiveGigabitEthernet::Ospfv3::Manet : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor : public ydk::Entity
+{
+    public:
+        L2Factor();
+        ~L2Factor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency : public ydk::Entity
+{
+    public:
+        Latency();
+        ~Latency();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources : public ydk::Entity
+{
+    public:
+        Resources();
+        ~Resources();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput : public ydk::Entity
+{
+    public:
+        Throughput();
+        ~Throughput();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter : public ydk::Entity
+{
+    public:
+        DatabaseFilter();
+        ~DatabaseFilter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf all; //type: All
+        ydk::YLeaf disable; //type: empty
+        class All;
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::DemandCircuit : public ydk::Entity
+{
+    public:
+        DemandCircuit();
+        ~DemandCircuit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+        ydk::YLeaf ignore; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::DemandCircuit
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::FloodReduction : public ydk::Entity
+{
+    public:
+        FloodReduction();
+        ~FloodReduction();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::FloodReduction
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Manet : public ydk::Entity
 {
     public:
         Manet();
@@ -55,14 +211,14 @@ class Native::Interface::FiveGigabitEthernet::Ospfv3::Manet : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Peering; //type: Native::Interface::FiveGigabitEthernet::Ospfv3::Manet::Peering
+        class Peering; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Manet::Peering
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ospfv3::Manet::Peering> peering;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Manet::Peering> peering;
         
-}; // Native::Interface::FiveGigabitEthernet::Ospfv3::Manet
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Manet
 
 
-class Native::Interface::FiveGigabitEthernet::Ospfv3::Manet::Peering : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Manet::Peering : public ydk::Entity
 {
     public:
         Peering();
@@ -79,14 +235,14 @@ class Native::Interface::FiveGigabitEthernet::Ospfv3::Manet::Peering : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf link_metrics; //type: uint32
-        class Cost; //type: Native::Interface::FiveGigabitEthernet::Ospfv3::Manet::Peering::Cost
+        class Cost; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ospfv3::Manet::Peering::Cost> cost;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost> cost;
         
-}; // Native::Interface::FiveGigabitEthernet::Ospfv3::Manet::Peering
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Manet::Peering
 
 
-class Native::Interface::FiveGigabitEthernet::Ospfv3::Manet::Peering::Cost : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost : public ydk::Entity
 {
     public:
         Cost();
@@ -105,10 +261,31 @@ class Native::Interface::FiveGigabitEthernet::Ospfv3::Manet::Peering::Cost : pub
         ydk::YLeaf percent; //type: uint8
         ydk::YLeaf threshold; //type: uint32
 
-}; // Native::Interface::FiveGigabitEthernet::Ospfv3::Manet::Peering::Cost
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost
 
 
-class Native::Interface::FiveGigabitEthernet::Ospfv3::MultiArea : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::MtuIgnore : public ydk::Entity
+{
+    public:
+        MtuIgnore();
+        ~MtuIgnore();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::MtuIgnore
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::MultiArea : public ydk::Entity
 {
     public:
         MultiArea();
@@ -126,11 +303,12 @@ class Native::Interface::FiveGigabitEthernet::Ospfv3::MultiArea : public ydk::En
 
         ydk::YLeaf id; //type: one of uint32, string
         ydk::YLeaf cost; //type: uint32
+        ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::FiveGigabitEthernet::Ospfv3::MultiArea
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::MultiArea
 
 
-class Native::Interface::FiveGigabitEthernet::Ospfv3::Neighbor : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -150,14 +328,14 @@ class Native::Interface::FiveGigabitEthernet::Ospfv3::Neighbor : public ydk::Ent
         ydk::YLeaf cost; //type: uint16
         ydk::YLeaf poll_interval; //type: uint32
         ydk::YLeaf priority; //type: uint8
-        class DatabaseFilter; //type: Native::Interface::FiveGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter
+        class DatabaseFilter; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter> database_filter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter> database_filter;
         
-}; // Native::Interface::FiveGigabitEthernet::Ospfv3::Neighbor
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Neighbor
 
 
-class Native::Interface::FiveGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter : public ydk::Entity
 {
     public:
         DatabaseFilter();
@@ -176,10 +354,10 @@ class Native::Interface::FiveGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter :
         ydk::YLeaf all; //type: All
         class All;
 
-}; // Native::Interface::FiveGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter
 
 
-class Native::Interface::FiveGigabitEthernet::Ospfv3::Network : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Network : public ydk::Entity
 {
     public:
         Network();
@@ -199,14 +377,14 @@ class Native::Interface::FiveGigabitEthernet::Ospfv3::Network : public ydk::Enti
         ydk::YLeaf manet; //type: empty
         ydk::YLeaf non_broadcast; //type: empty
         ydk::YLeaf point_to_point; //type: empty
-        class PointToMultipoint; //type: Native::Interface::FiveGigabitEthernet::Ospfv3::Network::PointToMultipoint
+        class PointToMultipoint; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ospfv3::Network::PointToMultipoint> point_to_multipoint; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint> point_to_multipoint; // presence node
         
-}; // Native::Interface::FiveGigabitEthernet::Ospfv3::Network
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Network
 
 
-class Native::Interface::FiveGigabitEthernet::Ospfv3::Network::PointToMultipoint : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint : public ydk::Entity
 {
     public:
         PointToMultipoint();
@@ -224,10 +402,10 @@ class Native::Interface::FiveGigabitEthernet::Ospfv3::Network::PointToMultipoint
 
         ydk::YLeaf non_broadcast; //type: empty
 
-}; // Native::Interface::FiveGigabitEthernet::Ospfv3::Network::PointToMultipoint
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint
 
 
-class Native::Interface::FiveGigabitEthernet::Ospfv3::PrefixSuppression : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression : public ydk::Entity
 {
     public:
         PrefixSuppression();
@@ -245,53 +423,14 @@ class Native::Interface::FiveGigabitEthernet::Ospfv3::PrefixSuppression : public
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::FiveGigabitEthernet::Ospfv3::PrefixSuppression
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression
 
 
-class Native::Interface::FiveGigabitEthernet::SpanningTree : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Shutdown : public ydk::Entity
 {
     public:
-        SpanningTree();
-        ~SpanningTree();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf bpdufilter; //type: Bpdufilter
-        ydk::YLeaf cost; //type: uint32
-        ydk::YLeaf guard; //type: Guard
-        ydk::YLeaf link_type; //type: LinkType
-        ydk::YLeaf port_priority; //type: uint8
-        class Bpduguard; //type: Native::Interface::FiveGigabitEthernet::SpanningTree::Bpduguard
-        class Portfast; //type: Native::Interface::FiveGigabitEthernet::SpanningTree::Portfast
-        class Vlan; //type: Native::Interface::FiveGigabitEthernet::SpanningTree::Vlan
-        class Loopguard; //type: Native::Interface::FiveGigabitEthernet::SpanningTree::Loopguard
-        class Mst; //type: Native::Interface::FiveGigabitEthernet::SpanningTree::Mst
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::SpanningTree::Bpduguard> bpduguard;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::SpanningTree::Portfast> portfast; // presence node
-        ydk::YList vlan;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::SpanningTree::Loopguard> loopguard;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::SpanningTree::Mst> mst;
-                class Bpdufilter;
-        class Guard;
-        class LinkType;
-
-}; // Native::Interface::FiveGigabitEthernet::SpanningTree
-
-
-class Native::Interface::FiveGigabitEthernet::SpanningTree::Bpduguard : public ydk::Entity
-{
-    public:
-        Bpduguard();
-        ~Bpduguard();
+        Shutdown();
+        ~Shutdown();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -304,16 +443,15 @@ class Native::Interface::FiveGigabitEthernet::SpanningTree::Bpduguard : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf disable; //type: empty
-        ydk::YLeaf enable; //type: empty
 
-}; // Native::Interface::FiveGigabitEthernet::SpanningTree::Bpduguard
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Shutdown
 
 
-class Native::Interface::FiveGigabitEthernet::SpanningTree::Portfast : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4 : public ydk::Entity
 {
     public:
-        Portfast();
-        ~Portfast();
+        Ipv4();
+        ~Ipv4();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -325,86 +463,49 @@ class Native::Interface::FiveGigabitEthernet::SpanningTree::Portfast : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf disable; //type: empty
-        ydk::YLeaf trunk; //type: empty
-        ydk::YLeaf edge; //type: empty
+        ydk::YLeaf dead_interval; //type: uint16
+        ydk::YLeaf hello_interval; //type: uint32
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf retransmit_interval; //type: uint32
+        ydk::YLeaf transmit_delay; //type: uint32
+        class Area; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area
+        class Authentication; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication
+        class Bfd; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd
+        class Cost; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost
+        class DatabaseFilter; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter
+        class DemandCircuit; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit
+        class FloodReduction; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction
+        class Manet; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet
+        class MtuIgnore; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore
+        class MultiArea; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea
+        class Neighbor; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor
+        class Network; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network
+        class PrefixSuppression; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression
+        class Shutdown; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown
 
-}; // Native::Interface::FiveGigabitEthernet::SpanningTree::Portfast
-
-
-class Native::Interface::FiveGigabitEthernet::SpanningTree::Vlan : public ydk::Entity
-{
-    public:
-        Vlan();
-        ~Vlan();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf vlan_ids; //type: string
-        ydk::YLeaf cost; //type: uint32
-        ydk::YLeaf port_priority; //type: uint16
-
-}; // Native::Interface::FiveGigabitEthernet::SpanningTree::Vlan
-
-
-class Native::Interface::FiveGigabitEthernet::SpanningTree::Loopguard : public ydk::Entity
-{
-    public:
-        Loopguard();
-        ~Loopguard();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf default_; //type: empty
-
-}; // Native::Interface::FiveGigabitEthernet::SpanningTree::Loopguard
-
-
-class Native::Interface::FiveGigabitEthernet::SpanningTree::Mst : public ydk::Entity
-{
-    public:
-        Mst();
-        ~Mst();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pre_standard; //type: empty
-        class MstInstance; //type: Native::Interface::FiveGigabitEthernet::SpanningTree::Mst::MstInstance
-
-        ydk::YList mst_instance;
+        ydk::YList area;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd> bfd; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost> cost;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter> database_filter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit> demand_circuit; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction> flood_reduction; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet> manet;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore> mtu_ignore; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea> multi_area;
+        ydk::YList neighbor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network> network;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression> prefix_suppression; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown> shutdown; // presence node
         
-}; // Native::Interface::FiveGigabitEthernet::SpanningTree::Mst
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4
 
 
-class Native::Interface::FiveGigabitEthernet::SpanningTree::Mst::MstInstance : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area : public ydk::Entity
 {
     public:
-        MstInstance();
-        ~MstInstance();
+        Area();
+        ~Area();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -416,18 +517,473 @@ class Native::Interface::FiveGigabitEthernet::SpanningTree::Mst::MstInstance : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf instance; //type: string
-        ydk::YLeaf cost; //type: uint32
-        ydk::YLeaf port_priority; //type: uint16
+        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf instance; //type: uint8
 
-}; // Native::Interface::FiveGigabitEthernet::SpanningTree::Mst::MstInstance
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area
 
 
-class Native::Interface::FiveGigabitEthernet::Ntp : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication : public ydk::Entity
 {
     public:
-        Ntp();
-        ~Ntp();
+        Authentication();
+        ~Authentication();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf key_chain; //type: string
+        ydk::YLeaf null; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd : public ydk::Entity
+{
+    public:
+        Bfd();
+        ~Bfd();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost : public ydk::Entity
+{
+    public:
+        Cost();
+        ~Cost();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        class Dynamic; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic> dynamic; // presence node
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic : public ydk::Entity
+{
+    public:
+        Dynamic();
+        ~Dynamic();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf default_; //type: uint32
+        class Hysteresis; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis
+        class Weight; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis> hysteresis; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight> weight;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis : public ydk::Entity
+{
+    public:
+        Hysteresis();
+        ~Hysteresis();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf percent; //type: uint8
+        ydk::YLeaf threshold; //type: uint32
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight : public ydk::Entity
+{
+    public:
+        Weight();
+        ~Weight();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class L2Factor; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor
+        class Latency; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency
+        class Resources; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources
+        class Throughput; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor> l2_factor; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency> latency; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources> resources; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput> throughput; // presence node
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor : public ydk::Entity
+{
+    public:
+        L2Factor();
+        ~L2Factor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency : public ydk::Entity
+{
+    public:
+        Latency();
+        ~Latency();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources : public ydk::Entity
+{
+    public:
+        Resources();
+        ~Resources();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput : public ydk::Entity
+{
+    public:
+        Throughput();
+        ~Throughput();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter : public ydk::Entity
+{
+    public:
+        DatabaseFilter();
+        ~DatabaseFilter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf all; //type: All
+        ydk::YLeaf disable; //type: empty
+        class All;
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit : public ydk::Entity
+{
+    public:
+        DemandCircuit();
+        ~DemandCircuit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+        ydk::YLeaf ignore; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction : public ydk::Entity
+{
+    public:
+        FloodReduction();
+        ~FloodReduction();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet : public ydk::Entity
+{
+    public:
+        Manet();
+        ~Manet();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Peering; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering> peering;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering : public ydk::Entity
+{
+    public:
+        Peering();
+        ~Peering();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_metrics; //type: uint32
+        class Cost; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost> cost;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost : public ydk::Entity
+{
+    public:
+        Cost();
+        ~Cost();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf percent; //type: uint8
+        ydk::YLeaf threshold; //type: uint32
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore : public ydk::Entity
+{
+    public:
+        MtuIgnore();
+        ~MtuIgnore();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea : public ydk::Entity
+{
+    public:
+        MultiArea();
+        ~MultiArea();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf cost; //type: uint32
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor : public ydk::Entity
+{
+    public:
+        Neighbor();
+        ~Neighbor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: string
+        ydk::YLeaf cost; //type: uint16
+        ydk::YLeaf poll_interval; //type: uint32
+        ydk::YLeaf priority; //type: uint8
+        class DatabaseFilter; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter> database_filter;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter : public ydk::Entity
+{
+    public:
+        DatabaseFilter();
+        ~DatabaseFilter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf all; //type: All
+        class All;
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network : public ydk::Entity
+{
+    public:
+        Network();
+        ~Network();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -440,18 +996,21 @@ class Native::Interface::FiveGigabitEthernet::Ntp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf broadcast; //type: empty
-        class BroadcastOption; //type: Native::Interface::FiveGigabitEthernet::Ntp::BroadcastOption
+        ydk::YLeaf manet; //type: empty
+        ydk::YLeaf non_broadcast; //type: empty
+        ydk::YLeaf point_to_point; //type: empty
+        class PointToMultipoint; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ntp::BroadcastOption> broadcast_option;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint> point_to_multipoint; // presence node
         
-}; // Native::Interface::FiveGigabitEthernet::Ntp
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network
 
 
-class Native::Interface::FiveGigabitEthernet::Ntp::BroadcastOption : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint : public ydk::Entity
 {
     public:
-        BroadcastOption();
-        ~BroadcastOption();
+        PointToMultipoint();
+        ~PointToMultipoint();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -463,18 +1022,112 @@ class Native::Interface::FiveGigabitEthernet::Ntp::BroadcastOption : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Broadcast; //type: Native::Interface::FiveGigabitEthernet::Ntp::BroadcastOption::Broadcast
+        ydk::YLeaf non_broadcast; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ntp::BroadcastOption::Broadcast> broadcast;
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression : public ydk::Entity
+{
+    public:
+        PrefixSuppression();
+        ~PrefixSuppression();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown : public ydk::Entity
+{
+    public:
+        Shutdown();
+        ~Shutdown();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6 : public ydk::Entity
+{
+    public:
+        Ipv6();
+        ~Ipv6();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf dead_interval; //type: uint16
+        ydk::YLeaf hello_interval; //type: uint32
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf retransmit_interval; //type: uint32
+        ydk::YLeaf transmit_delay; //type: uint32
+        class Area; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area
+        class Authentication; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication
+        class Bfd; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd
+        class Cost; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost
+        class DatabaseFilter; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter
+        class DemandCircuit; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit
+        class FloodReduction; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction
+        class Manet; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet
+        class MtuIgnore; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore
+        class MultiArea; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea
+        class Neighbor; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor
+        class Network; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network
+        class PrefixSuppression; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression
+        class Shutdown; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown
+
+        ydk::YList area;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd> bfd; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost> cost;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter> database_filter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit> demand_circuit; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction> flood_reduction; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet> manet;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore> mtu_ignore; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea> multi_area;
+        ydk::YList neighbor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network> network;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression> prefix_suppression; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown> shutdown; // presence node
         
-}; // Native::Interface::FiveGigabitEthernet::Ntp::BroadcastOption
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6
 
 
-class Native::Interface::FiveGigabitEthernet::Ntp::BroadcastOption::Broadcast : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area : public ydk::Entity
 {
     public:
-        Broadcast();
-        ~Broadcast();
+        Area();
+        ~Area();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -486,16 +1139,17 @@ class Native::Interface::FiveGigabitEthernet::Ntp::BroadcastOption::Broadcast : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf client; //type: empty
+        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf instance; //type: uint8
 
-}; // Native::Interface::FiveGigabitEthernet::Ntp::BroadcastOption::Broadcast
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area
 
 
-class Native::Interface::FiveGigabitEthernet::Cdp : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication : public ydk::Entity
 {
     public:
-        Cdp();
-        ~Cdp();
+        Authentication();
+        ~Authentication();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -507,19 +1161,62 @@ class Native::Interface::FiveGigabitEthernet::Cdp : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enable; //type: boolean
-        class Tlv; //type: Native::Interface::FiveGigabitEthernet::Cdp::Tlv
+        ydk::YLeaf key_chain; //type: string
+        ydk::YLeaf null; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Cdp::Tlv> tlv;
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd : public ydk::Entity
+{
+    public:
+        Bfd();
+        ~Bfd();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost : public ydk::Entity
+{
+    public:
+        Cost();
+        ~Cost();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        class Dynamic; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic> dynamic; // presence node
         
-}; // Native::Interface::FiveGigabitEthernet::Cdp
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost
 
 
-class Native::Interface::FiveGigabitEthernet::Cdp::Tlv : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic : public ydk::Entity
 {
     public:
-        Tlv();
-        ~Tlv();
+        Dynamic();
+        ~Dynamic();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -531,20 +1228,21 @@ class Native::Interface::FiveGigabitEthernet::Cdp::Tlv : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf server_location; //type: empty
-        ydk::YLeaf location; //type: empty
-        class App; //type: Native::Interface::FiveGigabitEthernet::Cdp::Tlv::App
+        ydk::YLeaf default_; //type: uint32
+        class Hysteresis; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis
+        class Weight; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Cdp::Tlv::App> app; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis> hysteresis; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight> weight;
         
-}; // Native::Interface::FiveGigabitEthernet::Cdp::Tlv
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic
 
 
-class Native::Interface::FiveGigabitEthernet::Cdp::Tlv::App : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis : public ydk::Entity
 {
     public:
-        App();
-        ~App();
+        Hysteresis();
+        ~Hysteresis();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -556,17 +1254,1726 @@ class Native::Interface::FiveGigabitEthernet::Cdp::Tlv::App : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf tlvtype; //type: uint16
-        ydk::YLeaf value_; //type: string
+        ydk::YLeaf percent; //type: uint8
+        ydk::YLeaf threshold; //type: uint32
 
-}; // Native::Interface::FiveGigabitEthernet::Cdp::Tlv::App
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis
 
 
-class Native::Interface::TenGigabitEthernet : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight : public ydk::Entity
 {
     public:
-        TenGigabitEthernet();
-        ~TenGigabitEthernet();
+        Weight();
+        ~Weight();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class L2Factor; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor
+        class Latency; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency
+        class Resources; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources
+        class Throughput; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor> l2_factor; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency> latency; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources> resources; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput> throughput; // presence node
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor : public ydk::Entity
+{
+    public:
+        L2Factor();
+        ~L2Factor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency : public ydk::Entity
+{
+    public:
+        Latency();
+        ~Latency();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources : public ydk::Entity
+{
+    public:
+        Resources();
+        ~Resources();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput : public ydk::Entity
+{
+    public:
+        Throughput();
+        ~Throughput();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter : public ydk::Entity
+{
+    public:
+        DatabaseFilter();
+        ~DatabaseFilter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf all; //type: All
+        ydk::YLeaf disable; //type: empty
+        class All;
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit : public ydk::Entity
+{
+    public:
+        DemandCircuit();
+        ~DemandCircuit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+        ydk::YLeaf ignore; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction : public ydk::Entity
+{
+    public:
+        FloodReduction();
+        ~FloodReduction();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet : public ydk::Entity
+{
+    public:
+        Manet();
+        ~Manet();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Peering; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering> peering;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering : public ydk::Entity
+{
+    public:
+        Peering();
+        ~Peering();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_metrics; //type: uint32
+        class Cost; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost> cost;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost : public ydk::Entity
+{
+    public:
+        Cost();
+        ~Cost();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf percent; //type: uint8
+        ydk::YLeaf threshold; //type: uint32
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore : public ydk::Entity
+{
+    public:
+        MtuIgnore();
+        ~MtuIgnore();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea : public ydk::Entity
+{
+    public:
+        MultiArea();
+        ~MultiArea();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf cost; //type: uint32
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor : public ydk::Entity
+{
+    public:
+        Neighbor();
+        ~Neighbor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: string
+        ydk::YLeaf cost; //type: uint16
+        ydk::YLeaf poll_interval; //type: uint32
+        ydk::YLeaf priority; //type: uint8
+        class DatabaseFilter; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter> database_filter;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter : public ydk::Entity
+{
+    public:
+        DatabaseFilter();
+        ~DatabaseFilter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf all; //type: All
+        class All;
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network : public ydk::Entity
+{
+    public:
+        Network();
+        ~Network();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf broadcast; //type: empty
+        ydk::YLeaf manet; //type: empty
+        ydk::YLeaf non_broadcast; //type: empty
+        ydk::YLeaf point_to_point; //type: empty
+        class PointToMultipoint; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint> point_to_multipoint; // presence node
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint : public ydk::Entity
+{
+    public:
+        PointToMultipoint();
+        ~PointToMultipoint();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf non_broadcast; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression : public ydk::Entity
+{
+    public:
+        PrefixSuppression();
+        ~PrefixSuppression();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown : public ydk::Entity
+{
+    public:
+        Shutdown();
+        ~Shutdown();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication : public ydk::Entity
+{
+    public:
+        Authentication();
+        ~Authentication();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf key_chain; //type: string
+        ydk::YLeaf null; //type: empty
+        class Ipsec; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec> ipsec;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec : public ydk::Entity
+{
+    public:
+        Ipsec();
+        ~Ipsec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf spi; //type: uint64
+        class Md5; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5
+        class Sha1; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5> md5;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1> sha1;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5 : public ydk::Entity
+{
+    public:
+        Md5();
+        ~Md5();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class KeyString; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString> key_string;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString : public ydk::Entity
+{
+    public:
+        KeyString();
+        ~KeyString();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf encrypt; //type: Encrypt
+        ydk::YLeaf string; //type: string
+        class Encrypt;
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1 : public ydk::Entity
+{
+    public:
+        Sha1();
+        ~Sha1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class KeyString; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString> key_string;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString : public ydk::Entity
+{
+    public:
+        KeyString();
+        ~KeyString();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf encrypt; //type: Encrypt
+        ydk::YLeaf string; //type: string
+        class Encrypt;
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Bfd : public ydk::Entity
+{
+    public:
+        Bfd();
+        ~Bfd();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Bfd
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Cost : public ydk::Entity
+{
+    public:
+        Cost();
+        ~Cost();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        class Dynamic; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic> dynamic; // presence node
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Cost
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic : public ydk::Entity
+{
+    public:
+        Dynamic();
+        ~Dynamic();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf default_; //type: uint32
+        class Hysteresis; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis
+        class Weight; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis> hysteresis; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight> weight;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis : public ydk::Entity
+{
+    public:
+        Hysteresis();
+        ~Hysteresis();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf percent; //type: uint8
+        ydk::YLeaf threshold; //type: uint32
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight : public ydk::Entity
+{
+    public:
+        Weight();
+        ~Weight();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class L2Factor; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor
+        class Latency; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency
+        class Resources; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources
+        class Throughput; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor> l2_factor; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency> latency; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources> resources; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput> throughput; // presence node
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor : public ydk::Entity
+{
+    public:
+        L2Factor();
+        ~L2Factor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency : public ydk::Entity
+{
+    public:
+        Latency();
+        ~Latency();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources : public ydk::Entity
+{
+    public:
+        Resources();
+        ~Resources();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput : public ydk::Entity
+{
+    public:
+        Throughput();
+        ~Throughput();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint8
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::DatabaseFilter : public ydk::Entity
+{
+    public:
+        DatabaseFilter();
+        ~DatabaseFilter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf all; //type: All
+        class All;
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::DatabaseFilter
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::DemandCircuit : public ydk::Entity
+{
+    public:
+        DemandCircuit();
+        ~DemandCircuit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ignore; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::DemandCircuit
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption : public ydk::Entity
+{
+    public:
+        Encryption();
+        ~Encryption();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf null; //type: empty
+        class Ipsec; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec> ipsec;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec : public ydk::Entity
+{
+    public:
+        Ipsec();
+        ~Ipsec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf spi; //type: uint64
+        ydk::YLeaf esp; //type: empty
+        class Ipsec3des; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des
+        class AesCbc; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des> ipsec_3des;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc> aes_cbc;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des : public ydk::Entity
+{
+    public:
+        Ipsec3des();
+        ~Ipsec3des();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class KeyString; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::KeyString
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::KeyString> key_string;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::KeyString : public ydk::Entity
+{
+    public:
+        KeyString();
+        ~KeyString();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf encrypt; //type: Encrypt
+        ydk::YLeaf string; //type: string
+        class Encrypt;
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::KeyString
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc : public ydk::Entity
+{
+    public:
+        AesCbc();
+        ~AesCbc();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AesCbc128; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128
+        class Aes192; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192
+        class Aes256; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128> aes_cbc_128;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192> aes_192;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256> aes_256;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128 : public ydk::Entity
+{
+    public:
+        AesCbc128();
+        ~AesCbc128();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class KeyString; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString> key_string;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString : public ydk::Entity
+{
+    public:
+        KeyString();
+        ~KeyString();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf encrypt; //type: Encrypt
+        ydk::YLeaf string; //type: string
+        class Encrypt;
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192 : public ydk::Entity
+{
+    public:
+        Aes192();
+        ~Aes192();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class KeyString; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString> key_string;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString : public ydk::Entity
+{
+    public:
+        KeyString();
+        ~KeyString();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf encrypt; //type: Encrypt
+        ydk::YLeaf string; //type: string
+        class Encrypt;
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256 : public ydk::Entity
+{
+    public:
+        Aes256();
+        ~Aes256();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class KeyString; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString> key_string;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString : public ydk::Entity
+{
+    public:
+        KeyString();
+        ~KeyString();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf encrypt; //type: Encrypt
+        ydk::YLeaf string; //type: string
+        class Encrypt;
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Manet : public ydk::Entity
+{
+    public:
+        Manet();
+        ~Manet();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Peering; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Manet::Peering
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Manet::Peering> peering;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Manet
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Manet::Peering : public ydk::Entity
+{
+    public:
+        Peering();
+        ~Peering();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_metrics; //type: uint32
+        class Cost; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Manet::Peering::Cost
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Manet::Peering::Cost> cost;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Manet::Peering
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Manet::Peering::Cost : public ydk::Entity
+{
+    public:
+        Cost();
+        ~Cost();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf percent; //type: uint8
+        ydk::YLeaf threshold; //type: uint32
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Manet::Peering::Cost
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::MultiArea : public ydk::Entity
+{
+    public:
+        MultiArea();
+        ~MultiArea();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf cost; //type: uint32
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::MultiArea
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Neighbor : public ydk::Entity
+{
+    public:
+        Neighbor();
+        ~Neighbor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: string
+        ydk::YLeaf cost; //type: uint16
+        ydk::YLeaf poll_interval; //type: uint32
+        ydk::YLeaf priority; //type: uint8
+        class DatabaseFilter; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter> database_filter;
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Neighbor
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter : public ydk::Entity
+{
+    public:
+        DatabaseFilter();
+        ~DatabaseFilter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf all; //type: All
+        class All;
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Network : public ydk::Entity
+{
+    public:
+        Network();
+        ~Network();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf broadcast; //type: empty
+        ydk::YLeaf manet; //type: empty
+        ydk::YLeaf non_broadcast; //type: empty
+        ydk::YLeaf point_to_point; //type: empty
+        class PointToMultipoint; //type: Native::Interface::TwoGigabitEthernet::Ospfv3::Network::PointToMultipoint
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Ospfv3::Network::PointToMultipoint> point_to_multipoint; // presence node
+        
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Network
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Network::PointToMultipoint : public ydk::Entity
+{
+    public:
+        PointToMultipoint();
+        ~PointToMultipoint();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf non_broadcast; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::Network::PointToMultipoint
+
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::PrefixSuppression : public ydk::Entity
+{
+    public:
+        PrefixSuppression();
+        ~PrefixSuppression();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Ospfv3::PrefixSuppression
+
+
+class Native::Interface::TwoGigabitEthernet::Udld : public ydk::Entity
+{
+    public:
+        Udld();
+        ~Udld();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Port; //type: Native::Interface::TwoGigabitEthernet::Udld::Port
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Udld::Port> port; // presence node
+        
+}; // Native::Interface::TwoGigabitEthernet::Udld
+
+
+class Native::Interface::TwoGigabitEthernet::Udld::Port : public ydk::Entity
+{
+    public:
+        Port();
+        ~Port();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf aggressive; //type: empty
+        ydk::YLeaf disable; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Udld::Port
+
+
+class Native::Interface::TwoGigabitEthernet::Cts : public ydk::Entity
+{
+    public:
+        Cts();
+        ~Cts();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Manual; //type: Native::Interface::TwoGigabitEthernet::Cts::Manual
+        class RoleBased; //type: Native::Interface::TwoGigabitEthernet::Cts::RoleBased
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Cts::Manual> manual; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Cts::RoleBased> role_based;
+        
+}; // Native::Interface::TwoGigabitEthernet::Cts
+
+
+class Native::Interface::TwoGigabitEthernet::Cts::Manual : public ydk::Entity
+{
+    public:
+        Manual();
+        ~Manual();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Policy; //type: Native::Interface::TwoGigabitEthernet::Cts::Manual::Policy
+        class Sap; //type: Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap
+        class Propagate; //type: Native::Interface::TwoGigabitEthernet::Cts::Manual::Propagate
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Cts::Manual::Policy> policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap> sap;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Cts::Manual::Propagate> propagate;
+        
+}; // Native::Interface::TwoGigabitEthernet::Cts::Manual
+
+
+class Native::Interface::TwoGigabitEthernet::Cts::Manual::Policy : public ydk::Entity
+{
+    public:
+        Policy();
+        ~Policy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Static; //type: Native::Interface::TwoGigabitEthernet::Cts::Manual::Policy::Static
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Cts::Manual::Policy::Static> static_;
+        
+}; // Native::Interface::TwoGigabitEthernet::Cts::Manual::Policy
+
+
+class Native::Interface::TwoGigabitEthernet::Cts::Manual::Policy::Static : public ydk::Entity
+{
+    public:
+        Static();
+        ~Static();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sgt; //type: uint16
+        ydk::YLeaf trusted; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Cts::Manual::Policy::Static
+
+
+class Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap : public ydk::Entity
+{
+    public:
+        Sap();
+        ~Sap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Pmk; //type: Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk
+
+        ydk::YList pmk;
+        
+}; // Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap
+
+
+class Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk : public ydk::Entity
+{
+    public:
+        Pmk();
+        ~Pmk();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf word; //type: string
+        class ModeList; //type: Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList> mode_list;
+        
+}; // Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk
+
+
+class Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList : public ydk::Entity
+{
+    public:
+        ModeList();
+        ~ModeList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class GcmEncrypt; //type: Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt
+        class NoEncap; //type: Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt> gcm_encrypt; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap> no_encap; // presence node
+        
+}; // Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList
+
+
+class Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt : public ydk::Entity
+{
+    public:
+        GcmEncrypt();
+        ~GcmEncrypt();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Gmac; //type: Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac> gmac; // presence node
+        
+}; // Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt
+
+
+class Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac : public ydk::Entity
+{
+    public:
+        Gmac();
+        ~Gmac();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf null; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac
+
+
+class Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap : public ydk::Entity
+{
+    public:
+        NoEncap();
+        ~NoEncap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Gmac; //type: Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac> gmac; // presence node
+        
+}; // Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap
+
+
+class Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac : public ydk::Entity
+{
+    public:
+        Gmac();
+        ~Gmac();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf gcm_encrypt; //type: empty
+
+}; // Native::Interface::TwoGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac
+
+
+class Native::Interface::TwoGigabitEthernet::Cts::Manual::Propagate : public ydk::Entity
+{
+    public:
+        Propagate();
+        ~Propagate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sgt; //type: boolean
+
+}; // Native::Interface::TwoGigabitEthernet::Cts::Manual::Propagate
+
+
+class Native::Interface::TwoGigabitEthernet::Cts::RoleBased : public ydk::Entity
+{
+    public:
+        RoleBased();
+        ~RoleBased();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enforcement; //type: empty
+        ydk::YLeafList sgt_cache; //type: list of  SgtCache
+        class SgtMap; //type: Native::Interface::TwoGigabitEthernet::Cts::RoleBased::SgtMap
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::Cts::RoleBased::SgtMap> sgt_map;
+                class SgtCache;
+
+}; // Native::Interface::TwoGigabitEthernet::Cts::RoleBased
+
+
+class Native::Interface::TwoGigabitEthernet::Cts::RoleBased::SgtMap : public ydk::Entity
+{
+    public:
+        SgtMap();
+        ~SgtMap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf security_group; //type: string
+        ydk::YLeaf sgt; //type: uint16
+
+}; // Native::Interface::TwoGigabitEthernet::Cts::RoleBased::SgtMap
+
+
+class Native::Interface::TwoGigabitEthernet::AnalysisModule : public ydk::Entity
+{
+    public:
+        AnalysisModule();
+        ~AnalysisModule();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Monitoring; //type: Native::Interface::TwoGigabitEthernet::AnalysisModule::Monitoring
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet::AnalysisModule::Monitoring> monitoring;
+        
+}; // Native::Interface::TwoGigabitEthernet::AnalysisModule
+
+
+class Native::Interface::TwoGigabitEthernet::AnalysisModule::Monitoring : public ydk::Entity
+{
+    public:
+        Monitoring();
+        ~Monitoring();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+
+}; // Native::Interface::TwoGigabitEthernet::AnalysisModule::Monitoring
+
+
+class Native::Interface::FiveGigabitEthernet : public ydk::Entity
+{
+    public:
+        FiveGigabitEthernet();
+        ~FiveGigabitEthernet();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -592,182 +2999,190 @@ class Native::Interface::TenGigabitEthernet : public ydk::Entity
         ydk::YLeaf max_reserved_bandwidth; //type: uint8
         ydk::YLeaf mtu; //type: uint16
         ydk::YLeaf service_insertion; //type: ServiceInsertion
-        ydk::YLeaf cisco_ios_xe_switch_macsec; //type: empty
         ydk::YLeaf channel_protocol; //type: ChannelProtocol
         ydk::YLeaf duplex; //type: Duplex
         ydk::YLeaf cisco_ios_xe_ethernet_macsec; //type: empty
+        ydk::YLeaf cisco_ios_xe_switch_macsec; //type: empty
         ydk::YLeaf nat66; //type: Nat66
-        class SwitchportConf; //type: Native::Interface::TenGigabitEthernet::SwitchportConf
-        class Switchport; //type: Native::Interface::TenGigabitEthernet::Switchport
-        class StackwiseVirtual; //type: Native::Interface::TenGigabitEthernet::StackwiseVirtual
-        class Arp; //type: Native::Interface::TenGigabitEthernet::Arp
-        class Backup; //type: Native::Interface::TenGigabitEthernet::Backup
-        class Cemoudp; //type: Native::Interface::TenGigabitEthernet::Cemoudp
-        class CwsTunnel; //type: Native::Interface::TenGigabitEthernet::CwsTunnel
-        class L2protocolTunnel; //type: Native::Interface::TenGigabitEthernet::L2protocolTunnel
-        class Encapsulation; //type: Native::Interface::TenGigabitEthernet::Encapsulation
-        class FairQueueConf; //type: Native::Interface::TenGigabitEthernet::FairQueueConf
-        class FairQueue; //type: Native::Interface::TenGigabitEthernet::FairQueue
-        class Flowcontrol; //type: Native::Interface::TenGigabitEthernet::Flowcontrol
-        class Isis; //type: Native::Interface::TenGigabitEthernet::Isis
-        class KeepaliveSettings; //type: Native::Interface::TenGigabitEthernet::KeepaliveSettings
-        class Bfd; //type: Native::Interface::TenGigabitEthernet::Bfd
-        class Bandwidth; //type: Native::Interface::TenGigabitEthernet::Bandwidth
-        class Dampening; //type: Native::Interface::TenGigabitEthernet::Dampening
-        class Domain; //type: Native::Interface::TenGigabitEthernet::Domain
-        class HoldQueue; //type: Native::Interface::TenGigabitEthernet::HoldQueue
-        class Mpls; //type: Native::Interface::TenGigabitEthernet::Mpls
-        class IpVrf; //type: Native::Interface::TenGigabitEthernet::IpVrf
-        class Vrf; //type: Native::Interface::TenGigabitEthernet::Vrf
-        class Ip; //type: Native::Interface::TenGigabitEthernet::Ip
-        class Ipv6; //type: Native::Interface::TenGigabitEthernet::Ipv6
-        class Logging; //type: Native::Interface::TenGigabitEthernet::Logging
-        class Mdix; //type: Native::Interface::TenGigabitEthernet::Mdix
-        class Mop; //type: Native::Interface::TenGigabitEthernet::Mop
-        class InterfaceQos; //type: Native::Interface::TenGigabitEthernet::InterfaceQos
-        class Standby; //type: Native::Interface::TenGigabitEthernet::Standby
-        class AccessSession; //type: Native::Interface::TenGigabitEthernet::AccessSession
-        class StormControl; //type: Native::Interface::TenGigabitEthernet::StormControl
-        class Trust; //type: Native::Interface::TenGigabitEthernet::Trust
-        class PriorityQueue; //type: Native::Interface::TenGigabitEthernet::PriorityQueue
-        class RcvQueue; //type: Native::Interface::TenGigabitEthernet::RcvQueue
-        class Peer; //type: Native::Interface::TenGigabitEthernet::Peer
-        class PmPath; //type: Native::Interface::TenGigabitEthernet::PmPath
-        class FabricDomain; //type: Native::Interface::TenGigabitEthernet::FabricDomain
-        class Lldp; //type: Native::Interface::TenGigabitEthernet::Lldp
-        class ServicePolicy; //type: Native::Interface::TenGigabitEthernet::ServicePolicy
-        class Utd; //type: Native::Interface::TenGigabitEthernet::Utd
-        class Dot1x; //type: Native::Interface::TenGigabitEthernet::Dot1x
-        class Auto; //type: Native::Interface::TenGigabitEthernet::Auto
-        class Datalink; //type: Native::Interface::TenGigabitEthernet::Datalink
-        class Energywise; //type: Native::Interface::TenGigabitEthernet::Energywise
-        class Location; //type: Native::Interface::TenGigabitEthernet::Location
-        class Mac; //type: Native::Interface::TenGigabitEthernet::Mac
-        class Macro; //type: Native::Interface::TenGigabitEthernet::Macro
-        class DualActive; //type: Native::Interface::TenGigabitEthernet::DualActive
-        class LoadBalancing; //type: Native::Interface::TenGigabitEthernet::LoadBalancing
-        class VlanRange; //type: Native::Interface::TenGigabitEthernet::VlanRange
-        class Switch; //type: Native::Interface::TenGigabitEthernet::Switch
-        class SrrQueue; //type: Native::Interface::TenGigabitEthernet::SrrQueue
-        class CiscoIOSXESwitchMacsecOption; //type: Native::Interface::TenGigabitEthernet::CiscoIOSXESwitchMacsecOption
-        class DeviceTracking; //type: Native::Interface::TenGigabitEthernet::DeviceTracking
-        class Cts; //type: Native::Interface::TenGigabitEthernet::Cts
-        class Power; //type: Native::Interface::TenGigabitEthernet::Power
-        class Mka; //type: Native::Interface::TenGigabitEthernet::Mka
-        class Umbrella; //type: Native::Interface::TenGigabitEthernet::Umbrella
-        class Snmp; //type: Native::Interface::TenGigabitEthernet::Snmp
-        class Performance; //type: Native::Interface::TenGigabitEthernet::Performance
-        class CarrierDelay; //type: Native::Interface::TenGigabitEthernet::CarrierDelay
-        class ChannelGroup; //type: Native::Interface::TenGigabitEthernet::ChannelGroup
-        class Ethernet; //type: Native::Interface::TenGigabitEthernet::Ethernet
-        class Negotiation; //type: Native::Interface::TenGigabitEthernet::Negotiation
-        class Eapol; //type: Native::Interface::TenGigabitEthernet::Eapol
-        class Synchronous; //type: Native::Interface::TenGigabitEthernet::Synchronous
-        class Speed; //type: Native::Interface::TenGigabitEthernet::Speed
-        class Plim; //type: Native::Interface::TenGigabitEthernet::Plim
-        class Pppoe; //type: Native::Interface::TenGigabitEthernet::Pppoe
-        class Service; //type: Native::Interface::TenGigabitEthernet::Service
-        class Lacp; //type: Native::Interface::TenGigabitEthernet::Lacp
-        class CiscoIOSXEEthernetMacsecOption; //type: Native::Interface::TenGigabitEthernet::CiscoIOSXEEthernetMacsecOption
-        class Xconnect; //type: Native::Interface::TenGigabitEthernet::Xconnect
-        class Mvrp; //type: Native::Interface::TenGigabitEthernet::Mvrp
-        class EtAnalytics; //type: Native::Interface::TenGigabitEthernet::EtAnalytics
-        class Lisp; //type: Native::Interface::TenGigabitEthernet::Lisp
-        class ZoneMember; //type: Native::Interface::TenGigabitEthernet::ZoneMember
-        class Crypto; //type: Native::Interface::TenGigabitEthernet::Crypto
-        class Udld; //type: Native::Interface::TenGigabitEthernet::Udld
-        class Authentication; //type: Native::Interface::TenGigabitEthernet::Authentication
-        class Mab; //type: Native::Interface::TenGigabitEthernet::Mab
-        class Ospfv3; //type: Native::Interface::TenGigabitEthernet::Ospfv3
-        class SpanningTree; //type: Native::Interface::TenGigabitEthernet::SpanningTree
-        class Ntp; //type: Native::Interface::TenGigabitEthernet::Ntp
-        class Cdp; //type: Native::Interface::TenGigabitEthernet::Cdp
+        class SwitchportConf; //type: Native::Interface::FiveGigabitEthernet::SwitchportConf
+        class Switchport; //type: Native::Interface::FiveGigabitEthernet::Switchport
+        class StackwiseVirtual; //type: Native::Interface::FiveGigabitEthernet::StackwiseVirtual
+        class Arp; //type: Native::Interface::FiveGigabitEthernet::Arp
+        class Backup; //type: Native::Interface::FiveGigabitEthernet::Backup
+        class Cemoudp; //type: Native::Interface::FiveGigabitEthernet::Cemoudp
+        class CwsTunnel; //type: Native::Interface::FiveGigabitEthernet::CwsTunnel
+        class L2protocolTunnel; //type: Native::Interface::FiveGigabitEthernet::L2protocolTunnel
+        class Encapsulation; //type: Native::Interface::FiveGigabitEthernet::Encapsulation
+        class FairQueueConf; //type: Native::Interface::FiveGigabitEthernet::FairQueueConf
+        class FairQueue; //type: Native::Interface::FiveGigabitEthernet::FairQueue
+        class Flowcontrol; //type: Native::Interface::FiveGigabitEthernet::Flowcontrol
+        class Isis; //type: Native::Interface::FiveGigabitEthernet::Isis
+        class KeepaliveSettings; //type: Native::Interface::FiveGigabitEthernet::KeepaliveSettings
+        class Bfd; //type: Native::Interface::FiveGigabitEthernet::Bfd
+        class Bandwidth; //type: Native::Interface::FiveGigabitEthernet::Bandwidth
+        class Dampening; //type: Native::Interface::FiveGigabitEthernet::Dampening
+        class Domain; //type: Native::Interface::FiveGigabitEthernet::Domain
+        class HoldQueue; //type: Native::Interface::FiveGigabitEthernet::HoldQueue
+        class Mpls; //type: Native::Interface::FiveGigabitEthernet::Mpls
+        class IpVrf; //type: Native::Interface::FiveGigabitEthernet::IpVrf
+        class Vrf; //type: Native::Interface::FiveGigabitEthernet::Vrf
+        class Ip; //type: Native::Interface::FiveGigabitEthernet::Ip
+        class Ipv6; //type: Native::Interface::FiveGigabitEthernet::Ipv6
+        class Logging; //type: Native::Interface::FiveGigabitEthernet::Logging
+        class Mdix; //type: Native::Interface::FiveGigabitEthernet::Mdix
+        class Mop; //type: Native::Interface::FiveGigabitEthernet::Mop
+        class InterfaceQos; //type: Native::Interface::FiveGigabitEthernet::InterfaceQos
+        class Source; //type: Native::Interface::FiveGigabitEthernet::Source
+        class Standby; //type: Native::Interface::FiveGigabitEthernet::Standby
+        class AccessSession; //type: Native::Interface::FiveGigabitEthernet::AccessSession
+        class StormControl; //type: Native::Interface::FiveGigabitEthernet::StormControl
+        class Trust; //type: Native::Interface::FiveGigabitEthernet::Trust
+        class PriorityQueue; //type: Native::Interface::FiveGigabitEthernet::PriorityQueue
+        class RcvQueue; //type: Native::Interface::FiveGigabitEthernet::RcvQueue
+        class Peer; //type: Native::Interface::FiveGigabitEthernet::Peer
+        class PmPath; //type: Native::Interface::FiveGigabitEthernet::PmPath
+        class CarrierDelay; //type: Native::Interface::FiveGigabitEthernet::CarrierDelay
+        class ChannelGroup; //type: Native::Interface::FiveGigabitEthernet::ChannelGroup
+        class Ethernet; //type: Native::Interface::FiveGigabitEthernet::Ethernet
+        class Eapol; //type: Native::Interface::FiveGigabitEthernet::Eapol
+        class Synchronous; //type: Native::Interface::FiveGigabitEthernet::Synchronous
+        class Speed; //type: Native::Interface::FiveGigabitEthernet::Speed
+        class Negotiation; //type: Native::Interface::FiveGigabitEthernet::Negotiation
+        class Plim; //type: Native::Interface::FiveGigabitEthernet::Plim
+        class Pppoe; //type: Native::Interface::FiveGigabitEthernet::Pppoe
+        class Service; //type: Native::Interface::FiveGigabitEthernet::Service
+        class Lacp; //type: Native::Interface::FiveGigabitEthernet::Lacp
+        class CiscoIOSXEEthernetMacsecOption; //type: Native::Interface::FiveGigabitEthernet::CiscoIOSXEEthernetMacsecOption
+        class ServicePolicy; //type: Native::Interface::FiveGigabitEthernet::ServicePolicy
+        class Auto; //type: Native::Interface::FiveGigabitEthernet::Auto
+        class Datalink; //type: Native::Interface::FiveGigabitEthernet::Datalink
+        class Energywise; //type: Native::Interface::FiveGigabitEthernet::Energywise
+        class Location; //type: Native::Interface::FiveGigabitEthernet::Location
+        class Mac; //type: Native::Interface::FiveGigabitEthernet::Mac
+        class Macro; //type: Native::Interface::FiveGigabitEthernet::Macro
+        class DualActive; //type: Native::Interface::FiveGigabitEthernet::DualActive
+        class LoadBalancing; //type: Native::Interface::FiveGigabitEthernet::LoadBalancing
+        class VlanRange; //type: Native::Interface::FiveGigabitEthernet::VlanRange
+        class Switch; //type: Native::Interface::FiveGigabitEthernet::Switch
+        class SrrQueue; //type: Native::Interface::FiveGigabitEthernet::SrrQueue
+        class CiscoIOSXESwitchMacsecOption; //type: Native::Interface::FiveGigabitEthernet::CiscoIOSXESwitchMacsecOption
+        class DeviceTracking; //type: Native::Interface::FiveGigabitEthernet::DeviceTracking
+        class Snmp; //type: Native::Interface::FiveGigabitEthernet::Snmp
+        class Crypto; //type: Native::Interface::FiveGigabitEthernet::Crypto
+        class Mka; //type: Native::Interface::FiveGigabitEthernet::Mka
+        class EtAnalytics; //type: Native::Interface::FiveGigabitEthernet::EtAnalytics
+        class ZoneMember; //type: Native::Interface::FiveGigabitEthernet::ZoneMember
+        class Utd; //type: Native::Interface::FiveGigabitEthernet::Utd
+        class Xconnect; //type: Native::Interface::FiveGigabitEthernet::Xconnect
+        class Evpn; //type: Native::Interface::FiveGigabitEthernet::Evpn
+        class FabricDomain; //type: Native::Interface::FiveGigabitEthernet::FabricDomain
+        class Mvrp; //type: Native::Interface::FiveGigabitEthernet::Mvrp
+        class Lisp; //type: Native::Interface::FiveGigabitEthernet::Lisp
+        class Power; //type: Native::Interface::FiveGigabitEthernet::Power
+        class Cdp; //type: Native::Interface::FiveGigabitEthernet::Cdp
+        class Ntp; //type: Native::Interface::FiveGigabitEthernet::Ntp
+        class Authentication; //type: Native::Interface::FiveGigabitEthernet::Authentication
+        class Mab; //type: Native::Interface::FiveGigabitEthernet::Mab
+        class Dot1x; //type: Native::Interface::FiveGigabitEthernet::Dot1x
+        class SpanningTree; //type: Native::Interface::FiveGigabitEthernet::SpanningTree
+        class Performance; //type: Native::Interface::FiveGigabitEthernet::Performance
+        class Umbrella; //type: Native::Interface::FiveGigabitEthernet::Umbrella
+        class Lldp; //type: Native::Interface::FiveGigabitEthernet::Lldp
+        class Vrrp; //type: Native::Interface::FiveGigabitEthernet::Vrrp
+        class Ospfv3; //type: Native::Interface::FiveGigabitEthernet::Ospfv3
+        class Udld; //type: Native::Interface::FiveGigabitEthernet::Udld
+        class Cts; //type: Native::Interface::FiveGigabitEthernet::Cts
+        class AnalysisModule; //type: Native::Interface::FiveGigabitEthernet::AnalysisModule
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::SwitchportConf> switchport_conf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport> switchport;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::StackwiseVirtual> stackwise_virtual;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Arp> arp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Backup> backup;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Cemoudp> cemoudp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::CwsTunnel> cws_tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::L2protocolTunnel> l2protocol_tunnel; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Encapsulation> encapsulation;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::FairQueueConf> fair_queue_conf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::FairQueue> fair_queue;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Flowcontrol> flowcontrol;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis> isis;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::KeepaliveSettings> keepalive_settings;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Bfd> bfd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Bandwidth> bandwidth;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Dampening> dampening;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Domain> domain;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::SwitchportConf> switchport_conf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport> switchport;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::StackwiseVirtual> stackwise_virtual;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Arp> arp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Backup> backup;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Cemoudp> cemoudp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::CwsTunnel> cws_tunnel;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::L2protocolTunnel> l2protocol_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Encapsulation> encapsulation;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::FairQueueConf> fair_queue_conf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::FairQueue> fair_queue;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Flowcontrol> flowcontrol;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Isis> isis;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::KeepaliveSettings> keepalive_settings;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Bfd> bfd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Bandwidth> bandwidth;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Dampening> dampening;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Domain> domain;
         ydk::YList hold_queue;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls> mpls;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::IpVrf> ip_vrf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Vrf> vrf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip> ip;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6> ipv6;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Logging> logging;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mdix> mdix;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mop> mop;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::InterfaceQos> interface_qos;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Standby> standby;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::AccessSession> access_session;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::StormControl> storm_control;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Trust> trust;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::PriorityQueue> priority_queue;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::RcvQueue> rcv_queue;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Peer> peer;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::PmPath> pm_path;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::FabricDomain> fabric_domain;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Lldp> lldp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::ServicePolicy> service_policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Utd> utd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Dot1x> dot1x;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Auto> auto_;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Datalink> datalink;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Energywise> energywise; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Location> location;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mac> mac;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Macro> macro;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::DualActive> dual_active;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::LoadBalancing> load_balancing;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Mpls> mpls;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::IpVrf> ip_vrf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Vrf> vrf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip> ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Logging> logging;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Mdix> mdix;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Mop> mop;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::InterfaceQos> interface_qos;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Standby> standby;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::AccessSession> access_session;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::StormControl> storm_control;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Trust> trust;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::PriorityQueue> priority_queue;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::RcvQueue> rcv_queue;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Peer> peer;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::PmPath> pm_path;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::CarrierDelay> carrier_delay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::ChannelGroup> channel_group;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ethernet> ethernet;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Eapol> eapol;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Synchronous> synchronous;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Speed> speed;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Negotiation> negotiation;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Plim> plim;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Pppoe> pppoe;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Service> service;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Lacp> lacp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::CiscoIOSXEEthernetMacsecOption> cisco_ios_xe_ethernet_macsec_option;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Auto> auto_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Datalink> datalink;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Energywise> energywise; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Location> location;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Macro> macro;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::DualActive> dual_active;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::LoadBalancing> load_balancing;
         ydk::YList vlan_range;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switch> switch_;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::SrrQueue> srr_queue;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::CiscoIOSXESwitchMacsecOption> cisco_ios_xe_switch_macsec_option;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::DeviceTracking> device_tracking;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Cts> cts;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power> power;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mka> mka;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Umbrella> umbrella;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Snmp> snmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Performance> performance;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::CarrierDelay> carrier_delay;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::ChannelGroup> channel_group;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ethernet> ethernet;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Negotiation> negotiation;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Eapol> eapol;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Synchronous> synchronous;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Speed> speed;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Plim> plim;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Pppoe> pppoe;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Service> service;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Lacp> lacp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::CiscoIOSXEEthernetMacsecOption> cisco_ios_xe_ethernet_macsec_option_;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Xconnect> xconnect;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mvrp> mvrp; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::EtAnalytics> et_analytics;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::ZoneMember> zone_member;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Crypto> crypto;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Udld> udld;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mab> mab; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ospfv3> ospfv3;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::SpanningTree> spanning_tree;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ntp> ntp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Cdp> cdp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switch> switch_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::SrrQueue> srr_queue;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::CiscoIOSXESwitchMacsecOption> cisco_ios_xe_switch_macsec_option_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::DeviceTracking> device_tracking;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Snmp> snmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Crypto> crypto;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Mka> mka;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::EtAnalytics> et_analytics;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::ZoneMember> zone_member;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Utd> utd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Xconnect> xconnect;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Evpn> evpn;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::FabricDomain> fabric_domain;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Mvrp> mvrp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Lisp> lisp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Power> power;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Cdp> cdp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ntp> ntp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Mab> mab; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Dot1x> dot1x;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::SpanningTree> spanning_tree;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Performance> performance;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Umbrella> umbrella;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Lldp> lldp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Vrrp> vrrp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ospfv3> ospfv3;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Udld> udld;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::AnalysisModule> analysis_module;
                 class MediaType;
         class PortType;
         class IfState;
@@ -776,10 +3191,10 @@ class Native::Interface::TenGigabitEthernet : public ydk::Entity
         class Duplex;
         class Nat66;
 
-}; // Native::Interface::TenGigabitEthernet
+}; // Native::Interface::FiveGigabitEthernet
 
 
-class Native::Interface::TenGigabitEthernet::SwitchportConf : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::SwitchportConf : public ydk::Entity
 {
     public:
         SwitchportConf();
@@ -797,10 +3212,10 @@ class Native::Interface::TenGigabitEthernet::SwitchportConf : public ydk::Entity
 
         ydk::YLeaf switchport; //type: boolean
 
-}; // Native::Interface::TenGigabitEthernet::SwitchportConf
+}; // Native::Interface::FiveGigabitEthernet::SwitchportConf
 
 
-class Native::Interface::TenGigabitEthernet::Switchport : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport : public ydk::Entity
 {
     public:
         Switchport();
@@ -819,34 +3234,34 @@ class Native::Interface::TenGigabitEthernet::Switchport : public ydk::Entity
         ydk::YLeaf nonegotiate; //type: empty
         ydk::YLeaf protected_; //type: empty
         ydk::YLeaf host; //type: empty
-        class Access; //type: Native::Interface::TenGigabitEthernet::Switchport::Access
-        class Block; //type: Native::Interface::TenGigabitEthernet::Switchport::Block
-        class Mode; //type: Native::Interface::TenGigabitEthernet::Switchport::Mode
-        class PortSecurity; //type: Native::Interface::TenGigabitEthernet::Switchport::PortSecurity
-        class Trunk; //type: Native::Interface::TenGigabitEthernet::Switchport::Trunk
-        class Voice; //type: Native::Interface::TenGigabitEthernet::Switchport::Voice
-        class Priority; //type: Native::Interface::TenGigabitEthernet::Switchport::Priority
-        class Autostate; //type: Native::Interface::TenGigabitEthernet::Switchport::Autostate
-        class PrivateVlan; //type: Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan
-        class Vepa; //type: Native::Interface::TenGigabitEthernet::Switchport::Vepa
-        class DeviceTracking; //type: Native::Interface::TenGigabitEthernet::Switchport::DeviceTracking
+        class Access; //type: Native::Interface::FiveGigabitEthernet::Switchport::Access
+        class Block; //type: Native::Interface::FiveGigabitEthernet::Switchport::Block
+        class Mode; //type: Native::Interface::FiveGigabitEthernet::Switchport::Mode
+        class PortSecurity; //type: Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity
+        class Trunk; //type: Native::Interface::FiveGigabitEthernet::Switchport::Trunk
+        class Voice; //type: Native::Interface::FiveGigabitEthernet::Switchport::Voice
+        class Priority; //type: Native::Interface::FiveGigabitEthernet::Switchport::Priority
+        class Autostate; //type: Native::Interface::FiveGigabitEthernet::Switchport::Autostate
+        class PrivateVlan; //type: Native::Interface::FiveGigabitEthernet::Switchport::PrivateVlan
+        class Vepa; //type: Native::Interface::FiveGigabitEthernet::Switchport::Vepa
+        class DeviceTracking; //type: Native::Interface::FiveGigabitEthernet::Switchport::DeviceTracking
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Access> access;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Block> block;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Mode> mode;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::PortSecurity> port_security; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Trunk> trunk;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Voice> voice;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Priority> priority;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Autostate> autostate;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan> private_vlan;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Vepa> vepa;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::DeviceTracking> device_tracking;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Access> access;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Block> block;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Mode> mode;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity> port_security; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Trunk> trunk;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Voice> voice;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Priority> priority;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Autostate> autostate;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::PrivateVlan> private_vlan;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Vepa> vepa;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::DeviceTracking> device_tracking;
         
-}; // Native::Interface::TenGigabitEthernet::Switchport
+}; // Native::Interface::FiveGigabitEthernet::Switchport
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Access : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Access : public ydk::Entity
 {
     public:
         Access();
@@ -862,14 +3277,14 @@ class Native::Interface::TenGigabitEthernet::Switchport::Access : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Vlan; //type: Native::Interface::TenGigabitEthernet::Switchport::Access::Vlan
+        class Vlan; //type: Native::Interface::FiveGigabitEthernet::Switchport::Access::Vlan
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Access::Vlan> vlan;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Access::Vlan> vlan;
         
-}; // Native::Interface::TenGigabitEthernet::Switchport::Access
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Access
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Access::Vlan : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Access::Vlan : public ydk::Entity
 {
     public:
         Vlan();
@@ -889,10 +3304,10 @@ class Native::Interface::TenGigabitEthernet::Switchport::Access::Vlan : public y
         ydk::YLeaf name; //type: string
         class Vlan_;
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::Access::Vlan
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Access::Vlan
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Block : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Block : public ydk::Entity
 {
     public:
         Block();
@@ -911,10 +3326,10 @@ class Native::Interface::TenGigabitEthernet::Switchport::Block : public ydk::Ent
         ydk::YLeaf multicast; //type: empty
         ydk::YLeaf unicast; //type: empty
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::Block
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Block
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Mode : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Mode : public ydk::Entity
 {
     public:
         Mode();
@@ -931,21 +3346,21 @@ class Native::Interface::TenGigabitEthernet::Switchport::Mode : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dynamic; //type: Dynamic
-        class Access; //type: Native::Interface::TenGigabitEthernet::Switchport::Mode::Access
-        class Dot1qTunnel; //type: Native::Interface::TenGigabitEthernet::Switchport::Mode::Dot1qTunnel
-        class PrivateVlan; //type: Native::Interface::TenGigabitEthernet::Switchport::Mode::PrivateVlan
-        class Trunk; //type: Native::Interface::TenGigabitEthernet::Switchport::Mode::Trunk
+        class Access; //type: Native::Interface::FiveGigabitEthernet::Switchport::Mode::Access
+        class Dot1qTunnel; //type: Native::Interface::FiveGigabitEthernet::Switchport::Mode::Dot1qTunnel
+        class PrivateVlan; //type: Native::Interface::FiveGigabitEthernet::Switchport::Mode::PrivateVlan
+        class Trunk; //type: Native::Interface::FiveGigabitEthernet::Switchport::Mode::Trunk
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Mode::Access> access; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Mode::Dot1qTunnel> dot1q_tunnel; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Mode::PrivateVlan> private_vlan;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Mode::Trunk> trunk; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Mode::Access> access; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Mode::Dot1qTunnel> dot1q_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Mode::PrivateVlan> private_vlan;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Mode::Trunk> trunk; // presence node
                 class Dynamic;
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::Mode
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Mode
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Mode::Access : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Mode::Access : public ydk::Entity
 {
     public:
         Access();
@@ -962,10 +3377,10 @@ class Native::Interface::TenGigabitEthernet::Switchport::Mode::Access : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::Mode::Access
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Mode::Access
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Mode::Dot1qTunnel : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Mode::Dot1qTunnel : public ydk::Entity
 {
     public:
         Dot1qTunnel();
@@ -982,10 +3397,10 @@ class Native::Interface::TenGigabitEthernet::Switchport::Mode::Dot1qTunnel : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::Mode::Dot1qTunnel
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Mode::Dot1qTunnel
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Mode::PrivateVlan : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Mode::PrivateVlan : public ydk::Entity
 {
     public:
         PrivateVlan();
@@ -1004,10 +3419,10 @@ class Native::Interface::TenGigabitEthernet::Switchport::Mode::PrivateVlan : pub
         ydk::YLeaf host; //type: empty
         ydk::YLeaf promiscuous; //type: empty
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::Mode::PrivateVlan
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Mode::PrivateVlan
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Mode::Trunk : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Mode::Trunk : public ydk::Entity
 {
     public:
         Trunk();
@@ -1024,10 +3439,10 @@ class Native::Interface::TenGigabitEthernet::Switchport::Mode::Trunk : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::Mode::Trunk
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Mode::Trunk
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::PortSecurity : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity : public ydk::Entity
 {
     public:
         PortSecurity();
@@ -1044,19 +3459,19 @@ class Native::Interface::TenGigabitEthernet::Switchport::PortSecurity : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf violation; //type: Violation
-        class Aging; //type: Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Aging
-        class MacAddress; //type: Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::MacAddress
-        class Maximum; //type: Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Maximum
+        class Aging; //type: Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::Aging
+        class MacAddress; //type: Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::MacAddress
+        class Maximum; //type: Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::Maximum
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Aging> aging;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::MacAddress> mac_address;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Maximum> maximum;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::Aging> aging;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::MacAddress> mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::Maximum> maximum;
                 class Violation;
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::PortSecurity
+}; // Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Aging : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::Aging : public ydk::Entity
 {
     public:
         Aging();
@@ -1077,10 +3492,10 @@ class Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Aging : p
         ydk::YLeaf type; //type: Type
         class Type;
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Aging
+}; // Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::Aging
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::MacAddress : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::MacAddress : public ydk::Entity
 {
     public:
         MacAddress();
@@ -1100,10 +3515,10 @@ class Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::MacAddres
         ydk::YLeaf hw_address; //type: string
         ydk::YLeaf vlan; //type: uint16
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::MacAddress
+}; // Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::MacAddress
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Maximum : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::Maximum : public ydk::Entity
 {
     public:
         Maximum();
@@ -1122,10 +3537,10 @@ class Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Maximum :
         ydk::YLeaf max_addresses; //type: uint16
         ydk::YLeaf vlan; //type: string
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Maximum
+}; // Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::Maximum
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Trunk : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Trunk : public ydk::Entity
 {
     public:
         Trunk();
@@ -1142,19 +3557,19 @@ class Native::Interface::TenGigabitEthernet::Switchport::Trunk : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf encapsulation; //type: Encapsulation
-        class Allowed; //type: Native::Interface::TenGigabitEthernet::Switchport::Trunk::Allowed
-        class Native_; //type: Native::Interface::TenGigabitEthernet::Switchport::Trunk::Native_
-        class Pruning; //type: Native::Interface::TenGigabitEthernet::Switchport::Trunk::Pruning
+        class Allowed; //type: Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Allowed
+        class Native_; //type: Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Native_
+        class Pruning; //type: Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Pruning
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Trunk::Allowed> allowed;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Trunk::Native_> native;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Trunk::Pruning> pruning;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Allowed> allowed;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Native_> native;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Pruning> pruning;
                 class Encapsulation;
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::Trunk
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Trunk
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Trunk::Allowed : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Allowed : public ydk::Entity
 {
     public:
         Allowed();
@@ -1170,14 +3585,14 @@ class Native::Interface::TenGigabitEthernet::Switchport::Trunk::Allowed : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Vlan; //type: Native::Interface::TenGigabitEthernet::Switchport::Trunk::Allowed::Vlan
+        class Vlan; //type: Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Allowed::Vlan
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Trunk::Allowed::Vlan> vlan;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Allowed::Vlan> vlan;
         
-}; // Native::Interface::TenGigabitEthernet::Switchport::Trunk::Allowed
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Allowed
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Trunk::Allowed::Vlan : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Allowed::Vlan : public ydk::Entity
 {
     public:
         Vlan();
@@ -1200,10 +3615,10 @@ class Native::Interface::TenGigabitEthernet::Switchport::Trunk::Allowed::Vlan : 
         ydk::YLeaf remove; //type: one of uint16, string
         ydk::YLeafList except; //type: list of  one of uint16, string
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::Trunk::Allowed::Vlan
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Allowed::Vlan
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Trunk::Native_ : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Native_ : public ydk::Entity
 {
     public:
         Native_();
@@ -1222,10 +3637,10 @@ class Native::Interface::TenGigabitEthernet::Switchport::Trunk::Native_ : public
         ydk::YLeaf vlan; //type: one of uint16, enumeration
         class Vlan;
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::Trunk::Native_
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Native_
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Trunk::Pruning : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Pruning : public ydk::Entity
 {
     public:
         Pruning();
@@ -1241,14 +3656,14 @@ class Native::Interface::TenGigabitEthernet::Switchport::Trunk::Pruning : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Vlan; //type: Native::Interface::TenGigabitEthernet::Switchport::Trunk::Pruning::Vlan
+        class Vlan; //type: Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Pruning::Vlan
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Trunk::Pruning::Vlan> vlan;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Pruning::Vlan> vlan;
         
-}; // Native::Interface::TenGigabitEthernet::Switchport::Trunk::Pruning
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Pruning
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Trunk::Pruning::Vlan : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Pruning::Vlan : public ydk::Entity
 {
     public:
         Vlan();
@@ -1270,10 +3685,10 @@ class Native::Interface::TenGigabitEthernet::Switchport::Trunk::Pruning::Vlan : 
         ydk::YLeafList vlans; //type: list of  one of uint16, string
         ydk::YLeafList except; //type: list of  one of uint16, string
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::Trunk::Pruning::Vlan
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Pruning::Vlan
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Voice : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Voice : public ydk::Entity
 {
     public:
         Voice();
@@ -1289,16 +3704,16 @@ class Native::Interface::TenGigabitEthernet::Switchport::Voice : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Vlan; //type: Native::Interface::TenGigabitEthernet::Switchport::Voice::Vlan
-        class Detect; //type: Native::Interface::TenGigabitEthernet::Switchport::Voice::Detect
+        class Vlan; //type: Native::Interface::FiveGigabitEthernet::Switchport::Voice::Vlan
+        class Detect; //type: Native::Interface::FiveGigabitEthernet::Switchport::Voice::Detect
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Voice::Vlan> vlan;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Voice::Detect> detect;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Voice::Vlan> vlan;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Voice::Detect> detect;
         
-}; // Native::Interface::TenGigabitEthernet::Switchport::Voice
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Voice
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Voice::Vlan : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Voice::Vlan : public ydk::Entity
 {
     public:
         Vlan();
@@ -1318,10 +3733,10 @@ class Native::Interface::TenGigabitEthernet::Switchport::Voice::Vlan : public yd
         ydk::YLeaf name; //type: string
         class Vlan_;
 
-}; // Native::Interface::TenGigabitEthernet::Switchport::Voice::Vlan
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Voice::Vlan
 
 
-class Native::Interface::TenGigabitEthernet::Switchport::Voice::Detect : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Switchport::Voice::Detect : public ydk::Entity
 {
     public:
         Detect();
@@ -1337,2530 +3752,55 @@ class Native::Interface::TenGigabitEthernet::Switchport::Voice::Detect : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class CiscoPhone; //type: Native::Interface::TenGigabitEthernet::Switchport::Voice::Detect::CiscoPhone
+        class CiscoPhone; //type: Native::Interface::FiveGigabitEthernet::Switchport::Voice::Detect::CiscoPhone
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Voice::Detect::CiscoPhone> cisco_phone; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Switchport::Voice::Detect::CiscoPhone> cisco_phone; // presence node
         
-}; // Native::Interface::TenGigabitEthernet::Switchport::Voice::Detect
+}; // Native::Interface::FiveGigabitEthernet::Switchport::Voice::Detect
 
-
-class Native::Interface::TenGigabitEthernet::Switchport::Voice::Detect::CiscoPhone : public ydk::Entity
-{
-    public:
-        CiscoPhone();
-        ~CiscoPhone();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf full_duplex; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Switchport::Voice::Detect::CiscoPhone
-
-
-class Native::Interface::TenGigabitEthernet::Switchport::Priority : public ydk::Entity
-{
-    public:
-        Priority();
-        ~Priority();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Extend; //type: Native::Interface::TenGigabitEthernet::Switchport::Priority::Extend
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::Priority::Extend> extend;
-        
-}; // Native::Interface::TenGigabitEthernet::Switchport::Priority
-
-
-class Native::Interface::TenGigabitEthernet::Switchport::Priority::Extend : public ydk::Entity
-{
-    public:
-        Extend();
-        ~Extend();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf trust; //type: empty
-        ydk::YLeaf cos; //type: uint8
-
-}; // Native::Interface::TenGigabitEthernet::Switchport::Priority::Extend
-
-
-class Native::Interface::TenGigabitEthernet::Switchport::Autostate : public ydk::Entity
-{
-    public:
-        Autostate();
-        ~Autostate();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf exclude; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Switchport::Autostate
-
-
-class Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan : public ydk::Entity
-{
-    public:
-        PrivateVlan();
-        ~PrivateVlan();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Association; //type: Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Association
-        class HostAssociation; //type: Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::HostAssociation
-        class Mapping; //type: Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Mapping
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Association> association;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::HostAssociation> host_association;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Mapping> mapping;
-        
-}; // Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan
-
-
-class Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Association : public ydk::Entity
-{
-    public:
-        Association();
-        ~Association();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Host; //type: Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Association::Host
-        class Mapping; //type: Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Association::Mapping
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Association::Host> host;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Association::Mapping> mapping;
-        
-}; // Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Association
-
-
-class Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Association::Host : public ydk::Entity
-{
-    public:
-        Host();
-        ~Host();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf primary_range; //type: uint16
-        ydk::YLeaf secondary_range; //type: uint16
-
-}; // Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Association::Host
-
-
-class Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Association::Mapping : public ydk::Entity
-{
-    public:
-        Mapping();
-        ~Mapping();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf primary_range; //type: uint16
-        ydk::YLeaf secondary_range; //type: string
-        ydk::YLeaf add; //type: string
-        ydk::YLeaf remove; //type: string
-
-}; // Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Association::Mapping
-
-
-class Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::HostAssociation : public ydk::Entity
-{
-    public:
-        HostAssociation();
-        ~HostAssociation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf primary_range; //type: uint16
-        ydk::YLeaf secondary_range; //type: uint16
-
-}; // Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::HostAssociation
-
-
-class Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Mapping : public ydk::Entity
-{
-    public:
-        Mapping();
-        ~Mapping();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf primary_range; //type: uint16
-        ydk::YLeaf secondary_range; //type: string
-        ydk::YLeaf add; //type: string
-        ydk::YLeaf remove; //type: string
-
-}; // Native::Interface::TenGigabitEthernet::Switchport::PrivateVlan::Mapping
-
-
-class Native::Interface::TenGigabitEthernet::Switchport::Vepa : public ydk::Entity
-{
-    public:
-        Vepa();
-        ~Vepa();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enabled; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Switchport::Vepa
-
-
-class Native::Interface::TenGigabitEthernet::Switchport::DeviceTracking : public ydk::Entity
-{
-    public:
-        DeviceTracking();
-        ~DeviceTracking();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf attach_policy; //type: string
-
-}; // Native::Interface::TenGigabitEthernet::Switchport::DeviceTracking
-
-
-class Native::Interface::TenGigabitEthernet::StackwiseVirtual : public ydk::Entity
-{
-    public:
-        StackwiseVirtual();
-        ~StackwiseVirtual();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link; //type: uint8
-        ydk::YLeaf dual_active_detection; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::StackwiseVirtual
-
-
-class Native::Interface::TenGigabitEthernet::Arp : public ydk::Entity
-{
-    public:
-        Arp();
-        ~Arp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf timeout; //type: uint32
-
-}; // Native::Interface::TenGigabitEthernet::Arp
-
-
-class Native::Interface::TenGigabitEthernet::Backup : public ydk::Entity
-{
-    public:
-        Backup();
-        ~Backup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Delay; //type: Native::Interface::TenGigabitEthernet::Backup::Delay
-        class Interface_; //type: Native::Interface::TenGigabitEthernet::Backup::Interface_
-        class Load; //type: Native::Interface::TenGigabitEthernet::Backup::Load
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Backup::Delay> delay;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Backup::Interface_> interface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Backup::Load> load;
-        
-}; // Native::Interface::TenGigabitEthernet::Backup
-
-
-class Native::Interface::TenGigabitEthernet::Backup::Delay : public ydk::Entity
-{
-    public:
-        Delay();
-        ~Delay();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
-        class Failure;
-        class SecondaryDisable;
-
-}; // Native::Interface::TenGigabitEthernet::Backup::Delay
-
-
-class Native::Interface::TenGigabitEthernet::Backup::Interface_ : public ydk::Entity
-{
-    public:
-        Interface_();
-        ~Interface_();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf appnav_compress; //type: uint16
-        ydk::YLeaf appnav_uncompress; //type: uint16
-        ydk::YLeaf atm; //type: string
-        ydk::YLeaf atm_acr; //type: string
-        ydk::YLeaf bdi; //type: string
-        ydk::YLeaf cem; //type: string
-        ydk::YLeaf cem_acr; //type: uint8
-        ydk::YLeaf embedded_service_engine; //type: string
-        ydk::YLeaf fastethernet; //type: string
-        ydk::YLeaf gigabitethernet; //type: string
-        ydk::YLeaf fivegigabitethernet; //type: string
-        ydk::YLeaf twentyfivegige; //type: string
-        ydk::YLeaf twogigabitethernet; //type: string
-        ydk::YLeaf fortygigabitethernet; //type: string
-        ydk::YLeaf hundredgige; //type: string
-        ydk::YLeaf lisp; //type: string
-        ydk::YLeaf loopback; //type: uint32
-        ydk::YLeaf multilink; //type: uint16
-        ydk::YLeaf nve; //type: uint16
-        ydk::YLeaf overlay; //type: uint16
-        ydk::YLeaf port_channel; //type: uint32
-        ydk::YLeaf pseudowire; //type: uint32
-        ydk::YLeaf sm; //type: string
-        ydk::YLeaf cellular; //type: string
-        ydk::YLeaf serial; //type: string
-        ydk::YLeaf tengigabitethernet; //type: string
-        ydk::YLeaf tunnel; //type: uint32
-        ydk::YLeaf virtual_template; //type: uint16
-        ydk::YLeaf vlan; //type: uint16
-        ydk::YLeaf virtualportgroup; //type: uint16
-        ydk::YLeaf vasileft; //type: uint16
-        ydk::YLeaf vasiright; //type: uint16
-        class ATMSubinterface; //type: Native::Interface::TenGigabitEthernet::Backup::Interface_::ATMSubinterface
-        class ATMACRsubinterface; //type: Native::Interface::TenGigabitEthernet::Backup::Interface_::ATMACRsubinterface
-        class LISPSubinterface; //type: Native::Interface::TenGigabitEthernet::Backup::Interface_::LISPSubinterface
-        class PortChannelSubinterface; //type: Native::Interface::TenGigabitEthernet::Backup::Interface_::PortChannelSubinterface
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Backup::Interface_::ATMSubinterface> atm_subinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Backup::Interface_::ATMACRsubinterface> atm_acrsubinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Backup::Interface_::LISPSubinterface> lisp_subinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Backup::Interface_::PortChannelSubinterface> port_channel_subinterface;
-        
-}; // Native::Interface::TenGigabitEthernet::Backup::Interface_
-
-
-class Native::Interface::TenGigabitEthernet::Backup::Interface_::ATMSubinterface : public ydk::Entity
-{
-    public:
-        ATMSubinterface();
-        ~ATMSubinterface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf atm; //type: string
-
-}; // Native::Interface::TenGigabitEthernet::Backup::Interface_::ATMSubinterface
-
-
-class Native::Interface::TenGigabitEthernet::Backup::Interface_::ATMACRsubinterface : public ydk::Entity
-{
-    public:
-        ATMACRsubinterface();
-        ~ATMACRsubinterface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf atm_acr; //type: string
-
-}; // Native::Interface::TenGigabitEthernet::Backup::Interface_::ATMACRsubinterface
-
-
-class Native::Interface::TenGigabitEthernet::Backup::Interface_::LISPSubinterface : public ydk::Entity
-{
-    public:
-        LISPSubinterface();
-        ~LISPSubinterface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf lisp; //type: string
-
-}; // Native::Interface::TenGigabitEthernet::Backup::Interface_::LISPSubinterface
-
-
-class Native::Interface::TenGigabitEthernet::Backup::Interface_::PortChannelSubinterface : public ydk::Entity
-{
-    public:
-        PortChannelSubinterface();
-        ~PortChannelSubinterface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf port_channel; //type: string
-
-}; // Native::Interface::TenGigabitEthernet::Backup::Interface_::PortChannelSubinterface
-
-
-class Native::Interface::TenGigabitEthernet::Backup::Load : public ydk::Entity
-{
-    public:
-        Load();
-        ~Load();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
-        class Kickin;
-        class Kickout;
-
-}; // Native::Interface::TenGigabitEthernet::Backup::Load
-
-
-class Native::Interface::TenGigabitEthernet::Cemoudp : public ydk::Entity
-{
-    public:
-        Cemoudp();
-        ~Cemoudp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Reserve; //type: Native::Interface::TenGigabitEthernet::Cemoudp::Reserve
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Cemoudp::Reserve> reserve;
-        
-}; // Native::Interface::TenGigabitEthernet::Cemoudp
-
-
-class Native::Interface::TenGigabitEthernet::Cemoudp::Reserve : public ydk::Entity
-{
-    public:
-        Reserve();
-        ~Reserve();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf acr; //type: uint8
-
-}; // Native::Interface::TenGigabitEthernet::Cemoudp::Reserve
-
-
-class Native::Interface::TenGigabitEthernet::CwsTunnel : public ydk::Entity
-{
-    public:
-        CwsTunnel();
-        ~CwsTunnel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf in; //type: empty
-        class Out; //type: Native::Interface::TenGigabitEthernet::CwsTunnel::Out
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::CwsTunnel::Out> out;
-        
-}; // Native::Interface::TenGigabitEthernet::CwsTunnel
-
-
-class Native::Interface::TenGigabitEthernet::CwsTunnel::Out : public ydk::Entity
-{
-    public:
-        Out();
-        ~Out();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tunnel_number; //type: uint16
-
-}; // Native::Interface::TenGigabitEthernet::CwsTunnel::Out
-
-
-class Native::Interface::TenGigabitEthernet::L2protocolTunnel : public ydk::Entity
-{
-    public:
-        L2protocolTunnel();
-        ~L2protocolTunnel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cdp; //type: empty
-        ydk::YLeaf stp; //type: empty
-        ydk::YLeaf vtp; //type: empty
-        class DropThreshold; //type: Native::Interface::TenGigabitEthernet::L2protocolTunnel::DropThreshold
-        class ShutdownThreshold; //type: Native::Interface::TenGigabitEthernet::L2protocolTunnel::ShutdownThreshold
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::L2protocolTunnel::DropThreshold> drop_threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::L2protocolTunnel::ShutdownThreshold> shutdown_threshold;
-        
-}; // Native::Interface::TenGigabitEthernet::L2protocolTunnel
-
-
-class Native::Interface::TenGigabitEthernet::L2protocolTunnel::DropThreshold : public ydk::Entity
-{
-    public:
-        DropThreshold();
-        ~DropThreshold();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packet_rate; //type: uint16
-        ydk::YLeaf cdp; //type: uint16
-        ydk::YLeaf stp; //type: uint16
-        ydk::YLeaf vtp; //type: uint16
-
-}; // Native::Interface::TenGigabitEthernet::L2protocolTunnel::DropThreshold
-
-
-class Native::Interface::TenGigabitEthernet::L2protocolTunnel::ShutdownThreshold : public ydk::Entity
-{
-    public:
-        ShutdownThreshold();
-        ~ShutdownThreshold();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packet_rate; //type: uint16
-        ydk::YLeaf cdp; //type: uint16
-        ydk::YLeaf stp; //type: uint16
-        ydk::YLeaf vtp; //type: uint16
-
-}; // Native::Interface::TenGigabitEthernet::L2protocolTunnel::ShutdownThreshold
-
-
-class Native::Interface::TenGigabitEthernet::Encapsulation : public ydk::Entity
-{
-    public:
-        Encapsulation();
-        ~Encapsulation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Dot1Q; //type: Native::Interface::TenGigabitEthernet::Encapsulation::Dot1Q
-        class Isl; //type: Native::Interface::TenGigabitEthernet::Encapsulation::Isl
-        class Ppp; //type: Native::Interface::TenGigabitEthernet::Encapsulation::Ppp
-        class Slip; //type: Native::Interface::TenGigabitEthernet::Encapsulation::Slip
-        class FrameRelay; //type: Native::Interface::TenGigabitEthernet::Encapsulation::FrameRelay
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Encapsulation::Dot1Q> dot1q;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Encapsulation::Isl> isl;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Encapsulation::Ppp> ppp; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Encapsulation::Slip> slip; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Encapsulation::FrameRelay> frame_relay; // presence node
-        
-}; // Native::Interface::TenGigabitEthernet::Encapsulation
-
-
-class Native::Interface::TenGigabitEthernet::Encapsulation::Dot1Q : public ydk::Entity
-{
-    public:
-        Dot1Q();
-        ~Dot1Q();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf vlan_id; //type: uint16
-        ydk::YLeaf native; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Encapsulation::Dot1Q
-
-
-class Native::Interface::TenGigabitEthernet::Encapsulation::Isl : public ydk::Entity
-{
-    public:
-        Isl();
-        ~Isl();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf vlan_id; //type: uint16
-
-}; // Native::Interface::TenGigabitEthernet::Encapsulation::Isl
-
-
-class Native::Interface::TenGigabitEthernet::Encapsulation::Ppp : public ydk::Entity
-{
-    public:
-        Ppp();
-        ~Ppp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Native::Interface::TenGigabitEthernet::Encapsulation::Ppp
-
-
-class Native::Interface::TenGigabitEthernet::Encapsulation::Slip : public ydk::Entity
-{
-    public:
-        Slip();
-        ~Slip();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Native::Interface::TenGigabitEthernet::Encapsulation::Slip
-
-
-class Native::Interface::TenGigabitEthernet::Encapsulation::FrameRelay : public ydk::Entity
-{
-    public:
-        FrameRelay();
-        ~FrameRelay();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ietf; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Encapsulation::FrameRelay
-
-
-class Native::Interface::TenGigabitEthernet::FairQueueConf : public ydk::Entity
-{
-    public:
-        FairQueueConf();
-        ~FairQueueConf();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf fair_queue; //type: boolean
-
-}; // Native::Interface::TenGigabitEthernet::FairQueueConf
-
-
-class Native::Interface::TenGigabitEthernet::FairQueue : public ydk::Entity
-{
-    public:
-        FairQueue();
-        ~FairQueue();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf incomplete; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::FairQueue
-
-
-class Native::Interface::TenGigabitEthernet::Flowcontrol : public ydk::Entity
-{
-    public:
-        Flowcontrol();
-        ~Flowcontrol();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf receive; //type: Receive
-        ydk::YLeaf send; //type: Send
-        class Receive;
-        class Send;
-
-}; // Native::Interface::TenGigabitEthernet::Flowcontrol
-
-
-class Native::Interface::TenGigabitEthernet::Isis : public ydk::Entity
-{
-    public:
-        Isis();
-        ~Isis();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf lsp_interval; //type: uint32
-        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
-        ydk::YLeaf network; //type: Network
-        ydk::YLeaf protocol; //type: Protocol
-        ydk::YLeaf retransmit_interval; //type: uint16
-        ydk::YLeaf retransmit_throttle_interval; //type: uint16
-        ydk::YLeaf tag; //type: uint32
-        class AdjacencyFilter; //type: Native::Interface::TenGigabitEthernet::Isis::AdjacencyFilter
-        class Advertise; //type: Native::Interface::TenGigabitEthernet::Isis::Advertise
-        class Authentication; //type: Native::Interface::TenGigabitEthernet::Isis::Authentication
-        class CircuitType; //type: Native::Interface::TenGigabitEthernet::Isis::CircuitType
-        class CsnpInterval; //type: Native::Interface::TenGigabitEthernet::Isis::CsnpInterval
-        class Hello; //type: Native::Interface::TenGigabitEthernet::Isis::Hello
-        class HelloInterval; //type: Native::Interface::TenGigabitEthernet::Isis::HelloInterval
-        class HelloMultiplier; //type: Native::Interface::TenGigabitEthernet::Isis::HelloMultiplier
-        class Ipv6; //type: Native::Interface::TenGigabitEthernet::Isis::Ipv6
-        class Metric; //type: Native::Interface::TenGigabitEthernet::Isis::Metric
-        class Password; //type: Native::Interface::TenGigabitEthernet::Isis::Password
-        class Priority; //type: Native::Interface::TenGigabitEthernet::Isis::Priority
-        class Bfd; //type: Native::Interface::TenGigabitEthernet::Isis::Bfd
-        class ThreeWayHandshake; //type: Native::Interface::TenGigabitEthernet::Isis::ThreeWayHandshake
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::AdjacencyFilter> adjacency_filter;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Advertise> advertise;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::CircuitType> circuit_type; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::CsnpInterval> csnp_interval;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Hello> hello;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::HelloInterval> hello_interval;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::HelloMultiplier> hello_multiplier;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Ipv6> ipv6;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Metric> metric;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Password> password;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Priority> priority;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Bfd> bfd; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::ThreeWayHandshake> three_way_handshake; // presence node
-                class MeshGroup;
-        class Network;
-        class Protocol;
-
-}; // Native::Interface::TenGigabitEthernet::Isis
-
-
-class Native::Interface::TenGigabitEthernet::Isis::AdjacencyFilter : public ydk::Entity
-{
-    public:
-        AdjacencyFilter();
-        ~AdjacencyFilter();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf match_all; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Isis::AdjacencyFilter
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Advertise : public ydk::Entity
-{
-    public:
-        Advertise();
-        ~Advertise();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Advertise
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Authentication : public ydk::Entity
-{
-    public:
-        Authentication();
-        ~Authentication();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mode; //type: Native::Interface::TenGigabitEthernet::Isis::Authentication::Mode
-        class KeyChain; //type: Native::Interface::TenGigabitEthernet::Isis::Authentication::KeyChain
-        class SendOnly; //type: Native::Interface::TenGigabitEthernet::Isis::Authentication::SendOnly
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Authentication::Mode> mode;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Authentication::KeyChain> key_chain;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Authentication::SendOnly> send_only; // presence node
-        
-}; // Native::Interface::TenGigabitEthernet::Isis::Authentication
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Authentication::Mode : public ydk::Entity
-{
-    public:
-        Mode();
-        ~Mode();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Md5; //type: Native::Interface::TenGigabitEthernet::Isis::Authentication::Mode::Md5
-        class Text; //type: Native::Interface::TenGigabitEthernet::Isis::Authentication::Mode::Text
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Authentication::Mode::Md5> md5; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Authentication::Mode::Text> text; // presence node
-        
-}; // Native::Interface::TenGigabitEthernet::Isis::Authentication::Mode
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Authentication::Mode::Md5 : public ydk::Entity
-{
-    public:
-        Md5();
-        ~Md5();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf levels; //type: AuthenticationLevelType
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Authentication::Mode::Md5
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Authentication::Mode::Text : public ydk::Entity
-{
-    public:
-        Text();
-        ~Text();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf levels; //type: AuthenticationLevelType
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Authentication::Mode::Text
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Authentication::KeyChain : public ydk::Entity
-{
-    public:
-        KeyChain();
-        ~KeyChain();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-        class KeyChainList; //type: Native::Interface::TenGigabitEthernet::Isis::Authentication::KeyChain::KeyChainList
-
-        ydk::YList key_chain_list;
-        
-}; // Native::Interface::TenGigabitEthernet::Isis::Authentication::KeyChain
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Authentication::KeyChain::KeyChainList : public ydk::Entity
-{
-    public:
-        KeyChainList();
-        ~KeyChainList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf levels; //type: AuthenticationLevelType
-        ydk::YLeaf name; //type: string
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Authentication::KeyChain::KeyChainList
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Authentication::SendOnly : public ydk::Entity
-{
-    public:
-        SendOnly();
-        ~SendOnly();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf levels; //type: AuthenticationLevelType
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Authentication::SendOnly
-
-
-class Native::Interface::TenGigabitEthernet::Isis::CircuitType : public ydk::Entity
-{
-    public:
-        CircuitType();
-        ~CircuitType();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf levels; //type: Levels
-        class Levels;
-
-}; // Native::Interface::TenGigabitEthernet::Isis::CircuitType
-
-
-class Native::Interface::TenGigabitEthernet::Isis::CsnpInterval : public ydk::Entity
-{
-    public:
-        CsnpInterval();
-        ~CsnpInterval();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf value_; //type: uint16
-        class CsnpIntervalList; //type: Native::Interface::TenGigabitEthernet::Isis::CsnpInterval::CsnpIntervalList
-
-        ydk::YList csnp_interval_list;
-        
-}; // Native::Interface::TenGigabitEthernet::Isis::CsnpInterval
-
-
-class Native::Interface::TenGigabitEthernet::Isis::CsnpInterval::CsnpIntervalList : public ydk::Entity
-{
-    public:
-        CsnpIntervalList();
-        ~CsnpIntervalList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: uint16
-        class Levels;
-
-}; // Native::Interface::TenGigabitEthernet::Isis::CsnpInterval::CsnpIntervalList
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Hello : public ydk::Entity
-{
-    public:
-        Hello();
-        ~Hello();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Padding; //type: Native::Interface::TenGigabitEthernet::Isis::Hello::Padding
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Hello::Padding> padding; // presence node
-        
-}; // Native::Interface::TenGigabitEthernet::Isis::Hello
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Hello::Padding : public ydk::Entity
-{
-    public:
-        Padding();
-        ~Padding();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf always; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Hello::Padding
-
-
-class Native::Interface::TenGigabitEthernet::Isis::HelloInterval : public ydk::Entity
-{
-    public:
-        HelloInterval();
-        ~HelloInterval();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf value_; //type: one of uint16, enumeration
-        class HelloIntervalList; //type: Native::Interface::TenGigabitEthernet::Isis::HelloInterval::HelloIntervalList
-
-        ydk::YList hello_interval_list;
-                class Value_;
-
-}; // Native::Interface::TenGigabitEthernet::Isis::HelloInterval
-
-
-class Native::Interface::TenGigabitEthernet::Isis::HelloInterval::HelloIntervalList : public ydk::Entity
-{
-    public:
-        HelloIntervalList();
-        ~HelloIntervalList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint16, enumeration
-        class Levels;
-        class Value_;
-
-}; // Native::Interface::TenGigabitEthernet::Isis::HelloInterval::HelloIntervalList
-
-
-class Native::Interface::TenGigabitEthernet::Isis::HelloMultiplier : public ydk::Entity
-{
-    public:
-        HelloMultiplier();
-        ~HelloMultiplier();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf value_; //type: uint16
-        class HelloMultiplierList; //type: Native::Interface::TenGigabitEthernet::Isis::HelloMultiplier::HelloMultiplierList
-
-        ydk::YList hello_multiplier_list;
-        
-}; // Native::Interface::TenGigabitEthernet::Isis::HelloMultiplier
-
-
-class Native::Interface::TenGigabitEthernet::Isis::HelloMultiplier::HelloMultiplierList : public ydk::Entity
-{
-    public:
-        HelloMultiplierList();
-        ~HelloMultiplierList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: uint16
-        class Levels;
-
-}; // Native::Interface::TenGigabitEthernet::Isis::HelloMultiplier::HelloMultiplierList
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Ipv6 : public ydk::Entity
-{
-    public:
-        Ipv6();
-        ~Ipv6();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tag; //type: uint32
-        class Metric; //type: Native::Interface::TenGigabitEthernet::Isis::Ipv6::Metric
-        class Bfd; //type: Native::Interface::TenGigabitEthernet::Isis::Ipv6::Bfd
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Ipv6::Metric> metric;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Isis::Ipv6::Bfd> bfd; // presence node
-        
-}; // Native::Interface::TenGigabitEthernet::Isis::Ipv6
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Ipv6::Metric : public ydk::Entity
-{
-    public:
-        Metric();
-        ~Metric();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf value_; //type: one of uint32, enumeration
-        class MetricList; //type: Native::Interface::TenGigabitEthernet::Isis::Ipv6::Metric::MetricList
-
-        ydk::YList metric_list;
-                class Value_;
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Ipv6::Metric
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Ipv6::Metric::MetricList : public ydk::Entity
-{
-    public:
-        MetricList();
-        ~MetricList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint32, enumeration
-        class Levels;
-        class Value_;
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Ipv6::Metric::MetricList
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Ipv6::Bfd : public ydk::Entity
-{
-    public:
-        Bfd();
-        ~Bfd();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf disable; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Ipv6::Bfd
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Metric : public ydk::Entity
-{
-    public:
-        Metric();
-        ~Metric();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf value_; //type: one of uint32, enumeration
-        class MetricList; //type: Native::Interface::TenGigabitEthernet::Isis::Metric::MetricList
-
-        ydk::YList metric_list;
-                class Value_;
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Metric
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Metric::MetricList : public ydk::Entity
-{
-    public:
-        MetricList();
-        ~MetricList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint32, enumeration
-        class Levels;
-        class Value_;
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Metric::MetricList
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Password : public ydk::Entity
-{
-    public:
-        Password();
-        ~Password();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf password; //type: string
-        class PasswordList; //type: Native::Interface::TenGigabitEthernet::Isis::Password::PasswordList
-
-        ydk::YList password_list;
-        
-}; // Native::Interface::TenGigabitEthernet::Isis::Password
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Password::PasswordList : public ydk::Entity
-{
-    public:
-        PasswordList();
-        ~PasswordList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf password; //type: string
-        class Levels;
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Password::PasswordList
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Priority : public ydk::Entity
-{
-    public:
-        Priority();
-        ~Priority();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf value_; //type: uint8
-        class PriorityList; //type: Native::Interface::TenGigabitEthernet::Isis::Priority::PriorityList
-
-        ydk::YList priority_list;
-        
-}; // Native::Interface::TenGigabitEthernet::Isis::Priority
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Priority::PriorityList : public ydk::Entity
-{
-    public:
-        PriorityList();
-        ~PriorityList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: uint8
-        class Levels;
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Priority::PriorityList
-
-
-class Native::Interface::TenGigabitEthernet::Isis::Bfd : public ydk::Entity
-{
-    public:
-        Bfd();
-        ~Bfd();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf disable; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Isis::Bfd
-
-
-class Native::Interface::TenGigabitEthernet::Isis::ThreeWayHandshake : public ydk::Entity
-{
-    public:
-        ThreeWayHandshake();
-        ~ThreeWayHandshake();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf implementor; //type: Implementor
-        class Implementor;
-
-}; // Native::Interface::TenGigabitEthernet::Isis::ThreeWayHandshake
-
-
-class Native::Interface::TenGigabitEthernet::KeepaliveSettings : public ydk::Entity
-{
-    public:
-        KeepaliveSettings();
-        ~KeepaliveSettings();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Keepalive; //type: Native::Interface::TenGigabitEthernet::KeepaliveSettings::Keepalive
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::KeepaliveSettings::Keepalive> keepalive; // presence node
-        
-}; // Native::Interface::TenGigabitEthernet::KeepaliveSettings
-
-
-class Native::Interface::TenGigabitEthernet::KeepaliveSettings::Keepalive : public ydk::Entity
-{
-    public:
-        Keepalive();
-        ~Keepalive();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf period; //type: uint16
-        ydk::YLeaf retries; //type: uint8
-
-}; // Native::Interface::TenGigabitEthernet::KeepaliveSettings::Keepalive
-
-
-class Native::Interface::TenGigabitEthernet::Bfd : public ydk::Entity
-{
-    public:
-        Bfd();
-        ~Bfd();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf template_; //type: string
-        ydk::YLeaf echo; //type: boolean
-        class Interval; //type: Native::Interface::TenGigabitEthernet::Bfd::Interval
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Bfd::Interval> interval;
-        
-}; // Native::Interface::TenGigabitEthernet::Bfd
-
-
-class Native::Interface::TenGigabitEthernet::Bfd::Interval : public ydk::Entity
-{
-    public:
-        Interval();
-        ~Interval();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf msecs; //type: uint16
-        ydk::YLeaf min_rx; //type: uint16
-        ydk::YLeaf multiplier; //type: uint8
-
-}; // Native::Interface::TenGigabitEthernet::Bfd::Interval
-
-
-class Native::Interface::TenGigabitEthernet::Bandwidth : public ydk::Entity
-{
-    public:
-        Bandwidth();
-        ~Bandwidth();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf qos_reference; //type: uint32
-        ydk::YLeaf kilobits; //type: uint32
-        class Receive; //type: Native::Interface::TenGigabitEthernet::Bandwidth::Receive
-        class Inherit; //type: Native::Interface::TenGigabitEthernet::Bandwidth::Inherit
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Bandwidth::Receive> receive;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Bandwidth::Inherit> inherit; // presence node
-        
-}; // Native::Interface::TenGigabitEthernet::Bandwidth
-
-
-class Native::Interface::TenGigabitEthernet::Bandwidth::Receive : public ydk::Entity
-{
-    public:
-        Receive();
-        ~Receive();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf inherit; //type: empty
-        ydk::YLeaf kilobits; //type: uint32
-
-}; // Native::Interface::TenGigabitEthernet::Bandwidth::Receive
-
-
-class Native::Interface::TenGigabitEthernet::Bandwidth::Inherit : public ydk::Entity
-{
-    public:
-        Inherit();
-        ~Inherit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf kilobits; //type: uint32
-
-}; // Native::Interface::TenGigabitEthernet::Bandwidth::Inherit
-
-
-class Native::Interface::TenGigabitEthernet::Dampening : public ydk::Entity
-{
-    public:
-        Dampening();
-        ~Dampening();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf dampening_time; //type: uint16
-        ydk::YLeaf start_reusing_time; //type: uint16
-        ydk::YLeaf start_supressing_time; //type: uint16
-        ydk::YLeaf maximum_supressing_time; //type: uint16
-        class Restart; //type: Native::Interface::TenGigabitEthernet::Dampening::Restart
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Dampening::Restart> restart;
-        
-}; // Native::Interface::TenGigabitEthernet::Dampening
-
-
-class Native::Interface::TenGigabitEthernet::Dampening::Restart : public ydk::Entity
-{
-    public:
-        Restart();
-        ~Restart();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf restart; //type: empty
-        ydk::YLeaf restart_penalty; //type: uint16
-
-}; // Native::Interface::TenGigabitEthernet::Dampening::Restart
-
-
-class Native::Interface::TenGigabitEthernet::Domain : public ydk::Entity
-{
-    public:
-        Domain();
-        ~Domain();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf path; //type: string
-        ydk::YLeaf internet_bound; //type: empty
-        ydk::YLeaf path_id; //type: uint8
-        ydk::YLeaf path_last_resort; //type: empty
-        ydk::YLeaf zero_sla; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Domain
-
-
-class Native::Interface::TenGigabitEthernet::HoldQueue : public ydk::Entity
-{
-    public:
-        HoldQueue();
-        ~HoldQueue();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf direction; //type: Direction
-        ydk::YLeaf queue_length; //type: uint16
-        class Direction;
-
-}; // Native::Interface::TenGigabitEthernet::HoldQueue
-
-
-class Native::Interface::TenGigabitEthernet::Mpls : public ydk::Entity
-{
-    public:
-        Mpls();
-        ~Mpls();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ip; //type: empty
-        ydk::YLeaf mtu; //type: uint16
-        class Accounting; //type: Native::Interface::TenGigabitEthernet::Mpls::Accounting
-        class Bgp; //type: Native::Interface::TenGigabitEthernet::Mpls::Bgp
-        class Label; //type: Native::Interface::TenGigabitEthernet::Mpls::Label
-        class Ldp; //type: Native::Interface::TenGigabitEthernet::Mpls::Ldp
-        class TrafficEng; //type: Native::Interface::TenGigabitEthernet::Mpls::TrafficEng
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::Accounting> accounting;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::Bgp> bgp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::Label> label;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::Ldp> ldp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::TrafficEng> traffic_eng;
-        
-}; // Native::Interface::TenGigabitEthernet::Mpls
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::Accounting : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::All : public ydk::Enum
 {
     public:
-        Accounting();
-        ~Accounting();
+        static const ydk::Enum::YLeaf out;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        class Experimental; //type: Native::Interface::TenGigabitEthernet::Mpls::Accounting::Experimental
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::Accounting::Experimental> experimental;
-        
-}; // Native::Interface::TenGigabitEthernet::Mpls::Accounting
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::Accounting::Experimental : public ydk::Entity
-{
-    public:
-        Experimental();
-        ~Experimental();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf input; //type: empty
-        ydk::YLeaf output; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Mpls::Accounting::Experimental
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::Bgp : public ydk::Entity
-{
-    public:
-        Bgp();
-        ~Bgp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf forwarding; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Mpls::Bgp
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::Label : public ydk::Entity
-{
-    public:
-        Label();
-        ~Label();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf protocol; //type: Protocol
-        class Protocol;
-
-}; // Native::Interface::TenGigabitEthernet::Mpls::Label
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::Ldp : public ydk::Entity
-{
-    public:
-        Ldp();
-        ~Ldp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Discovery; //type: Native::Interface::TenGigabitEthernet::Mpls::Ldp::Discovery
-        class Igp; //type: Native::Interface::TenGigabitEthernet::Mpls::Ldp::Igp
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::Ldp::Discovery> discovery;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::Ldp::Igp> igp;
-        
-}; // Native::Interface::TenGigabitEthernet::Mpls::Ldp
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::Ldp::Discovery : public ydk::Entity
-{
-    public:
-        Discovery();
-        ~Discovery();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf transport_address; //type: one of string, enumeration
-
-}; // Native::Interface::TenGigabitEthernet::Mpls::Ldp::Discovery
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::Ldp::Igp : public ydk::Entity
-{
-    public:
-        Igp();
-        ~Igp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sync; //type: Native::Interface::TenGigabitEthernet::Mpls::Ldp::Igp::Sync
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::Ldp::Igp::Sync> sync; // presence node
-        
-}; // Native::Interface::TenGigabitEthernet::Mpls::Ldp::Igp
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::Ldp::Igp::Sync : public ydk::Entity
-{
-    public:
-        Sync();
-        ~Sync();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf delay; //type: uint8
-
-}; // Native::Interface::TenGigabitEthernet::Mpls::Ldp::Igp::Sync
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::TrafficEng : public ydk::Entity
-{
-    public:
-        TrafficEng();
-        ~TrafficEng();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf administrative_weight; //type: uint32
-        ydk::YLeaf attribute_flags; //type: string
-        ydk::YLeaf tunnels; //type: empty
-        class BackupPath; //type: Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::BackupPath
-        class Flooding; //type: Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::Flooding
-        class PassiveInterface; //type: Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::PassiveInterface
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::BackupPath> backup_path;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::Flooding> flooding;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::PassiveInterface> passive_interface;
-        
-}; // Native::Interface::TenGigabitEthernet::Mpls::TrafficEng
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::BackupPath : public ydk::Entity
-{
-    public:
-        BackupPath();
-        ~BackupPath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tunnel; //type: uint32
-
-}; // Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::BackupPath
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::Flooding : public ydk::Entity
-{
-    public:
-        Flooding();
-        ~Flooding();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Thresholds; //type: Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::Flooding::Thresholds
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::Flooding::Thresholds> thresholds;
-        
-}; // Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::Flooding
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::Flooding::Thresholds : public ydk::Entity
-{
-    public:
-        Thresholds();
-        ~Thresholds();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList down; //type: list of  uint8
-        ydk::YLeafList up; //type: list of  uint8
-
-}; // Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::Flooding::Thresholds
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::PassiveInterface : public ydk::Entity
-{
-    public:
-        PassiveInterface();
-        ~PassiveInterface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nbr_te_id; //type: string
-        ydk::YLeaf nbr_if_addr; //type: string
-        class NbrIgpId; //type: Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::PassiveInterface::NbrIgpId
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::PassiveInterface::NbrIgpId> nbr_igp_id;
-        
-}; // Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::PassiveInterface
-
-
-class Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::PassiveInterface::NbrIgpId : public ydk::Entity
-{
-    public:
-        NbrIgpId();
-        ~NbrIgpId();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf isis; //type: string
-        ydk::YLeaf ospf; //type: string
-
-}; // Native::Interface::TenGigabitEthernet::Mpls::TrafficEng::PassiveInterface::NbrIgpId
-
-
-class Native::Interface::TenGigabitEthernet::IpVrf : public ydk::Entity
-{
-    public:
-        IpVrf();
-        ~IpVrf();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ip; //type: Native::Interface::TenGigabitEthernet::IpVrf::Ip
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::IpVrf::Ip> ip;
-        
-}; // Native::Interface::TenGigabitEthernet::IpVrf
-
-
-class Native::Interface::TenGigabitEthernet::IpVrf::Ip : public ydk::Entity
-{
-    public:
-        Ip();
-        ~Ip();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Vrf; //type: Native::Interface::TenGigabitEthernet::IpVrf::Ip::Vrf
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::IpVrf::Ip::Vrf> vrf;
-        
-}; // Native::Interface::TenGigabitEthernet::IpVrf::Ip
-
-
-class Native::Interface::TenGigabitEthernet::IpVrf::Ip::Vrf : public ydk::Entity
-{
-    public:
-        Vrf();
-        ~Vrf();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf forwarding; //type: string
-
-}; // Native::Interface::TenGigabitEthernet::IpVrf::Ip::Vrf
-
-
-class Native::Interface::TenGigabitEthernet::Vrf : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::All : public ydk::Enum
 {
     public:
-        Vrf();
-        ~Vrf();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        static const ydk::Enum::YLeaf out;
 
-        ydk::YLeaf forwarding; //type: string
+};
 
-}; // Native::Interface::TenGigabitEthernet::Vrf
-
-
-class Native::Interface::TenGigabitEthernet::Ip : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::All : public ydk::Enum
 {
     public:
-        Ip();
-        ~Ip();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf admission; //type: string
-        ydk::YLeaf unnumbered; //type: string
-        ydk::YLeaf directed_broadcast; //type: one of uint16, string
-        ydk::YLeaf local_proxy_arp; //type: empty
-        ydk::YLeaf proxy_arp; //type: boolean
-        ydk::YLeaf redirects; //type: boolean
-        ydk::YLeaf mtu; //type: uint16
-        ydk::YLeaf mroute_cache; //type: boolean
-        ydk::YLeaf unreachables; //type: boolean
-        class AccessGroup; //type: Native::Interface::TenGigabitEthernet::Ip::AccessGroup
-        class Arp; //type: Native::Interface::TenGigabitEthernet::Ip::Arp
-        class Vrf; //type: Native::Interface::TenGigabitEthernet::Ip::Vrf
-        class NoAddress; //type: Native::Interface::TenGigabitEthernet::Ip::NoAddress
-        class Address; //type: Native::Interface::TenGigabitEthernet::Ip::Address
-        class HelloInterval; //type: Native::Interface::TenGigabitEthernet::Ip::HelloInterval
-        class Authentication; //type: Native::Interface::TenGigabitEthernet::Ip::Authentication
-        class HoldTime; //type: Native::Interface::TenGigabitEthernet::Ip::HoldTime
-        class HelperAddress; //type: Native::Interface::TenGigabitEthernet::Ip::HelperAddress
-        class Pim; //type: Native::Interface::TenGigabitEthernet::Ip::Pim
-        class Policy; //type: Native::Interface::TenGigabitEthernet::Ip::Policy
-        class Rip; //type: Native::Interface::TenGigabitEthernet::Ip::Rip
-        class RouteCacheConf; //type: Native::Interface::TenGigabitEthernet::Ip::RouteCacheConf
-        class RouteCache; //type: Native::Interface::TenGigabitEthernet::Ip::RouteCache
-        class Router; //type: Native::Interface::TenGigabitEthernet::Ip::Router
-        class Tcp; //type: Native::Interface::TenGigabitEthernet::Ip::Tcp
-        class VirtualReassembly; //type: Native::Interface::TenGigabitEthernet::Ip::VirtualReassembly
-        class Dhcp; //type: Native::Interface::TenGigabitEthernet::Ip::Dhcp
-        class SummaryAddress; //type: Native::Interface::TenGigabitEthernet::Ip::SummaryAddress
-        class Verify; //type: Native::Interface::TenGigabitEthernet::Ip::Verify
-        class Igmp; //type: Native::Interface::TenGigabitEthernet::Ip::Igmp
-        class Lisp; //type: Native::Interface::TenGigabitEthernet::Ip::Lisp
-        class Rsvp; //type: Native::Interface::TenGigabitEthernet::Ip::Rsvp
-        class Nbar; //type: Native::Interface::TenGigabitEthernet::Ip::Nbar
-        class Flow; //type: Native::Interface::TenGigabitEthernet::Ip::Flow
-        class Nat; //type: Native::Interface::TenGigabitEthernet::Ip::Nat
-        class Ospf; //type: Native::Interface::TenGigabitEthernet::Ip::Ospf
-        class Wccp; //type: Native::Interface::TenGigabitEthernet::Ip::Wccp
+        static const ydk::Enum::YLeaf out;
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::AccessGroup> access_group;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Arp> arp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Vrf> vrf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::NoAddress> no_address;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Address> address;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::HelloInterval> hello_interval;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::HoldTime> hold_time;
-        ydk::YList helper_address;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Pim> pim;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Policy> policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Rip> rip;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::RouteCacheConf> route_cache_conf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::RouteCache> route_cache; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Router> router;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Tcp> tcp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::VirtualReassembly> virtual_reassembly;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Dhcp> dhcp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::SummaryAddress> summary_address;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Verify> verify;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Igmp> igmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Rsvp> rsvp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Nbar> nbar;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Flow> flow;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Nat> nat;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Wccp> wccp;
-        
-}; // Native::Interface::TenGigabitEthernet::Ip
+};
 
-
-class Native::Interface::TenGigabitEthernet::Ip::AccessGroup : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::All : public ydk::Enum
 {
     public:
-        AccessGroup();
-        ~AccessGroup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class In; //type: Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In
-        class Out; //type: Native::Interface::TenGigabitEthernet::Ip::AccessGroup::Out
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In> in;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::AccessGroup::Out> out;
-        
-}; // Native::Interface::TenGigabitEthernet::Ip::AccessGroup
+        static const ydk::Enum::YLeaf out;
 
+};
 
-class Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::All : public ydk::Enum
 {
     public:
-        In();
-        ~In();
+        static const ydk::Enum::YLeaf out;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        class CommonAcl; //type: Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::CommonAcl
-        class Acl; //type: Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::Acl
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::CommonAcl> common_acl;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::Acl> acl;
-        
-}; // Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In
-
-
-class Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::CommonAcl : public ydk::Entity
+class Native::Interface::TwoGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::All : public ydk::Enum
 {
     public:
-        CommonAcl();
-        ~CommonAcl();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf common; //type: one of uint16, string
-        ydk::YLeaf in; //type: empty
+        static const ydk::Enum::YLeaf out;
 
-}; // Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::CommonAcl
+};
 
-class Native::Interface::FiveGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::Encrypt : public ydk::Enum
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::Encrypt : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_0;
@@ -3868,39 +3808,69 @@ class Native::Interface::FiveGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc:
 
 };
 
-class Native::Interface::FiveGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::All : public ydk::Enum
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::Encrypt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_0;
+        static const ydk::Enum::YLeaf Y_7;
+
+};
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::DatabaseFilter::All : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf out;
 
 };
 
-class Native::Interface::FiveGigabitEthernet::SpanningTree::Bpdufilter : public ydk::Enum
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::KeyString::Encrypt : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf Y_0;
+        static const ydk::Enum::YLeaf Y_7;
 
 };
 
-class Native::Interface::FiveGigabitEthernet::SpanningTree::Guard : public ydk::Enum
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::Encrypt : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf loop;
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf root;
+        static const ydk::Enum::YLeaf Y_0;
+        static const ydk::Enum::YLeaf Y_7;
 
 };
 
-class Native::Interface::FiveGigabitEthernet::SpanningTree::LinkType : public ydk::Enum
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::Encrypt : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf point_to_point;
-        static const ydk::Enum::YLeaf shared;
+        static const ydk::Enum::YLeaf Y_0;
+        static const ydk::Enum::YLeaf Y_7;
 
 };
 
-class Native::Interface::TenGigabitEthernet::MediaType : public ydk::Enum
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::Encrypt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_0;
+        static const ydk::Enum::YLeaf Y_7;
+
+};
+
+class Native::Interface::TwoGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::All : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf out;
+
+};
+
+class Native::Interface::TwoGigabitEthernet::Cts::RoleBased::SgtCache : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf egress;
+        static const ydk::Enum::YLeaf ingress;
+
+};
+
+class Native::Interface::FiveGigabitEthernet::MediaType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf auto_select;
@@ -3909,28 +3879,28 @@ class Native::Interface::TenGigabitEthernet::MediaType : public ydk::Enum
 
 };
 
-class Native::Interface::TenGigabitEthernet::PortType : public ydk::Enum
+class Native::Interface::FiveGigabitEthernet::PortType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf nni;
 
 };
 
-class Native::Interface::TenGigabitEthernet::IfState : public ydk::Enum
+class Native::Interface::FiveGigabitEthernet::IfState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf nhrp;
 
 };
 
-class Native::Interface::TenGigabitEthernet::ServiceInsertion : public ydk::Enum
+class Native::Interface::FiveGigabitEthernet::ServiceInsertion : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf waas;
 
 };
 
-class Native::Interface::TenGigabitEthernet::ChannelProtocol : public ydk::Enum
+class Native::Interface::FiveGigabitEthernet::ChannelProtocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf lacp;
@@ -3938,7 +3908,7 @@ class Native::Interface::TenGigabitEthernet::ChannelProtocol : public ydk::Enum
 
 };
 
-class Native::Interface::TenGigabitEthernet::Duplex : public ydk::Enum
+class Native::Interface::FiveGigabitEthernet::Duplex : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf auto_;
@@ -3947,7 +3917,7 @@ class Native::Interface::TenGigabitEthernet::Duplex : public ydk::Enum
 
 };
 
-class Native::Interface::TenGigabitEthernet::Nat66 : public ydk::Enum
+class Native::Interface::FiveGigabitEthernet::Nat66 : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf inside;
@@ -3955,14 +3925,14 @@ class Native::Interface::TenGigabitEthernet::Nat66 : public ydk::Enum
 
 };
 
-class Native::Interface::TenGigabitEthernet::Switchport::Access::Vlan::Vlan_ : public ydk::Enum
+class Native::Interface::FiveGigabitEthernet::Switchport::Access::Vlan::Vlan_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dynamic;
 
 };
 
-class Native::Interface::TenGigabitEthernet::Switchport::Mode::Dynamic : public ydk::Enum
+class Native::Interface::FiveGigabitEthernet::Switchport::Mode::Dynamic : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf auto_;
@@ -3970,7 +3940,7 @@ class Native::Interface::TenGigabitEthernet::Switchport::Mode::Dynamic : public 
 
 };
 
-class Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Violation : public ydk::Enum
+class Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::Violation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf protect;
@@ -3979,7 +3949,7 @@ class Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Violation
 
 };
 
-class Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Aging::Type : public ydk::Enum
+class Native::Interface::FiveGigabitEthernet::Switchport::PortSecurity::Aging::Type : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf absolute;
@@ -3987,7 +3957,7 @@ class Native::Interface::TenGigabitEthernet::Switchport::PortSecurity::Aging::Ty
 
 };
 
-class Native::Interface::TenGigabitEthernet::Switchport::Trunk::Encapsulation : public ydk::Enum
+class Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Encapsulation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dot1q;
@@ -3996,218 +3966,19 @@ class Native::Interface::TenGigabitEthernet::Switchport::Trunk::Encapsulation : 
 
 };
 
-class Native::Interface::TenGigabitEthernet::Switchport::Trunk::Native_::Vlan : public ydk::Enum
+class Native::Interface::FiveGigabitEthernet::Switchport::Trunk::Native_::Vlan : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf tag;
 
 };
 
-class Native::Interface::TenGigabitEthernet::Switchport::Voice::Vlan::Vlan_ : public ydk::Enum
+class Native::Interface::FiveGigabitEthernet::Switchport::Voice::Vlan::Vlan_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dot1p;
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf untagged;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Backup::Delay::Failure : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf never;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Backup::Delay::SecondaryDisable : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf never;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Backup::Load::Kickin : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf never;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Backup::Load::Kickout : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf never;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Flowcontrol::Receive : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf desired;
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf on;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Flowcontrol::Send : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf desired;
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf on;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::MeshGroup : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf blocked;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::Network : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf point_to_point;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::Protocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf shutdown;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::CircuitType::Levels : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level_1;
-        static const ydk::Enum::YLeaf level_1_2;
-        static const ydk::Enum::YLeaf level_2_only;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::CsnpInterval::CsnpIntervalList::Levels : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level_1;
-        static const ydk::Enum::YLeaf level_2;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::HelloInterval::Value_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf minimal;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::HelloInterval::HelloIntervalList::Levels : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level_1;
-        static const ydk::Enum::YLeaf level_2;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::HelloInterval::HelloIntervalList::Value_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf minimal;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::HelloMultiplier::HelloMultiplierList::Levels : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level_1;
-        static const ydk::Enum::YLeaf level_2;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::Ipv6::Metric::Value_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf maximum;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::Ipv6::Metric::MetricList::Levels : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level_1;
-        static const ydk::Enum::YLeaf level_2;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::Ipv6::Metric::MetricList::Value_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf maximum;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::Metric::Value_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf maximum;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::Metric::MetricList::Levels : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level_1;
-        static const ydk::Enum::YLeaf level_2;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::Metric::MetricList::Value_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf maximum;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::Password::PasswordList::Levels : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level_1;
-        static const ydk::Enum::YLeaf level_2;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::Priority::PriorityList::Levels : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level_1;
-        static const ydk::Enum::YLeaf level_2;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Isis::ThreeWayHandshake::Implementor : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cisco;
-        static const ydk::Enum::YLeaf ietf;
-
-};
-
-class Native::Interface::TenGigabitEthernet::HoldQueue::Direction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf in;
-        static const ydk::Enum::YLeaf out;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Mpls::Label::Protocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf both;
-        static const ydk::Enum::YLeaf ldp;
-        static const ydk::Enum::YLeaf tdp;
 
 };
 

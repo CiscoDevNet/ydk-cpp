@@ -44,8 +44,8 @@ class RouterConvergence : public ydk::Entity
         class Nodes; //type: RouterConvergence::Nodes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::Protocols> protocols;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::StorageLocation> storage_location;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::MplsLdp> mpls_ldp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::StorageLocation> storage_location; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::MplsLdp> mpls_ldp; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::CollectDiagnostics> collect_diagnostics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::Nodes> nodes;
         
@@ -195,7 +195,7 @@ class RouterConvergence::MplsLdp : public ydk::Entity
 
         class RemoteLfa; //type: RouterConvergence::MplsLdp::RemoteLfa
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::MplsLdp::RemoteLfa> remote_lfa;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::MplsLdp::RemoteLfa> remote_lfa; // presence node
         
 }; // RouterConvergence::MplsLdp
 

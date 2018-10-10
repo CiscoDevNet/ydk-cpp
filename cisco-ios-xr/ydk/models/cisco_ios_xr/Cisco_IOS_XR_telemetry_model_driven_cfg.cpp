@@ -13,14 +13,20 @@ namespace Cisco_IOS_XR_telemetry_model_driven_cfg {
 
 TelemetryModelDriven::TelemetryModelDriven()
     :
-    enable{YType::empty, "enable"}
+    strict_timer{YType::empty, "strict-timer"},
+    enable{YType::empty, "enable"},
+    max_sensor_paths{YType::uint32, "max-sensor-paths"},
+    max_containers_per_path{YType::uint32, "max-containers-per-path"},
+    tcp_send_timeout{YType::uint32, "tcp-send-timeout"}
         ,
     sensor_groups(std::make_shared<TelemetryModelDriven::SensorGroups>())
     , subscriptions(std::make_shared<TelemetryModelDriven::Subscriptions>())
+    , include(std::make_shared<TelemetryModelDriven::Include>())
     , destination_groups(std::make_shared<TelemetryModelDriven::DestinationGroups>())
 {
     sensor_groups->parent = this;
     subscriptions->parent = this;
+    include->parent = this;
     destination_groups->parent = this;
 
     yang_name = "telemetry-model-driven"; yang_parent_name = "Cisco-IOS-XR-telemetry-model-driven-cfg"; is_top_level_class = true; has_list_ancestor = false; 
@@ -33,18 +39,28 @@ TelemetryModelDriven::~TelemetryModelDriven()
 bool TelemetryModelDriven::has_data() const
 {
     if (is_presence_container) return true;
-    return enable.is_set
+    return strict_timer.is_set
+	|| enable.is_set
+	|| max_sensor_paths.is_set
+	|| max_containers_per_path.is_set
+	|| tcp_send_timeout.is_set
 	|| (sensor_groups !=  nullptr && sensor_groups->has_data())
 	|| (subscriptions !=  nullptr && subscriptions->has_data())
+	|| (include !=  nullptr && include->has_data())
 	|| (destination_groups !=  nullptr && destination_groups->has_data());
 }
 
 bool TelemetryModelDriven::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(strict_timer.yfilter)
 	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(max_sensor_paths.yfilter)
+	|| ydk::is_set(max_containers_per_path.yfilter)
+	|| ydk::is_set(tcp_send_timeout.yfilter)
 	|| (sensor_groups !=  nullptr && sensor_groups->has_operation())
 	|| (subscriptions !=  nullptr && subscriptions->has_operation())
+	|| (include !=  nullptr && include->has_operation())
 	|| (destination_groups !=  nullptr && destination_groups->has_operation());
 }
 
@@ -59,7 +75,11 @@ std::vector<std::pair<std::string, LeafData> > TelemetryModelDriven::get_name_le
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (strict_timer.is_set || is_set(strict_timer.yfilter)) leaf_name_data.push_back(strict_timer.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (max_sensor_paths.is_set || is_set(max_sensor_paths.yfilter)) leaf_name_data.push_back(max_sensor_paths.get_name_leafdata());
+    if (max_containers_per_path.is_set || is_set(max_containers_per_path.yfilter)) leaf_name_data.push_back(max_containers_per_path.get_name_leafdata());
+    if (tcp_send_timeout.is_set || is_set(tcp_send_timeout.yfilter)) leaf_name_data.push_back(tcp_send_timeout.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -83,6 +103,15 @@ std::shared_ptr<Entity> TelemetryModelDriven::get_child_by_name(const std::strin
             subscriptions = std::make_shared<TelemetryModelDriven::Subscriptions>();
         }
         return subscriptions;
+    }
+
+    if(child_yang_name == "include")
+    {
+        if(include == nullptr)
+        {
+            include = std::make_shared<TelemetryModelDriven::Include>();
+        }
+        return include;
     }
 
     if(child_yang_name == "destination-groups")
@@ -111,6 +140,11 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::get_childre
         children["subscriptions"] = subscriptions;
     }
 
+    if(include != nullptr)
+    {
+        children["include"] = include;
+    }
+
     if(destination_groups != nullptr)
     {
         children["destination-groups"] = destination_groups;
@@ -121,19 +155,59 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::get_childre
 
 void TelemetryModelDriven::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "strict-timer")
+    {
+        strict_timer = value;
+        strict_timer.value_namespace = name_space;
+        strict_timer.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "enable")
     {
         enable = value;
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "max-sensor-paths")
+    {
+        max_sensor_paths = value;
+        max_sensor_paths.value_namespace = name_space;
+        max_sensor_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-containers-per-path")
+    {
+        max_containers_per_path = value;
+        max_containers_per_path.value_namespace = name_space;
+        max_containers_per_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tcp-send-timeout")
+    {
+        tcp_send_timeout = value;
+        tcp_send_timeout.value_namespace = name_space;
+        tcp_send_timeout.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void TelemetryModelDriven::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "strict-timer")
+    {
+        strict_timer.yfilter = yfilter;
+    }
     if(value_path == "enable")
     {
         enable.yfilter = yfilter;
+    }
+    if(value_path == "max-sensor-paths")
+    {
+        max_sensor_paths.yfilter = yfilter;
+    }
+    if(value_path == "max-containers-per-path")
+    {
+        max_containers_per_path.yfilter = yfilter;
+    }
+    if(value_path == "tcp-send-timeout")
+    {
+        tcp_send_timeout.yfilter = yfilter;
     }
 }
 
@@ -164,7 +238,7 @@ std::map<std::pair<std::string, std::string>, std::string> TelemetryModelDriven:
 
 bool TelemetryModelDriven::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sensor-groups" || name == "subscriptions" || name == "destination-groups" || name == "enable")
+    if(name == "sensor-groups" || name == "subscriptions" || name == "include" || name == "destination-groups" || name == "strict-timer" || name == "enable" || name == "max-sensor-paths" || name == "max-containers-per-path" || name == "tcp-send-timeout")
         return true;
     return false;
 }
@@ -1169,6 +1243,180 @@ bool TelemetryModelDriven::Subscriptions::Subscription::DestinationProfiles::Des
     return false;
 }
 
+TelemetryModelDriven::Include::Include()
+    :
+    empty(std::make_shared<TelemetryModelDriven::Include::Empty>())
+{
+    empty->parent = this;
+
+    yang_name = "include"; yang_parent_name = "telemetry-model-driven"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+TelemetryModelDriven::Include::~Include()
+{
+}
+
+bool TelemetryModelDriven::Include::has_data() const
+{
+    if (is_presence_container) return true;
+    return (empty !=  nullptr && empty->has_data());
+}
+
+bool TelemetryModelDriven::Include::has_operation() const
+{
+    return is_set(yfilter)
+	|| (empty !=  nullptr && empty->has_operation());
+}
+
+std::string TelemetryModelDriven::Include::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-telemetry-model-driven-cfg:telemetry-model-driven/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string TelemetryModelDriven::Include::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "include";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TelemetryModelDriven::Include::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TelemetryModelDriven::Include::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "empty")
+    {
+        if(empty == nullptr)
+        {
+            empty = std::make_shared<TelemetryModelDriven::Include::Empty>();
+        }
+        return empty;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Include::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(empty != nullptr)
+    {
+        children["empty"] = empty;
+    }
+
+    return children;
+}
+
+void TelemetryModelDriven::Include::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void TelemetryModelDriven::Include::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TelemetryModelDriven::Include::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "empty")
+        return true;
+    return false;
+}
+
+TelemetryModelDriven::Include::Empty::Empty()
+    :
+    values{YType::empty, "values"}
+{
+
+    yang_name = "empty"; yang_parent_name = "include"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+TelemetryModelDriven::Include::Empty::~Empty()
+{
+}
+
+bool TelemetryModelDriven::Include::Empty::has_data() const
+{
+    if (is_presence_container) return true;
+    return values.is_set;
+}
+
+bool TelemetryModelDriven::Include::Empty::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(values.yfilter);
+}
+
+std::string TelemetryModelDriven::Include::Empty::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-telemetry-model-driven-cfg:telemetry-model-driven/include/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string TelemetryModelDriven::Include::Empty::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "empty";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TelemetryModelDriven::Include::Empty::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (values.is_set || is_set(values.yfilter)) leaf_name_data.push_back(values.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TelemetryModelDriven::Include::Empty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Include::Empty::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TelemetryModelDriven::Include::Empty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "values")
+    {
+        values = value;
+        values.value_namespace = name_space;
+        values.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TelemetryModelDriven::Include::Empty::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "values")
+    {
+        values.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Include::Empty::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "values")
+        return true;
+    return false;
+}
+
 TelemetryModelDriven::DestinationGroups::DestinationGroups()
     :
     destination_group(this, {"destination_id"})
@@ -1629,7 +1877,7 @@ TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv6Destinations::Ipv
     :
     protocol{YType::enumeration, "protocol"},
     tls_hostname{YType::str, "tls-hostname"},
-    no_tls{YType::int32, "no-tls"},
+    no_tls{YType::uint32, "no-tls"},
     packetsize{YType::uint32, "packetsize"}
 {
 
@@ -1968,7 +2216,7 @@ TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv4Destinations::Ipv
     :
     protocol{YType::enumeration, "protocol"},
     tls_hostname{YType::str, "tls-hostname"},
-    no_tls{YType::int32, "no-tls"},
+    no_tls{YType::uint32, "no-tls"},
     packetsize{YType::uint32, "packetsize"}
 {
 

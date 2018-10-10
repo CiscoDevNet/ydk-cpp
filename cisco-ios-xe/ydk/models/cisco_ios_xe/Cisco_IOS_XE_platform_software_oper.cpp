@@ -13,9 +13,11 @@ namespace Cisco_IOS_XE_platform_software_oper {
 
 CiscoPlatformSoftware::CiscoPlatformSoftware()
     :
-    control_processes(std::make_shared<CiscoPlatformSoftware::ControlProcesses>())
+    system_usages(std::make_shared<CiscoPlatformSoftware::SystemUsages>())
+    , control_processes(std::make_shared<CiscoPlatformSoftware::ControlProcesses>())
     , q_filesystem(this, {"fru", "slotnum", "baynum", "chassisnum"})
 {
+    system_usages->parent = this;
     control_processes->parent = this;
 
     yang_name = "cisco-platform-software"; yang_parent_name = "Cisco-IOS-XE-platform-software-oper"; is_top_level_class = true; has_list_ancestor = false; 
@@ -33,7 +35,8 @@ bool CiscoPlatformSoftware::has_data() const
         if(q_filesystem[index]->has_data())
             return true;
     }
-    return (control_processes !=  nullptr && control_processes->has_data());
+    return (system_usages !=  nullptr && system_usages->has_data())
+	|| (control_processes !=  nullptr && control_processes->has_data());
 }
 
 bool CiscoPlatformSoftware::has_operation() const
@@ -44,6 +47,7 @@ bool CiscoPlatformSoftware::has_operation() const
             return true;
     }
     return is_set(yfilter)
+	|| (system_usages !=  nullptr && system_usages->has_operation())
 	|| (control_processes !=  nullptr && control_processes->has_operation());
 }
 
@@ -65,6 +69,15 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::get_name_l
 
 std::shared_ptr<Entity> CiscoPlatformSoftware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "system-usages")
+    {
+        if(system_usages == nullptr)
+        {
+            system_usages = std::make_shared<CiscoPlatformSoftware::SystemUsages>();
+        }
+        return system_usages;
+    }
+
     if(child_yang_name == "control-processes")
     {
         if(control_processes == nullptr)
@@ -89,6 +102,11 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::get_childr
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(system_usages != nullptr)
+    {
+        children["system-usages"] = system_usages;
+    }
+
     if(control_processes != nullptr)
     {
         children["control-processes"] = control_processes;
@@ -141,7 +159,499 @@ std::map<std::pair<std::string, std::string>, std::string> CiscoPlatformSoftware
 
 bool CiscoPlatformSoftware::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "control-processes" || name == "q-filesystem")
+    if(name == "system-usages" || name == "control-processes" || name == "q-filesystem")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::SystemUsages::SystemUsages()
+    :
+    system_usage(this, {"fru", "slotnum", "baynum", "chassisnum"})
+{
+
+    yang_name = "system-usages"; yang_parent_name = "cisco-platform-software"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+CiscoPlatformSoftware::SystemUsages::~SystemUsages()
+{
+}
+
+bool CiscoPlatformSoftware::SystemUsages::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<system_usage.len(); index++)
+    {
+        if(system_usage[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CiscoPlatformSoftware::SystemUsages::has_operation() const
+{
+    for (std::size_t index=0; index<system_usage.len(); index++)
+    {
+        if(system_usage[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CiscoPlatformSoftware::SystemUsages::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CiscoPlatformSoftware::SystemUsages::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "system-usages";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::SystemUsages::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CiscoPlatformSoftware::SystemUsages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "system-usage")
+    {
+        auto c = std::make_shared<CiscoPlatformSoftware::SystemUsages::SystemUsage>();
+        c->parent = this;
+        system_usage.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::SystemUsages::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : system_usage.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void CiscoPlatformSoftware::SystemUsages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoPlatformSoftware::SystemUsages::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPlatformSoftware::SystemUsages::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "system-usage")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::SystemUsages::SystemUsage::SystemUsage()
+    :
+    fru{YType::enumeration, "fru"},
+    slotnum{YType::int16, "slotnum"},
+    baynum{YType::int16, "baynum"},
+    chassisnum{YType::int16, "chassisnum"}
+        ,
+    process_system_usages(std::make_shared<CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages>())
+{
+    process_system_usages->parent = this;
+
+    yang_name = "system-usage"; yang_parent_name = "system-usages"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+CiscoPlatformSoftware::SystemUsages::SystemUsage::~SystemUsage()
+{
+}
+
+bool CiscoPlatformSoftware::SystemUsages::SystemUsage::has_data() const
+{
+    if (is_presence_container) return true;
+    return fru.is_set
+	|| slotnum.is_set
+	|| baynum.is_set
+	|| chassisnum.is_set
+	|| (process_system_usages !=  nullptr && process_system_usages->has_data());
+}
+
+bool CiscoPlatformSoftware::SystemUsages::SystemUsage::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(fru.yfilter)
+	|| ydk::is_set(slotnum.yfilter)
+	|| ydk::is_set(baynum.yfilter)
+	|| ydk::is_set(chassisnum.yfilter)
+	|| (process_system_usages !=  nullptr && process_system_usages->has_operation());
+}
+
+std::string CiscoPlatformSoftware::SystemUsages::SystemUsage::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software/system-usages/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CiscoPlatformSoftware::SystemUsages::SystemUsage::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "system-usage";
+    ADD_KEY_TOKEN(fru, "fru");
+    ADD_KEY_TOKEN(slotnum, "slotnum");
+    ADD_KEY_TOKEN(baynum, "baynum");
+    ADD_KEY_TOKEN(chassisnum, "chassisnum");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::SystemUsages::SystemUsage::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fru.is_set || is_set(fru.yfilter)) leaf_name_data.push_back(fru.get_name_leafdata());
+    if (slotnum.is_set || is_set(slotnum.yfilter)) leaf_name_data.push_back(slotnum.get_name_leafdata());
+    if (baynum.is_set || is_set(baynum.yfilter)) leaf_name_data.push_back(baynum.get_name_leafdata());
+    if (chassisnum.is_set || is_set(chassisnum.yfilter)) leaf_name_data.push_back(chassisnum.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CiscoPlatformSoftware::SystemUsages::SystemUsage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "process-system-usages")
+    {
+        if(process_system_usages == nullptr)
+        {
+            process_system_usages = std::make_shared<CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages>();
+        }
+        return process_system_usages;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::SystemUsages::SystemUsage::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(process_system_usages != nullptr)
+    {
+        children["process-system-usages"] = process_system_usages;
+    }
+
+    return children;
+}
+
+void CiscoPlatformSoftware::SystemUsages::SystemUsage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fru")
+    {
+        fru = value;
+        fru.value_namespace = name_space;
+        fru.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slotnum")
+    {
+        slotnum = value;
+        slotnum.value_namespace = name_space;
+        slotnum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "baynum")
+    {
+        baynum = value;
+        baynum.value_namespace = name_space;
+        baynum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chassisnum")
+    {
+        chassisnum = value;
+        chassisnum.value_namespace = name_space;
+        chassisnum.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CiscoPlatformSoftware::SystemUsages::SystemUsage::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fru")
+    {
+        fru.yfilter = yfilter;
+    }
+    if(value_path == "slotnum")
+    {
+        slotnum.yfilter = yfilter;
+    }
+    if(value_path == "baynum")
+    {
+        baynum.yfilter = yfilter;
+    }
+    if(value_path == "chassisnum")
+    {
+        chassisnum.yfilter = yfilter;
+    }
+}
+
+bool CiscoPlatformSoftware::SystemUsages::SystemUsage::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process-system-usages" || name == "fru" || name == "slotnum" || name == "baynum" || name == "chassisnum")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsages()
+    :
+    process_system_usage(this, {"pid"})
+{
+
+    yang_name = "process-system-usages"; yang_parent_name = "system-usage"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::~ProcessSystemUsages()
+{
+}
+
+bool CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process_system_usage.len(); index++)
+    {
+        if(process_system_usage[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::has_operation() const
+{
+    for (std::size_t index=0; index<process_system_usage.len(); index++)
+    {
+        if(process_system_usage[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "process-system-usages";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "process-system-usage")
+    {
+        auto c = std::make_shared<CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage>();
+        c->parent = this;
+        process_system_usage.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : process_system_usage.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process-system-usage")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::ProcessSystemUsage()
+    :
+    pid{YType::uint32, "pid"},
+    name{YType::str, "name"},
+    total_run_time{YType::uint64, "total-run-time"},
+    five_seconds{YType::uint64, "five-seconds"},
+    allocated_memory{YType::uint64, "allocated-memory"},
+    allocated_memory_percent{YType::uint32, "allocated-memory-percent"}
+{
+
+    yang_name = "process-system-usage"; yang_parent_name = "process-system-usages"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::~ProcessSystemUsage()
+{
+}
+
+bool CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::has_data() const
+{
+    if (is_presence_container) return true;
+    return pid.is_set
+	|| name.is_set
+	|| total_run_time.is_set
+	|| five_seconds.is_set
+	|| allocated_memory.is_set
+	|| allocated_memory_percent.is_set;
+}
+
+bool CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(pid.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(total_run_time.yfilter)
+	|| ydk::is_set(five_seconds.yfilter)
+	|| ydk::is_set(allocated_memory.yfilter)
+	|| ydk::is_set(allocated_memory_percent.yfilter);
+}
+
+std::string CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "process-system-usage";
+    ADD_KEY_TOKEN(pid, "pid");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (total_run_time.is_set || is_set(total_run_time.yfilter)) leaf_name_data.push_back(total_run_time.get_name_leafdata());
+    if (five_seconds.is_set || is_set(five_seconds.yfilter)) leaf_name_data.push_back(five_seconds.get_name_leafdata());
+    if (allocated_memory.is_set || is_set(allocated_memory.yfilter)) leaf_name_data.push_back(allocated_memory.get_name_leafdata());
+    if (allocated_memory_percent.is_set || is_set(allocated_memory_percent.yfilter)) leaf_name_data.push_back(allocated_memory_percent.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pid")
+    {
+        pid = value;
+        pid.value_namespace = name_space;
+        pid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-run-time")
+    {
+        total_run_time = value;
+        total_run_time.value_namespace = name_space;
+        total_run_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "five-seconds")
+    {
+        five_seconds = value;
+        five_seconds.value_namespace = name_space;
+        five_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "allocated-memory")
+    {
+        allocated_memory = value;
+        allocated_memory.value_namespace = name_space;
+        allocated_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "allocated-memory-percent")
+    {
+        allocated_memory_percent = value;
+        allocated_memory_percent.value_namespace = name_space;
+        allocated_memory_percent.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pid")
+    {
+        pid.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "total-run-time")
+    {
+        total_run_time.yfilter = yfilter;
+    }
+    if(value_path == "five-seconds")
+    {
+        five_seconds.yfilter = yfilter;
+    }
+    if(value_path == "allocated-memory")
+    {
+        allocated_memory.yfilter = yfilter;
+    }
+    if(value_path == "allocated-memory-percent")
+    {
+        allocated_memory_percent.yfilter = yfilter;
+    }
+}
+
+bool CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pid" || name == "name" || name == "total-run-time" || name == "five-seconds" || name == "allocated-memory" || name == "allocated-memory-percent")
         return true;
     return false;
 }

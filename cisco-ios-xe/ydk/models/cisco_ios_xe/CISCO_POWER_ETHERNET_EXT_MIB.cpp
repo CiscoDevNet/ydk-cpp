@@ -957,7 +957,11 @@ CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::CpeExt
     cpeextpseportlldppwrreq{YType::uint32, "cpeExtPsePortLldpPwrReq"},
     cpeextpseportlldppdpwrreq{YType::uint32, "cpeExtPsePortLldpPdPwrReq"},
     cpeextpseportlldppwralloc{YType::uint32, "cpeExtPsePortLldpPwrAlloc"},
-    cpeextpseportlldppdpwralloc{YType::uint32, "cpeExtPsePortLldpPdPwrAlloc"}
+    cpeextpseportlldppdpwralloc{YType::uint32, "cpeExtPsePortLldpPdPwrAlloc"},
+    cpeextpseportlldppwrclass{YType::enumeration, "cpeExtPsePortLldpPwrClass"},
+    cpeextpseportlldppdpwrclass{YType::enumeration, "cpeExtPsePortLldpPdPwrClass"},
+    cpeextpseportlldppdpwrsupport{YType::bits, "cpeExtPsePortLldpPdPwrSupport"},
+    cpeextpseportlldppdpwrpairsorzero{YType::enumeration, "cpeExtPsePortLldpPdPwrPairsOrZero"}
 {
 
     yang_name = "cpeExtPsePortLldpEntry"; yang_parent_name = "cpeExtPsePortLldpTable"; is_top_level_class = false; has_list_ancestor = false; 
@@ -981,7 +985,11 @@ bool CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::h
 	|| cpeextpseportlldppwrreq.is_set
 	|| cpeextpseportlldppdpwrreq.is_set
 	|| cpeextpseportlldppwralloc.is_set
-	|| cpeextpseportlldppdpwralloc.is_set;
+	|| cpeextpseportlldppdpwralloc.is_set
+	|| cpeextpseportlldppwrclass.is_set
+	|| cpeextpseportlldppdpwrclass.is_set
+	|| cpeextpseportlldppdpwrsupport.is_set
+	|| cpeextpseportlldppdpwrpairsorzero.is_set;
 }
 
 bool CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::has_operation() const
@@ -998,7 +1006,11 @@ bool CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::h
 	|| ydk::is_set(cpeextpseportlldppwrreq.yfilter)
 	|| ydk::is_set(cpeextpseportlldppdpwrreq.yfilter)
 	|| ydk::is_set(cpeextpseportlldppwralloc.yfilter)
-	|| ydk::is_set(cpeextpseportlldppdpwralloc.yfilter);
+	|| ydk::is_set(cpeextpseportlldppdpwralloc.yfilter)
+	|| ydk::is_set(cpeextpseportlldppwrclass.yfilter)
+	|| ydk::is_set(cpeextpseportlldppdpwrclass.yfilter)
+	|| ydk::is_set(cpeextpseportlldppdpwrsupport.yfilter)
+	|| ydk::is_set(cpeextpseportlldppdpwrpairsorzero.yfilter);
 }
 
 std::string CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::get_absolute_path() const
@@ -1033,6 +1045,10 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtP
     if (cpeextpseportlldppdpwrreq.is_set || is_set(cpeextpseportlldppdpwrreq.yfilter)) leaf_name_data.push_back(cpeextpseportlldppdpwrreq.get_name_leafdata());
     if (cpeextpseportlldppwralloc.is_set || is_set(cpeextpseportlldppwralloc.yfilter)) leaf_name_data.push_back(cpeextpseportlldppwralloc.get_name_leafdata());
     if (cpeextpseportlldppdpwralloc.is_set || is_set(cpeextpseportlldppdpwralloc.yfilter)) leaf_name_data.push_back(cpeextpseportlldppdpwralloc.get_name_leafdata());
+    if (cpeextpseportlldppwrclass.is_set || is_set(cpeextpseportlldppwrclass.yfilter)) leaf_name_data.push_back(cpeextpseportlldppwrclass.get_name_leafdata());
+    if (cpeextpseportlldppdpwrclass.is_set || is_set(cpeextpseportlldppdpwrclass.yfilter)) leaf_name_data.push_back(cpeextpseportlldppdpwrclass.get_name_leafdata());
+    if (cpeextpseportlldppdpwrsupport.is_set || is_set(cpeextpseportlldppdpwrsupport.yfilter)) leaf_name_data.push_back(cpeextpseportlldppdpwrsupport.get_name_leafdata());
+    if (cpeextpseportlldppdpwrpairsorzero.is_set || is_set(cpeextpseportlldppdpwrpairsorzero.yfilter)) leaf_name_data.push_back(cpeextpseportlldppdpwrpairsorzero.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1124,6 +1140,28 @@ void CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::s
         cpeextpseportlldppdpwralloc.value_namespace = name_space;
         cpeextpseportlldppdpwralloc.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "cpeExtPsePortLldpPwrClass")
+    {
+        cpeextpseportlldppwrclass = value;
+        cpeextpseportlldppwrclass.value_namespace = name_space;
+        cpeextpseportlldppwrclass.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpeExtPsePortLldpPdPwrClass")
+    {
+        cpeextpseportlldppdpwrclass = value;
+        cpeextpseportlldppdpwrclass.value_namespace = name_space;
+        cpeextpseportlldppdpwrclass.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpeExtPsePortLldpPdPwrSupport")
+    {
+        cpeextpseportlldppdpwrsupport[value] = true;
+    }
+    if(value_path == "cpeExtPsePortLldpPdPwrPairsOrZero")
+    {
+        cpeextpseportlldppdpwrpairsorzero = value;
+        cpeextpseportlldppdpwrpairsorzero.value_namespace = name_space;
+        cpeextpseportlldppdpwrpairsorzero.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1176,11 +1214,27 @@ void CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::s
     {
         cpeextpseportlldppdpwralloc.yfilter = yfilter;
     }
+    if(value_path == "cpeExtPsePortLldpPwrClass")
+    {
+        cpeextpseportlldppwrclass.yfilter = yfilter;
+    }
+    if(value_path == "cpeExtPsePortLldpPdPwrClass")
+    {
+        cpeextpseportlldppdpwrclass.yfilter = yfilter;
+    }
+    if(value_path == "cpeExtPsePortLldpPdPwrSupport")
+    {
+        cpeextpseportlldppdpwrsupport.yfilter = yfilter;
+    }
+    if(value_path == "cpeExtPsePortLldpPdPwrPairsOrZero")
+    {
+        cpeextpseportlldppdpwrpairsorzero.yfilter = yfilter;
+    }
 }
 
 bool CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pethPsePortGroupIndex" || name == "pethPsePortIndex" || name == "cpeExtPsePortLldpPwrType" || name == "cpeExtPsePortLldpPdPwrType" || name == "cpeExtPsePortLldpPwrSrc" || name == "cpeExtPsePortLldpPdPwrSrc" || name == "cpeExtPsePortLldpPwrPriority" || name == "cpeExtPsePortLldpPdPwrPriority" || name == "cpeExtPsePortLldpPwrReq" || name == "cpeExtPsePortLldpPdPwrReq" || name == "cpeExtPsePortLldpPwrAlloc" || name == "cpeExtPsePortLldpPdPwrAlloc")
+    if(name == "pethPsePortGroupIndex" || name == "pethPsePortIndex" || name == "cpeExtPsePortLldpPwrType" || name == "cpeExtPsePortLldpPdPwrType" || name == "cpeExtPsePortLldpPwrSrc" || name == "cpeExtPsePortLldpPdPwrSrc" || name == "cpeExtPsePortLldpPwrPriority" || name == "cpeExtPsePortLldpPdPwrPriority" || name == "cpeExtPsePortLldpPwrReq" || name == "cpeExtPsePortLldpPdPwrReq" || name == "cpeExtPsePortLldpPwrAlloc" || name == "cpeExtPsePortLldpPdPwrAlloc" || name == "cpeExtPsePortLldpPwrClass" || name == "cpeExtPsePortLldpPdPwrClass" || name == "cpeExtPsePortLldpPdPwrSupport" || name == "cpeExtPsePortLldpPdPwrPairsOrZero")
         return true;
     return false;
 }
@@ -1197,6 +1251,13 @@ const Enum::YLeaf CpeExtLldpPwrSrc::backupSrc {4, "backupSrc"};
 const Enum::YLeaf CpeExtLldpPwrSrc::primarySrc {5, "primarySrc"};
 const Enum::YLeaf CpeExtLldpPwrSrc::unknown {6, "unknown"};
 
+const Enum::YLeaf CpeExtLldpPwrClassOrZero::unknown {0, "unknown"};
+const Enum::YLeaf CpeExtLldpPwrClassOrZero::class0 {1, "class0"};
+const Enum::YLeaf CpeExtLldpPwrClassOrZero::class1 {2, "class1"};
+const Enum::YLeaf CpeExtLldpPwrClassOrZero::class2 {3, "class2"};
+const Enum::YLeaf CpeExtLldpPwrClassOrZero::class3 {4, "class3"};
+const Enum::YLeaf CpeExtLldpPwrClassOrZero::class4 {5, "class4"};
+
 const Enum::YLeaf CpeExtPwrPriority::critical {1, "critical"};
 const Enum::YLeaf CpeExtPwrPriority::high {2, "high"};
 const Enum::YLeaf CpeExtPwrPriority::low {3, "low"};
@@ -1208,6 +1269,10 @@ const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEnt
 const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsClass::class2 {4, "class2"};
 const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsClass::class3 {5, "class3"};
 const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsClass::class4 {6, "class4"};
+
+const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::CpeExtPsePortLldpPdPwrPairsOrZero::unknown {0, "unknown"};
+const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::CpeExtPsePortLldpPdPwrPairsOrZero::signal {1, "signal"};
+const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::CpeExtPsePortLldpPdPwrPairsOrZero::spare {2, "spare"};
 
 
 }

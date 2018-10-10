@@ -303,12 +303,14 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         class InterfacesState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesState
         class InterfacesLevels; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels
         class CircuitCounters; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::CircuitCounters
+        class InterfacesAuthentication; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication
         class InterfacesTimers; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesTimers
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAfiSafis> interfaces_afi_safis;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesState> interfaces_state;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels> interfaces_levels;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::CircuitCounters> circuit_counters;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication> interfaces_authentication;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesTimers> interfaces_timers;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface
@@ -450,12 +452,14 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf level_number; //type: uint32
+        class HelloAuthentication; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication
         class InterfacesLevelsState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::InterfacesLevelsState
         class PacketCounters; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters
         class Adjacencies; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::Adjacencies
         class LevelsTimers; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsTimers
         class LevelsAfiSafis; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication> hello_authentication;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::InterfacesLevelsState> interfaces_levels_state;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters> packet_counters;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::Adjacencies> adjacencies;
@@ -463,6 +467,73 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis> levels_afi_safis;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication : public ydk::Entity
+{
+    public:
+        HelloAuthentication();
+        ~HelloAuthentication();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Key; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key> key;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key : public ydk::Entity
+{
+    public:
+        Key();
+        ~Key();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf auth_password; //type: string
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::HelloAuthentication::Key::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::InterfacesLevelsState : public ydk::Entity
@@ -872,18 +943,20 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
 
         ydk::YLeaf afi_name; //type: string
         ydk::YLeaf safi_name; //type: string
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::State
+        class AfiSafiState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiState
+        class AfiSafiSegmentRouting; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::State> state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiState> afi_safi_state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting> afi_safi_segment_routing;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi
 
 
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::State : public ydk::Entity
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiState : public ydk::Entity
 {
     public:
-        State();
-        ~State();
+        AfiSafiState();
+        ~AfiSafiState();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -899,7 +972,100 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         ydk::YLeaf safi_name; //type: string
         ydk::YLeaf metric; //type: uint32
 
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::State
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiState
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting : public ydk::Entity
+{
+    public:
+        AfiSafiSegmentRouting();
+        ~AfiSafiSegmentRouting();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SegmentRoutingPrefixSids; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids> segment_routing_prefix_sids;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids : public ydk::Entity
+{
+    public:
+        SegmentRoutingPrefixSids();
+        ~SegmentRoutingPrefixSids();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SegmentRoutingPrefixSid; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid
+
+        ydk::YList segment_routing_prefix_sid;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid : public ydk::Entity
+{
+    public:
+        SegmentRoutingPrefixSid();
+        ~SegmentRoutingPrefixSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf sid_id; //type: string
+        ydk::YLeaf label_options; //type: OpenconfigSegmentRoutingLabelOptionsEnum
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::LevelsAfiSafis::LevelsAfiSafi::AfiSafiSegmentRouting::SegmentRoutingPrefixSids::SegmentRoutingPrefixSid::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::CircuitCounters : public ydk::Entity
@@ -949,6 +1115,73 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         ydk::YLeaf lan_dis_changes; //type: uint32
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::CircuitCounters::State
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication : public ydk::Entity
+{
+    public:
+        InterfacesAuthentication();
+        ~InterfacesAuthentication();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Key; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key> key;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key : public ydk::Entity
+{
+    public:
+        Key();
+        ~Key();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf auth_password; //type: string
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesAuthentication::Key::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesTimers : public ydk::Entity
@@ -1012,23 +1245,71 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Gl
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        class SegmentRouting; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting
         class LspBit; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit
         class Nsr; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Nsr
         class GracefulRestart; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::GracefulRestart
         class GlobalState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::GlobalState
+        class InterLevelPropagationPolicies; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies
         class AfiSafis; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::AfiSafis
         class Timers; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Timers
         class Transport; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Transport
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting> segment_routing;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit> lsp_bit;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Nsr> nsr;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::GracefulRestart> graceful_restart;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::GlobalState> global_state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies> inter_level_propagation_policies;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::AfiSafis> afi_safis;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Timers> timers;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Transport> transport;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting : public ydk::Entity
+{
+    public:
+        SegmentRouting();
+        ~SegmentRouting();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enabled; //type: boolean
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::SegmentRouting::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit : public ydk::Entity
@@ -1048,8 +1329,10 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Gl
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class OverloadBit; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::OverloadBit
+        class AttachedBit; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::OverloadBit> overload_bit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit> attached_bit;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit
 
@@ -1171,6 +1454,51 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Gl
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::OverloadBit::ResetTriggers::ResetTrigger::State
 
 
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit : public ydk::Entity
+{
+    public:
+        AttachedBit();
+        ~AttachedBit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ignore_bit; //type: boolean
+        ydk::YLeaf suppress_bit; //type: boolean
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::LspBit::AttachedBit::State
+
+
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::Nsr : public ydk::Entity
 {
     public:
@@ -1275,13 +1603,128 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Gl
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf authentication_check; //type: boolean
         ydk::YLeaf instance; //type: string
         ydk::YLeaf level_capability; //type: OpenconfigIsisTypesLevelTypeEnum
         ydk::YLeaf max_ecmp_paths; //type: uint8
+        ydk::YLeaf iid_tlv; //type: boolean
         ydk::YLeaf fast_flooding; //type: boolean
         ydk::YLeafList net; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::GlobalState
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies : public ydk::Entity
+{
+    public:
+        InterLevelPropagationPolicies();
+        ~InterLevelPropagationPolicies();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Level1ToLevel2; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2
+        class Level2ToLevel1; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2> level1_to_level2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1> level2_to_level1;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2 : public ydk::Entity
+{
+    public:
+        Level1ToLevel2();
+        ~Level1ToLevel2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList import_policy; //type: list of  string
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level1ToLevel2::State
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1 : public ydk::Entity
+{
+    public:
+        Level2ToLevel1();
+        ~Level2ToLevel1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList import_policy; //type: list of  string
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::InterLevelPropagationPolicies::Level2ToLevel1::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::AfiSafis : public ydk::Entity
@@ -1353,6 +1796,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Gl
         ydk::YLeaf afi_name; //type: string
         ydk::YLeaf safi_name; //type: string
         ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf enabled; //type: boolean
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Global::AfiSafis::AfiSafi::State
 
@@ -1630,17 +2074,66 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf level_number; //type: uint32
+        class RoutePreference; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference
         class LevelsState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsState
         class TrafficEngineering; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::TrafficEngineering
+        class LevelsAuthentication; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication
         class SystemLevelCounters; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::SystemLevelCounters
         class LinkStateDatabases; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference> route_preference;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsState> levels_state;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::TrafficEngineering> traffic_engineering;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication> levels_authentication;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::SystemLevelCounters> system_level_counters;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases> link_state_databases;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference : public ydk::Entity
+{
+    public:
+        RoutePreference();
+        ~RoutePreference();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf external_route_preference; //type: uint8
+        ydk::YLeaf internal_route_preference; //type: uint8
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::RoutePreference::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsState : public ydk::Entity
@@ -1661,6 +2154,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
 
         ydk::YLeaf level_number; //type: uint8
         ydk::YLeaf metric_style; //type: OpenconfigIsisTypesMetricStyleEnum
+        ydk::YLeaf authentication_check; //type: boolean
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsState
 
@@ -1709,6 +2203,73 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         ydk::YLeaf ipv6_router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::TrafficEngineering::State
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication : public ydk::Entity
+{
+    public:
+        LevelsAuthentication();
+        ~LevelsAuthentication();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Key; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key> key;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key : public ydk::Entity
+{
+    public:
+        Key();
+        ~Key();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf auth_password; //type: string
+
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LevelsAuthentication::Key::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::SystemLevelCounters : public ydk::Entity
@@ -8212,6 +8773,7 @@ class Isis::Instances::Instance : public ydk::Entity
         class NsrStatus; //type: Isis::Instances::Instance::NsrStatus
         class Interfaces; //type: Isis::Instances::Instance::Interfaces
         class CheckpointAdjacencies; //type: Isis::Instances::Instance::CheckpointAdjacencies
+        class FlexAlgos; //type: Isis::Instances::Instance::FlexAlgos
         class Srms; //type: Isis::Instances::Instance::Srms
         class ErrorLog; //type: Isis::Instances::Instance::ErrorLog
         class CheckpointInterfaces; //type: Isis::Instances::Instance::CheckpointInterfaces
@@ -8231,6 +8793,7 @@ class Isis::Instances::Instance : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::NsrStatus> nsr_status;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces> interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::CheckpointAdjacencies> checkpoint_adjacencies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::FlexAlgos> flex_algos;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Srms> srms;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::ErrorLog> error_log;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::CheckpointInterfaces> checkpoint_interfaces;
@@ -8738,12 +9301,16 @@ class Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyDa
         ydk::YLeaf next_hop; //type: string
         class AdjacencySid; //type: Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid
         class NonFrrAdjacencySid; //type: Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid
+        class EndXsid; //type: Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid
+        class NonFrrEndXsid; //type: Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid
         class InterfaceAddress; //type: Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::InterfaceAddress
         class UnderlyingAdjacencySid; //type: Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid
         class UnderlyingInterface; //type: Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingInterface
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid> adjacency_sid;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid> non_frr_adjacency_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid> end_xsid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid> non_frr_end_xsid;
         ydk::YList interface_address;
         ydk::YList underlying_adjacency_sid;
         ydk::YList underlying_interface;
@@ -8993,6 +9560,200 @@ class Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyDa
         ydk::YLeaf entry; //type: uint32
 
 }; // Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack
+
+
+class Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid : public ydk::Entity
+{
+    public:
+        EndXsid();
+        ~EndXsid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf end_xsid_function; //type: uint16
+        class EndXsid_; //type: Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_
+        class EndXsidBackup; //type: Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_> end_xsid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup> end_xsid_backup;
+        
+}; // Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid
+
+
+class Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_ : public ydk::Entity
+{
+    public:
+        EndXsid_();
+        ~EndXsid_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_
+
+
+class Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup : public ydk::Entity
+{
+    public:
+        EndXsidBackup();
+        ~EndXsidBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf backup_stack_size; //type: uint8
+        ydk::YLeaf backup_node_address; //type: string
+        ydk::YLeaf backup_nexthop; //type: string
+        ydk::YLeaf backup_interface; //type: string
+        class BackupStack; //type: Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack
+
+        ydk::YList backup_stack;
+        
+}; // Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup
+
+
+class Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack : public ydk::Entity
+{
+    public:
+        BackupStack();
+        ~BackupStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack
+
+
+class Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid : public ydk::Entity
+{
+    public:
+        NonFrrEndXsid();
+        ~NonFrrEndXsid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf end_xsid_function; //type: uint16
+        class EndXsid; //type: Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid
+        class EndXsidBackup; //type: Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid> end_xsid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup> end_xsid_backup;
+        
+}; // Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid
+
+
+class Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid : public ydk::Entity
+{
+    public:
+        EndXsid();
+        ~EndXsid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid
+
+
+class Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup : public ydk::Entity
+{
+    public:
+        EndXsidBackup();
+        ~EndXsidBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf backup_stack_size; //type: uint8
+        ydk::YLeaf backup_node_address; //type: string
+        ydk::YLeaf backup_nexthop; //type: string
+        ydk::YLeaf backup_interface; //type: string
+        class BackupStack; //type: Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack
+
+        ydk::YList backup_stack;
+        
+}; // Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup
+
+
+class Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack : public ydk::Entity
+{
+    public:
+        BackupStack();
+        ~BackupStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack
 
 
 class Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::InterfaceAddress : public ydk::Entity
@@ -10529,12 +11290,16 @@ class Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adjacenc
         ydk::YLeaf next_hop; //type: string
         class AdjacencySid; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid
         class NonFrrAdjacencySid; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid
+        class EndXsid; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid
+        class NonFrrEndXsid; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid
         class InterfaceAddress; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress
         class UnderlyingAdjacencySid; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid
         class UnderlyingInterface; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::UnderlyingInterface
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid> adjacency_sid;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid> non_frr_adjacency_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid> end_xsid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid> non_frr_end_xsid;
         ydk::YList interface_address;
         ydk::YList underlying_adjacency_sid;
         ydk::YList underlying_interface;
@@ -10786,6 +11551,200 @@ class Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adjacenc
 }; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack
 
 
+class Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid : public ydk::Entity
+{
+    public:
+        EndXsid();
+        ~EndXsid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf end_xsid_function; //type: uint16
+        class EndXsid_; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid::EndXsid_
+        class EndXsidBackup; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid::EndXsid_> end_xsid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup> end_xsid_backup;
+        
+}; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid
+
+
+class Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid::EndXsid_ : public ydk::Entity
+{
+    public:
+        EndXsid_();
+        ~EndXsid_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid::EndXsid_
+
+
+class Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup : public ydk::Entity
+{
+    public:
+        EndXsidBackup();
+        ~EndXsidBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf backup_stack_size; //type: uint8
+        ydk::YLeaf backup_node_address; //type: string
+        ydk::YLeaf backup_nexthop; //type: string
+        ydk::YLeaf backup_interface; //type: string
+        class BackupStack; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack
+
+        ydk::YList backup_stack;
+        
+}; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup
+
+
+class Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack : public ydk::Entity
+{
+    public:
+        BackupStack();
+        ~BackupStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack
+
+
+class Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid : public ydk::Entity
+{
+    public:
+        NonFrrEndXsid();
+        ~NonFrrEndXsid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf end_xsid_function; //type: uint16
+        class EndXsid; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid
+        class EndXsidBackup; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid> end_xsid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup> end_xsid_backup;
+        
+}; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid
+
+
+class Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid : public ydk::Entity
+{
+    public:
+        EndXsid();
+        ~EndXsid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid
+
+
+class Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup : public ydk::Entity
+{
+    public:
+        EndXsidBackup();
+        ~EndXsidBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf backup_stack_size; //type: uint8
+        ydk::YLeaf backup_node_address; //type: string
+        ydk::YLeaf backup_nexthop; //type: string
+        ydk::YLeaf backup_interface; //type: string
+        class BackupStack; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack
+
+        ydk::YList backup_stack;
+        
+}; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup
+
+
+class Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack : public ydk::Entity
+{
+    public:
+        BackupStack();
+        ~BackupStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack
+
+
 class Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::InterfaceAddress : public ydk::Entity
 {
     public:
@@ -10918,6 +11877,7 @@ class Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::LspHe
         ydk::YLeaf local_lsp_flag; //type: boolean
         ydk::YLeaf lsp_active_flag; //type: boolean
         ydk::YLeaf lsp_holdtime; //type: uint16
+        ydk::YLeaf lsp_rcvd_holdtime; //type: uint16
         ydk::YLeaf lsp_sequence_number; //type: uint32
         ydk::YLeaf lsp_checksum; //type: uint16
         ydk::YLeaf lsp_partition_repair_supported_flag; //type: boolean
@@ -11002,6 +11962,7 @@ class Isis::Instances::Instance::Levels::Level::Lsps::Lsp::LspHeaderData : publi
         ydk::YLeaf local_lsp_flag; //type: boolean
         ydk::YLeaf lsp_active_flag; //type: boolean
         ydk::YLeaf lsp_holdtime; //type: uint16
+        ydk::YLeaf lsp_rcvd_holdtime; //type: uint16
         ydk::YLeaf lsp_sequence_number; //type: uint32
         ydk::YLeaf lsp_checksum; //type: uint16
         ydk::YLeaf lsp_partition_repair_supported_flag; //type: boolean
@@ -11252,6 +12213,7 @@ class Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::NewLspEnt
         ydk::YLeaf local_lsp_flag; //type: boolean
         ydk::YLeaf lsp_active_flag; //type: boolean
         ydk::YLeaf lsp_holdtime; //type: uint16
+        ydk::YLeaf lsp_rcvd_holdtime; //type: uint16
         ydk::YLeaf lsp_sequence_number; //type: uint32
         ydk::YLeaf lsp_checksum; //type: uint16
         ydk::YLeaf lsp_partition_repair_supported_flag; //type: boolean
@@ -11288,6 +12250,7 @@ class Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::OldLspEnt
         ydk::YLeaf local_lsp_flag; //type: boolean
         ydk::YLeaf lsp_active_flag; //type: boolean
         ydk::YLeaf lsp_holdtime; //type: uint16
+        ydk::YLeaf lsp_rcvd_holdtime; //type: uint16
         ydk::YLeaf lsp_sequence_number; //type: uint32
         ydk::YLeaf lsp_checksum; //type: uint16
         ydk::YLeaf lsp_partition_repair_supported_flag; //type: boolean
@@ -11346,21 +12309,2566 @@ class Isis::Instances::Instance::Topologies::Topology : public ydk::Entity
         ydk::YLeaf af_name; //type: IsisAddressFamily
         ydk::YLeaf saf_name; //type: IsisSubAddressFamily
         ydk::YLeaf topology_name; //type: string
+        class Ipv6FlexRouteTables; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables
         class FrrSummary; //type: Isis::Instances::Instance::Topologies::Topology::FrrSummary
+        class Srv6Locators; //type: Isis::Instances::Instance::Topologies::Topology::Srv6Locators
         class TopologyLevels; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels
         class Ipv6Routes; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes
         class Ipv6frrBackups; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups
         class Ipv4frrBackups; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups
+        class Ipv4FlexRouteTables; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables
         class Ipv4Routes; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables> ipv6_flex_route_tables;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::FrrSummary> frr_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Srv6Locators> srv6_locators;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels> topology_levels;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes> ipv6_routes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups> ipv6frr_backups;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups> ipv4frr_backups;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables> ipv4_flex_route_tables;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes> ipv4_routes;
         
 }; // Isis::Instances::Instance::Topologies::Topology
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables : public ydk::Entity
+{
+    public:
+        Ipv6FlexRouteTables();
+        ~Ipv6FlexRouteTables();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Ipv6FlexRouteTable; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable
+
+        ydk::YList ipv6_flex_route_table;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable : public ydk::Entity
+{
+    public:
+        Ipv6FlexRouteTable();
+        ~Ipv6FlexRouteTable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf flex_alg; //type: uint32
+        class Ipv6FlexRoute; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute
+
+        ydk::YList ipv6_flex_route;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute : public ydk::Entity
+{
+    public:
+        Ipv6FlexRoute();
+        ~Ipv6FlexRoute();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint32
+        class ConnectedStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::ConnectedStatus
+        class RedistributedStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus
+        class NativeStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus
+        class PerLevelAdvertisingDetail; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::ConnectedStatus> connected_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus> redistributed_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus> native_status;
+        ydk::YList per_level_advertising_detail;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::ConnectedStatus : public ydk::Entity
+{
+    public:
+        ConnectedStatus();
+        ~ConnectedStatus();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_valid; //type: IsisValid
+        class ConnectedDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::ConnectedStatus::ConnectedDetails
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::ConnectedStatus::ConnectedDetails> connected_details;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::ConnectedStatus
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::ConnectedStatus::ConnectedDetails : public ydk::Entity
+{
+    public:
+        ConnectedDetails();
+        ~ConnectedDetails();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Interface; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::ConnectedStatus::ConnectedDetails::Interface
+
+        ydk::YList interface;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::ConnectedStatus::ConnectedDetails
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::ConnectedStatus::ConnectedDetails::Interface : public ydk::Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::ConnectedStatus::ConnectedDetails::Interface
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus : public ydk::Entity
+{
+    public:
+        RedistributedStatus();
+        ~RedistributedStatus();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_valid; //type: IsisValid
+        class RedistributionDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus::RedistributionDetails
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus::RedistributionDetails> redistribution_details;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus::RedistributionDetails : public ydk::Entity
+{
+    public:
+        RedistributionDetails();
+        ~RedistributionDetails();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class IsisShRouteRedistDetail; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
+
+        ydk::YList isis_sh_route_redist_detail;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus::RedistributionDetails
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail : public ydk::Entity
+{
+    public:
+        IsisShRouteRedistDetail();
+        ~IsisShRouteRedistDetail();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf level; //type: IsisLevel
+        class Owner; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner> owner;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner : public ydk::Entity
+{
+    public:
+        Owner();
+        ~Owner();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf protocol; //type: IsisRedistProto
+        ydk::YLeaf isis_instance_id; //type: string
+        ydk::YLeaf ospf_process_id; //type: string
+        ydk::YLeaf ospfv3_process_id; //type: string
+        ydk::YLeaf bgp_as_number; //type: string
+        ydk::YLeaf eigrp_as_number; //type: string
+        ydk::YLeaf application_name; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus : public ydk::Entity
+{
+    public:
+        NativeStatus();
+        ~NativeStatus();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_valid; //type: IsisValid
+        class NativeDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails> native_details;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails : public ydk::Entity
+{
+    public:
+        NativeDetails();
+        ~NativeDetails();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf priority; //type: IsisPrefixPriority
+        class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary
+        class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary> primary;
+        ydk::YList backup;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary : public ydk::Entity
+{
+    public:
+        Primary();
+        ~Primary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf origin; //type: IsisPrefixOrigin
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf multicast_metric; //type: uint32
+        ydk::YLeaf is_external_metric; //type: boolean
+        ydk::YLeaf administrative_distance; //type: uint16
+        class Paths; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths
+        class UcmpNextHop; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop
+        class MulticastPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath
+        class SrtePath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath
+        class ExplicitPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath
+        class Source; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Source
+        class MulticastSource; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource
+
+        ydk::YList paths;
+        ydk::YList ucmp_next_hop;
+        ydk::YList multicast_path;
+        ydk::YList srte_path;
+        ydk::YList explicit_path;
+        ydk::YList source;
+        ydk::YList multicast_source;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths : public ydk::Entity
+{
+    public:
+        Paths();
+        ~Paths();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop : public ydk::Entity
+{
+    public:
+        UcmpNextHop();
+        ~UcmpNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf total_ucmp_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup> frr_backup;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath : public ydk::Entity
+{
+    public:
+        MulticastPath();
+        ~MulticastPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath : public ydk::Entity
+{
+    public:
+        SrtePath();
+        ~SrtePath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath : public ydk::Entity
+{
+    public:
+        ExplicitPath();
+        ~ExplicitPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Source : public ydk::Entity
+{
+    public:
+        Source();
+        ~Source();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_lsp_id; //type: string
+        ydk::YLeaf source_address; //type: string
+        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Source::Tags
+        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Source::NodalSid
+
+        ydk::YList tags;
+        ydk::YList nodal_sid;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Source
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Source::Tags : public ydk::Entity
+{
+    public:
+        Tags();
+        ~Tags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Source::Tags
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Source::NodalSid : public ydk::Entity
+{
+    public:
+        NodalSid();
+        ~NodalSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_value; //type: uint32
+        ydk::YLeaf rflag; //type: uint8
+        ydk::YLeaf nflag; //type: uint8
+        ydk::YLeaf pflag; //type: uint8
+        ydk::YLeaf eflag; //type: uint8
+        ydk::YLeaf vflag; //type: uint8
+        ydk::YLeaf lflag; //type: uint8
+        ydk::YLeaf algorithm; //type: uint8
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Source::NodalSid
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource : public ydk::Entity
+{
+    public:
+        MulticastSource();
+        ~MulticastSource();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_lsp_id; //type: string
+        ydk::YLeaf source_address; //type: string
+        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource::Tags
+        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid
+
+        ydk::YList tags;
+        ydk::YList nodal_sid;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource::Tags : public ydk::Entity
+{
+    public:
+        Tags();
+        ~Tags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource::Tags
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid : public ydk::Entity
+{
+    public:
+        NodalSid();
+        ~NodalSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_value; //type: uint32
+        ydk::YLeaf rflag; //type: uint8
+        ydk::YLeaf nflag; //type: uint8
+        ydk::YLeaf pflag; //type: uint8
+        ydk::YLeaf eflag; //type: uint8
+        ydk::YLeaf vflag; //type: uint8
+        ydk::YLeaf lflag; //type: uint8
+        ydk::YLeaf algorithm; //type: uint8
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup : public ydk::Entity
+{
+    public:
+        Backup();
+        ~Backup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf origin; //type: IsisPrefixOrigin
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf multicast_metric; //type: uint32
+        ydk::YLeaf is_external_metric; //type: boolean
+        ydk::YLeaf administrative_distance; //type: uint16
+        class Paths; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths
+        class UcmpNextHop; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop
+        class MulticastPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath
+        class SrtePath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath
+        class ExplicitPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath
+        class Source; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Source
+        class MulticastSource; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource
+
+        ydk::YList paths;
+        ydk::YList ucmp_next_hop;
+        ydk::YList multicast_path;
+        ydk::YList srte_path;
+        ydk::YList explicit_path;
+        ydk::YList source;
+        ydk::YList multicast_source;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths : public ydk::Entity
+{
+    public:
+        Paths();
+        ~Paths();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop : public ydk::Entity
+{
+    public:
+        UcmpNextHop();
+        ~UcmpNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf total_ucmp_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup> frr_backup;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath : public ydk::Entity
+{
+    public:
+        MulticastPath();
+        ~MulticastPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath : public ydk::Entity
+{
+    public:
+        SrtePath();
+        ~SrtePath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath : public ydk::Entity
+{
+    public:
+        ExplicitPath();
+        ~ExplicitPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Source : public ydk::Entity
+{
+    public:
+        Source();
+        ~Source();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_lsp_id; //type: string
+        ydk::YLeaf source_address; //type: string
+        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Source::Tags
+        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Source::NodalSid
+
+        ydk::YList tags;
+        ydk::YList nodal_sid;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Source
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Source::Tags : public ydk::Entity
+{
+    public:
+        Tags();
+        ~Tags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Source::Tags
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Source::NodalSid : public ydk::Entity
+{
+    public:
+        NodalSid();
+        ~NodalSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_value; //type: uint32
+        ydk::YLeaf rflag; //type: uint8
+        ydk::YLeaf nflag; //type: uint8
+        ydk::YLeaf pflag; //type: uint8
+        ydk::YLeaf eflag; //type: uint8
+        ydk::YLeaf vflag; //type: uint8
+        ydk::YLeaf lflag; //type: uint8
+        ydk::YLeaf algorithm; //type: uint8
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Source::NodalSid
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource : public ydk::Entity
+{
+    public:
+        MulticastSource();
+        ~MulticastSource();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_lsp_id; //type: string
+        ydk::YLeaf source_address; //type: string
+        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource::Tags
+        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
+
+        ydk::YList tags;
+        ydk::YList nodal_sid;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource::Tags : public ydk::Entity
+{
+    public:
+        Tags();
+        ~Tags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource::Tags
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid : public ydk::Entity
+{
+    public:
+        NodalSid();
+        ~NodalSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_value; //type: uint32
+        ydk::YLeaf rflag; //type: uint8
+        ydk::YLeaf nflag; //type: uint8
+        ydk::YLeaf pflag; //type: uint8
+        ydk::YLeaf eflag; //type: uint8
+        ydk::YLeaf vflag; //type: uint8
+        ydk::YLeaf lflag; //type: uint8
+        ydk::YLeaf algorithm; //type: uint8
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail : public ydk::Entity
+{
+    public:
+        PerLevelAdvertisingDetail();
+        ~PerLevelAdvertisingDetail();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf level; //type: IsisLevel
+        ydk::YLeaf advertising_origin; //type: IsisShRouteAdvOrigin
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf is_propagated; //type: boolean
+        ydk::YLeaf is_external_metric; //type: boolean
+        ydk::YLeaf is_external_reachability; //type: boolean
+        ydk::YLeaf is_interarea; //type: boolean
+        class SummarizationStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus
+        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::Tags
+        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::NodalSid
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus> summarization_status;
+        ydk::YList tags;
+        ydk::YList nodal_sid;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus : public ydk::Entity
+{
+    public:
+        SummarizationStatus();
+        ~SummarizationStatus();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_valid; //type: IsisValid
+        class SummaryPrefix; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix> summary_prefix;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix : public ydk::Entity
+{
+    public:
+        SummaryPrefix();
+        ~SummaryPrefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::Tags : public ydk::Entity
+{
+    public:
+        Tags();
+        ~Tags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::Tags
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::NodalSid : public ydk::Entity
+{
+    public:
+        NodalSid();
+        ~NodalSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_value; //type: uint32
+        ydk::YLeaf rflag; //type: uint8
+        ydk::YLeaf nflag; //type: uint8
+        ydk::YLeaf pflag; //type: uint8
+        ydk::YLeaf eflag; //type: uint8
+        ydk::YLeaf vflag; //type: uint8
+        ydk::YLeaf lflag; //type: uint8
+        ydk::YLeaf algorithm; //type: uint8
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::PerLevelAdvertisingDetail::NodalSid
 
 
 class Isis::Instances::Instance::Topologies::Topology::FrrSummary : public ydk::Entity
@@ -11610,6 +15118,81 @@ class Isis::Instances::Instance::Topologies::Topology::FrrSummary::UnreachablePr
         ydk::YLeaf low; //type: uint32
 
 }; // Isis::Instances::Instance::Topologies::Topology::FrrSummary::UnreachablePrefixes
+
+
+class Isis::Instances::Instance::Topologies::Topology::Srv6Locators : public ydk::Entity
+{
+    public:
+        Srv6Locators();
+        ~Srv6Locators();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Srv6Locator; //type: Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator
+
+        ydk::YList srv6_locator;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Srv6Locators
+
+
+class Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator : public ydk::Entity
+{
+    public:
+        Srv6Locator();
+        ~Srv6Locator();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint32
+        ydk::YLeaf locator_name; //type: string
+        ydk::YLeaf locator_id; //type: uint32
+        ydk::YLeaf locator_format; //type: uint32
+        ydk::YLeaf locator_flags; //type: uint16
+        ydk::YLeaf number_of_reserved_opcodes; //type: uint8
+        class Opcode; //type: Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::Opcode
+
+        ydk::YList opcode;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator
+
+
+class Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::Opcode : public ydk::Entity
+{
+    public:
+        Opcode();
+        ~Opcode();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf function_type; //type: Srv6EndFunction
+        ydk::YLeaf function_opcode; //type: uint16
+
+}; // Isis::Instances::Instance::Topologies::Topology::Srv6Locators::Srv6Locator::Opcode
 
 
 class Isis::Instances::Instance::Topologies::Topology::TopologyLevels : public ydk::Entity
@@ -21863,6 +25446,2545 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::PerLevelAdvertisingDetail::NodalSid
 
 
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables : public ydk::Entity
+{
+    public:
+        Ipv4FlexRouteTables();
+        ~Ipv4FlexRouteTables();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Ipv4FlexRouteTable; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable
+
+        ydk::YList ipv4_flex_route_table;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable : public ydk::Entity
+{
+    public:
+        Ipv4FlexRouteTable();
+        ~Ipv4FlexRouteTable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf flex_alg; //type: uint32
+        class Ipv4FlexRoute; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute
+
+        ydk::YList ipv4_flex_route;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute : public ydk::Entity
+{
+    public:
+        Ipv4FlexRoute();
+        ~Ipv4FlexRoute();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint32
+        class ConnectedStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::ConnectedStatus
+        class RedistributedStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus
+        class NativeStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus
+        class PerLevelAdvertisingDetail; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::ConnectedStatus> connected_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus> redistributed_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus> native_status;
+        ydk::YList per_level_advertising_detail;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::ConnectedStatus : public ydk::Entity
+{
+    public:
+        ConnectedStatus();
+        ~ConnectedStatus();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_valid; //type: IsisValid
+        class ConnectedDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::ConnectedStatus::ConnectedDetails
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::ConnectedStatus::ConnectedDetails> connected_details;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::ConnectedStatus
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::ConnectedStatus::ConnectedDetails : public ydk::Entity
+{
+    public:
+        ConnectedDetails();
+        ~ConnectedDetails();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Interface; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::ConnectedStatus::ConnectedDetails::Interface
+
+        ydk::YList interface;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::ConnectedStatus::ConnectedDetails
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::ConnectedStatus::ConnectedDetails::Interface : public ydk::Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::ConnectedStatus::ConnectedDetails::Interface
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus : public ydk::Entity
+{
+    public:
+        RedistributedStatus();
+        ~RedistributedStatus();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_valid; //type: IsisValid
+        class RedistributionDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus::RedistributionDetails
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus::RedistributionDetails> redistribution_details;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus::RedistributionDetails : public ydk::Entity
+{
+    public:
+        RedistributionDetails();
+        ~RedistributionDetails();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class IsisShRouteRedistDetail; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
+
+        ydk::YList isis_sh_route_redist_detail;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus::RedistributionDetails
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail : public ydk::Entity
+{
+    public:
+        IsisShRouteRedistDetail();
+        ~IsisShRouteRedistDetail();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf level; //type: IsisLevel
+        class Owner; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner> owner;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner : public ydk::Entity
+{
+    public:
+        Owner();
+        ~Owner();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf protocol; //type: IsisRedistProto
+        ydk::YLeaf isis_instance_id; //type: string
+        ydk::YLeaf ospf_process_id; //type: string
+        ydk::YLeaf ospfv3_process_id; //type: string
+        ydk::YLeaf bgp_as_number; //type: string
+        ydk::YLeaf eigrp_as_number; //type: string
+        ydk::YLeaf application_name; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus : public ydk::Entity
+{
+    public:
+        NativeStatus();
+        ~NativeStatus();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_valid; //type: IsisValid
+        class NativeDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails> native_details;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails : public ydk::Entity
+{
+    public:
+        NativeDetails();
+        ~NativeDetails();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf priority; //type: IsisPrefixPriority
+        class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary
+        class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary> primary;
+        ydk::YList backup;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary : public ydk::Entity
+{
+    public:
+        Primary();
+        ~Primary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf origin; //type: IsisPrefixOrigin
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf multicast_metric; //type: uint32
+        ydk::YLeaf is_external_metric; //type: boolean
+        ydk::YLeaf administrative_distance; //type: uint16
+        class Paths; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths
+        class UcmpNextHop; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop
+        class MulticastPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath
+        class SrtePath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath
+        class ExplicitPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath
+        class Source; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Source
+        class MulticastSource; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource
+
+        ydk::YList paths;
+        ydk::YList ucmp_next_hop;
+        ydk::YList multicast_path;
+        ydk::YList srte_path;
+        ydk::YList explicit_path;
+        ydk::YList source;
+        ydk::YList multicast_source;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths : public ydk::Entity
+{
+    public:
+        Paths();
+        ~Paths();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop : public ydk::Entity
+{
+    public:
+        UcmpNextHop();
+        ~UcmpNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf total_ucmp_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup> frr_backup;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath : public ydk::Entity
+{
+    public:
+        MulticastPath();
+        ~MulticastPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath : public ydk::Entity
+{
+    public:
+        SrtePath();
+        ~SrtePath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath : public ydk::Entity
+{
+    public:
+        ExplicitPath();
+        ~ExplicitPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Source : public ydk::Entity
+{
+    public:
+        Source();
+        ~Source();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_lsp_id; //type: string
+        ydk::YLeaf source_address; //type: string
+        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Source::Tags
+        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Source::NodalSid
+
+        ydk::YList tags;
+        ydk::YList nodal_sid;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Source
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Source::Tags : public ydk::Entity
+{
+    public:
+        Tags();
+        ~Tags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Source::Tags
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Source::NodalSid : public ydk::Entity
+{
+    public:
+        NodalSid();
+        ~NodalSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_value; //type: uint32
+        ydk::YLeaf rflag; //type: uint8
+        ydk::YLeaf nflag; //type: uint8
+        ydk::YLeaf pflag; //type: uint8
+        ydk::YLeaf eflag; //type: uint8
+        ydk::YLeaf vflag; //type: uint8
+        ydk::YLeaf lflag; //type: uint8
+        ydk::YLeaf algorithm; //type: uint8
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Source::NodalSid
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource : public ydk::Entity
+{
+    public:
+        MulticastSource();
+        ~MulticastSource();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_lsp_id; //type: string
+        ydk::YLeaf source_address; //type: string
+        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource::Tags
+        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid
+
+        ydk::YList tags;
+        ydk::YList nodal_sid;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource::Tags : public ydk::Entity
+{
+    public:
+        Tags();
+        ~Tags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource::Tags
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid : public ydk::Entity
+{
+    public:
+        NodalSid();
+        ~NodalSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_value; //type: uint32
+        ydk::YLeaf rflag; //type: uint8
+        ydk::YLeaf nflag; //type: uint8
+        ydk::YLeaf pflag; //type: uint8
+        ydk::YLeaf eflag; //type: uint8
+        ydk::YLeaf vflag; //type: uint8
+        ydk::YLeaf lflag; //type: uint8
+        ydk::YLeaf algorithm; //type: uint8
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup : public ydk::Entity
+{
+    public:
+        Backup();
+        ~Backup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf origin; //type: IsisPrefixOrigin
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf multicast_metric; //type: uint32
+        ydk::YLeaf is_external_metric; //type: boolean
+        ydk::YLeaf administrative_distance; //type: uint16
+        class Paths; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths
+        class UcmpNextHop; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop
+        class MulticastPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath
+        class SrtePath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath
+        class ExplicitPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath
+        class Source; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Source
+        class MulticastSource; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource
+
+        ydk::YList paths;
+        ydk::YList ucmp_next_hop;
+        ydk::YList multicast_path;
+        ydk::YList srte_path;
+        ydk::YList explicit_path;
+        ydk::YList source;
+        ydk::YList multicast_source;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths : public ydk::Entity
+{
+    public:
+        Paths();
+        ~Paths();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop : public ydk::Entity
+{
+    public:
+        UcmpNextHop();
+        ~UcmpNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf total_ucmp_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup> frr_backup;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath : public ydk::Entity
+{
+    public:
+        MulticastPath();
+        ~MulticastPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath : public ydk::Entity
+{
+    public:
+        SrtePath();
+        ~SrtePath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath : public ydk::Entity
+{
+    public:
+        ExplicitPath();
+        ~ExplicitPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf is_te_tunnel_interface; //type: boolean
+        ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
+        class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
+        class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup> frr_backup;
+        ydk::YList uloop_explicit;
+        ydk::YList nnh;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup : public ydk::Entity
+{
+    public:
+        FrrBackup();
+        ~FrrBackup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf egress_interface; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf tunnel_egress_interface; //type: string
+        ydk::YLeaf neighbor_snpa; //type: string
+        ydk::YLeaf remote_lfa_system_id; //type: string
+        ydk::YLeaf remote_lfa_router_id; //type: string
+        ydk::YLeaf remote_lfa_system_pid; //type: string
+        ydk::YLeaf remote_lfa_router_pid; //type: string
+        ydk::YLeaf total_backup_distance; //type: uint32
+        ydk::YLeaf segment_routing_sid_value; //type: uint32
+        ydk::YLeaf num_sid; //type: uint32
+        ydk::YLeaf backup_repair_list_size; //type: uint32
+        ydk::YLeaf tilfa_computation; //type: IsisTilfaComputation
+        ydk::YLeaf prefix_source_node_id; //type: string
+        ydk::YLeaf is_downstream; //type: boolean
+        ydk::YLeaf is_lc_disjoint; //type: boolean
+        ydk::YLeaf is_node_protecting; //type: boolean
+        ydk::YLeaf is_primary_path; //type: boolean
+        ydk::YLeaf is_srlg_disjoint; //type: boolean
+        ydk::YLeaf is_remote_lfa; //type: boolean
+        ydk::YLeaf is_epcfrr_lfa; //type: boolean
+        ydk::YLeaf is_strict_spflfa; //type: boolean
+        ydk::YLeaf is_tunnel_requested; //type: boolean
+        ydk::YLeaf weight; //type: uint32
+        class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
+        class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
+
+        ydk::YList segment_routing_sid_value_entry;
+        ydk::YList backup_repair;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry : public ydk::Entity
+{
+    public:
+        SegmentRoutingSidValueEntry();
+        ~SegmentRoutingSidValueEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair : public ydk::Entity
+{
+    public:
+        BackupRepair();
+        ~BackupRepair();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit : public ydk::Entity
+{
+    public:
+        UloopExplicit();
+        ~UloopExplicit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf repair_element_node_id; //type: string
+        ydk::YLeaf repair_ipv4_addr; //type: string
+        ydk::YLeaf repair_ipv6_addr; //type: string
+        ydk::YLeaf repair_label; //type: uint32
+        ydk::YLeaf repair_element_type; //type: uint32
+        ydk::YLeaf repair_strict_spf_label; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh : public ydk::Entity
+{
+    public:
+        Nnh();
+        ~Nnh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_id_set; //type: boolean
+        ydk::YLeaf ipv4_set; //type: boolean
+        ydk::YLeaf link_id; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Source : public ydk::Entity
+{
+    public:
+        Source();
+        ~Source();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_lsp_id; //type: string
+        ydk::YLeaf source_address; //type: string
+        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Source::Tags
+        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Source::NodalSid
+
+        ydk::YList tags;
+        ydk::YList nodal_sid;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Source
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Source::Tags : public ydk::Entity
+{
+    public:
+        Tags();
+        ~Tags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Source::Tags
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Source::NodalSid : public ydk::Entity
+{
+    public:
+        NodalSid();
+        ~NodalSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_value; //type: uint32
+        ydk::YLeaf rflag; //type: uint8
+        ydk::YLeaf nflag; //type: uint8
+        ydk::YLeaf pflag; //type: uint8
+        ydk::YLeaf eflag; //type: uint8
+        ydk::YLeaf vflag; //type: uint8
+        ydk::YLeaf lflag; //type: uint8
+        ydk::YLeaf algorithm; //type: uint8
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Source::NodalSid
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource : public ydk::Entity
+{
+    public:
+        MulticastSource();
+        ~MulticastSource();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_lsp_id; //type: string
+        ydk::YLeaf source_address; //type: string
+        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource::Tags
+        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
+
+        ydk::YList tags;
+        ydk::YList nodal_sid;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource::Tags : public ydk::Entity
+{
+    public:
+        Tags();
+        ~Tags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource::Tags
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid : public ydk::Entity
+{
+    public:
+        NodalSid();
+        ~NodalSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_value; //type: uint32
+        ydk::YLeaf rflag; //type: uint8
+        ydk::YLeaf nflag; //type: uint8
+        ydk::YLeaf pflag; //type: uint8
+        ydk::YLeaf eflag; //type: uint8
+        ydk::YLeaf vflag; //type: uint8
+        ydk::YLeaf lflag; //type: uint8
+        ydk::YLeaf algorithm; //type: uint8
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail : public ydk::Entity
+{
+    public:
+        PerLevelAdvertisingDetail();
+        ~PerLevelAdvertisingDetail();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf level; //type: IsisLevel
+        ydk::YLeaf advertising_origin; //type: IsisShRouteAdvOrigin
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf is_propagated; //type: boolean
+        ydk::YLeaf is_external_metric; //type: boolean
+        ydk::YLeaf is_external_reachability; //type: boolean
+        ydk::YLeaf is_interarea; //type: boolean
+        class SummarizationStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus
+        class Tags; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::Tags
+        class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::NodalSid
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus> summarization_status;
+        ydk::YList tags;
+        ydk::YList nodal_sid;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus : public ydk::Entity
+{
+    public:
+        SummarizationStatus();
+        ~SummarizationStatus();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_valid; //type: IsisValid
+        class SummaryPrefix; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix> summary_prefix;
+        
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix : public ydk::Entity
+{
+    public:
+        SummaryPrefix();
+        ~SummaryPrefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::Tags : public ydk::Entity
+{
+    public:
+        Tags();
+        ~Tags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::Tags
+
+
+class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::NodalSid : public ydk::Entity
+{
+    public:
+        NodalSid();
+        ~NodalSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_value; //type: uint32
+        ydk::YLeaf rflag; //type: uint8
+        ydk::YLeaf nflag; //type: uint8
+        ydk::YLeaf pflag; //type: uint8
+        ydk::YLeaf eflag; //type: uint8
+        ydk::YLeaf vflag; //type: uint8
+        ydk::YLeaf lflag; //type: uint8
+        ydk::YLeaf algorithm; //type: uint8
+
+}; // Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::PerLevelAdvertisingDetail::NodalSid
+
+
 class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes : public ydk::Entity
 {
     public:
@@ -26689,6 +32811,57 @@ class Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::Che
 }; // Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::CheckpointAdjacencyPerAddressFamilyNextHop
 
 
+class Isis::Instances::Instance::FlexAlgos : public ydk::Entity
+{
+    public:
+        FlexAlgos();
+        ~FlexAlgos();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FlexAlgo; //type: Isis::Instances::Instance::FlexAlgos::FlexAlgo
+
+        ydk::YList flex_algo;
+        
+}; // Isis::Instances::Instance::FlexAlgos
+
+
+class Isis::Instances::Instance::FlexAlgos::FlexAlgo : public ydk::Entity
+{
+    public:
+        FlexAlgo();
+        ~FlexAlgo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf flex_alg; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf local_priority; //type: uint32
+        ydk::YLeaf disabled; //type: boolean
+        ydk::YLeaf definition_prioroty; //type: uint32
+        ydk::YLeaf definition_local; //type: boolean
+        ydk::YLeaf definition_equal_local; //type: boolean
+        ydk::YLeaf definiion_node_id; //type: string
+
+}; // Isis::Instances::Instance::FlexAlgos::FlexAlgo
+
+
 class Isis::Instances::Instance::Srms : public ydk::Entity
 {
     public:
@@ -28505,9 +34678,11 @@ class IsisLspTrigger : public ydk::Enum
         static const ydk::Enum::YLeaf isis_lsp_trig_config_force_init;
         static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_add;
         static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_delete;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_change;
         static const ydk::Enum::YLeaf isis_lsp_trig_msd;
         static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_wait_timer;
         static const ydk::Enum::YLeaf isis_lsp_trig_direct_gen;
+        static const ydk::Enum::YLeaf isis_lsp_trig_flex_algo_enable_disable;
         static const ydk::Enum::YLeaf isis_lsp_trig_pm_delay_loss;
         static const ydk::Enum::YLeaf isis_lsp_trig_pm_bw_util;
 
@@ -28547,44 +34722,6 @@ class SrmsMiFlagEB : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf false_;
         static const ydk::Enum::YLeaf true_;
-
-};
-
-class IsisSpfTrigger : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_spf_trig_config;
-        static const ydk::Enum::YLeaf isis_spf_trig_nsr_fo;
-        static const ydk::Enum::YLeaf isis_spf_trig_periodic;
-        static const ydk::Enum::YLeaf isis_spf_trig_clear;
-        static const ydk::Enum::YLeaf isis_spf_trig_newadj;
-        static const ydk::Enum::YLeaf isis_spf_trig_deladj;
-        static const ydk::Enum::YLeaf isis_spf_trig_next_hop;
-        static const ydk::Enum::YLeaf isis_spf_trig_metric;
-        static const ydk::Enum::YLeaf isis_spf_trig_dis;
-        static const ydk::Enum::YLeaf isis_spf_trig_frr_per_link;
-        static const ydk::Enum::YLeaf isis_spf_trig_frr_per_prefix;
-        static const ydk::Enum::YLeaf isis_spf_trig_ucmp;
-        static const ydk::Enum::YLeaf isis_spf_trig_new_tunnel;
-        static const ydk::Enum::YLeaf isis_spf_trig_del_tunnel;
-        static const ydk::Enum::YLeaf isis_spf_trig_chg_tunnel;
-        static const ydk::Enum::YLeaf isis_spf_trig_new_node;
-        static const ydk::Enum::YLeaf isis_spf_trig_del_node;
-        static const ydk::Enum::YLeaf isis_spf_trig_newlsp;
-        static const ydk::Enum::YLeaf isis_spf_trig_lsp_expiry;
-        static const ydk::Enum::YLeaf isis_spf_trig_attach_set;
-        static const ydk::Enum::YLeaf isis_spf_trig_attach_clr;
-        static const ydk::Enum::YLeaf isis_spf_trig_overload_set;
-        static const ydk::Enum::YLeaf isis_spf_trig_overload_clr;
-        static const ydk::Enum::YLeaf isis_spf_trig_link_good;
-        static const ydk::Enum::YLeaf isis_spf_trig_link_bad;
-        static const ydk::Enum::YLeaf isis_spf_trig_prefix_good;
-        static const ydk::Enum::YLeaf isis_spf_trig_prefix_bad;
-        static const ydk::Enum::YLeaf isis_spf_trig_prefix;
-        static const ydk::Enum::YLeaf isis_spf_trig_area_addr;
-        static const ydk::Enum::YLeaf isis_spf_trig_ip_addr;
-        static const ydk::Enum::YLeaf isis_spf_trig_rtrid;
-        static const ydk::Enum::YLeaf isis_spf_trig_prefix_policy;
 
 };
 
@@ -28642,6 +34779,14 @@ class OpenconfigIsisLspIsisMetricFlagsEnum : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf internal;
         static const ydk::Enum::YLeaf unsupported;
+
+};
+
+class OpenconfigSegmentRoutingLabelOptionsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_php;
+        static const ydk::Enum::YLeaf explicit_null;
 
 };
 
@@ -28891,6 +35036,15 @@ class IsisIfAdvPrefixDisabledReason : public ydk::Enum
 
 };
 
+class OpenconfigIsisTypesLevelTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
+        static const ydk::Enum::YLeaf level12;
+
+};
+
 class IsisSpfClass : public ydk::Enum
 {
     public:
@@ -28899,9 +35053,49 @@ class IsisSpfClass : public ydk::Enum
         static const ydk::Enum::YLeaf isis_spf_partial;
         static const ydk::Enum::YLeaf isis_spf_frr_per_prefix;
         static const ydk::Enum::YLeaf isis_spf_ucmp_calc;
+        static const ydk::Enum::YLeaf isis_spf_flex;
         static const ydk::Enum::YLeaf isis_spf_next_hop;
         static const ydk::Enum::YLeaf isis_spf_incremental;
         static const ydk::Enum::YLeaf isis_spf_full;
+
+};
+
+class IsisSpfTrigger : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_spf_trig_config;
+        static const ydk::Enum::YLeaf isis_spf_trig_nsr_fo;
+        static const ydk::Enum::YLeaf isis_spf_trig_periodic;
+        static const ydk::Enum::YLeaf isis_spf_trig_clear;
+        static const ydk::Enum::YLeaf isis_spf_trig_newadj;
+        static const ydk::Enum::YLeaf isis_spf_trig_deladj;
+        static const ydk::Enum::YLeaf isis_spf_trig_next_hop;
+        static const ydk::Enum::YLeaf isis_spf_trig_metric;
+        static const ydk::Enum::YLeaf isis_spf_trig_dis;
+        static const ydk::Enum::YLeaf isis_spf_trig_frr_per_link;
+        static const ydk::Enum::YLeaf isis_spf_trig_frr_per_prefix;
+        static const ydk::Enum::YLeaf isis_spf_trig_ucmp;
+        static const ydk::Enum::YLeaf isis_spf_trig_new_tunnel;
+        static const ydk::Enum::YLeaf isis_spf_trig_del_tunnel;
+        static const ydk::Enum::YLeaf isis_spf_trig_chg_tunnel;
+        static const ydk::Enum::YLeaf isis_spf_trig_new_node;
+        static const ydk::Enum::YLeaf isis_spf_trig_del_node;
+        static const ydk::Enum::YLeaf isis_spf_trig_newlsp;
+        static const ydk::Enum::YLeaf isis_spf_trig_lsp_expiry;
+        static const ydk::Enum::YLeaf isis_spf_trig_attach_set;
+        static const ydk::Enum::YLeaf isis_spf_trig_attach_clr;
+        static const ydk::Enum::YLeaf isis_spf_trig_overload_set;
+        static const ydk::Enum::YLeaf isis_spf_trig_overload_clr;
+        static const ydk::Enum::YLeaf isis_spf_trig_link_good;
+        static const ydk::Enum::YLeaf isis_spf_trig_link_bad;
+        static const ydk::Enum::YLeaf isis_spf_trig_prefix_good;
+        static const ydk::Enum::YLeaf isis_spf_trig_prefix_bad;
+        static const ydk::Enum::YLeaf isis_spf_trig_prefix;
+        static const ydk::Enum::YLeaf isis_spf_trig_area_addr;
+        static const ydk::Enum::YLeaf isis_spf_trig_ip_addr;
+        static const ydk::Enum::YLeaf isis_spf_trig_rtrid;
+        static const ydk::Enum::YLeaf isis_spf_trig_flex_algo;
+        static const ydk::Enum::YLeaf isis_spf_trig_prefix_policy;
 
 };
 
@@ -28942,12 +35136,36 @@ class IsisUloopAvoidance : public ydk::Enum
 
 };
 
-class OpenconfigIsisTypesLevelTypeEnum : public ydk::Enum
+class Srv6EndFunction : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf level1;
-        static const ydk::Enum::YLeaf level2;
-        static const ydk::Enum::YLeaf level12;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf end;
+        static const ydk::Enum::YLeaf end_with_psp;
+        static const ydk::Enum::YLeaf end_with_usp;
+        static const ydk::Enum::YLeaf end_with_psp_usp;
+        static const ydk::Enum::YLeaf end_x;
+        static const ydk::Enum::YLeaf end_x_with_psp;
+        static const ydk::Enum::YLeaf end_x_with_usp;
+        static const ydk::Enum::YLeaf end_x_with_psp_usp;
+        static const ydk::Enum::YLeaf end_tn;
+        static const ydk::Enum::YLeaf end_t_with_psp;
+        static const ydk::Enum::YLeaf end_t_with_usp;
+        static const ydk::Enum::YLeaf end_t_with_psp_usp;
+        static const ydk::Enum::YLeaf end_b6;
+        static const ydk::Enum::YLeaf end_b6_encaps;
+        static const ydk::Enum::YLeaf end_bm;
+        static const ydk::Enum::YLeaf end_dx6;
+        static const ydk::Enum::YLeaf end_dx4;
+        static const ydk::Enum::YLeaf end_dt6;
+        static const ydk::Enum::YLeaf end_dt4;
+        static const ydk::Enum::YLeaf end_dt46;
+        static const ydk::Enum::YLeaf end_dx2;
+        static const ydk::Enum::YLeaf end_dx2v;
+        static const ydk::Enum::YLeaf end_dx2u;
+        static const ydk::Enum::YLeaf end_dx2m;
+        static const ydk::Enum::YLeaf end_otp;
+        static const ydk::Enum::YLeaf end_s;
 
 };
 

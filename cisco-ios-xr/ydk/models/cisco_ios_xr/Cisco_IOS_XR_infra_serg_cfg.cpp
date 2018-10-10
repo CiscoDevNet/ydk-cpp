@@ -322,10 +322,12 @@ SessionRedundancy::Groups::Group::Group()
     peer(std::make_shared<SessionRedundancy::Groups::Group::Peer>())
     , revertive_timer(std::make_shared<SessionRedundancy::Groups::Group::RevertiveTimer>())
     , interface_list(std::make_shared<SessionRedundancy::Groups::Group::InterfaceList>())
+    , pool_list(std::make_shared<SessionRedundancy::Groups::Group::PoolList>())
 {
     peer->parent = this;
     revertive_timer->parent = this;
     interface_list->parent = this;
+    pool_list->parent = this;
 
     yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -348,7 +350,8 @@ bool SessionRedundancy::Groups::Group::has_data() const
 	|| hold_timer.is_set
 	|| (peer !=  nullptr && peer->has_data())
 	|| (revertive_timer !=  nullptr && revertive_timer->has_data())
-	|| (interface_list !=  nullptr && interface_list->has_data());
+	|| (interface_list !=  nullptr && interface_list->has_data())
+	|| (pool_list !=  nullptr && pool_list->has_data());
 }
 
 bool SessionRedundancy::Groups::Group::has_operation() const
@@ -365,7 +368,8 @@ bool SessionRedundancy::Groups::Group::has_operation() const
 	|| ydk::is_set(hold_timer.yfilter)
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (revertive_timer !=  nullptr && revertive_timer->has_operation())
-	|| (interface_list !=  nullptr && interface_list->has_operation());
+	|| (interface_list !=  nullptr && interface_list->has_operation())
+	|| (pool_list !=  nullptr && pool_list->has_operation());
 }
 
 std::string SessionRedundancy::Groups::Group::get_absolute_path() const
@@ -430,6 +434,15 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::get_child_by_name(cons
         return interface_list;
     }
 
+    if(child_yang_name == "pool-list")
+    {
+        if(pool_list == nullptr)
+        {
+            pool_list = std::make_shared<SessionRedundancy::Groups::Group::PoolList>();
+        }
+        return pool_list;
+    }
+
     return nullptr;
 }
 
@@ -450,6 +463,11 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group:
     if(interface_list != nullptr)
     {
         children["interface-list"] = interface_list;
+    }
+
+    if(pool_list != nullptr)
+    {
+        children["pool-list"] = pool_list;
     }
 
     return children;
@@ -555,7 +573,7 @@ void SessionRedundancy::Groups::Group::set_filter(const std::string & value_path
 
 bool SessionRedundancy::Groups::Group::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "peer" || name == "revertive-timer" || name == "interface-list" || name == "group-id" || name == "core-tracking-object" || name == "disable-tracking-object" || name == "redundancy-disable" || name == "enable" || name == "description" || name == "access-tracking-object" || name == "preferred-role" || name == "hold-timer")
+    if(name == "peer" || name == "revertive-timer" || name == "interface-list" || name == "pool-list" || name == "group-id" || name == "core-tracking-object" || name == "disable-tracking-object" || name == "redundancy-disable" || name == "enable" || name == "description" || name == "access-tracking-object" || name == "preferred-role" || name == "hold-timer")
         return true;
     return false;
 }
@@ -1353,6 +1371,275 @@ void SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::set
 bool SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name" || name == "interface-id")
+        return true;
+    return false;
+}
+
+SessionRedundancy::Groups::Group::PoolList::PoolList()
+    :
+    enable{YType::empty, "enable"}
+        ,
+    pool_names(std::make_shared<SessionRedundancy::Groups::Group::PoolList::PoolNames>())
+{
+    pool_names->parent = this;
+
+    yang_name = "pool-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SessionRedundancy::Groups::Group::PoolList::~PoolList()
+{
+}
+
+bool SessionRedundancy::Groups::Group::PoolList::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set
+	|| (pool_names !=  nullptr && pool_names->has_data());
+}
+
+bool SessionRedundancy::Groups::Group::PoolList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (pool_names !=  nullptr && pool_names->has_operation());
+}
+
+std::string SessionRedundancy::Groups::Group::PoolList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pool-list";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group::PoolList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SessionRedundancy::Groups::Group::PoolList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pool-names")
+    {
+        if(pool_names == nullptr)
+        {
+            pool_names = std::make_shared<SessionRedundancy::Groups::Group::PoolList::PoolNames>();
+        }
+        return pool_names;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::PoolList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(pool_names != nullptr)
+    {
+        children["pool-names"] = pool_names;
+    }
+
+    return children;
+}
+
+void SessionRedundancy::Groups::Group::PoolList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SessionRedundancy::Groups::Group::PoolList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool SessionRedundancy::Groups::Group::PoolList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pool-names" || name == "enable")
+        return true;
+    return false;
+}
+
+SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolNames()
+    :
+    pool_name(this, {"pool_name"})
+{
+
+    yang_name = "pool-names"; yang_parent_name = "pool-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SessionRedundancy::Groups::Group::PoolList::PoolNames::~PoolNames()
+{
+}
+
+bool SessionRedundancy::Groups::Group::PoolList::PoolNames::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pool_name.len(); index++)
+    {
+        if(pool_name[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool SessionRedundancy::Groups::Group::PoolList::PoolNames::has_operation() const
+{
+    for (std::size_t index=0; index<pool_name.len(); index++)
+    {
+        if(pool_name[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string SessionRedundancy::Groups::Group::PoolList::PoolNames::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pool-names";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group::PoolList::PoolNames::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SessionRedundancy::Groups::Group::PoolList::PoolNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pool-name")
+    {
+        auto c = std::make_shared<SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName>();
+        c->parent = this;
+        pool_name.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::PoolList::PoolNames::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : pool_name.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void SessionRedundancy::Groups::Group::PoolList::PoolNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SessionRedundancy::Groups::Group::PoolList::PoolNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SessionRedundancy::Groups::Group::PoolList::PoolNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pool-name")
+        return true;
+    return false;
+}
+
+SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::PoolName()
+    :
+    pool_name{YType::str, "pool-name"}
+{
+
+    yang_name = "pool-name"; yang_parent_name = "pool-names"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::~PoolName()
+{
+}
+
+bool SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::has_data() const
+{
+    if (is_presence_container) return true;
+    return pool_name.is_set;
+}
+
+bool SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(pool_name.yfilter);
+}
+
+std::string SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pool-name";
+    ADD_KEY_TOKEN(pool_name, "pool-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pool_name.is_set || is_set(pool_name.yfilter)) leaf_name_data.push_back(pool_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pool-name")
+    {
+        pool_name = value;
+        pool_name.value_namespace = name_space;
+        pool_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pool-name")
+    {
+        pool_name.yfilter = yfilter;
+    }
+}
+
+bool SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pool-name")
         return true;
     return false;
 }

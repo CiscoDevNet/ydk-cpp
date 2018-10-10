@@ -1633,6 +1633,9 @@ Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurat
     neighbor_remote_as_list_group_name{YType::str, "neighbor-remote-as-list-group-name"},
     max_peers{YType::uint32, "max-peers"},
     idle_watch_time{YType::uint32, "idle-watch-time"},
+    ao_keychain{YType::str, "ao-keychain"},
+    ao_include_tcp_options{YType::uint32, "ao-include-tcp-options"},
+    ao_accept_mismatch_connection{YType::uint32, "ao-accept-mismatch-connection"},
     local_as_replace_as{YType::boolean, "local-as-replace-as"},
     local_as_dual_as{YType::boolean, "local-as-dual-as"}
         ,
@@ -1693,6 +1696,7 @@ Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurat
     , neighbor_remote_as_list_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::NeighborRemoteAsListInfo>())
     , max_peers_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MaxPeersInfo>())
     , idle_watch_time_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::IdleWatchTimeInfo>())
+    , ao_keychain_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::AoKeychainInfo>())
 {
     local_ip_address->parent = this;
     remote_as_info->parent = this;
@@ -1751,6 +1755,7 @@ Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurat
     neighbor_remote_as_list_info->parent = this;
     max_peers_info->parent = this;
     idle_watch_time_info->parent = this;
+    ao_keychain_info->parent = this;
 
     yang_name = "af-independent-config"; yang_parent_name = "entity-configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1829,6 +1834,9 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 	|| neighbor_remote_as_list_group_name.is_set
 	|| max_peers.is_set
 	|| idle_watch_time.is_set
+	|| ao_keychain.is_set
+	|| ao_include_tcp_options.is_set
+	|| ao_accept_mismatch_connection.is_set
 	|| local_as_replace_as.is_set
 	|| local_as_dual_as.is_set
 	|| (local_ip_address !=  nullptr && local_ip_address->has_data())
@@ -1887,7 +1895,8 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 	|| (capability_negotiation_suppressed_info !=  nullptr && capability_negotiation_suppressed_info->has_data())
 	|| (neighbor_remote_as_list_info !=  nullptr && neighbor_remote_as_list_info->has_data())
 	|| (max_peers_info !=  nullptr && max_peers_info->has_data())
-	|| (idle_watch_time_info !=  nullptr && idle_watch_time_info->has_data());
+	|| (idle_watch_time_info !=  nullptr && idle_watch_time_info->has_data())
+	|| (ao_keychain_info !=  nullptr && ao_keychain_info->has_data());
 }
 
 bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::has_operation() const
@@ -1960,6 +1969,9 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 	|| ydk::is_set(neighbor_remote_as_list_group_name.yfilter)
 	|| ydk::is_set(max_peers.yfilter)
 	|| ydk::is_set(idle_watch_time.yfilter)
+	|| ydk::is_set(ao_keychain.yfilter)
+	|| ydk::is_set(ao_include_tcp_options.yfilter)
+	|| ydk::is_set(ao_accept_mismatch_connection.yfilter)
 	|| ydk::is_set(local_as_replace_as.yfilter)
 	|| ydk::is_set(local_as_dual_as.yfilter)
 	|| (local_ip_address !=  nullptr && local_ip_address->has_operation())
@@ -2018,7 +2030,8 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 	|| (capability_negotiation_suppressed_info !=  nullptr && capability_negotiation_suppressed_info->has_operation())
 	|| (neighbor_remote_as_list_info !=  nullptr && neighbor_remote_as_list_info->has_operation())
 	|| (max_peers_info !=  nullptr && max_peers_info->has_operation())
-	|| (idle_watch_time_info !=  nullptr && idle_watch_time_info->has_operation());
+	|| (idle_watch_time_info !=  nullptr && idle_watch_time_info->has_operation())
+	|| (ao_keychain_info !=  nullptr && ao_keychain_info->has_operation());
 }
 
 std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::get_segment_path() const
@@ -2099,6 +2112,9 @@ std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInsta
     if (neighbor_remote_as_list_group_name.is_set || is_set(neighbor_remote_as_list_group_name.yfilter)) leaf_name_data.push_back(neighbor_remote_as_list_group_name.get_name_leafdata());
     if (max_peers.is_set || is_set(max_peers.yfilter)) leaf_name_data.push_back(max_peers.get_name_leafdata());
     if (idle_watch_time.is_set || is_set(idle_watch_time.yfilter)) leaf_name_data.push_back(idle_watch_time.get_name_leafdata());
+    if (ao_keychain.is_set || is_set(ao_keychain.yfilter)) leaf_name_data.push_back(ao_keychain.get_name_leafdata());
+    if (ao_include_tcp_options.is_set || is_set(ao_include_tcp_options.yfilter)) leaf_name_data.push_back(ao_include_tcp_options.get_name_leafdata());
+    if (ao_accept_mismatch_connection.is_set || is_set(ao_accept_mismatch_connection.yfilter)) leaf_name_data.push_back(ao_accept_mismatch_connection.get_name_leafdata());
     if (local_as_replace_as.is_set || is_set(local_as_replace_as.yfilter)) leaf_name_data.push_back(local_as_replace_as.get_name_leafdata());
     if (local_as_dual_as.is_set || is_set(local_as_dual_as.yfilter)) leaf_name_data.push_back(local_as_dual_as.get_name_leafdata());
 
@@ -2621,6 +2637,15 @@ std::shared_ptr<Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefa
         return idle_watch_time_info;
     }
 
+    if(child_yang_name == "ao-keychain-info")
+    {
+        if(ao_keychain_info == nullptr)
+        {
+            ao_keychain_info = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::AoKeychainInfo>();
+        }
+        return ao_keychain_info;
+    }
+
     return nullptr;
 }
 
@@ -2911,6 +2936,11 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::ConfigInstances::ConfigInsta
     if(idle_watch_time_info != nullptr)
     {
         children["idle-watch-time-info"] = idle_watch_time_info;
+    }
+
+    if(ao_keychain_info != nullptr)
+    {
+        children["ao-keychain-info"] = ao_keychain_info;
     }
 
     return children;
@@ -3320,6 +3350,24 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
         idle_watch_time.value_namespace = name_space;
         idle_watch_time.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ao-keychain")
+    {
+        ao_keychain = value;
+        ao_keychain.value_namespace = name_space;
+        ao_keychain.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ao-include-tcp-options")
+    {
+        ao_include_tcp_options = value;
+        ao_include_tcp_options.value_namespace = name_space;
+        ao_include_tcp_options.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ao-accept-mismatch-connection")
+    {
+        ao_accept_mismatch_connection = value;
+        ao_accept_mismatch_connection.value_namespace = name_space;
+        ao_accept_mismatch_connection.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "local-as-replace-as")
     {
         local_as_replace_as = value;
@@ -3604,6 +3652,18 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
     {
         idle_watch_time.yfilter = yfilter;
     }
+    if(value_path == "ao-keychain")
+    {
+        ao_keychain.yfilter = yfilter;
+    }
+    if(value_path == "ao-include-tcp-options")
+    {
+        ao_include_tcp_options.yfilter = yfilter;
+    }
+    if(value_path == "ao-accept-mismatch-connection")
+    {
+        ao_accept_mismatch_connection.yfilter = yfilter;
+    }
     if(value_path == "local-as-replace-as")
     {
         local_as_replace_as.yfilter = yfilter;
@@ -3616,7 +3676,7 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 
 bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local-ip-address" || name == "remote-as-info" || name == "speaker-id-info" || name == "min-advertisement-info" || name == "description-info" || name == "ebgp-hop-count-info" || name == "tcpmss-info" || name == "bmp-servers-info" || name == "keychain-info" || name == "local-as-info" || name == "password-info" || name == "receive-buffer-info" || name == "send-buffer-info" || name == "shutdown-info" || name == "timers-info" || name == "local-address-info" || name == "msg-log-in-info" || name == "msg-log-out-info" || name == "update-source-info" || name == "dmz-link-bandwidth-info" || name == "ebgp-recv-dmz-info" || name == "ebgp-send-dmz-info" || name == "ttl-security-info" || name == "suppress4-bbyte-as-info" || name == "session-open-mode-info" || name == "bfd-info" || name == "bfd-mininterval-info" || name == "bfd-multiplier-info" || name == "tos-info" || name == "nsr-disabled-info" || name == "graceful-restart-disabled-info" || name == "nbr-restart-time-info" || name == "nbr-stale-path-time-info" || name == "nbr-enforce-first-as-info" || name == "cluster-id-info" || name == "ignore-connected-info" || name == "internal-vpn-client-info" || name == "addpath-send-capability-info" || name == "addpath-receive-capability-info" || name == "egress-peer-engineering-info" || name == "update-error-handling-no-reset-info" || name == "prefix-validation-disable-info" || name == "prefix-validation-use-validit-info" || name == "prefix-validation-allow-invalid-info" || name == "prefix-validation-signal-ibgp-info" || name == "neighbor-update-filter-exists-info" || name == "neighbor-update-filter-message-buffer-count-info" || name == "neighbor-update-filter-syslog-disable-info" || name == "neighbor-update-filter-attribute-info" || name == "graceful-shutdown-info" || name == "graceful-shutdown-loc-pref-info" || name == "graceful-shutdown-as-prepends-info" || name == "graceful-shutdown-activate-info" || name == "capability-negotiation-suppressed-info" || name == "neighbor-remote-as-list-info" || name == "max-peers-info" || name == "idle-watch-time-info" || name == "remote-as-number-xx" || name == "remote-as-number-yy" || name == "configured-speaker-id" || name == "tcp-mss" || name == "min-advertisement-interval" || name == "min-advertisement-interval-msecs" || name == "description" || name == "ebgp-hop-count" || name == "bmp-servers" || name == "is-ebgp-multihop-bgp-mpls-forwarding-disabled" || name == "keychain" || name == "local-as-number-xx" || name == "local-as-number-yy" || name == "local-as-no-prepend" || name == "password" || name == "socket-buffer-receive-size" || name == "bgp-buffer-receive-size" || name == "socket-buffer-send-size" || name == "bgp-buffer-send-size" || name == "adminstrative-shutdown" || name == "keepalive-interval" || name == "hold-time-value" || name == "min-acc-hold-time-value" || name == "msg-log-in-buf-count" || name == "msg-log-out-buf-count" || name == "route-updates-source" || name == "dmz-link-bandwidth" || name == "ebgp-recv-dmz" || name == "ebgp-send-dmz-mode" || name == "ttl-security" || name == "suppress4-byte-as" || name == "capability-negotiation-suppressed" || name == "session-open-mode" || name == "bfd" || name == "bfd-mininterval" || name == "bfd-multiplier" || name == "tos-type-info" || name == "tos-value-info" || name == "nsr-disabled" || name == "graceful-restart-disabled" || name == "nbr-restart-time" || name == "nbr-stale-path-time" || name == "nbr-enforce-first-as-status" || name == "nbr-cluster-id-type-info" || name == "nbr-cluster-id-info" || name == "ignore-connected-check" || name == "internal-vpn-client" || name == "addpath-send-capability" || name == "update-error-handling-no-reset" || name == "addpath-receive-capability" || name == "egress-peer-engineering" || name == "prefix-validation-disable" || name == "bestpath-use-origin-as-validity" || name == "prefix-validation-allow-invalid" || name == "prefix-validation-signal-ibgp" || name == "neighbor-update-filter-exists" || name == "neighbor-update-filter-message-buffer-count" || name == "neighbor-update-filter-message-buffer-is-non-circular" || name == "neighbor-update-filter-logging-disable" || name == "neighbor-update-filter-attribute-filter-group-name" || name == "graceful-shutdown-exists" || name == "graceful-shutdown-loc-pref" || name == "graceful-shutdown-as-prepends" || name == "graceful-shutdown-activate" || name == "neighbor-remote-as-list-group-name" || name == "max-peers" || name == "idle-watch-time" || name == "local-as-replace-as" || name == "local-as-dual-as")
+    if(name == "local-ip-address" || name == "remote-as-info" || name == "speaker-id-info" || name == "min-advertisement-info" || name == "description-info" || name == "ebgp-hop-count-info" || name == "tcpmss-info" || name == "bmp-servers-info" || name == "keychain-info" || name == "local-as-info" || name == "password-info" || name == "receive-buffer-info" || name == "send-buffer-info" || name == "shutdown-info" || name == "timers-info" || name == "local-address-info" || name == "msg-log-in-info" || name == "msg-log-out-info" || name == "update-source-info" || name == "dmz-link-bandwidth-info" || name == "ebgp-recv-dmz-info" || name == "ebgp-send-dmz-info" || name == "ttl-security-info" || name == "suppress4-bbyte-as-info" || name == "session-open-mode-info" || name == "bfd-info" || name == "bfd-mininterval-info" || name == "bfd-multiplier-info" || name == "tos-info" || name == "nsr-disabled-info" || name == "graceful-restart-disabled-info" || name == "nbr-restart-time-info" || name == "nbr-stale-path-time-info" || name == "nbr-enforce-first-as-info" || name == "cluster-id-info" || name == "ignore-connected-info" || name == "internal-vpn-client-info" || name == "addpath-send-capability-info" || name == "addpath-receive-capability-info" || name == "egress-peer-engineering-info" || name == "update-error-handling-no-reset-info" || name == "prefix-validation-disable-info" || name == "prefix-validation-use-validit-info" || name == "prefix-validation-allow-invalid-info" || name == "prefix-validation-signal-ibgp-info" || name == "neighbor-update-filter-exists-info" || name == "neighbor-update-filter-message-buffer-count-info" || name == "neighbor-update-filter-syslog-disable-info" || name == "neighbor-update-filter-attribute-info" || name == "graceful-shutdown-info" || name == "graceful-shutdown-loc-pref-info" || name == "graceful-shutdown-as-prepends-info" || name == "graceful-shutdown-activate-info" || name == "capability-negotiation-suppressed-info" || name == "neighbor-remote-as-list-info" || name == "max-peers-info" || name == "idle-watch-time-info" || name == "ao-keychain-info" || name == "remote-as-number-xx" || name == "remote-as-number-yy" || name == "configured-speaker-id" || name == "tcp-mss" || name == "min-advertisement-interval" || name == "min-advertisement-interval-msecs" || name == "description" || name == "ebgp-hop-count" || name == "bmp-servers" || name == "is-ebgp-multihop-bgp-mpls-forwarding-disabled" || name == "keychain" || name == "local-as-number-xx" || name == "local-as-number-yy" || name == "local-as-no-prepend" || name == "password" || name == "socket-buffer-receive-size" || name == "bgp-buffer-receive-size" || name == "socket-buffer-send-size" || name == "bgp-buffer-send-size" || name == "adminstrative-shutdown" || name == "keepalive-interval" || name == "hold-time-value" || name == "min-acc-hold-time-value" || name == "msg-log-in-buf-count" || name == "msg-log-out-buf-count" || name == "route-updates-source" || name == "dmz-link-bandwidth" || name == "ebgp-recv-dmz" || name == "ebgp-send-dmz-mode" || name == "ttl-security" || name == "suppress4-byte-as" || name == "capability-negotiation-suppressed" || name == "session-open-mode" || name == "bfd" || name == "bfd-mininterval" || name == "bfd-multiplier" || name == "tos-type-info" || name == "tos-value-info" || name == "nsr-disabled" || name == "graceful-restart-disabled" || name == "nbr-restart-time" || name == "nbr-stale-path-time" || name == "nbr-enforce-first-as-status" || name == "nbr-cluster-id-type-info" || name == "nbr-cluster-id-info" || name == "ignore-connected-check" || name == "internal-vpn-client" || name == "addpath-send-capability" || name == "update-error-handling-no-reset" || name == "addpath-receive-capability" || name == "egress-peer-engineering" || name == "prefix-validation-disable" || name == "bestpath-use-origin-as-validity" || name == "prefix-validation-allow-invalid" || name == "prefix-validation-signal-ibgp" || name == "neighbor-update-filter-exists" || name == "neighbor-update-filter-message-buffer-count" || name == "neighbor-update-filter-message-buffer-is-non-circular" || name == "neighbor-update-filter-logging-disable" || name == "neighbor-update-filter-attribute-filter-group-name" || name == "graceful-shutdown-exists" || name == "graceful-shutdown-loc-pref" || name == "graceful-shutdown-as-prepends" || name == "graceful-shutdown-activate" || name == "neighbor-remote-as-list-group-name" || name == "max-peers" || name == "idle-watch-time" || name == "ao-keychain" || name == "ao-include-tcp-options" || name == "ao-accept-mismatch-connection" || name == "local-as-replace-as" || name == "local-as-dual-as")
         return true;
     return false;
 }
@@ -22617,6 +22677,7 @@ const Enum::YLeaf BgpSyncNbrNsrState::bgp_nbr_nsr_st_nsr_ready {5, "bgp-nbr-nsr-
 const Enum::YLeaf BgpPrefixSid::prefix_sid_label_index {1, "prefix-sid-label-index"};
 const Enum::YLeaf BgpPrefixSid::prefix_sid_ipv6_sid {2, "prefix-sid-ipv6-sid"};
 const Enum::YLeaf BgpPrefixSid::prefix_sid_origin_at_or_srgb {3, "prefix-sid-origin-at-or-srgb"};
+const Enum::YLeaf BgpPrefixSid::prefix_sid_srv6 {4, "prefix-sid-srv6"};
 
 const Enum::YLeaf BgpAfi::ipv4 {0, "ipv4"};
 const Enum::YLeaf BgpAfi::ipv4_multicast {1, "ipv4-multicast"};
@@ -22696,6 +22757,7 @@ const Enum::YLeaf BgpResetReasonIndex::llgr_capable_changed {39, "llgr-capable-c
 const Enum::YLeaf BgpResetReasonIndex::nbr_local_addr_changed {40, "nbr-local-addr-changed"};
 const Enum::YLeaf BgpResetReasonIndex::internal_vpn_client_changed {41, "internal-vpn-client-changed"};
 const Enum::YLeaf BgpResetReasonIndex::cap_suppress_all_changed {42, "cap-suppress-all-changed"};
+const Enum::YLeaf BgpResetReasonIndex::next_hop_changed {43, "next-hop-changed"};
 
 const Enum::YLeaf BgpRtrState::bgp_router_read_only {0, "bgp-router-read-only"};
 const Enum::YLeaf BgpRtrState::bgp_router_do_best_path {1, "bgp-router-do-best-path"};

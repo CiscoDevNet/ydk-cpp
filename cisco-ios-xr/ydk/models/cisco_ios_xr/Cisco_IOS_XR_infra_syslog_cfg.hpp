@@ -252,9 +252,9 @@ class Syslog : public ydk::Entity
         class Archive; //type: Syslog::Archive
         class Ipv6; //type: Syslog::Ipv6
         class SourceInterfaceTable; //type: Syslog::SourceInterfaceTable
-        class AlarmLogger; //type: Syslog::AlarmLogger
         class Correlator; //type: Syslog::Correlator
         class Suppression; //type: Syslog::Suppression
+        class AlarmLogger; //type: Syslog::AlarmLogger
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::MonitorLogging> monitor_logging;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HistoryLogging> history_logging;
@@ -268,9 +268,9 @@ class Syslog : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Archive> archive;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Ipv6> ipv6;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::SourceInterfaceTable> source_interface_table;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::AlarmLogger> alarm_logger;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator> correlator;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Suppression> suppression;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::AlarmLogger> alarm_logger;
         
 }; // Syslog
 
@@ -1366,82 +1366,6 @@ class Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue:
 }; // Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf
 
 
-class Syslog::AlarmLogger : public ydk::Entity
-{
-    public:
-        AlarmLogger();
-        ~AlarmLogger();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf pre_config_suppression; //type: empty
-        ydk::YLeaf severity_level; //type: AlarmLoggerSeverityLevel
-        ydk::YLeaf pre_config_suppression_timeout; //type: uint32
-        ydk::YLeaf buffer_size; //type: uint32
-        ydk::YLeaf source_location; //type: empty
-        ydk::YLeaf threshold; //type: uint32
-        class AlarmFilterStrings; //type: Syslog::AlarmLogger::AlarmFilterStrings
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::AlarmLogger::AlarmFilterStrings> alarm_filter_strings;
-        
-}; // Syslog::AlarmLogger
-
-
-class Syslog::AlarmLogger::AlarmFilterStrings : public ydk::Entity
-{
-    public:
-        AlarmFilterStrings();
-        ~AlarmFilterStrings();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class AlarmFilterString; //type: Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString
-
-        ydk::YList alarm_filter_string;
-        
-}; // Syslog::AlarmLogger::AlarmFilterStrings
-
-
-class Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString : public ydk::Entity
-{
-    public:
-        AlarmFilterString();
-        ~AlarmFilterString();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf filter_string; //type: string
-
-}; // Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString
-
-
 class Syslog::Correlator : public ydk::Entity
 {
     public:
@@ -2352,6 +2276,82 @@ class Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause : public ydk::En
         ydk::YLeaf code; //type: string
 
 }; // Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause
+
+
+class Syslog::AlarmLogger : public ydk::Entity
+{
+    public:
+        AlarmLogger();
+        ~AlarmLogger();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf pre_config_suppression; //type: empty
+        ydk::YLeaf severity_level; //type: AlarmLoggerSeverityLevel
+        ydk::YLeaf pre_config_suppression_timeout; //type: uint32
+        ydk::YLeaf buffer_size; //type: uint32
+        ydk::YLeaf source_location; //type: empty
+        ydk::YLeaf threshold; //type: uint32
+        class AlarmFilterStrings; //type: Syslog::AlarmLogger::AlarmFilterStrings
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::AlarmLogger::AlarmFilterStrings> alarm_filter_strings;
+        
+}; // Syslog::AlarmLogger
+
+
+class Syslog::AlarmLogger::AlarmFilterStrings : public ydk::Entity
+{
+    public:
+        AlarmFilterStrings();
+        ~AlarmFilterStrings();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class AlarmFilterString; //type: Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString
+
+        ydk::YList alarm_filter_string;
+        
+}; // Syslog::AlarmLogger::AlarmFilterStrings
+
+
+class Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString : public ydk::Entity
+{
+    public:
+        AlarmFilterString();
+        ~AlarmFilterString();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf filter_string; //type: string
+
+}; // Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString
 
 class LogSeverity : public ydk::Enum
 {

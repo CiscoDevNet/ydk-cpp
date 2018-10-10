@@ -491,6 +491,7 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
         ydk::YLeaf precision; //type: int8
         ydk::YLeaf version; //type: uint8
         ydk::YLeaf filter_index; //type: uint32
+        ydk::YLeaf cast_flags; //type: uint8
         class PeerInfoCommon; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon
         class RefTime; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime
         class OriginateTime; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime

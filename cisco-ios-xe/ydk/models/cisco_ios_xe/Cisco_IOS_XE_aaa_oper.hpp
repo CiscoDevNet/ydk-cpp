@@ -31,11 +31,129 @@ class AaaData : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
+        class AaaRadiusStats; //type: AaaData::AaaRadiusStats
+        class AaaTacacsStats; //type: AaaData::AaaTacacsStats
+        class AaaLdapCounters; //type: AaaData::AaaLdapCounters
         class AaaUsers; //type: AaaData::AaaUsers
 
+        ydk::YList aaa_radius_stats;
+        ydk::YList aaa_tacacs_stats;
+        ydk::YList aaa_ldap_counters;
         ydk::YList aaa_users;
         
 }; // AaaData
+
+
+class AaaData::AaaRadiusStats : public ydk::Entity
+{
+    public:
+        AaaRadiusStats();
+        ~AaaRadiusStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf radius_server_ip; //type: string
+        ydk::YLeaf auth_port; //type: uint16
+        ydk::YLeaf acct_port; //type: uint16
+        ydk::YLeaf authen_retried_access_requests; //type: uint32
+        ydk::YLeaf authen_access_accepts; //type: uint32
+        ydk::YLeaf authen_access_rejects; //type: uint32
+        ydk::YLeaf authen_timeout_access_requests; //type: uint32
+        ydk::YLeaf author_retried_access_requests; //type: uint32
+        ydk::YLeaf author_access_accepts; //type: uint32
+        ydk::YLeaf author_access_rejects; //type: uint32
+        ydk::YLeaf author_timeout_access_requests; //type: uint32
+        ydk::YLeaf connection_opens; //type: uint32
+        ydk::YLeaf connection_closes; //type: uint32
+        ydk::YLeaf connection_aborts; //type: uint32
+        ydk::YLeaf connection_failures; //type: uint32
+        ydk::YLeaf connection_timeouts; //type: uint32
+        ydk::YLeaf authen_messages_sent; //type: uint32
+        ydk::YLeaf author_messages_sent; //type: uint32
+        ydk::YLeaf acct_messages_sent; //type: uint32
+        ydk::YLeaf authen_messages_received; //type: uint32
+        ydk::YLeaf author_messages_received; //type: uint32
+        ydk::YLeaf authen_errors_received; //type: uint32
+        ydk::YLeaf author_errors_received; //type: uint32
+        ydk::YLeaf acct_errors_received; //type: uint32
+        ydk::YLeaf stats_time; //type: string
+
+}; // AaaData::AaaRadiusStats
+
+
+class AaaData::AaaTacacsStats : public ydk::Entity
+{
+    public:
+        AaaTacacsStats();
+        ~AaaTacacsStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf tacacs_server_address; //type: string
+        ydk::YLeaf port; //type: uint16
+        ydk::YLeaf connection_opens; //type: uint32
+        ydk::YLeaf connection_closes; //type: uint32
+        ydk::YLeaf connection_aborts; //type: uint32
+        ydk::YLeaf connection_failures; //type: uint32
+        ydk::YLeaf connection_timeouts; //type: uint32
+        ydk::YLeaf messages_sent; //type: uint32
+        ydk::YLeaf messages_received; //type: uint32
+        ydk::YLeaf errors_received; //type: uint32
+        ydk::YLeaf stats_start_time; //type: string
+
+}; // AaaData::AaaTacacsStats
+
+
+class AaaData::AaaLdapCounters : public ydk::Entity
+{
+    public:
+        AaaLdapCounters();
+        ~AaaLdapCounters();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ldap_server_address; //type: string
+        ydk::YLeaf ldap_server_port; //type: uint16
+        ydk::YLeaf connection_opens; //type: uint32
+        ydk::YLeaf messages_sent; //type: uint32
+        ydk::YLeaf messages_received; //type: uint32
+        ydk::YLeaf errors_received; //type: uint32
+        ydk::YLeaf connection_closes; //type: uint32
+        ydk::YLeaf connection_aborts; //type: uint32
+        ydk::YLeaf connection_failures; //type: uint32
+        ydk::YLeaf connection_timeouts; //type: uint32
+        ydk::YLeaf counters_start_time; //type: string
+
+}; // AaaData::AaaLdapCounters
 
 
 class AaaData::AaaUsers : public ydk::Entity

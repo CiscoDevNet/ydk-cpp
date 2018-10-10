@@ -59,8 +59,10 @@ class Vlans::Vlan : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf status; //type: VlanStatusType
         class Ports; //type: Vlans::Vlan::Ports
+        class VlanInterfaces; //type: Vlans::Vlan::VlanInterfaces
 
         ydk::YList ports;
+        ydk::YList vlan_interfaces;
         
 }; // Vlans::Vlan
 
@@ -85,6 +87,28 @@ class Vlans::Vlan::Ports : public ydk::Entity
         ydk::YLeaf subinterface; //type: uint32
 
 }; // Vlans::Vlan::Ports
+
+
+class Vlans::Vlan::VlanInterfaces : public ydk::Entity
+{
+    public:
+        VlanInterfaces();
+        ~VlanInterfaces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf subinterface; //type: uint32
+
+}; // Vlans::Vlan::VlanInterfaces
 
 class VlanStatusType : public ydk::Enum
 {

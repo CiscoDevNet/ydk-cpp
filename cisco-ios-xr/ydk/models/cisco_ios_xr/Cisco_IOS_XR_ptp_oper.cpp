@@ -17,6 +17,7 @@ Ptp::Ptp()
     , summary(std::make_shared<Ptp::Summary>())
     , interface_configuration_errors(std::make_shared<Ptp::InterfaceConfigurationErrors>())
     , interface_foreign_masters(std::make_shared<Ptp::InterfaceForeignMasters>())
+    , interface_interops(std::make_shared<Ptp::InterfaceInterops>())
     , local_clock(std::make_shared<Ptp::LocalClock>())
     , interface_packet_counters(std::make_shared<Ptp::InterfacePacketCounters>())
     , advertised_clock(std::make_shared<Ptp::AdvertisedClock>())
@@ -26,11 +27,13 @@ Ptp::Ptp()
     , grandmaster(std::make_shared<Ptp::Grandmaster>())
     , interface_unicast_peers(std::make_shared<Ptp::InterfaceUnicastPeers>())
     , utc_offset_info(std::make_shared<Ptp::UtcOffsetInfo>())
+    , platform(std::make_shared<Ptp::Platform>())
 {
     nodes->parent = this;
     summary->parent = this;
     interface_configuration_errors->parent = this;
     interface_foreign_masters->parent = this;
+    interface_interops->parent = this;
     local_clock->parent = this;
     interface_packet_counters->parent = this;
     advertised_clock->parent = this;
@@ -40,6 +43,7 @@ Ptp::Ptp()
     grandmaster->parent = this;
     interface_unicast_peers->parent = this;
     utc_offset_info->parent = this;
+    platform->parent = this;
 
     yang_name = "ptp"; yang_parent_name = "Cisco-IOS-XR-ptp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -55,6 +59,7 @@ bool Ptp::has_data() const
 	|| (summary !=  nullptr && summary->has_data())
 	|| (interface_configuration_errors !=  nullptr && interface_configuration_errors->has_data())
 	|| (interface_foreign_masters !=  nullptr && interface_foreign_masters->has_data())
+	|| (interface_interops !=  nullptr && interface_interops->has_data())
 	|| (local_clock !=  nullptr && local_clock->has_data())
 	|| (interface_packet_counters !=  nullptr && interface_packet_counters->has_data())
 	|| (advertised_clock !=  nullptr && advertised_clock->has_data())
@@ -63,7 +68,8 @@ bool Ptp::has_data() const
 	|| (global_configuration_error !=  nullptr && global_configuration_error->has_data())
 	|| (grandmaster !=  nullptr && grandmaster->has_data())
 	|| (interface_unicast_peers !=  nullptr && interface_unicast_peers->has_data())
-	|| (utc_offset_info !=  nullptr && utc_offset_info->has_data());
+	|| (utc_offset_info !=  nullptr && utc_offset_info->has_data())
+	|| (platform !=  nullptr && platform->has_data());
 }
 
 bool Ptp::has_operation() const
@@ -73,6 +79,7 @@ bool Ptp::has_operation() const
 	|| (summary !=  nullptr && summary->has_operation())
 	|| (interface_configuration_errors !=  nullptr && interface_configuration_errors->has_operation())
 	|| (interface_foreign_masters !=  nullptr && interface_foreign_masters->has_operation())
+	|| (interface_interops !=  nullptr && interface_interops->has_operation())
 	|| (local_clock !=  nullptr && local_clock->has_operation())
 	|| (interface_packet_counters !=  nullptr && interface_packet_counters->has_operation())
 	|| (advertised_clock !=  nullptr && advertised_clock->has_operation())
@@ -81,7 +88,8 @@ bool Ptp::has_operation() const
 	|| (global_configuration_error !=  nullptr && global_configuration_error->has_operation())
 	|| (grandmaster !=  nullptr && grandmaster->has_operation())
 	|| (interface_unicast_peers !=  nullptr && interface_unicast_peers->has_operation())
-	|| (utc_offset_info !=  nullptr && utc_offset_info->has_operation());
+	|| (utc_offset_info !=  nullptr && utc_offset_info->has_operation())
+	|| (platform !=  nullptr && platform->has_operation());
 }
 
 std::string Ptp::get_segment_path() const
@@ -136,6 +144,15 @@ std::shared_ptr<Entity> Ptp::get_child_by_name(const std::string & child_yang_na
             interface_foreign_masters = std::make_shared<Ptp::InterfaceForeignMasters>();
         }
         return interface_foreign_masters;
+    }
+
+    if(child_yang_name == "interface-interops")
+    {
+        if(interface_interops == nullptr)
+        {
+            interface_interops = std::make_shared<Ptp::InterfaceInterops>();
+        }
+        return interface_interops;
     }
 
     if(child_yang_name == "local-clock")
@@ -219,6 +236,15 @@ std::shared_ptr<Entity> Ptp::get_child_by_name(const std::string & child_yang_na
         return utc_offset_info;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-ptp-pd-oper:platform")
+    {
+        if(platform == nullptr)
+        {
+            platform = std::make_shared<Ptp::Platform>();
+        }
+        return platform;
+    }
+
     return nullptr;
 }
 
@@ -244,6 +270,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::get_children() const
     if(interface_foreign_masters != nullptr)
     {
         children["interface-foreign-masters"] = interface_foreign_masters;
+    }
+
+    if(interface_interops != nullptr)
+    {
+        children["interface-interops"] = interface_interops;
     }
 
     if(local_clock != nullptr)
@@ -291,6 +322,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::get_children() const
         children["utc-offset-info"] = utc_offset_info;
     }
 
+    if(platform != nullptr)
+    {
+        children["Cisco-IOS-XR-ptp-pd-oper:platform"] = platform;
+    }
+
     return children;
 }
 
@@ -329,7 +365,7 @@ std::map<std::pair<std::string, std::string>, std::string> Ptp::get_namespace_id
 
 bool Ptp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nodes" || name == "summary" || name == "interface-configuration-errors" || name == "interface-foreign-masters" || name == "local-clock" || name == "interface-packet-counters" || name == "advertised-clock" || name == "interfaces" || name == "dataset" || name == "global-configuration-error" || name == "grandmaster" || name == "interface-unicast-peers" || name == "utc-offset-info")
+    if(name == "nodes" || name == "summary" || name == "interface-configuration-errors" || name == "interface-foreign-masters" || name == "interface-interops" || name == "local-clock" || name == "interface-packet-counters" || name == "advertised-clock" || name == "interfaces" || name == "dataset" || name == "global-configuration-error" || name == "grandmaster" || name == "interface-unicast-peers" || name == "utc-offset-info" || name == "platform")
         return true;
     return false;
 }
@@ -2645,12 +2681,23 @@ Ptp::Nodes::Node::NodeInterfaces::NodeInterface::NodeInterface()
     general_dscp{YType::uint32, "general-dscp"},
     unicast_peers{YType::uint32, "unicast-peers"},
     local_priority{YType::uint8, "local-priority"},
-    signal_fail{YType::boolean, "signal-fail"}
+    signal_fail{YType::boolean, "signal-fail"},
+    profile_interop{YType::boolean, "profile-interop"},
+    interop_domain{YType::uint8, "interop-domain"},
+    interop_profile{YType::enumeration, "interop-profile"}
         ,
-    mac_address(std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MacAddress>())
+    ipv6_address_array(std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv6AddressArray>())
+    , ipv4_address_array(std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv4AddressArray>())
+    , mac_address(std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MacAddress>())
+    , ingress_conversion(std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion>())
+    , egress_conversion(std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion>())
     , master_table(this, {})
 {
+    ipv6_address_array->parent = this;
+    ipv4_address_array->parent = this;
     mac_address->parent = this;
+    ingress_conversion->parent = this;
+    egress_conversion->parent = this;
 
     yang_name = "node-interface"; yang_parent_name = "node-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -2699,7 +2746,14 @@ bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::has_data() const
 	|| unicast_peers.is_set
 	|| local_priority.is_set
 	|| signal_fail.is_set
-	|| (mac_address !=  nullptr && mac_address->has_data());
+	|| profile_interop.is_set
+	|| interop_domain.is_set
+	|| interop_profile.is_set
+	|| (ipv6_address_array !=  nullptr && ipv6_address_array->has_data())
+	|| (ipv4_address_array !=  nullptr && ipv4_address_array->has_data())
+	|| (mac_address !=  nullptr && mac_address->has_data())
+	|| (ingress_conversion !=  nullptr && ingress_conversion->has_data())
+	|| (egress_conversion !=  nullptr && egress_conversion->has_data());
 }
 
 bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::has_operation() const
@@ -2742,7 +2796,14 @@ bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::has_operation() const
 	|| ydk::is_set(unicast_peers.yfilter)
 	|| ydk::is_set(local_priority.yfilter)
 	|| ydk::is_set(signal_fail.yfilter)
-	|| (mac_address !=  nullptr && mac_address->has_operation());
+	|| ydk::is_set(profile_interop.yfilter)
+	|| ydk::is_set(interop_domain.yfilter)
+	|| ydk::is_set(interop_profile.yfilter)
+	|| (ipv6_address_array !=  nullptr && ipv6_address_array->has_operation())
+	|| (ipv4_address_array !=  nullptr && ipv4_address_array->has_operation())
+	|| (mac_address !=  nullptr && mac_address->has_operation())
+	|| (ingress_conversion !=  nullptr && ingress_conversion->has_operation())
+	|| (egress_conversion !=  nullptr && egress_conversion->has_operation());
 }
 
 std::string Ptp::Nodes::Node::NodeInterfaces::NodeInterface::get_segment_path() const
@@ -2789,6 +2850,9 @@ std::vector<std::pair<std::string, LeafData> > Ptp::Nodes::Node::NodeInterfaces:
     if (unicast_peers.is_set || is_set(unicast_peers.yfilter)) leaf_name_data.push_back(unicast_peers.get_name_leafdata());
     if (local_priority.is_set || is_set(local_priority.yfilter)) leaf_name_data.push_back(local_priority.get_name_leafdata());
     if (signal_fail.is_set || is_set(signal_fail.yfilter)) leaf_name_data.push_back(signal_fail.get_name_leafdata());
+    if (profile_interop.is_set || is_set(profile_interop.yfilter)) leaf_name_data.push_back(profile_interop.get_name_leafdata());
+    if (interop_domain.is_set || is_set(interop_domain.yfilter)) leaf_name_data.push_back(interop_domain.get_name_leafdata());
+    if (interop_profile.is_set || is_set(interop_profile.yfilter)) leaf_name_data.push_back(interop_profile.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2796,6 +2860,24 @@ std::vector<std::pair<std::string, LeafData> > Ptp::Nodes::Node::NodeInterfaces:
 
 std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "ipv6-address-array")
+    {
+        if(ipv6_address_array == nullptr)
+        {
+            ipv6_address_array = std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv6AddressArray>();
+        }
+        return ipv6_address_array;
+    }
+
+    if(child_yang_name == "ipv4-address-array")
+    {
+        if(ipv4_address_array == nullptr)
+        {
+            ipv4_address_array = std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv4AddressArray>();
+        }
+        return ipv4_address_array;
+    }
+
     if(child_yang_name == "mac-address")
     {
         if(mac_address == nullptr)
@@ -2803,6 +2885,24 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::get_chi
             mac_address = std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MacAddress>();
         }
         return mac_address;
+    }
+
+    if(child_yang_name == "ingress-conversion")
+    {
+        if(ingress_conversion == nullptr)
+        {
+            ingress_conversion = std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion>();
+        }
+        return ingress_conversion;
+    }
+
+    if(child_yang_name == "egress-conversion")
+    {
+        if(egress_conversion == nullptr)
+        {
+            egress_conversion = std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion>();
+        }
+        return egress_conversion;
     }
 
     if(child_yang_name == "master-table")
@@ -2820,9 +2920,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces:
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(ipv6_address_array != nullptr)
+    {
+        children["ipv6-address-array"] = ipv6_address_array;
+    }
+
+    if(ipv4_address_array != nullptr)
+    {
+        children["ipv4-address-array"] = ipv4_address_array;
+    }
+
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
+    }
+
+    if(ingress_conversion != nullptr)
+    {
+        children["ingress-conversion"] = ingress_conversion;
+    }
+
+    if(egress_conversion != nullptr)
+    {
+        children["egress-conversion"] = egress_conversion;
     }
 
     count = 0;
@@ -3031,6 +3151,24 @@ void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::set_value(const std::strin
         signal_fail.value_namespace = name_space;
         signal_fail.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "profile-interop")
+    {
+        profile_interop = value;
+        profile_interop.value_namespace = name_space;
+        profile_interop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interop-domain")
+    {
+        interop_domain = value;
+        interop_domain.value_namespace = name_space;
+        interop_domain.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interop-profile")
+    {
+        interop_profile = value;
+        interop_profile.value_namespace = name_space;
+        interop_profile.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3163,11 +3301,197 @@ void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::set_filter(const std::stri
     {
         signal_fail.yfilter = yfilter;
     }
+    if(value_path == "profile-interop")
+    {
+        profile_interop.yfilter = yfilter;
+    }
+    if(value_path == "interop-domain")
+    {
+        interop_domain.yfilter = yfilter;
+    }
+    if(value_path == "interop-profile")
+    {
+        interop_profile.yfilter = yfilter;
+    }
 }
 
 bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mac-address" || name == "master-table" || name == "interface-name" || name == "port-state" || name == "port-number" || name == "line-state" || name == "encapsulation" || name == "ipv6-address" || name == "ipv4-address" || name == "two-step" || name == "communication-model" || name == "log-sync-interval" || name == "log-announce-interval" || name == "announce-timeout" || name == "log-min-delay-request-interval" || name == "configured-port-state" || name == "supports-unicast" || name == "supports-master" || name == "supports-one-step" || name == "supports-two-step" || name == "supports-ethernet" || name == "supports-multicast" || name == "supports-ipv4" || name == "supports-ipv6" || name == "supports-slave" || name == "supports-source-ip" || name == "max-sync-rate" || name == "event-cos" || name == "general-cos" || name == "event-dscp" || name == "general-dscp" || name == "unicast-peers" || name == "local-priority" || name == "signal-fail")
+    if(name == "ipv6-address-array" || name == "ipv4-address-array" || name == "mac-address" || name == "ingress-conversion" || name == "egress-conversion" || name == "master-table" || name == "interface-name" || name == "port-state" || name == "port-number" || name == "line-state" || name == "encapsulation" || name == "ipv6-address" || name == "ipv4-address" || name == "two-step" || name == "communication-model" || name == "log-sync-interval" || name == "log-announce-interval" || name == "announce-timeout" || name == "log-min-delay-request-interval" || name == "configured-port-state" || name == "supports-unicast" || name == "supports-master" || name == "supports-one-step" || name == "supports-two-step" || name == "supports-ethernet" || name == "supports-multicast" || name == "supports-ipv4" || name == "supports-ipv6" || name == "supports-slave" || name == "supports-source-ip" || name == "max-sync-rate" || name == "event-cos" || name == "general-cos" || name == "event-dscp" || name == "general-dscp" || name == "unicast-peers" || name == "local-priority" || name == "signal-fail" || name == "profile-interop" || name == "interop-domain" || name == "interop-profile")
+        return true;
+    return false;
+}
+
+Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv6AddressArray::Ipv6AddressArray()
+    :
+    addr{YType::str, "addr"}
+{
+
+    yang_name = "ipv6-address-array"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv6AddressArray::~Ipv6AddressArray()
+{
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv6AddressArray::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : addr.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv6AddressArray::has_operation() const
+{
+    for (auto const & leaf : addr.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(addr.yfilter);
+}
+
+std::string Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv6AddressArray::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-address-array";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv6AddressArray::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto addr_name_datas = addr.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), addr_name_datas.begin(), addr_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv6AddressArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv6AddressArray::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv6AddressArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "addr")
+    {
+        addr.append(value);
+    }
+}
+
+void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv6AddressArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "addr")
+    {
+        addr.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv6AddressArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "addr")
+        return true;
+    return false;
+}
+
+Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv4AddressArray::Ipv4AddressArray()
+    :
+    addr{YType::str, "addr"}
+{
+
+    yang_name = "ipv4-address-array"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv4AddressArray::~Ipv4AddressArray()
+{
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv4AddressArray::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : addr.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv4AddressArray::has_operation() const
+{
+    for (auto const & leaf : addr.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(addr.yfilter);
+}
+
+std::string Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv4AddressArray::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-address-array";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv4AddressArray::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto addr_name_datas = addr.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), addr_name_datas.begin(), addr_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv4AddressArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv4AddressArray::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv4AddressArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "addr")
+    {
+        addr.append(value);
+    }
+}
+
+void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv4AddressArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "addr")
+    {
+        addr.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::Ipv4AddressArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "addr")
         return true;
     return false;
 }
@@ -3246,6 +3570,516 @@ void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MacAddress::set_filter(con
 bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macaddr")
+        return true;
+    return false;
+}
+
+Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::IngressConversion()
+    :
+    priority1{YType::uint8, "priority1"},
+    priority2{YType::uint8, "priority2"},
+    accuracy{YType::uint8, "accuracy"},
+    class_default{YType::uint8, "class-default"},
+    offset_log_variance{YType::uint16, "offset-log-variance"}
+        ,
+    class_mapping(this, {})
+{
+
+    yang_name = "ingress-conversion"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::~IngressConversion()
+{
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_mapping.len(); index++)
+    {
+        if(class_mapping[index]->has_data())
+            return true;
+    }
+    return priority1.is_set
+	|| priority2.is_set
+	|| accuracy.is_set
+	|| class_default.is_set
+	|| offset_log_variance.is_set;
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::has_operation() const
+{
+    for (std::size_t index=0; index<class_mapping.len(); index++)
+    {
+        if(class_mapping[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(priority1.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(accuracy.yfilter)
+	|| ydk::is_set(class_default.yfilter)
+	|| ydk::is_set(offset_log_variance.yfilter);
+}
+
+std::string Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ingress-conversion";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (accuracy.is_set || is_set(accuracy.yfilter)) leaf_name_data.push_back(accuracy.get_name_leafdata());
+    if (class_default.is_set || is_set(class_default.yfilter)) leaf_name_data.push_back(class_default.get_name_leafdata());
+    if (offset_log_variance.is_set || is_set(offset_log_variance.yfilter)) leaf_name_data.push_back(offset_log_variance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "class-mapping")
+    {
+        auto c = std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::ClassMapping>();
+        c->parent = this;
+        class_mapping.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : class_mapping.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "priority1")
+    {
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority2")
+    {
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accuracy")
+    {
+        accuracy = value;
+        accuracy.value_namespace = name_space;
+        accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "class-default")
+    {
+        class_default = value;
+        class_default.value_namespace = name_space;
+        class_default.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-log-variance")
+    {
+        offset_log_variance = value;
+        offset_log_variance.value_namespace = name_space;
+        offset_log_variance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "priority1")
+    {
+        priority1.yfilter = yfilter;
+    }
+    if(value_path == "priority2")
+    {
+        priority2.yfilter = yfilter;
+    }
+    if(value_path == "accuracy")
+    {
+        accuracy.yfilter = yfilter;
+    }
+    if(value_path == "class-default")
+    {
+        class_default.yfilter = yfilter;
+    }
+    if(value_path == "offset-log-variance")
+    {
+        offset_log_variance.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class-mapping" || name == "priority1" || name == "priority2" || name == "accuracy" || name == "class-default" || name == "offset-log-variance")
+        return true;
+    return false;
+}
+
+Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::ClassMapping::ClassMapping()
+    :
+    from_clock_class{YType::uint8, "from-clock-class"},
+    to_clock_class{YType::uint8, "to-clock-class"}
+{
+
+    yang_name = "class-mapping"; yang_parent_name = "ingress-conversion"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::ClassMapping::~ClassMapping()
+{
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::ClassMapping::has_data() const
+{
+    if (is_presence_container) return true;
+    return from_clock_class.is_set
+	|| to_clock_class.is_set;
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::ClassMapping::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(from_clock_class.yfilter)
+	|| ydk::is_set(to_clock_class.yfilter);
+}
+
+std::string Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::ClassMapping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "class-mapping";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::ClassMapping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (from_clock_class.is_set || is_set(from_clock_class.yfilter)) leaf_name_data.push_back(from_clock_class.get_name_leafdata());
+    if (to_clock_class.is_set || is_set(to_clock_class.yfilter)) leaf_name_data.push_back(to_clock_class.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::ClassMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::ClassMapping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::ClassMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "from-clock-class")
+    {
+        from_clock_class = value;
+        from_clock_class.value_namespace = name_space;
+        from_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-clock-class")
+    {
+        to_clock_class = value;
+        to_clock_class.value_namespace = name_space;
+        to_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::ClassMapping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "from-clock-class")
+    {
+        from_clock_class.yfilter = yfilter;
+    }
+    if(value_path == "to-clock-class")
+    {
+        to_clock_class.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::ClassMapping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "from-clock-class" || name == "to-clock-class")
+        return true;
+    return false;
+}
+
+Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::EgressConversion()
+    :
+    priority1{YType::uint8, "priority1"},
+    priority2{YType::uint8, "priority2"},
+    accuracy{YType::uint8, "accuracy"},
+    class_default{YType::uint8, "class-default"},
+    offset_log_variance{YType::uint16, "offset-log-variance"}
+        ,
+    class_mapping(this, {})
+{
+
+    yang_name = "egress-conversion"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::~EgressConversion()
+{
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_mapping.len(); index++)
+    {
+        if(class_mapping[index]->has_data())
+            return true;
+    }
+    return priority1.is_set
+	|| priority2.is_set
+	|| accuracy.is_set
+	|| class_default.is_set
+	|| offset_log_variance.is_set;
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::has_operation() const
+{
+    for (std::size_t index=0; index<class_mapping.len(); index++)
+    {
+        if(class_mapping[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(priority1.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(accuracy.yfilter)
+	|| ydk::is_set(class_default.yfilter)
+	|| ydk::is_set(offset_log_variance.yfilter);
+}
+
+std::string Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "egress-conversion";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (accuracy.is_set || is_set(accuracy.yfilter)) leaf_name_data.push_back(accuracy.get_name_leafdata());
+    if (class_default.is_set || is_set(class_default.yfilter)) leaf_name_data.push_back(class_default.get_name_leafdata());
+    if (offset_log_variance.is_set || is_set(offset_log_variance.yfilter)) leaf_name_data.push_back(offset_log_variance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "class-mapping")
+    {
+        auto c = std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::ClassMapping>();
+        c->parent = this;
+        class_mapping.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : class_mapping.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "priority1")
+    {
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority2")
+    {
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accuracy")
+    {
+        accuracy = value;
+        accuracy.value_namespace = name_space;
+        accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "class-default")
+    {
+        class_default = value;
+        class_default.value_namespace = name_space;
+        class_default.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-log-variance")
+    {
+        offset_log_variance = value;
+        offset_log_variance.value_namespace = name_space;
+        offset_log_variance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "priority1")
+    {
+        priority1.yfilter = yfilter;
+    }
+    if(value_path == "priority2")
+    {
+        priority2.yfilter = yfilter;
+    }
+    if(value_path == "accuracy")
+    {
+        accuracy.yfilter = yfilter;
+    }
+    if(value_path == "class-default")
+    {
+        class_default.yfilter = yfilter;
+    }
+    if(value_path == "offset-log-variance")
+    {
+        offset_log_variance.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class-mapping" || name == "priority1" || name == "priority2" || name == "accuracy" || name == "class-default" || name == "offset-log-variance")
+        return true;
+    return false;
+}
+
+Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::ClassMapping::ClassMapping()
+    :
+    from_clock_class{YType::uint8, "from-clock-class"},
+    to_clock_class{YType::uint8, "to-clock-class"}
+{
+
+    yang_name = "class-mapping"; yang_parent_name = "egress-conversion"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::ClassMapping::~ClassMapping()
+{
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::ClassMapping::has_data() const
+{
+    if (is_presence_container) return true;
+    return from_clock_class.is_set
+	|| to_clock_class.is_set;
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::ClassMapping::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(from_clock_class.yfilter)
+	|| ydk::is_set(to_clock_class.yfilter);
+}
+
+std::string Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::ClassMapping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "class-mapping";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::ClassMapping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (from_clock_class.is_set || is_set(from_clock_class.yfilter)) leaf_name_data.push_back(from_clock_class.get_name_leafdata());
+    if (to_clock_class.is_set || is_set(to_clock_class.yfilter)) leaf_name_data.push_back(to_clock_class.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::ClassMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::ClassMapping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::ClassMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "from-clock-class")
+    {
+        from_clock_class = value;
+        from_clock_class.value_namespace = name_space;
+        from_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-clock-class")
+    {
+        to_clock_class = value;
+        to_clock_class.value_namespace = name_space;
+        to_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::ClassMapping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "from-clock-class")
+    {
+        from_clock_class.yfilter = yfilter;
+    }
+    if(value_path == "to-clock-class")
+    {
+        to_clock_class.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::ClassMapping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "from-clock-class" || name == "to-clock-class")
         return true;
     return false;
 }
@@ -5376,8 +6210,10 @@ Ptp::Nodes::Node::PacketCounters::DropReasons::DropReasons()
     no_offload_session{YType::uint32, "no-offload-session"},
     not_supported{YType::uint32, "not-supported"},
     min_clock_class{YType::uint32, "min-clock-class"},
+    g8265_1_incompatible{YType::uint32, "g8265-1-incompatible"},
     g8275_1_incompatible{YType::uint32, "g8275-1-incompatible"},
-    g8275_2_incompatible{YType::uint32, "g8275-2-incompatible"}
+    g8275_2_incompatible{YType::uint32, "g8275-2-incompatible"},
+    incorrect_address{YType::uint32, "incorrect-address"}
 {
 
     yang_name = "drop-reasons"; yang_parent_name = "packet-counters"; is_top_level_class = false; has_list_ancestor = true; 
@@ -5412,8 +6248,10 @@ bool Ptp::Nodes::Node::PacketCounters::DropReasons::has_data() const
 	|| no_offload_session.is_set
 	|| not_supported.is_set
 	|| min_clock_class.is_set
+	|| g8265_1_incompatible.is_set
 	|| g8275_1_incompatible.is_set
-	|| g8275_2_incompatible.is_set;
+	|| g8275_2_incompatible.is_set
+	|| incorrect_address.is_set;
 }
 
 bool Ptp::Nodes::Node::PacketCounters::DropReasons::has_operation() const
@@ -5441,8 +6279,10 @@ bool Ptp::Nodes::Node::PacketCounters::DropReasons::has_operation() const
 	|| ydk::is_set(no_offload_session.yfilter)
 	|| ydk::is_set(not_supported.yfilter)
 	|| ydk::is_set(min_clock_class.yfilter)
+	|| ydk::is_set(g8265_1_incompatible.yfilter)
 	|| ydk::is_set(g8275_1_incompatible.yfilter)
-	|| ydk::is_set(g8275_2_incompatible.yfilter);
+	|| ydk::is_set(g8275_2_incompatible.yfilter)
+	|| ydk::is_set(incorrect_address.yfilter);
 }
 
 std::string Ptp::Nodes::Node::PacketCounters::DropReasons::get_segment_path() const
@@ -5478,8 +6318,10 @@ std::vector<std::pair<std::string, LeafData> > Ptp::Nodes::Node::PacketCounters:
     if (no_offload_session.is_set || is_set(no_offload_session.yfilter)) leaf_name_data.push_back(no_offload_session.get_name_leafdata());
     if (not_supported.is_set || is_set(not_supported.yfilter)) leaf_name_data.push_back(not_supported.get_name_leafdata());
     if (min_clock_class.is_set || is_set(min_clock_class.yfilter)) leaf_name_data.push_back(min_clock_class.get_name_leafdata());
+    if (g8265_1_incompatible.is_set || is_set(g8265_1_incompatible.yfilter)) leaf_name_data.push_back(g8265_1_incompatible.get_name_leafdata());
     if (g8275_1_incompatible.is_set || is_set(g8275_1_incompatible.yfilter)) leaf_name_data.push_back(g8275_1_incompatible.get_name_leafdata());
     if (g8275_2_incompatible.is_set || is_set(g8275_2_incompatible.yfilter)) leaf_name_data.push_back(g8275_2_incompatible.get_name_leafdata());
+    if (incorrect_address.is_set || is_set(incorrect_address.yfilter)) leaf_name_data.push_back(incorrect_address.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5631,6 +6473,12 @@ void Ptp::Nodes::Node::PacketCounters::DropReasons::set_value(const std::string 
         min_clock_class.value_namespace = name_space;
         min_clock_class.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "g8265-1-incompatible")
+    {
+        g8265_1_incompatible = value;
+        g8265_1_incompatible.value_namespace = name_space;
+        g8265_1_incompatible.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "g8275-1-incompatible")
     {
         g8275_1_incompatible = value;
@@ -5642,6 +6490,12 @@ void Ptp::Nodes::Node::PacketCounters::DropReasons::set_value(const std::string 
         g8275_2_incompatible = value;
         g8275_2_incompatible.value_namespace = name_space;
         g8275_2_incompatible.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "incorrect-address")
+    {
+        incorrect_address = value;
+        incorrect_address.value_namespace = name_space;
+        incorrect_address.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -5735,6 +6589,10 @@ void Ptp::Nodes::Node::PacketCounters::DropReasons::set_filter(const std::string
     {
         min_clock_class.yfilter = yfilter;
     }
+    if(value_path == "g8265-1-incompatible")
+    {
+        g8265_1_incompatible.yfilter = yfilter;
+    }
     if(value_path == "g8275-1-incompatible")
     {
         g8275_1_incompatible.yfilter = yfilter;
@@ -5743,11 +6601,15 @@ void Ptp::Nodes::Node::PacketCounters::DropReasons::set_filter(const std::string
     {
         g8275_2_incompatible.yfilter = yfilter;
     }
+    if(value_path == "incorrect-address")
+    {
+        incorrect_address.yfilter = yfilter;
+    }
 }
 
 bool Ptp::Nodes::Node::PacketCounters::DropReasons::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "not-ready" || name == "wrong-domain" || name == "too-short" || name == "looped-same-port" || name == "looped-higher-port" || name == "looped-lower-port" || name == "no-timestamp" || name == "zero-timestamp" || name == "invalid-tl-vs" || name == "not-for-us" || name == "not-listening" || name == "wrong-master" || name == "unknown-master" || name == "not-master" || name == "not-slave" || name == "not-granted" || name == "too-slow" || name == "invalid-packet" || name == "wrong-sequence-id" || name == "no-offload-session" || name == "not-supported" || name == "min-clock-class" || name == "g8275-1-incompatible" || name == "g8275-2-incompatible")
+    if(name == "not-ready" || name == "wrong-domain" || name == "too-short" || name == "looped-same-port" || name == "looped-higher-port" || name == "looped-lower-port" || name == "no-timestamp" || name == "zero-timestamp" || name == "invalid-tl-vs" || name == "not-for-us" || name == "not-listening" || name == "wrong-master" || name == "unknown-master" || name == "not-master" || name == "not-slave" || name == "not-granted" || name == "too-slow" || name == "invalid-packet" || name == "wrong-sequence-id" || name == "no-offload-session" || name == "not-supported" || name == "min-clock-class" || name == "g8265-1-incompatible" || name == "g8275-1-incompatible" || name == "g8275-2-incompatible" || name == "incorrect-address")
         return true;
     return false;
 }
@@ -6069,7 +6931,8 @@ Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::InterfaceConfigu
     configuration_profile_name{YType::str, "configuration-profile-name"},
     clock_profile{YType::enumeration, "clock-profile"},
     telecom_clock_type{YType::enumeration, "telecom-clock-type"},
-    restrict_port_state{YType::enumeration, "restrict-port-state"}
+    restrict_port_state{YType::enumeration, "restrict-port-state"},
+    interop_profile{YType::enumeration, "interop-profile"}
         ,
     configuration_errors(std::make_shared<Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::ConfigurationErrors>())
 {
@@ -6090,6 +6953,7 @@ bool Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::has_data() 
 	|| clock_profile.is_set
 	|| telecom_clock_type.is_set
 	|| restrict_port_state.is_set
+	|| interop_profile.is_set
 	|| (configuration_errors !=  nullptr && configuration_errors->has_data());
 }
 
@@ -6101,6 +6965,7 @@ bool Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::has_operati
 	|| ydk::is_set(clock_profile.yfilter)
 	|| ydk::is_set(telecom_clock_type.yfilter)
 	|| ydk::is_set(restrict_port_state.yfilter)
+	|| ydk::is_set(interop_profile.yfilter)
 	|| (configuration_errors !=  nullptr && configuration_errors->has_operation());
 }
 
@@ -6128,6 +6993,7 @@ std::vector<std::pair<std::string, LeafData> > Ptp::InterfaceConfigurationErrors
     if (clock_profile.is_set || is_set(clock_profile.yfilter)) leaf_name_data.push_back(clock_profile.get_name_leafdata());
     if (telecom_clock_type.is_set || is_set(telecom_clock_type.yfilter)) leaf_name_data.push_back(telecom_clock_type.get_name_leafdata());
     if (restrict_port_state.is_set || is_set(restrict_port_state.yfilter)) leaf_name_data.push_back(restrict_port_state.get_name_leafdata());
+    if (interop_profile.is_set || is_set(interop_profile.yfilter)) leaf_name_data.push_back(interop_profile.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6191,6 +7057,12 @@ void Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::set_value(c
         restrict_port_state.value_namespace = name_space;
         restrict_port_state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "interop-profile")
+    {
+        interop_profile = value;
+        interop_profile.value_namespace = name_space;
+        interop_profile.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6215,11 +7087,15 @@ void Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::set_filter(
     {
         restrict_port_state.yfilter = yfilter;
     }
+    if(value_path == "interop-profile")
+    {
+        interop_profile.yfilter = yfilter;
+    }
 }
 
 bool Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "configuration-errors" || name == "interface-name" || name == "configuration-profile-name" || name == "clock-profile" || name == "telecom-clock-type" || name == "restrict-port-state")
+    if(name == "configuration-errors" || name == "interface-name" || name == "configuration-profile-name" || name == "clock-profile" || name == "telecom-clock-type" || name == "restrict-port-state" || name == "interop-profile")
         return true;
     return false;
 }
@@ -6245,6 +7121,8 @@ Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::ConfigurationErr
     profile_master_mixed{YType::boolean, "profile-master-mixed"},
     target_address_ipv4{YType::boolean, "target-address-ipv4"},
     target_address_ipv6{YType::boolean, "target-address-ipv6"},
+    ipv4ttl{YType::boolean, "ipv4ttl"},
+    ipv6_hop_limit{YType::boolean, "ipv6-hop-limit"},
     profile_port_state{YType::boolean, "profile-port-state"},
     profile_announce_interval{YType::boolean, "profile-announce-interval"},
     profile_sync_interval{YType::boolean, "profile-sync-interval"},
@@ -6252,8 +7130,22 @@ Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::ConfigurationErr
     profile_sync_timeout{YType::boolean, "profile-sync-timeout"},
     profile_delay_resp_timeout{YType::boolean, "profile-delay-resp-timeout"},
     invalid_grant_reduction{YType::boolean, "invalid-grant-reduction"},
+    invalid_interop_domain{YType::boolean, "invalid-interop-domain"},
+    invalid_interop_ingress_clock_class_default{YType::boolean, "invalid-interop-ingress-clock-class-default"},
+    invalid_interop_ingress_priority1{YType::boolean, "invalid-interop-ingress-priority1"},
+    invalid_interop_ingress_clock_accuracy{YType::boolean, "invalid-interop-ingress-clock-accuracy"},
+    invalid_interop_ingress_oslv{YType::boolean, "invalid-interop-ingress-oslv"},
+    invalid_interop_egress_clock_class_default{YType::boolean, "invalid-interop-egress-clock-class-default"},
+    invalid_interop_egress_priority1{YType::boolean, "invalid-interop-egress-priority1"},
+    invalid_interop_egress_priority2{YType::boolean, "invalid-interop-egress-priority2"},
+    invalid_interop_egress_clock_accuracy{YType::boolean, "invalid-interop-egress-clock-accuracy"},
+    invalid_interop_egress_oslv{YType::boolean, "invalid-interop-egress-oslv"},
     invalid_master_config{YType::boolean, "invalid-master-config"},
-    invalid_slave_config{YType::boolean, "invalid-slave-config"}
+    invalid_slave_config{YType::boolean, "invalid-slave-config"},
+    invalid_interop_ingress_clock_class_map_from_val{YType::uint8, "invalid-interop-ingress-clock-class-map-from-val"},
+    invalid_interop_ingress_clock_class_map_to_val{YType::uint8, "invalid-interop-ingress-clock-class-map-to-val"},
+    invalid_interop_egress_clock_class_map_from_val{YType::uint8, "invalid-interop-egress-clock-class-map-from-val"},
+    invalid_interop_egress_clock_class_map_to_val{YType::uint8, "invalid-interop-egress-clock-class-map-to-val"}
 {
 
     yang_name = "configuration-errors"; yang_parent_name = "interface-configuration-error"; is_top_level_class = false; has_list_ancestor = true; 
@@ -6266,6 +7158,26 @@ Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::ConfigurationErr
 bool Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::ConfigurationErrors::has_data() const
 {
     if (is_presence_container) return true;
+    for (auto const & leaf : invalid_interop_ingress_clock_class_map_from_val.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : invalid_interop_ingress_clock_class_map_to_val.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : invalid_interop_egress_clock_class_map_from_val.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : invalid_interop_egress_clock_class_map_to_val.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
     return global_ptp.is_set
 	|| ethernet_transport.is_set
 	|| one_step.is_set
@@ -6285,6 +7197,8 @@ bool Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::Configurati
 	|| profile_master_mixed.is_set
 	|| target_address_ipv4.is_set
 	|| target_address_ipv6.is_set
+	|| ipv4ttl.is_set
+	|| ipv6_hop_limit.is_set
 	|| profile_port_state.is_set
 	|| profile_announce_interval.is_set
 	|| profile_sync_interval.is_set
@@ -6292,12 +7206,42 @@ bool Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::Configurati
 	|| profile_sync_timeout.is_set
 	|| profile_delay_resp_timeout.is_set
 	|| invalid_grant_reduction.is_set
+	|| invalid_interop_domain.is_set
+	|| invalid_interop_ingress_clock_class_default.is_set
+	|| invalid_interop_ingress_priority1.is_set
+	|| invalid_interop_ingress_clock_accuracy.is_set
+	|| invalid_interop_ingress_oslv.is_set
+	|| invalid_interop_egress_clock_class_default.is_set
+	|| invalid_interop_egress_priority1.is_set
+	|| invalid_interop_egress_priority2.is_set
+	|| invalid_interop_egress_clock_accuracy.is_set
+	|| invalid_interop_egress_oslv.is_set
 	|| invalid_master_config.is_set
 	|| invalid_slave_config.is_set;
 }
 
 bool Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::ConfigurationErrors::has_operation() const
 {
+    for (auto const & leaf : invalid_interop_ingress_clock_class_map_from_val.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : invalid_interop_ingress_clock_class_map_to_val.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : invalid_interop_egress_clock_class_map_from_val.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : invalid_interop_egress_clock_class_map_to_val.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
     return is_set(yfilter)
 	|| ydk::is_set(global_ptp.yfilter)
 	|| ydk::is_set(ethernet_transport.yfilter)
@@ -6318,6 +7262,8 @@ bool Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::Configurati
 	|| ydk::is_set(profile_master_mixed.yfilter)
 	|| ydk::is_set(target_address_ipv4.yfilter)
 	|| ydk::is_set(target_address_ipv6.yfilter)
+	|| ydk::is_set(ipv4ttl.yfilter)
+	|| ydk::is_set(ipv6_hop_limit.yfilter)
 	|| ydk::is_set(profile_port_state.yfilter)
 	|| ydk::is_set(profile_announce_interval.yfilter)
 	|| ydk::is_set(profile_sync_interval.yfilter)
@@ -6325,8 +7271,22 @@ bool Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::Configurati
 	|| ydk::is_set(profile_sync_timeout.yfilter)
 	|| ydk::is_set(profile_delay_resp_timeout.yfilter)
 	|| ydk::is_set(invalid_grant_reduction.yfilter)
+	|| ydk::is_set(invalid_interop_domain.yfilter)
+	|| ydk::is_set(invalid_interop_ingress_clock_class_default.yfilter)
+	|| ydk::is_set(invalid_interop_ingress_priority1.yfilter)
+	|| ydk::is_set(invalid_interop_ingress_clock_accuracy.yfilter)
+	|| ydk::is_set(invalid_interop_ingress_oslv.yfilter)
+	|| ydk::is_set(invalid_interop_egress_clock_class_default.yfilter)
+	|| ydk::is_set(invalid_interop_egress_priority1.yfilter)
+	|| ydk::is_set(invalid_interop_egress_priority2.yfilter)
+	|| ydk::is_set(invalid_interop_egress_clock_accuracy.yfilter)
+	|| ydk::is_set(invalid_interop_egress_oslv.yfilter)
 	|| ydk::is_set(invalid_master_config.yfilter)
-	|| ydk::is_set(invalid_slave_config.yfilter);
+	|| ydk::is_set(invalid_slave_config.yfilter)
+	|| ydk::is_set(invalid_interop_ingress_clock_class_map_from_val.yfilter)
+	|| ydk::is_set(invalid_interop_ingress_clock_class_map_to_val.yfilter)
+	|| ydk::is_set(invalid_interop_egress_clock_class_map_from_val.yfilter)
+	|| ydk::is_set(invalid_interop_egress_clock_class_map_to_val.yfilter);
 }
 
 std::string Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::ConfigurationErrors::get_segment_path() const
@@ -6359,6 +7319,8 @@ std::vector<std::pair<std::string, LeafData> > Ptp::InterfaceConfigurationErrors
     if (profile_master_mixed.is_set || is_set(profile_master_mixed.yfilter)) leaf_name_data.push_back(profile_master_mixed.get_name_leafdata());
     if (target_address_ipv4.is_set || is_set(target_address_ipv4.yfilter)) leaf_name_data.push_back(target_address_ipv4.get_name_leafdata());
     if (target_address_ipv6.is_set || is_set(target_address_ipv6.yfilter)) leaf_name_data.push_back(target_address_ipv6.get_name_leafdata());
+    if (ipv4ttl.is_set || is_set(ipv4ttl.yfilter)) leaf_name_data.push_back(ipv4ttl.get_name_leafdata());
+    if (ipv6_hop_limit.is_set || is_set(ipv6_hop_limit.yfilter)) leaf_name_data.push_back(ipv6_hop_limit.get_name_leafdata());
     if (profile_port_state.is_set || is_set(profile_port_state.yfilter)) leaf_name_data.push_back(profile_port_state.get_name_leafdata());
     if (profile_announce_interval.is_set || is_set(profile_announce_interval.yfilter)) leaf_name_data.push_back(profile_announce_interval.get_name_leafdata());
     if (profile_sync_interval.is_set || is_set(profile_sync_interval.yfilter)) leaf_name_data.push_back(profile_sync_interval.get_name_leafdata());
@@ -6366,9 +7328,27 @@ std::vector<std::pair<std::string, LeafData> > Ptp::InterfaceConfigurationErrors
     if (profile_sync_timeout.is_set || is_set(profile_sync_timeout.yfilter)) leaf_name_data.push_back(profile_sync_timeout.get_name_leafdata());
     if (profile_delay_resp_timeout.is_set || is_set(profile_delay_resp_timeout.yfilter)) leaf_name_data.push_back(profile_delay_resp_timeout.get_name_leafdata());
     if (invalid_grant_reduction.is_set || is_set(invalid_grant_reduction.yfilter)) leaf_name_data.push_back(invalid_grant_reduction.get_name_leafdata());
+    if (invalid_interop_domain.is_set || is_set(invalid_interop_domain.yfilter)) leaf_name_data.push_back(invalid_interop_domain.get_name_leafdata());
+    if (invalid_interop_ingress_clock_class_default.is_set || is_set(invalid_interop_ingress_clock_class_default.yfilter)) leaf_name_data.push_back(invalid_interop_ingress_clock_class_default.get_name_leafdata());
+    if (invalid_interop_ingress_priority1.is_set || is_set(invalid_interop_ingress_priority1.yfilter)) leaf_name_data.push_back(invalid_interop_ingress_priority1.get_name_leafdata());
+    if (invalid_interop_ingress_clock_accuracy.is_set || is_set(invalid_interop_ingress_clock_accuracy.yfilter)) leaf_name_data.push_back(invalid_interop_ingress_clock_accuracy.get_name_leafdata());
+    if (invalid_interop_ingress_oslv.is_set || is_set(invalid_interop_ingress_oslv.yfilter)) leaf_name_data.push_back(invalid_interop_ingress_oslv.get_name_leafdata());
+    if (invalid_interop_egress_clock_class_default.is_set || is_set(invalid_interop_egress_clock_class_default.yfilter)) leaf_name_data.push_back(invalid_interop_egress_clock_class_default.get_name_leafdata());
+    if (invalid_interop_egress_priority1.is_set || is_set(invalid_interop_egress_priority1.yfilter)) leaf_name_data.push_back(invalid_interop_egress_priority1.get_name_leafdata());
+    if (invalid_interop_egress_priority2.is_set || is_set(invalid_interop_egress_priority2.yfilter)) leaf_name_data.push_back(invalid_interop_egress_priority2.get_name_leafdata());
+    if (invalid_interop_egress_clock_accuracy.is_set || is_set(invalid_interop_egress_clock_accuracy.yfilter)) leaf_name_data.push_back(invalid_interop_egress_clock_accuracy.get_name_leafdata());
+    if (invalid_interop_egress_oslv.is_set || is_set(invalid_interop_egress_oslv.yfilter)) leaf_name_data.push_back(invalid_interop_egress_oslv.get_name_leafdata());
     if (invalid_master_config.is_set || is_set(invalid_master_config.yfilter)) leaf_name_data.push_back(invalid_master_config.get_name_leafdata());
     if (invalid_slave_config.is_set || is_set(invalid_slave_config.yfilter)) leaf_name_data.push_back(invalid_slave_config.get_name_leafdata());
 
+    auto invalid_interop_ingress_clock_class_map_from_val_name_datas = invalid_interop_ingress_clock_class_map_from_val.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), invalid_interop_ingress_clock_class_map_from_val_name_datas.begin(), invalid_interop_ingress_clock_class_map_from_val_name_datas.end());
+    auto invalid_interop_ingress_clock_class_map_to_val_name_datas = invalid_interop_ingress_clock_class_map_to_val.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), invalid_interop_ingress_clock_class_map_to_val_name_datas.begin(), invalid_interop_ingress_clock_class_map_to_val_name_datas.end());
+    auto invalid_interop_egress_clock_class_map_from_val_name_datas = invalid_interop_egress_clock_class_map_from_val.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), invalid_interop_egress_clock_class_map_from_val_name_datas.begin(), invalid_interop_egress_clock_class_map_from_val_name_datas.end());
+    auto invalid_interop_egress_clock_class_map_to_val_name_datas = invalid_interop_egress_clock_class_map_to_val.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), invalid_interop_egress_clock_class_map_to_val_name_datas.begin(), invalid_interop_egress_clock_class_map_to_val_name_datas.end());
     return leaf_name_data;
 
 }
@@ -6501,6 +7481,18 @@ void Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::Configurati
         target_address_ipv6.value_namespace = name_space;
         target_address_ipv6.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ipv4ttl")
+    {
+        ipv4ttl = value;
+        ipv4ttl.value_namespace = name_space;
+        ipv4ttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-hop-limit")
+    {
+        ipv6_hop_limit = value;
+        ipv6_hop_limit.value_namespace = name_space;
+        ipv6_hop_limit.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "profile-port-state")
     {
         profile_port_state = value;
@@ -6543,6 +7535,66 @@ void Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::Configurati
         invalid_grant_reduction.value_namespace = name_space;
         invalid_grant_reduction.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "invalid-interop-domain")
+    {
+        invalid_interop_domain = value;
+        invalid_interop_domain.value_namespace = name_space;
+        invalid_interop_domain.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-interop-ingress-clock-class-default")
+    {
+        invalid_interop_ingress_clock_class_default = value;
+        invalid_interop_ingress_clock_class_default.value_namespace = name_space;
+        invalid_interop_ingress_clock_class_default.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-interop-ingress-priority1")
+    {
+        invalid_interop_ingress_priority1 = value;
+        invalid_interop_ingress_priority1.value_namespace = name_space;
+        invalid_interop_ingress_priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-interop-ingress-clock-accuracy")
+    {
+        invalid_interop_ingress_clock_accuracy = value;
+        invalid_interop_ingress_clock_accuracy.value_namespace = name_space;
+        invalid_interop_ingress_clock_accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-interop-ingress-oslv")
+    {
+        invalid_interop_ingress_oslv = value;
+        invalid_interop_ingress_oslv.value_namespace = name_space;
+        invalid_interop_ingress_oslv.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-interop-egress-clock-class-default")
+    {
+        invalid_interop_egress_clock_class_default = value;
+        invalid_interop_egress_clock_class_default.value_namespace = name_space;
+        invalid_interop_egress_clock_class_default.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-interop-egress-priority1")
+    {
+        invalid_interop_egress_priority1 = value;
+        invalid_interop_egress_priority1.value_namespace = name_space;
+        invalid_interop_egress_priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-interop-egress-priority2")
+    {
+        invalid_interop_egress_priority2 = value;
+        invalid_interop_egress_priority2.value_namespace = name_space;
+        invalid_interop_egress_priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-interop-egress-clock-accuracy")
+    {
+        invalid_interop_egress_clock_accuracy = value;
+        invalid_interop_egress_clock_accuracy.value_namespace = name_space;
+        invalid_interop_egress_clock_accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-interop-egress-oslv")
+    {
+        invalid_interop_egress_oslv = value;
+        invalid_interop_egress_oslv.value_namespace = name_space;
+        invalid_interop_egress_oslv.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "invalid-master-config")
     {
         invalid_master_config = value;
@@ -6554,6 +7606,22 @@ void Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::Configurati
         invalid_slave_config = value;
         invalid_slave_config.value_namespace = name_space;
         invalid_slave_config.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-interop-ingress-clock-class-map-from-val")
+    {
+        invalid_interop_ingress_clock_class_map_from_val.append(value);
+    }
+    if(value_path == "invalid-interop-ingress-clock-class-map-to-val")
+    {
+        invalid_interop_ingress_clock_class_map_to_val.append(value);
+    }
+    if(value_path == "invalid-interop-egress-clock-class-map-from-val")
+    {
+        invalid_interop_egress_clock_class_map_from_val.append(value);
+    }
+    if(value_path == "invalid-interop-egress-clock-class-map-to-val")
+    {
+        invalid_interop_egress_clock_class_map_to_val.append(value);
     }
 }
 
@@ -6635,6 +7703,14 @@ void Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::Configurati
     {
         target_address_ipv6.yfilter = yfilter;
     }
+    if(value_path == "ipv4ttl")
+    {
+        ipv4ttl.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-hop-limit")
+    {
+        ipv6_hop_limit.yfilter = yfilter;
+    }
     if(value_path == "profile-port-state")
     {
         profile_port_state.yfilter = yfilter;
@@ -6663,6 +7739,46 @@ void Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::Configurati
     {
         invalid_grant_reduction.yfilter = yfilter;
     }
+    if(value_path == "invalid-interop-domain")
+    {
+        invalid_interop_domain.yfilter = yfilter;
+    }
+    if(value_path == "invalid-interop-ingress-clock-class-default")
+    {
+        invalid_interop_ingress_clock_class_default.yfilter = yfilter;
+    }
+    if(value_path == "invalid-interop-ingress-priority1")
+    {
+        invalid_interop_ingress_priority1.yfilter = yfilter;
+    }
+    if(value_path == "invalid-interop-ingress-clock-accuracy")
+    {
+        invalid_interop_ingress_clock_accuracy.yfilter = yfilter;
+    }
+    if(value_path == "invalid-interop-ingress-oslv")
+    {
+        invalid_interop_ingress_oslv.yfilter = yfilter;
+    }
+    if(value_path == "invalid-interop-egress-clock-class-default")
+    {
+        invalid_interop_egress_clock_class_default.yfilter = yfilter;
+    }
+    if(value_path == "invalid-interop-egress-priority1")
+    {
+        invalid_interop_egress_priority1.yfilter = yfilter;
+    }
+    if(value_path == "invalid-interop-egress-priority2")
+    {
+        invalid_interop_egress_priority2.yfilter = yfilter;
+    }
+    if(value_path == "invalid-interop-egress-clock-accuracy")
+    {
+        invalid_interop_egress_clock_accuracy.yfilter = yfilter;
+    }
+    if(value_path == "invalid-interop-egress-oslv")
+    {
+        invalid_interop_egress_oslv.yfilter = yfilter;
+    }
     if(value_path == "invalid-master-config")
     {
         invalid_master_config.yfilter = yfilter;
@@ -6671,11 +7787,27 @@ void Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::Configurati
     {
         invalid_slave_config.yfilter = yfilter;
     }
+    if(value_path == "invalid-interop-ingress-clock-class-map-from-val")
+    {
+        invalid_interop_ingress_clock_class_map_from_val.yfilter = yfilter;
+    }
+    if(value_path == "invalid-interop-ingress-clock-class-map-to-val")
+    {
+        invalid_interop_ingress_clock_class_map_to_val.yfilter = yfilter;
+    }
+    if(value_path == "invalid-interop-egress-clock-class-map-from-val")
+    {
+        invalid_interop_egress_clock_class_map_from_val.yfilter = yfilter;
+    }
+    if(value_path == "invalid-interop-egress-clock-class-map-to-val")
+    {
+        invalid_interop_egress_clock_class_map_to_val.yfilter = yfilter;
+    }
 }
 
 bool Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::ConfigurationErrors::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "global-ptp" || name == "ethernet-transport" || name == "one-step" || name == "slave" || name == "ipv6" || name == "multicast" || name == "profile-not-global" || name == "local-priority" || name == "profile-ethernet" || name == "profile-ipv4" || name == "profile-ipv6" || name == "profile-unicast" || name == "profile-multicast" || name == "profile-mixed" || name == "profile-master-unicast" || name == "profile-master-multicast" || name == "profile-master-mixed" || name == "target-address-ipv4" || name == "target-address-ipv6" || name == "profile-port-state" || name == "profile-announce-interval" || name == "profile-sync-interval" || name == "profile-delay-req-interval" || name == "profile-sync-timeout" || name == "profile-delay-resp-timeout" || name == "invalid-grant-reduction" || name == "invalid-master-config" || name == "invalid-slave-config")
+    if(name == "global-ptp" || name == "ethernet-transport" || name == "one-step" || name == "slave" || name == "ipv6" || name == "multicast" || name == "profile-not-global" || name == "local-priority" || name == "profile-ethernet" || name == "profile-ipv4" || name == "profile-ipv6" || name == "profile-unicast" || name == "profile-multicast" || name == "profile-mixed" || name == "profile-master-unicast" || name == "profile-master-multicast" || name == "profile-master-mixed" || name == "target-address-ipv4" || name == "target-address-ipv6" || name == "ipv4ttl" || name == "ipv6-hop-limit" || name == "profile-port-state" || name == "profile-announce-interval" || name == "profile-sync-interval" || name == "profile-delay-req-interval" || name == "profile-sync-timeout" || name == "profile-delay-resp-timeout" || name == "invalid-grant-reduction" || name == "invalid-interop-domain" || name == "invalid-interop-ingress-clock-class-default" || name == "invalid-interop-ingress-priority1" || name == "invalid-interop-ingress-clock-accuracy" || name == "invalid-interop-ingress-oslv" || name == "invalid-interop-egress-clock-class-default" || name == "invalid-interop-egress-priority1" || name == "invalid-interop-egress-priority2" || name == "invalid-interop-egress-clock-accuracy" || name == "invalid-interop-egress-oslv" || name == "invalid-master-config" || name == "invalid-slave-config" || name == "invalid-interop-ingress-clock-class-map-from-val" || name == "invalid-interop-ingress-clock-class-map-to-val" || name == "invalid-interop-egress-clock-class-map-from-val" || name == "invalid-interop-egress-clock-class-map-to-val")
         return true;
     return false;
 }
@@ -8398,13 +9530,1113 @@ bool Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::DelayRe
     return false;
 }
 
+Ptp::InterfaceInterops::InterfaceInterops()
+    :
+    interface_interop(this, {"interface_name"})
+{
+
+    yang_name = "interface-interops"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::InterfaceInterops::~InterfaceInterops()
+{
+}
+
+bool Ptp::InterfaceInterops::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_interop.len(); index++)
+    {
+        if(interface_interop[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ptp::InterfaceInterops::has_operation() const
+{
+    for (std::size_t index=0; index<interface_interop.len(); index++)
+    {
+        if(interface_interop[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ptp::InterfaceInterops::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::InterfaceInterops::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-interops";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::InterfaceInterops::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::InterfaceInterops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-interop")
+    {
+        auto c = std::make_shared<Ptp::InterfaceInterops::InterfaceInterop>();
+        c->parent = this;
+        interface_interop.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceInterops::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : interface_interop.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ptp::InterfaceInterops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ptp::InterfaceInterops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ptp::InterfaceInterops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-interop")
+        return true;
+    return false;
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::InterfaceInterop()
+    :
+    interface_name{YType::str, "interface-name"},
+    local_domain{YType::uint8, "local-domain"},
+    interop_domain{YType::uint8, "interop-domain"},
+    local_profile{YType::enumeration, "local-profile"},
+    interop_profile{YType::enumeration, "interop-profile"}
+        ,
+    egress_interop(std::make_shared<Ptp::InterfaceInterops::InterfaceInterop::EgressInterop>())
+    , ingress_interop(this, {})
+{
+    egress_interop->parent = this;
+
+    yang_name = "interface-interop"; yang_parent_name = "interface-interops"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::~InterfaceInterop()
+{
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ingress_interop.len(); index++)
+    {
+        if(ingress_interop[index]->has_data())
+            return true;
+    }
+    return interface_name.is_set
+	|| local_domain.is_set
+	|| interop_domain.is_set
+	|| local_profile.is_set
+	|| interop_profile.is_set
+	|| (egress_interop !=  nullptr && egress_interop->has_data());
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::has_operation() const
+{
+    for (std::size_t index=0; index<ingress_interop.len(); index++)
+    {
+        if(ingress_interop[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(local_domain.yfilter)
+	|| ydk::is_set(interop_domain.yfilter)
+	|| ydk::is_set(local_profile.yfilter)
+	|| ydk::is_set(interop_profile.yfilter)
+	|| (egress_interop !=  nullptr && egress_interop->has_operation());
+}
+
+std::string Ptp::InterfaceInterops::InterfaceInterop::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/interface-interops/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::InterfaceInterops::InterfaceInterop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-interop";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::InterfaceInterops::InterfaceInterop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (local_domain.is_set || is_set(local_domain.yfilter)) leaf_name_data.push_back(local_domain.get_name_leafdata());
+    if (interop_domain.is_set || is_set(interop_domain.yfilter)) leaf_name_data.push_back(interop_domain.get_name_leafdata());
+    if (local_profile.is_set || is_set(local_profile.yfilter)) leaf_name_data.push_back(local_profile.get_name_leafdata());
+    if (interop_profile.is_set || is_set(interop_profile.yfilter)) leaf_name_data.push_back(interop_profile.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::InterfaceInterops::InterfaceInterop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "egress-interop")
+    {
+        if(egress_interop == nullptr)
+        {
+            egress_interop = std::make_shared<Ptp::InterfaceInterops::InterfaceInterop::EgressInterop>();
+        }
+        return egress_interop;
+    }
+
+    if(child_yang_name == "ingress-interop")
+    {
+        auto c = std::make_shared<Ptp::InterfaceInterops::InterfaceInterop::IngressInterop>();
+        c->parent = this;
+        ingress_interop.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceInterops::InterfaceInterop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(egress_interop != nullptr)
+    {
+        children["egress-interop"] = egress_interop;
+    }
+
+    count = 0;
+    for (auto c : ingress_interop.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-domain")
+    {
+        local_domain = value;
+        local_domain.value_namespace = name_space;
+        local_domain.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interop-domain")
+    {
+        interop_domain = value;
+        interop_domain.value_namespace = name_space;
+        interop_domain.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-profile")
+    {
+        local_profile = value;
+        local_profile.value_namespace = name_space;
+        local_profile.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interop-profile")
+    {
+        interop_profile = value;
+        interop_profile.value_namespace = name_space;
+        interop_profile.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "local-domain")
+    {
+        local_domain.yfilter = yfilter;
+    }
+    if(value_path == "interop-domain")
+    {
+        interop_domain.yfilter = yfilter;
+    }
+    if(value_path == "local-profile")
+    {
+        local_profile.yfilter = yfilter;
+    }
+    if(value_path == "interop-profile")
+    {
+        interop_profile.yfilter = yfilter;
+    }
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "egress-interop" || name == "ingress-interop" || name == "interface-name" || name == "local-domain" || name == "interop-domain" || name == "local-profile" || name == "interop-profile")
+        return true;
+    return false;
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::EgressInterop::EgressInterop()
+    :
+    from_priority1{YType::uint8, "from-priority1"},
+    to_priority1{YType::uint8, "to-priority1"},
+    from_priority2{YType::uint8, "from-priority2"},
+    to_priority2{YType::uint8, "to-priority2"},
+    from_accuracy{YType::uint8, "from-accuracy"},
+    to_accuracy{YType::uint8, "to-accuracy"},
+    from_clock_class{YType::uint8, "from-clock-class"},
+    to_clock_class{YType::uint8, "to-clock-class"},
+    from_offset_log_variance{YType::uint16, "from-offset-log-variance"},
+    to_offset_log_variance{YType::uint16, "to-offset-log-variance"}
+{
+
+    yang_name = "egress-interop"; yang_parent_name = "interface-interop"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::EgressInterop::~EgressInterop()
+{
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::EgressInterop::has_data() const
+{
+    if (is_presence_container) return true;
+    return from_priority1.is_set
+	|| to_priority1.is_set
+	|| from_priority2.is_set
+	|| to_priority2.is_set
+	|| from_accuracy.is_set
+	|| to_accuracy.is_set
+	|| from_clock_class.is_set
+	|| to_clock_class.is_set
+	|| from_offset_log_variance.is_set
+	|| to_offset_log_variance.is_set;
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::EgressInterop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(from_priority1.yfilter)
+	|| ydk::is_set(to_priority1.yfilter)
+	|| ydk::is_set(from_priority2.yfilter)
+	|| ydk::is_set(to_priority2.yfilter)
+	|| ydk::is_set(from_accuracy.yfilter)
+	|| ydk::is_set(to_accuracy.yfilter)
+	|| ydk::is_set(from_clock_class.yfilter)
+	|| ydk::is_set(to_clock_class.yfilter)
+	|| ydk::is_set(from_offset_log_variance.yfilter)
+	|| ydk::is_set(to_offset_log_variance.yfilter);
+}
+
+std::string Ptp::InterfaceInterops::InterfaceInterop::EgressInterop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "egress-interop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::InterfaceInterops::InterfaceInterop::EgressInterop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (from_priority1.is_set || is_set(from_priority1.yfilter)) leaf_name_data.push_back(from_priority1.get_name_leafdata());
+    if (to_priority1.is_set || is_set(to_priority1.yfilter)) leaf_name_data.push_back(to_priority1.get_name_leafdata());
+    if (from_priority2.is_set || is_set(from_priority2.yfilter)) leaf_name_data.push_back(from_priority2.get_name_leafdata());
+    if (to_priority2.is_set || is_set(to_priority2.yfilter)) leaf_name_data.push_back(to_priority2.get_name_leafdata());
+    if (from_accuracy.is_set || is_set(from_accuracy.yfilter)) leaf_name_data.push_back(from_accuracy.get_name_leafdata());
+    if (to_accuracy.is_set || is_set(to_accuracy.yfilter)) leaf_name_data.push_back(to_accuracy.get_name_leafdata());
+    if (from_clock_class.is_set || is_set(from_clock_class.yfilter)) leaf_name_data.push_back(from_clock_class.get_name_leafdata());
+    if (to_clock_class.is_set || is_set(to_clock_class.yfilter)) leaf_name_data.push_back(to_clock_class.get_name_leafdata());
+    if (from_offset_log_variance.is_set || is_set(from_offset_log_variance.yfilter)) leaf_name_data.push_back(from_offset_log_variance.get_name_leafdata());
+    if (to_offset_log_variance.is_set || is_set(to_offset_log_variance.yfilter)) leaf_name_data.push_back(to_offset_log_variance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::InterfaceInterops::InterfaceInterop::EgressInterop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceInterops::InterfaceInterop::EgressInterop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::EgressInterop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "from-priority1")
+    {
+        from_priority1 = value;
+        from_priority1.value_namespace = name_space;
+        from_priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-priority1")
+    {
+        to_priority1 = value;
+        to_priority1.value_namespace = name_space;
+        to_priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "from-priority2")
+    {
+        from_priority2 = value;
+        from_priority2.value_namespace = name_space;
+        from_priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-priority2")
+    {
+        to_priority2 = value;
+        to_priority2.value_namespace = name_space;
+        to_priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "from-accuracy")
+    {
+        from_accuracy = value;
+        from_accuracy.value_namespace = name_space;
+        from_accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-accuracy")
+    {
+        to_accuracy = value;
+        to_accuracy.value_namespace = name_space;
+        to_accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "from-clock-class")
+    {
+        from_clock_class = value;
+        from_clock_class.value_namespace = name_space;
+        from_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-clock-class")
+    {
+        to_clock_class = value;
+        to_clock_class.value_namespace = name_space;
+        to_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "from-offset-log-variance")
+    {
+        from_offset_log_variance = value;
+        from_offset_log_variance.value_namespace = name_space;
+        from_offset_log_variance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-offset-log-variance")
+    {
+        to_offset_log_variance = value;
+        to_offset_log_variance.value_namespace = name_space;
+        to_offset_log_variance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::EgressInterop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "from-priority1")
+    {
+        from_priority1.yfilter = yfilter;
+    }
+    if(value_path == "to-priority1")
+    {
+        to_priority1.yfilter = yfilter;
+    }
+    if(value_path == "from-priority2")
+    {
+        from_priority2.yfilter = yfilter;
+    }
+    if(value_path == "to-priority2")
+    {
+        to_priority2.yfilter = yfilter;
+    }
+    if(value_path == "from-accuracy")
+    {
+        from_accuracy.yfilter = yfilter;
+    }
+    if(value_path == "to-accuracy")
+    {
+        to_accuracy.yfilter = yfilter;
+    }
+    if(value_path == "from-clock-class")
+    {
+        from_clock_class.yfilter = yfilter;
+    }
+    if(value_path == "to-clock-class")
+    {
+        to_clock_class.yfilter = yfilter;
+    }
+    if(value_path == "from-offset-log-variance")
+    {
+        from_offset_log_variance.yfilter = yfilter;
+    }
+    if(value_path == "to-offset-log-variance")
+    {
+        to_offset_log_variance.yfilter = yfilter;
+    }
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::EgressInterop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "from-priority1" || name == "to-priority1" || name == "from-priority2" || name == "to-priority2" || name == "from-accuracy" || name == "to-accuracy" || name == "from-clock-class" || name == "to-clock-class" || name == "from-offset-log-variance" || name == "to-offset-log-variance")
+        return true;
+    return false;
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::IngressInterop()
+    :
+    address(std::make_shared<Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address>())
+    , interop(std::make_shared<Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop>())
+{
+    address->parent = this;
+    interop->parent = this;
+
+    yang_name = "ingress-interop"; yang_parent_name = "interface-interop"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::~IngressInterop()
+{
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::has_data() const
+{
+    if (is_presence_container) return true;
+    return (address !=  nullptr && address->has_data())
+	|| (interop !=  nullptr && interop->has_data());
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::has_operation() const
+{
+    return is_set(yfilter)
+	|| (address !=  nullptr && address->has_operation())
+	|| (interop !=  nullptr && interop->has_operation());
+}
+
+std::string Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ingress-interop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address")
+    {
+        if(address == nullptr)
+        {
+            address = std::make_shared<Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address>();
+        }
+        return address;
+    }
+
+    if(child_yang_name == "interop")
+    {
+        if(interop == nullptr)
+        {
+            interop = std::make_shared<Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop>();
+        }
+        return interop;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(address != nullptr)
+    {
+        children["address"] = address;
+    }
+
+    if(interop != nullptr)
+    {
+        children["interop"] = interop;
+    }
+
+    return children;
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "interop")
+        return true;
+    return false;
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Address()
+    :
+    encapsulation{YType::enumeration, "encapsulation"},
+    address_unknown{YType::boolean, "address-unknown"},
+    ipv4_address{YType::str, "ipv4-address"}
+        ,
+    mac_address(std::make_shared<Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::MacAddress>())
+    , ipv6_address(std::make_shared<Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Ipv6Address>())
+{
+    mac_address->parent = this;
+    ipv6_address->parent = this;
+
+    yang_name = "address"; yang_parent_name = "ingress-interop"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::~Address()
+{
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::has_data() const
+{
+    if (is_presence_container) return true;
+    return encapsulation.is_set
+	|| address_unknown.is_set
+	|| ipv4_address.is_set
+	|| (mac_address !=  nullptr && mac_address->has_data())
+	|| (ipv6_address !=  nullptr && ipv6_address->has_data());
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(encapsulation.yfilter)
+	|| ydk::is_set(address_unknown.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| (mac_address !=  nullptr && mac_address->has_operation())
+	|| (ipv6_address !=  nullptr && ipv6_address->has_operation());
+}
+
+std::string Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (encapsulation.is_set || is_set(encapsulation.yfilter)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
+    if (address_unknown.is_set || is_set(address_unknown.yfilter)) leaf_name_data.push_back(address_unknown.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mac-address")
+    {
+        if(mac_address == nullptr)
+        {
+            mac_address = std::make_shared<Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::MacAddress>();
+        }
+        return mac_address;
+    }
+
+    if(child_yang_name == "ipv6-address")
+    {
+        if(ipv6_address == nullptr)
+        {
+            ipv6_address = std::make_shared<Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Ipv6Address>();
+        }
+        return ipv6_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(mac_address != nullptr)
+    {
+        children["mac-address"] = mac_address;
+    }
+
+    if(ipv6_address != nullptr)
+    {
+        children["ipv6-address"] = ipv6_address;
+    }
+
+    return children;
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "encapsulation")
+    {
+        encapsulation = value;
+        encapsulation.value_namespace = name_space;
+        encapsulation.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address-unknown")
+    {
+        address_unknown = value;
+        address_unknown.value_namespace = name_space;
+        address_unknown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "encapsulation")
+    {
+        encapsulation.yfilter = yfilter;
+    }
+    if(value_path == "address-unknown")
+    {
+        address_unknown.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac-address" || name == "ipv6-address" || name == "encapsulation" || name == "address-unknown" || name == "ipv4-address")
+        return true;
+    return false;
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::MacAddress::MacAddress()
+    :
+    macaddr{YType::str, "macaddr"}
+{
+
+    yang_name = "mac-address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::MacAddress::~MacAddress()
+{
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::MacAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return macaddr.is_set;
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::MacAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(macaddr.yfilter);
+}
+
+std::string Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::MacAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::MacAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (macaddr.is_set || is_set(macaddr.yfilter)) leaf_name_data.push_back(macaddr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::MacAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "macaddr")
+    {
+        macaddr = value;
+        macaddr.value_namespace = name_space;
+        macaddr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "macaddr")
+    {
+        macaddr.yfilter = yfilter;
+    }
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "macaddr")
+        return true;
+    return false;
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Ipv6Address::Ipv6Address()
+    :
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "ipv6-address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Ipv6Address::~Ipv6Address()
+{
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Ipv6Address::has_data() const
+{
+    if (is_presence_container) return true;
+    return ipv6_address.is_set;
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Ipv6Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Ipv6Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Ipv6Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Ipv6Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Ipv6Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Ipv6Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Ipv6Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Address::Ipv6Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-address")
+        return true;
+    return false;
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop::Interop()
+    :
+    from_priority1{YType::uint8, "from-priority1"},
+    to_priority1{YType::uint8, "to-priority1"},
+    from_priority2{YType::uint8, "from-priority2"},
+    to_priority2{YType::uint8, "to-priority2"},
+    from_accuracy{YType::uint8, "from-accuracy"},
+    to_accuracy{YType::uint8, "to-accuracy"},
+    from_clock_class{YType::uint8, "from-clock-class"},
+    to_clock_class{YType::uint8, "to-clock-class"},
+    from_offset_log_variance{YType::uint16, "from-offset-log-variance"},
+    to_offset_log_variance{YType::uint16, "to-offset-log-variance"}
+{
+
+    yang_name = "interop"; yang_parent_name = "ingress-interop"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop::~Interop()
+{
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop::has_data() const
+{
+    if (is_presence_container) return true;
+    return from_priority1.is_set
+	|| to_priority1.is_set
+	|| from_priority2.is_set
+	|| to_priority2.is_set
+	|| from_accuracy.is_set
+	|| to_accuracy.is_set
+	|| from_clock_class.is_set
+	|| to_clock_class.is_set
+	|| from_offset_log_variance.is_set
+	|| to_offset_log_variance.is_set;
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(from_priority1.yfilter)
+	|| ydk::is_set(to_priority1.yfilter)
+	|| ydk::is_set(from_priority2.yfilter)
+	|| ydk::is_set(to_priority2.yfilter)
+	|| ydk::is_set(from_accuracy.yfilter)
+	|| ydk::is_set(to_accuracy.yfilter)
+	|| ydk::is_set(from_clock_class.yfilter)
+	|| ydk::is_set(to_clock_class.yfilter)
+	|| ydk::is_set(from_offset_log_variance.yfilter)
+	|| ydk::is_set(to_offset_log_variance.yfilter);
+}
+
+std::string Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (from_priority1.is_set || is_set(from_priority1.yfilter)) leaf_name_data.push_back(from_priority1.get_name_leafdata());
+    if (to_priority1.is_set || is_set(to_priority1.yfilter)) leaf_name_data.push_back(to_priority1.get_name_leafdata());
+    if (from_priority2.is_set || is_set(from_priority2.yfilter)) leaf_name_data.push_back(from_priority2.get_name_leafdata());
+    if (to_priority2.is_set || is_set(to_priority2.yfilter)) leaf_name_data.push_back(to_priority2.get_name_leafdata());
+    if (from_accuracy.is_set || is_set(from_accuracy.yfilter)) leaf_name_data.push_back(from_accuracy.get_name_leafdata());
+    if (to_accuracy.is_set || is_set(to_accuracy.yfilter)) leaf_name_data.push_back(to_accuracy.get_name_leafdata());
+    if (from_clock_class.is_set || is_set(from_clock_class.yfilter)) leaf_name_data.push_back(from_clock_class.get_name_leafdata());
+    if (to_clock_class.is_set || is_set(to_clock_class.yfilter)) leaf_name_data.push_back(to_clock_class.get_name_leafdata());
+    if (from_offset_log_variance.is_set || is_set(from_offset_log_variance.yfilter)) leaf_name_data.push_back(from_offset_log_variance.get_name_leafdata());
+    if (to_offset_log_variance.is_set || is_set(to_offset_log_variance.yfilter)) leaf_name_data.push_back(to_offset_log_variance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "from-priority1")
+    {
+        from_priority1 = value;
+        from_priority1.value_namespace = name_space;
+        from_priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-priority1")
+    {
+        to_priority1 = value;
+        to_priority1.value_namespace = name_space;
+        to_priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "from-priority2")
+    {
+        from_priority2 = value;
+        from_priority2.value_namespace = name_space;
+        from_priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-priority2")
+    {
+        to_priority2 = value;
+        to_priority2.value_namespace = name_space;
+        to_priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "from-accuracy")
+    {
+        from_accuracy = value;
+        from_accuracy.value_namespace = name_space;
+        from_accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-accuracy")
+    {
+        to_accuracy = value;
+        to_accuracy.value_namespace = name_space;
+        to_accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "from-clock-class")
+    {
+        from_clock_class = value;
+        from_clock_class.value_namespace = name_space;
+        from_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-clock-class")
+    {
+        to_clock_class = value;
+        to_clock_class.value_namespace = name_space;
+        to_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "from-offset-log-variance")
+    {
+        from_offset_log_variance = value;
+        from_offset_log_variance.value_namespace = name_space;
+        from_offset_log_variance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-offset-log-variance")
+    {
+        to_offset_log_variance = value;
+        to_offset_log_variance.value_namespace = name_space;
+        to_offset_log_variance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "from-priority1")
+    {
+        from_priority1.yfilter = yfilter;
+    }
+    if(value_path == "to-priority1")
+    {
+        to_priority1.yfilter = yfilter;
+    }
+    if(value_path == "from-priority2")
+    {
+        from_priority2.yfilter = yfilter;
+    }
+    if(value_path == "to-priority2")
+    {
+        to_priority2.yfilter = yfilter;
+    }
+    if(value_path == "from-accuracy")
+    {
+        from_accuracy.yfilter = yfilter;
+    }
+    if(value_path == "to-accuracy")
+    {
+        to_accuracy.yfilter = yfilter;
+    }
+    if(value_path == "from-clock-class")
+    {
+        from_clock_class.yfilter = yfilter;
+    }
+    if(value_path == "to-clock-class")
+    {
+        to_clock_class.yfilter = yfilter;
+    }
+    if(value_path == "from-offset-log-variance")
+    {
+        from_offset_log_variance.yfilter = yfilter;
+    }
+    if(value_path == "to-offset-log-variance")
+    {
+        to_offset_log_variance.yfilter = yfilter;
+    }
+}
+
+bool Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::Interop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "from-priority1" || name == "to-priority1" || name == "from-priority2" || name == "to-priority2" || name == "from-accuracy" || name == "to-accuracy" || name == "from-clock-class" || name == "to-clock-class" || name == "from-offset-log-variance" || name == "to-offset-log-variance")
+        return true;
+    return false;
+}
+
 Ptp::LocalClock::LocalClock()
     :
-    domain{YType::uint8, "domain"}
+    domain{YType::uint8, "domain"},
+    holdover{YType::boolean, "holdover"},
+    holdover_clock_class{YType::uint8, "holdover-clock-class"}
         ,
     clock_properties(std::make_shared<Ptp::LocalClock::ClockProperties>())
+    , virtual_port(std::make_shared<Ptp::LocalClock::VirtualPort>())
 {
     clock_properties->parent = this;
+    virtual_port->parent = this;
 
     yang_name = "local-clock"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -8417,14 +10649,20 @@ bool Ptp::LocalClock::has_data() const
 {
     if (is_presence_container) return true;
     return domain.is_set
-	|| (clock_properties !=  nullptr && clock_properties->has_data());
+	|| holdover.is_set
+	|| holdover_clock_class.is_set
+	|| (clock_properties !=  nullptr && clock_properties->has_data())
+	|| (virtual_port !=  nullptr && virtual_port->has_data());
 }
 
 bool Ptp::LocalClock::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(domain.yfilter)
-	|| (clock_properties !=  nullptr && clock_properties->has_operation());
+	|| ydk::is_set(holdover.yfilter)
+	|| ydk::is_set(holdover_clock_class.yfilter)
+	|| (clock_properties !=  nullptr && clock_properties->has_operation())
+	|| (virtual_port !=  nullptr && virtual_port->has_operation());
 }
 
 std::string Ptp::LocalClock::get_absolute_path() const
@@ -8446,6 +10684,8 @@ std::vector<std::pair<std::string, LeafData> > Ptp::LocalClock::get_name_leaf_da
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (domain.is_set || is_set(domain.yfilter)) leaf_name_data.push_back(domain.get_name_leafdata());
+    if (holdover.is_set || is_set(holdover.yfilter)) leaf_name_data.push_back(holdover.get_name_leafdata());
+    if (holdover_clock_class.is_set || is_set(holdover_clock_class.yfilter)) leaf_name_data.push_back(holdover_clock_class.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8462,6 +10702,15 @@ std::shared_ptr<Entity> Ptp::LocalClock::get_child_by_name(const std::string & c
         return clock_properties;
     }
 
+    if(child_yang_name == "virtual-port")
+    {
+        if(virtual_port == nullptr)
+        {
+            virtual_port = std::make_shared<Ptp::LocalClock::VirtualPort>();
+        }
+        return virtual_port;
+    }
+
     return nullptr;
 }
 
@@ -8472,6 +10721,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::LocalClock::get_children() c
     if(clock_properties != nullptr)
     {
         children["clock-properties"] = clock_properties;
+    }
+
+    if(virtual_port != nullptr)
+    {
+        children["virtual-port"] = virtual_port;
     }
 
     return children;
@@ -8485,6 +10739,18 @@ void Ptp::LocalClock::set_value(const std::string & value_path, const std::strin
         domain.value_namespace = name_space;
         domain.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "holdover")
+    {
+        holdover = value;
+        holdover.value_namespace = name_space;
+        holdover.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "holdover-clock-class")
+    {
+        holdover_clock_class = value;
+        holdover_clock_class.value_namespace = name_space;
+        holdover_clock_class.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ptp::LocalClock::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8493,11 +10759,19 @@ void Ptp::LocalClock::set_filter(const std::string & value_path, YFilter yfilter
     {
         domain.yfilter = yfilter;
     }
+    if(value_path == "holdover")
+    {
+        holdover.yfilter = yfilter;
+    }
+    if(value_path == "holdover-clock-class")
+    {
+        holdover_clock_class.yfilter = yfilter;
+    }
 }
 
 bool Ptp::LocalClock::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-properties" || name == "domain")
+    if(name == "clock-properties" || name == "virtual-port" || name == "domain" || name == "holdover" || name == "holdover-clock-class")
         return true;
     return false;
 }
@@ -9131,6 +11405,189 @@ void Ptp::LocalClock::ClockProperties::Sender::set_filter(const std::string & va
 bool Ptp::LocalClock::ClockProperties::Sender::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clock-id" || name == "port-number")
+        return true;
+    return false;
+}
+
+Ptp::LocalClock::VirtualPort::VirtualPort()
+    :
+    configured{YType::boolean, "configured"},
+    connected{YType::boolean, "connected"},
+    priority1{YType::uint8, "priority1"},
+    priority2{YType::uint8, "priority2"},
+    class_{YType::uint8, "class"},
+    accuracy{YType::uint8, "accuracy"},
+    offset_log_variance{YType::uint16, "offset-log-variance"},
+    local_priority{YType::uint8, "local-priority"}
+{
+
+    yang_name = "virtual-port"; yang_parent_name = "local-clock"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::LocalClock::VirtualPort::~VirtualPort()
+{
+}
+
+bool Ptp::LocalClock::VirtualPort::has_data() const
+{
+    if (is_presence_container) return true;
+    return configured.is_set
+	|| connected.is_set
+	|| priority1.is_set
+	|| priority2.is_set
+	|| class_.is_set
+	|| accuracy.is_set
+	|| offset_log_variance.is_set
+	|| local_priority.is_set;
+}
+
+bool Ptp::LocalClock::VirtualPort::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(configured.yfilter)
+	|| ydk::is_set(connected.yfilter)
+	|| ydk::is_set(priority1.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(class_.yfilter)
+	|| ydk::is_set(accuracy.yfilter)
+	|| ydk::is_set(offset_log_variance.yfilter)
+	|| ydk::is_set(local_priority.yfilter);
+}
+
+std::string Ptp::LocalClock::VirtualPort::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/local-clock/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::LocalClock::VirtualPort::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "virtual-port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::LocalClock::VirtualPort::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (configured.is_set || is_set(configured.yfilter)) leaf_name_data.push_back(configured.get_name_leafdata());
+    if (connected.is_set || is_set(connected.yfilter)) leaf_name_data.push_back(connected.get_name_leafdata());
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (class_.is_set || is_set(class_.yfilter)) leaf_name_data.push_back(class_.get_name_leafdata());
+    if (accuracy.is_set || is_set(accuracy.yfilter)) leaf_name_data.push_back(accuracy.get_name_leafdata());
+    if (offset_log_variance.is_set || is_set(offset_log_variance.yfilter)) leaf_name_data.push_back(offset_log_variance.get_name_leafdata());
+    if (local_priority.is_set || is_set(local_priority.yfilter)) leaf_name_data.push_back(local_priority.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::LocalClock::VirtualPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::LocalClock::VirtualPort::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::LocalClock::VirtualPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "configured")
+    {
+        configured = value;
+        configured.value_namespace = name_space;
+        configured.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected")
+    {
+        connected = value;
+        connected.value_namespace = name_space;
+        connected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority1")
+    {
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority2")
+    {
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "class")
+    {
+        class_ = value;
+        class_.value_namespace = name_space;
+        class_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accuracy")
+    {
+        accuracy = value;
+        accuracy.value_namespace = name_space;
+        accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-log-variance")
+    {
+        offset_log_variance = value;
+        offset_log_variance.value_namespace = name_space;
+        offset_log_variance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-priority")
+    {
+        local_priority = value;
+        local_priority.value_namespace = name_space;
+        local_priority.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::LocalClock::VirtualPort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "configured")
+    {
+        configured.yfilter = yfilter;
+    }
+    if(value_path == "connected")
+    {
+        connected.yfilter = yfilter;
+    }
+    if(value_path == "priority1")
+    {
+        priority1.yfilter = yfilter;
+    }
+    if(value_path == "priority2")
+    {
+        priority2.yfilter = yfilter;
+    }
+    if(value_path == "class")
+    {
+        class_.yfilter = yfilter;
+    }
+    if(value_path == "accuracy")
+    {
+        accuracy.yfilter = yfilter;
+    }
+    if(value_path == "offset-log-variance")
+    {
+        offset_log_variance.yfilter = yfilter;
+    }
+    if(value_path == "local-priority")
+    {
+        local_priority.yfilter = yfilter;
+    }
+}
+
+bool Ptp::LocalClock::VirtualPort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configured" || name == "connected" || name == "priority1" || name == "priority2" || name == "class" || name == "accuracy" || name == "offset-log-variance" || name == "local-priority")
         return true;
     return false;
 }
@@ -11829,12 +14286,23 @@ Ptp::Interfaces::Interface::Interface()
     general_dscp{YType::uint32, "general-dscp"},
     unicast_peers{YType::uint32, "unicast-peers"},
     local_priority{YType::uint8, "local-priority"},
-    signal_fail{YType::boolean, "signal-fail"}
+    signal_fail{YType::boolean, "signal-fail"},
+    profile_interop{YType::boolean, "profile-interop"},
+    interop_domain{YType::uint8, "interop-domain"},
+    interop_profile{YType::enumeration, "interop-profile"}
         ,
-    mac_address(std::make_shared<Ptp::Interfaces::Interface::MacAddress>())
+    ipv6_address_array(std::make_shared<Ptp::Interfaces::Interface::Ipv6AddressArray>())
+    , ipv4_address_array(std::make_shared<Ptp::Interfaces::Interface::Ipv4AddressArray>())
+    , mac_address(std::make_shared<Ptp::Interfaces::Interface::MacAddress>())
+    , ingress_conversion(std::make_shared<Ptp::Interfaces::Interface::IngressConversion>())
+    , egress_conversion(std::make_shared<Ptp::Interfaces::Interface::EgressConversion>())
     , master_table(this, {})
 {
+    ipv6_address_array->parent = this;
+    ipv4_address_array->parent = this;
     mac_address->parent = this;
+    ingress_conversion->parent = this;
+    egress_conversion->parent = this;
 
     yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -11883,7 +14351,14 @@ bool Ptp::Interfaces::Interface::has_data() const
 	|| unicast_peers.is_set
 	|| local_priority.is_set
 	|| signal_fail.is_set
-	|| (mac_address !=  nullptr && mac_address->has_data());
+	|| profile_interop.is_set
+	|| interop_domain.is_set
+	|| interop_profile.is_set
+	|| (ipv6_address_array !=  nullptr && ipv6_address_array->has_data())
+	|| (ipv4_address_array !=  nullptr && ipv4_address_array->has_data())
+	|| (mac_address !=  nullptr && mac_address->has_data())
+	|| (ingress_conversion !=  nullptr && ingress_conversion->has_data())
+	|| (egress_conversion !=  nullptr && egress_conversion->has_data());
 }
 
 bool Ptp::Interfaces::Interface::has_operation() const
@@ -11926,7 +14401,14 @@ bool Ptp::Interfaces::Interface::has_operation() const
 	|| ydk::is_set(unicast_peers.yfilter)
 	|| ydk::is_set(local_priority.yfilter)
 	|| ydk::is_set(signal_fail.yfilter)
-	|| (mac_address !=  nullptr && mac_address->has_operation());
+	|| ydk::is_set(profile_interop.yfilter)
+	|| ydk::is_set(interop_domain.yfilter)
+	|| ydk::is_set(interop_profile.yfilter)
+	|| (ipv6_address_array !=  nullptr && ipv6_address_array->has_operation())
+	|| (ipv4_address_array !=  nullptr && ipv4_address_array->has_operation())
+	|| (mac_address !=  nullptr && mac_address->has_operation())
+	|| (ingress_conversion !=  nullptr && ingress_conversion->has_operation())
+	|| (egress_conversion !=  nullptr && egress_conversion->has_operation());
 }
 
 std::string Ptp::Interfaces::Interface::get_absolute_path() const
@@ -11980,6 +14462,9 @@ std::vector<std::pair<std::string, LeafData> > Ptp::Interfaces::Interface::get_n
     if (unicast_peers.is_set || is_set(unicast_peers.yfilter)) leaf_name_data.push_back(unicast_peers.get_name_leafdata());
     if (local_priority.is_set || is_set(local_priority.yfilter)) leaf_name_data.push_back(local_priority.get_name_leafdata());
     if (signal_fail.is_set || is_set(signal_fail.yfilter)) leaf_name_data.push_back(signal_fail.get_name_leafdata());
+    if (profile_interop.is_set || is_set(profile_interop.yfilter)) leaf_name_data.push_back(profile_interop.get_name_leafdata());
+    if (interop_domain.is_set || is_set(interop_domain.yfilter)) leaf_name_data.push_back(interop_domain.get_name_leafdata());
+    if (interop_profile.is_set || is_set(interop_profile.yfilter)) leaf_name_data.push_back(interop_profile.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -11987,6 +14472,24 @@ std::vector<std::pair<std::string, LeafData> > Ptp::Interfaces::Interface::get_n
 
 std::shared_ptr<Entity> Ptp::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "ipv6-address-array")
+    {
+        if(ipv6_address_array == nullptr)
+        {
+            ipv6_address_array = std::make_shared<Ptp::Interfaces::Interface::Ipv6AddressArray>();
+        }
+        return ipv6_address_array;
+    }
+
+    if(child_yang_name == "ipv4-address-array")
+    {
+        if(ipv4_address_array == nullptr)
+        {
+            ipv4_address_array = std::make_shared<Ptp::Interfaces::Interface::Ipv4AddressArray>();
+        }
+        return ipv4_address_array;
+    }
+
     if(child_yang_name == "mac-address")
     {
         if(mac_address == nullptr)
@@ -11994,6 +14497,24 @@ std::shared_ptr<Entity> Ptp::Interfaces::Interface::get_child_by_name(const std:
             mac_address = std::make_shared<Ptp::Interfaces::Interface::MacAddress>();
         }
         return mac_address;
+    }
+
+    if(child_yang_name == "ingress-conversion")
+    {
+        if(ingress_conversion == nullptr)
+        {
+            ingress_conversion = std::make_shared<Ptp::Interfaces::Interface::IngressConversion>();
+        }
+        return ingress_conversion;
+    }
+
+    if(child_yang_name == "egress-conversion")
+    {
+        if(egress_conversion == nullptr)
+        {
+            egress_conversion = std::make_shared<Ptp::Interfaces::Interface::EgressConversion>();
+        }
+        return egress_conversion;
     }
 
     if(child_yang_name == "master-table")
@@ -12011,9 +14532,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::Interface::get_c
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(ipv6_address_array != nullptr)
+    {
+        children["ipv6-address-array"] = ipv6_address_array;
+    }
+
+    if(ipv4_address_array != nullptr)
+    {
+        children["ipv4-address-array"] = ipv4_address_array;
+    }
+
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
+    }
+
+    if(ingress_conversion != nullptr)
+    {
+        children["ingress-conversion"] = ingress_conversion;
+    }
+
+    if(egress_conversion != nullptr)
+    {
+        children["egress-conversion"] = egress_conversion;
     }
 
     count = 0;
@@ -12222,6 +14763,24 @@ void Ptp::Interfaces::Interface::set_value(const std::string & value_path, const
         signal_fail.value_namespace = name_space;
         signal_fail.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "profile-interop")
+    {
+        profile_interop = value;
+        profile_interop.value_namespace = name_space;
+        profile_interop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interop-domain")
+    {
+        interop_domain = value;
+        interop_domain.value_namespace = name_space;
+        interop_domain.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interop-profile")
+    {
+        interop_profile = value;
+        interop_profile.value_namespace = name_space;
+        interop_profile.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ptp::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
@@ -12354,11 +14913,197 @@ void Ptp::Interfaces::Interface::set_filter(const std::string & value_path, YFil
     {
         signal_fail.yfilter = yfilter;
     }
+    if(value_path == "profile-interop")
+    {
+        profile_interop.yfilter = yfilter;
+    }
+    if(value_path == "interop-domain")
+    {
+        interop_domain.yfilter = yfilter;
+    }
+    if(value_path == "interop-profile")
+    {
+        interop_profile.yfilter = yfilter;
+    }
 }
 
 bool Ptp::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mac-address" || name == "master-table" || name == "interface-name" || name == "port-state" || name == "port-number" || name == "line-state" || name == "encapsulation" || name == "ipv6-address" || name == "ipv4-address" || name == "two-step" || name == "communication-model" || name == "log-sync-interval" || name == "log-announce-interval" || name == "announce-timeout" || name == "log-min-delay-request-interval" || name == "configured-port-state" || name == "supports-unicast" || name == "supports-master" || name == "supports-one-step" || name == "supports-two-step" || name == "supports-ethernet" || name == "supports-multicast" || name == "supports-ipv4" || name == "supports-ipv6" || name == "supports-slave" || name == "supports-source-ip" || name == "max-sync-rate" || name == "event-cos" || name == "general-cos" || name == "event-dscp" || name == "general-dscp" || name == "unicast-peers" || name == "local-priority" || name == "signal-fail")
+    if(name == "ipv6-address-array" || name == "ipv4-address-array" || name == "mac-address" || name == "ingress-conversion" || name == "egress-conversion" || name == "master-table" || name == "interface-name" || name == "port-state" || name == "port-number" || name == "line-state" || name == "encapsulation" || name == "ipv6-address" || name == "ipv4-address" || name == "two-step" || name == "communication-model" || name == "log-sync-interval" || name == "log-announce-interval" || name == "announce-timeout" || name == "log-min-delay-request-interval" || name == "configured-port-state" || name == "supports-unicast" || name == "supports-master" || name == "supports-one-step" || name == "supports-two-step" || name == "supports-ethernet" || name == "supports-multicast" || name == "supports-ipv4" || name == "supports-ipv6" || name == "supports-slave" || name == "supports-source-ip" || name == "max-sync-rate" || name == "event-cos" || name == "general-cos" || name == "event-dscp" || name == "general-dscp" || name == "unicast-peers" || name == "local-priority" || name == "signal-fail" || name == "profile-interop" || name == "interop-domain" || name == "interop-profile")
+        return true;
+    return false;
+}
+
+Ptp::Interfaces::Interface::Ipv6AddressArray::Ipv6AddressArray()
+    :
+    addr{YType::str, "addr"}
+{
+
+    yang_name = "ipv6-address-array"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Interfaces::Interface::Ipv6AddressArray::~Ipv6AddressArray()
+{
+}
+
+bool Ptp::Interfaces::Interface::Ipv6AddressArray::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : addr.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool Ptp::Interfaces::Interface::Ipv6AddressArray::has_operation() const
+{
+    for (auto const & leaf : addr.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(addr.yfilter);
+}
+
+std::string Ptp::Interfaces::Interface::Ipv6AddressArray::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-address-array";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Interfaces::Interface::Ipv6AddressArray::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto addr_name_datas = addr.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), addr_name_datas.begin(), addr_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Interfaces::Interface::Ipv6AddressArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::Interface::Ipv6AddressArray::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Interfaces::Interface::Ipv6AddressArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "addr")
+    {
+        addr.append(value);
+    }
+}
+
+void Ptp::Interfaces::Interface::Ipv6AddressArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "addr")
+    {
+        addr.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Interfaces::Interface::Ipv6AddressArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "addr")
+        return true;
+    return false;
+}
+
+Ptp::Interfaces::Interface::Ipv4AddressArray::Ipv4AddressArray()
+    :
+    addr{YType::str, "addr"}
+{
+
+    yang_name = "ipv4-address-array"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Interfaces::Interface::Ipv4AddressArray::~Ipv4AddressArray()
+{
+}
+
+bool Ptp::Interfaces::Interface::Ipv4AddressArray::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : addr.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool Ptp::Interfaces::Interface::Ipv4AddressArray::has_operation() const
+{
+    for (auto const & leaf : addr.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(addr.yfilter);
+}
+
+std::string Ptp::Interfaces::Interface::Ipv4AddressArray::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-address-array";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Interfaces::Interface::Ipv4AddressArray::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto addr_name_datas = addr.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), addr_name_datas.begin(), addr_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Interfaces::Interface::Ipv4AddressArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::Interface::Ipv4AddressArray::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Interfaces::Interface::Ipv4AddressArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "addr")
+    {
+        addr.append(value);
+    }
+}
+
+void Ptp::Interfaces::Interface::Ipv4AddressArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "addr")
+    {
+        addr.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Interfaces::Interface::Ipv4AddressArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "addr")
         return true;
     return false;
 }
@@ -12437,6 +15182,516 @@ void Ptp::Interfaces::Interface::MacAddress::set_filter(const std::string & valu
 bool Ptp::Interfaces::Interface::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macaddr")
+        return true;
+    return false;
+}
+
+Ptp::Interfaces::Interface::IngressConversion::IngressConversion()
+    :
+    priority1{YType::uint8, "priority1"},
+    priority2{YType::uint8, "priority2"},
+    accuracy{YType::uint8, "accuracy"},
+    class_default{YType::uint8, "class-default"},
+    offset_log_variance{YType::uint16, "offset-log-variance"}
+        ,
+    class_mapping(this, {})
+{
+
+    yang_name = "ingress-conversion"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Interfaces::Interface::IngressConversion::~IngressConversion()
+{
+}
+
+bool Ptp::Interfaces::Interface::IngressConversion::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_mapping.len(); index++)
+    {
+        if(class_mapping[index]->has_data())
+            return true;
+    }
+    return priority1.is_set
+	|| priority2.is_set
+	|| accuracy.is_set
+	|| class_default.is_set
+	|| offset_log_variance.is_set;
+}
+
+bool Ptp::Interfaces::Interface::IngressConversion::has_operation() const
+{
+    for (std::size_t index=0; index<class_mapping.len(); index++)
+    {
+        if(class_mapping[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(priority1.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(accuracy.yfilter)
+	|| ydk::is_set(class_default.yfilter)
+	|| ydk::is_set(offset_log_variance.yfilter);
+}
+
+std::string Ptp::Interfaces::Interface::IngressConversion::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ingress-conversion";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Interfaces::Interface::IngressConversion::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (accuracy.is_set || is_set(accuracy.yfilter)) leaf_name_data.push_back(accuracy.get_name_leafdata());
+    if (class_default.is_set || is_set(class_default.yfilter)) leaf_name_data.push_back(class_default.get_name_leafdata());
+    if (offset_log_variance.is_set || is_set(offset_log_variance.yfilter)) leaf_name_data.push_back(offset_log_variance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Interfaces::Interface::IngressConversion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "class-mapping")
+    {
+        auto c = std::make_shared<Ptp::Interfaces::Interface::IngressConversion::ClassMapping>();
+        c->parent = this;
+        class_mapping.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::Interface::IngressConversion::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : class_mapping.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ptp::Interfaces::Interface::IngressConversion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "priority1")
+    {
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority2")
+    {
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accuracy")
+    {
+        accuracy = value;
+        accuracy.value_namespace = name_space;
+        accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "class-default")
+    {
+        class_default = value;
+        class_default.value_namespace = name_space;
+        class_default.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-log-variance")
+    {
+        offset_log_variance = value;
+        offset_log_variance.value_namespace = name_space;
+        offset_log_variance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Interfaces::Interface::IngressConversion::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "priority1")
+    {
+        priority1.yfilter = yfilter;
+    }
+    if(value_path == "priority2")
+    {
+        priority2.yfilter = yfilter;
+    }
+    if(value_path == "accuracy")
+    {
+        accuracy.yfilter = yfilter;
+    }
+    if(value_path == "class-default")
+    {
+        class_default.yfilter = yfilter;
+    }
+    if(value_path == "offset-log-variance")
+    {
+        offset_log_variance.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Interfaces::Interface::IngressConversion::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class-mapping" || name == "priority1" || name == "priority2" || name == "accuracy" || name == "class-default" || name == "offset-log-variance")
+        return true;
+    return false;
+}
+
+Ptp::Interfaces::Interface::IngressConversion::ClassMapping::ClassMapping()
+    :
+    from_clock_class{YType::uint8, "from-clock-class"},
+    to_clock_class{YType::uint8, "to-clock-class"}
+{
+
+    yang_name = "class-mapping"; yang_parent_name = "ingress-conversion"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Interfaces::Interface::IngressConversion::ClassMapping::~ClassMapping()
+{
+}
+
+bool Ptp::Interfaces::Interface::IngressConversion::ClassMapping::has_data() const
+{
+    if (is_presence_container) return true;
+    return from_clock_class.is_set
+	|| to_clock_class.is_set;
+}
+
+bool Ptp::Interfaces::Interface::IngressConversion::ClassMapping::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(from_clock_class.yfilter)
+	|| ydk::is_set(to_clock_class.yfilter);
+}
+
+std::string Ptp::Interfaces::Interface::IngressConversion::ClassMapping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "class-mapping";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Interfaces::Interface::IngressConversion::ClassMapping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (from_clock_class.is_set || is_set(from_clock_class.yfilter)) leaf_name_data.push_back(from_clock_class.get_name_leafdata());
+    if (to_clock_class.is_set || is_set(to_clock_class.yfilter)) leaf_name_data.push_back(to_clock_class.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Interfaces::Interface::IngressConversion::ClassMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::Interface::IngressConversion::ClassMapping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Interfaces::Interface::IngressConversion::ClassMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "from-clock-class")
+    {
+        from_clock_class = value;
+        from_clock_class.value_namespace = name_space;
+        from_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-clock-class")
+    {
+        to_clock_class = value;
+        to_clock_class.value_namespace = name_space;
+        to_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Interfaces::Interface::IngressConversion::ClassMapping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "from-clock-class")
+    {
+        from_clock_class.yfilter = yfilter;
+    }
+    if(value_path == "to-clock-class")
+    {
+        to_clock_class.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Interfaces::Interface::IngressConversion::ClassMapping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "from-clock-class" || name == "to-clock-class")
+        return true;
+    return false;
+}
+
+Ptp::Interfaces::Interface::EgressConversion::EgressConversion()
+    :
+    priority1{YType::uint8, "priority1"},
+    priority2{YType::uint8, "priority2"},
+    accuracy{YType::uint8, "accuracy"},
+    class_default{YType::uint8, "class-default"},
+    offset_log_variance{YType::uint16, "offset-log-variance"}
+        ,
+    class_mapping(this, {})
+{
+
+    yang_name = "egress-conversion"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Interfaces::Interface::EgressConversion::~EgressConversion()
+{
+}
+
+bool Ptp::Interfaces::Interface::EgressConversion::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_mapping.len(); index++)
+    {
+        if(class_mapping[index]->has_data())
+            return true;
+    }
+    return priority1.is_set
+	|| priority2.is_set
+	|| accuracy.is_set
+	|| class_default.is_set
+	|| offset_log_variance.is_set;
+}
+
+bool Ptp::Interfaces::Interface::EgressConversion::has_operation() const
+{
+    for (std::size_t index=0; index<class_mapping.len(); index++)
+    {
+        if(class_mapping[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(priority1.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(accuracy.yfilter)
+	|| ydk::is_set(class_default.yfilter)
+	|| ydk::is_set(offset_log_variance.yfilter);
+}
+
+std::string Ptp::Interfaces::Interface::EgressConversion::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "egress-conversion";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Interfaces::Interface::EgressConversion::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (accuracy.is_set || is_set(accuracy.yfilter)) leaf_name_data.push_back(accuracy.get_name_leafdata());
+    if (class_default.is_set || is_set(class_default.yfilter)) leaf_name_data.push_back(class_default.get_name_leafdata());
+    if (offset_log_variance.is_set || is_set(offset_log_variance.yfilter)) leaf_name_data.push_back(offset_log_variance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Interfaces::Interface::EgressConversion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "class-mapping")
+    {
+        auto c = std::make_shared<Ptp::Interfaces::Interface::EgressConversion::ClassMapping>();
+        c->parent = this;
+        class_mapping.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::Interface::EgressConversion::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : class_mapping.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ptp::Interfaces::Interface::EgressConversion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "priority1")
+    {
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority2")
+    {
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accuracy")
+    {
+        accuracy = value;
+        accuracy.value_namespace = name_space;
+        accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "class-default")
+    {
+        class_default = value;
+        class_default.value_namespace = name_space;
+        class_default.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-log-variance")
+    {
+        offset_log_variance = value;
+        offset_log_variance.value_namespace = name_space;
+        offset_log_variance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Interfaces::Interface::EgressConversion::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "priority1")
+    {
+        priority1.yfilter = yfilter;
+    }
+    if(value_path == "priority2")
+    {
+        priority2.yfilter = yfilter;
+    }
+    if(value_path == "accuracy")
+    {
+        accuracy.yfilter = yfilter;
+    }
+    if(value_path == "class-default")
+    {
+        class_default.yfilter = yfilter;
+    }
+    if(value_path == "offset-log-variance")
+    {
+        offset_log_variance.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Interfaces::Interface::EgressConversion::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class-mapping" || name == "priority1" || name == "priority2" || name == "accuracy" || name == "class-default" || name == "offset-log-variance")
+        return true;
+    return false;
+}
+
+Ptp::Interfaces::Interface::EgressConversion::ClassMapping::ClassMapping()
+    :
+    from_clock_class{YType::uint8, "from-clock-class"},
+    to_clock_class{YType::uint8, "to-clock-class"}
+{
+
+    yang_name = "class-mapping"; yang_parent_name = "egress-conversion"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ptp::Interfaces::Interface::EgressConversion::ClassMapping::~ClassMapping()
+{
+}
+
+bool Ptp::Interfaces::Interface::EgressConversion::ClassMapping::has_data() const
+{
+    if (is_presence_container) return true;
+    return from_clock_class.is_set
+	|| to_clock_class.is_set;
+}
+
+bool Ptp::Interfaces::Interface::EgressConversion::ClassMapping::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(from_clock_class.yfilter)
+	|| ydk::is_set(to_clock_class.yfilter);
+}
+
+std::string Ptp::Interfaces::Interface::EgressConversion::ClassMapping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "class-mapping";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Interfaces::Interface::EgressConversion::ClassMapping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (from_clock_class.is_set || is_set(from_clock_class.yfilter)) leaf_name_data.push_back(from_clock_class.get_name_leafdata());
+    if (to_clock_class.is_set || is_set(to_clock_class.yfilter)) leaf_name_data.push_back(to_clock_class.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Interfaces::Interface::EgressConversion::ClassMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::Interface::EgressConversion::ClassMapping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Interfaces::Interface::EgressConversion::ClassMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "from-clock-class")
+    {
+        from_clock_class = value;
+        from_clock_class.value_namespace = name_space;
+        from_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "to-clock-class")
+    {
+        to_clock_class = value;
+        to_clock_class.value_namespace = name_space;
+        to_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Interfaces::Interface::EgressConversion::ClassMapping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "from-clock-class")
+    {
+        from_clock_class.yfilter = yfilter;
+    }
+    if(value_path == "to-clock-class")
+    {
+        to_clock_class.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Interfaces::Interface::EgressConversion::ClassMapping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "from-clock-class" || name == "to-clock-class")
         return true;
     return false;
 }
@@ -14244,7 +17499,11 @@ Ptp::GlobalConfigurationError::GlobalConfigurationError()
     clock_profile_set{YType::boolean, "clock-profile-set"},
     telecom_clock_type{YType::enumeration, "telecom-clock-type"},
     domain_number{YType::uint8, "domain-number"},
-    priority2{YType::uint8, "priority2"}
+    priority2{YType::uint8, "priority2"},
+    virtual_port_priority2{YType::uint8, "virtual-port-priority2"},
+    virtual_port_clock_class{YType::uint8, "virtual-port-clock-class"},
+    virtual_port_clock_accuracy{YType::uint8, "virtual-port-clock-accuracy"},
+    virtual_port_oslv{YType::uint16, "virtual-port-oslv"}
         ,
     configuration_errors(std::make_shared<Ptp::GlobalConfigurationError::ConfigurationErrors>())
 {
@@ -14265,6 +17524,10 @@ bool Ptp::GlobalConfigurationError::has_data() const
 	|| telecom_clock_type.is_set
 	|| domain_number.is_set
 	|| priority2.is_set
+	|| virtual_port_priority2.is_set
+	|| virtual_port_clock_class.is_set
+	|| virtual_port_clock_accuracy.is_set
+	|| virtual_port_oslv.is_set
 	|| (configuration_errors !=  nullptr && configuration_errors->has_data());
 }
 
@@ -14276,6 +17539,10 @@ bool Ptp::GlobalConfigurationError::has_operation() const
 	|| ydk::is_set(telecom_clock_type.yfilter)
 	|| ydk::is_set(domain_number.yfilter)
 	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(virtual_port_priority2.yfilter)
+	|| ydk::is_set(virtual_port_clock_class.yfilter)
+	|| ydk::is_set(virtual_port_clock_accuracy.yfilter)
+	|| ydk::is_set(virtual_port_oslv.yfilter)
 	|| (configuration_errors !=  nullptr && configuration_errors->has_operation());
 }
 
@@ -14302,6 +17569,10 @@ std::vector<std::pair<std::string, LeafData> > Ptp::GlobalConfigurationError::ge
     if (telecom_clock_type.is_set || is_set(telecom_clock_type.yfilter)) leaf_name_data.push_back(telecom_clock_type.get_name_leafdata());
     if (domain_number.is_set || is_set(domain_number.yfilter)) leaf_name_data.push_back(domain_number.get_name_leafdata());
     if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (virtual_port_priority2.is_set || is_set(virtual_port_priority2.yfilter)) leaf_name_data.push_back(virtual_port_priority2.get_name_leafdata());
+    if (virtual_port_clock_class.is_set || is_set(virtual_port_clock_class.yfilter)) leaf_name_data.push_back(virtual_port_clock_class.get_name_leafdata());
+    if (virtual_port_clock_accuracy.is_set || is_set(virtual_port_clock_accuracy.yfilter)) leaf_name_data.push_back(virtual_port_clock_accuracy.get_name_leafdata());
+    if (virtual_port_oslv.is_set || is_set(virtual_port_oslv.yfilter)) leaf_name_data.push_back(virtual_port_oslv.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -14365,6 +17636,30 @@ void Ptp::GlobalConfigurationError::set_value(const std::string & value_path, co
         priority2.value_namespace = name_space;
         priority2.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "virtual-port-priority2")
+    {
+        virtual_port_priority2 = value;
+        virtual_port_priority2.value_namespace = name_space;
+        virtual_port_priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-port-clock-class")
+    {
+        virtual_port_clock_class = value;
+        virtual_port_clock_class.value_namespace = name_space;
+        virtual_port_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-port-clock-accuracy")
+    {
+        virtual_port_clock_accuracy = value;
+        virtual_port_clock_accuracy.value_namespace = name_space;
+        virtual_port_clock_accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-port-oslv")
+    {
+        virtual_port_oslv = value;
+        virtual_port_oslv.value_namespace = name_space;
+        virtual_port_oslv.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ptp::GlobalConfigurationError::set_filter(const std::string & value_path, YFilter yfilter)
@@ -14389,11 +17684,27 @@ void Ptp::GlobalConfigurationError::set_filter(const std::string & value_path, Y
     {
         priority2.yfilter = yfilter;
     }
+    if(value_path == "virtual-port-priority2")
+    {
+        virtual_port_priority2.yfilter = yfilter;
+    }
+    if(value_path == "virtual-port-clock-class")
+    {
+        virtual_port_clock_class.yfilter = yfilter;
+    }
+    if(value_path == "virtual-port-clock-accuracy")
+    {
+        virtual_port_clock_accuracy.yfilter = yfilter;
+    }
+    if(value_path == "virtual-port-oslv")
+    {
+        virtual_port_oslv.yfilter = yfilter;
+    }
 }
 
 bool Ptp::GlobalConfigurationError::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "configuration-errors" || name == "clock-profile" || name == "clock-profile-set" || name == "telecom-clock-type" || name == "domain-number" || name == "priority2")
+    if(name == "configuration-errors" || name == "clock-profile" || name == "clock-profile-set" || name == "telecom-clock-type" || name == "domain-number" || name == "priority2" || name == "virtual-port-priority2" || name == "virtual-port-clock-class" || name == "virtual-port-clock-accuracy" || name == "virtual-port-oslv")
         return true;
     return false;
 }
@@ -14403,7 +17714,15 @@ Ptp::GlobalConfigurationError::ConfigurationErrors::ConfigurationErrors()
     domain{YType::boolean, "domain"},
     profile_priority1_config{YType::boolean, "profile-priority1-config"},
     profile_priority2_value{YType::boolean, "profile-priority2-value"},
-    utc_offset_change{YType::boolean, "utc-offset-change"}
+    utc_offset_change{YType::boolean, "utc-offset-change"},
+    physical_layer_frequency{YType::boolean, "physical-layer-frequency"},
+    profile_virtual_port{YType::boolean, "profile-virtual-port"},
+    virtual_port_priority1_config{YType::boolean, "virtual-port-priority1-config"},
+    virtual_port_priority2_value{YType::boolean, "virtual-port-priority2-value"},
+    virtual_port_profile_clock_class{YType::boolean, "virtual-port-profile-clock-class"},
+    virtual_port_clock_accuracy{YType::boolean, "virtual-port-clock-accuracy"},
+    virtual_port_oslv{YType::boolean, "virtual-port-oslv"},
+    virtual_port_local_priority{YType::boolean, "virtual-port-local-priority"}
 {
 
     yang_name = "configuration-errors"; yang_parent_name = "global-configuration-error"; is_top_level_class = false; has_list_ancestor = false; 
@@ -14419,7 +17738,15 @@ bool Ptp::GlobalConfigurationError::ConfigurationErrors::has_data() const
     return domain.is_set
 	|| profile_priority1_config.is_set
 	|| profile_priority2_value.is_set
-	|| utc_offset_change.is_set;
+	|| utc_offset_change.is_set
+	|| physical_layer_frequency.is_set
+	|| profile_virtual_port.is_set
+	|| virtual_port_priority1_config.is_set
+	|| virtual_port_priority2_value.is_set
+	|| virtual_port_profile_clock_class.is_set
+	|| virtual_port_clock_accuracy.is_set
+	|| virtual_port_oslv.is_set
+	|| virtual_port_local_priority.is_set;
 }
 
 bool Ptp::GlobalConfigurationError::ConfigurationErrors::has_operation() const
@@ -14428,7 +17755,15 @@ bool Ptp::GlobalConfigurationError::ConfigurationErrors::has_operation() const
 	|| ydk::is_set(domain.yfilter)
 	|| ydk::is_set(profile_priority1_config.yfilter)
 	|| ydk::is_set(profile_priority2_value.yfilter)
-	|| ydk::is_set(utc_offset_change.yfilter);
+	|| ydk::is_set(utc_offset_change.yfilter)
+	|| ydk::is_set(physical_layer_frequency.yfilter)
+	|| ydk::is_set(profile_virtual_port.yfilter)
+	|| ydk::is_set(virtual_port_priority1_config.yfilter)
+	|| ydk::is_set(virtual_port_priority2_value.yfilter)
+	|| ydk::is_set(virtual_port_profile_clock_class.yfilter)
+	|| ydk::is_set(virtual_port_clock_accuracy.yfilter)
+	|| ydk::is_set(virtual_port_oslv.yfilter)
+	|| ydk::is_set(virtual_port_local_priority.yfilter);
 }
 
 std::string Ptp::GlobalConfigurationError::ConfigurationErrors::get_absolute_path() const
@@ -14453,6 +17788,14 @@ std::vector<std::pair<std::string, LeafData> > Ptp::GlobalConfigurationError::Co
     if (profile_priority1_config.is_set || is_set(profile_priority1_config.yfilter)) leaf_name_data.push_back(profile_priority1_config.get_name_leafdata());
     if (profile_priority2_value.is_set || is_set(profile_priority2_value.yfilter)) leaf_name_data.push_back(profile_priority2_value.get_name_leafdata());
     if (utc_offset_change.is_set || is_set(utc_offset_change.yfilter)) leaf_name_data.push_back(utc_offset_change.get_name_leafdata());
+    if (physical_layer_frequency.is_set || is_set(physical_layer_frequency.yfilter)) leaf_name_data.push_back(physical_layer_frequency.get_name_leafdata());
+    if (profile_virtual_port.is_set || is_set(profile_virtual_port.yfilter)) leaf_name_data.push_back(profile_virtual_port.get_name_leafdata());
+    if (virtual_port_priority1_config.is_set || is_set(virtual_port_priority1_config.yfilter)) leaf_name_data.push_back(virtual_port_priority1_config.get_name_leafdata());
+    if (virtual_port_priority2_value.is_set || is_set(virtual_port_priority2_value.yfilter)) leaf_name_data.push_back(virtual_port_priority2_value.get_name_leafdata());
+    if (virtual_port_profile_clock_class.is_set || is_set(virtual_port_profile_clock_class.yfilter)) leaf_name_data.push_back(virtual_port_profile_clock_class.get_name_leafdata());
+    if (virtual_port_clock_accuracy.is_set || is_set(virtual_port_clock_accuracy.yfilter)) leaf_name_data.push_back(virtual_port_clock_accuracy.get_name_leafdata());
+    if (virtual_port_oslv.is_set || is_set(virtual_port_oslv.yfilter)) leaf_name_data.push_back(virtual_port_oslv.get_name_leafdata());
+    if (virtual_port_local_priority.is_set || is_set(virtual_port_local_priority.yfilter)) leaf_name_data.push_back(virtual_port_local_priority.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -14496,6 +17839,54 @@ void Ptp::GlobalConfigurationError::ConfigurationErrors::set_value(const std::st
         utc_offset_change.value_namespace = name_space;
         utc_offset_change.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "physical-layer-frequency")
+    {
+        physical_layer_frequency = value;
+        physical_layer_frequency.value_namespace = name_space;
+        physical_layer_frequency.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "profile-virtual-port")
+    {
+        profile_virtual_port = value;
+        profile_virtual_port.value_namespace = name_space;
+        profile_virtual_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-port-priority1-config")
+    {
+        virtual_port_priority1_config = value;
+        virtual_port_priority1_config.value_namespace = name_space;
+        virtual_port_priority1_config.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-port-priority2-value")
+    {
+        virtual_port_priority2_value = value;
+        virtual_port_priority2_value.value_namespace = name_space;
+        virtual_port_priority2_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-port-profile-clock-class")
+    {
+        virtual_port_profile_clock_class = value;
+        virtual_port_profile_clock_class.value_namespace = name_space;
+        virtual_port_profile_clock_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-port-clock-accuracy")
+    {
+        virtual_port_clock_accuracy = value;
+        virtual_port_clock_accuracy.value_namespace = name_space;
+        virtual_port_clock_accuracy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-port-oslv")
+    {
+        virtual_port_oslv = value;
+        virtual_port_oslv.value_namespace = name_space;
+        virtual_port_oslv.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-port-local-priority")
+    {
+        virtual_port_local_priority = value;
+        virtual_port_local_priority.value_namespace = name_space;
+        virtual_port_local_priority.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ptp::GlobalConfigurationError::ConfigurationErrors::set_filter(const std::string & value_path, YFilter yfilter)
@@ -14516,11 +17907,43 @@ void Ptp::GlobalConfigurationError::ConfigurationErrors::set_filter(const std::s
     {
         utc_offset_change.yfilter = yfilter;
     }
+    if(value_path == "physical-layer-frequency")
+    {
+        physical_layer_frequency.yfilter = yfilter;
+    }
+    if(value_path == "profile-virtual-port")
+    {
+        profile_virtual_port.yfilter = yfilter;
+    }
+    if(value_path == "virtual-port-priority1-config")
+    {
+        virtual_port_priority1_config.yfilter = yfilter;
+    }
+    if(value_path == "virtual-port-priority2-value")
+    {
+        virtual_port_priority2_value.yfilter = yfilter;
+    }
+    if(value_path == "virtual-port-profile-clock-class")
+    {
+        virtual_port_profile_clock_class.yfilter = yfilter;
+    }
+    if(value_path == "virtual-port-clock-accuracy")
+    {
+        virtual_port_clock_accuracy.yfilter = yfilter;
+    }
+    if(value_path == "virtual-port-oslv")
+    {
+        virtual_port_oslv.yfilter = yfilter;
+    }
+    if(value_path == "virtual-port-local-priority")
+    {
+        virtual_port_local_priority.yfilter = yfilter;
+    }
 }
 
 bool Ptp::GlobalConfigurationError::ConfigurationErrors::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "domain" || name == "profile-priority1-config" || name == "profile-priority2-value" || name == "utc-offset-change")
+    if(name == "domain" || name == "profile-priority1-config" || name == "profile-priority2-value" || name == "utc-offset-change" || name == "physical-layer-frequency" || name == "profile-virtual-port" || name == "virtual-port-priority1-config" || name == "virtual-port-priority2-value" || name == "virtual-port-profile-clock-class" || name == "virtual-port-clock-accuracy" || name == "virtual-port-oslv" || name == "virtual-port-local-priority")
         return true;
     return false;
 }
@@ -17675,6 +21098,1486 @@ void Ptp::UtcOffsetInfo::ConfiguredLeapSecond::set_filter(const std::string & va
 bool Ptp::UtcOffsetInfo::ConfiguredLeapSecond::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "offset" || name == "offset-start-date" || name == "offset-change" || name == "offset-applied")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Platform()
+    :
+    servo(std::make_shared<Ptp::Platform::Servo>())
+{
+    servo->parent = this;
+
+    yang_name = "platform"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::~Platform()
+{
+}
+
+bool Ptp::Platform::has_data() const
+{
+    if (is_presence_container) return true;
+    return (servo !=  nullptr && servo->has_data());
+}
+
+bool Ptp::Platform::has_operation() const
+{
+    return is_set(yfilter)
+	|| (servo !=  nullptr && servo->has_operation());
+}
+
+std::string Ptp::Platform::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-pd-oper:platform";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Platform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "servo")
+    {
+        if(servo == nullptr)
+        {
+            servo = std::make_shared<Ptp::Platform::Servo>();
+        }
+        return servo;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(servo != nullptr)
+    {
+        children["servo"] = servo;
+    }
+
+    return children;
+}
+
+void Ptp::Platform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ptp::Platform::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ptp::Platform::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "servo")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::Servo()
+    :
+    lock_status{YType::uint16, "lock-status"},
+    running{YType::boolean, "running"},
+    device_status{YType::str, "device-status"},
+    log_level{YType::uint16, "log-level"},
+    phase_accuracy_last{YType::int64, "phase-accuracy-last"},
+    num_sync_timestamp{YType::uint32, "num-sync-timestamp"},
+    num_delay_timestamp{YType::uint32, "num-delay-timestamp"},
+    num_set_time{YType::uint32, "num-set-time"},
+    num_step_time{YType::uint32, "num-step-time"},
+    num_adjust_freq{YType::uint32, "num-adjust-freq"},
+    num_adjust_freq_time{YType::uint32, "num-adjust-freq-time"},
+    last_adjust_freq{YType::int32, "last-adjust-freq"},
+    last_step_time{YType::int32, "last-step-time"},
+    num_discard_sync_timestamp{YType::uint32, "num-discard-sync-timestamp"},
+    num_discard_delay_timestamp{YType::uint32, "num-discard-delay-timestamp"},
+    flagof_last_set_time{YType::boolean, "flagof-last-set-time"},
+    offset_from_master{YType::int64, "offset-from-master"},
+    mean_path_delay{YType::int64, "mean-path-delay"},
+    servo_mode{YType::int32, "servo-mode"}
+        ,
+    last_set_time(std::make_shared<Ptp::Platform::Servo::LastSetTime>())
+    , last_received_t1(std::make_shared<Ptp::Platform::Servo::LastReceivedT1>())
+    , last_received_t2(std::make_shared<Ptp::Platform::Servo::LastReceivedT2>())
+    , last_received_t3(std::make_shared<Ptp::Platform::Servo::LastReceivedT3>())
+    , last_received_t4(std::make_shared<Ptp::Platform::Servo::LastReceivedT4>())
+    , pre_received_t1(std::make_shared<Ptp::Platform::Servo::PreReceivedT1>())
+    , pre_received_t2(std::make_shared<Ptp::Platform::Servo::PreReceivedT2>())
+    , pre_received_t3(std::make_shared<Ptp::Platform::Servo::PreReceivedT3>())
+    , pre_received_t4(std::make_shared<Ptp::Platform::Servo::PreReceivedT4>())
+{
+    last_set_time->parent = this;
+    last_received_t1->parent = this;
+    last_received_t2->parent = this;
+    last_received_t3->parent = this;
+    last_received_t4->parent = this;
+    pre_received_t1->parent = this;
+    pre_received_t2->parent = this;
+    pre_received_t3->parent = this;
+    pre_received_t4->parent = this;
+
+    yang_name = "servo"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::~Servo()
+{
+}
+
+bool Ptp::Platform::Servo::has_data() const
+{
+    if (is_presence_container) return true;
+    return lock_status.is_set
+	|| running.is_set
+	|| device_status.is_set
+	|| log_level.is_set
+	|| phase_accuracy_last.is_set
+	|| num_sync_timestamp.is_set
+	|| num_delay_timestamp.is_set
+	|| num_set_time.is_set
+	|| num_step_time.is_set
+	|| num_adjust_freq.is_set
+	|| num_adjust_freq_time.is_set
+	|| last_adjust_freq.is_set
+	|| last_step_time.is_set
+	|| num_discard_sync_timestamp.is_set
+	|| num_discard_delay_timestamp.is_set
+	|| flagof_last_set_time.is_set
+	|| offset_from_master.is_set
+	|| mean_path_delay.is_set
+	|| servo_mode.is_set
+	|| (last_set_time !=  nullptr && last_set_time->has_data())
+	|| (last_received_t1 !=  nullptr && last_received_t1->has_data())
+	|| (last_received_t2 !=  nullptr && last_received_t2->has_data())
+	|| (last_received_t3 !=  nullptr && last_received_t3->has_data())
+	|| (last_received_t4 !=  nullptr && last_received_t4->has_data())
+	|| (pre_received_t1 !=  nullptr && pre_received_t1->has_data())
+	|| (pre_received_t2 !=  nullptr && pre_received_t2->has_data())
+	|| (pre_received_t3 !=  nullptr && pre_received_t3->has_data())
+	|| (pre_received_t4 !=  nullptr && pre_received_t4->has_data());
+}
+
+bool Ptp::Platform::Servo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lock_status.yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(device_status.yfilter)
+	|| ydk::is_set(log_level.yfilter)
+	|| ydk::is_set(phase_accuracy_last.yfilter)
+	|| ydk::is_set(num_sync_timestamp.yfilter)
+	|| ydk::is_set(num_delay_timestamp.yfilter)
+	|| ydk::is_set(num_set_time.yfilter)
+	|| ydk::is_set(num_step_time.yfilter)
+	|| ydk::is_set(num_adjust_freq.yfilter)
+	|| ydk::is_set(num_adjust_freq_time.yfilter)
+	|| ydk::is_set(last_adjust_freq.yfilter)
+	|| ydk::is_set(last_step_time.yfilter)
+	|| ydk::is_set(num_discard_sync_timestamp.yfilter)
+	|| ydk::is_set(num_discard_delay_timestamp.yfilter)
+	|| ydk::is_set(flagof_last_set_time.yfilter)
+	|| ydk::is_set(offset_from_master.yfilter)
+	|| ydk::is_set(mean_path_delay.yfilter)
+	|| ydk::is_set(servo_mode.yfilter)
+	|| (last_set_time !=  nullptr && last_set_time->has_operation())
+	|| (last_received_t1 !=  nullptr && last_received_t1->has_operation())
+	|| (last_received_t2 !=  nullptr && last_received_t2->has_operation())
+	|| (last_received_t3 !=  nullptr && last_received_t3->has_operation())
+	|| (last_received_t4 !=  nullptr && last_received_t4->has_operation())
+	|| (pre_received_t1 !=  nullptr && pre_received_t1->has_operation())
+	|| (pre_received_t2 !=  nullptr && pre_received_t2->has_operation())
+	|| (pre_received_t3 !=  nullptr && pre_received_t3->has_operation())
+	|| (pre_received_t4 !=  nullptr && pre_received_t4->has_operation());
+}
+
+std::string Ptp::Platform::Servo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "servo";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lock_status.is_set || is_set(lock_status.yfilter)) leaf_name_data.push_back(lock_status.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (device_status.is_set || is_set(device_status.yfilter)) leaf_name_data.push_back(device_status.get_name_leafdata());
+    if (log_level.is_set || is_set(log_level.yfilter)) leaf_name_data.push_back(log_level.get_name_leafdata());
+    if (phase_accuracy_last.is_set || is_set(phase_accuracy_last.yfilter)) leaf_name_data.push_back(phase_accuracy_last.get_name_leafdata());
+    if (num_sync_timestamp.is_set || is_set(num_sync_timestamp.yfilter)) leaf_name_data.push_back(num_sync_timestamp.get_name_leafdata());
+    if (num_delay_timestamp.is_set || is_set(num_delay_timestamp.yfilter)) leaf_name_data.push_back(num_delay_timestamp.get_name_leafdata());
+    if (num_set_time.is_set || is_set(num_set_time.yfilter)) leaf_name_data.push_back(num_set_time.get_name_leafdata());
+    if (num_step_time.is_set || is_set(num_step_time.yfilter)) leaf_name_data.push_back(num_step_time.get_name_leafdata());
+    if (num_adjust_freq.is_set || is_set(num_adjust_freq.yfilter)) leaf_name_data.push_back(num_adjust_freq.get_name_leafdata());
+    if (num_adjust_freq_time.is_set || is_set(num_adjust_freq_time.yfilter)) leaf_name_data.push_back(num_adjust_freq_time.get_name_leafdata());
+    if (last_adjust_freq.is_set || is_set(last_adjust_freq.yfilter)) leaf_name_data.push_back(last_adjust_freq.get_name_leafdata());
+    if (last_step_time.is_set || is_set(last_step_time.yfilter)) leaf_name_data.push_back(last_step_time.get_name_leafdata());
+    if (num_discard_sync_timestamp.is_set || is_set(num_discard_sync_timestamp.yfilter)) leaf_name_data.push_back(num_discard_sync_timestamp.get_name_leafdata());
+    if (num_discard_delay_timestamp.is_set || is_set(num_discard_delay_timestamp.yfilter)) leaf_name_data.push_back(num_discard_delay_timestamp.get_name_leafdata());
+    if (flagof_last_set_time.is_set || is_set(flagof_last_set_time.yfilter)) leaf_name_data.push_back(flagof_last_set_time.get_name_leafdata());
+    if (offset_from_master.is_set || is_set(offset_from_master.yfilter)) leaf_name_data.push_back(offset_from_master.get_name_leafdata());
+    if (mean_path_delay.is_set || is_set(mean_path_delay.yfilter)) leaf_name_data.push_back(mean_path_delay.get_name_leafdata());
+    if (servo_mode.is_set || is_set(servo_mode.yfilter)) leaf_name_data.push_back(servo_mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Platform::Servo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "last-set-time")
+    {
+        if(last_set_time == nullptr)
+        {
+            last_set_time = std::make_shared<Ptp::Platform::Servo::LastSetTime>();
+        }
+        return last_set_time;
+    }
+
+    if(child_yang_name == "last-received-t1")
+    {
+        if(last_received_t1 == nullptr)
+        {
+            last_received_t1 = std::make_shared<Ptp::Platform::Servo::LastReceivedT1>();
+        }
+        return last_received_t1;
+    }
+
+    if(child_yang_name == "last-received-t2")
+    {
+        if(last_received_t2 == nullptr)
+        {
+            last_received_t2 = std::make_shared<Ptp::Platform::Servo::LastReceivedT2>();
+        }
+        return last_received_t2;
+    }
+
+    if(child_yang_name == "last-received-t3")
+    {
+        if(last_received_t3 == nullptr)
+        {
+            last_received_t3 = std::make_shared<Ptp::Platform::Servo::LastReceivedT3>();
+        }
+        return last_received_t3;
+    }
+
+    if(child_yang_name == "last-received-t4")
+    {
+        if(last_received_t4 == nullptr)
+        {
+            last_received_t4 = std::make_shared<Ptp::Platform::Servo::LastReceivedT4>();
+        }
+        return last_received_t4;
+    }
+
+    if(child_yang_name == "pre-received-t1")
+    {
+        if(pre_received_t1 == nullptr)
+        {
+            pre_received_t1 = std::make_shared<Ptp::Platform::Servo::PreReceivedT1>();
+        }
+        return pre_received_t1;
+    }
+
+    if(child_yang_name == "pre-received-t2")
+    {
+        if(pre_received_t2 == nullptr)
+        {
+            pre_received_t2 = std::make_shared<Ptp::Platform::Servo::PreReceivedT2>();
+        }
+        return pre_received_t2;
+    }
+
+    if(child_yang_name == "pre-received-t3")
+    {
+        if(pre_received_t3 == nullptr)
+        {
+            pre_received_t3 = std::make_shared<Ptp::Platform::Servo::PreReceivedT3>();
+        }
+        return pre_received_t3;
+    }
+
+    if(child_yang_name == "pre-received-t4")
+    {
+        if(pre_received_t4 == nullptr)
+        {
+            pre_received_t4 = std::make_shared<Ptp::Platform::Servo::PreReceivedT4>();
+        }
+        return pre_received_t4;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(last_set_time != nullptr)
+    {
+        children["last-set-time"] = last_set_time;
+    }
+
+    if(last_received_t1 != nullptr)
+    {
+        children["last-received-t1"] = last_received_t1;
+    }
+
+    if(last_received_t2 != nullptr)
+    {
+        children["last-received-t2"] = last_received_t2;
+    }
+
+    if(last_received_t3 != nullptr)
+    {
+        children["last-received-t3"] = last_received_t3;
+    }
+
+    if(last_received_t4 != nullptr)
+    {
+        children["last-received-t4"] = last_received_t4;
+    }
+
+    if(pre_received_t1 != nullptr)
+    {
+        children["pre-received-t1"] = pre_received_t1;
+    }
+
+    if(pre_received_t2 != nullptr)
+    {
+        children["pre-received-t2"] = pre_received_t2;
+    }
+
+    if(pre_received_t3 != nullptr)
+    {
+        children["pre-received-t3"] = pre_received_t3;
+    }
+
+    if(pre_received_t4 != nullptr)
+    {
+        children["pre-received-t4"] = pre_received_t4;
+    }
+
+    return children;
+}
+
+void Ptp::Platform::Servo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lock-status")
+    {
+        lock_status = value;
+        lock_status.value_namespace = name_space;
+        lock_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "device-status")
+    {
+        device_status = value;
+        device_status.value_namespace = name_space;
+        device_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "log-level")
+    {
+        log_level = value;
+        log_level.value_namespace = name_space;
+        log_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "phase-accuracy-last")
+    {
+        phase_accuracy_last = value;
+        phase_accuracy_last.value_namespace = name_space;
+        phase_accuracy_last.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-sync-timestamp")
+    {
+        num_sync_timestamp = value;
+        num_sync_timestamp.value_namespace = name_space;
+        num_sync_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-delay-timestamp")
+    {
+        num_delay_timestamp = value;
+        num_delay_timestamp.value_namespace = name_space;
+        num_delay_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-set-time")
+    {
+        num_set_time = value;
+        num_set_time.value_namespace = name_space;
+        num_set_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-step-time")
+    {
+        num_step_time = value;
+        num_step_time.value_namespace = name_space;
+        num_step_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-adjust-freq")
+    {
+        num_adjust_freq = value;
+        num_adjust_freq.value_namespace = name_space;
+        num_adjust_freq.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-adjust-freq-time")
+    {
+        num_adjust_freq_time = value;
+        num_adjust_freq_time.value_namespace = name_space;
+        num_adjust_freq_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-adjust-freq")
+    {
+        last_adjust_freq = value;
+        last_adjust_freq.value_namespace = name_space;
+        last_adjust_freq.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-step-time")
+    {
+        last_step_time = value;
+        last_step_time.value_namespace = name_space;
+        last_step_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-discard-sync-timestamp")
+    {
+        num_discard_sync_timestamp = value;
+        num_discard_sync_timestamp.value_namespace = name_space;
+        num_discard_sync_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-discard-delay-timestamp")
+    {
+        num_discard_delay_timestamp = value;
+        num_discard_delay_timestamp.value_namespace = name_space;
+        num_discard_delay_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flagof-last-set-time")
+    {
+        flagof_last_set_time = value;
+        flagof_last_set_time.value_namespace = name_space;
+        flagof_last_set_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-from-master")
+    {
+        offset_from_master = value;
+        offset_from_master.value_namespace = name_space;
+        offset_from_master.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mean-path-delay")
+    {
+        mean_path_delay = value;
+        mean_path_delay.value_namespace = name_space;
+        mean_path_delay.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "servo-mode")
+    {
+        servo_mode = value;
+        servo_mode.value_namespace = name_space;
+        servo_mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lock-status")
+    {
+        lock_status.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "device-status")
+    {
+        device_status.yfilter = yfilter;
+    }
+    if(value_path == "log-level")
+    {
+        log_level.yfilter = yfilter;
+    }
+    if(value_path == "phase-accuracy-last")
+    {
+        phase_accuracy_last.yfilter = yfilter;
+    }
+    if(value_path == "num-sync-timestamp")
+    {
+        num_sync_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "num-delay-timestamp")
+    {
+        num_delay_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "num-set-time")
+    {
+        num_set_time.yfilter = yfilter;
+    }
+    if(value_path == "num-step-time")
+    {
+        num_step_time.yfilter = yfilter;
+    }
+    if(value_path == "num-adjust-freq")
+    {
+        num_adjust_freq.yfilter = yfilter;
+    }
+    if(value_path == "num-adjust-freq-time")
+    {
+        num_adjust_freq_time.yfilter = yfilter;
+    }
+    if(value_path == "last-adjust-freq")
+    {
+        last_adjust_freq.yfilter = yfilter;
+    }
+    if(value_path == "last-step-time")
+    {
+        last_step_time.yfilter = yfilter;
+    }
+    if(value_path == "num-discard-sync-timestamp")
+    {
+        num_discard_sync_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "num-discard-delay-timestamp")
+    {
+        num_discard_delay_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "flagof-last-set-time")
+    {
+        flagof_last_set_time.yfilter = yfilter;
+    }
+    if(value_path == "offset-from-master")
+    {
+        offset_from_master.yfilter = yfilter;
+    }
+    if(value_path == "mean-path-delay")
+    {
+        mean_path_delay.yfilter = yfilter;
+    }
+    if(value_path == "servo-mode")
+    {
+        servo_mode.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "last-set-time" || name == "last-received-t1" || name == "last-received-t2" || name == "last-received-t3" || name == "last-received-t4" || name == "pre-received-t1" || name == "pre-received-t2" || name == "pre-received-t3" || name == "pre-received-t4" || name == "lock-status" || name == "running" || name == "device-status" || name == "log-level" || name == "phase-accuracy-last" || name == "num-sync-timestamp" || name == "num-delay-timestamp" || name == "num-set-time" || name == "num-step-time" || name == "num-adjust-freq" || name == "num-adjust-freq-time" || name == "last-adjust-freq" || name == "last-step-time" || name == "num-discard-sync-timestamp" || name == "num-discard-delay-timestamp" || name == "flagof-last-set-time" || name == "offset-from-master" || name == "mean-path-delay" || name == "servo-mode")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::LastSetTime::LastSetTime()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "last-set-time"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::LastSetTime::~LastSetTime()
+{
+}
+
+bool Ptp::Platform::Servo::LastSetTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::LastSetTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::LastSetTime::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::LastSetTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-set-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::LastSetTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Platform::Servo::LastSetTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::LastSetTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Platform::Servo::LastSetTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::LastSetTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::LastSetTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::LastReceivedT1::LastReceivedT1()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "last-received-t1"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::LastReceivedT1::~LastReceivedT1()
+{
+}
+
+bool Ptp::Platform::Servo::LastReceivedT1::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::LastReceivedT1::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT1::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT1::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-received-t1";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::LastReceivedT1::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Platform::Servo::LastReceivedT1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::LastReceivedT1::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Platform::Servo::LastReceivedT1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::LastReceivedT1::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::LastReceivedT1::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::LastReceivedT2::LastReceivedT2()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "last-received-t2"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::LastReceivedT2::~LastReceivedT2()
+{
+}
+
+bool Ptp::Platform::Servo::LastReceivedT2::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::LastReceivedT2::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT2::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT2::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-received-t2";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::LastReceivedT2::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Platform::Servo::LastReceivedT2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::LastReceivedT2::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Platform::Servo::LastReceivedT2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::LastReceivedT2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::LastReceivedT2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::LastReceivedT3::LastReceivedT3()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "last-received-t3"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::LastReceivedT3::~LastReceivedT3()
+{
+}
+
+bool Ptp::Platform::Servo::LastReceivedT3::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::LastReceivedT3::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT3::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT3::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-received-t3";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::LastReceivedT3::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Platform::Servo::LastReceivedT3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::LastReceivedT3::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Platform::Servo::LastReceivedT3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::LastReceivedT3::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::LastReceivedT3::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::LastReceivedT4::LastReceivedT4()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "last-received-t4"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::LastReceivedT4::~LastReceivedT4()
+{
+}
+
+bool Ptp::Platform::Servo::LastReceivedT4::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::LastReceivedT4::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::LastReceivedT4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-received-t4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::LastReceivedT4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Platform::Servo::LastReceivedT4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::LastReceivedT4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Platform::Servo::LastReceivedT4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::LastReceivedT4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::LastReceivedT4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::PreReceivedT1::PreReceivedT1()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "pre-received-t1"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::PreReceivedT1::~PreReceivedT1()
+{
+}
+
+bool Ptp::Platform::Servo::PreReceivedT1::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::PreReceivedT1::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT1::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT1::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pre-received-t1";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::PreReceivedT1::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Platform::Servo::PreReceivedT1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::PreReceivedT1::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Platform::Servo::PreReceivedT1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::PreReceivedT1::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::PreReceivedT1::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::PreReceivedT2::PreReceivedT2()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "pre-received-t2"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::PreReceivedT2::~PreReceivedT2()
+{
+}
+
+bool Ptp::Platform::Servo::PreReceivedT2::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::PreReceivedT2::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT2::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT2::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pre-received-t2";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::PreReceivedT2::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Platform::Servo::PreReceivedT2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::PreReceivedT2::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Platform::Servo::PreReceivedT2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::PreReceivedT2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::PreReceivedT2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::PreReceivedT3::PreReceivedT3()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "pre-received-t3"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::PreReceivedT3::~PreReceivedT3()
+{
+}
+
+bool Ptp::Platform::Servo::PreReceivedT3::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::PreReceivedT3::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT3::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT3::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pre-received-t3";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::PreReceivedT3::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Platform::Servo::PreReceivedT3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::PreReceivedT3::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Platform::Servo::PreReceivedT3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::PreReceivedT3::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::PreReceivedT3::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
+        return true;
+    return false;
+}
+
+Ptp::Platform::Servo::PreReceivedT4::PreReceivedT4()
+    :
+    second{YType::uint32, "second"},
+    nano_second{YType::uint32, "nano-second"}
+{
+
+    yang_name = "pre-received-t4"; yang_parent_name = "servo"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Platform::Servo::PreReceivedT4::~PreReceivedT4()
+{
+}
+
+bool Ptp::Platform::Servo::PreReceivedT4::has_data() const
+{
+    if (is_presence_container) return true;
+    return second.is_set
+	|| nano_second.is_set;
+}
+
+bool Ptp::Platform::Servo::PreReceivedT4::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(nano_second.yfilter);
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/Cisco-IOS-XR-ptp-pd-oper:platform/servo/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Platform::Servo::PreReceivedT4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pre-received-t4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Platform::Servo::PreReceivedT4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nano_second.is_set || is_set(nano_second.yfilter)) leaf_name_data.push_back(nano_second.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::Platform::Servo::PreReceivedT4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::PreReceivedT4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::Platform::Servo::PreReceivedT4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "second")
+    {
+        second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second = value;
+        nano_second.value_namespace = name_space;
+        nano_second.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Platform::Servo::PreReceivedT4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "nano-second")
+    {
+        nano_second.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Platform::Servo::PreReceivedT4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second" || name == "nano-second")
         return true;
     return false;
 }

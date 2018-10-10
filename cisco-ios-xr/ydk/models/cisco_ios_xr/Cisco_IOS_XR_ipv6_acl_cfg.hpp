@@ -436,8 +436,8 @@ class Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf tcp_bits_match_operator; //type: Ipv6AclTcpMatchOperatorEnum
-        ydk::YLeaf tcp_bits; //type: one of uint32, enumeration
-        ydk::YLeaf tcp_bits_mask; //type: one of uint32, enumeration
+        ydk::YLeaf tcp_bits; //type: Ipv6AclTcpBitsNumber
+        ydk::YLeaf tcp_bits_mask; //type: Ipv6AclTcpBitsNumber
 
 }; // Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp
 
@@ -635,7 +635,6 @@ class Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 class NextHopType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none_next_hop;
         static const ydk::Enum::YLeaf regular_next_hop;
         static const ydk::Enum::YLeaf default_next_hop;
 

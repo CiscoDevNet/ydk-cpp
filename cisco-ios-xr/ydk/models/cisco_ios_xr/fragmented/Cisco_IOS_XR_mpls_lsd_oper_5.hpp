@@ -7,7 +7,6 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-#include "Cisco_IOS_XR_mpls_lsd_oper_2.hpp"
 #include "Cisco_IOS_XR_mpls_lsd_oper_3.hpp"
 #include "Cisco_IOS_XR_mpls_lsd_oper_4.hpp"
 
@@ -15,712 +14,7 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_lsd_oper {
 
 
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop : public ydk::Entity
-{
-    public:
-        Nexthop();
-        ~Nexthop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: string
-
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label : public ydk::Entity
-{
-    public:
-        Label();
-        ~Label();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf outgoing_label; //type: uint32
-        ydk::YLeaf outgoing_label_str; //type: string
-
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data : public ydk::Entity
-{
-    public:
-        Stackv6Data();
-        ~Stackv6Data();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::Nexthop
-        class InnerStack; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::Nexthop> nexthop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack> inner_stack;
-        
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::Nexthop : public ydk::Entity
-{
-    public:
-        Nexthop();
-        ~Nexthop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf table_id; //type: uint32
-        ydk::YLeaf table_name; //type: string
-        ydk::YLeaf path_flags_decode; //type: string
-        ydk::YLeaf out_interface; //type: string
-        ydk::YLeaf out_label; //type: uint32
-        ydk::YLeaf out_label_name; //type: string
-        ydk::YLeaf ipv6_next_hop; //type: string
-        ydk::YLeaf path_id; //type: uint8
-        ydk::YLeaf backup_path_id; //type: uint8
-        ydk::YLeaf next_hop_id; //type: uint32
-        ydk::YLeaf out_interface_parent; //type: string
-
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::Nexthop
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack : public ydk::Entity
-{
-    public:
-        InnerStack();
-        ~InnerStack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf num_nexthops; //type: uint8
-        ydk::YLeaf num_lbls; //type: uint8
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
-        class Label; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
-
-        ydk::YList nexthop;
-        ydk::YList label;
-        
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop : public ydk::Entity
-{
-    public:
-        Nexthop();
-        ~Nexthop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: string
-
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label : public ydk::Entity
-{
-    public:
-        Label();
-        ~Label();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf outgoing_label; //type: uint32
-        ydk::YLeaf outgoing_label_str; //type: string
-
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::TeHeadData : public ydk::Entity
-{
-    public:
-        TeHeadData();
-        ~TeHeadData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf table_id; //type: uint32
-        ydk::YLeaf table_name; //type: string
-        ydk::YLeaf tunnel_local_label; //type: uint32
-        ydk::YLeaf tunnel_local_label_str; //type: string
-        ydk::YLeaf tunnel_fwd_class; //type: uint8
-        ydk::YLeaf tunnel_load_metric; //type: uint32
-        ydk::YLeaf flags_decode; //type: string
-
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::TeHeadData
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::DmtcData : public ydk::Entity
-{
-    public:
-        DmtcData();
-        ~DmtcData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf dmtc_ext_ifh; //type: string
-
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::DmtcData
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data : public ydk::Entity
-{
-    public:
-        NnhStackv4Data();
-        ~NnhStackv4Data();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ipv4Stack; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
-        class NextNextHop; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack> ipv4_stack;
-        ydk::YList next_next_hop;
-        
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack : public ydk::Entity
-{
-    public:
-        Ipv4Stack();
-        ~Ipv4Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf owner_application_type; //type: MgmtLsdApp
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
-        class InnerStack; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop> nexthop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack> inner_stack;
-        
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop : public ydk::Entity
-{
-    public:
-        Nexthop();
-        ~Nexthop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf table_id; //type: uint32
-        ydk::YLeaf table_name; //type: string
-        ydk::YLeaf path_flags_decode; //type: string
-        ydk::YLeaf out_interface; //type: string
-        ydk::YLeaf out_interface_parent; //type: string
-        ydk::YLeaf ipv4_next_hop; //type: string
-        ydk::YLeaf path_id; //type: uint8
-        ydk::YLeaf backup_path_id; //type: uint8
-        ydk::YLeaf load_metric; //type: uint32
-        ydk::YLeaf out_label; //type: uint32
-        ydk::YLeaf out_label_name; //type: string
-        ydk::YLeaf tunnel_id; //type: uint16
-        ydk::YLeaf next_hop_id; //type: uint32
-        ydk::YLeaf local_label; //type: uint32
-
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack : public ydk::Entity
-{
-    public:
-        InnerStack();
-        ~InnerStack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf num_nexthops; //type: uint8
-        ydk::YLeaf num_lbls; //type: uint8
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
-        class Label; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
-
-        ydk::YList nexthop;
-        ydk::YList label;
-        
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop : public ydk::Entity
-{
-    public:
-        Nexthop();
-        ~Nexthop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: string
-
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label : public ydk::Entity
-{
-    public:
-        Label();
-        ~Label();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf outgoing_label; //type: uint32
-        ydk::YLeaf outgoing_label_str; //type: string
-
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
-
-
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop : public ydk::Entity
-{
-    public:
-        NextNextHop();
-        ~NextNextHop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nnh_type; //type: MplsLsdNnh
-        ydk::YLeaf address; //type: string
-        ydk::YLeaf interface_name; //type: string
-
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
-
-
-class MplsLsd::Rewrite::RewriteLabels : public ydk::Entity
-{
-    public:
-        RewriteLabels();
-        ~RewriteLabels();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class RewriteLabel; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel
-
-        ydk::YList rewrite_label;
-        
-}; // MplsLsd::Rewrite::RewriteLabels
-
-
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel : public ydk::Entity
-{
-    public:
-        RewriteLabel();
-        ~RewriteLabel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf label_id; //type: uint32
-        ydk::YLeaf rewrite_version; //type: uint64
-        ydk::YLeaf bcdl_priority; //type: uint8
-        ydk::YLeaf lsd_queue; //type: uint8
-        ydk::YLeaf rw_install_time; //type: uint64
-        ydk::YLeaf rw_install_age; //type: uint64
-        ydk::YLeaf rw_updated; //type: int32
-        ydk::YLeaf priority_updated; //type: int32
-        class FpiKey; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey
-        class RewriteId; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
-        class AssociatedFpi; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi
-        class V4Rpf; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V4Rpf
-        class V6Rpf; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V6Rpf
-        class Mois; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey> fpi_key;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId> rewrite_id;
-        ydk::YList associated_fpi;
-        ydk::YList v4_rpf;
-        ydk::YList v6_rpf;
-        ydk::YList mois;
-        
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel
-
-
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey : public ydk::Entity
-{
-    public:
-        FpiKey();
-        ~FpiKey();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Fpi; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi
-        class ApplicationOwner; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ApplicationOwner
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi> fpi;
-        ydk::YList application_owner;
-        
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey
-
-
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi : public ydk::Entity
-{
-    public:
-        Fpi();
-        ~Fpi();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf fpi_type; //type: MgmtLsdFpi
-        class LabelData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::LabelData
-        class TeData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::TeData
-        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::Ipv4Data
-        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::Ipv6Data
-        class PwListData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::PwListData
-        class DmtcExtIntfData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::DmtcExtIntfData
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::LabelData> label_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::TeData> te_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::Ipv4Data> ipv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::Ipv6Data> ipv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::PwListData> pw_list_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::DmtcExtIntfData> dmtc_ext_intf_data;
-        
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi
-
-
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::LabelData : public ydk::Entity
-{
-    public:
-        LabelData();
-        ~LabelData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf label; //type: uint32
-        ydk::YLeaf security_id; //type: uint32
-        ydk::YLeaf elc; //type: int32
-
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::LabelData
-
-
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::TeData : public ydk::Entity
-{
-    public:
-        TeData();
-        ~TeData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tunnel_interface; //type: string
-        ydk::YLeaf local_label; //type: uint32
-
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::TeData
-
-
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::Ipv4Data : public ydk::Entity
-{
-    public:
-        Ipv4Data();
-        ~Ipv4Data();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf table_id; //type: uint32
-        ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: uint8
-        ydk::YLeaf version; //type: uint32
-        ydk::YLeaf sr_local_label; //type: uint32
-
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::Ipv4Data
-
-
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::Ipv6Data : public ydk::Entity
-{
-    public:
-        Ipv6Data();
-        ~Ipv6Data();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf table_id; //type: uint32
-        ydk::YLeaf prefix; //type: string
-        ydk::YLeaf router_flags; //type: uint32
-        ydk::YLeaf prefix_len; //type: uint8
-        ydk::YLeaf version; //type: uint32
-
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::Ipv6Data
-
-
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::PwListData : public ydk::Entity
-{
-    public:
-        PwListData();
-        ~PwListData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pwhe_list_id; //type: uint16
-
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::PwListData
-
-
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::DmtcExtIntfData : public ydk::Entity
-{
-    public:
-        DmtcExtIntfData();
-        ~DmtcExtIntfData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf dmtc_ext_ifh; //type: string
-
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::DmtcExtIntfData
-
-
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ApplicationOwner : public ydk::Entity
-{
-    public:
-        ApplicationOwner();
-        ~ApplicationOwner();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf application_name; //type: string
-        ydk::YLeaf application_type; //type: MgmtLsdApp
-        ydk::YLeaf application_role_primary; //type: int32
-        ydk::YLeaf application_instance; //type: string
-        ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
-
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ApplicationOwner
-
-
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId : public ydk::Entity
-{
-    public:
-        RewriteId();
-        ~RewriteId();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class RewriteId_; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_> rewrite_id;
-        
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
-
-
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_ : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_ : public ydk::Entity
 {
     public:
         RewriteId_();
@@ -737,16 +31,16 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_ : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf rewrite_id_type; //type: MgmtLsdRwId
-        class LabelContext; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext
-        class LocalLabelRewrite; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite
+        class LabelContext; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext
+        class LocalLabelRewrite; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext> label_context;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext> label_context;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext : public ydk::Entity
 {
     public:
         LabelContext();
@@ -763,70 +57,70 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf label_context_type; //type: MgmtLsdLblCtx
-        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4Data
-        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6Data
-        class Tev4Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4Data
-        class Ipv4l3vpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
-        class Ipv6l3vpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
-        class VrfL3vpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
-        class Cev4l3vpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
-        class Cev6l3vpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
-        class PseudowireData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireData
-        class LabelBlockData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockData
-        class IpSubData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::IpSubData
-        class Tev4p2mpData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
-        class MldPv4Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::MldPv4Data
-        class PseudowireHeadEndData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
-        class TpData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TpData
-        class GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
-        class Ipv6GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
-        class EvpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::EvpnData
-        class Ipv4blbData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4blbData
-        class Ipv6blbData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6blbData
-        class PiMiPmsiData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
-        class PiMsPmsiData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
-        class NextHopSetL3vpn; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
-        class SrPrefixSegment; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
-        class SrAdjSegmentIpv4; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
-        class SrAdjSegmentIpv6; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
-        class LabelBlockSrgbData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
-        class TeBinding; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TeBinding
-        class LabelBlockSrlbData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
+        class Ipv4Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data
+        class Ipv6Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data
+        class Tev4Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data
+        class Ipv4l3vpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
+        class Ipv6l3vpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
+        class VrfL3vpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
+        class Cev4l3vpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
+        class Cev6l3vpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
+        class PseudowireData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData
+        class LabelBlockData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData
+        class IpSubData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData
+        class Tev4p2mpData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
+        class MldPv4Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data
+        class PseudowireHeadEndData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
+        class TpData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData
+        class GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
+        class Ipv6GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
+        class EvpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData
+        class Ipv4blbData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData
+        class Ipv6blbData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData
+        class PiMiPmsiData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
+        class PiMsPmsiData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
+        class NextHopSetL3vpn; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
+        class SrPrefixSegment; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
+        class SrAdjSegmentIpv4; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
+        class SrAdjSegmentIpv6; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
+        class LabelBlockSrgbData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
+        class TeBinding; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TeBinding
+        class LabelBlockSrlbData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4Data> ipv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6Data> ipv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData> ipv4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData> ipv6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3vpnData> vrf_l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData> cev4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData> cev6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireData> pseudowire_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockData> label_block_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4p2mpData> tev4p2mp_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::MldPv4Data> mld_pv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData> pseudowire_head_end_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation> generic_routing_encapsulation;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::EvpnData> evpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4blbData> ipv4blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6blbData> ipv6blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMiPmsiData> pi_mi_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMsPmsiData> pi_ms_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn> next_hop_set_l3vpn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrPrefixSegment> sr_prefix_segment;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData> label_block_srgb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TeBinding> te_binding;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData> label_block_srlb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data> tev4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData> ipv4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData> ipv6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData> vrf_l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData> cev4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData> cev6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData> pseudowire_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData> label_block_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData> ip_sub_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData> tev4p2mp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data> mld_pv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData> pseudowire_head_end_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation> generic_routing_encapsulation;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData> evpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData> ipv4blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData> ipv6blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData> pi_mi_pmsi_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData> pi_ms_pmsi_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn> next_hop_set_l3vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment> sr_prefix_segment;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData> label_block_srgb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TeBinding> te_binding;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData> label_block_srlb_data;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -848,10 +142,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf security_id; //type: uint32
         ydk::YLeaf vrf_name; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4Data
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6Data : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -873,10 +167,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf security_id; //type: uint32
         ydk::YLeaf vrf_name; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6Data
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data : public ydk::Entity
 {
     public:
         Tev4Data();
@@ -900,10 +194,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf is_srte; //type: int32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4Data
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData : public ydk::Entity
 {
     public:
         Ipv4l3vpnData();
@@ -923,10 +217,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData : public ydk::Entity
 {
     public:
         Ipv6l3vpnData();
@@ -946,10 +240,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3vpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData : public ydk::Entity
 {
     public:
         VrfL3vpnData();
@@ -968,10 +262,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData : public ydk::Entity
 {
     public:
         Cev4l3vpnData();
@@ -991,10 +285,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf ipv4_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData : public ydk::Entity
 {
     public:
         Cev6l3vpnData();
@@ -1014,10 +308,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf ipv6_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
 {
     public:
         PseudowireData();
@@ -1038,10 +332,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf remote_l2_router_id; //type: uint32
         ydk::YLeaf subinterface; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData : public ydk::Entity
 {
     public:
         LabelBlockData();
@@ -1063,10 +357,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf offset; //type: uint32
         ydk::YLeaf size; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::IpSubData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData : public ydk::Entity
 {
     public:
         IpSubData();
@@ -1085,10 +379,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf parent_interface; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::IpSubData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4p2mpData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData : public ydk::Entity
 {
     public:
         Tev4p2mpData();
@@ -1112,10 +406,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf previous_hop; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
 {
     public:
         MldPv4Data();
@@ -1137,10 +431,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf peer_lsrid; //type: string
         ydk::YLeaf peer_label_space_id; //type: uint16
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::MldPv4Data
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData : public ydk::Entity
 {
     public:
         PseudowireHeadEndData();
@@ -1158,10 +452,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
 
         ydk::YLeaf pwhe_intf; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TpData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData : public ydk::Entity
 {
     public:
         TpData();
@@ -1185,10 +479,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf dest_tunnel_id; //type: uint16
         ydk::YLeaf lsp_id; //type: uint16
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TpData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation : public ydk::Entity
 {
     public:
         GenericRoutingEncapsulation();
@@ -1206,10 +500,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
 
         ydk::YLeaf gre_interface; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation : public ydk::Entity
 {
     public:
         Ipv6GenericRoutingEncapsulation();
@@ -1227,10 +521,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
 
         ydk::YLeaf greipv6_interface; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::EvpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData : public ydk::Entity
 {
     public:
         EvpnData();
@@ -1249,11 +543,12 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf evpn_id; //type: uint32
         ydk::YLeaf evpn_tag; //type: uint32
         ydk::YLeaf ethernet_segment; //type: string
+        ydk::YLeaf evpn_encap; //type: uint8
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::EvpnData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4blbData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData : public ydk::Entity
 {
     public:
         Ipv4blbData();
@@ -1272,10 +567,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4blbData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6blbData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData : public ydk::Entity
 {
     public:
         Ipv6blbData();
@@ -1294,10 +589,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6blbData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
 {
     public:
         PiMiPmsiData();
@@ -1317,10 +612,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf head; //type: int32
         ydk::YLeaf v6; //type: int32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMsPmsiData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData : public ydk::Entity
 {
     public:
         PiMsPmsiData();
@@ -1343,10 +638,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf hli; //type: uint32
         ydk::YLeaf seg; //type: int32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn : public ydk::Entity
 {
     public:
         NextHopSetL3vpn();
@@ -1365,10 +660,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf next_hop_set_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
 {
     public:
         SrPrefixSegment();
@@ -1387,10 +682,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf segment_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4 : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4 : public ydk::Entity
 {
     public:
         SrAdjSegmentIpv4();
@@ -1411,10 +706,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf intf; //type: string
         ydk::YLeaf addr; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6 : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6 : public ydk::Entity
 {
     public:
         SrAdjSegmentIpv6();
@@ -1435,10 +730,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf intf; //type: string
         ydk::YLeaf addr; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData : public ydk::Entity
 {
     public:
         LabelBlockSrgbData();
@@ -1458,10 +753,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf offset; //type: uint32
         ydk::YLeaf size; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TeBinding : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TeBinding : public ydk::Entity
 {
     public:
         TeBinding();
@@ -1480,10 +775,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf te_identifier; //type: uint32
         ydk::YLeaf te_type; //type: MgmtLsdTeBinding
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TeBinding
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TeBinding
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData : public ydk::Entity
 {
     public:
         LabelBlockSrlbData();
@@ -1503,10 +798,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf offset; //type: uint32
         ydk::YLeaf size; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite : public ydk::Entity
 {
     public:
         LocalLabelRewrite();
@@ -1522,14 +817,14 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Loca
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LabelData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
+        class LabelData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
 
         ydk::YList label_data;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::LabelData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::LabelData : public ydk::Entity
 {
     public:
         LabelData();
@@ -1547,10 +842,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Loca
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi : public ydk::Entity
 {
     public:
         AssociatedFpi();
@@ -1566,16 +861,16 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Fpi; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi
-        class ApplicationOwner; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::ApplicationOwner
+        class Fpi; //type: MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi
+        class ApplicationOwner; //type: MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi> fpi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi> fpi;
         ydk::YList application_owner;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi : public ydk::Entity
 {
     public:
         Fpi();
@@ -1592,24 +887,26 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf fpi_type; //type: MgmtLsdFpi
-        class LabelData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::LabelData
-        class TeData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::TeData
-        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ipv4Data
-        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ipv6Data
-        class PwListData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::PwListData
-        class DmtcExtIntfData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::DmtcExtIntfData
+        class LabelData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelData
+        class TeData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData
+        class Ipv4Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv4Data
+        class Ipv6Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv6Data
+        class PwListData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListData
+        class DmtcExtIntfData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::DmtcExtIntfData
+        class LabelRange; //type: MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelRange
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::LabelData> label_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::TeData> te_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ipv4Data> ipv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ipv6Data> ipv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::PwListData> pw_list_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::DmtcExtIntfData> dmtc_ext_intf_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelData> label_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData> te_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListData> pw_list_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::DmtcExtIntfData> dmtc_ext_intf_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelRange> label_range;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::LabelData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelData : public ydk::Entity
 {
     public:
         LabelData();
@@ -1629,10 +926,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::LabelDa
         ydk::YLeaf security_id; //type: uint32
         ydk::YLeaf elc; //type: int32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::LabelData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::TeData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData : public ydk::Entity
 {
     public:
         TeData();
@@ -1651,10 +948,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::TeData 
         ydk::YLeaf tunnel_interface; //type: string
         ydk::YLeaf local_label; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::TeData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ipv4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -1676,10 +973,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ipv4Dat
         ydk::YLeaf version; //type: uint32
         ydk::YLeaf sr_local_label; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ipv4Data
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv4Data
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ipv6Data : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -1701,10 +998,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ipv6Dat
         ydk::YLeaf prefix_len; //type: uint8
         ydk::YLeaf version; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ipv6Data
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv6Data
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::PwListData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListData : public ydk::Entity
 {
     public:
         PwListData();
@@ -1722,10 +1019,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::PwListD
 
         ydk::YLeaf pwhe_list_id; //type: uint16
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::PwListData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::DmtcExtIntfData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::DmtcExtIntfData : public ydk::Entity
 {
     public:
         DmtcExtIntfData();
@@ -1743,10 +1040,32 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::DmtcExt
 
         ydk::YLeaf dmtc_ext_ifh; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::DmtcExtIntfData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::DmtcExtIntfData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::ApplicationOwner : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelRange : public ydk::Entity
+{
+    public:
+        LabelRange();
+        ~LabelRange();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf type; //type: uint8
+        ydk::YLeaf index_; //type: uint8
+
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelRange
+
+
+class MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner : public ydk::Entity
 {
     public:
         ApplicationOwner();
@@ -1768,10 +1087,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::ApplicationO
         ydk::YLeaf application_instance; //type: string
         ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::ApplicationOwner
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V4Rpf : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::V4Rpf : public ydk::Entity
 {
     public:
         V4Rpf();
@@ -1790,10 +1109,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V4Rpf : public ydk::Entity
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf v4_rpf_neighbor; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V4Rpf
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::V4Rpf
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V6Rpf : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::V6Rpf : public ydk::Entity
 {
     public:
         V6Rpf();
@@ -1812,10 +1131,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V6Rpf : public ydk::Entity
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf v6_rpf_neighbor; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V6Rpf
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::V6Rpf
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois : public ydk::Entity
 {
     public:
         Mois();
@@ -1831,16 +1150,16 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ApplicationResource; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::ApplicationResource
-        class MoiArray; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray
+        class ApplicationResource; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource
+        class MoiArray; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::ApplicationResource> application_resource;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource> application_resource;
         ydk::YList moi_array;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::ApplicationResource : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource : public ydk::Entity
 {
     public:
         ApplicationResource();
@@ -1862,10 +1181,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::ApplicationResource :
         ydk::YLeaf application_instance; //type: string
         ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::ApplicationResource
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray : public ydk::Entity
 {
     public:
         MoiArray();
@@ -1881,14 +1200,14 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Moi; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi
+        class Moi; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi> moi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi> moi;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi : public ydk::Entity
 {
     public:
         Moi();
@@ -1905,42 +1224,46 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf moi_type; //type: MgmtLsdMoi
-        class PopAndLookupIpv4; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupIpv4
-        class PopAndLookupTp; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupTp
-        class PopAndLookupIpv6; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupIpv6
-        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Ipv4Data
-        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Ipv6Data
-        class Tev4Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Tev4Data
-        class PseudowireData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PseudowireData
-        class IpSubData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::IpSubData
-        class PseudowireHeadEndData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PseudowireHeadEndData
-        class PwListData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PwListData
-        class Stackv4Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data
-        class Stackv6Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data
-        class TeHeadData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData
-        class DmtcData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData
-        class NnhStackv4Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data
+        class PopAndLookupIpv4; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv4
+        class PopAndLookupTp; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp
+        class PopAndLookupIpv6; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv6
+        class Ipv4Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv4Data
+        class Ipv6Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv6Data
+        class Tev4Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data
+        class PseudowireData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireData
+        class IpSubData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::IpSubData
+        class PseudowireHeadEndData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireHeadEndData
+        class PwListData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PwListData
+        class Stackv4Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data
+        class Stackv6Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data
+        class TeHeadData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData
+        class DmtcData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData
+        class NnhStackv4Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data
+        class NnhStackv6Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data
+        class LabelRange; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::LabelRange
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupIpv4> pop_and_lookup_ipv4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupTp> pop_and_lookup_tp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupIpv6> pop_and_lookup_ipv6;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Ipv4Data> ipv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Ipv6Data> ipv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PseudowireData> pseudowire_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PseudowireHeadEndData> pseudowire_head_end_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PwListData> pw_list_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data> stackv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData> te_head_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData> dmtc_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data> nnh_stackv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv4> pop_and_lookup_ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp> pop_and_lookup_tp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv6> pop_and_lookup_ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data> tev4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireData> pseudowire_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::IpSubData> ip_sub_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireHeadEndData> pseudowire_head_end_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PwListData> pw_list_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data> stackv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData> te_head_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData> dmtc_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data> nnh_stackv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data> nnh_stackv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::LabelRange> label_range;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupIpv4 : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv4 : public ydk::Entity
 {
     public:
         PopAndLookupIpv4();
@@ -1960,10 +1283,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAnd
         ydk::YLeaf table_name; //type: string
         ydk::YLeaf path_flags_decode; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupIpv4
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv4
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupTp : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp : public ydk::Entity
 {
     public:
         PopAndLookupTp();
@@ -1984,10 +1307,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAnd
         ydk::YLeaf path_flags_decode; //type: string
         ydk::YLeaf out_label; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupTp
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupIpv6 : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv6 : public ydk::Entity
 {
     public:
         PopAndLookupIpv6();
@@ -2007,10 +1330,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAnd
         ydk::YLeaf table_name; //type: string
         ydk::YLeaf path_flags_decode; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupIpv6
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv6
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Ipv4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -2038,13 +1361,14 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Ipv4Da
         ydk::YLeaf out_label; //type: uint32
         ydk::YLeaf out_label_name; //type: string
         ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf tunnel_type; //type: uint16
         ydk::YLeaf next_hop_id; //type: uint32
         ydk::YLeaf local_label; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Ipv4Data
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv4Data
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Ipv6Data : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -2069,13 +1393,15 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Ipv6Da
         ydk::YLeaf ipv6_next_hop; //type: string
         ydk::YLeaf path_id; //type: uint8
         ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf tunnel_type; //type: uint16
         ydk::YLeaf next_hop_id; //type: uint32
         ydk::YLeaf out_interface_parent; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Ipv6Data
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv6Data
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Tev4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data : public ydk::Entity
 {
     public:
         Tev4Data();
@@ -2108,10 +1434,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Tev4Da
         ydk::YLeaf tunnel_class; //type: uint32
         ydk::YLeaf ipv4_next_next_hop; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Tev4Data
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PseudowireData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireData : public ydk::Entity
 {
     public:
         PseudowireData();
@@ -2138,10 +1464,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Pseudo
         ydk::YLeaf bridge_id; //type: uint32
         ydk::YLeaf split_horizon_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PseudowireData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::IpSubData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::IpSubData : public ydk::Entity
 {
     public:
         IpSubData();
@@ -2162,10 +1488,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::IpSubD
         ydk::YLeaf out_interface; //type: string
         ydk::YLeaf path_flags_decode; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::IpSubData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::IpSubData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PseudowireHeadEndData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireHeadEndData : public ydk::Entity
 {
     public:
         PseudowireHeadEndData();
@@ -2193,10 +1519,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Pseudo
         ydk::YLeaf pw_list_id; //type: uint16
         ydk::YLeaf pwhe_interface; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PseudowireHeadEndData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireHeadEndData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PwListData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PwListData : public ydk::Entity
 {
     public:
         PwListData();
@@ -2218,10 +1544,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PwList
         ydk::YLeaf l2_interface; //type: string
         ydk::YLeaf path_flags_decode; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PwListData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PwListData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data : public ydk::Entity
 {
     public:
         Stackv4Data();
@@ -2238,16 +1564,16 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf owner_application_type; //type: MgmtLsdApp
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::Nexthop
-        class InnerStack; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack
+        class Nexthop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Nexthop
+        class InnerStack; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::Nexthop : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -2275,13 +1601,14 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv
         ydk::YLeaf out_label; //type: uint32
         ydk::YLeaf out_label_name; //type: string
         ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf tunnel_type; //type: uint16
         ydk::YLeaf next_hop_id; //type: uint32
         ydk::YLeaf local_label; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::Nexthop
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Nexthop
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack : public ydk::Entity
 {
     public:
         InnerStack();
@@ -2299,16 +1626,16 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv
 
         ydk::YLeaf num_nexthops; //type: uint8
         ydk::YLeaf num_lbls; //type: uint8
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
-        class Label; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
+        class Nexthop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
+        class Label; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
         ydk::YList nexthop;
         ydk::YList label;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -2326,10 +1653,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv
 
         ydk::YLeaf entry; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label : public ydk::Entity
 {
     public:
         Label();
@@ -2348,10 +1675,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv
         ydk::YLeaf outgoing_label; //type: uint32
         ydk::YLeaf outgoing_label_str; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data : public ydk::Entity
 {
     public:
         Stackv6Data();
@@ -2367,16 +1694,16 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::Nexthop
-        class InnerStack; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack
+        class Nexthop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::Nexthop
+        class InnerStack; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::Nexthop> nexthop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack> inner_stack;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack> inner_stack;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::Nexthop : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -2401,13 +1728,15 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv
         ydk::YLeaf ipv6_next_hop; //type: string
         ydk::YLeaf path_id; //type: uint8
         ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf tunnel_type; //type: uint16
         ydk::YLeaf next_hop_id; //type: uint32
         ydk::YLeaf out_interface_parent; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::Nexthop
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::Nexthop
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack : public ydk::Entity
 {
     public:
         InnerStack();
@@ -2425,16 +1754,16 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv
 
         ydk::YLeaf num_nexthops; //type: uint8
         ydk::YLeaf num_lbls; //type: uint8
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
-        class Label; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
+        class Nexthop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
+        class Label; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
         ydk::YList nexthop;
         ydk::YList label;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -2452,10 +1781,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv
 
         ydk::YLeaf entry; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label : public ydk::Entity
 {
     public:
         Label();
@@ -2474,10 +1803,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv
         ydk::YLeaf outgoing_label; //type: uint32
         ydk::YLeaf outgoing_label_str; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData : public ydk::Entity
 {
     public:
         TeHeadData();
@@ -2501,10 +1830,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHead
         ydk::YLeaf tunnel_load_metric; //type: uint32
         ydk::YLeaf flags_decode; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData : public ydk::Entity
 {
     public:
         DmtcData();
@@ -2522,10 +1851,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcDa
 
         ydk::YLeaf dmtc_ext_ifh; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data : public ydk::Entity
 {
     public:
         NnhStackv4Data();
@@ -2541,16 +1870,16 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhSta
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv4Stack; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
-        class NextNextHop; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
+        class Ipv4Stack; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+        class NeighborNextHop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::NeighborNextHop
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack> ipv4_stack;
-        ydk::YList next_next_hop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack> ipv4_stack;
+        ydk::YList neighbor_next_hop;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack : public ydk::Entity
 {
     public:
         Ipv4Stack();
@@ -2567,16 +1896,16 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhSta
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf owner_application_type; //type: MgmtLsdApp
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
-        class InnerStack; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+        class Nexthop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+        class InnerStack; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop> nexthop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack> inner_stack;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack> inner_stack;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -2604,13 +1933,14 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhSta
         ydk::YLeaf out_label; //type: uint32
         ydk::YLeaf out_label_name; //type: string
         ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf tunnel_type; //type: uint16
         ydk::YLeaf next_hop_id; //type: uint32
         ydk::YLeaf local_label; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack : public ydk::Entity
 {
     public:
         InnerStack();
@@ -2628,16 +1958,16 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhSta
 
         ydk::YLeaf num_nexthops; //type: uint8
         ydk::YLeaf num_lbls; //type: uint8
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
-        class Label; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+        class Nexthop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+        class Label; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
 
         ydk::YList nexthop;
         ydk::YList label;
         
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -2655,10 +1985,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhSta
 
         ydk::YLeaf entry; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label : public ydk::Entity
 {
     public:
         Label();
@@ -2677,14 +2007,14 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhSta
         ydk::YLeaf outgoing_label; //type: uint32
         ydk::YLeaf outgoing_label_str; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::NeighborNextHop : public ydk::Entity
 {
     public:
-        NextNextHop();
-        ~NextNextHop();
+        NeighborNextHop();
+        ~NeighborNextHop();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2700,14 +2030,14 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhSta
         ydk::YLeaf address; //type: string
         ydk::YLeaf interface_name; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::NeighborNextHop
 
 
-class MplsLsd::RewriteSummary : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data : public ydk::Entity
 {
     public:
-        RewriteSummary();
-        ~RewriteSummary();
+        NnhStackv6Data();
+        ~NnhStackv6Data();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2718,41 +2048,21 @@ class MplsLsd::RewriteSummary : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        ydk::YLeaf num_label_fpi; //type: uint32
-        ydk::YLeaf num_tefpi; //type: uint32
-        ydk::YLeaf num_ipv4fpi; //type: uint32
-        ydk::YLeaf num_ipv6fpi; //type: uint32
-        ydk::YLeaf num_pw_list_tefpi; //type: uint32
-        ydk::YLeaf num_dmtctefpi; //type: uint32
-        ydk::YLeaf num_rewrite; //type: uint32
-        ydk::YLeaf total_forward_update; //type: uint32
-        ydk::YLeaf total_forwad_update_message; //type: uint32
-        ydk::YLeaf total_paths; //type: uint32
-        ydk::YLeaf total_t_ev4_paths; //type: uint32
-        ydk::YLeaf total_te_head_paths; //type: uint32
-        ydk::YLeaf total_pw_paths; //type: uint32
-        ydk::YLeaf total_ip_sub_paths; //type: uint32
-        ydk::YLeaf total_ipv4rpf_neighbors; //type: uint32
-        ydk::YLeaf total_ipv6rpf_neighbors; //type: uint32
-        ydk::YLeaf num_rewrite_rpf_neighbors; //type: uint32
-        ydk::YLeaf total_dmtc_intf; //type: uint32
-        ydk::YLeaf vrf_name_xr; //type: string
-        class Ipv4Paths; //type: MplsLsd::RewriteSummary::Ipv4Paths
-        class Ipv6Paths; //type: MplsLsd::RewriteSummary::Ipv6Paths
+        class Ipv6Stack; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack
+        class NeighborNextHop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::NeighborNextHop
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::RewriteSummary::Ipv4Paths> ipv4_paths;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::RewriteSummary::Ipv6Paths> ipv6_paths;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack> ipv6_stack;
+        ydk::YList neighbor_next_hop;
         
-}; // MplsLsd::RewriteSummary
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data
 
 
-class MplsLsd::RewriteSummary::Ipv4Paths : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack : public ydk::Entity
 {
     public:
-        Ipv4Paths();
-        ~Ipv4Paths();
+        Ipv6Stack();
+        ~Ipv6Stack();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2763,72 +2073,169 @@ class MplsLsd::RewriteSummary::Ipv4Paths : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        ydk::YLeaf total_paths; //type: uint32
-        ydk::YLeaf total_backup_paths; //type: uint32
-        ydk::YLeaf total_remote_backup_paths; //type: uint32
-        ydk::YLeaf total_protected_paths; //type: uint32
-        ydk::YLeaf total_pop_lkup_paths; //type: uint32
+        class Nexthop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::Nexthop
+        class InnerStack; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::InnerStack
 
-}; // MplsLsd::RewriteSummary::Ipv4Paths
-
-
-class MplsLsd::RewriteSummary::Ipv6Paths : public ydk::Entity
-{
-    public:
-        Ipv6Paths();
-        ~Ipv6Paths();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf total_paths; //type: uint32
-        ydk::YLeaf total_backup_paths; //type: uint32
-        ydk::YLeaf total_remote_backup_paths; //type: uint32
-        ydk::YLeaf total_protected_paths; //type: uint32
-        ydk::YLeaf total_pop_lkup_paths; //type: uint32
-
-}; // MplsLsd::RewriteSummary::Ipv6Paths
-
-
-class MplsLsd::Applications : public ydk::Entity
-{
-    public:
-        Applications();
-        ~Applications();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Application; //type: MplsLsd::Applications::Application
-
-        ydk::YList application;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::InnerStack> inner_stack;
         
-}; // MplsLsd::Applications
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack
 
 
-class MplsLsd::Applications::Application : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::Nexthop : public ydk::Entity
 {
     public:
-        Application();
-        ~Application();
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf ipv6_next_hop; //type: string
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf tunnel_type; //type: uint16
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf out_interface_parent; //type: string
+
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::Nexthop
+
+
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::InnerStack : public ydk::Entity
+{
+    public:
+        InnerStack();
+        ~InnerStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf num_nexthops; //type: uint8
+        ydk::YLeaf num_lbls; //type: uint8
+        class Nexthop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::InnerStack::Nexthop
+        class Label; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::InnerStack::Label
+
+        ydk::YList nexthop;
+        ydk::YList label;
+        
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::InnerStack
+
+
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::InnerStack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::InnerStack::Nexthop
+
+
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::InnerStack::Label : public ydk::Entity
+{
+    public:
+        Label();
+        ~Label();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf outgoing_label_str; //type: string
+
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::Ipv6Stack::InnerStack::Label
+
+
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::NeighborNextHop : public ydk::Entity
+{
+    public:
+        NeighborNextHop();
+        ~NeighborNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf nnh_type; //type: MplsLsdNnh
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf interface_name; //type: string
+
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv6Data::NeighborNextHop
+
+
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::LabelRange : public ydk::Entity
+{
+    public:
+        LabelRange();
+        ~LabelRange();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf start_label_active; //type: uint32
+        ydk::YLeaf end_label_active; //type: uint32
+
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::LabelRange
+
+
+class MplsLsd::Rewrite::RewriteIpv4s : public ydk::Entity
+{
+    public:
+        RewriteIpv4s();
+        ~RewriteIpv4s();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2841,130 +2248,18 @@ class MplsLsd::Applications::Application : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf application_name; //type: string
-        ydk::YLeaf application_name_xr; //type: string
-        ydk::YLeaf application_type; //type: MgmtLsdApp
-        ydk::YLeaf application_role_primary; //type: int32
-        ydk::YLeaf application_instance; //type: string
-        ydk::YLeaf app_reg_time; //type: uint64
-        ydk::YLeaf app_disconnect_time; //type: uint64
-        ydk::YLeaf app_flow_controlled; //type: int32
-        ydk::YLeaf flow_ctrl_time; //type: uint64
-        ydk::YLeaf flow_ctrl_clr_time; //type: uint64
-        ydk::YLeaf go_act_ts; //type: uint64
-        ydk::YLeaf application_state; //type: MgmtLsdAppState
-        ydk::YLeaf recovery_time_remaining_seconds; //type: uint32
-        ydk::YLeaf recovery_time_elapsed_seconds; //type: uint32
-        ydk::YLeaf recovery_time_register_seconds; //type: uint32
-        ydk::YLeaf node_id; //type: string
-        class ApplicationStatistics; //type: MplsLsd::Applications::Application::ApplicationStatistics
+        class RewriteIpv4; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Applications::Application::ApplicationStatistics> application_statistics;
+        ydk::YList rewrite_ipv4;
         
-}; // MplsLsd::Applications::Application
+}; // MplsLsd::Rewrite::RewriteIpv4s
 
 
-class MplsLsd::Applications::Application::ApplicationStatistics : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4 : public ydk::Entity
 {
     public:
-        ApplicationStatistics();
-        ~ApplicationStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_enable; //type: uint32
-        ydk::YLeaf interface_enable_pending; //type: uint32
-        ydk::YLeaf connect_count; //type: uint32
-        class Connected; //type: MplsLsd::Applications::Application::ApplicationStatistics::Connected
-        class LabelContextCount; //type: MplsLsd::Applications::Application::ApplicationStatistics::LabelContextCount
-        class LabelContextPendingCount; //type: MplsLsd::Applications::Application::ApplicationStatistics::LabelContextPendingCount
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Applications::Application::ApplicationStatistics::Connected> connected;
-        ydk::YList label_context_count;
-        ydk::YList label_context_pending_count;
-        
-}; // MplsLsd::Applications::Application::ApplicationStatistics
-
-
-class MplsLsd::Applications::Application::ApplicationStatistics::Connected : public ydk::Entity
-{
-    public:
-        Connected();
-        ~Connected();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf rt_set_msg_count; //type: uint32
-        ydk::YLeaf operation_msg_count; //type: uint32
-        ydk::YLeaf oor_label_count; //type: uint32
-        ydk::YLeaf error_msg_count; //type: uint32
-
-}; // MplsLsd::Applications::Application::ApplicationStatistics::Connected
-
-
-class MplsLsd::Applications::Application::ApplicationStatistics::LabelContextCount : public ydk::Entity
-{
-    public:
-        LabelContextCount();
-        ~LabelContextCount();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // MplsLsd::Applications::Application::ApplicationStatistics::LabelContextCount
-
-
-class MplsLsd::Applications::Application::ApplicationStatistics::LabelContextPendingCount : public ydk::Entity
-{
-    public:
-        LabelContextPendingCount();
-        ~LabelContextPendingCount();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // MplsLsd::Applications::Application::ApplicationStatistics::LabelContextPendingCount
-
-
-class MplsLsd::LabelSummaryVrfs : public ydk::Entity
-{
-    public:
-        LabelSummaryVrfs();
-        ~LabelSummaryVrfs();
+        RewriteIpv4();
+        ~RewriteIpv4();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2977,18 +2272,40 @@ class MplsLsd::LabelSummaryVrfs : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class LabelSummaryVrf; //type: MplsLsd::LabelSummaryVrfs::LabelSummaryVrf
+        ydk::YLeaf rsi_table_name; //type: string
+        ydk::YLeaf rsi_table_id; //type: string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint32
+        ydk::YLeaf rewrite_version; //type: uint64
+        ydk::YLeaf bcdl_priority; //type: uint8
+        ydk::YLeaf lsd_queue; //type: uint8
+        ydk::YLeaf rw_install_time; //type: uint64
+        ydk::YLeaf rw_install_age; //type: uint64
+        ydk::YLeaf rw_updated; //type: int32
+        ydk::YLeaf priority_updated; //type: int32
+        ydk::YLeaf rw_redist; //type: int32
+        class FpiKey; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey
+        class RewriteId; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId
+        class AssociatedFpi; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi
+        class V4Rpf; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V4Rpf
+        class V6Rpf; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V6Rpf
+        class Mois; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois
 
-        ydk::YList label_summary_vrf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey> fpi_key;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId> rewrite_id;
+        ydk::YList associated_fpi;
+        ydk::YList v4_rpf;
+        ydk::YList v6_rpf;
+        ydk::YList mois;
         
-}; // MplsLsd::LabelSummaryVrfs
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4
 
 
-class MplsLsd::LabelSummaryVrfs::LabelSummaryVrf : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey : public ydk::Entity
 {
     public:
-        LabelSummaryVrf();
-        ~LabelSummaryVrf();
+        FpiKey();
+        ~FpiKey();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3001,22 +2318,20 @@ class MplsLsd::LabelSummaryVrfs::LabelSummaryVrf : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf vrf_name_xr; //type: string
-        ydk::YLeaf total_labels; //type: uint32
-        ydk::YLeaf rsi_connected; //type: int32
-        class OwnerCount; //type: MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount
+        class Fpi; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi
+        class ApplicationOwner; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::ApplicationOwner
 
-        ydk::YList owner_count;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi> fpi;
+        ydk::YList application_owner;
         
-}; // MplsLsd::LabelSummaryVrfs::LabelSummaryVrf
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey
 
 
-class MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi : public ydk::Entity
 {
     public:
-        OwnerCount();
-        ~OwnerCount();
+        Fpi();
+        ~Fpi();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3027,17 +2342,172 @@ class MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount : public ydk::Entit
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf application_type; //type: MgmtLsdApp
-        ydk::YLeaf application_name; //type: string
-        ydk::YLeaf application_role_primary; //type: int32
-        ydk::YLeaf application_instance; //type: string
-        ydk::YLeaf number_of_labels; //type: uint32
+        ydk::YLeaf fpi_type; //type: MgmtLsdFpi
+        class LabelData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelData
+        class TeData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::TeData
+        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv4Data
+        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv6Data
+        class PwListData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::PwListData
+        class DmtcExtIntfData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData
+        class LabelRange; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelRange
 
-}; // MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelData> label_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::TeData> te_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::PwListData> pw_list_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData> dmtc_ext_intf_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelRange> label_range;
+        
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi
 
 
-class MplsLsd::LabelRange : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelData : public ydk::Entity
+{
+    public:
+        LabelData();
+        ~LabelData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf security_id; //type: uint32
+        ydk::YLeaf elc; //type: int32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::TeData : public ydk::Entity
+{
+    public:
+        TeData();
+        ~TeData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf local_label; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::TeData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv4Data : public ydk::Entity
+{
+    public:
+        Ipv4Data();
+        ~Ipv4Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf sr_local_label; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv4Data
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv6Data : public ydk::Entity
+{
+    public:
+        Ipv6Data();
+        ~Ipv6Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf router_flags; //type: uint32
+        ydk::YLeaf prefix_len; //type: uint8
+        ydk::YLeaf version; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv6Data
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::PwListData : public ydk::Entity
+{
+    public:
+        PwListData();
+        ~PwListData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf pwhe_list_id; //type: uint16
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::PwListData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData : public ydk::Entity
+{
+    public:
+        DmtcExtIntfData();
+        ~DmtcExtIntfData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf dmtc_ext_ifh; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelRange : public ydk::Entity
 {
     public:
         LabelRange();
@@ -3054,186 +2524,13 @@ class MplsLsd::LabelRange : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf min_dynamic_label_value; //type: uint32
-        ydk::YLeaf max_dynamic_label_value; //type: uint32
-        ydk::YLeaf min_static_label_value; //type: uint32
-        ydk::YLeaf max_static_label_value; //type: uint32
+        ydk::YLeaf type; //type: uint8
+        ydk::YLeaf index_; //type: uint8
 
-}; // MplsLsd::LabelRange
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelRange
 
 
-class MplsLsd::RewriteSummaryVrfs : public ydk::Entity
-{
-    public:
-        RewriteSummaryVrfs();
-        ~RewriteSummaryVrfs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class RewriteSummaryVrf; //type: MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf
-
-        ydk::YList rewrite_summary_vrf;
-        
-}; // MplsLsd::RewriteSummaryVrfs
-
-
-class MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf : public ydk::Entity
-{
-    public:
-        RewriteSummaryVrf();
-        ~RewriteSummaryVrf();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf num_label_fpi; //type: uint32
-        ydk::YLeaf num_tefpi; //type: uint32
-        ydk::YLeaf num_ipv4fpi; //type: uint32
-        ydk::YLeaf num_ipv6fpi; //type: uint32
-        ydk::YLeaf num_pw_list_tefpi; //type: uint32
-        ydk::YLeaf num_dmtctefpi; //type: uint32
-        ydk::YLeaf num_rewrite; //type: uint32
-        ydk::YLeaf total_forward_update; //type: uint32
-        ydk::YLeaf total_forwad_update_message; //type: uint32
-        ydk::YLeaf total_paths; //type: uint32
-        ydk::YLeaf total_t_ev4_paths; //type: uint32
-        ydk::YLeaf total_te_head_paths; //type: uint32
-        ydk::YLeaf total_pw_paths; //type: uint32
-        ydk::YLeaf total_ip_sub_paths; //type: uint32
-        ydk::YLeaf total_ipv4rpf_neighbors; //type: uint32
-        ydk::YLeaf total_ipv6rpf_neighbors; //type: uint32
-        ydk::YLeaf num_rewrite_rpf_neighbors; //type: uint32
-        ydk::YLeaf total_dmtc_intf; //type: uint32
-        ydk::YLeaf vrf_name_xr; //type: string
-        class Ipv4Paths; //type: MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv4Paths
-        class Ipv6Paths; //type: MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv4Paths> ipv4_paths;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths> ipv6_paths;
-        
-}; // MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf
-
-
-class MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv4Paths : public ydk::Entity
-{
-    public:
-        Ipv4Paths();
-        ~Ipv4Paths();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf total_paths; //type: uint32
-        ydk::YLeaf total_backup_paths; //type: uint32
-        ydk::YLeaf total_remote_backup_paths; //type: uint32
-        ydk::YLeaf total_protected_paths; //type: uint32
-        ydk::YLeaf total_pop_lkup_paths; //type: uint32
-
-}; // MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv4Paths
-
-
-class MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths : public ydk::Entity
-{
-    public:
-        Ipv6Paths();
-        ~Ipv6Paths();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf total_paths; //type: uint32
-        ydk::YLeaf total_backup_paths; //type: uint32
-        ydk::YLeaf total_remote_backup_paths; //type: uint32
-        ydk::YLeaf total_protected_paths; //type: uint32
-        ydk::YLeaf total_pop_lkup_paths; //type: uint32
-
-}; // MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths
-
-
-class MplsLsd::Interfaces : public ydk::Entity
-{
-    public:
-        Interfaces();
-        ~Interfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Interface; //type: MplsLsd::Interfaces::Interface
-
-        ydk::YList interface;
-        
-}; // MplsLsd::Interfaces
-
-
-class MplsLsd::Interfaces::Interface : public ydk::Entity
-{
-    public:
-        Interface();
-        ~Interface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf interface; //type: string
-        ydk::YLeaf interface_state; //type: MgmtLsdIntfState
-        class ApplicationOwner; //type: MplsLsd::Interfaces::Interface::ApplicationOwner
-
-        ydk::YList application_owner;
-        
-}; // MplsLsd::Interfaces::Interface
-
-
-class MplsLsd::Interfaces::Interface::ApplicationOwner : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::ApplicationOwner : public ydk::Entity
 {
     public:
         ApplicationOwner();
@@ -3248,6 +2545,7 @@ class MplsLsd::Interfaces::Interface::ApplicationOwner : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf application_name; //type: string
         ydk::YLeaf application_type; //type: MgmtLsdApp
@@ -3255,7 +2553,1378 @@ class MplsLsd::Interfaces::Interface::ApplicationOwner : public ydk::Entity
         ydk::YLeaf application_instance; //type: string
         ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
-}; // MplsLsd::Interfaces::Interface::ApplicationOwner
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::ApplicationOwner
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId : public ydk::Entity
+{
+    public:
+        RewriteId();
+        ~RewriteId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class RewriteId_; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_> rewrite_id;
+        
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_ : public ydk::Entity
+{
+    public:
+        RewriteId_();
+        ~RewriteId_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rewrite_id_type; //type: MgmtLsdRwId
+        class LabelContext; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext
+        class LocalLabelRewrite; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext> label_context;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
+        
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext : public ydk::Entity
+{
+    public:
+        LabelContext();
+        ~LabelContext();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf label_context_type; //type: MgmtLsdLblCtx
+        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data
+        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data
+        class Tev4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data
+        class Ipv4l3vpnData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
+        class Ipv6l3vpnData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
+        class VrfL3vpnData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
+        class Cev4l3vpnData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
+        class Cev6l3vpnData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
+        class PseudowireData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData
+        class LabelBlockData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData
+        class IpSubData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData
+        class Tev4p2mpData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
+        class MldPv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data
+        class PseudowireHeadEndData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
+        class TpData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData
+        class GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
+        class Ipv6GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
+        class EvpnData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData
+        class Ipv4blbData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4blbData
+        class Ipv6blbData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6blbData
+        class PiMiPmsiData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
+        class PiMsPmsiData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
+        class NextHopSetL3vpn; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
+        class SrPrefixSegment; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
+        class SrAdjSegmentIpv4; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
+        class SrAdjSegmentIpv6; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
+        class LabelBlockSrgbData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
+        class TeBinding; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding
+        class LabelBlockSrlbData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data> tev4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData> ipv4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData> ipv6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3vpnData> vrf_l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData> cev4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData> cev6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData> pseudowire_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData> label_block_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData> ip_sub_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4p2mpData> tev4p2mp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data> mld_pv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData> pseudowire_head_end_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation> generic_routing_encapsulation;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData> evpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4blbData> ipv4blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6blbData> ipv6blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData> pi_mi_pmsi_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData> pi_ms_pmsi_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn> next_hop_set_l3vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment> sr_prefix_segment;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData> label_block_srgb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding> te_binding;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData> label_block_srlb_data;
+        
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data : public ydk::Entity
+{
+    public:
+        Ipv4Data();
+        ~Ipv4Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf security_id; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data : public ydk::Entity
+{
+    public:
+        Ipv6Data();
+        ~Ipv6Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf security_id; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data : public ydk::Entity
+{
+    public:
+        Tev4Data();
+        ~Tev4Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf tunnel_source; //type: string
+        ydk::YLeaf tunnel_dest; //type: string
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf tunnel_id_extension; //type: uint32
+        ydk::YLeaf tunnel_lsp_id; //type: uint32
+        ydk::YLeaf is_srte; //type: int32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData : public ydk::Entity
+{
+    public:
+        Ipv4l3vpnData();
+        ~Ipv4l3vpnData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf route_distinguisher; //type: uint64
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData : public ydk::Entity
+{
+    public:
+        Ipv6l3vpnData();
+        ~Ipv6l3vpnData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf route_distinguisher; //type: uint64
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3vpnData : public ydk::Entity
+{
+    public:
+        VrfL3vpnData();
+        ~VrfL3vpnData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf security_id; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData : public ydk::Entity
+{
+    public:
+        Cev4l3vpnData();
+        ~Cev4l3vpnData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf security_id; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData : public ydk::Entity
+{
+    public:
+        Cev6l3vpnData();
+        ~Cev6l3vpnData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf ipv6_next_hop; //type: string
+        ydk::YLeaf security_id; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
+{
+    public:
+        PseudowireData();
+        ~PseudowireData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf pseudowire_id; //type: uint64
+        ydk::YLeaf remote_l2_router_id; //type: uint32
+        ydk::YLeaf subinterface; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData : public ydk::Entity
+{
+    public:
+        LabelBlockData();
+        ~LabelBlockData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf service; //type: uint8
+        ydk::YLeaf vpn_id; //type: uint16
+        ydk::YLeaf edge_id; //type: uint16
+        ydk::YLeaf offset; //type: uint32
+        ydk::YLeaf size; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData : public ydk::Entity
+{
+    public:
+        IpSubData();
+        ~IpSubData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf parent_interface; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4p2mpData : public ydk::Entity
+{
+    public:
+        Tev4p2mpData();
+        ~Tev4p2mpData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf tunnel_source; //type: string
+        ydk::YLeaf p2mp_id; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf tunnel_id_extension; //type: uint32
+        ydk::YLeaf tunnel_lsp_id; //type: uint32
+        ydk::YLeaf previous_hop; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
+{
+    public:
+        MldPv4Data();
+        ~MldPv4Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf lsm_id; //type: uint32
+        ydk::YLeaf peer_lsrid; //type: string
+        ydk::YLeaf peer_label_space_id; //type: uint16
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData : public ydk::Entity
+{
+    public:
+        PseudowireHeadEndData();
+        ~PseudowireHeadEndData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf pwhe_intf; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData : public ydk::Entity
+{
+    public:
+        TpData();
+        ~TpData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf source_global_id; //type: uint32
+        ydk::YLeaf source_node_id; //type: string
+        ydk::YLeaf dest_global_id; //type: uint32
+        ydk::YLeaf dest_node_id; //type: string
+        ydk::YLeaf source_tunnel_id; //type: uint16
+        ydk::YLeaf dest_tunnel_id; //type: uint16
+        ydk::YLeaf lsp_id; //type: uint16
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation : public ydk::Entity
+{
+    public:
+        GenericRoutingEncapsulation();
+        ~GenericRoutingEncapsulation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf gre_interface; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation : public ydk::Entity
+{
+    public:
+        Ipv6GenericRoutingEncapsulation();
+        ~Ipv6GenericRoutingEncapsulation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf greipv6_interface; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData : public ydk::Entity
+{
+    public:
+        EvpnData();
+        ~EvpnData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf evpn_id; //type: uint32
+        ydk::YLeaf evpn_tag; //type: uint32
+        ydk::YLeaf ethernet_segment; //type: string
+        ydk::YLeaf evpn_encap; //type: uint8
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4blbData : public ydk::Entity
+{
+    public:
+        Ipv4blbData();
+        ~Ipv4blbData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf blb_intf; //type: string
+        ydk::YLeaf prefix; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4blbData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6blbData : public ydk::Entity
+{
+    public:
+        Ipv6blbData();
+        ~Ipv6blbData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf blb_intf; //type: string
+        ydk::YLeaf prefix; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6blbData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
+{
+    public:
+        PiMiPmsiData();
+        ~PiMiPmsiData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf vrf_id; //type: uint32
+        ydk::YLeaf head; //type: int32
+        ydk::YLeaf v6; //type: int32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData : public ydk::Entity
+{
+    public:
+        PiMsPmsiData();
+        ~PiMsPmsiData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf vrf_id; //type: uint32
+        ydk::YLeaf source; //type: string
+        ydk::YLeaf head; //type: int32
+        ydk::YLeaf v6; //type: int32
+        ydk::YLeaf hli; //type: uint32
+        ydk::YLeaf seg; //type: int32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn : public ydk::Entity
+{
+    public:
+        NextHopSetL3vpn();
+        ~NextHopSetL3vpn();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf next_hop_set_id; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
+{
+    public:
+        SrPrefixSegment();
+        ~SrPrefixSegment();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf segment_id; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4 : public ydk::Entity
+{
+    public:
+        SrAdjSegmentIpv4();
+        ~SrAdjSegmentIpv4();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf index_; //type: uint32
+        ydk::YLeaf type; //type: uint32
+        ydk::YLeaf intf; //type: string
+        ydk::YLeaf addr; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6 : public ydk::Entity
+{
+    public:
+        SrAdjSegmentIpv6();
+        ~SrAdjSegmentIpv6();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf index_; //type: uint32
+        ydk::YLeaf type; //type: uint32
+        ydk::YLeaf intf; //type: string
+        ydk::YLeaf addr; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData : public ydk::Entity
+{
+    public:
+        LabelBlockSrgbData();
+        ~LabelBlockSrgbData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf start_label; //type: uint32
+        ydk::YLeaf offset; //type: uint32
+        ydk::YLeaf size; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding : public ydk::Entity
+{
+    public:
+        TeBinding();
+        ~TeBinding();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf te_identifier; //type: uint32
+        ydk::YLeaf te_type; //type: MgmtLsdTeBinding
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData : public ydk::Entity
+{
+    public:
+        LabelBlockSrlbData();
+        ~LabelBlockSrlbData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf start_label; //type: uint32
+        ydk::YLeaf offset; //type: uint32
+        ydk::YLeaf size; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite : public ydk::Entity
+{
+    public:
+        LocalLabelRewrite();
+        ~LocalLabelRewrite();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class LabelData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
+
+        ydk::YList label_data;
+        
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData : public ydk::Entity
+{
+    public:
+        LabelData();
+        ~LabelData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi : public ydk::Entity
+{
+    public:
+        AssociatedFpi();
+        ~AssociatedFpi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Fpi; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi
+        class ApplicationOwner; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::ApplicationOwner
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi> fpi;
+        ydk::YList application_owner;
+        
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi : public ydk::Entity
+{
+    public:
+        Fpi();
+        ~Fpi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf fpi_type; //type: MgmtLsdFpi
+        class LabelData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelData
+        class TeData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::TeData
+        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data
+        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data
+        class PwListData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::PwListData
+        class DmtcExtIntfData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData
+        class LabelRange; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelRange
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelData> label_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::TeData> te_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::PwListData> pw_list_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData> dmtc_ext_intf_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelRange> label_range;
+        
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelData : public ydk::Entity
+{
+    public:
+        LabelData();
+        ~LabelData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf security_id; //type: uint32
+        ydk::YLeaf elc; //type: int32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::TeData : public ydk::Entity
+{
+    public:
+        TeData();
+        ~TeData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf local_label; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::TeData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data : public ydk::Entity
+{
+    public:
+        Ipv4Data();
+        ~Ipv4Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf sr_local_label; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data : public ydk::Entity
+{
+    public:
+        Ipv6Data();
+        ~Ipv6Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf router_flags; //type: uint32
+        ydk::YLeaf prefix_len; //type: uint8
+        ydk::YLeaf version; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::PwListData : public ydk::Entity
+{
+    public:
+        PwListData();
+        ~PwListData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf pwhe_list_id; //type: uint16
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::PwListData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData : public ydk::Entity
+{
+    public:
+        DmtcExtIntfData();
+        ~DmtcExtIntfData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf dmtc_ext_ifh; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelRange : public ydk::Entity
+{
+    public:
+        LabelRange();
+        ~LabelRange();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf type; //type: uint8
+        ydk::YLeaf index_; //type: uint8
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelRange
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::ApplicationOwner : public ydk::Entity
+{
+    public:
+        ApplicationOwner();
+        ~ApplicationOwner();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf application_name; //type: string
+        ydk::YLeaf application_type; //type: MgmtLsdApp
+        ydk::YLeaf application_role_primary; //type: int32
+        ydk::YLeaf application_instance; //type: string
+        ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::ApplicationOwner
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V4Rpf : public ydk::Entity
+{
+    public:
+        V4Rpf();
+        ~V4Rpf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf v4_rpf_neighbor; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V4Rpf
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V6Rpf : public ydk::Entity
+{
+    public:
+        V6Rpf();
+        ~V6Rpf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf v6_rpf_neighbor; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V6Rpf
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois : public ydk::Entity
+{
+    public:
+        Mois();
+        ~Mois();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class ApplicationResource; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::ApplicationResource
+        class MoiArray; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::ApplicationResource> application_resource;
+        ydk::YList moi_array;
+        
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::ApplicationResource : public ydk::Entity
+{
+    public:
+        ApplicationResource();
+        ~ApplicationResource();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf application_name; //type: string
+        ydk::YLeaf application_type; //type: MgmtLsdApp
+        ydk::YLeaf application_role_primary; //type: int32
+        ydk::YLeaf application_instance; //type: string
+        ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::ApplicationResource
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray : public ydk::Entity
+{
+    public:
+        MoiArray();
+        ~MoiArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Moi; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi> moi;
+        
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi : public ydk::Entity
+{
+    public:
+        Moi();
+        ~Moi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf moi_type; //type: MgmtLsdMoi
+        class PopAndLookupIpv4; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4
+        class PopAndLookupTp; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp
+        class PopAndLookupIpv6; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6
+        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data
+        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data
+        class Tev4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data
+        class PseudowireData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData
+        class IpSubData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::IpSubData
+        class PseudowireHeadEndData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData
+        class PwListData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PwListData
+        class Stackv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data
+        class Stackv6Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data
+        class TeHeadData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData
+        class DmtcData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::DmtcData
+        class NnhStackv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data
+        class NnhStackv6Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv6Data
+        class LabelRange; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::LabelRange
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4> pop_and_lookup_ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp> pop_and_lookup_tp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6> pop_and_lookup_ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data> tev4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData> pseudowire_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::IpSubData> ip_sub_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData> pseudowire_head_end_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PwListData> pw_list_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data> stackv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData> te_head_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::DmtcData> dmtc_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data> nnh_stackv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv6Data> nnh_stackv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::LabelRange> label_range;
+        
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4 : public ydk::Entity
+{
+    public:
+        PopAndLookupIpv4();
+        ~PopAndLookupIpv4();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp : public ydk::Entity
+{
+    public:
+        PopAndLookupTp();
+        ~PopAndLookupTp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_label; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp
 
 
 }

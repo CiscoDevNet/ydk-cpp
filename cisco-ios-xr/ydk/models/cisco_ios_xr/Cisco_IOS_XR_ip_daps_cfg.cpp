@@ -523,13 +523,12 @@ AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Pool()
         ,
     address_ranges(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges>())
     , excludes(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes>())
-    , utilization_mark(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark>())
+    , utilization_mark(nullptr) // presence node
     , prefix_ranges(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges>())
     , networks(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks>())
 {
     address_ranges->parent = this;
     excludes->parent = this;
-    utilization_mark->parent = this;
     prefix_ranges->parent = this;
     networks->parent = this;
 
@@ -1092,7 +1091,7 @@ AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark::UtilizationMa
     low_mark{YType::uint32, "low-mark"}
 {
 
-    yang_name = "utilization-mark"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "utilization-mark"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark::~UtilizationMark()
@@ -1759,12 +1758,11 @@ AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Pool()
         ,
     address_ranges(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges>())
     , excludes(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes>())
-    , utilization_mark(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark>())
+    , utilization_mark(nullptr) // presence node
     , networks(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks>())
 {
     address_ranges->parent = this;
     excludes->parent = this;
-    utilization_mark->parent = this;
     networks->parent = this;
 
     yang_name = "pool"; yang_parent_name = "pools"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2297,7 +2295,7 @@ AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark::UtilizationMa
     low{YType::uint32, "low"}
 {
 
-    yang_name = "utilization-mark"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "utilization-mark"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark::~UtilizationMark()

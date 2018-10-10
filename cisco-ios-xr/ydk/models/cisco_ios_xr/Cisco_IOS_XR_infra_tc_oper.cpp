@@ -2054,6 +2054,7 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::Pre
     label{YType::uint32, "label"},
     prefix{YType::str, "prefix"},
     label_xr{YType::uint32, "label-xr"},
+    ldp_label{YType::uint32, "ldp-label"},
     is_active{YType::boolean, "is-active"}
         ,
     base_counter_statistics(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics>())
@@ -2077,6 +2078,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 	|| label.is_set
 	|| prefix.is_set
 	|| label_xr.is_set
+	|| ldp_label.is_set
 	|| is_active.is_set
 	|| (base_counter_statistics !=  nullptr && base_counter_statistics->has_data())
 	|| (traffic_matrix_counter_statistics !=  nullptr && traffic_matrix_counter_statistics->has_data());
@@ -2090,6 +2092,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 	|| ydk::is_set(label.yfilter)
 	|| ydk::is_set(prefix.yfilter)
 	|| ydk::is_set(label_xr.yfilter)
+	|| ydk::is_set(ldp_label.yfilter)
 	|| ydk::is_set(is_active.yfilter)
 	|| (base_counter_statistics !=  nullptr && base_counter_statistics->has_operation())
 	|| (traffic_matrix_counter_statistics !=  nullptr && traffic_matrix_counter_statistics->has_operation());
@@ -2111,6 +2114,7 @@ std::vector<std::pair<std::string, LeafData> > TrafficCollector::VrfTable::Defau
     if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
     if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
     if (label_xr.is_set || is_set(label_xr.yfilter)) leaf_name_data.push_back(label_xr.get_name_leafdata());
+    if (ldp_label.is_set || is_set(ldp_label.yfilter)) leaf_name_data.push_back(ldp_label.get_name_leafdata());
     if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
 
     return leaf_name_data;
@@ -2189,6 +2193,12 @@ void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
         label_xr.value_namespace = name_space;
         label_xr.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ldp-label")
+    {
+        ldp_label = value;
+        ldp_label.value_namespace = name_space;
+        ldp_label.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "is-active")
     {
         is_active = value;
@@ -2219,6 +2229,10 @@ void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
     {
         label_xr.yfilter = yfilter;
     }
+    if(value_path == "ldp-label")
+    {
+        ldp_label.yfilter = yfilter;
+    }
     if(value_path == "is-active")
     {
         is_active.yfilter = yfilter;
@@ -2227,7 +2241,7 @@ void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "base-counter-statistics" || name == "traffic-matrix-counter-statistics" || name == "ipaddr" || name == "mask" || name == "label" || name == "prefix" || name == "label-xr" || name == "is-active")
+    if(name == "base-counter-statistics" || name == "traffic-matrix-counter-statistics" || name == "ipaddr" || name == "mask" || name == "label" || name == "prefix" || name == "label-xr" || name == "ldp-label" || name == "is-active")
         return true;
     return false;
 }
@@ -3649,6 +3663,7 @@ TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::Prefix()
     label{YType::uint32, "label"},
     prefix{YType::str, "prefix"},
     label_xr{YType::uint32, "label-xr"},
+    ldp_label{YType::uint32, "ldp-label"},
     is_active{YType::boolean, "is-active"}
         ,
     base_counter_statistics(std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics>())
@@ -3672,6 +3687,7 @@ bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::has_data() const
 	|| label.is_set
 	|| prefix.is_set
 	|| label_xr.is_set
+	|| ldp_label.is_set
 	|| is_active.is_set
 	|| (base_counter_statistics !=  nullptr && base_counter_statistics->has_data())
 	|| (traffic_matrix_counter_statistics !=  nullptr && traffic_matrix_counter_statistics->has_data());
@@ -3685,6 +3701,7 @@ bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::has_operation() cons
 	|| ydk::is_set(label.yfilter)
 	|| ydk::is_set(prefix.yfilter)
 	|| ydk::is_set(label_xr.yfilter)
+	|| ydk::is_set(ldp_label.yfilter)
 	|| ydk::is_set(is_active.yfilter)
 	|| (base_counter_statistics !=  nullptr && base_counter_statistics->has_operation())
 	|| (traffic_matrix_counter_statistics !=  nullptr && traffic_matrix_counter_statistics->has_operation());
@@ -3706,6 +3723,7 @@ std::vector<std::pair<std::string, LeafData> > TrafficCollector::Afs::Af::Counte
     if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
     if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
     if (label_xr.is_set || is_set(label_xr.yfilter)) leaf_name_data.push_back(label_xr.get_name_leafdata());
+    if (ldp_label.is_set || is_set(ldp_label.yfilter)) leaf_name_data.push_back(ldp_label.get_name_leafdata());
     if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
 
     return leaf_name_data;
@@ -3784,6 +3802,12 @@ void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::set_value(const std:
         label_xr.value_namespace = name_space;
         label_xr.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ldp-label")
+    {
+        ldp_label = value;
+        ldp_label.value_namespace = name_space;
+        ldp_label.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "is-active")
     {
         is_active = value;
@@ -3814,6 +3838,10 @@ void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::set_filter(const std
     {
         label_xr.yfilter = yfilter;
     }
+    if(value_path == "ldp-label")
+    {
+        ldp_label.yfilter = yfilter;
+    }
     if(value_path == "is-active")
     {
         is_active.yfilter = yfilter;
@@ -3822,7 +3850,7 @@ void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::set_filter(const std
 
 bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "base-counter-statistics" || name == "traffic-matrix-counter-statistics" || name == "ipaddr" || name == "mask" || name == "label" || name == "prefix" || name == "label-xr" || name == "is-active")
+    if(name == "base-counter-statistics" || name == "traffic-matrix-counter-statistics" || name == "ipaddr" || name == "mask" || name == "label" || name == "prefix" || name == "label-xr" || name == "ldp-label" || name == "is-active")
         return true;
     return false;
 }

@@ -2840,7 +2840,10 @@ AddressPoolService::Nodes::Node::Pools::Pool::Configuration::Configuration()
     current_utilization{YType::uint8, "current-utilization"},
     utilization_high_count{YType::uint32, "utilization-high-count"},
     utilization_low_count{YType::uint32, "utilization-low-count"}
+        ,
+    serg_info(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo>())
 {
+    serg_info->parent = this;
 
     yang_name = "configuration"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -2861,7 +2864,8 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::Configuration::has_data() con
 	|| low_utilization_mark.is_set
 	|| current_utilization.is_set
 	|| utilization_high_count.is_set
-	|| utilization_low_count.is_set;
+	|| utilization_low_count.is_set
+	|| (serg_info !=  nullptr && serg_info->has_data());
 }
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::Configuration::has_operation() const
@@ -2876,7 +2880,8 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::Configuration::has_operation(
 	|| ydk::is_set(low_utilization_mark.yfilter)
 	|| ydk::is_set(current_utilization.yfilter)
 	|| ydk::is_set(utilization_high_count.yfilter)
-	|| ydk::is_set(utilization_low_count.yfilter);
+	|| ydk::is_set(utilization_low_count.yfilter)
+	|| (serg_info !=  nullptr && serg_info->has_operation());
 }
 
 std::string AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_segment_path() const
@@ -2907,6 +2912,15 @@ std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "serg-info")
+    {
+        if(serg_info == nullptr)
+        {
+            serg_info = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo>();
+        }
+        return serg_info;
+    }
+
     return nullptr;
 }
 
@@ -2914,6 +2928,11 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(serg_info != nullptr)
+    {
+        children["serg-info"] = serg_info;
+    }
+
     return children;
 }
 
@@ -3027,7 +3046,113 @@ void AddressPoolService::Nodes::Node::Pools::Pool::Configuration::set_filter(con
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::Configuration::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pool-name" || name == "pool-id" || name == "vrf-name" || name == "pool-scope" || name == "pool-prefix-length" || name == "high-utilization-mark" || name == "low-utilization-mark" || name == "current-utilization" || name == "utilization-high-count" || name == "utilization-low-count")
+    if(name == "serg-info" || name == "pool-name" || name == "pool-id" || name == "vrf-name" || name == "pool-scope" || name == "pool-prefix-length" || name == "high-utilization-mark" || name == "low-utilization-mark" || name == "current-utilization" || name == "utilization-high-count" || name == "utilization-low-count")
+        return true;
+    return false;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo::SergInfo()
+    :
+    preferred_role{YType::enumeration, "preferred-role"},
+    peer_down{YType::boolean, "peer-down"},
+    verify_pend{YType::boolean, "verify-pend"}
+{
+
+    yang_name = "serg-info"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo::~SergInfo()
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return preferred_role.is_set
+	|| peer_down.is_set
+	|| verify_pend.is_set;
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(preferred_role.yfilter)
+	|| ydk::is_set(peer_down.yfilter)
+	|| ydk::is_set(verify_pend.yfilter);
+}
+
+std::string AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "serg-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (preferred_role.is_set || is_set(preferred_role.yfilter)) leaf_name_data.push_back(preferred_role.get_name_leafdata());
+    if (peer_down.is_set || is_set(peer_down.yfilter)) leaf_name_data.push_back(peer_down.get_name_leafdata());
+    if (verify_pend.is_set || is_set(verify_pend.yfilter)) leaf_name_data.push_back(verify_pend.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "preferred-role")
+    {
+        preferred_role = value;
+        preferred_role.value_namespace = name_space;
+        preferred_role.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peer-down")
+    {
+        peer_down = value;
+        peer_down.value_namespace = name_space;
+        peer_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "verify-pend")
+    {
+        verify_pend = value;
+        verify_pend.value_namespace = name_space;
+        verify_pend.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "preferred-role")
+    {
+        preferred_role.yfilter = yfilter;
+    }
+    if(value_path == "peer-down")
+    {
+        peer_down.yfilter = yfilter;
+    }
+    if(value_path == "verify-pend")
+    {
+        verify_pend.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "preferred-role" || name == "peer-down" || name == "verify-pend")
         return true;
     return false;
 }
@@ -4187,14 +4312,18 @@ bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::has_leaf_or_child_
     return false;
 }
 
+const Enum::YLeaf DapsSergRole::none {0, "none"};
+const Enum::YLeaf DapsSergRole::master {1, "master"};
+const Enum::YLeaf DapsSergRole::slave {2, "slave"};
+
+const Enum::YLeaf IpAddr::ipv4 {2, "ipv4"};
+const Enum::YLeaf IpAddr::ipv6 {10, "ipv6"};
+
 const Enum::YLeaf DapsClient::none {0, "none"};
 const Enum::YLeaf DapsClient::ppp {1, "ppp"};
 const Enum::YLeaf DapsClient::dhcp {2, "dhcp"};
 const Enum::YLeaf DapsClient::dhcpv6 {4, "dhcpv6"};
 const Enum::YLeaf DapsClient::ipv6nd {5, "ipv6nd"};
-
-const Enum::YLeaf IpAddr::ipv4 {2, "ipv4"};
-const Enum::YLeaf IpAddr::ipv6 {10, "ipv6"};
 
 
 }

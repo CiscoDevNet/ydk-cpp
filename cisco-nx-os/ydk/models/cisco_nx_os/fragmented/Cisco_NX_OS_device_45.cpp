@@ -11,6 +11,7123 @@ using namespace ydk;
 namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
+System::CphysItems::PhysIfList::RtextConfItems::RtextConfItems()
+    :
+    tdn{YType::str, "tDn"},
+    tcl{YType::enumeration, "tCl"}
+{
+
+    yang_name = "rtextConf-items"; yang_parent_name = "PhysIf-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::CphysItems::PhysIfList::RtextConfItems::~RtextConfItems()
+{
+}
+
+bool System::CphysItems::PhysIfList::RtextConfItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return tdn.is_set
+	|| tcl.is_set;
+}
+
+bool System::CphysItems::PhysIfList::RtextConfItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tdn.yfilter)
+	|| ydk::is_set(tcl.yfilter);
+}
+
+std::string System::CphysItems::PhysIfList::RtextConfItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rtextConf-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::CphysItems::PhysIfList::RtextConfItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
+    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::CphysItems::PhysIfList::RtextConfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::CphysItems::PhysIfList::RtextConfItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::CphysItems::PhysIfList::RtextConfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tDn")
+    {
+        tdn = value;
+        tdn.value_namespace = name_space;
+        tdn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tCl")
+    {
+        tcl = value;
+        tcl.value_namespace = name_space;
+        tcl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::CphysItems::PhysIfList::RtextConfItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tDn")
+    {
+        tdn.yfilter = yfilter;
+    }
+    if(value_path == "tCl")
+    {
+        tcl.yfilter = yfilter;
+    }
+}
+
+bool System::CphysItems::PhysIfList::RtextConfItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tDn" || name == "tCl")
+        return true;
+    return false;
+}
+
+System::CphysItems::PhysIfList::RtbrConfItems::RtbrConfItems()
+    :
+    tdn{YType::str, "tDn"},
+    tcl{YType::enumeration, "tCl"}
+{
+
+    yang_name = "rtbrConf-items"; yang_parent_name = "PhysIf-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::CphysItems::PhysIfList::RtbrConfItems::~RtbrConfItems()
+{
+}
+
+bool System::CphysItems::PhysIfList::RtbrConfItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return tdn.is_set
+	|| tcl.is_set;
+}
+
+bool System::CphysItems::PhysIfList::RtbrConfItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tdn.yfilter)
+	|| ydk::is_set(tcl.yfilter);
+}
+
+std::string System::CphysItems::PhysIfList::RtbrConfItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rtbrConf-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::CphysItems::PhysIfList::RtbrConfItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
+    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::CphysItems::PhysIfList::RtbrConfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::CphysItems::PhysIfList::RtbrConfItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::CphysItems::PhysIfList::RtbrConfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tDn")
+    {
+        tdn = value;
+        tdn.value_namespace = name_space;
+        tdn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tCl")
+    {
+        tcl = value;
+        tcl.value_namespace = name_space;
+        tcl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::CphysItems::PhysIfList::RtbrConfItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tDn")
+    {
+        tdn.yfilter = yfilter;
+    }
+    if(value_path == "tCl")
+    {
+        tcl.yfilter = yfilter;
+    }
+}
+
+bool System::CphysItems::PhysIfList::RtbrConfItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tDn" || name == "tCl")
+        return true;
+    return false;
+}
+
+System::CphysItems::PhysIfList::RtfvNodePortAttItems::RtfvNodePortAttItems()
+    :
+    rtfvnodeportatt_list(this, {"tdn"})
+{
+
+    yang_name = "rtfvNodePortAtt-items"; yang_parent_name = "PhysIf-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::CphysItems::PhysIfList::RtfvNodePortAttItems::~RtfvNodePortAttItems()
+{
+}
+
+bool System::CphysItems::PhysIfList::RtfvNodePortAttItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rtfvnodeportatt_list.len(); index++)
+    {
+        if(rtfvnodeportatt_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::CphysItems::PhysIfList::RtfvNodePortAttItems::has_operation() const
+{
+    for (std::size_t index=0; index<rtfvnodeportatt_list.len(); index++)
+    {
+        if(rtfvnodeportatt_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::CphysItems::PhysIfList::RtfvNodePortAttItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rtfvNodePortAtt-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::CphysItems::PhysIfList::RtfvNodePortAttItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::CphysItems::PhysIfList::RtfvNodePortAttItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "RtFvNodePortAtt-list")
+    {
+        auto c = std::make_shared<System::CphysItems::PhysIfList::RtfvNodePortAttItems::RtFvNodePortAttList>();
+        c->parent = this;
+        rtfvnodeportatt_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::CphysItems::PhysIfList::RtfvNodePortAttItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : rtfvnodeportatt_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::CphysItems::PhysIfList::RtfvNodePortAttItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::CphysItems::PhysIfList::RtfvNodePortAttItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::CphysItems::PhysIfList::RtfvNodePortAttItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "RtFvNodePortAtt-list")
+        return true;
+    return false;
+}
+
+System::CphysItems::PhysIfList::RtfvNodePortAttItems::RtFvNodePortAttList::RtFvNodePortAttList()
+    :
+    tdn{YType::str, "tDn"},
+    tcl{YType::enumeration, "tCl"}
+{
+
+    yang_name = "RtFvNodePortAtt-list"; yang_parent_name = "rtfvNodePortAtt-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::CphysItems::PhysIfList::RtfvNodePortAttItems::RtFvNodePortAttList::~RtFvNodePortAttList()
+{
+}
+
+bool System::CphysItems::PhysIfList::RtfvNodePortAttItems::RtFvNodePortAttList::has_data() const
+{
+    if (is_presence_container) return true;
+    return tdn.is_set
+	|| tcl.is_set;
+}
+
+bool System::CphysItems::PhysIfList::RtfvNodePortAttItems::RtFvNodePortAttList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tdn.yfilter)
+	|| ydk::is_set(tcl.yfilter);
+}
+
+std::string System::CphysItems::PhysIfList::RtfvNodePortAttItems::RtFvNodePortAttList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "RtFvNodePortAtt-list";
+    ADD_KEY_TOKEN(tdn, "tDn");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::CphysItems::PhysIfList::RtfvNodePortAttItems::RtFvNodePortAttList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
+    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::CphysItems::PhysIfList::RtfvNodePortAttItems::RtFvNodePortAttList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::CphysItems::PhysIfList::RtfvNodePortAttItems::RtFvNodePortAttList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::CphysItems::PhysIfList::RtfvNodePortAttItems::RtFvNodePortAttList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tDn")
+    {
+        tdn = value;
+        tdn.value_namespace = name_space;
+        tdn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tCl")
+    {
+        tcl = value;
+        tcl.value_namespace = name_space;
+        tcl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::CphysItems::PhysIfList::RtfvNodePortAttItems::RtFvNodePortAttList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tDn")
+    {
+        tdn.yfilter = yfilter;
+    }
+    if(value_path == "tCl")
+    {
+        tcl.yfilter = yfilter;
+    }
+}
+
+bool System::CphysItems::PhysIfList::RtfvNodePortAttItems::RtFvNodePortAttList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tDn" || name == "tCl")
+        return true;
+    return false;
+}
+
+System::CphysItems::PhysIfList::RtvrfMbrItems::RtvrfMbrItems()
+    :
+    tdn{YType::str, "tDn"},
+    tcl{YType::enumeration, "tCl"}
+{
+
+    yang_name = "rtvrfMbr-items"; yang_parent_name = "PhysIf-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::CphysItems::PhysIfList::RtvrfMbrItems::~RtvrfMbrItems()
+{
+}
+
+bool System::CphysItems::PhysIfList::RtvrfMbrItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return tdn.is_set
+	|| tcl.is_set;
+}
+
+bool System::CphysItems::PhysIfList::RtvrfMbrItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tdn.yfilter)
+	|| ydk::is_set(tcl.yfilter);
+}
+
+std::string System::CphysItems::PhysIfList::RtvrfMbrItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rtvrfMbr-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::CphysItems::PhysIfList::RtvrfMbrItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
+    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::CphysItems::PhysIfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::CphysItems::PhysIfList::RtvrfMbrItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::CphysItems::PhysIfList::RtvrfMbrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tDn")
+    {
+        tdn = value;
+        tdn.value_namespace = name_space;
+        tdn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tCl")
+    {
+        tcl = value;
+        tcl.value_namespace = name_space;
+        tcl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::CphysItems::PhysIfList::RtvrfMbrItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tDn")
+    {
+        tdn.yfilter = yfilter;
+    }
+    if(value_path == "tCl")
+    {
+        tcl.yfilter = yfilter;
+    }
+}
+
+bool System::CphysItems::PhysIfList::RtvrfMbrItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tDn" || name == "tCl")
+        return true;
+    return false;
+}
+
+System::CphysItems::PhysIfList::RtphysRtdConfItems::RtphysRtdConfItems()
+    :
+    tdn{YType::str, "tDn"},
+    tcl{YType::enumeration, "tCl"}
+{
+
+    yang_name = "rtphysRtdConf-items"; yang_parent_name = "PhysIf-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::CphysItems::PhysIfList::RtphysRtdConfItems::~RtphysRtdConfItems()
+{
+}
+
+bool System::CphysItems::PhysIfList::RtphysRtdConfItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return tdn.is_set
+	|| tcl.is_set;
+}
+
+bool System::CphysItems::PhysIfList::RtphysRtdConfItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tdn.yfilter)
+	|| ydk::is_set(tcl.yfilter);
+}
+
+std::string System::CphysItems::PhysIfList::RtphysRtdConfItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rtphysRtdConf-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::CphysItems::PhysIfList::RtphysRtdConfItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
+    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::CphysItems::PhysIfList::RtphysRtdConfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::CphysItems::PhysIfList::RtphysRtdConfItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::CphysItems::PhysIfList::RtphysRtdConfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tDn")
+    {
+        tdn = value;
+        tdn.value_namespace = name_space;
+        tdn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tCl")
+    {
+        tcl = value;
+        tcl.value_namespace = name_space;
+        tcl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::CphysItems::PhysIfList::RtphysRtdConfItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tDn")
+    {
+        tdn.yfilter = yfilter;
+    }
+    if(value_path == "tCl")
+    {
+        tcl.yfilter = yfilter;
+    }
+}
+
+bool System::CphysItems::PhysIfList::RtphysRtdConfItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tDn" || name == "tCl")
+        return true;
+    return false;
+}
+
+System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::Rtl3EncPhysRtdConfItems()
+    :
+    rtl3encphysrtdconf_list(this, {"tdn"})
+{
+
+    yang_name = "rtl3EncPhysRtdConf-items"; yang_parent_name = "PhysIf-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::~Rtl3EncPhysRtdConfItems()
+{
+}
+
+bool System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rtl3encphysrtdconf_list.len(); index++)
+    {
+        if(rtl3encphysrtdconf_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::has_operation() const
+{
+    for (std::size_t index=0; index<rtl3encphysrtdconf_list.len(); index++)
+    {
+        if(rtl3encphysrtdconf_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rtl3EncPhysRtdConf-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "RtL3EncPhysRtdConf-list")
+    {
+        auto c = std::make_shared<System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::RtL3EncPhysRtdConfList>();
+        c->parent = this;
+        rtl3encphysrtdconf_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : rtl3encphysrtdconf_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "RtL3EncPhysRtdConf-list")
+        return true;
+    return false;
+}
+
+System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::RtL3EncPhysRtdConfList::RtL3EncPhysRtdConfList()
+    :
+    tdn{YType::str, "tDn"},
+    tcl{YType::enumeration, "tCl"}
+{
+
+    yang_name = "RtL3EncPhysRtdConf-list"; yang_parent_name = "rtl3EncPhysRtdConf-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::RtL3EncPhysRtdConfList::~RtL3EncPhysRtdConfList()
+{
+}
+
+bool System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::RtL3EncPhysRtdConfList::has_data() const
+{
+    if (is_presence_container) return true;
+    return tdn.is_set
+	|| tcl.is_set;
+}
+
+bool System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::RtL3EncPhysRtdConfList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tdn.yfilter)
+	|| ydk::is_set(tcl.yfilter);
+}
+
+std::string System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::RtL3EncPhysRtdConfList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "RtL3EncPhysRtdConf-list";
+    ADD_KEY_TOKEN(tdn, "tDn");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::RtL3EncPhysRtdConfList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
+    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::RtL3EncPhysRtdConfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::RtL3EncPhysRtdConfList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::RtL3EncPhysRtdConfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tDn")
+    {
+        tdn = value;
+        tdn.value_namespace = name_space;
+        tdn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tCl")
+    {
+        tcl = value;
+        tcl.value_namespace = name_space;
+        tcl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::RtL3EncPhysRtdConfList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tDn")
+    {
+        tdn.yfilter = yfilter;
+    }
+    if(value_path == "tCl")
+    {
+        tcl.yfilter = yfilter;
+    }
+}
+
+bool System::CphysItems::PhysIfList::Rtl3EncPhysRtdConfItems::RtL3EncPhysRtdConfList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tDn" || name == "tCl")
+        return true;
+    return false;
+}
+
+System::CphysItems::PhysIfList::RtnwPathToIfItems::RtnwPathToIfItems()
+    :
+    rtnwpathtoif_list(this, {"tdn"})
+{
+
+    yang_name = "rtnwPathToIf-items"; yang_parent_name = "PhysIf-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::CphysItems::PhysIfList::RtnwPathToIfItems::~RtnwPathToIfItems()
+{
+}
+
+bool System::CphysItems::PhysIfList::RtnwPathToIfItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rtnwpathtoif_list.len(); index++)
+    {
+        if(rtnwpathtoif_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::CphysItems::PhysIfList::RtnwPathToIfItems::has_operation() const
+{
+    for (std::size_t index=0; index<rtnwpathtoif_list.len(); index++)
+    {
+        if(rtnwpathtoif_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::CphysItems::PhysIfList::RtnwPathToIfItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rtnwPathToIf-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::CphysItems::PhysIfList::RtnwPathToIfItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::CphysItems::PhysIfList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "RtNwPathToIf-list")
+    {
+        auto c = std::make_shared<System::CphysItems::PhysIfList::RtnwPathToIfItems::RtNwPathToIfList>();
+        c->parent = this;
+        rtnwpathtoif_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::CphysItems::PhysIfList::RtnwPathToIfItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : rtnwpathtoif_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::CphysItems::PhysIfList::RtnwPathToIfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::CphysItems::PhysIfList::RtnwPathToIfItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::CphysItems::PhysIfList::RtnwPathToIfItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "RtNwPathToIf-list")
+        return true;
+    return false;
+}
+
+System::CphysItems::PhysIfList::RtnwPathToIfItems::RtNwPathToIfList::RtNwPathToIfList()
+    :
+    tdn{YType::str, "tDn"},
+    tcl{YType::enumeration, "tCl"}
+{
+
+    yang_name = "RtNwPathToIf-list"; yang_parent_name = "rtnwPathToIf-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::CphysItems::PhysIfList::RtnwPathToIfItems::RtNwPathToIfList::~RtNwPathToIfList()
+{
+}
+
+bool System::CphysItems::PhysIfList::RtnwPathToIfItems::RtNwPathToIfList::has_data() const
+{
+    if (is_presence_container) return true;
+    return tdn.is_set
+	|| tcl.is_set;
+}
+
+bool System::CphysItems::PhysIfList::RtnwPathToIfItems::RtNwPathToIfList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tdn.yfilter)
+	|| ydk::is_set(tcl.yfilter);
+}
+
+std::string System::CphysItems::PhysIfList::RtnwPathToIfItems::RtNwPathToIfList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "RtNwPathToIf-list";
+    ADD_KEY_TOKEN(tdn, "tDn");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::CphysItems::PhysIfList::RtnwPathToIfItems::RtNwPathToIfList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
+    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::CphysItems::PhysIfList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::CphysItems::PhysIfList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::CphysItems::PhysIfList::RtnwPathToIfItems::RtNwPathToIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tDn")
+    {
+        tdn = value;
+        tdn.value_namespace = name_space;
+        tdn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tCl")
+    {
+        tcl = value;
+        tcl.value_namespace = name_space;
+        tcl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::CphysItems::PhysIfList::RtnwPathToIfItems::RtNwPathToIfList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tDn")
+    {
+        tdn.yfilter = yfilter;
+    }
+    if(value_path == "tCl")
+    {
+        tcl.yfilter = yfilter;
+    }
+}
+
+bool System::CphysItems::PhysIfList::RtnwPathToIfItems::RtNwPathToIfList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tDn" || name == "tCl")
+        return true;
+    return false;
+}
+
+System::CphysItems::PhysIfList::RtLsNodeToIfItems::RtLsNodeToIfItems()
+    :
+    tdn{YType::str, "tDn"},
+    tcl{YType::enumeration, "tCl"}
+{
+
+    yang_name = "rtLsNodeToIf-items"; yang_parent_name = "PhysIf-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::CphysItems::PhysIfList::RtLsNodeToIfItems::~RtLsNodeToIfItems()
+{
+}
+
+bool System::CphysItems::PhysIfList::RtLsNodeToIfItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return tdn.is_set
+	|| tcl.is_set;
+}
+
+bool System::CphysItems::PhysIfList::RtLsNodeToIfItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tdn.yfilter)
+	|| ydk::is_set(tcl.yfilter);
+}
+
+std::string System::CphysItems::PhysIfList::RtLsNodeToIfItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rtLsNodeToIf-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::CphysItems::PhysIfList::RtLsNodeToIfItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
+    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::CphysItems::PhysIfList::RtLsNodeToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::CphysItems::PhysIfList::RtLsNodeToIfItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::CphysItems::PhysIfList::RtLsNodeToIfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tDn")
+    {
+        tdn = value;
+        tdn.value_namespace = name_space;
+        tdn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tCl")
+    {
+        tcl = value;
+        tcl.value_namespace = name_space;
+        tcl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::CphysItems::PhysIfList::RtLsNodeToIfItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tDn")
+    {
+        tdn.yfilter = yfilter;
+    }
+    if(value_path == "tCl")
+    {
+        tcl.yfilter = yfilter;
+    }
+}
+
+bool System::CphysItems::PhysIfList::RtLsNodeToIfItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tDn" || name == "tCl")
+        return true;
+    return false;
+}
+
+System::CphysItems::PhysIfList::RtmbrIfsItems::RtmbrIfsItems()
+    :
+    tdn{YType::str, "tDn"},
+    tcl{YType::enumeration, "tCl"}
+{
+
+    yang_name = "rtmbrIfs-items"; yang_parent_name = "PhysIf-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::CphysItems::PhysIfList::RtmbrIfsItems::~RtmbrIfsItems()
+{
+}
+
+bool System::CphysItems::PhysIfList::RtmbrIfsItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return tdn.is_set
+	|| tcl.is_set;
+}
+
+bool System::CphysItems::PhysIfList::RtmbrIfsItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tdn.yfilter)
+	|| ydk::is_set(tcl.yfilter);
+}
+
+std::string System::CphysItems::PhysIfList::RtmbrIfsItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rtmbrIfs-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::CphysItems::PhysIfList::RtmbrIfsItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
+    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::CphysItems::PhysIfList::RtmbrIfsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::CphysItems::PhysIfList::RtmbrIfsItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::CphysItems::PhysIfList::RtmbrIfsItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tDn")
+    {
+        tdn = value;
+        tdn.value_namespace = name_space;
+        tdn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tCl")
+    {
+        tcl = value;
+        tcl.value_namespace = name_space;
+        tcl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::CphysItems::PhysIfList::RtmbrIfsItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tDn")
+    {
+        tdn.yfilter = yfilter;
+    }
+    if(value_path == "tCl")
+    {
+        tcl.yfilter = yfilter;
+    }
+}
+
+bool System::CphysItems::PhysIfList::RtmbrIfsItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tDn" || name == "tCl")
+        return true;
+    return false;
+}
+
+System::CphysItems::PhysIfList::RtactiveIfItems::RtactiveIfItems()
+    :
+    tdn{YType::str, "tDn"},
+    tcl{YType::enumeration, "tCl"}
+{
+
+    yang_name = "rtactiveIf-items"; yang_parent_name = "PhysIf-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::CphysItems::PhysIfList::RtactiveIfItems::~RtactiveIfItems()
+{
+}
+
+bool System::CphysItems::PhysIfList::RtactiveIfItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return tdn.is_set
+	|| tcl.is_set;
+}
+
+bool System::CphysItems::PhysIfList::RtactiveIfItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tdn.yfilter)
+	|| ydk::is_set(tcl.yfilter);
+}
+
+std::string System::CphysItems::PhysIfList::RtactiveIfItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rtactiveIf-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::CphysItems::PhysIfList::RtactiveIfItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
+    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::CphysItems::PhysIfList::RtactiveIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::CphysItems::PhysIfList::RtactiveIfItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::CphysItems::PhysIfList::RtactiveIfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tDn")
+    {
+        tdn = value;
+        tdn.value_namespace = name_space;
+        tdn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tCl")
+    {
+        tcl = value;
+        tcl.value_namespace = name_space;
+        tcl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::CphysItems::PhysIfList::RtactiveIfItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tDn")
+    {
+        tdn.yfilter = yfilter;
+    }
+    if(value_path == "tCl")
+    {
+        tcl.yfilter = yfilter;
+    }
+}
+
+bool System::CphysItems::PhysIfList::RtactiveIfItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tDn" || name == "tCl")
+        return true;
+    return false;
+}
+
+System::ActionItems::ActionItems()
+    :
+    tracertnve_items(std::make_shared<System::ActionItems::TracertnveItems>())
+    , pathtracenve_items(std::make_shared<System::ActionItems::PathtracenveItems>())
+    , eqptdiagrule_items(std::make_shared<System::ActionItems::EqptdiagruleItems>())
+    , lsubj_items(std::make_shared<System::ActionItems::LsubjItems>())
+{
+    tracertnve_items->parent = this;
+    pathtracenve_items->parent = this;
+    eqptdiagrule_items->parent = this;
+    lsubj_items->parent = this;
+
+    yang_name = "action-items"; yang_parent_name = "System"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::ActionItems::~ActionItems()
+{
+}
+
+bool System::ActionItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return (tracertnve_items !=  nullptr && tracertnve_items->has_data())
+	|| (pathtracenve_items !=  nullptr && pathtracenve_items->has_data())
+	|| (eqptdiagrule_items !=  nullptr && eqptdiagrule_items->has_data())
+	|| (lsubj_items !=  nullptr && lsubj_items->has_data());
+}
+
+bool System::ActionItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| (tracertnve_items !=  nullptr && tracertnve_items->has_operation())
+	|| (pathtracenve_items !=  nullptr && pathtracenve_items->has_operation())
+	|| (eqptdiagrule_items !=  nullptr && eqptdiagrule_items->has_operation())
+	|| (lsubj_items !=  nullptr && lsubj_items->has_operation());
+}
+
+std::string System::ActionItems::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::ActionItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tracertnve-items")
+    {
+        if(tracertnve_items == nullptr)
+        {
+            tracertnve_items = std::make_shared<System::ActionItems::TracertnveItems>();
+        }
+        return tracertnve_items;
+    }
+
+    if(child_yang_name == "pathtracenve-items")
+    {
+        if(pathtracenve_items == nullptr)
+        {
+            pathtracenve_items = std::make_shared<System::ActionItems::PathtracenveItems>();
+        }
+        return pathtracenve_items;
+    }
+
+    if(child_yang_name == "eqptdiagrule-items")
+    {
+        if(eqptdiagrule_items == nullptr)
+        {
+            eqptdiagrule_items = std::make_shared<System::ActionItems::EqptdiagruleItems>();
+        }
+        return eqptdiagrule_items;
+    }
+
+    if(child_yang_name == "lsubj-items")
+    {
+        if(lsubj_items == nullptr)
+        {
+            lsubj_items = std::make_shared<System::ActionItems::LsubjItems>();
+        }
+        return lsubj_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(tracertnve_items != nullptr)
+    {
+        children["tracertnve-items"] = tracertnve_items;
+    }
+
+    if(pathtracenve_items != nullptr)
+    {
+        children["pathtracenve-items"] = pathtracenve_items;
+    }
+
+    if(eqptdiagrule_items != nullptr)
+    {
+        children["eqptdiagrule-items"] = eqptdiagrule_items;
+    }
+
+    if(lsubj_items != nullptr)
+    {
+        children["lsubj-items"] = lsubj_items;
+    }
+
+    return children;
+}
+
+void System::ActionItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tracertnve-items" || name == "pathtracenve-items" || name == "eqptdiagrule-items" || name == "lsubj-items")
+        return true;
+    return false;
+}
+
+System::ActionItems::TracertnveItems::TracertnveItems()
+    :
+    tracertnve_list(this, {"session"})
+{
+
+    yang_name = "tracertnve-items"; yang_parent_name = "action-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::ActionItems::TracertnveItems::~TracertnveItems()
+{
+}
+
+bool System::ActionItems::TracertnveItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tracertnve_list.len(); index++)
+    {
+        if(tracertnve_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::TracertnveItems::has_operation() const
+{
+    for (std::size_t index=0; index<tracertnve_list.len(); index++)
+    {
+        if(tracertnve_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::TracertnveItems::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/action-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::ActionItems::TracertnveItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tracertnve-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::TracertnveItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::TracertnveItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "TraceRtNve-list")
+    {
+        auto c = std::make_shared<System::ActionItems::TracertnveItems::TraceRtNveList>();
+        c->parent = this;
+        tracertnve_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::TracertnveItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : tracertnve_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::TracertnveItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::TracertnveItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::TracertnveItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "TraceRtNve-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::TraceRtNveList()
+    :
+    session{YType::str, "session"},
+    descr{YType::str, "descr"},
+    startts{YType::str, "startTs"},
+    type{YType::enumeration, "type"},
+    rsz{YType::uint16, "rSz"},
+    rtm{YType::str, "rTm"},
+    peerclassid{YType::str, "peerClassId"},
+    adminst{YType::enumeration, "adminSt"},
+    freq{YType::str, "freq"},
+    profileid{YType::uint16, "profileId"},
+    dstip{YType::str, "dstIp"},
+    dstipv6{YType::str, "dstIpv6"},
+    dstmac{YType::str, "dstMAC"},
+    srcip{YType::str, "srcIp"},
+    srcipv6{YType::str, "srcIpv6"},
+    dot1q{YType::uint16, "dot1q"},
+    srcport{YType::uint16, "srcPort"},
+    dstport{YType::uint16, "dstPort"},
+    maxttl{YType::uint8, "maxTtl"},
+    vrf{YType::str, "vrf"},
+    vni{YType::uint32, "vni"},
+    timeout{YType::uint8, "timeout"},
+    egressif{YType::str, "egressIf"},
+    macsrcif{YType::str, "macsrcif"},
+    verifyhost{YType::boolean, "verifyHost"},
+    sessionid{YType::uint32, "sessionId"},
+    operst{YType::enumeration, "operSt"},
+    payload_dot1q{YType::uint16, "payload_dot1q"},
+    payload_srcip{YType::str, "payload_srcip"},
+    payload_srcipv6{YType::str, "payload_srcipv6"},
+    payload_srcmac{YType::str, "payload_srcmac"},
+    payload_dstip{YType::str, "payload_dstip"},
+    payload_dstipv6{YType::str, "payload_dstipv6"},
+    payload_dstmac{YType::str, "payload_dstmac"},
+    payload_srcport{YType::uint16, "payload_srcport"},
+    payload_dstport{YType::uint16, "payload_dstport"},
+    payload_protocol{YType::uint16, "payload_protocol"},
+    payload_srcif{YType::str, "payload_srcif"}
+        ,
+    trnverslt_items(std::make_shared<System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems>())
+{
+    trnverslt_items->parent = this;
+
+    yang_name = "TraceRtNve-list"; yang_parent_name = "tracertnve-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::~TraceRtNveList()
+{
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::has_data() const
+{
+    if (is_presence_container) return true;
+    return session.is_set
+	|| descr.is_set
+	|| startts.is_set
+	|| type.is_set
+	|| rsz.is_set
+	|| rtm.is_set
+	|| peerclassid.is_set
+	|| adminst.is_set
+	|| freq.is_set
+	|| profileid.is_set
+	|| dstip.is_set
+	|| dstipv6.is_set
+	|| dstmac.is_set
+	|| srcip.is_set
+	|| srcipv6.is_set
+	|| dot1q.is_set
+	|| srcport.is_set
+	|| dstport.is_set
+	|| maxttl.is_set
+	|| vrf.is_set
+	|| vni.is_set
+	|| timeout.is_set
+	|| egressif.is_set
+	|| macsrcif.is_set
+	|| verifyhost.is_set
+	|| sessionid.is_set
+	|| operst.is_set
+	|| payload_dot1q.is_set
+	|| payload_srcip.is_set
+	|| payload_srcipv6.is_set
+	|| payload_srcmac.is_set
+	|| payload_dstip.is_set
+	|| payload_dstipv6.is_set
+	|| payload_dstmac.is_set
+	|| payload_srcport.is_set
+	|| payload_dstport.is_set
+	|| payload_protocol.is_set
+	|| payload_srcif.is_set
+	|| (trnverslt_items !=  nullptr && trnverslt_items->has_data());
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(session.yfilter)
+	|| ydk::is_set(descr.yfilter)
+	|| ydk::is_set(startts.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(rsz.yfilter)
+	|| ydk::is_set(rtm.yfilter)
+	|| ydk::is_set(peerclassid.yfilter)
+	|| ydk::is_set(adminst.yfilter)
+	|| ydk::is_set(freq.yfilter)
+	|| ydk::is_set(profileid.yfilter)
+	|| ydk::is_set(dstip.yfilter)
+	|| ydk::is_set(dstipv6.yfilter)
+	|| ydk::is_set(dstmac.yfilter)
+	|| ydk::is_set(srcip.yfilter)
+	|| ydk::is_set(srcipv6.yfilter)
+	|| ydk::is_set(dot1q.yfilter)
+	|| ydk::is_set(srcport.yfilter)
+	|| ydk::is_set(dstport.yfilter)
+	|| ydk::is_set(maxttl.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(vni.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(egressif.yfilter)
+	|| ydk::is_set(macsrcif.yfilter)
+	|| ydk::is_set(verifyhost.yfilter)
+	|| ydk::is_set(sessionid.yfilter)
+	|| ydk::is_set(operst.yfilter)
+	|| ydk::is_set(payload_dot1q.yfilter)
+	|| ydk::is_set(payload_srcip.yfilter)
+	|| ydk::is_set(payload_srcipv6.yfilter)
+	|| ydk::is_set(payload_srcmac.yfilter)
+	|| ydk::is_set(payload_dstip.yfilter)
+	|| ydk::is_set(payload_dstipv6.yfilter)
+	|| ydk::is_set(payload_dstmac.yfilter)
+	|| ydk::is_set(payload_srcport.yfilter)
+	|| ydk::is_set(payload_dstport.yfilter)
+	|| ydk::is_set(payload_protocol.yfilter)
+	|| ydk::is_set(payload_srcif.yfilter)
+	|| (trnverslt_items !=  nullptr && trnverslt_items->has_operation());
+}
+
+std::string System::ActionItems::TracertnveItems::TraceRtNveList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/action-items/tracertnve-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::ActionItems::TracertnveItems::TraceRtNveList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "TraceRtNve-list";
+    ADD_KEY_TOKEN(session, "session");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::TracertnveItems::TraceRtNveList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session.is_set || is_set(session.yfilter)) leaf_name_data.push_back(session.get_name_leafdata());
+    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
+    if (startts.is_set || is_set(startts.yfilter)) leaf_name_data.push_back(startts.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (rsz.is_set || is_set(rsz.yfilter)) leaf_name_data.push_back(rsz.get_name_leafdata());
+    if (rtm.is_set || is_set(rtm.yfilter)) leaf_name_data.push_back(rtm.get_name_leafdata());
+    if (peerclassid.is_set || is_set(peerclassid.yfilter)) leaf_name_data.push_back(peerclassid.get_name_leafdata());
+    if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
+    if (freq.is_set || is_set(freq.yfilter)) leaf_name_data.push_back(freq.get_name_leafdata());
+    if (profileid.is_set || is_set(profileid.yfilter)) leaf_name_data.push_back(profileid.get_name_leafdata());
+    if (dstip.is_set || is_set(dstip.yfilter)) leaf_name_data.push_back(dstip.get_name_leafdata());
+    if (dstipv6.is_set || is_set(dstipv6.yfilter)) leaf_name_data.push_back(dstipv6.get_name_leafdata());
+    if (dstmac.is_set || is_set(dstmac.yfilter)) leaf_name_data.push_back(dstmac.get_name_leafdata());
+    if (srcip.is_set || is_set(srcip.yfilter)) leaf_name_data.push_back(srcip.get_name_leafdata());
+    if (srcipv6.is_set || is_set(srcipv6.yfilter)) leaf_name_data.push_back(srcipv6.get_name_leafdata());
+    if (dot1q.is_set || is_set(dot1q.yfilter)) leaf_name_data.push_back(dot1q.get_name_leafdata());
+    if (srcport.is_set || is_set(srcport.yfilter)) leaf_name_data.push_back(srcport.get_name_leafdata());
+    if (dstport.is_set || is_set(dstport.yfilter)) leaf_name_data.push_back(dstport.get_name_leafdata());
+    if (maxttl.is_set || is_set(maxttl.yfilter)) leaf_name_data.push_back(maxttl.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (vni.is_set || is_set(vni.yfilter)) leaf_name_data.push_back(vni.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (egressif.is_set || is_set(egressif.yfilter)) leaf_name_data.push_back(egressif.get_name_leafdata());
+    if (macsrcif.is_set || is_set(macsrcif.yfilter)) leaf_name_data.push_back(macsrcif.get_name_leafdata());
+    if (verifyhost.is_set || is_set(verifyhost.yfilter)) leaf_name_data.push_back(verifyhost.get_name_leafdata());
+    if (sessionid.is_set || is_set(sessionid.yfilter)) leaf_name_data.push_back(sessionid.get_name_leafdata());
+    if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
+    if (payload_dot1q.is_set || is_set(payload_dot1q.yfilter)) leaf_name_data.push_back(payload_dot1q.get_name_leafdata());
+    if (payload_srcip.is_set || is_set(payload_srcip.yfilter)) leaf_name_data.push_back(payload_srcip.get_name_leafdata());
+    if (payload_srcipv6.is_set || is_set(payload_srcipv6.yfilter)) leaf_name_data.push_back(payload_srcipv6.get_name_leafdata());
+    if (payload_srcmac.is_set || is_set(payload_srcmac.yfilter)) leaf_name_data.push_back(payload_srcmac.get_name_leafdata());
+    if (payload_dstip.is_set || is_set(payload_dstip.yfilter)) leaf_name_data.push_back(payload_dstip.get_name_leafdata());
+    if (payload_dstipv6.is_set || is_set(payload_dstipv6.yfilter)) leaf_name_data.push_back(payload_dstipv6.get_name_leafdata());
+    if (payload_dstmac.is_set || is_set(payload_dstmac.yfilter)) leaf_name_data.push_back(payload_dstmac.get_name_leafdata());
+    if (payload_srcport.is_set || is_set(payload_srcport.yfilter)) leaf_name_data.push_back(payload_srcport.get_name_leafdata());
+    if (payload_dstport.is_set || is_set(payload_dstport.yfilter)) leaf_name_data.push_back(payload_dstport.get_name_leafdata());
+    if (payload_protocol.is_set || is_set(payload_protocol.yfilter)) leaf_name_data.push_back(payload_protocol.get_name_leafdata());
+    if (payload_srcif.is_set || is_set(payload_srcif.yfilter)) leaf_name_data.push_back(payload_srcif.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::TracertnveItems::TraceRtNveList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "trnverslt-items")
+    {
+        if(trnverslt_items == nullptr)
+        {
+            trnverslt_items = std::make_shared<System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems>();
+        }
+        return trnverslt_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::TracertnveItems::TraceRtNveList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(trnverslt_items != nullptr)
+    {
+        children["trnverslt-items"] = trnverslt_items;
+    }
+
+    return children;
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session")
+    {
+        session = value;
+        session.value_namespace = name_space;
+        session.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "descr")
+    {
+        descr = value;
+        descr.value_namespace = name_space;
+        descr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "startTs")
+    {
+        startts = value;
+        startts.value_namespace = name_space;
+        startts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rSz")
+    {
+        rsz = value;
+        rsz.value_namespace = name_space;
+        rsz.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rTm")
+    {
+        rtm = value;
+        rtm.value_namespace = name_space;
+        rtm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peerClassId")
+    {
+        peerclassid = value;
+        peerclassid.value_namespace = name_space;
+        peerclassid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adminSt")
+    {
+        adminst = value;
+        adminst.value_namespace = name_space;
+        adminst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "freq")
+    {
+        freq = value;
+        freq.value_namespace = name_space;
+        freq.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "profileId")
+    {
+        profileid = value;
+        profileid.value_namespace = name_space;
+        profileid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dstIp")
+    {
+        dstip = value;
+        dstip.value_namespace = name_space;
+        dstip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dstIpv6")
+    {
+        dstipv6 = value;
+        dstipv6.value_namespace = name_space;
+        dstipv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dstMAC")
+    {
+        dstmac = value;
+        dstmac.value_namespace = name_space;
+        dstmac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srcIp")
+    {
+        srcip = value;
+        srcip.value_namespace = name_space;
+        srcip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srcIpv6")
+    {
+        srcipv6 = value;
+        srcipv6.value_namespace = name_space;
+        srcipv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dot1q")
+    {
+        dot1q = value;
+        dot1q.value_namespace = name_space;
+        dot1q.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srcPort")
+    {
+        srcport = value;
+        srcport.value_namespace = name_space;
+        srcport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dstPort")
+    {
+        dstport = value;
+        dstport.value_namespace = name_space;
+        dstport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maxTtl")
+    {
+        maxttl = value;
+        maxttl.value_namespace = name_space;
+        maxttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vni")
+    {
+        vni = value;
+        vni.value_namespace = name_space;
+        vni.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egressIf")
+    {
+        egressif = value;
+        egressif.value_namespace = name_space;
+        egressif.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "macsrcif")
+    {
+        macsrcif = value;
+        macsrcif.value_namespace = name_space;
+        macsrcif.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "verifyHost")
+    {
+        verifyhost = value;
+        verifyhost.value_namespace = name_space;
+        verifyhost.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sessionId")
+    {
+        sessionid = value;
+        sessionid.value_namespace = name_space;
+        sessionid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operSt")
+    {
+        operst = value;
+        operst.value_namespace = name_space;
+        operst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dot1q")
+    {
+        payload_dot1q = value;
+        payload_dot1q.value_namespace = name_space;
+        payload_dot1q.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcip")
+    {
+        payload_srcip = value;
+        payload_srcip.value_namespace = name_space;
+        payload_srcip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcipv6")
+    {
+        payload_srcipv6 = value;
+        payload_srcipv6.value_namespace = name_space;
+        payload_srcipv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcmac")
+    {
+        payload_srcmac = value;
+        payload_srcmac.value_namespace = name_space;
+        payload_srcmac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dstip")
+    {
+        payload_dstip = value;
+        payload_dstip.value_namespace = name_space;
+        payload_dstip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dstipv6")
+    {
+        payload_dstipv6 = value;
+        payload_dstipv6.value_namespace = name_space;
+        payload_dstipv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dstmac")
+    {
+        payload_dstmac = value;
+        payload_dstmac.value_namespace = name_space;
+        payload_dstmac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcport")
+    {
+        payload_srcport = value;
+        payload_srcport.value_namespace = name_space;
+        payload_srcport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dstport")
+    {
+        payload_dstport = value;
+        payload_dstport.value_namespace = name_space;
+        payload_dstport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_protocol")
+    {
+        payload_protocol = value;
+        payload_protocol.value_namespace = name_space;
+        payload_protocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcif")
+    {
+        payload_srcif = value;
+        payload_srcif.value_namespace = name_space;
+        payload_srcif.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session")
+    {
+        session.yfilter = yfilter;
+    }
+    if(value_path == "descr")
+    {
+        descr.yfilter = yfilter;
+    }
+    if(value_path == "startTs")
+    {
+        startts.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "rSz")
+    {
+        rsz.yfilter = yfilter;
+    }
+    if(value_path == "rTm")
+    {
+        rtm.yfilter = yfilter;
+    }
+    if(value_path == "peerClassId")
+    {
+        peerclassid.yfilter = yfilter;
+    }
+    if(value_path == "adminSt")
+    {
+        adminst.yfilter = yfilter;
+    }
+    if(value_path == "freq")
+    {
+        freq.yfilter = yfilter;
+    }
+    if(value_path == "profileId")
+    {
+        profileid.yfilter = yfilter;
+    }
+    if(value_path == "dstIp")
+    {
+        dstip.yfilter = yfilter;
+    }
+    if(value_path == "dstIpv6")
+    {
+        dstipv6.yfilter = yfilter;
+    }
+    if(value_path == "dstMAC")
+    {
+        dstmac.yfilter = yfilter;
+    }
+    if(value_path == "srcIp")
+    {
+        srcip.yfilter = yfilter;
+    }
+    if(value_path == "srcIpv6")
+    {
+        srcipv6.yfilter = yfilter;
+    }
+    if(value_path == "dot1q")
+    {
+        dot1q.yfilter = yfilter;
+    }
+    if(value_path == "srcPort")
+    {
+        srcport.yfilter = yfilter;
+    }
+    if(value_path == "dstPort")
+    {
+        dstport.yfilter = yfilter;
+    }
+    if(value_path == "maxTtl")
+    {
+        maxttl.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "vni")
+    {
+        vni.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+    if(value_path == "egressIf")
+    {
+        egressif.yfilter = yfilter;
+    }
+    if(value_path == "macsrcif")
+    {
+        macsrcif.yfilter = yfilter;
+    }
+    if(value_path == "verifyHost")
+    {
+        verifyhost.yfilter = yfilter;
+    }
+    if(value_path == "sessionId")
+    {
+        sessionid.yfilter = yfilter;
+    }
+    if(value_path == "operSt")
+    {
+        operst.yfilter = yfilter;
+    }
+    if(value_path == "payload_dot1q")
+    {
+        payload_dot1q.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcip")
+    {
+        payload_srcip.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcipv6")
+    {
+        payload_srcipv6.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcmac")
+    {
+        payload_srcmac.yfilter = yfilter;
+    }
+    if(value_path == "payload_dstip")
+    {
+        payload_dstip.yfilter = yfilter;
+    }
+    if(value_path == "payload_dstipv6")
+    {
+        payload_dstipv6.yfilter = yfilter;
+    }
+    if(value_path == "payload_dstmac")
+    {
+        payload_dstmac.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcport")
+    {
+        payload_srcport.yfilter = yfilter;
+    }
+    if(value_path == "payload_dstport")
+    {
+        payload_dstport.yfilter = yfilter;
+    }
+    if(value_path == "payload_protocol")
+    {
+        payload_protocol.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcif")
+    {
+        payload_srcif.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trnverslt-items" || name == "session" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "adminSt" || name == "freq" || name == "profileId" || name == "dstIp" || name == "dstIpv6" || name == "dstMAC" || name == "srcIp" || name == "srcIpv6" || name == "dot1q" || name == "srcPort" || name == "dstPort" || name == "maxTtl" || name == "vrf" || name == "vni" || name == "timeout" || name == "egressIf" || name == "macsrcif" || name == "verifyHost" || name == "sessionId" || name == "operSt" || name == "payload_dot1q" || name == "payload_srcip" || name == "payload_srcipv6" || name == "payload_srcmac" || name == "payload_dstip" || name == "payload_dstipv6" || name == "payload_dstmac" || name == "payload_srcport" || name == "payload_dstport" || name == "payload_protocol" || name == "payload_srcif")
+        return true;
+    return false;
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TrnversltItems()
+    :
+    tracertnverslt_list(this, {"sessionid"})
+{
+
+    yang_name = "trnverslt-items"; yang_parent_name = "TraceRtNve-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::~TrnversltItems()
+{
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tracertnverslt_list.len(); index++)
+    {
+        if(tracertnverslt_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::has_operation() const
+{
+    for (std::size_t index=0; index<tracertnverslt_list.len(); index++)
+    {
+        if(tracertnverslt_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "trnverslt-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "TraceRtNveRslt-list")
+    {
+        auto c = std::make_shared<System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList>();
+        c->parent = this;
+        tracertnverslt_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : tracertnverslt_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "TraceRtNveRslt-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::TraceRtNveRsltList()
+    :
+    sessionid{YType::uint16, "sessionId"},
+    dstip{YType::str, "dstIp"},
+    maxhops{YType::uint8, "maxHops"},
+    errorcode{YType::str, "errorCode"},
+    failreason{YType::str, "failReason"},
+    descr{YType::str, "descr"},
+    startts{YType::str, "startTs"},
+    type{YType::enumeration, "type"},
+    rsz{YType::uint16, "rSz"},
+    rtm{YType::str, "rTm"},
+    peerclassid{YType::str, "peerClassId"},
+    qual{YType::str, "qual"},
+    ack{YType::boolean, "ack"},
+    endts{YType::str, "endTs"},
+    operst{YType::enumeration, "operSt"}
+        ,
+    pathtr_items(std::make_shared<System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems>())
+{
+    pathtr_items->parent = this;
+
+    yang_name = "TraceRtNveRslt-list"; yang_parent_name = "trnverslt-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::~TraceRtNveRsltList()
+{
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::has_data() const
+{
+    if (is_presence_container) return true;
+    return sessionid.is_set
+	|| dstip.is_set
+	|| maxhops.is_set
+	|| errorcode.is_set
+	|| failreason.is_set
+	|| descr.is_set
+	|| startts.is_set
+	|| type.is_set
+	|| rsz.is_set
+	|| rtm.is_set
+	|| peerclassid.is_set
+	|| qual.is_set
+	|| ack.is_set
+	|| endts.is_set
+	|| operst.is_set
+	|| (pathtr_items !=  nullptr && pathtr_items->has_data());
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sessionid.yfilter)
+	|| ydk::is_set(dstip.yfilter)
+	|| ydk::is_set(maxhops.yfilter)
+	|| ydk::is_set(errorcode.yfilter)
+	|| ydk::is_set(failreason.yfilter)
+	|| ydk::is_set(descr.yfilter)
+	|| ydk::is_set(startts.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(rsz.yfilter)
+	|| ydk::is_set(rtm.yfilter)
+	|| ydk::is_set(peerclassid.yfilter)
+	|| ydk::is_set(qual.yfilter)
+	|| ydk::is_set(ack.yfilter)
+	|| ydk::is_set(endts.yfilter)
+	|| ydk::is_set(operst.yfilter)
+	|| (pathtr_items !=  nullptr && pathtr_items->has_operation());
+}
+
+std::string System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "TraceRtNveRslt-list";
+    ADD_KEY_TOKEN(sessionid, "sessionId");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sessionid.is_set || is_set(sessionid.yfilter)) leaf_name_data.push_back(sessionid.get_name_leafdata());
+    if (dstip.is_set || is_set(dstip.yfilter)) leaf_name_data.push_back(dstip.get_name_leafdata());
+    if (maxhops.is_set || is_set(maxhops.yfilter)) leaf_name_data.push_back(maxhops.get_name_leafdata());
+    if (errorcode.is_set || is_set(errorcode.yfilter)) leaf_name_data.push_back(errorcode.get_name_leafdata());
+    if (failreason.is_set || is_set(failreason.yfilter)) leaf_name_data.push_back(failreason.get_name_leafdata());
+    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
+    if (startts.is_set || is_set(startts.yfilter)) leaf_name_data.push_back(startts.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (rsz.is_set || is_set(rsz.yfilter)) leaf_name_data.push_back(rsz.get_name_leafdata());
+    if (rtm.is_set || is_set(rtm.yfilter)) leaf_name_data.push_back(rtm.get_name_leafdata());
+    if (peerclassid.is_set || is_set(peerclassid.yfilter)) leaf_name_data.push_back(peerclassid.get_name_leafdata());
+    if (qual.is_set || is_set(qual.yfilter)) leaf_name_data.push_back(qual.get_name_leafdata());
+    if (ack.is_set || is_set(ack.yfilter)) leaf_name_data.push_back(ack.get_name_leafdata());
+    if (endts.is_set || is_set(endts.yfilter)) leaf_name_data.push_back(endts.get_name_leafdata());
+    if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pathtr-items")
+    {
+        if(pathtr_items == nullptr)
+        {
+            pathtr_items = std::make_shared<System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems>();
+        }
+        return pathtr_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(pathtr_items != nullptr)
+    {
+        children["pathtr-items"] = pathtr_items;
+    }
+
+    return children;
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sessionId")
+    {
+        sessionid = value;
+        sessionid.value_namespace = name_space;
+        sessionid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dstIp")
+    {
+        dstip = value;
+        dstip.value_namespace = name_space;
+        dstip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maxHops")
+    {
+        maxhops = value;
+        maxhops.value_namespace = name_space;
+        maxhops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "errorCode")
+    {
+        errorcode = value;
+        errorcode.value_namespace = name_space;
+        errorcode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "failReason")
+    {
+        failreason = value;
+        failreason.value_namespace = name_space;
+        failreason.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "descr")
+    {
+        descr = value;
+        descr.value_namespace = name_space;
+        descr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "startTs")
+    {
+        startts = value;
+        startts.value_namespace = name_space;
+        startts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rSz")
+    {
+        rsz = value;
+        rsz.value_namespace = name_space;
+        rsz.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rTm")
+    {
+        rtm = value;
+        rtm.value_namespace = name_space;
+        rtm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peerClassId")
+    {
+        peerclassid = value;
+        peerclassid.value_namespace = name_space;
+        peerclassid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "qual")
+    {
+        qual = value;
+        qual.value_namespace = name_space;
+        qual.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ack")
+    {
+        ack = value;
+        ack.value_namespace = name_space;
+        ack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "endTs")
+    {
+        endts = value;
+        endts.value_namespace = name_space;
+        endts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operSt")
+    {
+        operst = value;
+        operst.value_namespace = name_space;
+        operst.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sessionId")
+    {
+        sessionid.yfilter = yfilter;
+    }
+    if(value_path == "dstIp")
+    {
+        dstip.yfilter = yfilter;
+    }
+    if(value_path == "maxHops")
+    {
+        maxhops.yfilter = yfilter;
+    }
+    if(value_path == "errorCode")
+    {
+        errorcode.yfilter = yfilter;
+    }
+    if(value_path == "failReason")
+    {
+        failreason.yfilter = yfilter;
+    }
+    if(value_path == "descr")
+    {
+        descr.yfilter = yfilter;
+    }
+    if(value_path == "startTs")
+    {
+        startts.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "rSz")
+    {
+        rsz.yfilter = yfilter;
+    }
+    if(value_path == "rTm")
+    {
+        rtm.yfilter = yfilter;
+    }
+    if(value_path == "peerClassId")
+    {
+        peerclassid.yfilter = yfilter;
+    }
+    if(value_path == "qual")
+    {
+        qual.yfilter = yfilter;
+    }
+    if(value_path == "ack")
+    {
+        ack.yfilter = yfilter;
+    }
+    if(value_path == "endTs")
+    {
+        endts.yfilter = yfilter;
+    }
+    if(value_path == "operSt")
+    {
+        operst.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pathtr-items" || name == "sessionId" || name == "dstIp" || name == "maxHops" || name == "errorCode" || name == "failReason" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
+        return true;
+    return false;
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathtrItems()
+    :
+    pathtr_list(this, {"id"})
+{
+
+    yang_name = "pathtr-items"; yang_parent_name = "TraceRtNveRslt-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::~PathtrItems()
+{
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pathtr_list.len(); index++)
+    {
+        if(pathtr_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::has_operation() const
+{
+    for (std::size_t index=0; index<pathtr_list.len(); index++)
+    {
+        if(pathtr_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pathtr-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "PathTr-list")
+    {
+        auto c = std::make_shared<System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList>();
+        c->parent = this;
+        pathtr_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : pathtr_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "PathTr-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::PathTrList()
+    :
+    id{YType::uint8, "id"}
+        ,
+    nodetr_items(std::make_shared<System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems>())
+{
+    nodetr_items->parent = this;
+
+    yang_name = "PathTr-list"; yang_parent_name = "pathtr-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::~PathTrList()
+{
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set
+	|| (nodetr_items !=  nullptr && nodetr_items->has_data());
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| (nodetr_items !=  nullptr && nodetr_items->has_operation());
+}
+
+std::string System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "PathTr-list";
+    ADD_KEY_TOKEN(id, "id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nodetr-items")
+    {
+        if(nodetr_items == nullptr)
+        {
+            nodetr_items = std::make_shared<System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems>();
+        }
+        return nodetr_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(nodetr_items != nullptr)
+    {
+        children["nodetr-items"] = nodetr_items;
+    }
+
+    return children;
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodetr-items" || name == "id")
+        return true;
+    return false;
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::NodetrItems()
+    :
+    nodetr_list(this, {"order"})
+{
+
+    yang_name = "nodetr-items"; yang_parent_name = "PathTr-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::~NodetrItems()
+{
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nodetr_list.len(); index++)
+    {
+        if(nodetr_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::has_operation() const
+{
+    for (std::size_t index=0; index<nodetr_list.len(); index++)
+    {
+        if(nodetr_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nodetr-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "NodeTr-list")
+    {
+        auto c = std::make_shared<System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::NodeTrList>();
+        c->parent = this;
+        nodetr_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : nodetr_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "NodeTr-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::NodeTrList::NodeTrList()
+    :
+    order{YType::uint8, "order"},
+    addr{YType::str, "addr"},
+    v6addr{YType::str, "v6addr"},
+    elapsedtime{YType::str, "elapsedTime"}
+{
+
+    yang_name = "NodeTr-list"; yang_parent_name = "nodetr-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::NodeTrList::~NodeTrList()
+{
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::NodeTrList::has_data() const
+{
+    if (is_presence_container) return true;
+    return order.is_set
+	|| addr.is_set
+	|| v6addr.is_set
+	|| elapsedtime.is_set;
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::NodeTrList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(order.yfilter)
+	|| ydk::is_set(addr.yfilter)
+	|| ydk::is_set(v6addr.yfilter)
+	|| ydk::is_set(elapsedtime.yfilter);
+}
+
+std::string System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::NodeTrList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NodeTr-list";
+    ADD_KEY_TOKEN(order, "order");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::NodeTrList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (order.is_set || is_set(order.yfilter)) leaf_name_data.push_back(order.get_name_leafdata());
+    if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
+    if (v6addr.is_set || is_set(v6addr.yfilter)) leaf_name_data.push_back(v6addr.get_name_leafdata());
+    if (elapsedtime.is_set || is_set(elapsedtime.yfilter)) leaf_name_data.push_back(elapsedtime.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::NodeTrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::NodeTrList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::NodeTrList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "order")
+    {
+        order = value;
+        order.value_namespace = name_space;
+        order.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "addr")
+    {
+        addr = value;
+        addr.value_namespace = name_space;
+        addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "v6addr")
+    {
+        v6addr = value;
+        v6addr.value_namespace = name_space;
+        v6addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "elapsedTime")
+    {
+        elapsedtime = value;
+        elapsedtime.value_namespace = name_space;
+        elapsedtime.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::NodeTrList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "order")
+    {
+        order.yfilter = yfilter;
+    }
+    if(value_path == "addr")
+    {
+        addr.yfilter = yfilter;
+    }
+    if(value_path == "v6addr")
+    {
+        v6addr.yfilter = yfilter;
+    }
+    if(value_path == "elapsedTime")
+    {
+        elapsedtime.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::PathtrItems::PathTrList::NodetrItems::NodeTrList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "order" || name == "addr" || name == "v6addr" || name == "elapsedTime")
+        return true;
+    return false;
+}
+
+System::ActionItems::PathtracenveItems::PathtracenveItems()
+    :
+    pathtracenve_list(this, {"session"})
+{
+
+    yang_name = "pathtracenve-items"; yang_parent_name = "action-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::ActionItems::PathtracenveItems::~PathtracenveItems()
+{
+}
+
+bool System::ActionItems::PathtracenveItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pathtracenve_list.len(); index++)
+    {
+        if(pathtracenve_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::PathtracenveItems::has_operation() const
+{
+    for (std::size_t index=0; index<pathtracenve_list.len(); index++)
+    {
+        if(pathtracenve_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::PathtracenveItems::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/action-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::ActionItems::PathtracenveItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pathtracenve-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::PathtracenveItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::PathtracenveItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "PathTraceNve-list")
+    {
+        auto c = std::make_shared<System::ActionItems::PathtracenveItems::PathTraceNveList>();
+        c->parent = this;
+        pathtracenve_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::PathtracenveItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : pathtracenve_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::PathtracenveItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::PathtracenveItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::PathtracenveItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "PathTraceNve-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::PathTraceNveList()
+    :
+    session{YType::str, "session"},
+    reqstats{YType::boolean, "reqStats"},
+    descr{YType::str, "descr"},
+    startts{YType::str, "startTs"},
+    type{YType::enumeration, "type"},
+    rsz{YType::uint16, "rSz"},
+    rtm{YType::str, "rTm"},
+    peerclassid{YType::str, "peerClassId"},
+    adminst{YType::enumeration, "adminSt"},
+    freq{YType::str, "freq"},
+    profileid{YType::uint16, "profileId"},
+    dstip{YType::str, "dstIp"},
+    dstipv6{YType::str, "dstIpv6"},
+    dstmac{YType::str, "dstMAC"},
+    srcip{YType::str, "srcIp"},
+    srcipv6{YType::str, "srcIpv6"},
+    dot1q{YType::uint16, "dot1q"},
+    srcport{YType::uint16, "srcPort"},
+    dstport{YType::uint16, "dstPort"},
+    maxttl{YType::uint8, "maxTtl"},
+    vrf{YType::str, "vrf"},
+    vni{YType::uint32, "vni"},
+    timeout{YType::uint8, "timeout"},
+    egressif{YType::str, "egressIf"},
+    macsrcif{YType::str, "macsrcif"},
+    verifyhost{YType::boolean, "verifyHost"},
+    sessionid{YType::uint32, "sessionId"},
+    operst{YType::enumeration, "operSt"},
+    payload_dot1q{YType::uint16, "payload_dot1q"},
+    payload_srcip{YType::str, "payload_srcip"},
+    payload_srcipv6{YType::str, "payload_srcipv6"},
+    payload_srcmac{YType::str, "payload_srcmac"},
+    payload_dstip{YType::str, "payload_dstip"},
+    payload_dstipv6{YType::str, "payload_dstipv6"},
+    payload_dstmac{YType::str, "payload_dstmac"},
+    payload_srcport{YType::uint16, "payload_srcport"},
+    payload_dstport{YType::uint16, "payload_dstport"},
+    payload_protocol{YType::uint16, "payload_protocol"},
+    payload_srcif{YType::str, "payload_srcif"}
+        ,
+    ptrnverslt_items(std::make_shared<System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems>())
+{
+    ptrnverslt_items->parent = this;
+
+    yang_name = "PathTraceNve-list"; yang_parent_name = "pathtracenve-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::~PathTraceNveList()
+{
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::has_data() const
+{
+    if (is_presence_container) return true;
+    return session.is_set
+	|| reqstats.is_set
+	|| descr.is_set
+	|| startts.is_set
+	|| type.is_set
+	|| rsz.is_set
+	|| rtm.is_set
+	|| peerclassid.is_set
+	|| adminst.is_set
+	|| freq.is_set
+	|| profileid.is_set
+	|| dstip.is_set
+	|| dstipv6.is_set
+	|| dstmac.is_set
+	|| srcip.is_set
+	|| srcipv6.is_set
+	|| dot1q.is_set
+	|| srcport.is_set
+	|| dstport.is_set
+	|| maxttl.is_set
+	|| vrf.is_set
+	|| vni.is_set
+	|| timeout.is_set
+	|| egressif.is_set
+	|| macsrcif.is_set
+	|| verifyhost.is_set
+	|| sessionid.is_set
+	|| operst.is_set
+	|| payload_dot1q.is_set
+	|| payload_srcip.is_set
+	|| payload_srcipv6.is_set
+	|| payload_srcmac.is_set
+	|| payload_dstip.is_set
+	|| payload_dstipv6.is_set
+	|| payload_dstmac.is_set
+	|| payload_srcport.is_set
+	|| payload_dstport.is_set
+	|| payload_protocol.is_set
+	|| payload_srcif.is_set
+	|| (ptrnverslt_items !=  nullptr && ptrnverslt_items->has_data());
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(session.yfilter)
+	|| ydk::is_set(reqstats.yfilter)
+	|| ydk::is_set(descr.yfilter)
+	|| ydk::is_set(startts.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(rsz.yfilter)
+	|| ydk::is_set(rtm.yfilter)
+	|| ydk::is_set(peerclassid.yfilter)
+	|| ydk::is_set(adminst.yfilter)
+	|| ydk::is_set(freq.yfilter)
+	|| ydk::is_set(profileid.yfilter)
+	|| ydk::is_set(dstip.yfilter)
+	|| ydk::is_set(dstipv6.yfilter)
+	|| ydk::is_set(dstmac.yfilter)
+	|| ydk::is_set(srcip.yfilter)
+	|| ydk::is_set(srcipv6.yfilter)
+	|| ydk::is_set(dot1q.yfilter)
+	|| ydk::is_set(srcport.yfilter)
+	|| ydk::is_set(dstport.yfilter)
+	|| ydk::is_set(maxttl.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(vni.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(egressif.yfilter)
+	|| ydk::is_set(macsrcif.yfilter)
+	|| ydk::is_set(verifyhost.yfilter)
+	|| ydk::is_set(sessionid.yfilter)
+	|| ydk::is_set(operst.yfilter)
+	|| ydk::is_set(payload_dot1q.yfilter)
+	|| ydk::is_set(payload_srcip.yfilter)
+	|| ydk::is_set(payload_srcipv6.yfilter)
+	|| ydk::is_set(payload_srcmac.yfilter)
+	|| ydk::is_set(payload_dstip.yfilter)
+	|| ydk::is_set(payload_dstipv6.yfilter)
+	|| ydk::is_set(payload_dstmac.yfilter)
+	|| ydk::is_set(payload_srcport.yfilter)
+	|| ydk::is_set(payload_dstport.yfilter)
+	|| ydk::is_set(payload_protocol.yfilter)
+	|| ydk::is_set(payload_srcif.yfilter)
+	|| (ptrnverslt_items !=  nullptr && ptrnverslt_items->has_operation());
+}
+
+std::string System::ActionItems::PathtracenveItems::PathTraceNveList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/action-items/pathtracenve-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::ActionItems::PathtracenveItems::PathTraceNveList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "PathTraceNve-list";
+    ADD_KEY_TOKEN(session, "session");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::PathtracenveItems::PathTraceNveList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session.is_set || is_set(session.yfilter)) leaf_name_data.push_back(session.get_name_leafdata());
+    if (reqstats.is_set || is_set(reqstats.yfilter)) leaf_name_data.push_back(reqstats.get_name_leafdata());
+    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
+    if (startts.is_set || is_set(startts.yfilter)) leaf_name_data.push_back(startts.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (rsz.is_set || is_set(rsz.yfilter)) leaf_name_data.push_back(rsz.get_name_leafdata());
+    if (rtm.is_set || is_set(rtm.yfilter)) leaf_name_data.push_back(rtm.get_name_leafdata());
+    if (peerclassid.is_set || is_set(peerclassid.yfilter)) leaf_name_data.push_back(peerclassid.get_name_leafdata());
+    if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
+    if (freq.is_set || is_set(freq.yfilter)) leaf_name_data.push_back(freq.get_name_leafdata());
+    if (profileid.is_set || is_set(profileid.yfilter)) leaf_name_data.push_back(profileid.get_name_leafdata());
+    if (dstip.is_set || is_set(dstip.yfilter)) leaf_name_data.push_back(dstip.get_name_leafdata());
+    if (dstipv6.is_set || is_set(dstipv6.yfilter)) leaf_name_data.push_back(dstipv6.get_name_leafdata());
+    if (dstmac.is_set || is_set(dstmac.yfilter)) leaf_name_data.push_back(dstmac.get_name_leafdata());
+    if (srcip.is_set || is_set(srcip.yfilter)) leaf_name_data.push_back(srcip.get_name_leafdata());
+    if (srcipv6.is_set || is_set(srcipv6.yfilter)) leaf_name_data.push_back(srcipv6.get_name_leafdata());
+    if (dot1q.is_set || is_set(dot1q.yfilter)) leaf_name_data.push_back(dot1q.get_name_leafdata());
+    if (srcport.is_set || is_set(srcport.yfilter)) leaf_name_data.push_back(srcport.get_name_leafdata());
+    if (dstport.is_set || is_set(dstport.yfilter)) leaf_name_data.push_back(dstport.get_name_leafdata());
+    if (maxttl.is_set || is_set(maxttl.yfilter)) leaf_name_data.push_back(maxttl.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (vni.is_set || is_set(vni.yfilter)) leaf_name_data.push_back(vni.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (egressif.is_set || is_set(egressif.yfilter)) leaf_name_data.push_back(egressif.get_name_leafdata());
+    if (macsrcif.is_set || is_set(macsrcif.yfilter)) leaf_name_data.push_back(macsrcif.get_name_leafdata());
+    if (verifyhost.is_set || is_set(verifyhost.yfilter)) leaf_name_data.push_back(verifyhost.get_name_leafdata());
+    if (sessionid.is_set || is_set(sessionid.yfilter)) leaf_name_data.push_back(sessionid.get_name_leafdata());
+    if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
+    if (payload_dot1q.is_set || is_set(payload_dot1q.yfilter)) leaf_name_data.push_back(payload_dot1q.get_name_leafdata());
+    if (payload_srcip.is_set || is_set(payload_srcip.yfilter)) leaf_name_data.push_back(payload_srcip.get_name_leafdata());
+    if (payload_srcipv6.is_set || is_set(payload_srcipv6.yfilter)) leaf_name_data.push_back(payload_srcipv6.get_name_leafdata());
+    if (payload_srcmac.is_set || is_set(payload_srcmac.yfilter)) leaf_name_data.push_back(payload_srcmac.get_name_leafdata());
+    if (payload_dstip.is_set || is_set(payload_dstip.yfilter)) leaf_name_data.push_back(payload_dstip.get_name_leafdata());
+    if (payload_dstipv6.is_set || is_set(payload_dstipv6.yfilter)) leaf_name_data.push_back(payload_dstipv6.get_name_leafdata());
+    if (payload_dstmac.is_set || is_set(payload_dstmac.yfilter)) leaf_name_data.push_back(payload_dstmac.get_name_leafdata());
+    if (payload_srcport.is_set || is_set(payload_srcport.yfilter)) leaf_name_data.push_back(payload_srcport.get_name_leafdata());
+    if (payload_dstport.is_set || is_set(payload_dstport.yfilter)) leaf_name_data.push_back(payload_dstport.get_name_leafdata());
+    if (payload_protocol.is_set || is_set(payload_protocol.yfilter)) leaf_name_data.push_back(payload_protocol.get_name_leafdata());
+    if (payload_srcif.is_set || is_set(payload_srcif.yfilter)) leaf_name_data.push_back(payload_srcif.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::PathtracenveItems::PathTraceNveList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ptrnverslt-items")
+    {
+        if(ptrnverslt_items == nullptr)
+        {
+            ptrnverslt_items = std::make_shared<System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems>();
+        }
+        return ptrnverslt_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::PathtracenveItems::PathTraceNveList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ptrnverslt_items != nullptr)
+    {
+        children["ptrnverslt-items"] = ptrnverslt_items;
+    }
+
+    return children;
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session")
+    {
+        session = value;
+        session.value_namespace = name_space;
+        session.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reqStats")
+    {
+        reqstats = value;
+        reqstats.value_namespace = name_space;
+        reqstats.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "descr")
+    {
+        descr = value;
+        descr.value_namespace = name_space;
+        descr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "startTs")
+    {
+        startts = value;
+        startts.value_namespace = name_space;
+        startts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rSz")
+    {
+        rsz = value;
+        rsz.value_namespace = name_space;
+        rsz.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rTm")
+    {
+        rtm = value;
+        rtm.value_namespace = name_space;
+        rtm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peerClassId")
+    {
+        peerclassid = value;
+        peerclassid.value_namespace = name_space;
+        peerclassid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adminSt")
+    {
+        adminst = value;
+        adminst.value_namespace = name_space;
+        adminst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "freq")
+    {
+        freq = value;
+        freq.value_namespace = name_space;
+        freq.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "profileId")
+    {
+        profileid = value;
+        profileid.value_namespace = name_space;
+        profileid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dstIp")
+    {
+        dstip = value;
+        dstip.value_namespace = name_space;
+        dstip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dstIpv6")
+    {
+        dstipv6 = value;
+        dstipv6.value_namespace = name_space;
+        dstipv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dstMAC")
+    {
+        dstmac = value;
+        dstmac.value_namespace = name_space;
+        dstmac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srcIp")
+    {
+        srcip = value;
+        srcip.value_namespace = name_space;
+        srcip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srcIpv6")
+    {
+        srcipv6 = value;
+        srcipv6.value_namespace = name_space;
+        srcipv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dot1q")
+    {
+        dot1q = value;
+        dot1q.value_namespace = name_space;
+        dot1q.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srcPort")
+    {
+        srcport = value;
+        srcport.value_namespace = name_space;
+        srcport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dstPort")
+    {
+        dstport = value;
+        dstport.value_namespace = name_space;
+        dstport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maxTtl")
+    {
+        maxttl = value;
+        maxttl.value_namespace = name_space;
+        maxttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vni")
+    {
+        vni = value;
+        vni.value_namespace = name_space;
+        vni.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egressIf")
+    {
+        egressif = value;
+        egressif.value_namespace = name_space;
+        egressif.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "macsrcif")
+    {
+        macsrcif = value;
+        macsrcif.value_namespace = name_space;
+        macsrcif.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "verifyHost")
+    {
+        verifyhost = value;
+        verifyhost.value_namespace = name_space;
+        verifyhost.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sessionId")
+    {
+        sessionid = value;
+        sessionid.value_namespace = name_space;
+        sessionid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operSt")
+    {
+        operst = value;
+        operst.value_namespace = name_space;
+        operst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dot1q")
+    {
+        payload_dot1q = value;
+        payload_dot1q.value_namespace = name_space;
+        payload_dot1q.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcip")
+    {
+        payload_srcip = value;
+        payload_srcip.value_namespace = name_space;
+        payload_srcip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcipv6")
+    {
+        payload_srcipv6 = value;
+        payload_srcipv6.value_namespace = name_space;
+        payload_srcipv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcmac")
+    {
+        payload_srcmac = value;
+        payload_srcmac.value_namespace = name_space;
+        payload_srcmac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dstip")
+    {
+        payload_dstip = value;
+        payload_dstip.value_namespace = name_space;
+        payload_dstip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dstipv6")
+    {
+        payload_dstipv6 = value;
+        payload_dstipv6.value_namespace = name_space;
+        payload_dstipv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dstmac")
+    {
+        payload_dstmac = value;
+        payload_dstmac.value_namespace = name_space;
+        payload_dstmac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcport")
+    {
+        payload_srcport = value;
+        payload_srcport.value_namespace = name_space;
+        payload_srcport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dstport")
+    {
+        payload_dstport = value;
+        payload_dstport.value_namespace = name_space;
+        payload_dstport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_protocol")
+    {
+        payload_protocol = value;
+        payload_protocol.value_namespace = name_space;
+        payload_protocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcif")
+    {
+        payload_srcif = value;
+        payload_srcif.value_namespace = name_space;
+        payload_srcif.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session")
+    {
+        session.yfilter = yfilter;
+    }
+    if(value_path == "reqStats")
+    {
+        reqstats.yfilter = yfilter;
+    }
+    if(value_path == "descr")
+    {
+        descr.yfilter = yfilter;
+    }
+    if(value_path == "startTs")
+    {
+        startts.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "rSz")
+    {
+        rsz.yfilter = yfilter;
+    }
+    if(value_path == "rTm")
+    {
+        rtm.yfilter = yfilter;
+    }
+    if(value_path == "peerClassId")
+    {
+        peerclassid.yfilter = yfilter;
+    }
+    if(value_path == "adminSt")
+    {
+        adminst.yfilter = yfilter;
+    }
+    if(value_path == "freq")
+    {
+        freq.yfilter = yfilter;
+    }
+    if(value_path == "profileId")
+    {
+        profileid.yfilter = yfilter;
+    }
+    if(value_path == "dstIp")
+    {
+        dstip.yfilter = yfilter;
+    }
+    if(value_path == "dstIpv6")
+    {
+        dstipv6.yfilter = yfilter;
+    }
+    if(value_path == "dstMAC")
+    {
+        dstmac.yfilter = yfilter;
+    }
+    if(value_path == "srcIp")
+    {
+        srcip.yfilter = yfilter;
+    }
+    if(value_path == "srcIpv6")
+    {
+        srcipv6.yfilter = yfilter;
+    }
+    if(value_path == "dot1q")
+    {
+        dot1q.yfilter = yfilter;
+    }
+    if(value_path == "srcPort")
+    {
+        srcport.yfilter = yfilter;
+    }
+    if(value_path == "dstPort")
+    {
+        dstport.yfilter = yfilter;
+    }
+    if(value_path == "maxTtl")
+    {
+        maxttl.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "vni")
+    {
+        vni.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+    if(value_path == "egressIf")
+    {
+        egressif.yfilter = yfilter;
+    }
+    if(value_path == "macsrcif")
+    {
+        macsrcif.yfilter = yfilter;
+    }
+    if(value_path == "verifyHost")
+    {
+        verifyhost.yfilter = yfilter;
+    }
+    if(value_path == "sessionId")
+    {
+        sessionid.yfilter = yfilter;
+    }
+    if(value_path == "operSt")
+    {
+        operst.yfilter = yfilter;
+    }
+    if(value_path == "payload_dot1q")
+    {
+        payload_dot1q.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcip")
+    {
+        payload_srcip.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcipv6")
+    {
+        payload_srcipv6.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcmac")
+    {
+        payload_srcmac.yfilter = yfilter;
+    }
+    if(value_path == "payload_dstip")
+    {
+        payload_dstip.yfilter = yfilter;
+    }
+    if(value_path == "payload_dstipv6")
+    {
+        payload_dstipv6.yfilter = yfilter;
+    }
+    if(value_path == "payload_dstmac")
+    {
+        payload_dstmac.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcport")
+    {
+        payload_srcport.yfilter = yfilter;
+    }
+    if(value_path == "payload_dstport")
+    {
+        payload_dstport.yfilter = yfilter;
+    }
+    if(value_path == "payload_protocol")
+    {
+        payload_protocol.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcif")
+    {
+        payload_srcif.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ptrnverslt-items" || name == "session" || name == "reqStats" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "adminSt" || name == "freq" || name == "profileId" || name == "dstIp" || name == "dstIpv6" || name == "dstMAC" || name == "srcIp" || name == "srcIpv6" || name == "dot1q" || name == "srcPort" || name == "dstPort" || name == "maxTtl" || name == "vrf" || name == "vni" || name == "timeout" || name == "egressIf" || name == "macsrcif" || name == "verifyHost" || name == "sessionId" || name == "operSt" || name == "payload_dot1q" || name == "payload_srcip" || name == "payload_srcipv6" || name == "payload_srcmac" || name == "payload_dstip" || name == "payload_dstipv6" || name == "payload_dstmac" || name == "payload_srcport" || name == "payload_dstport" || name == "payload_protocol" || name == "payload_srcif")
+        return true;
+    return false;
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PtrnversltItems()
+    :
+    pathtracenverslt_list(this, {"sessionid"})
+{
+
+    yang_name = "ptrnverslt-items"; yang_parent_name = "PathTraceNve-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::~PtrnversltItems()
+{
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pathtracenverslt_list.len(); index++)
+    {
+        if(pathtracenverslt_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::has_operation() const
+{
+    for (std::size_t index=0; index<pathtracenverslt_list.len(); index++)
+    {
+        if(pathtracenverslt_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ptrnverslt-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "PathTraceNveRslt-list")
+    {
+        auto c = std::make_shared<System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList>();
+        c->parent = this;
+        pathtracenverslt_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : pathtracenverslt_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "PathTraceNveRslt-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathTraceNveRsltList()
+    :
+    sessionid{YType::uint16, "sessionId"},
+    dstip{YType::str, "dstIp"},
+    maxhops{YType::uint8, "maxHops"},
+    errorcode{YType::str, "errorCode"},
+    failreason{YType::str, "failReason"},
+    descr{YType::str, "descr"},
+    startts{YType::str, "startTs"},
+    type{YType::enumeration, "type"},
+    rsz{YType::uint16, "rSz"},
+    rtm{YType::str, "rTm"},
+    peerclassid{YType::str, "peerClassId"},
+    qual{YType::str, "qual"},
+    ack{YType::boolean, "ack"},
+    endts{YType::str, "endTs"},
+    operst{YType::enumeration, "operSt"}
+        ,
+    pathptr_items(std::make_shared<System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems>())
+{
+    pathptr_items->parent = this;
+
+    yang_name = "PathTraceNveRslt-list"; yang_parent_name = "ptrnverslt-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::~PathTraceNveRsltList()
+{
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::has_data() const
+{
+    if (is_presence_container) return true;
+    return sessionid.is_set
+	|| dstip.is_set
+	|| maxhops.is_set
+	|| errorcode.is_set
+	|| failreason.is_set
+	|| descr.is_set
+	|| startts.is_set
+	|| type.is_set
+	|| rsz.is_set
+	|| rtm.is_set
+	|| peerclassid.is_set
+	|| qual.is_set
+	|| ack.is_set
+	|| endts.is_set
+	|| operst.is_set
+	|| (pathptr_items !=  nullptr && pathptr_items->has_data());
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sessionid.yfilter)
+	|| ydk::is_set(dstip.yfilter)
+	|| ydk::is_set(maxhops.yfilter)
+	|| ydk::is_set(errorcode.yfilter)
+	|| ydk::is_set(failreason.yfilter)
+	|| ydk::is_set(descr.yfilter)
+	|| ydk::is_set(startts.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(rsz.yfilter)
+	|| ydk::is_set(rtm.yfilter)
+	|| ydk::is_set(peerclassid.yfilter)
+	|| ydk::is_set(qual.yfilter)
+	|| ydk::is_set(ack.yfilter)
+	|| ydk::is_set(endts.yfilter)
+	|| ydk::is_set(operst.yfilter)
+	|| (pathptr_items !=  nullptr && pathptr_items->has_operation());
+}
+
+std::string System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "PathTraceNveRslt-list";
+    ADD_KEY_TOKEN(sessionid, "sessionId");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sessionid.is_set || is_set(sessionid.yfilter)) leaf_name_data.push_back(sessionid.get_name_leafdata());
+    if (dstip.is_set || is_set(dstip.yfilter)) leaf_name_data.push_back(dstip.get_name_leafdata());
+    if (maxhops.is_set || is_set(maxhops.yfilter)) leaf_name_data.push_back(maxhops.get_name_leafdata());
+    if (errorcode.is_set || is_set(errorcode.yfilter)) leaf_name_data.push_back(errorcode.get_name_leafdata());
+    if (failreason.is_set || is_set(failreason.yfilter)) leaf_name_data.push_back(failreason.get_name_leafdata());
+    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
+    if (startts.is_set || is_set(startts.yfilter)) leaf_name_data.push_back(startts.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (rsz.is_set || is_set(rsz.yfilter)) leaf_name_data.push_back(rsz.get_name_leafdata());
+    if (rtm.is_set || is_set(rtm.yfilter)) leaf_name_data.push_back(rtm.get_name_leafdata());
+    if (peerclassid.is_set || is_set(peerclassid.yfilter)) leaf_name_data.push_back(peerclassid.get_name_leafdata());
+    if (qual.is_set || is_set(qual.yfilter)) leaf_name_data.push_back(qual.get_name_leafdata());
+    if (ack.is_set || is_set(ack.yfilter)) leaf_name_data.push_back(ack.get_name_leafdata());
+    if (endts.is_set || is_set(endts.yfilter)) leaf_name_data.push_back(endts.get_name_leafdata());
+    if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pathptr-items")
+    {
+        if(pathptr_items == nullptr)
+        {
+            pathptr_items = std::make_shared<System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems>();
+        }
+        return pathptr_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(pathptr_items != nullptr)
+    {
+        children["pathptr-items"] = pathptr_items;
+    }
+
+    return children;
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sessionId")
+    {
+        sessionid = value;
+        sessionid.value_namespace = name_space;
+        sessionid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dstIp")
+    {
+        dstip = value;
+        dstip.value_namespace = name_space;
+        dstip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maxHops")
+    {
+        maxhops = value;
+        maxhops.value_namespace = name_space;
+        maxhops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "errorCode")
+    {
+        errorcode = value;
+        errorcode.value_namespace = name_space;
+        errorcode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "failReason")
+    {
+        failreason = value;
+        failreason.value_namespace = name_space;
+        failreason.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "descr")
+    {
+        descr = value;
+        descr.value_namespace = name_space;
+        descr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "startTs")
+    {
+        startts = value;
+        startts.value_namespace = name_space;
+        startts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rSz")
+    {
+        rsz = value;
+        rsz.value_namespace = name_space;
+        rsz.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rTm")
+    {
+        rtm = value;
+        rtm.value_namespace = name_space;
+        rtm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peerClassId")
+    {
+        peerclassid = value;
+        peerclassid.value_namespace = name_space;
+        peerclassid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "qual")
+    {
+        qual = value;
+        qual.value_namespace = name_space;
+        qual.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ack")
+    {
+        ack = value;
+        ack.value_namespace = name_space;
+        ack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "endTs")
+    {
+        endts = value;
+        endts.value_namespace = name_space;
+        endts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operSt")
+    {
+        operst = value;
+        operst.value_namespace = name_space;
+        operst.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sessionId")
+    {
+        sessionid.yfilter = yfilter;
+    }
+    if(value_path == "dstIp")
+    {
+        dstip.yfilter = yfilter;
+    }
+    if(value_path == "maxHops")
+    {
+        maxhops.yfilter = yfilter;
+    }
+    if(value_path == "errorCode")
+    {
+        errorcode.yfilter = yfilter;
+    }
+    if(value_path == "failReason")
+    {
+        failreason.yfilter = yfilter;
+    }
+    if(value_path == "descr")
+    {
+        descr.yfilter = yfilter;
+    }
+    if(value_path == "startTs")
+    {
+        startts.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "rSz")
+    {
+        rsz.yfilter = yfilter;
+    }
+    if(value_path == "rTm")
+    {
+        rtm.yfilter = yfilter;
+    }
+    if(value_path == "peerClassId")
+    {
+        peerclassid.yfilter = yfilter;
+    }
+    if(value_path == "qual")
+    {
+        qual.yfilter = yfilter;
+    }
+    if(value_path == "ack")
+    {
+        ack.yfilter = yfilter;
+    }
+    if(value_path == "endTs")
+    {
+        endts.yfilter = yfilter;
+    }
+    if(value_path == "operSt")
+    {
+        operst.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pathptr-items" || name == "sessionId" || name == "dstIp" || name == "maxHops" || name == "errorCode" || name == "failReason" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
+        return true;
+    return false;
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathptrItems()
+    :
+    pathptr_list(this, {"id"})
+{
+
+    yang_name = "pathptr-items"; yang_parent_name = "PathTraceNveRslt-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::~PathptrItems()
+{
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pathptr_list.len(); index++)
+    {
+        if(pathptr_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::has_operation() const
+{
+    for (std::size_t index=0; index<pathptr_list.len(); index++)
+    {
+        if(pathptr_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pathptr-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "PathPtr-list")
+    {
+        auto c = std::make_shared<System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList>();
+        c->parent = this;
+        pathptr_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : pathptr_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "PathPtr-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::PathPtrList()
+    :
+    id{YType::uint8, "id"}
+        ,
+    nodeptr_items(std::make_shared<System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems>())
+{
+    nodeptr_items->parent = this;
+
+    yang_name = "PathPtr-list"; yang_parent_name = "pathptr-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::~PathPtrList()
+{
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set
+	|| (nodeptr_items !=  nullptr && nodeptr_items->has_data());
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| (nodeptr_items !=  nullptr && nodeptr_items->has_operation());
+}
+
+std::string System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "PathPtr-list";
+    ADD_KEY_TOKEN(id, "id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nodeptr-items")
+    {
+        if(nodeptr_items == nullptr)
+        {
+            nodeptr_items = std::make_shared<System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems>();
+        }
+        return nodeptr_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(nodeptr_items != nullptr)
+    {
+        children["nodeptr-items"] = nodeptr_items;
+    }
+
+    return children;
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodeptr-items" || name == "id")
+        return true;
+    return false;
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::NodeptrItems()
+    :
+    nodeptr_list(this, {"order"})
+{
+
+    yang_name = "nodeptr-items"; yang_parent_name = "PathPtr-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::~NodeptrItems()
+{
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nodeptr_list.len(); index++)
+    {
+        if(nodeptr_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::has_operation() const
+{
+    for (std::size_t index=0; index<nodeptr_list.len(); index++)
+    {
+        if(nodeptr_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nodeptr-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "NodePtr-list")
+    {
+        auto c = std::make_shared<System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::NodePtrList>();
+        c->parent = this;
+        nodeptr_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : nodeptr_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "NodePtr-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::NodePtrList::NodePtrList()
+    :
+    order{YType::uint8, "order"},
+    addr{YType::str, "addr"},
+    v6addr{YType::str, "v6addr"},
+    nodename{YType::str, "nodeName"},
+    elapsedtime{YType::str, "elapsedTime"},
+    ingressif{YType::str, "ingressIf"},
+    ingressifstate{YType::str, "ingressIfState"},
+    rxlen{YType::uint64, "rxLen"},
+    rxbytes{YType::uint64, "rxBytes"},
+    rxpktrate{YType::uint64, "rxPktRate"},
+    rxbyterate{YType::uint64, "rxByteRate"},
+    rxload{YType::uint64, "rxLoad"},
+    rxucast{YType::uint64, "rxUcast"},
+    rxmcast{YType::uint64, "rxMcast"},
+    rxbcast{YType::uint64, "rxBcast"},
+    rxdiscards{YType::uint64, "rxDiscards"},
+    rxerrors{YType::uint64, "rxErrors"},
+    rxunknown{YType::uint64, "rxUnknown"},
+    rxbandwidth{YType::uint32, "rxBandwidth"},
+    egressif{YType::str, "egressIf"},
+    egressifstate{YType::str, "egressIfState"},
+    txlen{YType::uint64, "txLen"},
+    txbytes{YType::uint64, "txBytes"},
+    txpktrate{YType::uint64, "txPktRate"},
+    txbyterate{YType::uint64, "txByteRate"},
+    txload{YType::uint64, "txLoad"},
+    txucast{YType::uint64, "txUcast"},
+    txmcast{YType::uint64, "txMcast"},
+    txbcast{YType::uint64, "txBcast"},
+    txdiscards{YType::uint64, "txDiscards"},
+    txerrors{YType::uint64, "txErrors"},
+    txbandwidth{YType::uint32, "txBandwidth"}
+{
+
+    yang_name = "NodePtr-list"; yang_parent_name = "nodeptr-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::NodePtrList::~NodePtrList()
+{
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::NodePtrList::has_data() const
+{
+    if (is_presence_container) return true;
+    return order.is_set
+	|| addr.is_set
+	|| v6addr.is_set
+	|| nodename.is_set
+	|| elapsedtime.is_set
+	|| ingressif.is_set
+	|| ingressifstate.is_set
+	|| rxlen.is_set
+	|| rxbytes.is_set
+	|| rxpktrate.is_set
+	|| rxbyterate.is_set
+	|| rxload.is_set
+	|| rxucast.is_set
+	|| rxmcast.is_set
+	|| rxbcast.is_set
+	|| rxdiscards.is_set
+	|| rxerrors.is_set
+	|| rxunknown.is_set
+	|| rxbandwidth.is_set
+	|| egressif.is_set
+	|| egressifstate.is_set
+	|| txlen.is_set
+	|| txbytes.is_set
+	|| txpktrate.is_set
+	|| txbyterate.is_set
+	|| txload.is_set
+	|| txucast.is_set
+	|| txmcast.is_set
+	|| txbcast.is_set
+	|| txdiscards.is_set
+	|| txerrors.is_set
+	|| txbandwidth.is_set;
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::NodePtrList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(order.yfilter)
+	|| ydk::is_set(addr.yfilter)
+	|| ydk::is_set(v6addr.yfilter)
+	|| ydk::is_set(nodename.yfilter)
+	|| ydk::is_set(elapsedtime.yfilter)
+	|| ydk::is_set(ingressif.yfilter)
+	|| ydk::is_set(ingressifstate.yfilter)
+	|| ydk::is_set(rxlen.yfilter)
+	|| ydk::is_set(rxbytes.yfilter)
+	|| ydk::is_set(rxpktrate.yfilter)
+	|| ydk::is_set(rxbyterate.yfilter)
+	|| ydk::is_set(rxload.yfilter)
+	|| ydk::is_set(rxucast.yfilter)
+	|| ydk::is_set(rxmcast.yfilter)
+	|| ydk::is_set(rxbcast.yfilter)
+	|| ydk::is_set(rxdiscards.yfilter)
+	|| ydk::is_set(rxerrors.yfilter)
+	|| ydk::is_set(rxunknown.yfilter)
+	|| ydk::is_set(rxbandwidth.yfilter)
+	|| ydk::is_set(egressif.yfilter)
+	|| ydk::is_set(egressifstate.yfilter)
+	|| ydk::is_set(txlen.yfilter)
+	|| ydk::is_set(txbytes.yfilter)
+	|| ydk::is_set(txpktrate.yfilter)
+	|| ydk::is_set(txbyterate.yfilter)
+	|| ydk::is_set(txload.yfilter)
+	|| ydk::is_set(txucast.yfilter)
+	|| ydk::is_set(txmcast.yfilter)
+	|| ydk::is_set(txbcast.yfilter)
+	|| ydk::is_set(txdiscards.yfilter)
+	|| ydk::is_set(txerrors.yfilter)
+	|| ydk::is_set(txbandwidth.yfilter);
+}
+
+std::string System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::NodePtrList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "NodePtr-list";
+    ADD_KEY_TOKEN(order, "order");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::NodePtrList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (order.is_set || is_set(order.yfilter)) leaf_name_data.push_back(order.get_name_leafdata());
+    if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
+    if (v6addr.is_set || is_set(v6addr.yfilter)) leaf_name_data.push_back(v6addr.get_name_leafdata());
+    if (nodename.is_set || is_set(nodename.yfilter)) leaf_name_data.push_back(nodename.get_name_leafdata());
+    if (elapsedtime.is_set || is_set(elapsedtime.yfilter)) leaf_name_data.push_back(elapsedtime.get_name_leafdata());
+    if (ingressif.is_set || is_set(ingressif.yfilter)) leaf_name_data.push_back(ingressif.get_name_leafdata());
+    if (ingressifstate.is_set || is_set(ingressifstate.yfilter)) leaf_name_data.push_back(ingressifstate.get_name_leafdata());
+    if (rxlen.is_set || is_set(rxlen.yfilter)) leaf_name_data.push_back(rxlen.get_name_leafdata());
+    if (rxbytes.is_set || is_set(rxbytes.yfilter)) leaf_name_data.push_back(rxbytes.get_name_leafdata());
+    if (rxpktrate.is_set || is_set(rxpktrate.yfilter)) leaf_name_data.push_back(rxpktrate.get_name_leafdata());
+    if (rxbyterate.is_set || is_set(rxbyterate.yfilter)) leaf_name_data.push_back(rxbyterate.get_name_leafdata());
+    if (rxload.is_set || is_set(rxload.yfilter)) leaf_name_data.push_back(rxload.get_name_leafdata());
+    if (rxucast.is_set || is_set(rxucast.yfilter)) leaf_name_data.push_back(rxucast.get_name_leafdata());
+    if (rxmcast.is_set || is_set(rxmcast.yfilter)) leaf_name_data.push_back(rxmcast.get_name_leafdata());
+    if (rxbcast.is_set || is_set(rxbcast.yfilter)) leaf_name_data.push_back(rxbcast.get_name_leafdata());
+    if (rxdiscards.is_set || is_set(rxdiscards.yfilter)) leaf_name_data.push_back(rxdiscards.get_name_leafdata());
+    if (rxerrors.is_set || is_set(rxerrors.yfilter)) leaf_name_data.push_back(rxerrors.get_name_leafdata());
+    if (rxunknown.is_set || is_set(rxunknown.yfilter)) leaf_name_data.push_back(rxunknown.get_name_leafdata());
+    if (rxbandwidth.is_set || is_set(rxbandwidth.yfilter)) leaf_name_data.push_back(rxbandwidth.get_name_leafdata());
+    if (egressif.is_set || is_set(egressif.yfilter)) leaf_name_data.push_back(egressif.get_name_leafdata());
+    if (egressifstate.is_set || is_set(egressifstate.yfilter)) leaf_name_data.push_back(egressifstate.get_name_leafdata());
+    if (txlen.is_set || is_set(txlen.yfilter)) leaf_name_data.push_back(txlen.get_name_leafdata());
+    if (txbytes.is_set || is_set(txbytes.yfilter)) leaf_name_data.push_back(txbytes.get_name_leafdata());
+    if (txpktrate.is_set || is_set(txpktrate.yfilter)) leaf_name_data.push_back(txpktrate.get_name_leafdata());
+    if (txbyterate.is_set || is_set(txbyterate.yfilter)) leaf_name_data.push_back(txbyterate.get_name_leafdata());
+    if (txload.is_set || is_set(txload.yfilter)) leaf_name_data.push_back(txload.get_name_leafdata());
+    if (txucast.is_set || is_set(txucast.yfilter)) leaf_name_data.push_back(txucast.get_name_leafdata());
+    if (txmcast.is_set || is_set(txmcast.yfilter)) leaf_name_data.push_back(txmcast.get_name_leafdata());
+    if (txbcast.is_set || is_set(txbcast.yfilter)) leaf_name_data.push_back(txbcast.get_name_leafdata());
+    if (txdiscards.is_set || is_set(txdiscards.yfilter)) leaf_name_data.push_back(txdiscards.get_name_leafdata());
+    if (txerrors.is_set || is_set(txerrors.yfilter)) leaf_name_data.push_back(txerrors.get_name_leafdata());
+    if (txbandwidth.is_set || is_set(txbandwidth.yfilter)) leaf_name_data.push_back(txbandwidth.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::NodePtrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::NodePtrList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::NodePtrList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "order")
+    {
+        order = value;
+        order.value_namespace = name_space;
+        order.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "addr")
+    {
+        addr = value;
+        addr.value_namespace = name_space;
+        addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "v6addr")
+    {
+        v6addr = value;
+        v6addr.value_namespace = name_space;
+        v6addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nodeName")
+    {
+        nodename = value;
+        nodename.value_namespace = name_space;
+        nodename.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "elapsedTime")
+    {
+        elapsedtime = value;
+        elapsedtime.value_namespace = name_space;
+        elapsedtime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ingressIf")
+    {
+        ingressif = value;
+        ingressif.value_namespace = name_space;
+        ingressif.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ingressIfState")
+    {
+        ingressifstate = value;
+        ingressifstate.value_namespace = name_space;
+        ingressifstate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxLen")
+    {
+        rxlen = value;
+        rxlen.value_namespace = name_space;
+        rxlen.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxBytes")
+    {
+        rxbytes = value;
+        rxbytes.value_namespace = name_space;
+        rxbytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxPktRate")
+    {
+        rxpktrate = value;
+        rxpktrate.value_namespace = name_space;
+        rxpktrate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxByteRate")
+    {
+        rxbyterate = value;
+        rxbyterate.value_namespace = name_space;
+        rxbyterate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxLoad")
+    {
+        rxload = value;
+        rxload.value_namespace = name_space;
+        rxload.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxUcast")
+    {
+        rxucast = value;
+        rxucast.value_namespace = name_space;
+        rxucast.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxMcast")
+    {
+        rxmcast = value;
+        rxmcast.value_namespace = name_space;
+        rxmcast.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxBcast")
+    {
+        rxbcast = value;
+        rxbcast.value_namespace = name_space;
+        rxbcast.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxDiscards")
+    {
+        rxdiscards = value;
+        rxdiscards.value_namespace = name_space;
+        rxdiscards.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxErrors")
+    {
+        rxerrors = value;
+        rxerrors.value_namespace = name_space;
+        rxerrors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxUnknown")
+    {
+        rxunknown = value;
+        rxunknown.value_namespace = name_space;
+        rxunknown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rxBandwidth")
+    {
+        rxbandwidth = value;
+        rxbandwidth.value_namespace = name_space;
+        rxbandwidth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egressIf")
+    {
+        egressif = value;
+        egressif.value_namespace = name_space;
+        egressif.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egressIfState")
+    {
+        egressifstate = value;
+        egressifstate.value_namespace = name_space;
+        egressifstate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "txLen")
+    {
+        txlen = value;
+        txlen.value_namespace = name_space;
+        txlen.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "txBytes")
+    {
+        txbytes = value;
+        txbytes.value_namespace = name_space;
+        txbytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "txPktRate")
+    {
+        txpktrate = value;
+        txpktrate.value_namespace = name_space;
+        txpktrate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "txByteRate")
+    {
+        txbyterate = value;
+        txbyterate.value_namespace = name_space;
+        txbyterate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "txLoad")
+    {
+        txload = value;
+        txload.value_namespace = name_space;
+        txload.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "txUcast")
+    {
+        txucast = value;
+        txucast.value_namespace = name_space;
+        txucast.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "txMcast")
+    {
+        txmcast = value;
+        txmcast.value_namespace = name_space;
+        txmcast.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "txBcast")
+    {
+        txbcast = value;
+        txbcast.value_namespace = name_space;
+        txbcast.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "txDiscards")
+    {
+        txdiscards = value;
+        txdiscards.value_namespace = name_space;
+        txdiscards.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "txErrors")
+    {
+        txerrors = value;
+        txerrors.value_namespace = name_space;
+        txerrors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "txBandwidth")
+    {
+        txbandwidth = value;
+        txbandwidth.value_namespace = name_space;
+        txbandwidth.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::NodePtrList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "order")
+    {
+        order.yfilter = yfilter;
+    }
+    if(value_path == "addr")
+    {
+        addr.yfilter = yfilter;
+    }
+    if(value_path == "v6addr")
+    {
+        v6addr.yfilter = yfilter;
+    }
+    if(value_path == "nodeName")
+    {
+        nodename.yfilter = yfilter;
+    }
+    if(value_path == "elapsedTime")
+    {
+        elapsedtime.yfilter = yfilter;
+    }
+    if(value_path == "ingressIf")
+    {
+        ingressif.yfilter = yfilter;
+    }
+    if(value_path == "ingressIfState")
+    {
+        ingressifstate.yfilter = yfilter;
+    }
+    if(value_path == "rxLen")
+    {
+        rxlen.yfilter = yfilter;
+    }
+    if(value_path == "rxBytes")
+    {
+        rxbytes.yfilter = yfilter;
+    }
+    if(value_path == "rxPktRate")
+    {
+        rxpktrate.yfilter = yfilter;
+    }
+    if(value_path == "rxByteRate")
+    {
+        rxbyterate.yfilter = yfilter;
+    }
+    if(value_path == "rxLoad")
+    {
+        rxload.yfilter = yfilter;
+    }
+    if(value_path == "rxUcast")
+    {
+        rxucast.yfilter = yfilter;
+    }
+    if(value_path == "rxMcast")
+    {
+        rxmcast.yfilter = yfilter;
+    }
+    if(value_path == "rxBcast")
+    {
+        rxbcast.yfilter = yfilter;
+    }
+    if(value_path == "rxDiscards")
+    {
+        rxdiscards.yfilter = yfilter;
+    }
+    if(value_path == "rxErrors")
+    {
+        rxerrors.yfilter = yfilter;
+    }
+    if(value_path == "rxUnknown")
+    {
+        rxunknown.yfilter = yfilter;
+    }
+    if(value_path == "rxBandwidth")
+    {
+        rxbandwidth.yfilter = yfilter;
+    }
+    if(value_path == "egressIf")
+    {
+        egressif.yfilter = yfilter;
+    }
+    if(value_path == "egressIfState")
+    {
+        egressifstate.yfilter = yfilter;
+    }
+    if(value_path == "txLen")
+    {
+        txlen.yfilter = yfilter;
+    }
+    if(value_path == "txBytes")
+    {
+        txbytes.yfilter = yfilter;
+    }
+    if(value_path == "txPktRate")
+    {
+        txpktrate.yfilter = yfilter;
+    }
+    if(value_path == "txByteRate")
+    {
+        txbyterate.yfilter = yfilter;
+    }
+    if(value_path == "txLoad")
+    {
+        txload.yfilter = yfilter;
+    }
+    if(value_path == "txUcast")
+    {
+        txucast.yfilter = yfilter;
+    }
+    if(value_path == "txMcast")
+    {
+        txmcast.yfilter = yfilter;
+    }
+    if(value_path == "txBcast")
+    {
+        txbcast.yfilter = yfilter;
+    }
+    if(value_path == "txDiscards")
+    {
+        txdiscards.yfilter = yfilter;
+    }
+    if(value_path == "txErrors")
+    {
+        txerrors.yfilter = yfilter;
+    }
+    if(value_path == "txBandwidth")
+    {
+        txbandwidth.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::PathptrItems::PathPtrList::NodeptrItems::NodePtrList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "order" || name == "addr" || name == "v6addr" || name == "nodeName" || name == "elapsedTime" || name == "ingressIf" || name == "ingressIfState" || name == "rxLen" || name == "rxBytes" || name == "rxPktRate" || name == "rxByteRate" || name == "rxLoad" || name == "rxUcast" || name == "rxMcast" || name == "rxBcast" || name == "rxDiscards" || name == "rxErrors" || name == "rxUnknown" || name == "rxBandwidth" || name == "egressIf" || name == "egressIfState" || name == "txLen" || name == "txBytes" || name == "txPktRate" || name == "txByteRate" || name == "txLoad" || name == "txUcast" || name == "txMcast" || name == "txBcast" || name == "txDiscards" || name == "txErrors" || name == "txBandwidth")
+        return true;
+    return false;
+}
+
+System::ActionItems::EqptdiagruleItems::EqptdiagruleItems()
+    :
+    ondrule_list(this, {"type"})
+{
+
+    yang_name = "eqptdiagrule-items"; yang_parent_name = "action-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::ActionItems::EqptdiagruleItems::~EqptdiagruleItems()
+{
+}
+
+bool System::ActionItems::EqptdiagruleItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ondrule_list.len(); index++)
+    {
+        if(ondrule_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::EqptdiagruleItems::has_operation() const
+{
+    for (std::size_t index=0; index<ondrule_list.len(); index++)
+    {
+        if(ondrule_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::EqptdiagruleItems::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/action-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::ActionItems::EqptdiagruleItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "eqptdiagrule-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::EqptdiagruleItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::EqptdiagruleItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "OnDRule-list")
+    {
+        auto c = std::make_shared<System::ActionItems::EqptdiagruleItems::OnDRuleList>();
+        c->parent = this;
+        ondrule_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::EqptdiagruleItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : ondrule_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::EqptdiagruleItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::EqptdiagruleItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::EqptdiagruleItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "OnDRule-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::EqptdiagruleItems::OnDRuleList::OnDRuleList()
+    :
+    type{YType::uint16, "type"},
+    name{YType::str, "name"},
+    ownerkey{YType::str, "ownerKey"},
+    ownertag{YType::str, "ownerTag"},
+    descr{YType::str, "descr"},
+    trig{YType::enumeration, "trig"},
+    freq{YType::str, "freq"}
+        ,
+    subj_items(std::make_shared<System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems>())
+{
+    subj_items->parent = this;
+
+    yang_name = "OnDRule-list"; yang_parent_name = "eqptdiagrule-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::ActionItems::EqptdiagruleItems::OnDRuleList::~OnDRuleList()
+{
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| name.is_set
+	|| ownerkey.is_set
+	|| ownertag.is_set
+	|| descr.is_set
+	|| trig.is_set
+	|| freq.is_set
+	|| (subj_items !=  nullptr && subj_items->has_data());
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(ownerkey.yfilter)
+	|| ydk::is_set(ownertag.yfilter)
+	|| ydk::is_set(descr.yfilter)
+	|| ydk::is_set(trig.yfilter)
+	|| ydk::is_set(freq.yfilter)
+	|| (subj_items !=  nullptr && subj_items->has_operation());
+}
+
+std::string System::ActionItems::EqptdiagruleItems::OnDRuleList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/action-items/eqptdiagrule-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::ActionItems::EqptdiagruleItems::OnDRuleList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "OnDRule-list";
+    ADD_KEY_TOKEN(type, "type");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::EqptdiagruleItems::OnDRuleList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (ownerkey.is_set || is_set(ownerkey.yfilter)) leaf_name_data.push_back(ownerkey.get_name_leafdata());
+    if (ownertag.is_set || is_set(ownertag.yfilter)) leaf_name_data.push_back(ownertag.get_name_leafdata());
+    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
+    if (trig.is_set || is_set(trig.yfilter)) leaf_name_data.push_back(trig.get_name_leafdata());
+    if (freq.is_set || is_set(freq.yfilter)) leaf_name_data.push_back(freq.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::EqptdiagruleItems::OnDRuleList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "subj-items")
+    {
+        if(subj_items == nullptr)
+        {
+            subj_items = std::make_shared<System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems>();
+        }
+        return subj_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::EqptdiagruleItems::OnDRuleList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(subj_items != nullptr)
+    {
+        children["subj-items"] = subj_items;
+    }
+
+    return children;
+}
+
+void System::ActionItems::EqptdiagruleItems::OnDRuleList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ownerKey")
+    {
+        ownerkey = value;
+        ownerkey.value_namespace = name_space;
+        ownerkey.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ownerTag")
+    {
+        ownertag = value;
+        ownertag.value_namespace = name_space;
+        ownertag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "descr")
+    {
+        descr = value;
+        descr.value_namespace = name_space;
+        descr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trig")
+    {
+        trig = value;
+        trig.value_namespace = name_space;
+        trig.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "freq")
+    {
+        freq = value;
+        freq.value_namespace = name_space;
+        freq.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::EqptdiagruleItems::OnDRuleList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "ownerKey")
+    {
+        ownerkey.yfilter = yfilter;
+    }
+    if(value_path == "ownerTag")
+    {
+        ownertag.yfilter = yfilter;
+    }
+    if(value_path == "descr")
+    {
+        descr.yfilter = yfilter;
+    }
+    if(value_path == "trig")
+    {
+        trig.yfilter = yfilter;
+    }
+    if(value_path == "freq")
+    {
+        freq.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "subj-items" || name == "type" || name == "name" || name == "ownerKey" || name == "ownerTag" || name == "descr" || name == "trig" || name == "freq")
+        return true;
+    return false;
+}
+
+System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::SubjItems()
+    :
+    ondsubj_list(this, {"odn"})
+{
+
+    yang_name = "subj-items"; yang_parent_name = "OnDRule-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::~SubjItems()
+{
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ondsubj_list.len(); index++)
+    {
+        if(ondsubj_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::has_operation() const
+{
+    for (std::size_t index=0; index<ondsubj_list.len(); index++)
+    {
+        if(ondsubj_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "subj-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "OnDSubj-list")
+    {
+        auto c = std::make_shared<System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList>();
+        c->parent = this;
+        ondsubj_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : ondsubj_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "OnDSubj-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::OnDSubjList()
+    :
+    odn{YType::str, "oDn"},
+    adminst{YType::enumeration, "adminSt"},
+    opk{YType::str, "oPk"},
+    osk{YType::str, "oSk"},
+    operst{YType::enumeration, "operSt"},
+    name{YType::str, "name"}
+        ,
+    rslt_items(std::make_shared<System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems>())
+{
+    rslt_items->parent = this;
+
+    yang_name = "OnDSubj-list"; yang_parent_name = "subj-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::~OnDSubjList()
+{
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::has_data() const
+{
+    if (is_presence_container) return true;
+    return odn.is_set
+	|| adminst.is_set
+	|| opk.is_set
+	|| osk.is_set
+	|| operst.is_set
+	|| name.is_set
+	|| (rslt_items !=  nullptr && rslt_items->has_data());
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(odn.yfilter)
+	|| ydk::is_set(adminst.yfilter)
+	|| ydk::is_set(opk.yfilter)
+	|| ydk::is_set(osk.yfilter)
+	|| ydk::is_set(operst.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| (rslt_items !=  nullptr && rslt_items->has_operation());
+}
+
+std::string System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "OnDSubj-list";
+    ADD_KEY_TOKEN(odn, "oDn");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (odn.is_set || is_set(odn.yfilter)) leaf_name_data.push_back(odn.get_name_leafdata());
+    if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
+    if (opk.is_set || is_set(opk.yfilter)) leaf_name_data.push_back(opk.get_name_leafdata());
+    if (osk.is_set || is_set(osk.yfilter)) leaf_name_data.push_back(osk.get_name_leafdata());
+    if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rslt-items")
+    {
+        if(rslt_items == nullptr)
+        {
+            rslt_items = std::make_shared<System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems>();
+        }
+        return rslt_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(rslt_items != nullptr)
+    {
+        children["rslt-items"] = rslt_items;
+    }
+
+    return children;
+}
+
+void System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "oDn")
+    {
+        odn = value;
+        odn.value_namespace = name_space;
+        odn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adminSt")
+    {
+        adminst = value;
+        adminst.value_namespace = name_space;
+        adminst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oPk")
+    {
+        opk = value;
+        opk.value_namespace = name_space;
+        opk.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oSk")
+    {
+        osk = value;
+        osk.value_namespace = name_space;
+        osk.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operSt")
+    {
+        operst = value;
+        operst.value_namespace = name_space;
+        operst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oDn")
+    {
+        odn.yfilter = yfilter;
+    }
+    if(value_path == "adminSt")
+    {
+        adminst.yfilter = yfilter;
+    }
+    if(value_path == "oPk")
+    {
+        opk.yfilter = yfilter;
+    }
+    if(value_path == "oSk")
+    {
+        osk.yfilter = yfilter;
+    }
+    if(value_path == "operSt")
+    {
+        operst.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rslt-items" || name == "oDn" || name == "adminSt" || name == "oPk" || name == "oSk" || name == "operSt" || name == "name")
+        return true;
+    return false;
+}
+
+System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::RsltItems()
+    :
+    rslt_list(this, {"ts"})
+{
+
+    yang_name = "rslt-items"; yang_parent_name = "OnDSubj-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::~RsltItems()
+{
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rslt_list.len(); index++)
+    {
+        if(rslt_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::has_operation() const
+{
+    for (std::size_t index=0; index<rslt_list.len(); index++)
+    {
+        if(rslt_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rslt-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "Rslt-list")
+    {
+        auto c = std::make_shared<System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::RsltList>();
+        c->parent = this;
+        rslt_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : rslt_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "Rslt-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::RsltList::RsltList()
+    :
+    ts{YType::str, "ts"},
+    trig{YType::enumeration, "trig"},
+    operst{YType::enumeration, "operSt"},
+    qual{YType::str, "qual"},
+    name{YType::str, "name"}
+{
+
+    yang_name = "Rslt-list"; yang_parent_name = "rslt-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::RsltList::~RsltList()
+{
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::RsltList::has_data() const
+{
+    if (is_presence_container) return true;
+    return ts.is_set
+	|| trig.is_set
+	|| operst.is_set
+	|| qual.is_set
+	|| name.is_set;
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::RsltList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ts.yfilter)
+	|| ydk::is_set(trig.yfilter)
+	|| ydk::is_set(operst.yfilter)
+	|| ydk::is_set(qual.yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::RsltList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Rslt-list";
+    ADD_KEY_TOKEN(ts, "ts");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::RsltList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ts.is_set || is_set(ts.yfilter)) leaf_name_data.push_back(ts.get_name_leafdata());
+    if (trig.is_set || is_set(trig.yfilter)) leaf_name_data.push_back(trig.get_name_leafdata());
+    if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
+    if (qual.is_set || is_set(qual.yfilter)) leaf_name_data.push_back(qual.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::RsltList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::RsltList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::RsltList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ts")
+    {
+        ts = value;
+        ts.value_namespace = name_space;
+        ts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trig")
+    {
+        trig = value;
+        trig.value_namespace = name_space;
+        trig.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operSt")
+    {
+        operst = value;
+        operst.value_namespace = name_space;
+        operst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "qual")
+    {
+        qual = value;
+        qual.value_namespace = name_space;
+        qual.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::RsltList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ts")
+    {
+        ts.yfilter = yfilter;
+    }
+    if(value_path == "trig")
+    {
+        trig.yfilter = yfilter;
+    }
+    if(value_path == "operSt")
+    {
+        operst.yfilter = yfilter;
+    }
+    if(value_path == "qual")
+    {
+        qual.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::EqptdiagruleItems::OnDRuleList::SubjItems::OnDSubjList::RsltItems::RsltList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ts" || name == "trig" || name == "operSt" || name == "qual" || name == "name")
+        return true;
+    return false;
+}
+
+System::ActionItems::LsubjItems::LsubjItems()
+    :
+    lsubj_list(this, {"odn"})
+{
+
+    yang_name = "lsubj-items"; yang_parent_name = "action-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::ActionItems::LsubjItems::~LsubjItems()
+{
+}
+
+bool System::ActionItems::LsubjItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsubj_list.len(); index++)
+    {
+        if(lsubj_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::LsubjItems::has_operation() const
+{
+    for (std::size_t index=0; index<lsubj_list.len(); index++)
+    {
+        if(lsubj_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::LsubjItems::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/action-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::ActionItems::LsubjItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lsubj-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::LsubjItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "LSubj-list")
+    {
+        auto c = std::make_shared<System::ActionItems::LsubjItems::LSubjList>();
+        c->parent = this;
+        lsubj_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::LsubjItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : lsubj_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::LsubjItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::LsubjItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::LsubjItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "LSubj-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::LsubjItems::LSubjList::LSubjList()
+    :
+    odn{YType::str, "oDn"},
+    ocl{YType::str, "oCl"}
+        ,
+    idomain_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::IdomainItems>())
+    , pingnve_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingnveItems>())
+    , pingexecfab_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingexecfabItems>())
+    , pingexectn_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingexectnItems>())
+    , pingrsltfab_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingrsltfabItems>())
+    , pingrslttn_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingrslttnItems>())
+    , trexecfab_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrexecfabItems>())
+    , trexectn_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrexectnItems>())
+    , trrsltfab_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems>())
+    , trrslttn_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrrslttnItems>())
+    , imginsttaskrslt_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::ImginsttaskrsltItems>())
+    , trkip_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrkipItems>())
+    , trkmac_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrkmacItems>())
+    , iprslt_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::IprsltItems>())
+    , macrslt_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::MacrsltItems>())
+    , pingnverslt_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingnversltItems>())
+    , tracertnve_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::TracertnveItems>())
+    , pathtracenve_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::PathtracenveItems>())
+    , trnverslt_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrnversltItems>())
+    , ptrnverslt_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::PtrnversltItems>())
+    , rslsubjtodomainref_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::RslSubjToDomainRefItems>())
+{
+    idomain_items->parent = this;
+    pingnve_items->parent = this;
+    pingexecfab_items->parent = this;
+    pingexectn_items->parent = this;
+    pingrsltfab_items->parent = this;
+    pingrslttn_items->parent = this;
+    trexecfab_items->parent = this;
+    trexectn_items->parent = this;
+    trrsltfab_items->parent = this;
+    trrslttn_items->parent = this;
+    imginsttaskrslt_items->parent = this;
+    trkip_items->parent = this;
+    trkmac_items->parent = this;
+    iprslt_items->parent = this;
+    macrslt_items->parent = this;
+    pingnverslt_items->parent = this;
+    tracertnve_items->parent = this;
+    pathtracenve_items->parent = this;
+    trnverslt_items->parent = this;
+    ptrnverslt_items->parent = this;
+    rslsubjtodomainref_items->parent = this;
+
+    yang_name = "LSubj-list"; yang_parent_name = "lsubj-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::ActionItems::LsubjItems::LSubjList::~LSubjList()
+{
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::has_data() const
+{
+    if (is_presence_container) return true;
+    return odn.is_set
+	|| ocl.is_set
+	|| (idomain_items !=  nullptr && idomain_items->has_data())
+	|| (pingnve_items !=  nullptr && pingnve_items->has_data())
+	|| (pingexecfab_items !=  nullptr && pingexecfab_items->has_data())
+	|| (pingexectn_items !=  nullptr && pingexectn_items->has_data())
+	|| (pingrsltfab_items !=  nullptr && pingrsltfab_items->has_data())
+	|| (pingrslttn_items !=  nullptr && pingrslttn_items->has_data())
+	|| (trexecfab_items !=  nullptr && trexecfab_items->has_data())
+	|| (trexectn_items !=  nullptr && trexectn_items->has_data())
+	|| (trrsltfab_items !=  nullptr && trrsltfab_items->has_data())
+	|| (trrslttn_items !=  nullptr && trrslttn_items->has_data())
+	|| (imginsttaskrslt_items !=  nullptr && imginsttaskrslt_items->has_data())
+	|| (trkip_items !=  nullptr && trkip_items->has_data())
+	|| (trkmac_items !=  nullptr && trkmac_items->has_data())
+	|| (iprslt_items !=  nullptr && iprslt_items->has_data())
+	|| (macrslt_items !=  nullptr && macrslt_items->has_data())
+	|| (pingnverslt_items !=  nullptr && pingnverslt_items->has_data())
+	|| (tracertnve_items !=  nullptr && tracertnve_items->has_data())
+	|| (pathtracenve_items !=  nullptr && pathtracenve_items->has_data())
+	|| (trnverslt_items !=  nullptr && trnverslt_items->has_data())
+	|| (ptrnverslt_items !=  nullptr && ptrnverslt_items->has_data())
+	|| (rslsubjtodomainref_items !=  nullptr && rslsubjtodomainref_items->has_data());
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(odn.yfilter)
+	|| ydk::is_set(ocl.yfilter)
+	|| (idomain_items !=  nullptr && idomain_items->has_operation())
+	|| (pingnve_items !=  nullptr && pingnve_items->has_operation())
+	|| (pingexecfab_items !=  nullptr && pingexecfab_items->has_operation())
+	|| (pingexectn_items !=  nullptr && pingexectn_items->has_operation())
+	|| (pingrsltfab_items !=  nullptr && pingrsltfab_items->has_operation())
+	|| (pingrslttn_items !=  nullptr && pingrslttn_items->has_operation())
+	|| (trexecfab_items !=  nullptr && trexecfab_items->has_operation())
+	|| (trexectn_items !=  nullptr && trexectn_items->has_operation())
+	|| (trrsltfab_items !=  nullptr && trrsltfab_items->has_operation())
+	|| (trrslttn_items !=  nullptr && trrslttn_items->has_operation())
+	|| (imginsttaskrslt_items !=  nullptr && imginsttaskrslt_items->has_operation())
+	|| (trkip_items !=  nullptr && trkip_items->has_operation())
+	|| (trkmac_items !=  nullptr && trkmac_items->has_operation())
+	|| (iprslt_items !=  nullptr && iprslt_items->has_operation())
+	|| (macrslt_items !=  nullptr && macrslt_items->has_operation())
+	|| (pingnverslt_items !=  nullptr && pingnverslt_items->has_operation())
+	|| (tracertnve_items !=  nullptr && tracertnve_items->has_operation())
+	|| (pathtracenve_items !=  nullptr && pathtracenve_items->has_operation())
+	|| (trnverslt_items !=  nullptr && trnverslt_items->has_operation())
+	|| (ptrnverslt_items !=  nullptr && ptrnverslt_items->has_operation())
+	|| (rslsubjtodomainref_items !=  nullptr && rslsubjtodomainref_items->has_operation());
+}
+
+std::string System::ActionItems::LsubjItems::LSubjList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/action-items/lsubj-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::ActionItems::LsubjItems::LSubjList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "LSubj-list";
+    ADD_KEY_TOKEN(odn, "oDn");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::LSubjList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (odn.is_set || is_set(odn.yfilter)) leaf_name_data.push_back(odn.get_name_leafdata());
+    if (ocl.is_set || is_set(ocl.yfilter)) leaf_name_data.push_back(ocl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::LsubjItems::LSubjList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "idomain-items")
+    {
+        if(idomain_items == nullptr)
+        {
+            idomain_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::IdomainItems>();
+        }
+        return idomain_items;
+    }
+
+    if(child_yang_name == "pingnve-items")
+    {
+        if(pingnve_items == nullptr)
+        {
+            pingnve_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingnveItems>();
+        }
+        return pingnve_items;
+    }
+
+    if(child_yang_name == "pingexecfab-items")
+    {
+        if(pingexecfab_items == nullptr)
+        {
+            pingexecfab_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingexecfabItems>();
+        }
+        return pingexecfab_items;
+    }
+
+    if(child_yang_name == "pingexectn-items")
+    {
+        if(pingexectn_items == nullptr)
+        {
+            pingexectn_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingexectnItems>();
+        }
+        return pingexectn_items;
+    }
+
+    if(child_yang_name == "pingrsltfab-items")
+    {
+        if(pingrsltfab_items == nullptr)
+        {
+            pingrsltfab_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingrsltfabItems>();
+        }
+        return pingrsltfab_items;
+    }
+
+    if(child_yang_name == "pingrslttn-items")
+    {
+        if(pingrslttn_items == nullptr)
+        {
+            pingrslttn_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingrslttnItems>();
+        }
+        return pingrslttn_items;
+    }
+
+    if(child_yang_name == "trexecfab-items")
+    {
+        if(trexecfab_items == nullptr)
+        {
+            trexecfab_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrexecfabItems>();
+        }
+        return trexecfab_items;
+    }
+
+    if(child_yang_name == "trexectn-items")
+    {
+        if(trexectn_items == nullptr)
+        {
+            trexectn_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrexectnItems>();
+        }
+        return trexectn_items;
+    }
+
+    if(child_yang_name == "trrsltfab-items")
+    {
+        if(trrsltfab_items == nullptr)
+        {
+            trrsltfab_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems>();
+        }
+        return trrsltfab_items;
+    }
+
+    if(child_yang_name == "trrslttn-items")
+    {
+        if(trrslttn_items == nullptr)
+        {
+            trrslttn_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrrslttnItems>();
+        }
+        return trrslttn_items;
+    }
+
+    if(child_yang_name == "imginsttaskrslt-items")
+    {
+        if(imginsttaskrslt_items == nullptr)
+        {
+            imginsttaskrslt_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::ImginsttaskrsltItems>();
+        }
+        return imginsttaskrslt_items;
+    }
+
+    if(child_yang_name == "trkip-items")
+    {
+        if(trkip_items == nullptr)
+        {
+            trkip_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrkipItems>();
+        }
+        return trkip_items;
+    }
+
+    if(child_yang_name == "trkmac-items")
+    {
+        if(trkmac_items == nullptr)
+        {
+            trkmac_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrkmacItems>();
+        }
+        return trkmac_items;
+    }
+
+    if(child_yang_name == "iprslt-items")
+    {
+        if(iprslt_items == nullptr)
+        {
+            iprslt_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::IprsltItems>();
+        }
+        return iprslt_items;
+    }
+
+    if(child_yang_name == "macrslt-items")
+    {
+        if(macrslt_items == nullptr)
+        {
+            macrslt_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::MacrsltItems>();
+        }
+        return macrslt_items;
+    }
+
+    if(child_yang_name == "pingnverslt-items")
+    {
+        if(pingnverslt_items == nullptr)
+        {
+            pingnverslt_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingnversltItems>();
+        }
+        return pingnverslt_items;
+    }
+
+    if(child_yang_name == "tracertnve-items")
+    {
+        if(tracertnve_items == nullptr)
+        {
+            tracertnve_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::TracertnveItems>();
+        }
+        return tracertnve_items;
+    }
+
+    if(child_yang_name == "pathtracenve-items")
+    {
+        if(pathtracenve_items == nullptr)
+        {
+            pathtracenve_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::PathtracenveItems>();
+        }
+        return pathtracenve_items;
+    }
+
+    if(child_yang_name == "trnverslt-items")
+    {
+        if(trnverslt_items == nullptr)
+        {
+            trnverslt_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrnversltItems>();
+        }
+        return trnverslt_items;
+    }
+
+    if(child_yang_name == "ptrnverslt-items")
+    {
+        if(ptrnverslt_items == nullptr)
+        {
+            ptrnverslt_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::PtrnversltItems>();
+        }
+        return ptrnverslt_items;
+    }
+
+    if(child_yang_name == "rslSubjToDomainRef-items")
+    {
+        if(rslsubjtodomainref_items == nullptr)
+        {
+            rslsubjtodomainref_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::RslSubjToDomainRefItems>();
+        }
+        return rslsubjtodomainref_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::LsubjItems::LSubjList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(idomain_items != nullptr)
+    {
+        children["idomain-items"] = idomain_items;
+    }
+
+    if(pingnve_items != nullptr)
+    {
+        children["pingnve-items"] = pingnve_items;
+    }
+
+    if(pingexecfab_items != nullptr)
+    {
+        children["pingexecfab-items"] = pingexecfab_items;
+    }
+
+    if(pingexectn_items != nullptr)
+    {
+        children["pingexectn-items"] = pingexectn_items;
+    }
+
+    if(pingrsltfab_items != nullptr)
+    {
+        children["pingrsltfab-items"] = pingrsltfab_items;
+    }
+
+    if(pingrslttn_items != nullptr)
+    {
+        children["pingrslttn-items"] = pingrslttn_items;
+    }
+
+    if(trexecfab_items != nullptr)
+    {
+        children["trexecfab-items"] = trexecfab_items;
+    }
+
+    if(trexectn_items != nullptr)
+    {
+        children["trexectn-items"] = trexectn_items;
+    }
+
+    if(trrsltfab_items != nullptr)
+    {
+        children["trrsltfab-items"] = trrsltfab_items;
+    }
+
+    if(trrslttn_items != nullptr)
+    {
+        children["trrslttn-items"] = trrslttn_items;
+    }
+
+    if(imginsttaskrslt_items != nullptr)
+    {
+        children["imginsttaskrslt-items"] = imginsttaskrslt_items;
+    }
+
+    if(trkip_items != nullptr)
+    {
+        children["trkip-items"] = trkip_items;
+    }
+
+    if(trkmac_items != nullptr)
+    {
+        children["trkmac-items"] = trkmac_items;
+    }
+
+    if(iprslt_items != nullptr)
+    {
+        children["iprslt-items"] = iprslt_items;
+    }
+
+    if(macrslt_items != nullptr)
+    {
+        children["macrslt-items"] = macrslt_items;
+    }
+
+    if(pingnverslt_items != nullptr)
+    {
+        children["pingnverslt-items"] = pingnverslt_items;
+    }
+
+    if(tracertnve_items != nullptr)
+    {
+        children["tracertnve-items"] = tracertnve_items;
+    }
+
+    if(pathtracenve_items != nullptr)
+    {
+        children["pathtracenve-items"] = pathtracenve_items;
+    }
+
+    if(trnverslt_items != nullptr)
+    {
+        children["trnverslt-items"] = trnverslt_items;
+    }
+
+    if(ptrnverslt_items != nullptr)
+    {
+        children["ptrnverslt-items"] = ptrnverslt_items;
+    }
+
+    if(rslsubjtodomainref_items != nullptr)
+    {
+        children["rslSubjToDomainRef-items"] = rslsubjtodomainref_items;
+    }
+
+    return children;
+}
+
+void System::ActionItems::LsubjItems::LSubjList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "oDn")
+    {
+        odn = value;
+        odn.value_namespace = name_space;
+        odn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oCl")
+    {
+        ocl = value;
+        ocl.value_namespace = name_space;
+        ocl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::LsubjItems::LSubjList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oDn")
+    {
+        odn.yfilter = yfilter;
+    }
+    if(value_path == "oCl")
+    {
+        ocl.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "idomain-items" || name == "pingnve-items" || name == "pingexecfab-items" || name == "pingexectn-items" || name == "pingrsltfab-items" || name == "pingrslttn-items" || name == "trexecfab-items" || name == "trexectn-items" || name == "trrsltfab-items" || name == "trrslttn-items" || name == "imginsttaskrslt-items" || name == "trkip-items" || name == "trkmac-items" || name == "iprslt-items" || name == "macrslt-items" || name == "pingnverslt-items" || name == "tracertnve-items" || name == "pathtracenve-items" || name == "trnverslt-items" || name == "ptrnverslt-items" || name == "rslSubjToDomainRef-items" || name == "oDn" || name == "oCl")
+        return true;
+    return false;
+}
+
+System::ActionItems::LsubjItems::LSubjList::IdomainItems::IdomainItems()
+    :
+    idomainref_list(this, {"name"})
+{
+
+    yang_name = "idomain-items"; yang_parent_name = "LSubj-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::LsubjItems::LSubjList::IdomainItems::~IdomainItems()
+{
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::IdomainItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<idomainref_list.len(); index++)
+    {
+        if(idomainref_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::IdomainItems::has_operation() const
+{
+    for (std::size_t index=0; index<idomainref_list.len(); index++)
+    {
+        if(idomainref_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::LsubjItems::LSubjList::IdomainItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "idomain-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::LSubjList::IdomainItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::LsubjItems::LSubjList::IdomainItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "IDomainRef-list")
+    {
+        auto c = std::make_shared<System::ActionItems::LsubjItems::LSubjList::IdomainItems::IDomainRefList>();
+        c->parent = this;
+        idomainref_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::LsubjItems::LSubjList::IdomainItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : idomainref_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::LsubjItems::LSubjList::IdomainItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::LsubjItems::LSubjList::IdomainItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::IdomainItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "IDomainRef-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::LsubjItems::LSubjList::IdomainItems::IDomainRefList::IDomainRefList()
+    :
+    name{YType::str, "name"},
+    ownerkey{YType::str, "ownerKey"},
+    ownertag{YType::str, "ownerTag"},
+    descr{YType::str, "descr"}
+{
+
+    yang_name = "IDomainRef-list"; yang_parent_name = "idomain-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::LsubjItems::LSubjList::IdomainItems::IDomainRefList::~IDomainRefList()
+{
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::IdomainItems::IDomainRefList::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| ownerkey.is_set
+	|| ownertag.is_set
+	|| descr.is_set;
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::IdomainItems::IDomainRefList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(ownerkey.yfilter)
+	|| ydk::is_set(ownertag.yfilter)
+	|| ydk::is_set(descr.yfilter);
+}
+
+std::string System::ActionItems::LsubjItems::LSubjList::IdomainItems::IDomainRefList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IDomainRef-list";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::LSubjList::IdomainItems::IDomainRefList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (ownerkey.is_set || is_set(ownerkey.yfilter)) leaf_name_data.push_back(ownerkey.get_name_leafdata());
+    if (ownertag.is_set || is_set(ownertag.yfilter)) leaf_name_data.push_back(ownertag.get_name_leafdata());
+    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::LsubjItems::LSubjList::IdomainItems::IDomainRefList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::LsubjItems::LSubjList::IdomainItems::IDomainRefList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void System::ActionItems::LsubjItems::LSubjList::IdomainItems::IDomainRefList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ownerKey")
+    {
+        ownerkey = value;
+        ownerkey.value_namespace = name_space;
+        ownerkey.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ownerTag")
+    {
+        ownertag = value;
+        ownertag.value_namespace = name_space;
+        ownertag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "descr")
+    {
+        descr = value;
+        descr.value_namespace = name_space;
+        descr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::LsubjItems::LSubjList::IdomainItems::IDomainRefList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "ownerKey")
+    {
+        ownerkey.yfilter = yfilter;
+    }
+    if(value_path == "ownerTag")
+    {
+        ownertag.yfilter = yfilter;
+    }
+    if(value_path == "descr")
+    {
+        descr.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::IdomainItems::IDomainRefList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "ownerKey" || name == "ownerTag" || name == "descr")
+        return true;
+    return false;
+}
+
+System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingnveItems()
+    :
+    pingnve_list(this, {"session"})
+{
+
+    yang_name = "pingnve-items"; yang_parent_name = "LSubj-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::LsubjItems::LSubjList::PingnveItems::~PingnveItems()
+{
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::PingnveItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pingnve_list.len(); index++)
+    {
+        if(pingnve_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::PingnveItems::has_operation() const
+{
+    for (std::size_t index=0; index<pingnve_list.len(); index++)
+    {
+        if(pingnve_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::ActionItems::LsubjItems::LSubjList::PingnveItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pingnve-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::LSubjList::PingnveItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::LsubjItems::LSubjList::PingnveItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "PingNve-list")
+    {
+        auto c = std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList>();
+        c->parent = this;
+        pingnve_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::LsubjItems::LSubjList::PingnveItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : pingnve_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void System::ActionItems::LsubjItems::LSubjList::PingnveItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::ActionItems::LsubjItems::LSubjList::PingnveItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::PingnveItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "PingNve-list")
+        return true;
+    return false;
+}
+
+System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::PingNveList()
+    :
+    session{YType::str, "session"},
+    profileid{YType::uint16, "profileId"},
+    dstip{YType::str, "dstIp"},
+    dstipv6{YType::str, "dstIpv6"},
+    dstmac{YType::str, "dstMAC"},
+    srcip{YType::str, "srcIp"},
+    srcipv6{YType::str, "srcIpv6"},
+    dot1q{YType::uint16, "dot1q"},
+    srcport{YType::str, "srcPort"},
+    count{YType::uint16, "count"},
+    timeout{YType::uint8, "timeout"},
+    interval{YType::uint8, "interval"},
+    datapattern{YType::uint16, "dataPattern"},
+    sweepmin{YType::uint16, "sweepmin"},
+    sweepmax{YType::uint16, "sweepmax"},
+    packetsz{YType::uint16, "packetSz"},
+    vrf{YType::str, "vrf"},
+    vni{YType::uint32, "vni"},
+    egressif{YType::str, "egressIf"},
+    macsrcif{YType::str, "macsrcif"},
+    operst{YType::enumeration, "operSt"},
+    sessionid{YType::uint32, "sessionId"},
+    verifyhost{YType::boolean, "verifyHost"},
+    payload_dot1q{YType::uint16, "payload_dot1q"},
+    payload_srcip{YType::str, "payload_srcip"},
+    payload_srcipv6{YType::str, "payload_srcipv6"},
+    payload_srcmac{YType::str, "payload_srcmac"},
+    payload_dstip{YType::str, "payload_dstip"},
+    payload_dstipv6{YType::str, "payload_dstipv6"},
+    payload_dstmac{YType::str, "payload_dstmac"},
+    payload_srcport{YType::uint16, "payload_srcport"},
+    payload_dstport{YType::uint16, "payload_dstport"},
+    payload_protocol{YType::uint16, "payload_protocol"},
+    payload_srcif{YType::str, "payload_srcif"},
+    descr{YType::str, "descr"},
+    startts{YType::str, "startTs"},
+    type{YType::enumeration, "type"},
+    rsz{YType::uint16, "rSz"},
+    rtm{YType::str, "rTm"},
+    peerclassid{YType::str, "peerClassId"},
+    adminst{YType::enumeration, "adminSt"},
+    freq{YType::str, "freq"}
+        ,
+    pingnverslt_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::PingnversltItems>())
+{
+    pingnverslt_items->parent = this;
+
+    yang_name = "PingNve-list"; yang_parent_name = "pingnve-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::~PingNveList()
+{
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::has_data() const
+{
+    if (is_presence_container) return true;
+    return session.is_set
+	|| profileid.is_set
+	|| dstip.is_set
+	|| dstipv6.is_set
+	|| dstmac.is_set
+	|| srcip.is_set
+	|| srcipv6.is_set
+	|| dot1q.is_set
+	|| srcport.is_set
+	|| count.is_set
+	|| timeout.is_set
+	|| interval.is_set
+	|| datapattern.is_set
+	|| sweepmin.is_set
+	|| sweepmax.is_set
+	|| packetsz.is_set
+	|| vrf.is_set
+	|| vni.is_set
+	|| egressif.is_set
+	|| macsrcif.is_set
+	|| operst.is_set
+	|| sessionid.is_set
+	|| verifyhost.is_set
+	|| payload_dot1q.is_set
+	|| payload_srcip.is_set
+	|| payload_srcipv6.is_set
+	|| payload_srcmac.is_set
+	|| payload_dstip.is_set
+	|| payload_dstipv6.is_set
+	|| payload_dstmac.is_set
+	|| payload_srcport.is_set
+	|| payload_dstport.is_set
+	|| payload_protocol.is_set
+	|| payload_srcif.is_set
+	|| descr.is_set
+	|| startts.is_set
+	|| type.is_set
+	|| rsz.is_set
+	|| rtm.is_set
+	|| peerclassid.is_set
+	|| adminst.is_set
+	|| freq.is_set
+	|| (pingnverslt_items !=  nullptr && pingnverslt_items->has_data());
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(session.yfilter)
+	|| ydk::is_set(profileid.yfilter)
+	|| ydk::is_set(dstip.yfilter)
+	|| ydk::is_set(dstipv6.yfilter)
+	|| ydk::is_set(dstmac.yfilter)
+	|| ydk::is_set(srcip.yfilter)
+	|| ydk::is_set(srcipv6.yfilter)
+	|| ydk::is_set(dot1q.yfilter)
+	|| ydk::is_set(srcport.yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(datapattern.yfilter)
+	|| ydk::is_set(sweepmin.yfilter)
+	|| ydk::is_set(sweepmax.yfilter)
+	|| ydk::is_set(packetsz.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(vni.yfilter)
+	|| ydk::is_set(egressif.yfilter)
+	|| ydk::is_set(macsrcif.yfilter)
+	|| ydk::is_set(operst.yfilter)
+	|| ydk::is_set(sessionid.yfilter)
+	|| ydk::is_set(verifyhost.yfilter)
+	|| ydk::is_set(payload_dot1q.yfilter)
+	|| ydk::is_set(payload_srcip.yfilter)
+	|| ydk::is_set(payload_srcipv6.yfilter)
+	|| ydk::is_set(payload_srcmac.yfilter)
+	|| ydk::is_set(payload_dstip.yfilter)
+	|| ydk::is_set(payload_dstipv6.yfilter)
+	|| ydk::is_set(payload_dstmac.yfilter)
+	|| ydk::is_set(payload_srcport.yfilter)
+	|| ydk::is_set(payload_dstport.yfilter)
+	|| ydk::is_set(payload_protocol.yfilter)
+	|| ydk::is_set(payload_srcif.yfilter)
+	|| ydk::is_set(descr.yfilter)
+	|| ydk::is_set(startts.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(rsz.yfilter)
+	|| ydk::is_set(rtm.yfilter)
+	|| ydk::is_set(peerclassid.yfilter)
+	|| ydk::is_set(adminst.yfilter)
+	|| ydk::is_set(freq.yfilter)
+	|| (pingnverslt_items !=  nullptr && pingnverslt_items->has_operation());
+}
+
+std::string System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "PingNve-list";
+    ADD_KEY_TOKEN(session, "session");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session.is_set || is_set(session.yfilter)) leaf_name_data.push_back(session.get_name_leafdata());
+    if (profileid.is_set || is_set(profileid.yfilter)) leaf_name_data.push_back(profileid.get_name_leafdata());
+    if (dstip.is_set || is_set(dstip.yfilter)) leaf_name_data.push_back(dstip.get_name_leafdata());
+    if (dstipv6.is_set || is_set(dstipv6.yfilter)) leaf_name_data.push_back(dstipv6.get_name_leafdata());
+    if (dstmac.is_set || is_set(dstmac.yfilter)) leaf_name_data.push_back(dstmac.get_name_leafdata());
+    if (srcip.is_set || is_set(srcip.yfilter)) leaf_name_data.push_back(srcip.get_name_leafdata());
+    if (srcipv6.is_set || is_set(srcipv6.yfilter)) leaf_name_data.push_back(srcipv6.get_name_leafdata());
+    if (dot1q.is_set || is_set(dot1q.yfilter)) leaf_name_data.push_back(dot1q.get_name_leafdata());
+    if (srcport.is_set || is_set(srcport.yfilter)) leaf_name_data.push_back(srcport.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (datapattern.is_set || is_set(datapattern.yfilter)) leaf_name_data.push_back(datapattern.get_name_leafdata());
+    if (sweepmin.is_set || is_set(sweepmin.yfilter)) leaf_name_data.push_back(sweepmin.get_name_leafdata());
+    if (sweepmax.is_set || is_set(sweepmax.yfilter)) leaf_name_data.push_back(sweepmax.get_name_leafdata());
+    if (packetsz.is_set || is_set(packetsz.yfilter)) leaf_name_data.push_back(packetsz.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (vni.is_set || is_set(vni.yfilter)) leaf_name_data.push_back(vni.get_name_leafdata());
+    if (egressif.is_set || is_set(egressif.yfilter)) leaf_name_data.push_back(egressif.get_name_leafdata());
+    if (macsrcif.is_set || is_set(macsrcif.yfilter)) leaf_name_data.push_back(macsrcif.get_name_leafdata());
+    if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
+    if (sessionid.is_set || is_set(sessionid.yfilter)) leaf_name_data.push_back(sessionid.get_name_leafdata());
+    if (verifyhost.is_set || is_set(verifyhost.yfilter)) leaf_name_data.push_back(verifyhost.get_name_leafdata());
+    if (payload_dot1q.is_set || is_set(payload_dot1q.yfilter)) leaf_name_data.push_back(payload_dot1q.get_name_leafdata());
+    if (payload_srcip.is_set || is_set(payload_srcip.yfilter)) leaf_name_data.push_back(payload_srcip.get_name_leafdata());
+    if (payload_srcipv6.is_set || is_set(payload_srcipv6.yfilter)) leaf_name_data.push_back(payload_srcipv6.get_name_leafdata());
+    if (payload_srcmac.is_set || is_set(payload_srcmac.yfilter)) leaf_name_data.push_back(payload_srcmac.get_name_leafdata());
+    if (payload_dstip.is_set || is_set(payload_dstip.yfilter)) leaf_name_data.push_back(payload_dstip.get_name_leafdata());
+    if (payload_dstipv6.is_set || is_set(payload_dstipv6.yfilter)) leaf_name_data.push_back(payload_dstipv6.get_name_leafdata());
+    if (payload_dstmac.is_set || is_set(payload_dstmac.yfilter)) leaf_name_data.push_back(payload_dstmac.get_name_leafdata());
+    if (payload_srcport.is_set || is_set(payload_srcport.yfilter)) leaf_name_data.push_back(payload_srcport.get_name_leafdata());
+    if (payload_dstport.is_set || is_set(payload_dstport.yfilter)) leaf_name_data.push_back(payload_dstport.get_name_leafdata());
+    if (payload_protocol.is_set || is_set(payload_protocol.yfilter)) leaf_name_data.push_back(payload_protocol.get_name_leafdata());
+    if (payload_srcif.is_set || is_set(payload_srcif.yfilter)) leaf_name_data.push_back(payload_srcif.get_name_leafdata());
+    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
+    if (startts.is_set || is_set(startts.yfilter)) leaf_name_data.push_back(startts.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (rsz.is_set || is_set(rsz.yfilter)) leaf_name_data.push_back(rsz.get_name_leafdata());
+    if (rtm.is_set || is_set(rtm.yfilter)) leaf_name_data.push_back(rtm.get_name_leafdata());
+    if (peerclassid.is_set || is_set(peerclassid.yfilter)) leaf_name_data.push_back(peerclassid.get_name_leafdata());
+    if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
+    if (freq.is_set || is_set(freq.yfilter)) leaf_name_data.push_back(freq.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pingnverslt-items")
+    {
+        if(pingnverslt_items == nullptr)
+        {
+            pingnverslt_items = std::make_shared<System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::PingnversltItems>();
+        }
+        return pingnverslt_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(pingnverslt_items != nullptr)
+    {
+        children["pingnverslt-items"] = pingnverslt_items;
+    }
+
+    return children;
+}
+
+void System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session")
+    {
+        session = value;
+        session.value_namespace = name_space;
+        session.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "profileId")
+    {
+        profileid = value;
+        profileid.value_namespace = name_space;
+        profileid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dstIp")
+    {
+        dstip = value;
+        dstip.value_namespace = name_space;
+        dstip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dstIpv6")
+    {
+        dstipv6 = value;
+        dstipv6.value_namespace = name_space;
+        dstipv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dstMAC")
+    {
+        dstmac = value;
+        dstmac.value_namespace = name_space;
+        dstmac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srcIp")
+    {
+        srcip = value;
+        srcip.value_namespace = name_space;
+        srcip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srcIpv6")
+    {
+        srcipv6 = value;
+        srcipv6.value_namespace = name_space;
+        srcipv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dot1q")
+    {
+        dot1q = value;
+        dot1q.value_namespace = name_space;
+        dot1q.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srcPort")
+    {
+        srcport = value;
+        srcport.value_namespace = name_space;
+        srcport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "count")
+    {
+        count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dataPattern")
+    {
+        datapattern = value;
+        datapattern.value_namespace = name_space;
+        datapattern.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sweepmin")
+    {
+        sweepmin = value;
+        sweepmin.value_namespace = name_space;
+        sweepmin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sweepmax")
+    {
+        sweepmax = value;
+        sweepmax.value_namespace = name_space;
+        sweepmax.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packetSz")
+    {
+        packetsz = value;
+        packetsz.value_namespace = name_space;
+        packetsz.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vni")
+    {
+        vni = value;
+        vni.value_namespace = name_space;
+        vni.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egressIf")
+    {
+        egressif = value;
+        egressif.value_namespace = name_space;
+        egressif.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "macsrcif")
+    {
+        macsrcif = value;
+        macsrcif.value_namespace = name_space;
+        macsrcif.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operSt")
+    {
+        operst = value;
+        operst.value_namespace = name_space;
+        operst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sessionId")
+    {
+        sessionid = value;
+        sessionid.value_namespace = name_space;
+        sessionid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "verifyHost")
+    {
+        verifyhost = value;
+        verifyhost.value_namespace = name_space;
+        verifyhost.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dot1q")
+    {
+        payload_dot1q = value;
+        payload_dot1q.value_namespace = name_space;
+        payload_dot1q.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcip")
+    {
+        payload_srcip = value;
+        payload_srcip.value_namespace = name_space;
+        payload_srcip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcipv6")
+    {
+        payload_srcipv6 = value;
+        payload_srcipv6.value_namespace = name_space;
+        payload_srcipv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcmac")
+    {
+        payload_srcmac = value;
+        payload_srcmac.value_namespace = name_space;
+        payload_srcmac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dstip")
+    {
+        payload_dstip = value;
+        payload_dstip.value_namespace = name_space;
+        payload_dstip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dstipv6")
+    {
+        payload_dstipv6 = value;
+        payload_dstipv6.value_namespace = name_space;
+        payload_dstipv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dstmac")
+    {
+        payload_dstmac = value;
+        payload_dstmac.value_namespace = name_space;
+        payload_dstmac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcport")
+    {
+        payload_srcport = value;
+        payload_srcport.value_namespace = name_space;
+        payload_srcport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_dstport")
+    {
+        payload_dstport = value;
+        payload_dstport.value_namespace = name_space;
+        payload_dstport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_protocol")
+    {
+        payload_protocol = value;
+        payload_protocol.value_namespace = name_space;
+        payload_protocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload_srcif")
+    {
+        payload_srcif = value;
+        payload_srcif.value_namespace = name_space;
+        payload_srcif.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "descr")
+    {
+        descr = value;
+        descr.value_namespace = name_space;
+        descr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "startTs")
+    {
+        startts = value;
+        startts.value_namespace = name_space;
+        startts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rSz")
+    {
+        rsz = value;
+        rsz.value_namespace = name_space;
+        rsz.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rTm")
+    {
+        rtm = value;
+        rtm.value_namespace = name_space;
+        rtm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peerClassId")
+    {
+        peerclassid = value;
+        peerclassid.value_namespace = name_space;
+        peerclassid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adminSt")
+    {
+        adminst = value;
+        adminst.value_namespace = name_space;
+        adminst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "freq")
+    {
+        freq = value;
+        freq.value_namespace = name_space;
+        freq.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session")
+    {
+        session.yfilter = yfilter;
+    }
+    if(value_path == "profileId")
+    {
+        profileid.yfilter = yfilter;
+    }
+    if(value_path == "dstIp")
+    {
+        dstip.yfilter = yfilter;
+    }
+    if(value_path == "dstIpv6")
+    {
+        dstipv6.yfilter = yfilter;
+    }
+    if(value_path == "dstMAC")
+    {
+        dstmac.yfilter = yfilter;
+    }
+    if(value_path == "srcIp")
+    {
+        srcip.yfilter = yfilter;
+    }
+    if(value_path == "srcIpv6")
+    {
+        srcipv6.yfilter = yfilter;
+    }
+    if(value_path == "dot1q")
+    {
+        dot1q.yfilter = yfilter;
+    }
+    if(value_path == "srcPort")
+    {
+        srcport.yfilter = yfilter;
+    }
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "dataPattern")
+    {
+        datapattern.yfilter = yfilter;
+    }
+    if(value_path == "sweepmin")
+    {
+        sweepmin.yfilter = yfilter;
+    }
+    if(value_path == "sweepmax")
+    {
+        sweepmax.yfilter = yfilter;
+    }
+    if(value_path == "packetSz")
+    {
+        packetsz.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "vni")
+    {
+        vni.yfilter = yfilter;
+    }
+    if(value_path == "egressIf")
+    {
+        egressif.yfilter = yfilter;
+    }
+    if(value_path == "macsrcif")
+    {
+        macsrcif.yfilter = yfilter;
+    }
+    if(value_path == "operSt")
+    {
+        operst.yfilter = yfilter;
+    }
+    if(value_path == "sessionId")
+    {
+        sessionid.yfilter = yfilter;
+    }
+    if(value_path == "verifyHost")
+    {
+        verifyhost.yfilter = yfilter;
+    }
+    if(value_path == "payload_dot1q")
+    {
+        payload_dot1q.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcip")
+    {
+        payload_srcip.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcipv6")
+    {
+        payload_srcipv6.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcmac")
+    {
+        payload_srcmac.yfilter = yfilter;
+    }
+    if(value_path == "payload_dstip")
+    {
+        payload_dstip.yfilter = yfilter;
+    }
+    if(value_path == "payload_dstipv6")
+    {
+        payload_dstipv6.yfilter = yfilter;
+    }
+    if(value_path == "payload_dstmac")
+    {
+        payload_dstmac.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcport")
+    {
+        payload_srcport.yfilter = yfilter;
+    }
+    if(value_path == "payload_dstport")
+    {
+        payload_dstport.yfilter = yfilter;
+    }
+    if(value_path == "payload_protocol")
+    {
+        payload_protocol.yfilter = yfilter;
+    }
+    if(value_path == "payload_srcif")
+    {
+        payload_srcif.yfilter = yfilter;
+    }
+    if(value_path == "descr")
+    {
+        descr.yfilter = yfilter;
+    }
+    if(value_path == "startTs")
+    {
+        startts.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "rSz")
+    {
+        rsz.yfilter = yfilter;
+    }
+    if(value_path == "rTm")
+    {
+        rtm.yfilter = yfilter;
+    }
+    if(value_path == "peerClassId")
+    {
+        peerclassid.yfilter = yfilter;
+    }
+    if(value_path == "adminSt")
+    {
+        adminst.yfilter = yfilter;
+    }
+    if(value_path == "freq")
+    {
+        freq.yfilter = yfilter;
+    }
+}
+
+bool System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pingnverslt-items" || name == "session" || name == "profileId" || name == "dstIp" || name == "dstIpv6" || name == "dstMAC" || name == "srcIp" || name == "srcIpv6" || name == "dot1q" || name == "srcPort" || name == "count" || name == "timeout" || name == "interval" || name == "dataPattern" || name == "sweepmin" || name == "sweepmax" || name == "packetSz" || name == "vrf" || name == "vni" || name == "egressIf" || name == "macsrcif" || name == "operSt" || name == "sessionId" || name == "verifyHost" || name == "payload_dot1q" || name == "payload_srcip" || name == "payload_srcipv6" || name == "payload_srcmac" || name == "payload_dstip" || name == "payload_dstipv6" || name == "payload_dstmac" || name == "payload_srcport" || name == "payload_dstport" || name == "payload_protocol" || name == "payload_srcif" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "adminSt" || name == "freq")
+        return true;
+    return false;
+}
+
 System::ActionItems::LsubjItems::LSubjList::PingnveItems::PingNveList::PingnversltItems::PingnversltItems()
     :
     pingnverslt_list(this, {"sessionid"})
@@ -1554,12 +8671,7 @@ System::ActionItems::LsubjItems::LSubjList::PingrsltfabItems::RsltFabList::RsltF
     srcip{YType::str, "srcIp"},
     dstip{YType::str, "dstIp"},
     tenant{YType::str, "tenant"},
-    payloadsz{YType::uint16, "payloadSz"},
-    sentpkts{YType::uint32, "sentPkts"},
-    rcvdpkts{YType::uint32, "rcvdPkts"},
-    minrtt{YType::uint32, "minRtt"},
-    avgrtt{YType::uint32, "avgRtt"},
-    maxrtt{YType::uint32, "maxRtt"}
+    payloadsz{YType::uint16, "payloadSz"}
 {
 
     yang_name = "RsltFab-list"; yang_parent_name = "pingrsltfab-items"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1589,12 +8701,7 @@ bool System::ActionItems::LsubjItems::LSubjList::PingrsltfabItems::RsltFabList::
 	|| srcip.is_set
 	|| dstip.is_set
 	|| tenant.is_set
-	|| payloadsz.is_set
-	|| sentpkts.is_set
-	|| rcvdpkts.is_set
-	|| minrtt.is_set
-	|| avgrtt.is_set
-	|| maxrtt.is_set;
+	|| payloadsz.is_set;
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::PingrsltfabItems::RsltFabList::has_operation() const
@@ -1617,12 +8724,7 @@ bool System::ActionItems::LsubjItems::LSubjList::PingrsltfabItems::RsltFabList::
 	|| ydk::is_set(srcip.yfilter)
 	|| ydk::is_set(dstip.yfilter)
 	|| ydk::is_set(tenant.yfilter)
-	|| ydk::is_set(payloadsz.yfilter)
-	|| ydk::is_set(sentpkts.yfilter)
-	|| ydk::is_set(rcvdpkts.yfilter)
-	|| ydk::is_set(minrtt.yfilter)
-	|| ydk::is_set(avgrtt.yfilter)
-	|| ydk::is_set(maxrtt.yfilter);
+	|| ydk::is_set(payloadsz.yfilter);
 }
 
 std::string System::ActionItems::LsubjItems::LSubjList::PingrsltfabItems::RsltFabList::get_segment_path() const
@@ -1658,11 +8760,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
     if (dstip.is_set || is_set(dstip.yfilter)) leaf_name_data.push_back(dstip.get_name_leafdata());
     if (tenant.is_set || is_set(tenant.yfilter)) leaf_name_data.push_back(tenant.get_name_leafdata());
     if (payloadsz.is_set || is_set(payloadsz.yfilter)) leaf_name_data.push_back(payloadsz.get_name_leafdata());
-    if (sentpkts.is_set || is_set(sentpkts.yfilter)) leaf_name_data.push_back(sentpkts.get_name_leafdata());
-    if (rcvdpkts.is_set || is_set(rcvdpkts.yfilter)) leaf_name_data.push_back(rcvdpkts.get_name_leafdata());
-    if (minrtt.is_set || is_set(minrtt.yfilter)) leaf_name_data.push_back(minrtt.get_name_leafdata());
-    if (avgrtt.is_set || is_set(avgrtt.yfilter)) leaf_name_data.push_back(avgrtt.get_name_leafdata());
-    if (maxrtt.is_set || is_set(maxrtt.yfilter)) leaf_name_data.push_back(maxrtt.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1790,36 +8887,6 @@ void System::ActionItems::LsubjItems::LSubjList::PingrsltfabItems::RsltFabList::
         payloadsz.value_namespace = name_space;
         payloadsz.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sentPkts")
-    {
-        sentpkts = value;
-        sentpkts.value_namespace = name_space;
-        sentpkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rcvdPkts")
-    {
-        rcvdpkts = value;
-        rcvdpkts.value_namespace = name_space;
-        rcvdpkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minRtt")
-    {
-        minrtt = value;
-        minrtt.value_namespace = name_space;
-        minrtt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "avgRtt")
-    {
-        avgrtt = value;
-        avgrtt.value_namespace = name_space;
-        avgrtt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maxRtt")
-    {
-        maxrtt = value;
-        maxrtt.value_namespace = name_space;
-        maxrtt.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void System::ActionItems::LsubjItems::LSubjList::PingrsltfabItems::RsltFabList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1896,31 +8963,11 @@ void System::ActionItems::LsubjItems::LSubjList::PingrsltfabItems::RsltFabList::
     {
         payloadsz.yfilter = yfilter;
     }
-    if(value_path == "sentPkts")
-    {
-        sentpkts.yfilter = yfilter;
-    }
-    if(value_path == "rcvdPkts")
-    {
-        rcvdpkts.yfilter = yfilter;
-    }
-    if(value_path == "minRtt")
-    {
-        minrtt.yfilter = yfilter;
-    }
-    if(value_path == "avgRtt")
-    {
-        avgrtt.yfilter = yfilter;
-    }
-    if(value_path == "maxRtt")
-    {
-        maxrtt.yfilter = yfilter;
-    }
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::PingrsltfabItems::RsltFabList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name" || name == "srcNodeId" || name == "dstNodeId" || name == "startTs" || name == "descr" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt" || name == "vrf" || name == "srcIp" || name == "dstIp" || name == "tenant" || name == "payloadSz" || name == "sentPkts" || name == "rcvdPkts" || name == "minRtt" || name == "avgRtt" || name == "maxRtt")
+    if(name == "name" || name == "srcNodeId" || name == "dstNodeId" || name == "startTs" || name == "descr" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt" || name == "vrf" || name == "srcIp" || name == "dstIp" || name == "tenant" || name == "payloadSz")
         return true;
     return false;
 }
@@ -2036,12 +9083,7 @@ System::ActionItems::LsubjItems::LSubjList::PingrslttnItems::RsltTnList::RsltTnL
     operst{YType::enumeration, "operSt"},
     srcnodeid{YType::uint16, "srcNodeId"},
     vrf{YType::str, "vrf"},
-    payloadsz{YType::uint16, "payloadSz"},
-    sentpkts{YType::uint32, "sentPkts"},
-    rcvdpkts{YType::uint32, "rcvdPkts"},
-    minrtt{YType::uint32, "minRtt"},
-    avgrtt{YType::uint32, "avgRtt"},
-    maxrtt{YType::uint32, "maxRtt"}
+    payloadsz{YType::uint16, "payloadSz"}
 {
 
     yang_name = "RsltTn-list"; yang_parent_name = "pingrslttn-items"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2070,12 +9112,7 @@ bool System::ActionItems::LsubjItems::LSubjList::PingrslttnItems::RsltTnList::ha
 	|| operst.is_set
 	|| srcnodeid.is_set
 	|| vrf.is_set
-	|| payloadsz.is_set
-	|| sentpkts.is_set
-	|| rcvdpkts.is_set
-	|| minrtt.is_set
-	|| avgrtt.is_set
-	|| maxrtt.is_set;
+	|| payloadsz.is_set;
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::PingrslttnItems::RsltTnList::has_operation() const
@@ -2097,12 +9134,7 @@ bool System::ActionItems::LsubjItems::LSubjList::PingrslttnItems::RsltTnList::ha
 	|| ydk::is_set(operst.yfilter)
 	|| ydk::is_set(srcnodeid.yfilter)
 	|| ydk::is_set(vrf.yfilter)
-	|| ydk::is_set(payloadsz.yfilter)
-	|| ydk::is_set(sentpkts.yfilter)
-	|| ydk::is_set(rcvdpkts.yfilter)
-	|| ydk::is_set(minrtt.yfilter)
-	|| ydk::is_set(avgrtt.yfilter)
-	|| ydk::is_set(maxrtt.yfilter);
+	|| ydk::is_set(payloadsz.yfilter);
 }
 
 std::string System::ActionItems::LsubjItems::LSubjList::PingrslttnItems::RsltTnList::get_segment_path() const
@@ -2138,11 +9170,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
     if (srcnodeid.is_set || is_set(srcnodeid.yfilter)) leaf_name_data.push_back(srcnodeid.get_name_leafdata());
     if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
     if (payloadsz.is_set || is_set(payloadsz.yfilter)) leaf_name_data.push_back(payloadsz.get_name_leafdata());
-    if (sentpkts.is_set || is_set(sentpkts.yfilter)) leaf_name_data.push_back(sentpkts.get_name_leafdata());
-    if (rcvdpkts.is_set || is_set(rcvdpkts.yfilter)) leaf_name_data.push_back(rcvdpkts.get_name_leafdata());
-    if (minrtt.is_set || is_set(minrtt.yfilter)) leaf_name_data.push_back(minrtt.get_name_leafdata());
-    if (avgrtt.is_set || is_set(avgrtt.yfilter)) leaf_name_data.push_back(avgrtt.get_name_leafdata());
-    if (maxrtt.is_set || is_set(maxrtt.yfilter)) leaf_name_data.push_back(maxrtt.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2264,36 +9291,6 @@ void System::ActionItems::LsubjItems::LSubjList::PingrslttnItems::RsltTnList::se
         payloadsz.value_namespace = name_space;
         payloadsz.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sentPkts")
-    {
-        sentpkts = value;
-        sentpkts.value_namespace = name_space;
-        sentpkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rcvdPkts")
-    {
-        rcvdpkts = value;
-        rcvdpkts.value_namespace = name_space;
-        rcvdpkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minRtt")
-    {
-        minrtt = value;
-        minrtt.value_namespace = name_space;
-        minrtt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "avgRtt")
-    {
-        avgrtt = value;
-        avgrtt.value_namespace = name_space;
-        avgrtt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maxRtt")
-    {
-        maxrtt = value;
-        maxrtt.value_namespace = name_space;
-        maxrtt.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void System::ActionItems::LsubjItems::LSubjList::PingrslttnItems::RsltTnList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2366,31 +9363,11 @@ void System::ActionItems::LsubjItems::LSubjList::PingrslttnItems::RsltTnList::se
     {
         payloadsz.yfilter = yfilter;
     }
-    if(value_path == "sentPkts")
-    {
-        sentpkts.yfilter = yfilter;
-    }
-    if(value_path == "rcvdPkts")
-    {
-        rcvdpkts.yfilter = yfilter;
-    }
-    if(value_path == "minRtt")
-    {
-        minrtt.yfilter = yfilter;
-    }
-    if(value_path == "avgRtt")
-    {
-        avgrtt.yfilter = yfilter;
-    }
-    if(value_path == "maxRtt")
-    {
-        maxrtt.yfilter = yfilter;
-    }
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::PingrslttnItems::RsltTnList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tenant" || name == "name" || name == "srcIp" || name == "dstIp" || name == "startTs" || name == "descr" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt" || name == "srcNodeId" || name == "vrf" || name == "payloadSz" || name == "sentPkts" || name == "rcvdPkts" || name == "minRtt" || name == "avgRtt" || name == "maxRtt")
+    if(name == "tenant" || name == "name" || name == "srcIp" || name == "dstIp" || name == "startTs" || name == "descr" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt" || name == "srcNodeId" || name == "vrf" || name == "payloadSz")
         return true;
     return false;
 }
@@ -3514,8 +10491,7 @@ System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::RsltFab
     srcip{YType::str, "srcIp"},
     dstip{YType::str, "dstIp"},
     tenant{YType::str, "tenant"},
-    payloadsz{YType::uint16, "payloadSz"},
-    maxhops{YType::uint8, "maxHops"}
+    payloadsz{YType::uint16, "payloadSz"}
         ,
     pgrp_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::PgrpItems>())
 {
@@ -3549,7 +10525,6 @@ bool System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::ha
 	|| dstip.is_set
 	|| tenant.is_set
 	|| payloadsz.is_set
-	|| maxhops.is_set
 	|| (pgrp_items !=  nullptr && pgrp_items->has_data());
 }
 
@@ -3574,7 +10549,6 @@ bool System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::ha
 	|| ydk::is_set(dstip.yfilter)
 	|| ydk::is_set(tenant.yfilter)
 	|| ydk::is_set(payloadsz.yfilter)
-	|| ydk::is_set(maxhops.yfilter)
 	|| (pgrp_items !=  nullptr && pgrp_items->has_operation());
 }
 
@@ -3611,7 +10585,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
     if (dstip.is_set || is_set(dstip.yfilter)) leaf_name_data.push_back(dstip.get_name_leafdata());
     if (tenant.is_set || is_set(tenant.yfilter)) leaf_name_data.push_back(tenant.get_name_leafdata());
     if (payloadsz.is_set || is_set(payloadsz.yfilter)) leaf_name_data.push_back(payloadsz.get_name_leafdata());
-    if (maxhops.is_set || is_set(maxhops.yfilter)) leaf_name_data.push_back(maxhops.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3753,12 +10726,6 @@ void System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::se
         payloadsz.value_namespace = name_space;
         payloadsz.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "maxHops")
-    {
-        maxhops = value;
-        maxhops.value_namespace = name_space;
-        maxhops.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3835,15 +10802,11 @@ void System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::se
     {
         payloadsz.yfilter = yfilter;
     }
-    if(value_path == "maxHops")
-    {
-        maxhops.yfilter = yfilter;
-    }
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pgrp-items" || name == "name" || name == "srcNodeId" || name == "dstNodeId" || name == "startTs" || name == "descr" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt" || name == "vrf" || name == "srcIp" || name == "dstIp" || name == "tenant" || name == "payloadSz" || name == "maxHops")
+    if(name == "pgrp-items" || name == "name" || name == "srcNodeId" || name == "dstNodeId" || name == "startTs" || name == "descr" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt" || name == "vrf" || name == "srcIp" || name == "dstIp" || name == "tenant" || name == "payloadSz")
         return true;
     return false;
 }
@@ -4354,9 +11317,7 @@ bool System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::Pg
 System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::PgrpItems::PathGrpList::PathItems::PathList::NodeItems::NodeList::NodeList()
     :
     order{YType::uint8, "order"},
-    addr{YType::str, "addr"},
-    elapsedtime{YType::str, "elapsedTime"},
-    ifid{YType::str, "ifId"}
+    addr{YType::str, "addr"}
 {
 
     yang_name = "Node-list"; yang_parent_name = "node-items"; is_top_level_class = false; has_list_ancestor = true; 
@@ -4370,18 +11331,14 @@ bool System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::Pg
 {
     if (is_presence_container) return true;
     return order.is_set
-	|| addr.is_set
-	|| elapsedtime.is_set
-	|| ifid.is_set;
+	|| addr.is_set;
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::PgrpItems::PathGrpList::PathItems::PathList::NodeItems::NodeList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(order.yfilter)
-	|| ydk::is_set(addr.yfilter)
-	|| ydk::is_set(elapsedtime.yfilter)
-	|| ydk::is_set(ifid.yfilter);
+	|| ydk::is_set(addr.yfilter);
 }
 
 std::string System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::PgrpItems::PathGrpList::PathItems::PathList::NodeItems::NodeList::get_segment_path() const
@@ -4398,8 +11355,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
 
     if (order.is_set || is_set(order.yfilter)) leaf_name_data.push_back(order.get_name_leafdata());
     if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
-    if (elapsedtime.is_set || is_set(elapsedtime.yfilter)) leaf_name_data.push_back(elapsedtime.get_name_leafdata());
-    if (ifid.is_set || is_set(ifid.yfilter)) leaf_name_data.push_back(ifid.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4431,18 +11386,6 @@ void System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::Pg
         addr.value_namespace = name_space;
         addr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "elapsedTime")
-    {
-        elapsedtime = value;
-        elapsedtime.value_namespace = name_space;
-        elapsedtime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ifId")
-    {
-        ifid = value;
-        ifid.value_namespace = name_space;
-        ifid.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::PgrpItems::PathGrpList::PathItems::PathList::NodeItems::NodeList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4455,19 +11398,11 @@ void System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::Pg
     {
         addr.yfilter = yfilter;
     }
-    if(value_path == "elapsedTime")
-    {
-        elapsedtime.yfilter = yfilter;
-    }
-    if(value_path == "ifId")
-    {
-        ifid.yfilter = yfilter;
-    }
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::TrrsltfabItems::RsltFabList::PgrpItems::PathGrpList::PathItems::PathList::NodeItems::NodeList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "order" || name == "addr" || name == "elapsedTime" || name == "ifId")
+    if(name == "order" || name == "addr")
         return true;
     return false;
 }
@@ -4583,8 +11518,7 @@ System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::RsltTnLis
     operst{YType::enumeration, "operSt"},
     srcnodeid{YType::uint16, "srcNodeId"},
     vrf{YType::str, "vrf"},
-    payloadsz{YType::uint16, "payloadSz"},
-    maxhops{YType::uint8, "maxHops"}
+    payloadsz{YType::uint16, "payloadSz"}
         ,
     pgrp_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::PgrpItems>())
 {
@@ -4617,7 +11551,6 @@ bool System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::has_
 	|| srcnodeid.is_set
 	|| vrf.is_set
 	|| payloadsz.is_set
-	|| maxhops.is_set
 	|| (pgrp_items !=  nullptr && pgrp_items->has_data());
 }
 
@@ -4641,7 +11574,6 @@ bool System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::has_
 	|| ydk::is_set(srcnodeid.yfilter)
 	|| ydk::is_set(vrf.yfilter)
 	|| ydk::is_set(payloadsz.yfilter)
-	|| ydk::is_set(maxhops.yfilter)
 	|| (pgrp_items !=  nullptr && pgrp_items->has_operation());
 }
 
@@ -4678,7 +11610,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
     if (srcnodeid.is_set || is_set(srcnodeid.yfilter)) leaf_name_data.push_back(srcnodeid.get_name_leafdata());
     if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
     if (payloadsz.is_set || is_set(payloadsz.yfilter)) leaf_name_data.push_back(payloadsz.get_name_leafdata());
-    if (maxhops.is_set || is_set(maxhops.yfilter)) leaf_name_data.push_back(maxhops.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4814,12 +11745,6 @@ void System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::set_
         payloadsz.value_namespace = name_space;
         payloadsz.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "maxHops")
-    {
-        maxhops = value;
-        maxhops.value_namespace = name_space;
-        maxhops.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4892,15 +11817,11 @@ void System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::set_
     {
         payloadsz.yfilter = yfilter;
     }
-    if(value_path == "maxHops")
-    {
-        maxhops.yfilter = yfilter;
-    }
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pgrp-items" || name == "tenant" || name == "name" || name == "srcIp" || name == "dstIp" || name == "startTs" || name == "descr" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt" || name == "srcNodeId" || name == "vrf" || name == "payloadSz" || name == "maxHops")
+    if(name == "pgrp-items" || name == "tenant" || name == "name" || name == "srcIp" || name == "dstIp" || name == "startTs" || name == "descr" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt" || name == "srcNodeId" || name == "vrf" || name == "payloadSz")
         return true;
     return false;
 }
@@ -5411,9 +12332,7 @@ bool System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::Pgrp
 System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::PgrpItems::PathGrpList::PathItems::PathList::NodeItems::NodeList::NodeList()
     :
     order{YType::uint8, "order"},
-    addr{YType::str, "addr"},
-    elapsedtime{YType::str, "elapsedTime"},
-    ifid{YType::str, "ifId"}
+    addr{YType::str, "addr"}
 {
 
     yang_name = "Node-list"; yang_parent_name = "node-items"; is_top_level_class = false; has_list_ancestor = true; 
@@ -5427,18 +12346,14 @@ bool System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::Pgrp
 {
     if (is_presence_container) return true;
     return order.is_set
-	|| addr.is_set
-	|| elapsedtime.is_set
-	|| ifid.is_set;
+	|| addr.is_set;
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::PgrpItems::PathGrpList::PathItems::PathList::NodeItems::NodeList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(order.yfilter)
-	|| ydk::is_set(addr.yfilter)
-	|| ydk::is_set(elapsedtime.yfilter)
-	|| ydk::is_set(ifid.yfilter);
+	|| ydk::is_set(addr.yfilter);
 }
 
 std::string System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::PgrpItems::PathGrpList::PathItems::PathList::NodeItems::NodeList::get_segment_path() const
@@ -5455,8 +12370,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
 
     if (order.is_set || is_set(order.yfilter)) leaf_name_data.push_back(order.get_name_leafdata());
     if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
-    if (elapsedtime.is_set || is_set(elapsedtime.yfilter)) leaf_name_data.push_back(elapsedtime.get_name_leafdata());
-    if (ifid.is_set || is_set(ifid.yfilter)) leaf_name_data.push_back(ifid.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5488,18 +12401,6 @@ void System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::Pgrp
         addr.value_namespace = name_space;
         addr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "elapsedTime")
-    {
-        elapsedtime = value;
-        elapsedtime.value_namespace = name_space;
-        elapsedtime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ifId")
-    {
-        ifid = value;
-        ifid.value_namespace = name_space;
-        ifid.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::PgrpItems::PathGrpList::PathItems::PathList::NodeItems::NodeList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -5512,19 +12413,11 @@ void System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::Pgrp
     {
         addr.yfilter = yfilter;
     }
-    if(value_path == "elapsedTime")
-    {
-        elapsedtime.yfilter = yfilter;
-    }
-    if(value_path == "ifId")
-    {
-        ifid.yfilter = yfilter;
-    }
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::TrrslttnItems::RsltTnList::PgrpItems::PathGrpList::PathItems::PathList::NodeItems::NodeList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "order" || name == "addr" || name == "elapsedTime" || name == "ifId")
+    if(name == "order" || name == "addr")
         return true;
     return false;
 }
@@ -5626,7 +12519,6 @@ System::ActionItems::LsubjItems::LSubjList::ImginsttaskrsltItems::RsltList::Rslt
     :
     type{YType::enumeration, "type"},
     startts{YType::str, "startTs"},
-    stage{YType::enumeration, "stage"},
     descr{YType::str, "descr"},
     rsz{YType::uint16, "rSz"},
     rtm{YType::str, "rTm"},
@@ -5649,7 +12541,6 @@ bool System::ActionItems::LsubjItems::LSubjList::ImginsttaskrsltItems::RsltList:
     if (is_presence_container) return true;
     return type.is_set
 	|| startts.is_set
-	|| stage.is_set
 	|| descr.is_set
 	|| rsz.is_set
 	|| rtm.is_set
@@ -5665,7 +12556,6 @@ bool System::ActionItems::LsubjItems::LSubjList::ImginsttaskrsltItems::RsltList:
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
 	|| ydk::is_set(startts.yfilter)
-	|| ydk::is_set(stage.yfilter)
 	|| ydk::is_set(descr.yfilter)
 	|| ydk::is_set(rsz.yfilter)
 	|| ydk::is_set(rtm.yfilter)
@@ -5691,7 +12581,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (startts.is_set || is_set(startts.yfilter)) leaf_name_data.push_back(startts.get_name_leafdata());
-    if (stage.is_set || is_set(stage.yfilter)) leaf_name_data.push_back(stage.get_name_leafdata());
     if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
     if (rsz.is_set || is_set(rsz.yfilter)) leaf_name_data.push_back(rsz.get_name_leafdata());
     if (rtm.is_set || is_set(rtm.yfilter)) leaf_name_data.push_back(rtm.get_name_leafdata());
@@ -5730,12 +12619,6 @@ void System::ActionItems::LsubjItems::LSubjList::ImginsttaskrsltItems::RsltList:
         startts = value;
         startts.value_namespace = name_space;
         startts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "stage")
-    {
-        stage = value;
-        stage.value_namespace = name_space;
-        stage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "descr")
     {
@@ -5797,10 +12680,6 @@ void System::ActionItems::LsubjItems::LSubjList::ImginsttaskrsltItems::RsltList:
     {
         startts.yfilter = yfilter;
     }
-    if(value_path == "stage")
-    {
-        stage.yfilter = yfilter;
-    }
     if(value_path == "descr")
     {
         descr.yfilter = yfilter;
@@ -5837,7 +12716,7 @@ void System::ActionItems::LsubjItems::LSubjList::ImginsttaskrsltItems::RsltList:
 
 bool System::ActionItems::LsubjItems::LSubjList::ImginsttaskrsltItems::RsltList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "type" || name == "startTs" || name == "stage" || name == "descr" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
+    if(name == "type" || name == "startTs" || name == "descr" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
         return true;
     return false;
 }
@@ -6266,8 +13145,7 @@ System::ActionItems::LsubjItems::LSubjList::TrkipItems::IpEpExecList::IprsltItem
     qual{YType::str, "qual"},
     ack{YType::boolean, "ack"},
     endts{YType::str, "endTs"},
-    operst{YType::enumeration, "operSt"},
-    operstqual{YType::enumeration, "operStQual"}
+    operst{YType::enumeration, "operSt"}
         ,
     rsipeprslttoipepatt_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrkipItems::IpEpExecList::IprsltItems::IpEpRsltList::RsipEpRslttoIpEpAttItems>())
 {
@@ -6295,7 +13173,6 @@ bool System::ActionItems::LsubjItems::LSubjList::TrkipItems::IpEpExecList::Iprsl
 	|| ack.is_set
 	|| endts.is_set
 	|| operst.is_set
-	|| operstqual.is_set
 	|| (rsipeprslttoipepatt_items !=  nullptr && rsipeprslttoipepatt_items->has_data());
 }
 
@@ -6314,7 +13191,6 @@ bool System::ActionItems::LsubjItems::LSubjList::TrkipItems::IpEpExecList::Iprsl
 	|| ydk::is_set(ack.yfilter)
 	|| ydk::is_set(endts.yfilter)
 	|| ydk::is_set(operst.yfilter)
-	|| ydk::is_set(operstqual.yfilter)
 	|| (rsipeprslttoipepatt_items !=  nullptr && rsipeprslttoipepatt_items->has_operation());
 }
 
@@ -6343,7 +13219,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
     if (ack.is_set || is_set(ack.yfilter)) leaf_name_data.push_back(ack.get_name_leafdata());
     if (endts.is_set || is_set(endts.yfilter)) leaf_name_data.push_back(endts.get_name_leafdata());
     if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
-    if (operstqual.is_set || is_set(operstqual.yfilter)) leaf_name_data.push_back(operstqual.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6449,12 +13324,6 @@ void System::ActionItems::LsubjItems::LSubjList::TrkipItems::IpEpExecList::Iprsl
         operst.value_namespace = name_space;
         operst.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "operStQual")
-    {
-        operstqual = value;
-        operstqual.value_namespace = name_space;
-        operstqual.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void System::ActionItems::LsubjItems::LSubjList::TrkipItems::IpEpExecList::IprsltItems::IpEpRsltList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6507,15 +13376,11 @@ void System::ActionItems::LsubjItems::LSubjList::TrkipItems::IpEpExecList::Iprsl
     {
         operst.yfilter = yfilter;
     }
-    if(value_path == "operStQual")
-    {
-        operstqual.yfilter = yfilter;
-    }
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::TrkipItems::IpEpExecList::IprsltItems::IpEpRsltList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsipEpRslttoIpEpAtt-items" || name == "addr" || name == "vrf" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt" || name == "operStQual")
+    if(name == "rsipEpRslttoIpEpAtt-items" || name == "addr" || name == "vrf" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
         return true;
     return false;
 }
@@ -7036,8 +13901,7 @@ System::ActionItems::LsubjItems::LSubjList::TrkmacItems::MacEpExecList::MacrsltI
     qual{YType::str, "qual"},
     ack{YType::boolean, "ack"},
     endts{YType::str, "endTs"},
-    operst{YType::enumeration, "operSt"},
-    operstqual{YType::enumeration, "operStQual"}
+    operst{YType::enumeration, "operSt"}
         ,
     rsmaceprslttoipepatt_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::TrkmacItems::MacEpExecList::MacrsltItems::MacEpRsltList::RsmacEpRslttoIpEpAttItems>())
 {
@@ -7065,7 +13929,6 @@ bool System::ActionItems::LsubjItems::LSubjList::TrkmacItems::MacEpExecList::Mac
 	|| ack.is_set
 	|| endts.is_set
 	|| operst.is_set
-	|| operstqual.is_set
 	|| (rsmaceprslttoipepatt_items !=  nullptr && rsmaceprslttoipepatt_items->has_data());
 }
 
@@ -7084,7 +13947,6 @@ bool System::ActionItems::LsubjItems::LSubjList::TrkmacItems::MacEpExecList::Mac
 	|| ydk::is_set(ack.yfilter)
 	|| ydk::is_set(endts.yfilter)
 	|| ydk::is_set(operst.yfilter)
-	|| ydk::is_set(operstqual.yfilter)
 	|| (rsmaceprslttoipepatt_items !=  nullptr && rsmaceprslttoipepatt_items->has_operation());
 }
 
@@ -7113,7 +13975,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
     if (ack.is_set || is_set(ack.yfilter)) leaf_name_data.push_back(ack.get_name_leafdata());
     if (endts.is_set || is_set(endts.yfilter)) leaf_name_data.push_back(endts.get_name_leafdata());
     if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
-    if (operstqual.is_set || is_set(operstqual.yfilter)) leaf_name_data.push_back(operstqual.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7219,12 +14080,6 @@ void System::ActionItems::LsubjItems::LSubjList::TrkmacItems::MacEpExecList::Mac
         operst.value_namespace = name_space;
         operst.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "operStQual")
-    {
-        operstqual = value;
-        operstqual.value_namespace = name_space;
-        operstqual.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void System::ActionItems::LsubjItems::LSubjList::TrkmacItems::MacEpExecList::MacrsltItems::MacEpRsltList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -7277,15 +14132,11 @@ void System::ActionItems::LsubjItems::LSubjList::TrkmacItems::MacEpExecList::Mac
     {
         operst.yfilter = yfilter;
     }
-    if(value_path == "operStQual")
-    {
-        operstqual.yfilter = yfilter;
-    }
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::TrkmacItems::MacEpExecList::MacrsltItems::MacEpRsltList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsmacEpRslttoIpEpAtt-items" || name == "addr" || name == "encap" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt" || name == "operStQual")
+    if(name == "rsmacEpRslttoIpEpAtt-items" || name == "addr" || name == "encap" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
         return true;
     return false;
 }
@@ -7582,8 +14433,7 @@ System::ActionItems::LsubjItems::LSubjList::IprsltItems::IpEpRsltList::IpEpRsltL
     qual{YType::str, "qual"},
     ack{YType::boolean, "ack"},
     endts{YType::str, "endTs"},
-    operst{YType::enumeration, "operSt"},
-    operstqual{YType::enumeration, "operStQual"}
+    operst{YType::enumeration, "operSt"}
         ,
     rsipeprslttoipepatt_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::IprsltItems::IpEpRsltList::RsipEpRslttoIpEpAttItems>())
 {
@@ -7611,7 +14461,6 @@ bool System::ActionItems::LsubjItems::LSubjList::IprsltItems::IpEpRsltList::has_
 	|| ack.is_set
 	|| endts.is_set
 	|| operst.is_set
-	|| operstqual.is_set
 	|| (rsipeprslttoipepatt_items !=  nullptr && rsipeprslttoipepatt_items->has_data());
 }
 
@@ -7630,7 +14479,6 @@ bool System::ActionItems::LsubjItems::LSubjList::IprsltItems::IpEpRsltList::has_
 	|| ydk::is_set(ack.yfilter)
 	|| ydk::is_set(endts.yfilter)
 	|| ydk::is_set(operst.yfilter)
-	|| ydk::is_set(operstqual.yfilter)
 	|| (rsipeprslttoipepatt_items !=  nullptr && rsipeprslttoipepatt_items->has_operation());
 }
 
@@ -7659,7 +14507,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
     if (ack.is_set || is_set(ack.yfilter)) leaf_name_data.push_back(ack.get_name_leafdata());
     if (endts.is_set || is_set(endts.yfilter)) leaf_name_data.push_back(endts.get_name_leafdata());
     if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
-    if (operstqual.is_set || is_set(operstqual.yfilter)) leaf_name_data.push_back(operstqual.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7765,12 +14612,6 @@ void System::ActionItems::LsubjItems::LSubjList::IprsltItems::IpEpRsltList::set_
         operst.value_namespace = name_space;
         operst.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "operStQual")
-    {
-        operstqual = value;
-        operstqual.value_namespace = name_space;
-        operstqual.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void System::ActionItems::LsubjItems::LSubjList::IprsltItems::IpEpRsltList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -7823,15 +14664,11 @@ void System::ActionItems::LsubjItems::LSubjList::IprsltItems::IpEpRsltList::set_
     {
         operst.yfilter = yfilter;
     }
-    if(value_path == "operStQual")
-    {
-        operstqual.yfilter = yfilter;
-    }
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::IprsltItems::IpEpRsltList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsipEpRslttoIpEpAtt-items" || name == "addr" || name == "vrf" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt" || name == "operStQual")
+    if(name == "rsipEpRslttoIpEpAtt-items" || name == "addr" || name == "vrf" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
         return true;
     return false;
 }
@@ -8034,8 +14871,7 @@ System::ActionItems::LsubjItems::LSubjList::MacrsltItems::MacEpRsltList::MacEpRs
     qual{YType::str, "qual"},
     ack{YType::boolean, "ack"},
     endts{YType::str, "endTs"},
-    operst{YType::enumeration, "operSt"},
-    operstqual{YType::enumeration, "operStQual"}
+    operst{YType::enumeration, "operSt"}
         ,
     rsmaceprslttoipepatt_items(std::make_shared<System::ActionItems::LsubjItems::LSubjList::MacrsltItems::MacEpRsltList::RsmacEpRslttoIpEpAttItems>())
 {
@@ -8063,7 +14899,6 @@ bool System::ActionItems::LsubjItems::LSubjList::MacrsltItems::MacEpRsltList::ha
 	|| ack.is_set
 	|| endts.is_set
 	|| operst.is_set
-	|| operstqual.is_set
 	|| (rsmaceprslttoipepatt_items !=  nullptr && rsmaceprslttoipepatt_items->has_data());
 }
 
@@ -8082,7 +14917,6 @@ bool System::ActionItems::LsubjItems::LSubjList::MacrsltItems::MacEpRsltList::ha
 	|| ydk::is_set(ack.yfilter)
 	|| ydk::is_set(endts.yfilter)
 	|| ydk::is_set(operst.yfilter)
-	|| ydk::is_set(operstqual.yfilter)
 	|| (rsmaceprslttoipepatt_items !=  nullptr && rsmaceprslttoipepatt_items->has_operation());
 }
 
@@ -8111,7 +14945,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
     if (ack.is_set || is_set(ack.yfilter)) leaf_name_data.push_back(ack.get_name_leafdata());
     if (endts.is_set || is_set(endts.yfilter)) leaf_name_data.push_back(endts.get_name_leafdata());
     if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
-    if (operstqual.is_set || is_set(operstqual.yfilter)) leaf_name_data.push_back(operstqual.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8217,12 +15050,6 @@ void System::ActionItems::LsubjItems::LSubjList::MacrsltItems::MacEpRsltList::se
         operst.value_namespace = name_space;
         operst.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "operStQual")
-    {
-        operstqual = value;
-        operstqual.value_namespace = name_space;
-        operstqual.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void System::ActionItems::LsubjItems::LSubjList::MacrsltItems::MacEpRsltList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8275,15 +15102,11 @@ void System::ActionItems::LsubjItems::LSubjList::MacrsltItems::MacEpRsltList::se
     {
         operst.yfilter = yfilter;
     }
-    if(value_path == "operStQual")
-    {
-        operstqual.yfilter = yfilter;
-    }
 }
 
 bool System::ActionItems::LsubjItems::LSubjList::MacrsltItems::MacEpRsltList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsmacEpRslttoIpEpAtt-items" || name == "addr" || name == "encap" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt" || name == "operStQual")
+    if(name == "rsmacEpRslttoIpEpAtt-items" || name == "addr" || name == "encap" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
         return true;
     return false;
 }
@@ -9788,7 +16611,6 @@ System::ActionItems::LsubjItems::LSubjList::TracertnveItems::TraceRtNveList::Trn
     :
     sessionid{YType::uint16, "sessionId"},
     dstip{YType::str, "dstIp"},
-    dstipv6{YType::str, "dstIpv6"},
     maxhops{YType::uint8, "maxHops"},
     errorcode{YType::str, "errorCode"},
     failreason{YType::str, "failReason"},
@@ -9819,7 +16641,6 @@ bool System::ActionItems::LsubjItems::LSubjList::TracertnveItems::TraceRtNveList
     if (is_presence_container) return true;
     return sessionid.is_set
 	|| dstip.is_set
-	|| dstipv6.is_set
 	|| maxhops.is_set
 	|| errorcode.is_set
 	|| failreason.is_set
@@ -9841,7 +16662,6 @@ bool System::ActionItems::LsubjItems::LSubjList::TracertnveItems::TraceRtNveList
     return is_set(yfilter)
 	|| ydk::is_set(sessionid.yfilter)
 	|| ydk::is_set(dstip.yfilter)
-	|| ydk::is_set(dstipv6.yfilter)
 	|| ydk::is_set(maxhops.yfilter)
 	|| ydk::is_set(errorcode.yfilter)
 	|| ydk::is_set(failreason.yfilter)
@@ -9872,7 +16692,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
 
     if (sessionid.is_set || is_set(sessionid.yfilter)) leaf_name_data.push_back(sessionid.get_name_leafdata());
     if (dstip.is_set || is_set(dstip.yfilter)) leaf_name_data.push_back(dstip.get_name_leafdata());
-    if (dstipv6.is_set || is_set(dstipv6.yfilter)) leaf_name_data.push_back(dstipv6.get_name_leafdata());
     if (maxhops.is_set || is_set(maxhops.yfilter)) leaf_name_data.push_back(maxhops.get_name_leafdata());
     if (errorcode.is_set || is_set(errorcode.yfilter)) leaf_name_data.push_back(errorcode.get_name_leafdata());
     if (failreason.is_set || is_set(failreason.yfilter)) leaf_name_data.push_back(failreason.get_name_leafdata());
@@ -9930,12 +16749,6 @@ void System::ActionItems::LsubjItems::LSubjList::TracertnveItems::TraceRtNveList
         dstip = value;
         dstip.value_namespace = name_space;
         dstip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dstIpv6")
-    {
-        dstipv6 = value;
-        dstipv6.value_namespace = name_space;
-        dstipv6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maxHops")
     {
@@ -10027,10 +16840,6 @@ void System::ActionItems::LsubjItems::LSubjList::TracertnveItems::TraceRtNveList
     {
         dstip.yfilter = yfilter;
     }
-    if(value_path == "dstIpv6")
-    {
-        dstipv6.yfilter = yfilter;
-    }
     if(value_path == "maxHops")
     {
         maxhops.yfilter = yfilter;
@@ -10087,7 +16896,7 @@ void System::ActionItems::LsubjItems::LSubjList::TracertnveItems::TraceRtNveList
 
 bool System::ActionItems::LsubjItems::LSubjList::TracertnveItems::TraceRtNveList::TrnversltItems::TraceRtNveRsltList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pathtr-items" || name == "sessionId" || name == "dstIp" || name == "dstIpv6" || name == "maxHops" || name == "errorCode" || name == "failReason" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
+    if(name == "pathtr-items" || name == "sessionId" || name == "dstIp" || name == "maxHops" || name == "errorCode" || name == "failReason" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
         return true;
     return false;
 }
@@ -11317,7 +18126,6 @@ System::ActionItems::LsubjItems::LSubjList::PathtracenveItems::PathTraceNveList:
     :
     sessionid{YType::uint16, "sessionId"},
     dstip{YType::str, "dstIp"},
-    dstipv6{YType::str, "dstIpv6"},
     maxhops{YType::uint8, "maxHops"},
     errorcode{YType::str, "errorCode"},
     failreason{YType::str, "failReason"},
@@ -11348,7 +18156,6 @@ bool System::ActionItems::LsubjItems::LSubjList::PathtracenveItems::PathTraceNve
     if (is_presence_container) return true;
     return sessionid.is_set
 	|| dstip.is_set
-	|| dstipv6.is_set
 	|| maxhops.is_set
 	|| errorcode.is_set
 	|| failreason.is_set
@@ -11370,7 +18177,6 @@ bool System::ActionItems::LsubjItems::LSubjList::PathtracenveItems::PathTraceNve
     return is_set(yfilter)
 	|| ydk::is_set(sessionid.yfilter)
 	|| ydk::is_set(dstip.yfilter)
-	|| ydk::is_set(dstipv6.yfilter)
 	|| ydk::is_set(maxhops.yfilter)
 	|| ydk::is_set(errorcode.yfilter)
 	|| ydk::is_set(failreason.yfilter)
@@ -11401,7 +18207,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
 
     if (sessionid.is_set || is_set(sessionid.yfilter)) leaf_name_data.push_back(sessionid.get_name_leafdata());
     if (dstip.is_set || is_set(dstip.yfilter)) leaf_name_data.push_back(dstip.get_name_leafdata());
-    if (dstipv6.is_set || is_set(dstipv6.yfilter)) leaf_name_data.push_back(dstipv6.get_name_leafdata());
     if (maxhops.is_set || is_set(maxhops.yfilter)) leaf_name_data.push_back(maxhops.get_name_leafdata());
     if (errorcode.is_set || is_set(errorcode.yfilter)) leaf_name_data.push_back(errorcode.get_name_leafdata());
     if (failreason.is_set || is_set(failreason.yfilter)) leaf_name_data.push_back(failreason.get_name_leafdata());
@@ -11459,12 +18264,6 @@ void System::ActionItems::LsubjItems::LSubjList::PathtracenveItems::PathTraceNve
         dstip = value;
         dstip.value_namespace = name_space;
         dstip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dstIpv6")
-    {
-        dstipv6 = value;
-        dstipv6.value_namespace = name_space;
-        dstipv6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maxHops")
     {
@@ -11556,10 +18355,6 @@ void System::ActionItems::LsubjItems::LSubjList::PathtracenveItems::PathTraceNve
     {
         dstip.yfilter = yfilter;
     }
-    if(value_path == "dstIpv6")
-    {
-        dstipv6.yfilter = yfilter;
-    }
     if(value_path == "maxHops")
     {
         maxhops.yfilter = yfilter;
@@ -11616,7 +18411,7 @@ void System::ActionItems::LsubjItems::LSubjList::PathtracenveItems::PathTraceNve
 
 bool System::ActionItems::LsubjItems::LSubjList::PathtracenveItems::PathTraceNveList::PtrnversltItems::PathTraceNveRsltList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pathptr-items" || name == "sessionId" || name == "dstIp" || name == "dstIpv6" || name == "maxHops" || name == "errorCode" || name == "failReason" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
+    if(name == "pathptr-items" || name == "sessionId" || name == "dstIp" || name == "maxHops" || name == "errorCode" || name == "failReason" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
         return true;
     return false;
 }
@@ -12515,7 +19310,6 @@ System::ActionItems::LsubjItems::LSubjList::TrnversltItems::TraceRtNveRsltList::
     :
     sessionid{YType::uint16, "sessionId"},
     dstip{YType::str, "dstIp"},
-    dstipv6{YType::str, "dstIpv6"},
     maxhops{YType::uint8, "maxHops"},
     errorcode{YType::str, "errorCode"},
     failreason{YType::str, "failReason"},
@@ -12546,7 +19340,6 @@ bool System::ActionItems::LsubjItems::LSubjList::TrnversltItems::TraceRtNveRsltL
     if (is_presence_container) return true;
     return sessionid.is_set
 	|| dstip.is_set
-	|| dstipv6.is_set
 	|| maxhops.is_set
 	|| errorcode.is_set
 	|| failreason.is_set
@@ -12568,7 +19361,6 @@ bool System::ActionItems::LsubjItems::LSubjList::TrnversltItems::TraceRtNveRsltL
     return is_set(yfilter)
 	|| ydk::is_set(sessionid.yfilter)
 	|| ydk::is_set(dstip.yfilter)
-	|| ydk::is_set(dstipv6.yfilter)
 	|| ydk::is_set(maxhops.yfilter)
 	|| ydk::is_set(errorcode.yfilter)
 	|| ydk::is_set(failreason.yfilter)
@@ -12599,7 +19391,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
 
     if (sessionid.is_set || is_set(sessionid.yfilter)) leaf_name_data.push_back(sessionid.get_name_leafdata());
     if (dstip.is_set || is_set(dstip.yfilter)) leaf_name_data.push_back(dstip.get_name_leafdata());
-    if (dstipv6.is_set || is_set(dstipv6.yfilter)) leaf_name_data.push_back(dstipv6.get_name_leafdata());
     if (maxhops.is_set || is_set(maxhops.yfilter)) leaf_name_data.push_back(maxhops.get_name_leafdata());
     if (errorcode.is_set || is_set(errorcode.yfilter)) leaf_name_data.push_back(errorcode.get_name_leafdata());
     if (failreason.is_set || is_set(failreason.yfilter)) leaf_name_data.push_back(failreason.get_name_leafdata());
@@ -12657,12 +19448,6 @@ void System::ActionItems::LsubjItems::LSubjList::TrnversltItems::TraceRtNveRsltL
         dstip = value;
         dstip.value_namespace = name_space;
         dstip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dstIpv6")
-    {
-        dstipv6 = value;
-        dstipv6.value_namespace = name_space;
-        dstipv6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maxHops")
     {
@@ -12754,10 +19539,6 @@ void System::ActionItems::LsubjItems::LSubjList::TrnversltItems::TraceRtNveRsltL
     {
         dstip.yfilter = yfilter;
     }
-    if(value_path == "dstIpv6")
-    {
-        dstipv6.yfilter = yfilter;
-    }
     if(value_path == "maxHops")
     {
         maxhops.yfilter = yfilter;
@@ -12814,7 +19595,7 @@ void System::ActionItems::LsubjItems::LSubjList::TrnversltItems::TraceRtNveRsltL
 
 bool System::ActionItems::LsubjItems::LSubjList::TrnversltItems::TraceRtNveRsltList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pathtr-items" || name == "sessionId" || name == "dstIp" || name == "dstIpv6" || name == "maxHops" || name == "errorCode" || name == "failReason" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
+    if(name == "pathtr-items" || name == "sessionId" || name == "dstIp" || name == "maxHops" || name == "errorCode" || name == "failReason" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
         return true;
     return false;
 }
@@ -13321,7 +20102,6 @@ System::ActionItems::LsubjItems::LSubjList::PtrnversltItems::PathTraceNveRsltLis
     :
     sessionid{YType::uint16, "sessionId"},
     dstip{YType::str, "dstIp"},
-    dstipv6{YType::str, "dstIpv6"},
     maxhops{YType::uint8, "maxHops"},
     errorcode{YType::str, "errorCode"},
     failreason{YType::str, "failReason"},
@@ -13352,7 +20132,6 @@ bool System::ActionItems::LsubjItems::LSubjList::PtrnversltItems::PathTraceNveRs
     if (is_presence_container) return true;
     return sessionid.is_set
 	|| dstip.is_set
-	|| dstipv6.is_set
 	|| maxhops.is_set
 	|| errorcode.is_set
 	|| failreason.is_set
@@ -13374,7 +20153,6 @@ bool System::ActionItems::LsubjItems::LSubjList::PtrnversltItems::PathTraceNveRs
     return is_set(yfilter)
 	|| ydk::is_set(sessionid.yfilter)
 	|| ydk::is_set(dstip.yfilter)
-	|| ydk::is_set(dstipv6.yfilter)
 	|| ydk::is_set(maxhops.yfilter)
 	|| ydk::is_set(errorcode.yfilter)
 	|| ydk::is_set(failreason.yfilter)
@@ -13405,7 +20183,6 @@ std::vector<std::pair<std::string, LeafData> > System::ActionItems::LsubjItems::
 
     if (sessionid.is_set || is_set(sessionid.yfilter)) leaf_name_data.push_back(sessionid.get_name_leafdata());
     if (dstip.is_set || is_set(dstip.yfilter)) leaf_name_data.push_back(dstip.get_name_leafdata());
-    if (dstipv6.is_set || is_set(dstipv6.yfilter)) leaf_name_data.push_back(dstipv6.get_name_leafdata());
     if (maxhops.is_set || is_set(maxhops.yfilter)) leaf_name_data.push_back(maxhops.get_name_leafdata());
     if (errorcode.is_set || is_set(errorcode.yfilter)) leaf_name_data.push_back(errorcode.get_name_leafdata());
     if (failreason.is_set || is_set(failreason.yfilter)) leaf_name_data.push_back(failreason.get_name_leafdata());
@@ -13463,12 +20240,6 @@ void System::ActionItems::LsubjItems::LSubjList::PtrnversltItems::PathTraceNveRs
         dstip = value;
         dstip.value_namespace = name_space;
         dstip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dstIpv6")
-    {
-        dstipv6 = value;
-        dstipv6.value_namespace = name_space;
-        dstipv6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maxHops")
     {
@@ -13560,10 +20331,6 @@ void System::ActionItems::LsubjItems::LSubjList::PtrnversltItems::PathTraceNveRs
     {
         dstip.yfilter = yfilter;
     }
-    if(value_path == "dstIpv6")
-    {
-        dstipv6.yfilter = yfilter;
-    }
     if(value_path == "maxHops")
     {
         maxhops.yfilter = yfilter;
@@ -13620,7 +20387,7 @@ void System::ActionItems::LsubjItems::LSubjList::PtrnversltItems::PathTraceNveRs
 
 bool System::ActionItems::LsubjItems::LSubjList::PtrnversltItems::PathTraceNveRsltList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pathptr-items" || name == "sessionId" || name == "dstIp" || name == "dstIpv6" || name == "maxHops" || name == "errorCode" || name == "failReason" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
+    if(name == "pathptr-items" || name == "sessionId" || name == "dstIp" || name == "maxHops" || name == "errorCode" || name == "failReason" || name == "descr" || name == "startTs" || name == "type" || name == "rSz" || name == "rTm" || name == "peerClassId" || name == "qual" || name == "ack" || name == "endTs" || name == "operSt")
         return true;
     return false;
 }
@@ -15310,6 +22077,2201 @@ void System::RtmaintFwinstlsrcItems::RtMaintFwinstlsrcList::set_filter(const std
 bool System::RtmaintFwinstlsrcItems::RtMaintFwinstlsrcList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tDn" || name == "tCl")
+        return true;
+    return false;
+}
+
+Cli::Cli()
+    :
+    input(std::make_shared<Cli::Input>())
+    , output(std::make_shared<Cli::Output>())
+{
+    input->parent = this;
+    output->parent = this;
+
+    yang_name = "cli"; yang_parent_name = "Cisco-NX-OS-device"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+Cli::~Cli()
+{
+}
+
+bool Cli::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
+}
+
+bool Cli::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
+}
+
+std::string Cli::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:cli";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Cli::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Cli::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<Cli::Input>();
+        }
+        return input;
+    }
+
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<Cli::Output>();
+        }
+        return output;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Cli::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        children["output"] = output;
+    }
+
+    return children;
+}
+
+void Cli::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Cli::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> Cli::clone_ptr() const
+{
+    return std::make_shared<Cli>();
+}
+
+std::string Cli::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_nx_os_models_path;
+}
+
+std::string Cli::get_bundle_name() const
+{
+    return "cisco_nx_os";
+}
+
+augment_capabilities_function Cli::get_augment_capabilities_function() const
+{
+    return cisco_nx_os_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Cli::get_namespace_identity_lookup() const
+{
+    return cisco_nx_os_namespace_identity_lookup;
+}
+
+bool Cli::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+Cli::Input::Input()
+    :
+    mode{YType::enumeration, "mode"},
+    cmdline{YType::str, "cmdline"}
+{
+
+    yang_name = "input"; yang_parent_name = "cli"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Cli::Input::~Input()
+{
+}
+
+bool Cli::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    return mode.is_set
+	|| cmdline.is_set;
+}
+
+bool Cli::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(cmdline.yfilter);
+}
+
+std::string Cli::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:cli/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Cli::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Cli::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (cmdline.is_set || is_set(cmdline.yfilter)) leaf_name_data.push_back(cmdline.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Cli::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Cli::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Cli::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mode")
+    {
+        mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cmdline")
+    {
+        cmdline = value;
+        cmdline.value_namespace = name_space;
+        cmdline.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Cli::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "cmdline")
+    {
+        cmdline.yfilter = yfilter;
+    }
+}
+
+bool Cli::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mode" || name == "cmdline")
+        return true;
+    return false;
+}
+
+Cli::Output::Output()
+    :
+    message{YType::str, "message"},
+    data{YType::str, "data"}
+{
+
+    yang_name = "output"; yang_parent_name = "cli"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Cli::Output::~Output()
+{
+}
+
+bool Cli::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return message.is_set
+	|| data.is_set;
+}
+
+bool Cli::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(message.yfilter)
+	|| ydk::is_set(data.yfilter);
+}
+
+std::string Cli::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:cli/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Cli::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Cli::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Cli::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Cli::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Cli::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "message")
+    {
+        message = value;
+        message.value_namespace = name_space;
+        message.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Cli::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "message")
+    {
+        message.yfilter = yfilter;
+    }
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+}
+
+bool Cli::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "message" || name == "data")
+        return true;
+    return false;
+}
+
+InstallAllNxos::InstallAllNxos()
+    :
+    input(std::make_shared<InstallAllNxos::Input>())
+{
+    input->parent = this;
+
+    yang_name = "install_all_nxos"; yang_parent_name = "Cisco-NX-OS-device"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+InstallAllNxos::~InstallAllNxos()
+{
+}
+
+bool InstallAllNxos::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data());
+}
+
+bool InstallAllNxos::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string InstallAllNxos::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_all_nxos";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallAllNxos::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallAllNxos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<InstallAllNxos::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallAllNxos::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void InstallAllNxos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InstallAllNxos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> InstallAllNxos::clone_ptr() const
+{
+    return std::make_shared<InstallAllNxos>();
+}
+
+std::string InstallAllNxos::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_nx_os_models_path;
+}
+
+std::string InstallAllNxos::get_bundle_name() const
+{
+    return "cisco_nx_os";
+}
+
+augment_capabilities_function InstallAllNxos::get_augment_capabilities_function() const
+{
+    return cisco_nx_os_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> InstallAllNxos::get_namespace_identity_lookup() const
+{
+    return cisco_nx_os_namespace_identity_lookup;
+}
+
+bool InstallAllNxos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+InstallAllNxos::Input::Input()
+    :
+    nxos{YType::str, "nxos"},
+    no_reload{YType::empty, "no-reload"},
+    noswitchover{YType::empty, "noswitchover"},
+    bios{YType::empty, "bios"},
+    no_save{YType::empty, "no-save"},
+    bios_force{YType::empty, "bios-force"},
+    non_interruptive{YType::empty, "non-interruptive"}
+{
+
+    yang_name = "input"; yang_parent_name = "install_all_nxos"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallAllNxos::Input::~Input()
+{
+}
+
+bool InstallAllNxos::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    return nxos.is_set
+	|| no_reload.is_set
+	|| noswitchover.is_set
+	|| bios.is_set
+	|| no_save.is_set
+	|| bios_force.is_set
+	|| non_interruptive.is_set;
+}
+
+bool InstallAllNxos::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nxos.yfilter)
+	|| ydk::is_set(no_reload.yfilter)
+	|| ydk::is_set(noswitchover.yfilter)
+	|| ydk::is_set(bios.yfilter)
+	|| ydk::is_set(no_save.yfilter)
+	|| ydk::is_set(bios_force.yfilter)
+	|| ydk::is_set(non_interruptive.yfilter);
+}
+
+std::string InstallAllNxos::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_all_nxos/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallAllNxos::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallAllNxos::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nxos.is_set || is_set(nxos.yfilter)) leaf_name_data.push_back(nxos.get_name_leafdata());
+    if (no_reload.is_set || is_set(no_reload.yfilter)) leaf_name_data.push_back(no_reload.get_name_leafdata());
+    if (noswitchover.is_set || is_set(noswitchover.yfilter)) leaf_name_data.push_back(noswitchover.get_name_leafdata());
+    if (bios.is_set || is_set(bios.yfilter)) leaf_name_data.push_back(bios.get_name_leafdata());
+    if (no_save.is_set || is_set(no_save.yfilter)) leaf_name_data.push_back(no_save.get_name_leafdata());
+    if (bios_force.is_set || is_set(bios_force.yfilter)) leaf_name_data.push_back(bios_force.get_name_leafdata());
+    if (non_interruptive.is_set || is_set(non_interruptive.yfilter)) leaf_name_data.push_back(non_interruptive.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallAllNxos::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallAllNxos::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InstallAllNxos::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nxos")
+    {
+        nxos = value;
+        nxos.value_namespace = name_space;
+        nxos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-reload")
+    {
+        no_reload = value;
+        no_reload.value_namespace = name_space;
+        no_reload.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "noswitchover")
+    {
+        noswitchover = value;
+        noswitchover.value_namespace = name_space;
+        noswitchover.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bios")
+    {
+        bios = value;
+        bios.value_namespace = name_space;
+        bios.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-save")
+    {
+        no_save = value;
+        no_save.value_namespace = name_space;
+        no_save.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bios-force")
+    {
+        bios_force = value;
+        bios_force.value_namespace = name_space;
+        bios_force.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "non-interruptive")
+    {
+        non_interruptive = value;
+        non_interruptive.value_namespace = name_space;
+        non_interruptive.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallAllNxos::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nxos")
+    {
+        nxos.yfilter = yfilter;
+    }
+    if(value_path == "no-reload")
+    {
+        no_reload.yfilter = yfilter;
+    }
+    if(value_path == "noswitchover")
+    {
+        noswitchover.yfilter = yfilter;
+    }
+    if(value_path == "bios")
+    {
+        bios.yfilter = yfilter;
+    }
+    if(value_path == "no-save")
+    {
+        no_save.yfilter = yfilter;
+    }
+    if(value_path == "bios-force")
+    {
+        bios_force.yfilter = yfilter;
+    }
+    if(value_path == "non-interruptive")
+    {
+        non_interruptive.yfilter = yfilter;
+    }
+}
+
+bool InstallAllNxos::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nxos" || name == "no-reload" || name == "noswitchover" || name == "bios" || name == "no-save" || name == "bios-force" || name == "non-interruptive")
+        return true;
+    return false;
+}
+
+InstallForceAllNxos::InstallForceAllNxos()
+    :
+    input(std::make_shared<InstallForceAllNxos::Input>())
+{
+    input->parent = this;
+
+    yang_name = "install_force_all_nxos"; yang_parent_name = "Cisco-NX-OS-device"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+InstallForceAllNxos::~InstallForceAllNxos()
+{
+}
+
+bool InstallForceAllNxos::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data());
+}
+
+bool InstallForceAllNxos::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string InstallForceAllNxos::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_force_all_nxos";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallForceAllNxos::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallForceAllNxos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<InstallForceAllNxos::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallForceAllNxos::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void InstallForceAllNxos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InstallForceAllNxos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> InstallForceAllNxos::clone_ptr() const
+{
+    return std::make_shared<InstallForceAllNxos>();
+}
+
+std::string InstallForceAllNxos::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_nx_os_models_path;
+}
+
+std::string InstallForceAllNxos::get_bundle_name() const
+{
+    return "cisco_nx_os";
+}
+
+augment_capabilities_function InstallForceAllNxos::get_augment_capabilities_function() const
+{
+    return cisco_nx_os_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> InstallForceAllNxos::get_namespace_identity_lookup() const
+{
+    return cisco_nx_os_namespace_identity_lookup;
+}
+
+bool InstallForceAllNxos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+InstallForceAllNxos::Input::Input()
+    :
+    nxos{YType::str, "nxos"},
+    no_reload{YType::empty, "no-reload"},
+    noswitchover{YType::empty, "noswitchover"},
+    bios{YType::empty, "bios"},
+    no_save{YType::empty, "no-save"},
+    bios_force{YType::empty, "bios-force"},
+    non_interruptive{YType::empty, "non-interruptive"}
+{
+
+    yang_name = "input"; yang_parent_name = "install_force_all_nxos"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallForceAllNxos::Input::~Input()
+{
+}
+
+bool InstallForceAllNxos::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    return nxos.is_set
+	|| no_reload.is_set
+	|| noswitchover.is_set
+	|| bios.is_set
+	|| no_save.is_set
+	|| bios_force.is_set
+	|| non_interruptive.is_set;
+}
+
+bool InstallForceAllNxos::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nxos.yfilter)
+	|| ydk::is_set(no_reload.yfilter)
+	|| ydk::is_set(noswitchover.yfilter)
+	|| ydk::is_set(bios.yfilter)
+	|| ydk::is_set(no_save.yfilter)
+	|| ydk::is_set(bios_force.yfilter)
+	|| ydk::is_set(non_interruptive.yfilter);
+}
+
+std::string InstallForceAllNxos::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_force_all_nxos/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallForceAllNxos::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallForceAllNxos::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nxos.is_set || is_set(nxos.yfilter)) leaf_name_data.push_back(nxos.get_name_leafdata());
+    if (no_reload.is_set || is_set(no_reload.yfilter)) leaf_name_data.push_back(no_reload.get_name_leafdata());
+    if (noswitchover.is_set || is_set(noswitchover.yfilter)) leaf_name_data.push_back(noswitchover.get_name_leafdata());
+    if (bios.is_set || is_set(bios.yfilter)) leaf_name_data.push_back(bios.get_name_leafdata());
+    if (no_save.is_set || is_set(no_save.yfilter)) leaf_name_data.push_back(no_save.get_name_leafdata());
+    if (bios_force.is_set || is_set(bios_force.yfilter)) leaf_name_data.push_back(bios_force.get_name_leafdata());
+    if (non_interruptive.is_set || is_set(non_interruptive.yfilter)) leaf_name_data.push_back(non_interruptive.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallForceAllNxos::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallForceAllNxos::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InstallForceAllNxos::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nxos")
+    {
+        nxos = value;
+        nxos.value_namespace = name_space;
+        nxos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-reload")
+    {
+        no_reload = value;
+        no_reload.value_namespace = name_space;
+        no_reload.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "noswitchover")
+    {
+        noswitchover = value;
+        noswitchover.value_namespace = name_space;
+        noswitchover.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bios")
+    {
+        bios = value;
+        bios.value_namespace = name_space;
+        bios.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-save")
+    {
+        no_save = value;
+        no_save.value_namespace = name_space;
+        no_save.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bios-force")
+    {
+        bios_force = value;
+        bios_force.value_namespace = name_space;
+        bios_force.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "non-interruptive")
+    {
+        non_interruptive = value;
+        non_interruptive.value_namespace = name_space;
+        non_interruptive.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallForceAllNxos::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nxos")
+    {
+        nxos.yfilter = yfilter;
+    }
+    if(value_path == "no-reload")
+    {
+        no_reload.yfilter = yfilter;
+    }
+    if(value_path == "noswitchover")
+    {
+        noswitchover.yfilter = yfilter;
+    }
+    if(value_path == "bios")
+    {
+        bios.yfilter = yfilter;
+    }
+    if(value_path == "no-save")
+    {
+        no_save.yfilter = yfilter;
+    }
+    if(value_path == "bios-force")
+    {
+        bios_force.yfilter = yfilter;
+    }
+    if(value_path == "non-interruptive")
+    {
+        non_interruptive.yfilter = yfilter;
+    }
+}
+
+bool InstallForceAllNxos::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nxos" || name == "no-reload" || name == "noswitchover" || name == "bios" || name == "no-save" || name == "bios-force" || name == "non-interruptive")
+        return true;
+    return false;
+}
+
+InstallAdd::InstallAdd()
+    :
+    input(std::make_shared<InstallAdd::Input>())
+{
+    input->parent = this;
+
+    yang_name = "install_add"; yang_parent_name = "Cisco-NX-OS-device"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+InstallAdd::~InstallAdd()
+{
+}
+
+bool InstallAdd::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data());
+}
+
+bool InstallAdd::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string InstallAdd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_add";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallAdd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallAdd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<InstallAdd::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallAdd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void InstallAdd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InstallAdd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> InstallAdd::clone_ptr() const
+{
+    return std::make_shared<InstallAdd>();
+}
+
+std::string InstallAdd::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_nx_os_models_path;
+}
+
+std::string InstallAdd::get_bundle_name() const
+{
+    return "cisco_nx_os";
+}
+
+augment_capabilities_function InstallAdd::get_augment_capabilities_function() const
+{
+    return cisco_nx_os_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> InstallAdd::get_namespace_identity_lookup() const
+{
+    return cisco_nx_os_namespace_identity_lookup;
+}
+
+bool InstallAdd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+InstallAdd::Input::Input()
+    :
+    add{YType::str, "add"},
+    vrf{YType::str, "vrf"},
+    upgrade{YType::empty, "upgrade"},
+    downgrade{YType::empty, "downgrade"},
+    initial{YType::empty, "initial"},
+    forced{YType::empty, "forced"}
+{
+
+    yang_name = "input"; yang_parent_name = "install_add"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallAdd::Input::~Input()
+{
+}
+
+bool InstallAdd::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    return add.is_set
+	|| vrf.is_set
+	|| upgrade.is_set
+	|| downgrade.is_set
+	|| initial.is_set
+	|| forced.is_set;
+}
+
+bool InstallAdd::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(add.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(upgrade.yfilter)
+	|| ydk::is_set(downgrade.yfilter)
+	|| ydk::is_set(initial.yfilter)
+	|| ydk::is_set(forced.yfilter);
+}
+
+std::string InstallAdd::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_add/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallAdd::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallAdd::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (add.is_set || is_set(add.yfilter)) leaf_name_data.push_back(add.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (upgrade.is_set || is_set(upgrade.yfilter)) leaf_name_data.push_back(upgrade.get_name_leafdata());
+    if (downgrade.is_set || is_set(downgrade.yfilter)) leaf_name_data.push_back(downgrade.get_name_leafdata());
+    if (initial.is_set || is_set(initial.yfilter)) leaf_name_data.push_back(initial.get_name_leafdata());
+    if (forced.is_set || is_set(forced.yfilter)) leaf_name_data.push_back(forced.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallAdd::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallAdd::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InstallAdd::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "add")
+    {
+        add = value;
+        add.value_namespace = name_space;
+        add.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "upgrade")
+    {
+        upgrade = value;
+        upgrade.value_namespace = name_space;
+        upgrade.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "downgrade")
+    {
+        downgrade = value;
+        downgrade.value_namespace = name_space;
+        downgrade.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initial")
+    {
+        initial = value;
+        initial.value_namespace = name_space;
+        initial.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "forced")
+    {
+        forced = value;
+        forced.value_namespace = name_space;
+        forced.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallAdd::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "add")
+    {
+        add.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "upgrade")
+    {
+        upgrade.yfilter = yfilter;
+    }
+    if(value_path == "downgrade")
+    {
+        downgrade.yfilter = yfilter;
+    }
+    if(value_path == "initial")
+    {
+        initial.yfilter = yfilter;
+    }
+    if(value_path == "forced")
+    {
+        forced.yfilter = yfilter;
+    }
+}
+
+bool InstallAdd::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "add" || name == "vrf" || name == "upgrade" || name == "downgrade" || name == "initial" || name == "forced")
+        return true;
+    return false;
+}
+
+InstallActivate::InstallActivate()
+    :
+    input(std::make_shared<InstallActivate::Input>())
+{
+    input->parent = this;
+
+    yang_name = "install_activate"; yang_parent_name = "Cisco-NX-OS-device"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+InstallActivate::~InstallActivate()
+{
+}
+
+bool InstallActivate::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data());
+}
+
+bool InstallActivate::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string InstallActivate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_activate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallActivate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallActivate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<InstallActivate::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallActivate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void InstallActivate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InstallActivate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> InstallActivate::clone_ptr() const
+{
+    return std::make_shared<InstallActivate>();
+}
+
+std::string InstallActivate::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_nx_os_models_path;
+}
+
+std::string InstallActivate::get_bundle_name() const
+{
+    return "cisco_nx_os";
+}
+
+augment_capabilities_function InstallActivate::get_augment_capabilities_function() const
+{
+    return cisco_nx_os_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> InstallActivate::get_namespace_identity_lookup() const
+{
+    return cisco_nx_os_namespace_identity_lookup;
+}
+
+bool InstallActivate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+InstallActivate::Input::Input()
+    :
+    activate{YType::str, "activate"},
+    forced{YType::empty, "forced"}
+{
+
+    yang_name = "input"; yang_parent_name = "install_activate"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallActivate::Input::~Input()
+{
+}
+
+bool InstallActivate::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    return activate.is_set
+	|| forced.is_set;
+}
+
+bool InstallActivate::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activate.yfilter)
+	|| ydk::is_set(forced.yfilter);
+}
+
+std::string InstallActivate::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_activate/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallActivate::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallActivate::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activate.is_set || is_set(activate.yfilter)) leaf_name_data.push_back(activate.get_name_leafdata());
+    if (forced.is_set || is_set(forced.yfilter)) leaf_name_data.push_back(forced.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallActivate::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallActivate::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InstallActivate::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activate")
+    {
+        activate = value;
+        activate.value_namespace = name_space;
+        activate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "forced")
+    {
+        forced = value;
+        forced.value_namespace = name_space;
+        forced.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallActivate::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activate")
+    {
+        activate.yfilter = yfilter;
+    }
+    if(value_path == "forced")
+    {
+        forced.yfilter = yfilter;
+    }
+}
+
+bool InstallActivate::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activate" || name == "forced")
+        return true;
+    return false;
+}
+
+InstallDeactivate::InstallDeactivate()
+    :
+    input(std::make_shared<InstallDeactivate::Input>())
+{
+    input->parent = this;
+
+    yang_name = "install_deactivate"; yang_parent_name = "Cisco-NX-OS-device"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+InstallDeactivate::~InstallDeactivate()
+{
+}
+
+bool InstallDeactivate::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data());
+}
+
+bool InstallDeactivate::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string InstallDeactivate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_deactivate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallDeactivate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallDeactivate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<InstallDeactivate::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallDeactivate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void InstallDeactivate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InstallDeactivate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> InstallDeactivate::clone_ptr() const
+{
+    return std::make_shared<InstallDeactivate>();
+}
+
+std::string InstallDeactivate::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_nx_os_models_path;
+}
+
+std::string InstallDeactivate::get_bundle_name() const
+{
+    return "cisco_nx_os";
+}
+
+augment_capabilities_function InstallDeactivate::get_augment_capabilities_function() const
+{
+    return cisco_nx_os_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> InstallDeactivate::get_namespace_identity_lookup() const
+{
+    return cisco_nx_os_namespace_identity_lookup;
+}
+
+bool InstallDeactivate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+InstallDeactivate::Input::Input()
+    :
+    deactivate{YType::str, "deactivate"},
+    forced{YType::empty, "forced"}
+{
+
+    yang_name = "input"; yang_parent_name = "install_deactivate"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallDeactivate::Input::~Input()
+{
+}
+
+bool InstallDeactivate::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    return deactivate.is_set
+	|| forced.is_set;
+}
+
+bool InstallDeactivate::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(deactivate.yfilter)
+	|| ydk::is_set(forced.yfilter);
+}
+
+std::string InstallDeactivate::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_deactivate/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallDeactivate::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallDeactivate::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (deactivate.is_set || is_set(deactivate.yfilter)) leaf_name_data.push_back(deactivate.get_name_leafdata());
+    if (forced.is_set || is_set(forced.yfilter)) leaf_name_data.push_back(forced.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallDeactivate::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallDeactivate::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InstallDeactivate::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "deactivate")
+    {
+        deactivate = value;
+        deactivate.value_namespace = name_space;
+        deactivate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "forced")
+    {
+        forced = value;
+        forced.value_namespace = name_space;
+        forced.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallDeactivate::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "deactivate")
+    {
+        deactivate.yfilter = yfilter;
+    }
+    if(value_path == "forced")
+    {
+        forced.yfilter = yfilter;
+    }
+}
+
+bool InstallDeactivate::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "deactivate" || name == "forced")
+        return true;
+    return false;
+}
+
+InstallCommit::InstallCommit()
+    :
+    input(std::make_shared<InstallCommit::Input>())
+{
+    input->parent = this;
+
+    yang_name = "install_commit"; yang_parent_name = "Cisco-NX-OS-device"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+InstallCommit::~InstallCommit()
+{
+}
+
+bool InstallCommit::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data());
+}
+
+bool InstallCommit::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string InstallCommit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_commit";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallCommit::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallCommit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<InstallCommit::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallCommit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void InstallCommit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InstallCommit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> InstallCommit::clone_ptr() const
+{
+    return std::make_shared<InstallCommit>();
+}
+
+std::string InstallCommit::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_nx_os_models_path;
+}
+
+std::string InstallCommit::get_bundle_name() const
+{
+    return "cisco_nx_os";
+}
+
+augment_capabilities_function InstallCommit::get_augment_capabilities_function() const
+{
+    return cisco_nx_os_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> InstallCommit::get_namespace_identity_lookup() const
+{
+    return cisco_nx_os_namespace_identity_lookup;
+}
+
+bool InstallCommit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+InstallCommit::Input::Input()
+    :
+    commit{YType::str, "commit"}
+{
+
+    yang_name = "input"; yang_parent_name = "install_commit"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallCommit::Input::~Input()
+{
+}
+
+bool InstallCommit::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    return commit.is_set;
+}
+
+bool InstallCommit::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(commit.yfilter);
+}
+
+std::string InstallCommit::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_commit/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallCommit::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallCommit::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (commit.is_set || is_set(commit.yfilter)) leaf_name_data.push_back(commit.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallCommit::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallCommit::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InstallCommit::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "commit")
+    {
+        commit = value;
+        commit.value_namespace = name_space;
+        commit.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallCommit::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "commit")
+    {
+        commit.yfilter = yfilter;
+    }
+}
+
+bool InstallCommit::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "commit")
+        return true;
+    return false;
+}
+
+InstallRemove::InstallRemove()
+    :
+    input(std::make_shared<InstallRemove::Input>())
+{
+    input->parent = this;
+
+    yang_name = "install_remove"; yang_parent_name = "Cisco-NX-OS-device"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+InstallRemove::~InstallRemove()
+{
+}
+
+bool InstallRemove::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data());
+}
+
+bool InstallRemove::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string InstallRemove::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_remove";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallRemove::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallRemove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<InstallRemove::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallRemove::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void InstallRemove::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InstallRemove::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> InstallRemove::clone_ptr() const
+{
+    return std::make_shared<InstallRemove>();
+}
+
+std::string InstallRemove::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_nx_os_models_path;
+}
+
+std::string InstallRemove::get_bundle_name() const
+{
+    return "cisco_nx_os";
+}
+
+augment_capabilities_function InstallRemove::get_augment_capabilities_function() const
+{
+    return cisco_nx_os_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> InstallRemove::get_namespace_identity_lookup() const
+{
+    return cisco_nx_os_namespace_identity_lookup;
+}
+
+bool InstallRemove::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+InstallRemove::Input::Input()
+    :
+    remove{YType::str, "remove"},
+    inactive{YType::empty, "inactive"},
+    forced{YType::empty, "forced"}
+{
+
+    yang_name = "input"; yang_parent_name = "install_remove"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallRemove::Input::~Input()
+{
+}
+
+bool InstallRemove::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    return remove.is_set
+	|| inactive.is_set
+	|| forced.is_set;
+}
+
+bool InstallRemove::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(remove.yfilter)
+	|| ydk::is_set(inactive.yfilter)
+	|| ydk::is_set(forced.yfilter);
+}
+
+std::string InstallRemove::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:install_remove/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallRemove::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallRemove::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (remove.is_set || is_set(remove.yfilter)) leaf_name_data.push_back(remove.get_name_leafdata());
+    if (inactive.is_set || is_set(inactive.yfilter)) leaf_name_data.push_back(inactive.get_name_leafdata());
+    if (forced.is_set || is_set(forced.yfilter)) leaf_name_data.push_back(forced.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InstallRemove::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InstallRemove::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InstallRemove::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "remove")
+    {
+        remove = value;
+        remove.value_namespace = name_space;
+        remove.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inactive")
+    {
+        inactive = value;
+        inactive.value_namespace = name_space;
+        inactive.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "forced")
+    {
+        forced = value;
+        forced.value_namespace = name_space;
+        forced.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallRemove::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "remove")
+    {
+        remove.yfilter = yfilter;
+    }
+    if(value_path == "inactive")
+    {
+        inactive.yfilter = yfilter;
+    }
+    if(value_path == "forced")
+    {
+        forced.yfilter = yfilter;
+    }
+}
+
+bool InstallRemove::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "remove" || name == "inactive" || name == "forced")
+        return true;
+    return false;
+}
+
+Copy::Copy()
+    :
+    input(std::make_shared<Copy::Input>())
+{
+    input->parent = this;
+
+    yang_name = "copy"; yang_parent_name = "Cisco-NX-OS-device"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+Copy::~Copy()
+{
+}
+
+bool Copy::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data());
+}
+
+bool Copy::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string Copy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:copy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Copy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Copy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<Copy::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Copy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void Copy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Copy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> Copy::clone_ptr() const
+{
+    return std::make_shared<Copy>();
+}
+
+std::string Copy::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_nx_os_models_path;
+}
+
+std::string Copy::get_bundle_name() const
+{
+    return "cisco_nx_os";
+}
+
+augment_capabilities_function Copy::get_augment_capabilities_function() const
+{
+    return cisco_nx_os_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Copy::get_namespace_identity_lookup() const
+{
+    return cisco_nx_os_namespace_identity_lookup;
+}
+
+bool Copy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+Copy::Input::Input()
+    :
+    source{YType::str, "source"},
+    destination{YType::str, "destination"},
+    recursive{YType::empty, "recursive"},
+    vrf{YType::str, "vrf"}
+{
+
+    yang_name = "input"; yang_parent_name = "copy"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Copy::Input::~Input()
+{
+}
+
+bool Copy::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    return source.is_set
+	|| destination.is_set
+	|| recursive.is_set
+	|| vrf.is_set;
+}
+
+bool Copy::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(recursive.yfilter)
+	|| ydk::is_set(vrf.yfilter);
+}
+
+std::string Copy::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:copy/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Copy::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Copy::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (recursive.is_set || is_set(recursive.yfilter)) leaf_name_data.push_back(recursive.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Copy::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Copy::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Copy::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source")
+    {
+        source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination")
+    {
+        destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "recursive")
+    {
+        recursive = value;
+        recursive.value_namespace = name_space;
+        recursive.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Copy::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+    if(value_path == "recursive")
+    {
+        recursive.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+}
+
+bool Copy::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source" || name == "destination" || name == "recursive" || name == "vrf")
         return true;
     return false;
 }

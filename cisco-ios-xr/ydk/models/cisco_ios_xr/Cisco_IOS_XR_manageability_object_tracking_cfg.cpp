@@ -140,12 +140,16 @@ ObjectTrackings::ObjectTracking::ObjectTracking()
     type_boolean_list_and_enable{YType::empty, "type-boolean-list-and-enable"},
     type_boolean_list_or_enable{YType::empty, "type-boolean-list-or-enable"}
         ,
-    type_interface(std::make_shared<ObjectTrackings::ObjectTracking::TypeInterface>())
+    action(std::make_shared<ObjectTrackings::ObjectTracking::Action>())
+    , type_bfd_rtr(std::make_shared<ObjectTrackings::ObjectTracking::TypeBfdRtr>())
+    , type_interface(std::make_shared<ObjectTrackings::ObjectTracking::TypeInterface>())
     , type_rtr(std::make_shared<ObjectTrackings::ObjectTracking::TypeRtr>())
     , type_list(std::make_shared<ObjectTrackings::ObjectTracking::TypeList>())
     , type_route(std::make_shared<ObjectTrackings::ObjectTracking::TypeRoute>())
     , type_boolean_list(std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList>())
 {
+    action->parent = this;
+    type_bfd_rtr->parent = this;
     type_interface->parent = this;
     type_rtr->parent = this;
     type_list->parent = this;
@@ -170,6 +174,8 @@ bool ObjectTrackings::ObjectTracking::has_data() const
 	|| type_route_enable.is_set
 	|| type_boolean_list_and_enable.is_set
 	|| type_boolean_list_or_enable.is_set
+	|| (action !=  nullptr && action->has_data())
+	|| (type_bfd_rtr !=  nullptr && type_bfd_rtr->has_data())
 	|| (type_interface !=  nullptr && type_interface->has_data())
 	|| (type_rtr !=  nullptr && type_rtr->has_data())
 	|| (type_list !=  nullptr && type_list->has_data())
@@ -188,6 +194,8 @@ bool ObjectTrackings::ObjectTracking::has_operation() const
 	|| ydk::is_set(type_route_enable.yfilter)
 	|| ydk::is_set(type_boolean_list_and_enable.yfilter)
 	|| ydk::is_set(type_boolean_list_or_enable.yfilter)
+	|| (action !=  nullptr && action->has_operation())
+	|| (type_bfd_rtr !=  nullptr && type_bfd_rtr->has_operation())
 	|| (type_interface !=  nullptr && type_interface->has_operation())
 	|| (type_rtr !=  nullptr && type_rtr->has_operation())
 	|| (type_list !=  nullptr && type_list->has_operation())
@@ -229,6 +237,24 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "action")
+    {
+        if(action == nullptr)
+        {
+            action = std::make_shared<ObjectTrackings::ObjectTracking::Action>();
+        }
+        return action;
+    }
+
+    if(child_yang_name == "type-bfd-rtr")
+    {
+        if(type_bfd_rtr == nullptr)
+        {
+            type_bfd_rtr = std::make_shared<ObjectTrackings::ObjectTracking::TypeBfdRtr>();
+        }
+        return type_bfd_rtr;
+    }
+
     if(child_yang_name == "type-interface")
     {
         if(type_interface == nullptr)
@@ -281,6 +307,16 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(action != nullptr)
+    {
+        children["action"] = action;
+    }
+
+    if(type_bfd_rtr != nullptr)
+    {
+        children["type-bfd-rtr"] = type_bfd_rtr;
+    }
+
     if(type_interface != nullptr)
     {
         children["type-interface"] = type_interface;
@@ -399,7 +435,492 @@ void ObjectTrackings::ObjectTracking::set_filter(const std::string & value_path,
 
 bool ObjectTrackings::ObjectTracking::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "type-interface" || name == "type-rtr" || name == "type-list" || name == "type-route" || name == "type-boolean-list" || name == "track-name" || name == "delay-up" || name == "enable" || name == "delay-down" || name == "type-interface-enable" || name == "type-route-enable" || name == "type-boolean-list-and-enable" || name == "type-boolean-list-or-enable")
+    if(name == "action" || name == "type-bfd-rtr" || name == "type-interface" || name == "type-rtr" || name == "type-list" || name == "type-route" || name == "type-boolean-list" || name == "track-name" || name == "delay-up" || name == "enable" || name == "delay-down" || name == "type-interface-enable" || name == "type-route-enable" || name == "type-boolean-list-and-enable" || name == "type-boolean-list-or-enable")
+        return true;
+    return false;
+}
+
+ObjectTrackings::ObjectTracking::Action::Action()
+    :
+    actions_enable{YType::empty, "actions-enable"}
+        ,
+    action_err_dis(std::make_shared<ObjectTrackings::ObjectTracking::Action::ActionErrDis>())
+{
+    action_err_dis->parent = this;
+
+    yang_name = "action"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+ObjectTrackings::ObjectTracking::Action::~Action()
+{
+}
+
+bool ObjectTrackings::ObjectTracking::Action::has_data() const
+{
+    if (is_presence_container) return true;
+    return actions_enable.is_set
+	|| (action_err_dis !=  nullptr && action_err_dis->has_data());
+}
+
+bool ObjectTrackings::ObjectTracking::Action::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(actions_enable.yfilter)
+	|| (action_err_dis !=  nullptr && action_err_dis->has_operation());
+}
+
+std::string ObjectTrackings::ObjectTracking::Action::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::Action::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (actions_enable.is_set || is_set(actions_enable.yfilter)) leaf_name_data.push_back(actions_enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action-err-dis")
+    {
+        if(action_err_dis == nullptr)
+        {
+            action_err_dis = std::make_shared<ObjectTrackings::ObjectTracking::Action::ActionErrDis>();
+        }
+        return action_err_dis;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::Action::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(action_err_dis != nullptr)
+    {
+        children["action-err-dis"] = action_err_dis;
+    }
+
+    return children;
+}
+
+void ObjectTrackings::ObjectTracking::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "actions-enable")
+    {
+        actions_enable = value;
+        actions_enable.value_namespace = name_space;
+        actions_enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTrackings::ObjectTracking::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "actions-enable")
+    {
+        actions_enable.yfilter = yfilter;
+    }
+}
+
+bool ObjectTrackings::ObjectTracking::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action-err-dis" || name == "actions-enable")
+        return true;
+    return false;
+}
+
+ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDis()
+    :
+    action_err_di(this, {"track_state_type", "interface_name"})
+{
+
+    yang_name = "action-err-dis"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+ObjectTrackings::ObjectTracking::Action::ActionErrDis::~ActionErrDis()
+{
+}
+
+bool ObjectTrackings::ObjectTracking::Action::ActionErrDis::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<action_err_di.len(); index++)
+    {
+        if(action_err_di[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectTrackings::ObjectTracking::Action::ActionErrDis::has_operation() const
+{
+    for (std::size_t index=0; index<action_err_di.len(); index++)
+    {
+        if(action_err_di[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectTrackings::ObjectTracking::Action::ActionErrDis::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action-err-dis";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::Action::ActionErrDis::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::Action::ActionErrDis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action-err-di")
+    {
+        auto c = std::make_shared<ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi>();
+        c->parent = this;
+        action_err_di.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::Action::ActionErrDis::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : action_err_di.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void ObjectTrackings::ObjectTracking::Action::ActionErrDis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectTrackings::ObjectTracking::Action::ActionErrDis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::Action::ActionErrDis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action-err-di")
+        return true;
+    return false;
+}
+
+ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::ActionErrDi()
+    :
+    track_state_type{YType::uint32, "track-state-type"},
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "action-err-di"; yang_parent_name = "action-err-dis"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::~ActionErrDi()
+{
+}
+
+bool ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::has_data() const
+{
+    if (is_presence_container) return true;
+    return track_state_type.is_set
+	|| interface_name.is_set;
+}
+
+bool ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(track_state_type.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action-err-di";
+    ADD_KEY_TOKEN(track_state_type, "track-state-type");
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (track_state_type.is_set || is_set(track_state_type.yfilter)) leaf_name_data.push_back(track_state_type.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "track-state-type")
+    {
+        track_state_type = value;
+        track_state_type.value_namespace = name_space;
+        track_state_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "track-state-type")
+    {
+        track_state_type.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track-state-type" || name == "interface-name")
+        return true;
+    return false;
+}
+
+ObjectTrackings::ObjectTracking::TypeBfdRtr::TypeBfdRtr()
+    :
+    bfd_rtr(nullptr) // presence node
+{
+
+    yang_name = "type-bfd-rtr"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+ObjectTrackings::ObjectTracking::TypeBfdRtr::~TypeBfdRtr()
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeBfdRtr::has_data() const
+{
+    if (is_presence_container) return true;
+    return (bfd_rtr !=  nullptr && bfd_rtr->has_data());
+}
+
+bool ObjectTrackings::ObjectTracking::TypeBfdRtr::has_operation() const
+{
+    return is_set(yfilter)
+	|| (bfd_rtr !=  nullptr && bfd_rtr->has_operation());
+}
+
+std::string ObjectTrackings::ObjectTracking::TypeBfdRtr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "type-bfd-rtr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::TypeBfdRtr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBfdRtr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bfd-rtr")
+    {
+        if(bfd_rtr == nullptr)
+        {
+            bfd_rtr = std::make_shared<ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr>();
+        }
+        return bfd_rtr;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBfdRtr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(bfd_rtr != nullptr)
+    {
+        children["bfd-rtr"] = bfd_rtr;
+    }
+
+    return children;
+}
+
+void ObjectTrackings::ObjectTracking::TypeBfdRtr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectTrackings::ObjectTracking::TypeBfdRtr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeBfdRtr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-rtr")
+        return true;
+    return false;
+}
+
+ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::BfdRtr()
+    :
+    rate{YType::uint32, "rate"},
+    debounce_count{YType::uint32, "debounce-count"},
+    interface_name{YType::str, "interface-name"},
+    dest_address{YType::str, "dest-address"}
+{
+
+    yang_name = "bfd-rtr"; yang_parent_name = "type-bfd-rtr"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::~BfdRtr()
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::has_data() const
+{
+    if (is_presence_container) return true;
+    return rate.is_set
+	|| debounce_count.is_set
+	|| interface_name.is_set
+	|| dest_address.is_set;
+}
+
+bool ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rate.yfilter)
+	|| ydk::is_set(debounce_count.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(dest_address.yfilter);
+}
+
+std::string ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-rtr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (dest_address.is_set || is_set(dest_address.yfilter)) leaf_name_data.push_back(dest_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rate")
+    {
+        rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count = value;
+        debounce_count.value_namespace = name_space;
+        debounce_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dest-address")
+    {
+        dest_address = value;
+        dest_address.value_namespace = name_space;
+        dest_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "dest-address")
+    {
+        dest_address.yfilter = yfilter;
+    }
+}
+
+bool ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rate" || name == "debounce-count" || name == "interface-name" || name == "dest-address")
         return true;
     return false;
 }
@@ -562,6 +1083,9 @@ bool ObjectTrackings::ObjectTracking::TypeRtr::has_leaf_or_child_of_name(const s
 
 ObjectTrackings::ObjectTracking::TypeList::TypeList()
     :
+    threshold_percentage_object_enable{YType::empty, "threshold-percentage-object-enable"},
+    threshold_weight_object_enable{YType::empty, "threshold-weight-object-enable"}
+        ,
     threshold_weight(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight>())
     , threshold_percentage_object(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject>())
     , threshold_percentage(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage>())
@@ -582,7 +1106,9 @@ ObjectTrackings::ObjectTracking::TypeList::~TypeList()
 bool ObjectTrackings::ObjectTracking::TypeList::has_data() const
 {
     if (is_presence_container) return true;
-    return (threshold_weight !=  nullptr && threshold_weight->has_data())
+    return threshold_percentage_object_enable.is_set
+	|| threshold_weight_object_enable.is_set
+	|| (threshold_weight !=  nullptr && threshold_weight->has_data())
 	|| (threshold_percentage_object !=  nullptr && threshold_percentage_object->has_data())
 	|| (threshold_percentage !=  nullptr && threshold_percentage->has_data())
 	|| (threshold_weight_object !=  nullptr && threshold_weight_object->has_data());
@@ -591,6 +1117,8 @@ bool ObjectTrackings::ObjectTracking::TypeList::has_data() const
 bool ObjectTrackings::ObjectTracking::TypeList::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(threshold_percentage_object_enable.yfilter)
+	|| ydk::is_set(threshold_weight_object_enable.yfilter)
 	|| (threshold_weight !=  nullptr && threshold_weight->has_operation())
 	|| (threshold_percentage_object !=  nullptr && threshold_percentage_object->has_operation())
 	|| (threshold_percentage !=  nullptr && threshold_percentage->has_operation())
@@ -608,6 +1136,8 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (threshold_percentage_object_enable.is_set || is_set(threshold_percentage_object_enable.yfilter)) leaf_name_data.push_back(threshold_percentage_object_enable.get_name_leafdata());
+    if (threshold_weight_object_enable.is_set || is_set(threshold_weight_object_enable.yfilter)) leaf_name_data.push_back(threshold_weight_object_enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -683,15 +1213,35 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
 
 void ObjectTrackings::ObjectTracking::TypeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "threshold-percentage-object-enable")
+    {
+        threshold_percentage_object_enable = value;
+        threshold_percentage_object_enable.value_namespace = name_space;
+        threshold_percentage_object_enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-weight-object-enable")
+    {
+        threshold_weight_object_enable = value;
+        threshold_weight_object_enable.value_namespace = name_space;
+        threshold_weight_object_enable.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "threshold-percentage-object-enable")
+    {
+        threshold_percentage_object_enable.yfilter = yfilter;
+    }
+    if(value_path == "threshold-weight-object-enable")
+    {
+        threshold_weight_object_enable.yfilter = yfilter;
+    }
 }
 
 bool ObjectTrackings::ObjectTracking::TypeList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "threshold-weight" || name == "threshold-percentage-object" || name == "threshold-percentage" || name == "threshold-weight-object")
+    if(name == "threshold-weight" || name == "threshold-percentage-object" || name == "threshold-percentage" || name == "threshold-weight-object" || name == "threshold-percentage-object-enable" || name == "threshold-weight-object-enable")
         return true;
     return false;
 }

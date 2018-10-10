@@ -219,6 +219,7 @@ class EthernetInterface::Interfaces::Interface::PhyInfo : public ydk::Entity
         ydk::YLeaf media_type; //type: EthernetMedia
         ydk::YLeaf phy_present; //type: EtherPhyPresent
         ydk::YLeaf loopback; //type: EthernetLoopback
+        ydk::YLeaf holdoff_time; //type: uint32
         class PhyDetails; //type: EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails
         class FecDetails; //type: EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails
         class ExtendedLoopback; //type: EthernetInterface::Interfaces::Interface::PhyInfo::ExtendedLoopback
@@ -1009,6 +1010,7 @@ class EtherLinkState : public ydk::Enum
         static const ydk::Enum::YLeaf system_error;
         static const ydk::Enum::YLeaf wan_framing_error;
         static const ydk::Enum::YLeaf otn_framing_error;
+        static const ydk::Enum::YLeaf shutdown;
 
 };
 
@@ -1537,10 +1539,31 @@ class EthernetMedia : public ydk::Enum
         static const ydk::Enum::YLeaf ethernet_400gbase_dr4;
         static const ydk::Enum::YLeaf ethernet_400gbase_cr4;
         static const ydk::Enum::YLeaf ethernet_10gbase_cu1m;
+        static const ydk::Enum::YLeaf ethernet_10gbase_cu1_5m;
+        static const ydk::Enum::YLeaf ethernet_10gbase_cu2m;
+        static const ydk::Enum::YLeaf ethernet_10gbase_cu2_5m;
         static const ydk::Enum::YLeaf ethernet_10gbase_cu3m;
         static const ydk::Enum::YLeaf ethernet_10gbase_cu5m;
         static const ydk::Enum::YLeaf ethernet_10gbase_acu7m;
         static const ydk::Enum::YLeaf ethernet_10gbase_acu10m;
+        static const ydk::Enum::YLeaf ethernet_10gbase_aoc1m;
+        static const ydk::Enum::YLeaf ethernet_10gbase_aoc2m;
+        static const ydk::Enum::YLeaf ethernet_10gbase_aoc3m;
+        static const ydk::Enum::YLeaf ethernet_10gbase_aoc5m;
+        static const ydk::Enum::YLeaf ethernet_10gbase_aoc7m;
+        static const ydk::Enum::YLeaf ethernet_10gbase_aoc10m;
+        static const ydk::Enum::YLeaf ethernet_40gbase_aoc;
+        static const ydk::Enum::YLeaf ethernet_4x10g_base_lr;
+        static const ydk::Enum::YLeaf ethernet_40gbase_acu1m;
+        static const ydk::Enum::YLeaf ethernet_40gbase_acu3m;
+        static const ydk::Enum::YLeaf ethernet_40gbase_acu5m;
+        static const ydk::Enum::YLeaf ethernet_40gbase_acu7m;
+        static const ydk::Enum::YLeaf ethernet_40gbase_acu10m;
+        static const ydk::Enum::YLeaf ethernet_25gbase_cu1m;
+        static const ydk::Enum::YLeaf ethernet_25gbase_cu2m;
+        static const ydk::Enum::YLeaf ethernet_25gbase_cu3m;
+        static const ydk::Enum::YLeaf ethernet_25gbase_cu5m;
+        static const ydk::Enum::YLeaf ethernet_100gbase_sm_sr;
         static const ydk::Enum::YLeaf ethernet_base_max;
 
 };

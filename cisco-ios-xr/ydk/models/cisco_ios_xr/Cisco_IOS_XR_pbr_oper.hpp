@@ -228,9 +228,11 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Clas
         ydk::YLeaf class_id; //type: uint32
         class GeneralStats; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats
         class HttprStats; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats
+        class HttpEnrichStats; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats> httpr_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats> http_enrich_stats;
         
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat
 
@@ -288,6 +290,34 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Clas
         ydk::YLeaf resp_sent_bytes; //type: uint64
 
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats
+
+
+class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats : public ydk::Entity
+{
+    public:
+        HttpEnrichStats();
+        ~HttpEnrichStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rqst_rcvd_packets; //type: uint64
+        ydk::YLeaf rqst_rcvd_bytes; //type: uint64
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf resp_sent_packets; //type: uint64
+        ydk::YLeaf resp_sent_bytes; //type: uint64
+        ydk::YLeaf req_sent_packets; //type: uint64
+        ydk::YLeaf tcp_sent_packets; //type: uint64
+
+}; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats
 
 class PolicyState : public ydk::Enum
 {

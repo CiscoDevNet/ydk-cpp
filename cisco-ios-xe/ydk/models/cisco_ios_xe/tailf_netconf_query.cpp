@@ -1146,6 +1146,846 @@ bool FetchQueryResult::Output::QueryResult::Result::Select::has_leaf_or_child_of
     return false;
 }
 
+ImmediateQuery::ImmediateQuery()
+    :
+    input(std::make_shared<ImmediateQuery::Input>())
+    , output(std::make_shared<ImmediateQuery::Output>())
+{
+    input->parent = this;
+    output->parent = this;
+
+    yang_name = "immediate-query"; yang_parent_name = "tailf-netconf-query"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+ImmediateQuery::~ImmediateQuery()
+{
+}
+
+bool ImmediateQuery::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
+}
+
+bool ImmediateQuery::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
+}
+
+std::string ImmediateQuery::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-query:immediate-query";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ImmediateQuery::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ImmediateQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ImmediateQuery::Input>();
+        }
+        return input;
+    }
+
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<ImmediateQuery::Output>();
+        }
+        return output;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        children["output"] = output;
+    }
+
+    return children;
+}
+
+void ImmediateQuery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ImmediateQuery::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> ImmediateQuery::clone_ptr() const
+{
+    return std::make_shared<ImmediateQuery>();
+}
+
+std::string ImmediateQuery::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xe_models_path;
+}
+
+std::string ImmediateQuery::get_bundle_name() const
+{
+    return "cisco_ios_xe";
+}
+
+augment_capabilities_function ImmediateQuery::get_augment_capabilities_function() const
+{
+    return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> ImmediateQuery::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool ImmediateQuery::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+ImmediateQuery::Input::Input()
+    :
+    foreach{YType::str, "foreach"},
+    sort_by{YType::str, "sort-by"},
+    limit{YType::uint32, "limit"},
+    offset{YType::uint32, "offset"},
+    timeout{YType::uint32, "timeout"}
+        ,
+    select(this, {})
+{
+
+    yang_name = "input"; yang_parent_name = "immediate-query"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+ImmediateQuery::Input::~Input()
+{
+}
+
+bool ImmediateQuery::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<select.len(); index++)
+    {
+        if(select[index]->has_data())
+            return true;
+    }
+    for (auto const & leaf : sort_by.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return foreach.is_set
+	|| limit.is_set
+	|| offset.is_set
+	|| timeout.is_set;
+}
+
+bool ImmediateQuery::Input::has_operation() const
+{
+    for (std::size_t index=0; index<select.len(); index++)
+    {
+        if(select[index]->has_operation())
+            return true;
+    }
+    for (auto const & leaf : sort_by.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(foreach.yfilter)
+	|| ydk::is_set(sort_by.yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(offset.yfilter)
+	|| ydk::is_set(timeout.yfilter);
+}
+
+std::string ImmediateQuery::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-query:immediate-query/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ImmediateQuery::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ImmediateQuery::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (foreach.is_set || is_set(foreach.yfilter)) leaf_name_data.push_back(foreach.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+
+    auto sort_by_name_datas = sort_by.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), sort_by_name_datas.begin(), sort_by_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ImmediateQuery::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "select")
+    {
+        auto c = std::make_shared<ImmediateQuery::Input::Select>();
+        c->parent = this;
+        select.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : select.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void ImmediateQuery::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "foreach")
+    {
+        foreach = value;
+        foreach.value_namespace = name_space;
+        foreach.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sort-by")
+    {
+        sort_by.append(value);
+    }
+    if(value_path == "limit")
+    {
+        limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset")
+    {
+        offset = value;
+        offset.value_namespace = name_space;
+        offset.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ImmediateQuery::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "foreach")
+    {
+        foreach.yfilter = yfilter;
+    }
+    if(value_path == "sort-by")
+    {
+        sort_by.yfilter = yfilter;
+    }
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "offset")
+    {
+        offset.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool ImmediateQuery::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "select" || name == "foreach" || name == "sort-by" || name == "limit" || name == "offset" || name == "timeout")
+        return true;
+    return false;
+}
+
+ImmediateQuery::Input::Select::Select()
+    :
+    label{YType::str, "label"},
+    expression{YType::str, "expression"},
+    result_type{YType::enumeration, "result-type"}
+{
+
+    yang_name = "select"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+ImmediateQuery::Input::Select::~Select()
+{
+}
+
+bool ImmediateQuery::Input::Select::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : result_type.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return label.is_set
+	|| expression.is_set;
+}
+
+bool ImmediateQuery::Input::Select::has_operation() const
+{
+    for (auto const & leaf : result_type.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(expression.yfilter)
+	|| ydk::is_set(result_type.yfilter);
+}
+
+std::string ImmediateQuery::Input::Select::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-query:immediate-query/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ImmediateQuery::Input::Select::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "select";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ImmediateQuery::Input::Select::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (expression.is_set || is_set(expression.yfilter)) leaf_name_data.push_back(expression.get_name_leafdata());
+
+    auto result_type_name_datas = result_type.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), result_type_name_datas.begin(), result_type_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ImmediateQuery::Input::Select::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::Input::Select::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void ImmediateQuery::Input::Select::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expression")
+    {
+        expression = value;
+        expression.value_namespace = name_space;
+        expression.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "result-type")
+    {
+        result_type.append(value);
+    }
+}
+
+void ImmediateQuery::Input::Select::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "expression")
+    {
+        expression.yfilter = yfilter;
+    }
+    if(value_path == "result-type")
+    {
+        result_type.yfilter = yfilter;
+    }
+}
+
+bool ImmediateQuery::Input::Select::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label" || name == "expression" || name == "result-type")
+        return true;
+    return false;
+}
+
+ImmediateQuery::Output::Output()
+    :
+    query_result(std::make_shared<ImmediateQuery::Output::QueryResult>())
+{
+    query_result->parent = this;
+
+    yang_name = "output"; yang_parent_name = "immediate-query"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+ImmediateQuery::Output::~Output()
+{
+}
+
+bool ImmediateQuery::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return (query_result !=  nullptr && query_result->has_data());
+}
+
+bool ImmediateQuery::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| (query_result !=  nullptr && query_result->has_operation());
+}
+
+std::string ImmediateQuery::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-query:immediate-query/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ImmediateQuery::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ImmediateQuery::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ImmediateQuery::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "query-result")
+    {
+        if(query_result == nullptr)
+        {
+            query_result = std::make_shared<ImmediateQuery::Output::QueryResult>();
+        }
+        return query_result;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(query_result != nullptr)
+    {
+        children["query-result"] = query_result;
+    }
+
+    return children;
+}
+
+void ImmediateQuery::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ImmediateQuery::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ImmediateQuery::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "query-result")
+        return true;
+    return false;
+}
+
+ImmediateQuery::Output::QueryResult::QueryResult()
+    :
+    result(this, {})
+{
+
+    yang_name = "query-result"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+ImmediateQuery::Output::QueryResult::~QueryResult()
+{
+}
+
+bool ImmediateQuery::Output::QueryResult::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<result.len(); index++)
+    {
+        if(result[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ImmediateQuery::Output::QueryResult::has_operation() const
+{
+    for (std::size_t index=0; index<result.len(); index++)
+    {
+        if(result[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ImmediateQuery::Output::QueryResult::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-query:immediate-query/output/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ImmediateQuery::Output::QueryResult::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "query-result";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ImmediateQuery::Output::QueryResult::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ImmediateQuery::Output::QueryResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "result")
+    {
+        auto c = std::make_shared<ImmediateQuery::Output::QueryResult::Result>();
+        c->parent = this;
+        result.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::Output::QueryResult::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : result.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void ImmediateQuery::Output::QueryResult::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ImmediateQuery::Output::QueryResult::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ImmediateQuery::Output::QueryResult::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
+}
+
+ImmediateQuery::Output::QueryResult::Result::Result()
+    :
+    select(this, {})
+{
+
+    yang_name = "result"; yang_parent_name = "query-result"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+ImmediateQuery::Output::QueryResult::Result::~Result()
+{
+}
+
+bool ImmediateQuery::Output::QueryResult::Result::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<select.len(); index++)
+    {
+        if(select[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ImmediateQuery::Output::QueryResult::Result::has_operation() const
+{
+    for (std::size_t index=0; index<select.len(); index++)
+    {
+        if(select[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ImmediateQuery::Output::QueryResult::Result::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-query:immediate-query/output/query-result/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ImmediateQuery::Output::QueryResult::Result::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "result";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ImmediateQuery::Output::QueryResult::Result::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ImmediateQuery::Output::QueryResult::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "select")
+    {
+        auto c = std::make_shared<ImmediateQuery::Output::QueryResult::Result::Select>();
+        c->parent = this;
+        select.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::Output::QueryResult::Result::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : select.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void ImmediateQuery::Output::QueryResult::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ImmediateQuery::Output::QueryResult::Result::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ImmediateQuery::Output::QueryResult::Result::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "select")
+        return true;
+    return false;
+}
+
+ImmediateQuery::Output::QueryResult::Result::Select::Select()
+    :
+    label{YType::str, "label"},
+    path{YType::str, "path"},
+    value_{YType::str, "value"},
+    data{YType::str, "data"}
+{
+
+    yang_name = "select"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+ImmediateQuery::Output::QueryResult::Result::Select::~Select()
+{
+}
+
+bool ImmediateQuery::Output::QueryResult::Result::Select::has_data() const
+{
+    if (is_presence_container) return true;
+    return label.is_set
+	|| path.is_set
+	|| value_.is_set
+	|| data.is_set;
+}
+
+bool ImmediateQuery::Output::QueryResult::Result::Select::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(path.yfilter)
+	|| ydk::is_set(value_.yfilter)
+	|| ydk::is_set(data.yfilter);
+}
+
+std::string ImmediateQuery::Output::QueryResult::Result::Select::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-query:immediate-query/output/query-result/result/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ImmediateQuery::Output::QueryResult::Result::Select::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "select";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ImmediateQuery::Output::QueryResult::Result::Select::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ImmediateQuery::Output::QueryResult::Result::Select::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::Output::QueryResult::Result::Select::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void ImmediateQuery::Output::QueryResult::Result::Select::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path")
+    {
+        path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ImmediateQuery::Output::QueryResult::Result::Select::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+}
+
+bool ImmediateQuery::Output::QueryResult::Result::Select::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label" || name == "path" || name == "value" || name == "data")
+        return true;
+    return false;
+}
+
 ResetQuery::ResetQuery()
     :
     input(std::make_shared<ResetQuery::Input>())
@@ -1562,6 +2402,11 @@ const Enum::YLeaf StartQuery::Input::Select::ResultType::string {0, "string"};
 const Enum::YLeaf StartQuery::Input::Select::ResultType::path {1, "path"};
 const Enum::YLeaf StartQuery::Input::Select::ResultType::leaf_value {2, "leaf-value"};
 const Enum::YLeaf StartQuery::Input::Select::ResultType::inline_ {3, "inline"};
+
+const Enum::YLeaf ImmediateQuery::Input::Select::ResultType::string {0, "string"};
+const Enum::YLeaf ImmediateQuery::Input::Select::ResultType::path {1, "path"};
+const Enum::YLeaf ImmediateQuery::Input::Select::ResultType::leaf_value {2, "leaf-value"};
+const Enum::YLeaf ImmediateQuery::Input::Select::ResultType::inline_ {3, "inline"};
 
 
 }

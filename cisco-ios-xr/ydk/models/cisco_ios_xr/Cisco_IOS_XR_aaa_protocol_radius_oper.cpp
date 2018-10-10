@@ -226,6 +226,7 @@ Radius::Nodes::Node::Node()
     , dead_criteria(std::make_shared<Radius::Nodes::Node::DeadCriteria>())
     , authentication(std::make_shared<Radius::Nodes::Node::Authentication>())
     , accounting(std::make_shared<Radius::Nodes::Node::Accounting>())
+    , dynamic_authorization_clients(std::make_shared<Radius::Nodes::Node::DynamicAuthorizationClients>())
     , server_groups(std::make_shared<Radius::Nodes::Node::ServerGroups>())
     , dynamic_authorization(std::make_shared<Radius::Nodes::Node::DynamicAuthorization>())
 {
@@ -233,6 +234,7 @@ Radius::Nodes::Node::Node()
     dead_criteria->parent = this;
     authentication->parent = this;
     accounting->parent = this;
+    dynamic_authorization_clients->parent = this;
     server_groups->parent = this;
     dynamic_authorization->parent = this;
 
@@ -251,6 +253,7 @@ bool Radius::Nodes::Node::has_data() const
 	|| (dead_criteria !=  nullptr && dead_criteria->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (accounting !=  nullptr && accounting->has_data())
+	|| (dynamic_authorization_clients !=  nullptr && dynamic_authorization_clients->has_data())
 	|| (server_groups !=  nullptr && server_groups->has_data())
 	|| (dynamic_authorization !=  nullptr && dynamic_authorization->has_data());
 }
@@ -263,6 +266,7 @@ bool Radius::Nodes::Node::has_operation() const
 	|| (dead_criteria !=  nullptr && dead_criteria->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (accounting !=  nullptr && accounting->has_operation())
+	|| (dynamic_authorization_clients !=  nullptr && dynamic_authorization_clients->has_operation())
 	|| (server_groups !=  nullptr && server_groups->has_operation())
 	|| (dynamic_authorization !=  nullptr && dynamic_authorization->has_operation());
 }
@@ -330,6 +334,15 @@ std::shared_ptr<Entity> Radius::Nodes::Node::get_child_by_name(const std::string
         return accounting;
     }
 
+    if(child_yang_name == "dynamic-authorization-clients")
+    {
+        if(dynamic_authorization_clients == nullptr)
+        {
+            dynamic_authorization_clients = std::make_shared<Radius::Nodes::Node::DynamicAuthorizationClients>();
+        }
+        return dynamic_authorization_clients;
+    }
+
     if(child_yang_name == "server-groups")
     {
         if(server_groups == nullptr)
@@ -375,6 +388,11 @@ std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::get_children
         children["accounting"] = accounting;
     }
 
+    if(dynamic_authorization_clients != nullptr)
+    {
+        children["dynamic-authorization-clients"] = dynamic_authorization_clients;
+    }
+
     if(server_groups != nullptr)
     {
         children["server-groups"] = server_groups;
@@ -408,7 +426,7 @@ void Radius::Nodes::Node::set_filter(const std::string & value_path, YFilter yfi
 
 bool Radius::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client" || name == "dead-criteria" || name == "authentication" || name == "accounting" || name == "server-groups" || name == "dynamic-authorization" || name == "node-name")
+    if(name == "client" || name == "dead-criteria" || name == "authentication" || name == "accounting" || name == "dynamic-authorization-clients" || name == "server-groups" || name == "dynamic-authorization" || name == "node-name")
         return true;
     return false;
 }
@@ -2089,6 +2107,513 @@ bool Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::has_leaf_or_
     return false;
 }
 
+Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorizationClients()
+    :
+    dynamic_author_client(this, {})
+{
+
+    yang_name = "dynamic-authorization-clients"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Radius::Nodes::Node::DynamicAuthorizationClients::~DynamicAuthorizationClients()
+{
+}
+
+bool Radius::Nodes::Node::DynamicAuthorizationClients::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dynamic_author_client.len(); index++)
+    {
+        if(dynamic_author_client[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Radius::Nodes::Node::DynamicAuthorizationClients::has_operation() const
+{
+    for (std::size_t index=0; index<dynamic_author_client.len(); index++)
+    {
+        if(dynamic_author_client[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Radius::Nodes::Node::DynamicAuthorizationClients::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dynamic-authorization-clients";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DynamicAuthorizationClients::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Radius::Nodes::Node::DynamicAuthorizationClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "dynamic-author-client")
+    {
+        auto c = std::make_shared<Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient>();
+        c->parent = this;
+        dynamic_author_client.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DynamicAuthorizationClients::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : dynamic_author_client.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Radius::Nodes::Node::DynamicAuthorizationClients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Radius::Nodes::Node::DynamicAuthorizationClients::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Radius::Nodes::Node::DynamicAuthorizationClients::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dynamic-author-client")
+        return true;
+    return false;
+}
+
+Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::DynamicAuthorClient()
+    :
+    client_address{YType::str, "client-address"},
+    disc_reqs{YType::uint32, "disc-reqs"},
+    disc_acks{YType::uint32, "disc-acks"},
+    disc_naks{YType::uint32, "disc-naks"},
+    disc_bad_auth{YType::uint32, "disc-bad-auth"},
+    drop_disc_reqs{YType::uint32, "drop-disc-reqs"},
+    coa_reqs{YType::uint32, "coa-reqs"},
+    coa_acks{YType::uint32, "coa-acks"},
+    coa_naks{YType::uint32, "coa-naks"},
+    coa_bad_auth{YType::uint32, "coa-bad-auth"},
+    drop_coa_reqs{YType::uint32, "drop-coa-reqs"},
+    unknown_types{YType::uint32, "unknown-types"},
+    internal_error{YType::uint32, "internal-error"},
+    pak_decode_fail{YType::uint32, "pak-decode-fail"},
+    vrf_parse_fail_err{YType::uint32, "vrf-parse-fail-err"},
+    unknown_vsa_error{YType::uint32, "unknown-vsa-error"},
+    send_msg_failed{YType::uint32, "send-msg-failed"},
+    radius_to_ch{YType::uint32, "radius-to-ch"},
+    ch_to_radius{YType::uint32, "ch-to-radius"},
+    service_parse_fail{YType::uint32, "service-parse-fail"},
+    multi_subs_error{YType::uint32, "multi-subs-error"},
+    service_not_present{YType::uint32, "service-not-present"},
+    send_to_ch_fail{YType::uint32, "send-to-ch-fail"},
+    vrf_name{YType::str, "vrf-name"},
+    addr_buf{YType::str, "addr-buf"}
+{
+
+    yang_name = "dynamic-author-client"; yang_parent_name = "dynamic-authorization-clients"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::~DynamicAuthorClient()
+{
+}
+
+bool Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::has_data() const
+{
+    if (is_presence_container) return true;
+    return client_address.is_set
+	|| disc_reqs.is_set
+	|| disc_acks.is_set
+	|| disc_naks.is_set
+	|| disc_bad_auth.is_set
+	|| drop_disc_reqs.is_set
+	|| coa_reqs.is_set
+	|| coa_acks.is_set
+	|| coa_naks.is_set
+	|| coa_bad_auth.is_set
+	|| drop_coa_reqs.is_set
+	|| unknown_types.is_set
+	|| internal_error.is_set
+	|| pak_decode_fail.is_set
+	|| vrf_parse_fail_err.is_set
+	|| unknown_vsa_error.is_set
+	|| send_msg_failed.is_set
+	|| radius_to_ch.is_set
+	|| ch_to_radius.is_set
+	|| service_parse_fail.is_set
+	|| multi_subs_error.is_set
+	|| service_not_present.is_set
+	|| send_to_ch_fail.is_set
+	|| vrf_name.is_set
+	|| addr_buf.is_set;
+}
+
+bool Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(client_address.yfilter)
+	|| ydk::is_set(disc_reqs.yfilter)
+	|| ydk::is_set(disc_acks.yfilter)
+	|| ydk::is_set(disc_naks.yfilter)
+	|| ydk::is_set(disc_bad_auth.yfilter)
+	|| ydk::is_set(drop_disc_reqs.yfilter)
+	|| ydk::is_set(coa_reqs.yfilter)
+	|| ydk::is_set(coa_acks.yfilter)
+	|| ydk::is_set(coa_naks.yfilter)
+	|| ydk::is_set(coa_bad_auth.yfilter)
+	|| ydk::is_set(drop_coa_reqs.yfilter)
+	|| ydk::is_set(unknown_types.yfilter)
+	|| ydk::is_set(internal_error.yfilter)
+	|| ydk::is_set(pak_decode_fail.yfilter)
+	|| ydk::is_set(vrf_parse_fail_err.yfilter)
+	|| ydk::is_set(unknown_vsa_error.yfilter)
+	|| ydk::is_set(send_msg_failed.yfilter)
+	|| ydk::is_set(radius_to_ch.yfilter)
+	|| ydk::is_set(ch_to_radius.yfilter)
+	|| ydk::is_set(service_parse_fail.yfilter)
+	|| ydk::is_set(multi_subs_error.yfilter)
+	|| ydk::is_set(service_not_present.yfilter)
+	|| ydk::is_set(send_to_ch_fail.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(addr_buf.yfilter);
+}
+
+std::string Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dynamic-author-client";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (client_address.is_set || is_set(client_address.yfilter)) leaf_name_data.push_back(client_address.get_name_leafdata());
+    if (disc_reqs.is_set || is_set(disc_reqs.yfilter)) leaf_name_data.push_back(disc_reqs.get_name_leafdata());
+    if (disc_acks.is_set || is_set(disc_acks.yfilter)) leaf_name_data.push_back(disc_acks.get_name_leafdata());
+    if (disc_naks.is_set || is_set(disc_naks.yfilter)) leaf_name_data.push_back(disc_naks.get_name_leafdata());
+    if (disc_bad_auth.is_set || is_set(disc_bad_auth.yfilter)) leaf_name_data.push_back(disc_bad_auth.get_name_leafdata());
+    if (drop_disc_reqs.is_set || is_set(drop_disc_reqs.yfilter)) leaf_name_data.push_back(drop_disc_reqs.get_name_leafdata());
+    if (coa_reqs.is_set || is_set(coa_reqs.yfilter)) leaf_name_data.push_back(coa_reqs.get_name_leafdata());
+    if (coa_acks.is_set || is_set(coa_acks.yfilter)) leaf_name_data.push_back(coa_acks.get_name_leafdata());
+    if (coa_naks.is_set || is_set(coa_naks.yfilter)) leaf_name_data.push_back(coa_naks.get_name_leafdata());
+    if (coa_bad_auth.is_set || is_set(coa_bad_auth.yfilter)) leaf_name_data.push_back(coa_bad_auth.get_name_leafdata());
+    if (drop_coa_reqs.is_set || is_set(drop_coa_reqs.yfilter)) leaf_name_data.push_back(drop_coa_reqs.get_name_leafdata());
+    if (unknown_types.is_set || is_set(unknown_types.yfilter)) leaf_name_data.push_back(unknown_types.get_name_leafdata());
+    if (internal_error.is_set || is_set(internal_error.yfilter)) leaf_name_data.push_back(internal_error.get_name_leafdata());
+    if (pak_decode_fail.is_set || is_set(pak_decode_fail.yfilter)) leaf_name_data.push_back(pak_decode_fail.get_name_leafdata());
+    if (vrf_parse_fail_err.is_set || is_set(vrf_parse_fail_err.yfilter)) leaf_name_data.push_back(vrf_parse_fail_err.get_name_leafdata());
+    if (unknown_vsa_error.is_set || is_set(unknown_vsa_error.yfilter)) leaf_name_data.push_back(unknown_vsa_error.get_name_leafdata());
+    if (send_msg_failed.is_set || is_set(send_msg_failed.yfilter)) leaf_name_data.push_back(send_msg_failed.get_name_leafdata());
+    if (radius_to_ch.is_set || is_set(radius_to_ch.yfilter)) leaf_name_data.push_back(radius_to_ch.get_name_leafdata());
+    if (ch_to_radius.is_set || is_set(ch_to_radius.yfilter)) leaf_name_data.push_back(ch_to_radius.get_name_leafdata());
+    if (service_parse_fail.is_set || is_set(service_parse_fail.yfilter)) leaf_name_data.push_back(service_parse_fail.get_name_leafdata());
+    if (multi_subs_error.is_set || is_set(multi_subs_error.yfilter)) leaf_name_data.push_back(multi_subs_error.get_name_leafdata());
+    if (service_not_present.is_set || is_set(service_not_present.yfilter)) leaf_name_data.push_back(service_not_present.get_name_leafdata());
+    if (send_to_ch_fail.is_set || is_set(send_to_ch_fail.yfilter)) leaf_name_data.push_back(send_to_ch_fail.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (addr_buf.is_set || is_set(addr_buf.yfilter)) leaf_name_data.push_back(addr_buf.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "client-address")
+    {
+        client_address = value;
+        client_address.value_namespace = name_space;
+        client_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disc-reqs")
+    {
+        disc_reqs = value;
+        disc_reqs.value_namespace = name_space;
+        disc_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disc-acks")
+    {
+        disc_acks = value;
+        disc_acks.value_namespace = name_space;
+        disc_acks.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disc-naks")
+    {
+        disc_naks = value;
+        disc_naks.value_namespace = name_space;
+        disc_naks.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disc-bad-auth")
+    {
+        disc_bad_auth = value;
+        disc_bad_auth.value_namespace = name_space;
+        disc_bad_auth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drop-disc-reqs")
+    {
+        drop_disc_reqs = value;
+        drop_disc_reqs.value_namespace = name_space;
+        drop_disc_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "coa-reqs")
+    {
+        coa_reqs = value;
+        coa_reqs.value_namespace = name_space;
+        coa_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "coa-acks")
+    {
+        coa_acks = value;
+        coa_acks.value_namespace = name_space;
+        coa_acks.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "coa-naks")
+    {
+        coa_naks = value;
+        coa_naks.value_namespace = name_space;
+        coa_naks.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "coa-bad-auth")
+    {
+        coa_bad_auth = value;
+        coa_bad_auth.value_namespace = name_space;
+        coa_bad_auth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drop-coa-reqs")
+    {
+        drop_coa_reqs = value;
+        drop_coa_reqs.value_namespace = name_space;
+        drop_coa_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unknown-types")
+    {
+        unknown_types = value;
+        unknown_types.value_namespace = name_space;
+        unknown_types.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "internal-error")
+    {
+        internal_error = value;
+        internal_error.value_namespace = name_space;
+        internal_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pak-decode-fail")
+    {
+        pak_decode_fail = value;
+        pak_decode_fail.value_namespace = name_space;
+        pak_decode_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-parse-fail-err")
+    {
+        vrf_parse_fail_err = value;
+        vrf_parse_fail_err.value_namespace = name_space;
+        vrf_parse_fail_err.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unknown-vsa-error")
+    {
+        unknown_vsa_error = value;
+        unknown_vsa_error.value_namespace = name_space;
+        unknown_vsa_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "send-msg-failed")
+    {
+        send_msg_failed = value;
+        send_msg_failed.value_namespace = name_space;
+        send_msg_failed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "radius-to-ch")
+    {
+        radius_to_ch = value;
+        radius_to_ch.value_namespace = name_space;
+        radius_to_ch.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ch-to-radius")
+    {
+        ch_to_radius = value;
+        ch_to_radius.value_namespace = name_space;
+        ch_to_radius.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "service-parse-fail")
+    {
+        service_parse_fail = value;
+        service_parse_fail.value_namespace = name_space;
+        service_parse_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multi-subs-error")
+    {
+        multi_subs_error = value;
+        multi_subs_error.value_namespace = name_space;
+        multi_subs_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "service-not-present")
+    {
+        service_not_present = value;
+        service_not_present.value_namespace = name_space;
+        service_not_present.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "send-to-ch-fail")
+    {
+        send_to_ch_fail = value;
+        send_to_ch_fail.value_namespace = name_space;
+        send_to_ch_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "addr-buf")
+    {
+        addr_buf = value;
+        addr_buf.value_namespace = name_space;
+        addr_buf.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "client-address")
+    {
+        client_address.yfilter = yfilter;
+    }
+    if(value_path == "disc-reqs")
+    {
+        disc_reqs.yfilter = yfilter;
+    }
+    if(value_path == "disc-acks")
+    {
+        disc_acks.yfilter = yfilter;
+    }
+    if(value_path == "disc-naks")
+    {
+        disc_naks.yfilter = yfilter;
+    }
+    if(value_path == "disc-bad-auth")
+    {
+        disc_bad_auth.yfilter = yfilter;
+    }
+    if(value_path == "drop-disc-reqs")
+    {
+        drop_disc_reqs.yfilter = yfilter;
+    }
+    if(value_path == "coa-reqs")
+    {
+        coa_reqs.yfilter = yfilter;
+    }
+    if(value_path == "coa-acks")
+    {
+        coa_acks.yfilter = yfilter;
+    }
+    if(value_path == "coa-naks")
+    {
+        coa_naks.yfilter = yfilter;
+    }
+    if(value_path == "coa-bad-auth")
+    {
+        coa_bad_auth.yfilter = yfilter;
+    }
+    if(value_path == "drop-coa-reqs")
+    {
+        drop_coa_reqs.yfilter = yfilter;
+    }
+    if(value_path == "unknown-types")
+    {
+        unknown_types.yfilter = yfilter;
+    }
+    if(value_path == "internal-error")
+    {
+        internal_error.yfilter = yfilter;
+    }
+    if(value_path == "pak-decode-fail")
+    {
+        pak_decode_fail.yfilter = yfilter;
+    }
+    if(value_path == "vrf-parse-fail-err")
+    {
+        vrf_parse_fail_err.yfilter = yfilter;
+    }
+    if(value_path == "unknown-vsa-error")
+    {
+        unknown_vsa_error.yfilter = yfilter;
+    }
+    if(value_path == "send-msg-failed")
+    {
+        send_msg_failed.yfilter = yfilter;
+    }
+    if(value_path == "radius-to-ch")
+    {
+        radius_to_ch.yfilter = yfilter;
+    }
+    if(value_path == "ch-to-radius")
+    {
+        ch_to_radius.yfilter = yfilter;
+    }
+    if(value_path == "service-parse-fail")
+    {
+        service_parse_fail.yfilter = yfilter;
+    }
+    if(value_path == "multi-subs-error")
+    {
+        multi_subs_error.yfilter = yfilter;
+    }
+    if(value_path == "service-not-present")
+    {
+        service_not_present.yfilter = yfilter;
+    }
+    if(value_path == "send-to-ch-fail")
+    {
+        send_to_ch_fail.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "addr-buf")
+    {
+        addr_buf.yfilter = yfilter;
+    }
+}
+
+bool Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client-address" || name == "disc-reqs" || name == "disc-acks" || name == "disc-naks" || name == "disc-bad-auth" || name == "drop-disc-reqs" || name == "coa-reqs" || name == "coa-acks" || name == "coa-naks" || name == "coa-bad-auth" || name == "drop-coa-reqs" || name == "unknown-types" || name == "internal-error" || name == "pak-decode-fail" || name == "vrf-parse-fail-err" || name == "unknown-vsa-error" || name == "send-msg-failed" || name == "radius-to-ch" || name == "ch-to-radius" || name == "service-parse-fail" || name == "multi-subs-error" || name == "service-not-present" || name == "send-to-ch-fail" || name == "vrf-name" || name == "addr-buf")
+        return true;
+    return false;
+}
+
 Radius::Nodes::Node::ServerGroups::ServerGroups()
     :
     server_group(this, {"server_group_name"})
@@ -2353,7 +2878,8 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::ServerGroup_()
     accounting_port{YType::uint32, "accounting-port"},
     is_private{YType::boolean, "is-private"},
     ip_address{YType::str, "ip-address"},
-    family{YType::str, "family"}
+    family{YType::str, "family"},
+    redirected_requests{YType::uint32, "redirected-requests"}
         ,
     accounting(std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting>())
     , authentication(std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication>())
@@ -2379,6 +2905,7 @@ bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::has_data() co
 	|| is_private.is_set
 	|| ip_address.is_set
 	|| family.is_set
+	|| redirected_requests.is_set
 	|| (accounting !=  nullptr && accounting->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (authorization !=  nullptr && authorization->has_data());
@@ -2393,6 +2920,7 @@ bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::has_operation
 	|| ydk::is_set(is_private.yfilter)
 	|| ydk::is_set(ip_address.yfilter)
 	|| ydk::is_set(family.yfilter)
+	|| ydk::is_set(redirected_requests.yfilter)
 	|| (accounting !=  nullptr && accounting->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (authorization !=  nullptr && authorization->has_operation());
@@ -2415,6 +2943,7 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups
     if (is_private.is_set || is_set(is_private.yfilter)) leaf_name_data.push_back(is_private.get_name_leafdata());
     if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
     if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
+    if (redirected_requests.is_set || is_set(redirected_requests.yfilter)) leaf_name_data.push_back(redirected_requests.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2512,6 +3041,12 @@ void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::set_value(con
         family.value_namespace = name_space;
         family.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "redirected-requests")
+    {
+        redirected_requests = value;
+        redirected_requests.value_namespace = name_space;
+        redirected_requests.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2540,11 +3075,15 @@ void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::set_filter(co
     {
         family.yfilter = yfilter;
     }
+    if(value_path == "redirected-requests")
+    {
+        redirected_requests.yfilter = yfilter;
+    }
 }
 
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "accounting" || name == "authentication" || name == "authorization" || name == "server-address" || name == "authentication-port" || name == "accounting-port" || name == "is-private" || name == "ip-address" || name == "family")
+    if(name == "accounting" || name == "authentication" || name == "authorization" || name == "server-address" || name == "authentication-port" || name == "accounting-port" || name == "is-private" || name == "ip-address" || name == "family" || name == "redirected-requests")
         return true;
     return false;
 }
@@ -3332,7 +3871,9 @@ bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization
 Radius::Nodes::Node::DynamicAuthorization::DynamicAuthorization()
     :
     disconnected_invalid_requests{YType::uint32, "disconnected-invalid-requests"},
-    invalid_coa_requests{YType::uint32, "invalid-coa-requests"}
+    invalid_coa_requests{YType::uint32, "invalid-coa-requests"},
+    radius_context_not_found{YType::uint32, "radius-context-not-found"},
+    client_context_not_found{YType::uint32, "client-context-not-found"}
 {
 
     yang_name = "dynamic-authorization"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
@@ -3346,14 +3887,18 @@ bool Radius::Nodes::Node::DynamicAuthorization::has_data() const
 {
     if (is_presence_container) return true;
     return disconnected_invalid_requests.is_set
-	|| invalid_coa_requests.is_set;
+	|| invalid_coa_requests.is_set
+	|| radius_context_not_found.is_set
+	|| client_context_not_found.is_set;
 }
 
 bool Radius::Nodes::Node::DynamicAuthorization::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disconnected_invalid_requests.yfilter)
-	|| ydk::is_set(invalid_coa_requests.yfilter);
+	|| ydk::is_set(invalid_coa_requests.yfilter)
+	|| ydk::is_set(radius_context_not_found.yfilter)
+	|| ydk::is_set(client_context_not_found.yfilter);
 }
 
 std::string Radius::Nodes::Node::DynamicAuthorization::get_segment_path() const
@@ -3369,6 +3914,8 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DynamicAutho
 
     if (disconnected_invalid_requests.is_set || is_set(disconnected_invalid_requests.yfilter)) leaf_name_data.push_back(disconnected_invalid_requests.get_name_leafdata());
     if (invalid_coa_requests.is_set || is_set(invalid_coa_requests.yfilter)) leaf_name_data.push_back(invalid_coa_requests.get_name_leafdata());
+    if (radius_context_not_found.is_set || is_set(radius_context_not_found.yfilter)) leaf_name_data.push_back(radius_context_not_found.get_name_leafdata());
+    if (client_context_not_found.is_set || is_set(client_context_not_found.yfilter)) leaf_name_data.push_back(client_context_not_found.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3400,6 +3947,18 @@ void Radius::Nodes::Node::DynamicAuthorization::set_value(const std::string & va
         invalid_coa_requests.value_namespace = name_space;
         invalid_coa_requests.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "radius-context-not-found")
+    {
+        radius_context_not_found = value;
+        radius_context_not_found.value_namespace = name_space;
+        radius_context_not_found.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "client-context-not-found")
+    {
+        client_context_not_found = value;
+        client_context_not_found.value_namespace = name_space;
+        client_context_not_found.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Radius::Nodes::Node::DynamicAuthorization::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3412,11 +3971,19 @@ void Radius::Nodes::Node::DynamicAuthorization::set_filter(const std::string & v
     {
         invalid_coa_requests.yfilter = yfilter;
     }
+    if(value_path == "radius-context-not-found")
+    {
+        radius_context_not_found.yfilter = yfilter;
+    }
+    if(value_path == "client-context-not-found")
+    {
+        client_context_not_found.yfilter = yfilter;
+    }
 }
 
 bool Radius::Nodes::Node::DynamicAuthorization::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "disconnected-invalid-requests" || name == "invalid-coa-requests")
+    if(name == "disconnected-invalid-requests" || name == "invalid-coa-requests" || name == "radius-context-not-found" || name == "client-context-not-found")
         return true;
     return false;
 }

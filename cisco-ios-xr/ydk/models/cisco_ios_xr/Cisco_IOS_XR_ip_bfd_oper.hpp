@@ -390,6 +390,7 @@ class Bfd::Ipv6SingleHopCounters::Ipv6SingleHopPacketCounters::Ipv6SingleHopPack
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf location; //type: string
         ydk::YLeaf hello_transmit_count; //type: uint32
         ydk::YLeaf hello_receive_count; //type: uint32
         ydk::YLeaf echo_transmit_count; //type: uint32
@@ -465,6 +466,7 @@ class Bfd::Counters::PacketCounters::PacketCounter : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf location; //type: string
         ydk::YLeaf hello_transmit_count; //type: uint32
         ydk::YLeaf hello_receive_count; //type: uint32
         ydk::YLeaf echo_transmit_count; //type: uint32
@@ -3676,6 +3678,7 @@ class Bfd::Ipv4SingleHopCounters::Ipv4SingleHopPacketCounters::Ipv4SingleHopPack
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf location; //type: string
         ydk::YLeaf hello_transmit_count; //type: uint32
         ydk::YLeaf hello_receive_count; //type: uint32
         ydk::YLeaf echo_transmit_count; //type: uint32

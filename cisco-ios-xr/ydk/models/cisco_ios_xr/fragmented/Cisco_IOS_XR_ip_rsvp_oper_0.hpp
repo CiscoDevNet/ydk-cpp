@@ -43,7 +43,6 @@ class RsvpStandby : public ydk::Entity
         class HelloInstanceBriefs; //type: RsvpStandby::HelloInstanceBriefs
         class AuthenticationDetails; //type: RsvpStandby::AuthenticationDetails
         class RsbBriefs; //type: RsvpStandby::RsbBriefs
-        class OpenConfig; //type: RsvpStandby::OpenConfig
         class Counters; //type: RsvpStandby::Counters
         class InterfaceDetaileds; //type: RsvpStandby::InterfaceDetaileds
         class ControllerBriefs; //type: RsvpStandby::ControllerBriefs
@@ -75,7 +74,6 @@ class RsvpStandby : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::HelloInstanceBriefs> hello_instance_briefs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::AuthenticationDetails> authentication_details;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs> rsb_briefs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::OpenConfig> open_config;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::Counters> counters;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::InterfaceDetaileds> interface_detaileds;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::ControllerBriefs> controller_briefs;

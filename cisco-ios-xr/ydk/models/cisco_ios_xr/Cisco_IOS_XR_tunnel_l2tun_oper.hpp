@@ -1025,9 +1025,33 @@ class L2tp::CounterHistFail : public ydk::Entity
         ydk::YLeaf sess_down_tmout; //type: uint32
         ydk::YLeaf tx_counters; //type: string
         ydk::YLeaf rx_counters; //type: string
-        ydk::YLeafList pkt_timeout; //type: list of  uint32
+        class PktTimeout; //type: L2tp::CounterHistFail::PktTimeout
 
+        ydk::YList pkt_timeout;
+        
 }; // L2tp::CounterHistFail
+
+
+class L2tp::CounterHistFail::PktTimeout : public ydk::Entity
+{
+    public:
+        PktTimeout();
+        ~PktTimeout();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // L2tp::CounterHistFail::PktTimeout
 
 
 class L2tp::Classes : public ydk::Entity
@@ -1173,9 +1197,32 @@ class L2tp::Tunnels::Tunnel : public ydk::Entity
         ydk::YLeaf total_peer_authentication_failures; //type: uint32
         ydk::YLeaf is_tunnel_up; //type: boolean
         ydk::YLeaf is_congestion_control_enabled; //type: boolean
-        ydk::YLeafList retransmit_time; //type: list of  uint16
+        class RetransmitTime; //type: L2tp::Tunnels::Tunnel::RetransmitTime
 
+        ydk::YList retransmit_time;
+        
 }; // L2tp::Tunnels::Tunnel
+
+
+class L2tp::Tunnels::Tunnel::RetransmitTime : public ydk::Entity
+{
+    public:
+        RetransmitTime();
+        ~RetransmitTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint16
+
+}; // L2tp::Tunnels::Tunnel::RetransmitTime
 
 
 class L2tp::Sessions : public ydk::Entity
@@ -2581,9 +2628,33 @@ class L2tpv2::CounterHistFail : public ydk::Entity
         ydk::YLeaf sess_down_tmout; //type: uint32
         ydk::YLeaf tx_counters; //type: string
         ydk::YLeaf rx_counters; //type: string
-        ydk::YLeafList pkt_timeout; //type: list of  uint32
+        class PktTimeout; //type: L2tpv2::CounterHistFail::PktTimeout
 
+        ydk::YList pkt_timeout;
+        
 }; // L2tpv2::CounterHistFail
+
+
+class L2tpv2::CounterHistFail::PktTimeout : public ydk::Entity
+{
+    public:
+        PktTimeout();
+        ~PktTimeout();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // L2tpv2::CounterHistFail::PktTimeout
 
 
 class L2tpv2::Classes : public ydk::Entity
@@ -2729,9 +2800,32 @@ class L2tpv2::Tunnels::Tunnel : public ydk::Entity
         ydk::YLeaf total_peer_authentication_failures; //type: uint32
         ydk::YLeaf is_tunnel_up; //type: boolean
         ydk::YLeaf is_congestion_control_enabled; //type: boolean
-        ydk::YLeafList retransmit_time; //type: list of  uint16
+        class RetransmitTime; //type: L2tpv2::Tunnels::Tunnel::RetransmitTime
 
+        ydk::YList retransmit_time;
+        
 }; // L2tpv2::Tunnels::Tunnel
+
+
+class L2tpv2::Tunnels::Tunnel::RetransmitTime : public ydk::Entity
+{
+    public:
+        RetransmitTime();
+        ~RetransmitTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint16
+
+}; // L2tpv2::Tunnels::Tunnel::RetransmitTime
 
 
 class L2tpv2::Sessions : public ydk::Entity

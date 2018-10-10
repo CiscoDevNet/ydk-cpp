@@ -665,7 +665,8 @@ bool NvSatellites::NvSatellite::has_leaf_or_child_of_name(const std::string & na
 NvSatellites::NvSatellite::UpgradeOnConnect::UpgradeOnConnect()
     :
     connect_type{YType::enumeration, "connect-type"},
-    reference{YType::str, "reference"}
+    reference{YType::str, "reference"},
+    image_reference{YType::str, "image-reference"}
 {
 
     yang_name = "upgrade-on-connect"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true; 
@@ -679,14 +680,16 @@ bool NvSatellites::NvSatellite::UpgradeOnConnect::has_data() const
 {
     if (is_presence_container) return true;
     return connect_type.is_set
-	|| reference.is_set;
+	|| reference.is_set
+	|| image_reference.is_set;
 }
 
 bool NvSatellites::NvSatellite::UpgradeOnConnect::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(connect_type.yfilter)
-	|| ydk::is_set(reference.yfilter);
+	|| ydk::is_set(reference.yfilter)
+	|| ydk::is_set(image_reference.yfilter);
 }
 
 std::string NvSatellites::NvSatellite::UpgradeOnConnect::get_segment_path() const
@@ -702,6 +705,7 @@ std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::Upgrad
 
     if (connect_type.is_set || is_set(connect_type.yfilter)) leaf_name_data.push_back(connect_type.get_name_leafdata());
     if (reference.is_set || is_set(reference.yfilter)) leaf_name_data.push_back(reference.get_name_leafdata());
+    if (image_reference.is_set || is_set(image_reference.yfilter)) leaf_name_data.push_back(image_reference.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -733,6 +737,12 @@ void NvSatellites::NvSatellite::UpgradeOnConnect::set_value(const std::string & 
         reference.value_namespace = name_space;
         reference.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "image-reference")
+    {
+        image_reference = value;
+        image_reference.value_namespace = name_space;
+        image_reference.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void NvSatellites::NvSatellite::UpgradeOnConnect::set_filter(const std::string & value_path, YFilter yfilter)
@@ -745,11 +755,15 @@ void NvSatellites::NvSatellite::UpgradeOnConnect::set_filter(const std::string &
     {
         reference.yfilter = yfilter;
     }
+    if(value_path == "image-reference")
+    {
+        image_reference.yfilter = yfilter;
+    }
 }
 
 bool NvSatellites::NvSatellite::UpgradeOnConnect::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "connect-type" || name == "reference")
+    if(name == "connect-type" || name == "reference" || name == "image-reference")
         return true;
     return false;
 }

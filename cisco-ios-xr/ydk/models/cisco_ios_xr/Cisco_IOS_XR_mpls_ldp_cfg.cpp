@@ -6650,8 +6650,10 @@ MplsLdp::Vrfs::Vrf::Global::Neighbor::Neighbor()
     :
     password{YType::str, "password"}
         ,
-    ldp_ids(std::make_shared<MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds>())
+    dual_stack(std::make_shared<MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack>())
+    , ldp_ids(std::make_shared<MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds>())
 {
+    dual_stack->parent = this;
     ldp_ids->parent = this;
 
     yang_name = "neighbor"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
@@ -6665,6 +6667,7 @@ bool MplsLdp::Vrfs::Vrf::Global::Neighbor::has_data() const
 {
     if (is_presence_container) return true;
     return password.is_set
+	|| (dual_stack !=  nullptr && dual_stack->has_data())
 	|| (ldp_ids !=  nullptr && ldp_ids->has_data());
 }
 
@@ -6672,6 +6675,7 @@ bool MplsLdp::Vrfs::Vrf::Global::Neighbor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(password.yfilter)
+	|| (dual_stack !=  nullptr && dual_stack->has_operation())
 	|| (ldp_ids !=  nullptr && ldp_ids->has_operation());
 }
 
@@ -6694,6 +6698,15 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Vrfs::Vrf::Global::Neigh
 
 std::shared_ptr<Entity> MplsLdp::Vrfs::Vrf::Global::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "dual-stack")
+    {
+        if(dual_stack == nullptr)
+        {
+            dual_stack = std::make_shared<MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack>();
+        }
+        return dual_stack;
+    }
+
     if(child_yang_name == "ldp-ids")
     {
         if(ldp_ids == nullptr)
@@ -6710,6 +6723,11 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Global::Neigh
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(dual_stack != nullptr)
+    {
+        children["dual-stack"] = dual_stack;
+    }
+
     if(ldp_ids != nullptr)
     {
         children["ldp-ids"] = ldp_ids;
@@ -6738,7 +6756,264 @@ void MplsLdp::Vrfs::Vrf::Global::Neighbor::set_filter(const std::string & value_
 
 bool MplsLdp::Vrfs::Vrf::Global::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ldp-ids" || name == "password")
+    if(name == "dual-stack" || name == "ldp-ids" || name == "password")
+        return true;
+    return false;
+}
+
+MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::DualStack()
+    :
+    transport_connection(std::make_shared<MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection>())
+{
+    transport_connection->parent = this;
+
+    yang_name = "dual-stack"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::~DualStack()
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::has_data() const
+{
+    if (is_presence_container) return true;
+    return (transport_connection !=  nullptr && transport_connection->has_data());
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::has_operation() const
+{
+    return is_set(yfilter)
+	|| (transport_connection !=  nullptr && transport_connection->has_operation());
+}
+
+std::string MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dual-stack";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "transport-connection")
+    {
+        if(transport_connection == nullptr)
+        {
+            transport_connection = std::make_shared<MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection>();
+        }
+        return transport_connection;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(transport_connection != nullptr)
+    {
+        children["transport-connection"] = transport_connection;
+    }
+
+    return children;
+}
+
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transport-connection")
+        return true;
+    return false;
+}
+
+MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::TransportConnection()
+    :
+    max_wait{YType::uint32, "max-wait"}
+        ,
+    prefer(std::make_shared<MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::Prefer>())
+{
+    prefer->parent = this;
+
+    yang_name = "transport-connection"; yang_parent_name = "dual-stack"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::~TransportConnection()
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::has_data() const
+{
+    if (is_presence_container) return true;
+    return max_wait.is_set
+	|| (prefer !=  nullptr && prefer->has_data());
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_wait.yfilter)
+	|| (prefer !=  nullptr && prefer->has_operation());
+}
+
+std::string MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transport-connection";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_wait.is_set || is_set(max_wait.yfilter)) leaf_name_data.push_back(max_wait.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefer")
+    {
+        if(prefer == nullptr)
+        {
+            prefer = std::make_shared<MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::Prefer>();
+        }
+        return prefer;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(prefer != nullptr)
+    {
+        children["prefer"] = prefer;
+    }
+
+    return children;
+}
+
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-wait")
+    {
+        max_wait = value;
+        max_wait.value_namespace = name_space;
+        max_wait.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-wait")
+    {
+        max_wait.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefer" || name == "max-wait")
+        return true;
+    return false;
+}
+
+MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::Prefer::Prefer()
+    :
+    ipv4{YType::empty, "ipv4"}
+{
+
+    yang_name = "prefer"; yang_parent_name = "transport-connection"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::Prefer::~Prefer()
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::Prefer::has_data() const
+{
+    if (is_presence_container) return true;
+    return ipv4.is_set;
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::Prefer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4.yfilter);
+}
+
+std::string MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::Prefer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::Prefer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::Prefer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::Prefer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::Prefer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::Prefer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Neighbor::DualStack::TransportConnection::Prefer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4")
         return true;
     return false;
 }

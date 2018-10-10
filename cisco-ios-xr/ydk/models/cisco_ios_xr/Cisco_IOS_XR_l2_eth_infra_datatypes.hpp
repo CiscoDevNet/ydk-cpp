@@ -17,25 +17,19 @@ class VlanTagOrCvp : public ydk::Enum
 
 };
 
-class Rewrite : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pop1;
-        static const ydk::Enum::YLeaf pop2;
-        static const ydk::Enum::YLeaf push1;
-        static const ydk::Enum::YLeaf push2;
-        static const ydk::Enum::YLeaf translate1to1;
-        static const ydk::Enum::YLeaf translate1to2;
-        static const ydk::Enum::YLeaf translate2to1;
-        static const ydk::Enum::YLeaf translate2to2;
-
-};
-
 class Vlan : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf vlan_type_dot1ad;
         static const ydk::Enum::YLeaf vlan_type_dot1q;
+
+};
+
+class VsMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf trunk;
+        static const ydk::Enum::YLeaf access;
 
 };
 
@@ -50,6 +44,20 @@ class VlanTagOrNull : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf any;
+
+};
+
+class Rewrite : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pop1;
+        static const ydk::Enum::YLeaf pop2;
+        static const ydk::Enum::YLeaf push1;
+        static const ydk::Enum::YLeaf push2;
+        static const ydk::Enum::YLeaf translate1to1;
+        static const ydk::Enum::YLeaf translate1to2;
+        static const ydk::Enum::YLeaf translate2to1;
+        static const ydk::Enum::YLeaf translate2to2;
 
 };
 

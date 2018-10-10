@@ -12717,6 +12717,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Srg::Srg()
     total_dont_send_to_txlist{YType::uint32, "total-dont-send-to-txlist"},
     total_srg_not_master{YType::uint32, "total-srg-not-master"},
     total_master_eoms_pending{YType::uint32, "total-master-eoms-pending"},
+    total_master_eoms_pending_cleared{YType::uint32, "total-master-eoms-pending-cleared"},
     last_pause_period{YType::uint64, "last-pause-period"},
     total_pause_time{YType::uint64, "total-pause-time"},
     last_pause_time{YType::uint64, "last-pause-time"},
@@ -12781,6 +12782,7 @@ bool Subscriber::Manager::Nodes::Node::Statistics::Srg::has_data() const
 	|| total_dont_send_to_txlist.is_set
 	|| total_srg_not_master.is_set
 	|| total_master_eoms_pending.is_set
+	|| total_master_eoms_pending_cleared.is_set
 	|| last_pause_period.is_set
 	|| total_pause_time.is_set
 	|| last_pause_time.is_set
@@ -12838,6 +12840,7 @@ bool Subscriber::Manager::Nodes::Node::Statistics::Srg::has_operation() const
 	|| ydk::is_set(total_dont_send_to_txlist.yfilter)
 	|| ydk::is_set(total_srg_not_master.yfilter)
 	|| ydk::is_set(total_master_eoms_pending.yfilter)
+	|| ydk::is_set(total_master_eoms_pending_cleared.yfilter)
 	|| ydk::is_set(last_pause_period.yfilter)
 	|| ydk::is_set(total_pause_time.yfilter)
 	|| ydk::is_set(last_pause_time.yfilter)
@@ -12903,6 +12906,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
     if (total_dont_send_to_txlist.is_set || is_set(total_dont_send_to_txlist.yfilter)) leaf_name_data.push_back(total_dont_send_to_txlist.get_name_leafdata());
     if (total_srg_not_master.is_set || is_set(total_srg_not_master.yfilter)) leaf_name_data.push_back(total_srg_not_master.get_name_leafdata());
     if (total_master_eoms_pending.is_set || is_set(total_master_eoms_pending.yfilter)) leaf_name_data.push_back(total_master_eoms_pending.get_name_leafdata());
+    if (total_master_eoms_pending_cleared.is_set || is_set(total_master_eoms_pending_cleared.yfilter)) leaf_name_data.push_back(total_master_eoms_pending_cleared.get_name_leafdata());
     if (last_pause_period.is_set || is_set(last_pause_period.yfilter)) leaf_name_data.push_back(last_pause_period.get_name_leafdata());
     if (total_pause_time.is_set || is_set(total_pause_time.yfilter)) leaf_name_data.push_back(total_pause_time.get_name_leafdata());
     if (last_pause_time.is_set || is_set(last_pause_time.yfilter)) leaf_name_data.push_back(last_pause_time.get_name_leafdata());
@@ -13214,6 +13218,12 @@ void Subscriber::Manager::Nodes::Node::Statistics::Srg::set_value(const std::str
         total_master_eoms_pending.value_namespace = name_space;
         total_master_eoms_pending.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "total-master-eoms-pending-cleared")
+    {
+        total_master_eoms_pending_cleared = value;
+        total_master_eoms_pending_cleared.value_namespace = name_space;
+        total_master_eoms_pending_cleared.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "last-pause-period")
     {
         last_pause_period = value;
@@ -13434,6 +13444,10 @@ void Subscriber::Manager::Nodes::Node::Statistics::Srg::set_filter(const std::st
     {
         total_master_eoms_pending.yfilter = yfilter;
     }
+    if(value_path == "total-master-eoms-pending-cleared")
+    {
+        total_master_eoms_pending_cleared.yfilter = yfilter;
+    }
     if(value_path == "last-pause-period")
     {
         last_pause_period.yfilter = yfilter;
@@ -13454,7 +13468,7 @@ void Subscriber::Manager::Nodes::Node::Statistics::Srg::set_filter(const std::st
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Srg::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "txlist-send-triggered" || name == "txlist-send-failed" || name == "txlist-send-failed-notactive" || name == "actual-txlist-sent" || name == "alreadyin-txlist" || name == "txlist-encode" || name == "txlist-encode-fail" || name == "create-update-encode" || name == "delete-encode" || name == "create-upd-clean-callback" || name == "delete-clean-callback" || name == "slave-recv-entry" || name == "slave-decode-fail" || name == "slave-create-update" || name == "slave-delete" || name == "srg-context-malloc" || name == "srg-context-free" || name == "sod-count" || name == "eod-count" || name == "sod-eod-replay-req-count" || name == "sod-eod-dirty-mark-count" || name == "sod-eod-dirty-delete-count" || name == "ack-to-srg" || name == "nack-to-srg" || name == "nack-to-srg-fail-cnt" || name == "txlist-remove-all" || name == "txlist-del-sync" || name == "txlist-del-sync-notlinked" || name == "txlist-del-app" || name == "txlist-del-app-notlinked" || name == "txlist-clean-invalid-state" || name == "txlist-remove-all-internal-error" || name == "is-srg-flow-control-enabled" || name == "max-inflight-sessoin-count" || name == "flow-control-resume-threshold" || name == "inflight-session-count" || name == "inflight-add-count" || name == "inflight-under-run-count" || name == "inflight-alloc-fails" || name == "inflight-insert-failures" || name == "inflight-deletes" || name == "inflight-not-found" || name == "inflight-delete-failures" || name == "total-pause-count" || name == "total-resume-count" || name == "total-dont-send-to-txlist" || name == "total-srg-not-master" || name == "total-master-eoms-pending" || name == "last-pause-period" || name == "total-pause-time" || name == "last-pause-time" || name == "last-resume-time")
+    if(name == "txlist-send-triggered" || name == "txlist-send-failed" || name == "txlist-send-failed-notactive" || name == "actual-txlist-sent" || name == "alreadyin-txlist" || name == "txlist-encode" || name == "txlist-encode-fail" || name == "create-update-encode" || name == "delete-encode" || name == "create-upd-clean-callback" || name == "delete-clean-callback" || name == "slave-recv-entry" || name == "slave-decode-fail" || name == "slave-create-update" || name == "slave-delete" || name == "srg-context-malloc" || name == "srg-context-free" || name == "sod-count" || name == "eod-count" || name == "sod-eod-replay-req-count" || name == "sod-eod-dirty-mark-count" || name == "sod-eod-dirty-delete-count" || name == "ack-to-srg" || name == "nack-to-srg" || name == "nack-to-srg-fail-cnt" || name == "txlist-remove-all" || name == "txlist-del-sync" || name == "txlist-del-sync-notlinked" || name == "txlist-del-app" || name == "txlist-del-app-notlinked" || name == "txlist-clean-invalid-state" || name == "txlist-remove-all-internal-error" || name == "is-srg-flow-control-enabled" || name == "max-inflight-sessoin-count" || name == "flow-control-resume-threshold" || name == "inflight-session-count" || name == "inflight-add-count" || name == "inflight-under-run-count" || name == "inflight-alloc-fails" || name == "inflight-insert-failures" || name == "inflight-deletes" || name == "inflight-not-found" || name == "inflight-delete-failures" || name == "total-pause-count" || name == "total-resume-count" || name == "total-dont-send-to-txlist" || name == "total-srg-not-master" || name == "total-master-eoms-pending" || name == "total-master-eoms-pending-cleared" || name == "last-pause-period" || name == "total-pause-time" || name == "last-pause-time" || name == "last-resume-time")
         return true;
     return false;
 }

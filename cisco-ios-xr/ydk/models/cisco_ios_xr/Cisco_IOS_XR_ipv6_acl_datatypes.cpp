@@ -173,14 +173,6 @@ const Enum::YLeaf Ipv6AclTypeEnum::prefix_list {2, "prefix-list"};
 const Enum::YLeaf Ipv6AclStatusEnum::disabled {0, "disabled"};
 const Enum::YLeaf Ipv6AclStatusEnum::enabled {1, "enabled"};
 
-const Enum::YLeaf Ipv6AclTcpBitsNumber::established {20, "established"};
-const Enum::YLeaf Ipv6AclTcpBitsNumber::ack {16, "ack"};
-const Enum::YLeaf Ipv6AclTcpBitsNumber::rst {4, "rst"};
-const Enum::YLeaf Ipv6AclTcpBitsNumber::fin {1, "fin"};
-const Enum::YLeaf Ipv6AclTcpBitsNumber::psh {8, "psh"};
-const Enum::YLeaf Ipv6AclTcpBitsNumber::syn {2, "syn"};
-const Enum::YLeaf Ipv6AclTcpBitsNumber::urg {32, "urg"};
-
 
 }
 }

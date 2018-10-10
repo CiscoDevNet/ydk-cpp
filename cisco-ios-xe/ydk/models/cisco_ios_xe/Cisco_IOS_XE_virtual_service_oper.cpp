@@ -691,7 +691,8 @@ VirtualServices::VirtualService::Details::PackageInformation::Application::Appli
     name{YType::str, "name"},
     installed_version{YType::str, "installed-version"},
     description{YType::str, "description"},
-    type{YType::str, "type"}
+    type{YType::str, "type"},
+    owner{YType::str, "owner"}
 {
 
     yang_name = "application"; yang_parent_name = "package-information"; is_top_level_class = false; has_list_ancestor = true; 
@@ -707,7 +708,8 @@ bool VirtualServices::VirtualService::Details::PackageInformation::Application::
     return name.is_set
 	|| installed_version.is_set
 	|| description.is_set
-	|| type.is_set;
+	|| type.is_set
+	|| owner.is_set;
 }
 
 bool VirtualServices::VirtualService::Details::PackageInformation::Application::has_operation() const
@@ -716,7 +718,8 @@ bool VirtualServices::VirtualService::Details::PackageInformation::Application::
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(installed_version.yfilter)
 	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(type.yfilter);
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(owner.yfilter);
 }
 
 std::string VirtualServices::VirtualService::Details::PackageInformation::Application::get_segment_path() const
@@ -734,6 +737,7 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
     if (installed_version.is_set || is_set(installed_version.yfilter)) leaf_name_data.push_back(installed_version.get_name_leafdata());
     if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (owner.is_set || is_set(owner.yfilter)) leaf_name_data.push_back(owner.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -777,6 +781,12 @@ void VirtualServices::VirtualService::Details::PackageInformation::Application::
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "owner")
+    {
+        owner = value;
+        owner.value_namespace = name_space;
+        owner.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void VirtualServices::VirtualService::Details::PackageInformation::Application::set_filter(const std::string & value_path, YFilter yfilter)
@@ -797,11 +807,15 @@ void VirtualServices::VirtualService::Details::PackageInformation::Application::
     {
         type.yfilter = yfilter;
     }
+    if(value_path == "owner")
+    {
+        owner.yfilter = yfilter;
+    }
 }
 
 bool VirtualServices::VirtualService::Details::PackageInformation::Application::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name" || name == "installed-version" || name == "description" || name == "type")
+    if(name == "name" || name == "installed-version" || name == "description" || name == "type" || name == "owner")
         return true;
     return false;
 }

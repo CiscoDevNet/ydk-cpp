@@ -843,6 +843,8 @@ class Cfm::Global::MepConfigurationErrors::MepConfigurationError : public ydk::E
         ydk::YLeaf bundle_level0; //type: boolean
         ydk::YLeaf bridge_domain_not_in_bd_infra; //type: boolean
         ydk::YLeaf maid_format_not_supported; //type: boolean
+        ydk::YLeaf sman_format_not_supported; //type: boolean
+        ydk::YLeaf mdid_format_not_supported; //type: boolean
         ydk::YLeaf fatal_offload_error; //type: boolean
         ydk::YLeaf satellite_limitation; //type: boolean
         ydk::YLeaf sla_loopback_operations_disabled; //type: boolean

@@ -488,7 +488,8 @@ FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::FibNexthopEntries()
     path_id{YType::uint32, "path-id"},
     weight{YType::uint8, "weight"},
     encap{YType::enumeration, "encap"},
-    decap{YType::enumeration, "decap"}
+    decap{YType::enumeration, "decap"},
+    resolved_nh_addr{YType::str, "resolved-nh-addr"}
 {
 
     yang_name = "fib-nexthop-entries"; yang_parent_name = "fib-entries"; is_top_level_class = false; has_list_ancestor = true; 
@@ -509,7 +510,8 @@ bool FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::has_data() const
 	|| path_id.is_set
 	|| weight.is_set
 	|| encap.is_set
-	|| decap.is_set;
+	|| decap.is_set
+	|| resolved_nh_addr.is_set;
 }
 
 bool FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::has_operation() const
@@ -523,7 +525,8 @@ bool FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::has_operation() con
 	|| ydk::is_set(path_id.yfilter)
 	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(encap.yfilter)
-	|| ydk::is_set(decap.yfilter);
+	|| ydk::is_set(decap.yfilter)
+	|| ydk::is_set(resolved_nh_addr.yfilter);
 }
 
 std::string FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::get_segment_path() const
@@ -547,6 +550,7 @@ std::vector<std::pair<std::string, LeafData> > FibOperData::FibNiEntry::FibEntri
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (encap.is_set || is_set(encap.yfilter)) leaf_name_data.push_back(encap.get_name_leafdata());
     if (decap.is_set || is_set(decap.yfilter)) leaf_name_data.push_back(decap.get_name_leafdata());
+    if (resolved_nh_addr.is_set || is_set(resolved_nh_addr.yfilter)) leaf_name_data.push_back(resolved_nh_addr.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -620,6 +624,12 @@ void FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::set_value(const std
         decap.value_namespace = name_space;
         decap.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "resolved-nh-addr")
+    {
+        resolved_nh_addr = value;
+        resolved_nh_addr.value_namespace = name_space;
+        resolved_nh_addr.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::set_filter(const std::string & value_path, YFilter yfilter)
@@ -660,11 +670,15 @@ void FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::set_filter(const st
     {
         decap.yfilter = yfilter;
     }
+    if(value_path == "resolved-nh-addr")
+    {
+        resolved_nh_addr.yfilter = yfilter;
+    }
 }
 
 bool FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nh-addr" || name == "index" || name == "af" || name == "ifname" || name == "path-type" || name == "path-id" || name == "weight" || name == "encap" || name == "decap")
+    if(name == "nh-addr" || name == "index" || name == "af" || name == "ifname" || name == "path-type" || name == "path-id" || name == "weight" || name == "encap" || name == "decap" || name == "resolved-nh-addr")
         return true;
     return false;
 }

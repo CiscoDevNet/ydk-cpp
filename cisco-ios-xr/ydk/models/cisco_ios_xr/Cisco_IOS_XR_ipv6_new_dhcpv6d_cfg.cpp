@@ -611,7 +611,8 @@ Dhcpv6::Profiles::Profile::Relay::Relay()
     :
     src_intf_name{YType::str, "src-intf-name"},
     enable{YType::empty, "enable"},
-    iana_route_add{YType::empty, "iana-route-add"}
+    iana_route_add{YType::empty, "iana-route-add"},
+    relay_route_add_disable{YType::empty, "relay-route-add-disable"}
         ,
     helper_addresses(std::make_shared<Dhcpv6::Profiles::Profile::Relay::HelperAddresses>())
     , option(std::make_shared<Dhcpv6::Profiles::Profile::Relay::Option>())
@@ -632,6 +633,7 @@ bool Dhcpv6::Profiles::Profile::Relay::has_data() const
     return src_intf_name.is_set
 	|| enable.is_set
 	|| iana_route_add.is_set
+	|| relay_route_add_disable.is_set
 	|| (helper_addresses !=  nullptr && helper_addresses->has_data())
 	|| (option !=  nullptr && option->has_data());
 }
@@ -642,6 +644,7 @@ bool Dhcpv6::Profiles::Profile::Relay::has_operation() const
 	|| ydk::is_set(src_intf_name.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(iana_route_add.yfilter)
+	|| ydk::is_set(relay_route_add_disable.yfilter)
 	|| (helper_addresses !=  nullptr && helper_addresses->has_operation())
 	|| (option !=  nullptr && option->has_operation());
 }
@@ -660,6 +663,7 @@ std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Relay:
     if (src_intf_name.is_set || is_set(src_intf_name.yfilter)) leaf_name_data.push_back(src_intf_name.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (iana_route_add.is_set || is_set(iana_route_add.yfilter)) leaf_name_data.push_back(iana_route_add.get_name_leafdata());
+    if (relay_route_add_disable.is_set || is_set(relay_route_add_disable.yfilter)) leaf_name_data.push_back(relay_route_add_disable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -725,6 +729,12 @@ void Dhcpv6::Profiles::Profile::Relay::set_value(const std::string & value_path,
         iana_route_add.value_namespace = name_space;
         iana_route_add.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "relay-route-add-disable")
+    {
+        relay_route_add_disable = value;
+        relay_route_add_disable.value_namespace = name_space;
+        relay_route_add_disable.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Dhcpv6::Profiles::Profile::Relay::set_filter(const std::string & value_path, YFilter yfilter)
@@ -741,11 +751,15 @@ void Dhcpv6::Profiles::Profile::Relay::set_filter(const std::string & value_path
     {
         iana_route_add.yfilter = yfilter;
     }
+    if(value_path == "relay-route-add-disable")
+    {
+        relay_route_add_disable.yfilter = yfilter;
+    }
 }
 
 bool Dhcpv6::Profiles::Profile::Relay::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "helper-addresses" || name == "option" || name == "src-intf-name" || name == "enable" || name == "iana-route-add")
+    if(name == "helper-addresses" || name == "option" || name == "src-intf-name" || name == "enable" || name == "iana-route-add" || name == "relay-route-add-disable")
         return true;
     return false;
 }
@@ -6699,6 +6713,7 @@ const Enum::YLeaf Action::drop {1, "drop"};
 const Enum::YLeaf Insert::local {0, "local"};
 const Enum::YLeaf Insert::received {1, "received"};
 const Enum::YLeaf Insert::pppoe {2, "pppoe"};
+const Enum::YLeaf Insert::received_nodefault {3, "received-nodefault"};
 
 const Enum::YLeaf LinkLayerAddr::set {4, "set"};
 
